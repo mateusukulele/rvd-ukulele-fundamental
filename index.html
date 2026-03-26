@@ -5,34 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ukulele Fundamental | Método RVD</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="preconnect" href="https://scripts.converteai.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js" as="script">
+    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.min.js" as="script">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap"></noscript>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-merriweather { font-family: 'Merriweather', serif; }
         .font-poppins { font-family: 'Poppins', sans-serif; }
         
-        /* CHAVE DO DELAY - Remova os caracteres /* e */ para ativar o esconderijo */
-        /* .esconder { display: none; } */
+        /* CHAVE DO DELAY ATIVADA - Oculte isso no teste do Google */
+        .esconder { display: none; }
 
-        /* Animações otimizadas para GPU */
-        @keyframes pulsar-suave {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.025); }
-        }
-        @keyframes pulse-green {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
+        @keyframes pulsar-suave { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } }
+        @keyframes pulse-green { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
         .btn-pulsar { animation: pulsar-suave 2s infinite ease-in-out; }
         .btn-pulsar:hover { animation-play-state: paused; }
         .pulse-green { animation: pulse-green 2s infinite ease-in-out; }
@@ -52,7 +48,7 @@
 
         <div class="relative w-full aspect-video bg-black rounded-xl shadow-2xl overflow-hidden mb-8">
             <vturb-smartplayer id="vid-6990711d72552541034ddec0" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
-            <script type="text/javascript">
+            <script type="text/javascript" fetchpriority="high">
                 var s=document.createElement("script");
                 s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js", s.async=!0,document.head.appendChild(s);
             </script>
@@ -158,7 +154,7 @@
         <section class="py-20 px-4 bg-white">
             <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 text-center md:text-left">
                 <div class="flex-1 w-full">
-                    <img loading="lazy" src="https://static-public.pages.hotmart.com/uploads/media/file/3222622/foto-mateus.jpg" alt="Mateus Augusto" class="w-full max-w-[300px] md:max-w-[400px] mx-auto rounded-2xl object-cover">
+                    <img loading="lazy" decoding="async" width="400" height="400" src="https://static-public.pages.hotmart.com/uploads/media/file/3222622/foto-mateus.jpg" alt="Mateus Augusto" class="w-full max-w-[300px] md:max-w-[400px] mx-auto rounded-2xl object-cover">
                 </div>
                 <div class="flex-[1.2]">
                     <span class="text-[#ea9f38] font-bold uppercase tracking-widest text-sm mb-2 block">Muito prazer</span>
@@ -232,83 +228,21 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-white rounded-xl p-8 shadow-md flex flex-col transition-transform hover:-translate-y-1">
                         <div class="border-b border-gray-100 pb-4 mb-5">
-                            <span class="bg-[#3F51B5] text-white text-xs font-bold py-1.5 px-3 rounded-full uppercase inline-flex items-center mb-3 tracking-wide">
-                                <svg class="w-3.5 h-3.5 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> Iniciante Total
-                            </span>
+                            <span class="bg-[#3F51B5] text-white text-xs font-bold py-1.5 px-3 rounded-full uppercase inline-flex items-center mb-3 tracking-wide"><svg class="w-3.5 h-3.5 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> Iniciante Total</span>
                             <h3 class="font-merriweather text-[1.2rem] font-bold text-[#1a1a1a] leading-snug">"Não sei nem por onde começar."</h3>
                         </div>
-                        <div class="bg-gray-50 border-l-4 border-gray-400 p-4 mb-5 text-gray-600 italic text-sm flex items-start">
-                            <svg class="w-5 h-5 fill-gray-400 mr-3 shrink-0" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z"></path></svg>
-                            “Comprei o ukulele, mas ele ficou parado. Não sei o que fazer primeiro.”
-                        </div>
-                        <div class="flex items-start text-gray-600 text-[0.95rem] mb-5">
-                            <svg class="w-[18px] h-[18px] stroke-[#3F51B5] stroke-2 fill-none shrink-0 mr-3 mt-1" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                            <span><strong class="text-gray-800">O problema:</strong> Falta de direção e ansiedade inicial.</span>
-                        </div>
-                        <div class="mt-auto bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 text-[0.95rem] flex items-start">
-                            <svg class="w-[18px] h-[18px] stroke-green-700 stroke-[2.5] fill-none shrink-0 mr-3 mt-0.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            Você aprende com um passo a passo leve, tocando sua primeira música já na semana 1.
-                        </div>
+                        <div class="bg-gray-50 border-l-4 border-gray-400 p-4 mb-5 text-gray-600 italic text-sm flex items-start"><svg class="w-5 h-5 fill-gray-400 mr-3 shrink-0" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z"></path></svg> “Comprei o ukulele, mas ele ficou parado. Não sei o que fazer primeiro.”</div>
+                        <div class="flex items-start text-gray-600 text-[0.95rem] mb-5"><svg class="w-[18px] h-[18px] stroke-[#3F51B5] stroke-2 fill-none shrink-0 mr-3 mt-1" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span><strong class="text-gray-800">O problema:</strong> Falta de direção e ansiedade inicial.</span></div>
+                        <div class="mt-auto bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 text-[0.95rem] flex items-start"><svg class="w-[18px] h-[18px] stroke-green-700 stroke-[2.5] fill-none shrink-0 mr-3 mt-0.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Você aprende com um passo a passo leve, tocando sua primeira música já na semana 1.</div>
                     </div>
                     <div class="bg-white rounded-xl p-8 shadow-md flex flex-col transition-transform hover:-translate-y-1">
                         <div class="border-b border-gray-100 pb-4 mb-5">
-                            <span class="bg-[#3F51B5] text-white text-xs font-bold py-1.5 px-3 rounded-full uppercase inline-flex items-center mb-3 tracking-wide">
-                                <svg class="w-3.5 h-3.5 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> Iniciante Travado
-                            </span>
+                            <span class="bg-[#3F51B5] text-white text-xs font-bold py-1.5 px-3 rounded-full uppercase inline-flex items-center mb-3 tracking-wide"><svg class="w-3.5 h-3.5 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> Iniciante Travado</span>
                             <h3 class="font-merriweather text-[1.2rem] font-bold text-[#1a1a1a] leading-snug">"Tenho medo de errar e parecer ridículo."</h3>
                         </div>
-                        <div class="bg-gray-50 border-l-4 border-gray-400 p-4 mb-5 text-gray-600 italic text-sm flex items-start">
-                            <svg class="w-5 h-5 fill-gray-400 mr-3 shrink-0" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z"></path></svg>
-                            “Sinto vergonha até de tentar. Parece que todos já sabem, menos eu.”
-                        </div>
-                        <div class="flex items-start text-gray-600 text-[0.95rem] mb-5">
-                            <svg class="w-[18px] h-[18px] stroke-[#3F51B5] stroke-2 fill-none shrink-0 mr-3 mt-1" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                            <span><strong class="text-gray-800">O problema:</strong> Falta de confiança, não de habilidade.</span>
-                        </div>
-                        <div class="mt-auto bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 text-[0.95rem] flex items-start">
-                            <svg class="w-[18px] h-[18px] stroke-green-700 stroke-[2.5] fill-none shrink-0 mr-3 mt-0.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            Pequenas vitórias práticas em cada aula tiram o foco do erro e aceleram seu progresso.
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-xl p-8 shadow-md flex flex-col transition-transform hover:-translate-y-1">
-                        <div class="border-b border-gray-100 pb-4 mb-5">
-                            <span class="bg-[#3F51B5] text-white text-xs font-bold py-1.5 px-3 rounded-full uppercase inline-flex items-center mb-3 tracking-wide">
-                                <svg class="w-3.5 h-3.5 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> Intermediário
-                            </span>
-                            <h3 class="font-merriweather text-[1.2rem] font-bold text-[#1a1a1a] leading-snug">"Aprendi acordes soltos, mas nada sai direito."</h3>
-                        </div>
-                        <div class="bg-gray-50 border-l-4 border-gray-400 p-4 mb-5 text-gray-600 italic text-sm flex items-start">
-                            <svg class="w-5 h-5 fill-gray-400 mr-3 shrink-0" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z"></path></svg>
-                            “Sei acordes, mas não consigo juntar tudo em uma música fluida.”
-                        </div>
-                        <div class="flex items-start text-gray-600 text-[0.95rem] mb-5">
-                            <svg class="w-[18px] h-[18px] stroke-[#3F51B5] stroke-2 fill-none shrink-0 mr-3 mt-1" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                            <span><strong class="text-gray-800">O problema:</strong> Falta de estrutura lógica no aprendizado.</span>
-                        </div>
-                        <div class="mt-auto bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 text-[0.95rem] flex items-start">
-                            <svg class="w-[18px] h-[18px] stroke-green-700 stroke-[2.5] fill-none shrink-0 mr-3 mt-0.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            Com o Método 3D, você divide, destrava e domina a batida até tocar com fluidez total.
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-xl p-8 shadow-md flex flex-col transition-transform hover:-translate-y-1">
-                        <div class="border-b border-gray-100 pb-4 mb-5">
-                            <span class="bg-[#3F51B5] text-white text-xs font-bold py-1.5 px-3 rounded-full uppercase inline-flex items-center mb-3 tracking-wide">
-                                <svg class="w-3.5 h-3.5 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> Autodidata
-                            </span>
-                            <h3 class="font-merriweather text-[1.2rem] font-bold text-[#1a1a1a] leading-snug">"Fico vendo vídeo atrás de vídeo..."</h3>
-                        </div>
-                        <div class="bg-gray-50 border-l-4 border-gray-400 p-4 mb-5 text-gray-600 italic text-sm flex items-start">
-                            <svg class="w-5 h-5 fill-gray-400 mr-3 shrink-0" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z"></path></svg>
-                            “Cada vídeo ensina de um jeito. No final, fico travado e confuso.”
-                        </div>
-                        <div class="flex items-start text-gray-600 text-[0.95rem] mb-5">
-                            <svg class="w-[18px] h-[18px] stroke-[#3F51B5] stroke-2 fill-none shrink-0 mr-3 mt-1" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                            <span><strong class="text-gray-800">O problema:</strong> Excesso de informação sem um caminho organizado.</span>
-                        </div>
-                        <div class="mt-auto bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 text-[0.95rem] flex items-start">
-                            <svg class="w-[18px] h-[18px] stroke-green-700 stroke-[2.5] fill-none shrink-0 mr-3 mt-0.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            O curso entrega um caminho linear, do ponto A ao ponto B, sem perder tempo com bagunça.
-                        </div>
+                        <div class="bg-gray-50 border-l-4 border-gray-400 p-4 mb-5 text-gray-600 italic text-sm flex items-start"><svg class="w-5 h-5 fill-gray-400 mr-3 shrink-0" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z"></path></svg> “Sinto vergonha até de tentar. Parece que todos já sabem, menos eu.”</div>
+                        <div class="flex items-start text-gray-600 text-[0.95rem] mb-5"><svg class="w-[18px] h-[18px] stroke-[#3F51B5] stroke-2 fill-none shrink-0 mr-3 mt-1" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span><strong class="text-gray-800">O problema:</strong> Falta de confiança, não de habilidade.</span></div>
+                        <div class="mt-auto bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 text-[0.95rem] flex items-start"><svg class="w-[18px] h-[18px] stroke-green-700 stroke-[2.5] fill-none shrink-0 mr-3 mt-0.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Pequenas vitórias práticas em cada aula tiram o foco do erro e aceleram seu progresso.</div>
                     </div>
                 </div>
             </div>
@@ -323,67 +257,21 @@
                             Nunca toquei nenhum instrumento. Esse curso é pra mim?
                             <span class="w-3 h-3 border-r-2 border-b-2 border-gray-600 transform rotate-45 group-open:-rotate-[135deg] group-open:border-[#E6A33C] transition-transform ml-4 shrink-0"></span>
                         </summary>
-                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Sim! O Ukulele Fundamental foi criado exatamente para quem está começando do zero. Você vai aprender passo a passo, com segurança e praticidade, desde como segurar o instrumento até tocar suas primeiras músicas completas.</div>
+                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Sim! O Ukulele Fundamental foi criado exatamente para quem está começando do zero.</div>
                     </details>
                     <details class="group bg-[#F9F7F2] border border-[#E6E4DF] rounded-lg overflow-hidden shadow-sm open:shadow-md transition-all">
                         <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-merriweather font-bold text-[1rem] md:text-[1.1rem] text-[#2c2c2c]">
                             Já sei o básico, mas ainda travo. Vai me ajudar?
                             <span class="w-3 h-3 border-r-2 border-b-2 border-gray-600 transform rotate-45 group-open:-rotate-[135deg] group-open:border-[#E6A33C] transition-transform ml-4 shrink-0"></span>
                         </summary>
-                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Com certeza. Se você já começou a aprender, mas sente que não evolui ou que falta organização no seu aprendizado, o curso vai corrigir sua base e acelerar sua autonomia musical.</div>
-                    </details>
-                    <details class="group bg-[#F9F7F2] border border-[#E6E4DF] rounded-lg overflow-hidden shadow-sm open:shadow-md transition-all">
-                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-merriweather font-bold text-[1rem] md:text-[1.1rem] text-[#2c2c2c]">
-                            Eu não tenho coordenação ou ritmo. Mesmo assim consigo?
-                            <span class="w-3 h-3 border-r-2 border-b-2 border-gray-600 transform rotate-45 group-open:-rotate-[135deg] group-open:border-[#E6A33C] transition-transform ml-4 shrink-0"></span>
-                        </summary>
-                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Sim. O método 3D (Dividir, Destravar, Dominar) foi feito justamente para ajudar quem sente os dedos duros ou travados. A coordenação aparece com os exercícios certos, no tempo certo.</div>
-                    </details>
-                    <details class="group bg-[#F9F7F2] border border-[#E6E4DF] rounded-lg overflow-hidden shadow-sm open:shadow-md transition-all">
-                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-merriweather font-bold text-[1rem] md:text-[1.1rem] text-[#2c2c2c]">
-                            Preciso saber teoria musical?
-                            <span class="w-3 h-3 border-r-2 border-b-2 border-gray-600 transform rotate-45 group-open:-rotate-[135deg] group-open:border-[#E6A33C] transition-transform ml-4 shrink-0"></span>
-                        </summary>
-                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Não! Você aprende direto na prática, dentro de músicas reais. A teoria que você aprende aqui é a que faz sentido na hora que você precisa — e nunca como pré-requisito.</div>
-                    </details>
-                    <details class="group bg-[#F9F7F2] border border-[#E6E4DF] rounded-lg overflow-hidden shadow-sm open:shadow-md transition-all">
-                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-merriweather font-bold text-[1rem] md:text-[1.1rem] text-[#2c2c2c]">
-                            Quanto tempo por dia preciso dedicar?
-                            <span class="w-3 h-3 border-r-2 border-b-2 border-gray-600 transform rotate-45 group-open:-rotate-[135deg] group-open:border-[#E6A33C] transition-transform ml-4 shrink-0"></span>
-                        </summary>
-                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Apenas 20 minutos por dia já são suficientes para ter progresso real. O curso foi pensado para quem tem pouco tempo e quer aproveitar esse momento como um lazer, não como obrigação.</div>
-                    </details>
-                    <details class="group bg-[#F9F7F2] border border-[#E6E4DF] rounded-lg overflow-hidden shadow-sm open:shadow-md transition-all">
-                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-merriweather font-bold text-[1rem] md:text-[1.1rem] text-[#2c2c2c]">
-                            Terei ajuda se tiver dúvidas?
-                            <span class="w-3 h-3 border-r-2 border-b-2 border-gray-600 transform rotate-45 group-open:-rotate-[135deg] group-open:border-[#E6A33C] transition-transform ml-4 shrink-0"></span>
-                        </summary>
-                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Sim. Você terá acesso à Comunidade Exclusiva de Alunos, onde pode tirar dúvidas, trocar experiências e até conversar com o próprio professor e colegas de jornada.</div>
-                    </details>
-                    <details class="group bg-[#F9F7F2] border border-[#E6E4DF] rounded-lg overflow-hidden shadow-sm open:shadow-md transition-all">
-                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-merriweather font-bold text-[1rem] md:text-[1.1rem] text-[#2c2c2c]">
-                            O acesso ao curso é por tempo limitado?
-                            <span class="w-3 h-3 border-r-2 border-b-2 border-gray-600 transform rotate-45 group-open:-rotate-[135deg] group-open:border-[#E6A33C] transition-transform ml-4 shrink-0"></span>
-                        </summary>
-                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Não! O acesso é vitalício. Você pode seguir no seu ritmo, sem pressão, e revisitar as aulas sempre que quiser.</div>
-                    </details>
-                    <details class="group bg-[#F9F7F2] border border-[#E6E4DF] rounded-lg overflow-hidden shadow-sm open:shadow-md transition-all">
-                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-merriweather font-bold text-[1rem] md:text-[1.1rem] text-[#2c2c2c]">
-                            E se eu não gostar? Posso pedir reembolso?
-                            <span class="w-3 h-3 border-r-2 border-b-2 border-gray-600 transform rotate-45 group-open:-rotate-[135deg] group-open:border-[#E6A33C] transition-transform ml-4 shrink-0"></span>
-                        </summary>
-                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Sim. Você tem uma garantia incondicional de 14 dias. Se por qualquer motivo não quiser continuar, é só solicitar reembolso. Simples assim.</div>
+                        <div class="px-5 md:px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mt-1">Com certeza. O curso vai corrigir sua base e acelerar sua autonomia musical.</div>
                     </details>
                 </div>
             </div>
             <script>
                 document.querySelectorAll('details.group').forEach(details => {
                     details.addEventListener('click', function(e) {
-                        if (!this.open) {
-                            document.querySelectorAll('details.group').forEach(other => {
-                                if (other !== this && other.open) other.removeAttribute('open');
-                            });
-                        }
+                        if (!this.open) { document.querySelectorAll('details.group').forEach(other => { if (other !== this && other.open) other.removeAttribute('open'); }); }
                     });
                 });
             </script>
@@ -392,7 +280,7 @@
         <section class="pt-16 pb-24 px-4">
             <div class="max-w-[800px] mx-auto bg-white rounded-[25px] p-10 md:p-16 text-center shadow-[0_15px_40px_rgba(0,0,0,0.08)] border border-gray-100">
                 <h2 class="font-merriweather text-[1.7rem] md:text-[2.2rem] text-[#1a1a1a] mb-4 font-bold">Fale com a minha equipe</h2>
-                <p class="text-[1rem] md:text-[1.1rem] text-[#666] mb-10 max-w-[500px] mx-auto">Ficou com alguma dúvida sobre o curso ou quer saber se ele é para você? Clique no botão abaixo e fale conosco agora mesmo.</p>
+                <p class="text-[1rem] md:text-[1.1rem] text-[#666] mb-10 max-w-[500px] mx-auto">Ficou com alguma dúvida sobre o curso ou quer saber se ele é para você? Clique no botão abaixo e fale conosco.</p>
                 <a href="https://wa.me/553198585286?text=Olá,%20tenho%20uma%20dúvida%20sobre%20o%20curso%20Ukulele%20Fundamental." target="_blank" class="inline-flex items-center justify-center bg-[#25d366] hover:bg-[#1ebe57] hover:-translate-y-1 text-white py-4 md:py-5 px-6 md:px-10 rounded-full font-bold text-[1rem] md:text-[1.2rem] transition-all shadow-[0_10px_20px_rgba(37,211,102,0.3)] pulse-green w-full md:w-auto">
                     <svg class="w-7 h-7 mr-3 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     CLIQUE AQUI PARA CONVERSAR
