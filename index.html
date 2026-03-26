@@ -8,29 +8,38 @@
     <meta name="description" content="Aprenda a tocar Ukulele do zero com o Método RVD. Aulas práticas, passo a passo simples e acesso vitalício. Comece a tocar hoje mesmo!">
 
     <link rel="preconnect" href="https://scripts.converteai.net" crossorigin>
+    <link rel="preconnect" href="https://cdn.converteai.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
+    <link rel="dns-prefetch" href="https://api.vturb.com.br">
+    <link rel="dns-prefetch" href="https://a.vturb.net">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
 
     <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js" as="script">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    </noscript>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-merriweather { font-family: 'Merriweather', serif; }
-        .font-poppins { font-family: 'Poppins', sans-serif; }
+        /* Fallbacks de sistema caso a fonte do Google atrase, evitando tela em branco */
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .font-merriweather { font-family: 'Merriweather', Georgia, serif; }
+        .font-poppins { font-family: 'Poppins', system-ui, -apple-system, sans-serif; }
         
-        /* Prevenção rigorosa de CLS no Vturb */
+        /* Prevenção extrema de CLS (Cumulative Layout Shift) */
         .video-wrapper {
             aspect-ratio: 16 / 9;
             width: 100%;
             background-color: #000;
+            display: block;
         }
 
-        /* Animações otimizadas para GPU */
+        /* Animações otimizadas para GPU (Não pesam no carregamento principal) */
         @keyframes pulsar-suave { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } }
         @keyframes pulse-green { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
@@ -71,19 +80,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[500px] md:max-w-none mx-auto">
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
                         <div class="video-wrapper rounded-lg mb-4 overflow-hidden relative">
-                            <iframe loading="lazy" class="absolute top-0 left-0 w-full h-full border-0" src="https://www.youtube.com/embed/gMjxSJMxPSc" title="Depoimento de aluno 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe loading="lazy" class="absolute top-0 left-0 w-full h-full border-0" src="https://www.youtube-nocookie.com/embed/gMjxSJMxPSc" title="Depoimento de aluno 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <p class="text-center font-semibold text-[#3b2f2f] text-[0.95rem] leading-relaxed">"Eu já tenho aprendido a tocar algumas músicas que eu gosto e posso tocar com meus amigos"</p>
                     </article>
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
                         <div class="video-wrapper rounded-lg mb-4 overflow-hidden relative">
-                            <iframe loading="lazy" class="absolute top-0 left-0 w-full h-full border-0" src="https://www.youtube.com/embed/_Uo3NvXyH4A" title="Depoimento de aluno 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe loading="lazy" class="absolute top-0 left-0 w-full h-full border-0" src="https://www.youtube-nocookie.com/embed/_Uo3NvXyH4A" title="Depoimento de aluno 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <p class="text-center font-semibold text-[#3b2f2f] text-[0.95rem] leading-relaxed">"A música tem me ajudado bastante a ser mais paciente comigo mesma."</p>
                     </article>
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
                         <div class="video-wrapper rounded-lg mb-4 overflow-hidden relative">
-                            <iframe loading="lazy" class="absolute top-0 left-0 w-full h-full border-0" src="https://www.youtube.com/embed/Wey4EfhXWtc" title="Depoimento de aluno 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe loading="lazy" class="absolute top-0 left-0 w-full h-full border-0" src="https://www.youtube-nocookie.com/embed/Wey4EfhXWtc" title="Depoimento de aluno 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <p class="text-center font-semibold text-[#3b2f2f] text-[0.95rem] leading-relaxed">"Eu não acreditava que eu poderia tocar as músicas que eu gosto. É o que eu tô fazendo agora e é uma diversão aqui em casa. É uma terapia pra mim."</p>
                     </article>
