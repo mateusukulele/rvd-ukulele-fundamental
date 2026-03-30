@@ -16,17 +16,15 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js" as="script">
-    <script defer src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js"></script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        /* FALLBACKS PARA MANTER A ESTRUTURA ENQUANTO O TAILWIND PENSA */
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background-color: #1d4ed8; color: white; }
         .font-merriweather { font-family: 'Merriweather', Georgia, serif; }
         .font-poppins { font-family: 'Poppins', system-ui, -apple-system, sans-serif; }
         
-        /* BLOQUEIO DE CLS ESTRUTURAL */
+        /* BLOQUEIO DE CLS ESTRUTURAL (Crucial para não ter "pulinhos") */
         .video-wrapper {
             position: relative;
             width: 100%;
@@ -35,6 +33,7 @@
             border-radius: 0.75rem; 
             overflow: hidden;
             display: block;
+            margin-bottom: 2rem;
         }
         
         .video-wrapper iframe, .video-wrapper vturb-smartplayer {
@@ -391,21 +390,17 @@
         const CLASS_TO_REVEAL = 'esconder';
 
         const vturbTimer = setInterval(() => {
-            // Tenta localizar o player do Vturb na página
             const player = document.querySelector('vturb-smartplayer');
-            
-            // Verifica se o player já carregou as APIs internas e lê o tempo do vídeo
             if (player && player.smartplayer && player.smartplayer.video && player.smartplayer.video.currentTime >= SECONDS_TO_DISPLAY) {
-                
-                // Remove a classe de esconder de todos os elementos
                 document.querySelectorAll('.' + CLASS_TO_REVEAL).forEach(el => {
                     el.classList.remove(CLASS_TO_REVEAL);
                 });
-                
-                // Para o timer (economia de CPU)
                 clearInterval(vturbTimer);
             }
-        }, 1000); // Executa a checagem a cada 1 segundo (não afeta performance)
+        }, 1000); 
     </script>
+
+    <script defer src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js"></script>
+
 </body>
 </html>
