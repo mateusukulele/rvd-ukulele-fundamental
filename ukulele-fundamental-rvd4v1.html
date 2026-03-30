@@ -18,14 +18,19 @@
     <meta name="twitter:title" content="Ukulele Fundamental - Aprenda do Zero com Mateus Augusto">
     <meta name="twitter:description" content="Música é para todos, não é dom ou talento. Domine os fundamentos do ukulele e conquiste a liberdade de tocar e aprender músicas novas do início ao fim, sem travar e curtindo cada momento com apenas 20 minutos por dia.">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
-    <link rel="dns-prefetch" href="https://i.ytimg.com">
+    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+    <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js" as="script">
+    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+    <link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/699070e844e6bfed35718aec/main.m3u8" as="fetch">
     <link rel="dns-prefetch" href="https://cdn.converteai.net">
     <link rel="dns-prefetch" href="https://scripts.converteai.net">
     <link rel="dns-prefetch" href="https://images.converteai.net">
     <link rel="dns-prefetch" href="https://api.vturb.com.br">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
     <link rel="dns-prefetch" href="https://serversidegtm.comotocarukulele.com">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -73,24 +78,33 @@
             .hero-subtitle { font-size: 1.125rem; }
         }
 
-        /* BLOQUEIO DE CLS ESTRUTURAL */
+        /* CAIXA DO VÍDEO ELÁSTICA (Permite o botão de compra aparecer) E AZUL */
         .video-wrapper {
             position: relative;
             width: 100%;
-            aspect-ratio: 16 / 9;
-            background-color: #000;
+            background-color: var(--bg-blue);
             border-radius: 0.75rem; 
-            overflow: hidden;
-            display: block;
             margin-bottom: 2rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-        .video-wrapper iframe, .video-wrapper vturb-smartplayer {
-            position: absolute;
-            top: 0;
-            left: 0;
+        
+        .video-wrapper vturb-smartplayer {
+            display: block;
             width: 100% !important;
-            height: 100% !important;
+            min-height: 250px; /* Segura o espaço no mobile */
+        }
+        
+        @media (min-width: 768px) {
+            .video-wrapper vturb-smartplayer {
+                min-height: 480px; /* Segura o espaço no desktop */
+            }
+        }
+
+        /* Oculta as imagens dos botões de play do YouTube até carregar o Tailwind */
+        .video-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* ANIMAÇÕES & FONTES */
@@ -122,7 +136,12 @@
         </p>
 
         <div class="video-wrapper shadow-2xl mb-8" aria-label="Vídeo de apresentação do Método RVD">
-            <vturb-smartplayer id="vid-6990711d72552541034ddec0"></vturb-smartplayer>
+            <vturb-smartplayer id="vid-6990711d72552541034ddec0" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> 
+            <script type="text/javascript"> 
+                var s=document.createElement("script"); 
+                s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js", 
+                s.async=!0,document.head.appendChild(s); 
+            </script>
         </div>
     </header>
 
@@ -136,8 +155,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[500px] md:max-w-none mx-auto">
                     
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
-                        <div class="video-wrapper mb-4 cursor-pointer group yt-facade" data-v="gMjxSJMxPSc" aria-label="Reproduzir depoimento 1" role="button" tabindex="0">
-                            <img loading="lazy" src="https://i.ytimg.com/vi/gMjxSJMxPSc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="video-wrapper overflow-hidden aspect-video mb-4 cursor-pointer group yt-facade" data-v="gMjxSJMxPSc" aria-label="Reproduzir depoimento 1" role="button" tabindex="0">
+                            <img loading="lazy" src="https://i.ytimg.com/vi/gMjxSJMxPSc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute top-0 left-0">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-red-700">
                                     <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -148,8 +167,8 @@
                     </article>
 
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
-                        <div class="video-wrapper mb-4 cursor-pointer group yt-facade" data-v="_Uo3NvXyH4A" aria-label="Reproduzir depoimento 2" role="button" tabindex="0">
-                            <img loading="lazy" src="https://i.ytimg.com/vi/_Uo3NvXyH4A/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="video-wrapper overflow-hidden aspect-video mb-4 cursor-pointer group yt-facade" data-v="_Uo3NvXyH4A" aria-label="Reproduzir depoimento 2" role="button" tabindex="0">
+                            <img loading="lazy" src="https://i.ytimg.com/vi/_Uo3NvXyH4A/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute top-0 left-0">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-red-700">
                                     <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -160,8 +179,8 @@
                     </article>
 
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
-                        <div class="video-wrapper mb-4 cursor-pointer group yt-facade" data-v="Wey4EfhXWtc" aria-label="Reproduzir depoimento 3" role="button" tabindex="0">
-                            <img loading="lazy" src="https://i.ytimg.com/vi/Wey4EfhXWtc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="video-wrapper overflow-hidden aspect-video mb-4 cursor-pointer group yt-facade" data-v="Wey4EfhXWtc" aria-label="Reproduzir depoimento 3" role="button" tabindex="0">
+                            <img loading="lazy" src="https://i.ytimg.com/vi/Wey4EfhXWtc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute top-0 left-0">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-red-700">
                                     <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -464,8 +483,6 @@
             });
         });
     </script>
-
-    <script defer src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js"></script>
 
 </body>
 </html>
