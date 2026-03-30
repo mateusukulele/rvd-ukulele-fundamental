@@ -54,6 +54,9 @@
         .btn-pulsar:hover { animation-play-state: paused; }
         .pulse-green { animation: pulse-green 2s infinite ease-in-out; }
         .animate-bounce-custom { animation: bounce 2s infinite; }
+
+        /* TRAVA DE CONTEÚDO (DELAY DO VTURB) */
+        .esconder { display: none !important; }
     </style>
 </head>
 
@@ -72,7 +75,7 @@
         </div>
     </header>
 
-    <main class="bg-gray-50 text-gray-900 w-full font-poppins">
+    <main class="esconder bg-gray-50 text-gray-900 w-full font-poppins">
 
         <section class="py-16 px-4" aria-labelledby="prova-social-title">
             <div class="max-w-6xl mx-auto bg-white rounded-[25px] p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.08)]">
@@ -382,6 +385,27 @@
                 this.innerHTML = `<iframe class="absolute top-0 left-0 w-full h-full border-0" src="https://www.youtube-nocookie.com/embed/${vid}?autoplay=1" title="Depoimento de aluno" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             });
         });
+
+        // SCRIPT DE DELAY INTELIGENTE DO VTURB (30 Segundos)
+        const SECONDS_TO_DISPLAY = 30; // Altere este valor para o tempo exato do seu pitch de vendas depois
+        const CLASS_TO_REVEAL = 'esconder';
+
+        const vturbTimer = setInterval(() => {
+            // Tenta localizar o player do Vturb na página
+            const player = document.querySelector('vturb-smartplayer');
+            
+            // Verifica se o player já carregou as APIs internas e lê o tempo do vídeo
+            if (player && player.smartplayer && player.smartplayer.video && player.smartplayer.video.currentTime >= SECONDS_TO_DISPLAY) {
+                
+                // Remove a classe de esconder de todos os elementos
+                document.querySelectorAll('.' + CLASS_TO_REVEAL).forEach(el => {
+                    el.classList.remove(CLASS_TO_REVEAL);
+                });
+                
+                // Para o timer (economia de CPU)
+                clearInterval(vturbTimer);
+            }
+        }, 1000); // Executa a checagem a cada 1 segundo (não afeta performance)
     </script>
 </body>
 </html>
