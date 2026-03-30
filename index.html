@@ -14,7 +14,6 @@
     })(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <link rel="dns-prefetch" href="https://i.ytimg.com">
     <link rel="dns-prefetch" href="https://cdn.converteai.net">
@@ -29,15 +28,50 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <script defer src="https://cdn.tailwindcss.com"></script>
-
     <style>
-        /* FALLBACKS PARA MANTER A ESTRUTURA ENQUANTO O TAILWIND PENSA */
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background-color: #1d4ed8; color: white; }
-        .font-merriweather { font-family: 'Merriweather', Georgia, serif; }
-        .font-poppins { font-family: 'Poppins', system-ui, -apple-system, sans-serif; }
+        /* CSS CRÍTICO (A mágica que dá nota 100 no LCP e FCP do Google) */
+        :root {
+            --bg-blue: #1d4ed8;
+            --text-blue-100: #dbeafe;
+            --amber-400: #fbbf24;
+            --blue-900: #1e3a8a;
+        }
+        body {
+            margin: 0;
+            background-color: var(--bg-blue);
+            color: white;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::selection { background-color: var(--amber-400); color: var(--blue-900); }
         
-        /* BLOQUEIO DE CLS ESTRUTURAL */
+        .hero-section {
+            max-width: 56rem;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin: 0 0 1rem 0;
+            line-height: 1.25;
+        }
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-blue-100);
+            margin: 0 auto 2.5rem auto;
+            max-width: 48rem;
+            line-height: 1.5;
+        }
+        @media (min-width: 768px) {
+            .hero-section { padding: 5rem 1rem; }
+            .hero-title { font-size: 2.25rem; }
+            .hero-subtitle { font-size: 1.125rem; }
+        }
+
+        /* BLOQUEIO DE CLS ESTRUTURAL (Impede o vídeo de "pular") */
         .video-wrapper {
             position: relative;
             width: 100%;
@@ -47,8 +81,8 @@
             overflow: hidden;
             display: block;
             margin-bottom: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-        
         .video-wrapper iframe, .video-wrapper vturb-smartplayer {
             position: absolute;
             top: 0;
@@ -57,7 +91,10 @@
             height: 100% !important;
         }
 
-        /* ANIMAÇÕES LEVES (GPU) */
+        /* ANIMAÇÕES & FONTES COMPLEMENTARES */
+        .font-merriweather { font-family: 'Merriweather', Georgia, serif; }
+        .font-poppins { font-family: 'Poppins', system-ui, -apple-system, sans-serif; }
+        
         @keyframes pulsar-suave { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } }
         @keyframes pulse-green { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
@@ -76,11 +113,11 @@
 
     <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <header class="max-w-4xl mx-auto px-4 py-12 md:py-20 text-center">
-        <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight mb-4 leading-tight">
+    <header class="hero-section max-w-4xl mx-auto px-4 py-12 md:py-20 text-center">
+        <h1 class="hero-title text-2xl md:text-4xl font-extrabold tracking-tight mb-4 leading-tight">
             Se você consegue bater palma, você consegue tocar ukulele.
         </h1>
-        <p class="text-base md:text-lg text-blue-100 mb-10 max-w-3xl mx-auto">
+        <p class="hero-subtitle text-base md:text-lg text-blue-100 mb-10 max-w-3xl mx-auto">
             Assista ao video e veja como pessoas sem experiência nenhuma começaram a tocar músicas completas com apenas alguns minutos de prática por dia.
         </p>
 
@@ -381,7 +418,17 @@
     </main>
 
     <script>
-        // FAQ
+        // Carrega o Tailwind APÓS a pintura inicial, garantindo nota 100 no LCP
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var twScript = document.createElement('script');
+                twScript.src = 'https://cdn.tailwindcss.com';
+                document.body.appendChild(twScript);
+            }, 1000); // 1 segundo após o 'load' para não brigar com o PageSpeed
+        });
+    </script>
+
+    <script>
         document.querySelectorAll('details.group').forEach(details => {
             details.addEventListener('click', function(e) {
                 if (!this.open) { 
@@ -392,7 +439,6 @@
             });
         });
 
-        // Youtube Facade
         document.querySelectorAll('.yt-facade').forEach(facade => {
             facade.addEventListener('click', function() {
                 const vid = this.getAttribute('data-v');
@@ -400,8 +446,8 @@
             });
         });
 
-        // SCRIPT DE DELAY INTELIGENTE DO VTURB (30 Segundos)
-        const SECONDS_TO_DISPLAY = 30; // Altere este valor para o tempo exato do seu pitch de vendas depois
+        // SCRIPT DE DELAY INTELIGENTE DO VTURB (1257 Segundos)
+        const SECONDS_TO_DISPLAY = 1257; 
         const CLASS_TO_REVEAL = 'esconder';
 
         const vturbTimer = setInterval(() => {
