@@ -10,31 +10,30 @@
     <link rel="preconnect" href="https://scripts.converteai.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com"> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js" as="script">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Fallbacks de sistema caso a fonte atrase */
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
         .font-merriweather { font-family: 'Merriweather', Georgia, serif; }
         .font-poppins { font-family: 'Poppins', system-ui, -apple-system, sans-serif; }
         
-        /* BLOQUEIO ABSOLUTO DE CLS PARA O VÍDEO PRINCIPAL E PROVA SOCIAL */
+        /* BLOQUEIO ABSOLUTO DE CLS PARA O VTURB E YOUTUBE */
         .video-wrapper {
             position: relative;
             width: 100%;
             aspect-ratio: 16 / 9;
             background-color: #000;
-            border-radius: 0.75rem; /* Equivalente ao rounded-xl do Tailwind */
+            border-radius: 0.75rem; 
             overflow: hidden;
             display: block;
         }
         
-        /* O iframe/player deve respeitar estritamente a caixa mãe */
         .video-wrapper iframe, .video-wrapper vturb-smartplayer {
             position: absolute;
             top: 0;
@@ -82,24 +81,43 @@
                     Veja o que aconteceu com quem decidiu aplicar esse método prático e direto ao ponto:
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[500px] md:max-w-none mx-auto">
+                    
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
-                        <div class="video-wrapper mb-4">
-                            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/gMjxSJMxPSc" title="Depoimento de aluno 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-wrapper mb-4 cursor-pointer group yt-facade" data-v="gMjxSJMxPSc" aria-label="Reproduzir depoimento 1" role="button" tabindex="0">
+                            <img loading="lazy" src="https://i.ytimg.com/vi/gMjxSJMxPSc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-red-700">
+                                    <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
                         </div>
                         <p class="text-center font-semibold text-[#3b2f2f] text-[0.95rem] leading-relaxed">"Eu já tenho aprendido a tocar algumas músicas que eu gosto e posso tocar com meus amigos"</p>
                     </article>
+
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
-                        <div class="video-wrapper mb-4">
-                            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/_Uo3NvXyH4A" title="Depoimento de aluno 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-wrapper mb-4 cursor-pointer group yt-facade" data-v="_Uo3NvXyH4A" aria-label="Reproduzir depoimento 2" role="button" tabindex="0">
+                            <img loading="lazy" src="https://i.ytimg.com/vi/_Uo3NvXyH4A/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-red-700">
+                                    <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
                         </div>
                         <p class="text-center font-semibold text-[#3b2f2f] text-[0.95rem] leading-relaxed">"A música tem me ajudado bastante a ser mais paciente comigo mesma."</p>
                     </article>
+
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
-                        <div class="video-wrapper mb-4">
-                            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/Wey4EfhXWtc" title="Depoimento de aluno 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-wrapper mb-4 cursor-pointer group yt-facade" data-v="Wey4EfhXWtc" aria-label="Reproduzir depoimento 3" role="button" tabindex="0">
+                            <img loading="lazy" src="https://i.ytimg.com/vi/Wey4EfhXWtc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-red-700">
+                                    <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
                         </div>
                         <p class="text-center font-semibold text-[#3b2f2f] text-[0.95rem] leading-relaxed">"Eu não acreditava que eu poderia tocar as músicas que eu gosto. É o que eu tô fazendo agora e é uma diversão aqui em casa. É uma terapia pra mim."</p>
                     </article>
+
                 </div>
             </div>
         </section>
@@ -331,18 +349,6 @@
                     </details>
                 </div>
             </div>
-            
-            <script>
-                document.querySelectorAll('details.group').forEach(details => {
-                    details.addEventListener('click', function(e) {
-                        if (!this.open) { 
-                            document.querySelectorAll('details.group').forEach(other => { 
-                                if (other !== this && other.open) other.removeAttribute('open'); 
-                            }); 
-                        }
-                    });
-                });
-            </script>
         </section>
 
         <section class="pt-16 pb-24 px-4">
@@ -358,5 +364,25 @@
 
     </main>
 
+    <script>
+        // 1. FAQ Inteligente
+        document.querySelectorAll('details.group').forEach(details => {
+            details.addEventListener('click', function(e) {
+                if (!this.open) { 
+                    document.querySelectorAll('details.group').forEach(other => { 
+                        if (other !== this && other.open) other.removeAttribute('open'); 
+                    }); 
+                }
+            });
+        });
+
+        // 2. Facade do YouTube (Evita 1.5MB de JS desnecessário no início)
+        document.querySelectorAll('.yt-facade').forEach(facade => {
+            facade.addEventListener('click', function() {
+                const vid = this.getAttribute('data-v');
+                this.innerHTML = `<iframe class="absolute top-0 left-0 w-full h-full border-0" src="https://www.youtube-nocookie.com/embed/${vid}?autoplay=1" title="Depoimento de aluno" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            });
+        });
+    </script>
 </body>
 </html>
