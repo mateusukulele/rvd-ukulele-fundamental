@@ -78,24 +78,33 @@
             .hero-subtitle { font-size: 1.125rem; }
         }
 
-        /* BLOQUEIO DE CLS ESTRUTURAL */
+        /* CAIXA DO VÍDEO ELÁSTICA (Permite o botão de compra aparecer) */
         .video-wrapper {
             position: relative;
             width: 100%;
-            aspect-ratio: 16 / 9;
             background-color: #000;
             border-radius: 0.75rem; 
-            overflow: hidden;
-            display: block;
             margin-bottom: 2rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-        .video-wrapper iframe, .video-wrapper vturb-smartplayer {
-            position: absolute;
-            top: 0;
-            left: 0;
+        
+        .video-wrapper vturb-smartplayer {
+            display: block;
             width: 100% !important;
-            height: 100% !important;
+            min-height: 250px; /* Segura o espaço no mobile */
+        }
+        
+        @media (min-width: 768px) {
+            .video-wrapper vturb-smartplayer {
+                min-height: 480px; /* Segura o espaço no desktop */
+            }
+        }
+
+        /* Oculta as imagens dos botões de play do YouTube até carregar o Tailwind */
+        .video-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* ANIMAÇÕES & FONTES */
@@ -149,8 +158,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[500px] md:max-w-none mx-auto">
                     
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
-                        <div class="video-wrapper mb-4 cursor-pointer group yt-facade" data-v="gMjxSJMxPSc" aria-label="Reproduzir depoimento 1" role="button" tabindex="0">
-                            <img loading="lazy" src="https://i.ytimg.com/vi/gMjxSJMxPSc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="video-wrapper overflow-hidden aspect-video mb-4 cursor-pointer group yt-facade" data-v="gMjxSJMxPSc" aria-label="Reproduzir depoimento 1" role="button" tabindex="0">
+                            <img loading="lazy" src="https://i.ytimg.com/vi/gMjxSJMxPSc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute top-0 left-0">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-red-700">
                                     <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -161,8 +170,8 @@
                     </article>
 
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
-                        <div class="video-wrapper mb-4 cursor-pointer group yt-facade" data-v="_Uo3NvXyH4A" aria-label="Reproduzir depoimento 2" role="button" tabindex="0">
-                            <img loading="lazy" src="https://i.ytimg.com/vi/_Uo3NvXyH4A/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="video-wrapper overflow-hidden aspect-video mb-4 cursor-pointer group yt-facade" data-v="_Uo3NvXyH4A" aria-label="Reproduzir depoimento 2" role="button" tabindex="0">
+                            <img loading="lazy" src="https://i.ytimg.com/vi/_Uo3NvXyH4A/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute top-0 left-0">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-red-700">
                                     <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -173,8 +182,8 @@
                     </article>
 
                     <article class="bg-[#F9F7F2] p-4 rounded-xl shadow-sm hover:-translate-y-1 transition-transform">
-                        <div class="video-wrapper mb-4 cursor-pointer group yt-facade" data-v="Wey4EfhXWtc" aria-label="Reproduzir depoimento 3" role="button" tabindex="0">
-                            <img loading="lazy" src="https://i.ytimg.com/vi/Wey4EfhXWtc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="video-wrapper overflow-hidden aspect-video mb-4 cursor-pointer group yt-facade" data-v="Wey4EfhXWtc" aria-label="Reproduzir depoimento 3" role="button" tabindex="0">
+                            <img loading="lazy" src="https://i.ytimg.com/vi/Wey4EfhXWtc/hqdefault.jpg" alt="Capa do depoimento" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute top-0 left-0">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-red-700">
                                     <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
