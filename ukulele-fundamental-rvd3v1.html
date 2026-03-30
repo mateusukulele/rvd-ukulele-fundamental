@@ -18,14 +18,19 @@
     <meta name="twitter:title" content="Ukulele Fundamental - Aprenda do Zero com Mateus Augusto">
     <meta name="twitter:description" content="Música é para todos, não é dom ou talento. Domine os fundamentos do ukulele e conquiste a liberdade de tocar e aprender músicas novas do início ao fim, sem travar e curtindo cada momento com apenas 20 minutos por dia.">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
-    <link rel="dns-prefetch" href="https://i.ytimg.com">
+    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+    <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js" as="script">
+    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+    <link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/699070e844e6bfed35718aec/main.m3u8" as="fetch">
     <link rel="dns-prefetch" href="https://cdn.converteai.net">
     <link rel="dns-prefetch" href="https://scripts.converteai.net">
     <link rel="dns-prefetch" href="https://images.converteai.net">
     <link rel="dns-prefetch" href="https://api.vturb.com.br">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
     <link rel="dns-prefetch" href="https://serversidegtm.comotocarukulele.com">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -125,7 +130,12 @@
         </p>
 
         <div class="video-wrapper shadow-2xl mb-8" aria-label="Vídeo de apresentação do Método RVD">
-            <vturb-smartplayer id="vid-6990711d72552541034ddec0"></vturb-smartplayer>
+            <vturb-smartplayer id="vid-6990711d72552541034ddec0" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> 
+            <script type="text/javascript"> 
+                var s=document.createElement("script"); 
+                s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js", 
+                s.async=!0,document.head.appendChild(s); 
+            </script>
         </div>
     </header>
 
@@ -467,39 +477,33 @@
             });
         });
 
-        /* --- SCRIPT DE DELAY INTELIGENTE DO VTURB (CORRIGIDO) --- */
+        /* --- SCRIPT DE DELAY INTELIGENTE DO VTURB --- */
         const SECONDS_TO_DISPLAY = 30; // <--- ALTERE O TEMPO AQUI (em segundos)
         const CLASS_TO_REVEAL = 'esconder';
         const STORAGE_KEY = 'vturb_delay_passed'; // Chave para memória de recarregamento
 
-        // Função que revela o conteúdo
         function revealContent() {
             document.querySelectorAll('.' + CLASS_TO_REVEAL).forEach(el => {
                 el.classList.remove(CLASS_TO_REVEAL);
             });
         }
 
-        // Verifica se o usuário já passou pelo delay antes (se deu F5)
         if (localStorage.getItem(STORAGE_KEY) === 'true') {
             revealContent();
         } else {
-            // Se for a primeira vez, inicia o relógio
             const vturbTimer = setInterval(() => {
-                // Lê o tempo usando o objeto global do Vturb (à prova de falhas)
                 if (window.smartplayer && window.smartplayer.instances && window.smartplayer.instances.length > 0) {
                     const video = window.smartplayer.instances[0].video;
                     
                     if (video && video.currentTime >= SECONDS_TO_DISPLAY) {
                         revealContent();
-                        localStorage.setItem(STORAGE_KEY, 'true'); // Salva que o usuário já viu
-                        clearInterval(vturbTimer); // Desliga o relógio para economizar bateria
+                        localStorage.setItem(STORAGE_KEY, 'true'); 
+                        clearInterval(vturbTimer); 
                     }
                 }
-            }, 1000); // Checa a cada 1 segundo
+            }, 1000); 
         }
     </script>
-
-    <script defer src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js"></script>
 
 </body>
 </html>
