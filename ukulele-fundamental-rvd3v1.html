@@ -467,19 +467,36 @@
             });
         });
 
-        // SCRIPT DE DELAY INTELIGENTE DO VTURB (1257 Segundos)
-        const SECONDS_TO_DISPLAY = 1257; 
+        /* --- SCRIPT DE DELAY INTELIGENTE DO VTURB (CORRIGIDO) --- */
+        const SECONDS_TO_DISPLAY = 30; // <--- ALTERE O TEMPO AQUI (em segundos)
         const CLASS_TO_REVEAL = 'esconder';
+        const STORAGE_KEY = 'vturb_delay_passed'; // Chave para memória de recarregamento
 
-        const vturbTimer = setInterval(() => {
-            const player = document.querySelector('vturb-smartplayer');
-            if (player && player.smartplayer && player.smartplayer.video && player.smartplayer.video.currentTime >= SECONDS_TO_DISPLAY) {
-                document.querySelectorAll('.' + CLASS_TO_REVEAL).forEach(el => {
-                    el.classList.remove(CLASS_TO_REVEAL);
-                });
-                clearInterval(vturbTimer);
-            }
-        }, 1000); 
+        // Função que revela o conteúdo
+        function revealContent() {
+            document.querySelectorAll('.' + CLASS_TO_REVEAL).forEach(el => {
+                el.classList.remove(CLASS_TO_REVEAL);
+            });
+        }
+
+        // Verifica se o usuário já passou pelo delay antes (se deu F5)
+        if (localStorage.getItem(STORAGE_KEY) === 'true') {
+            revealContent();
+        } else {
+            // Se for a primeira vez, inicia o relógio
+            const vturbTimer = setInterval(() => {
+                // Lê o tempo usando o objeto global do Vturb (à prova de falhas)
+                if (window.smartplayer && window.smartplayer.instances && window.smartplayer.instances.length > 0) {
+                    const video = window.smartplayer.instances[0].video;
+                    
+                    if (video && video.currentTime >= SECONDS_TO_DISPLAY) {
+                        revealContent();
+                        localStorage.setItem(STORAGE_KEY, 'true'); // Salva que o usuário já viu
+                        clearInterval(vturbTimer); // Desliga o relógio para economizar bateria
+                    }
+                }
+            }, 1000); // Checa a cada 1 segundo
+        }
     </script>
 
     <script defer src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js"></script>
