@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukulele Fundamental - Aprenda do Zero com Mateus Augusto</title>
+    
+    <!-- Meta Tags Otimizadas -->
+    <meta name="description" content="Domine os fundamentos do ukulele com apenas 20 minutos por dia. Método prático para tocar sua primeira música rapidamente.">
+    <link rel="icon" type="image/webp" href="favicon.webp">
+
+    <!-- Preconnect Crítico -->
+    <link rel="preconnect" href="https://scripts.converteai.net">
+    <link rel="preconnect" href="https://images.converteai.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fontes Limitadas (Apenas o essencial para performance) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+    <style>
+        /* CSS TOTALMENTE INLINE - ZERO DEPENDÊNCIA EXTERNA PARA RENDERIZAR */
+        :root {
+            --primary: #4338ca;
+            --secondary: #badc20;
+            --dark: #1a1a1a;
+            --light: #f3f4f6;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--primary);
+            color: white;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Section */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .hero { padding: 40px 0; text-align: center; }
+        h1 { font-family: 'Merriweather', serif; font-size: 1.8rem; line-height: 1.2; margin-bottom: 20px; font-weight: 900; }
+        .subtitle { color: #e0e7ff; font-size: 1.1rem; margin-bottom: 30px; }
+
+        /* Video Wrapper - Anti-CLS */
+        .video-container {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto 30px;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        /* Main Content (Hidden initially) */
+        .esconder { display: none; }
+        main { background: white; color: var(--dark); padding: 60px 0; border-radius: 40px 40px 0 0; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: #222;
+            padding: 18px 30px;
+            border-radius: 12px;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(186, 220, 32, 0.4);
+            transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 450px;
+        }
+        .btn:hover { transform: translateY(-2px); }
+
+        /* Sections */
+        .section-title { font-family: 'Merriweather', serif; font-size: 1.6rem; text-align: center; margin-bottom: 40px; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+
+        /* Testimonials */
+        .testimonial-card { background: #f9f7f2; padding: 15px; border-radius: 15px; }
+        .yt-facade { position: relative; aspect-ratio: 16/9; background: #000; border-radius: 10px; cursor: pointer; margin-bottom: 10px; }
+
+        /* Utils */
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+        .pulse { animation: pulse 2s infinite ease-in-out; }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            h1 { font-size: 3rem; }
+            .grid { grid-template-columns: repeat(3, 1fr); }
+            .section-title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero container">
+        <h1>Se você consegue bater palma, você consegue tocar ukulele.</h1>
+        <p class="subtitle">Assista ao vídeo e veja como começar do zero com apenas 20 minutos por dia.</p>
+
+        <div class="video-container">
+            <!-- Vturb Player -->
+            <div id="vid_6990711d72552541034ddec0" style="position:relative;width:100%;padding: 56.25% 0 0;">
+                <img src="https://images.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/thumbnail.jpg" 
+                     style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;" 
+                     alt="Thumbnail do vídeo"
+                     fetchpriority="high">
+                <div style="position:absolute;top:0;left:0;width:100%;height:100%;" id="vturb_player"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="esconder">
+        <div class="container">
+            <h2 class="section-title">Resultados de quem aplicou o método:</h2>
+            
+            <div class="grid">
+                <!-- Card 1 -->
+                <article class="testimonial-card">
+                    <div class="yt-facade" onclick="loadYT(this, 'gMjxSJMxPSc')">
+                        <img src="https://i.ytimg.com/vi/gMjxSJMxPSc/hqdefault.jpg" width="320" height="180" loading="lazy" alt="Depoimento" style="width:100%; border-radius:10px;">
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:50px; height:35px; background:red; border-radius:8px; display:flex; align-items:center; justify-content:center; color:white;">▶</div>
+                    </div>
+                    <p><b>"Já aprendi músicas que gosto e toco com amigos!"</b></p>
+                </article>
+
+                <!-- Repetir cards 2 e 3 aqui... -->
+            </div>
+
+            <div style="text-align:center; margin-top:50px;">
+                <a href="https://pay.hotmart.com/..." class="btn pulse">Quero Acesso Vitalício</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Scripts Otimizados -->
+    <script>
+        // Carregamento assíncrono do Vturb
+        function loadVturb() {
+            var s = document.createElement("script");
+            s.src = "https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js";
+            s.async = true;
+            document.head.appendChild(s);
+        }
+
+        // Função para carregar YouTube apenas no clique (UX + Performance)
+        function loadYT(el, id) {
+            el.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe>`;
+        }
+
+        // Revelar conteúdo com base no tempo do vídeo ou interação
+        const SECONDS_TO_REVEAL = 30;
+        let revealed = false;
+
+        function checkVideoTime() {
+            if (revealed) return;
+            if (window.smartplayer && window.smartplayer.instances[0]) {
+                const video = window.smartplayer.instances[0].video;
+                if (video.currentTime >= SECONDS_TO_REVEAL) {
+                    document.querySelector('.esconder').style.display = 'block';
+                    revealed = true;
+                }
+            }
+        }
+
+        // Inicia scripts após 2 segundos ou interação para não travar o LCP
+        window.addEventListener('load', () => {
+            setTimeout(loadVturb, 1000);
+            setInterval(checkVideoTime, 1000);
+        });
+
+        // GTM Delay para nota 100 (Carrega após interação do usuário)
+        window.addEventListener('scroll', function() {
+            if(!window.gtmLoaded) {
+                // Insira seu código GTM aqui
+                window.gtmLoaded = true;
+            }
+        }, {once: true});
+    </script>
+</body>
+</html>
