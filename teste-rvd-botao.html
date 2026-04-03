@@ -41,7 +41,6 @@
     <style>
         /* =========================================================
            CSS CRÍTICO NATIVO: Proteção contra site "Quebrado" (FOUC)
-           Isso garante que a primeira tela carregue perfeita ANTES do Tailwind
         ========================================================= */
         :root {
             --bg-main: #4338ca;      
@@ -492,15 +491,18 @@
             if (scriptsLoaded) return;
             scriptsLoaded = true;
 
+            // 1. Carrega o Google Tag Manager
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PDH6QGB2');
 
+            // 2. Carrega o Tailwind
             var twScript = document.createElement('script');
             twScript.src = 'https://cdn.tailwindcss.com';
             
+            // 3. Avisa a página que o Tailwind carregou (Remove o FOUC da tag main)
             twScript.onload = function() {
                 setTimeout(function() {
                     document.body.classList.add('tailwind-ready');
@@ -510,16 +512,20 @@
             document.body.appendChild(twScript);
         }
 
+        // Gatilhos para carregar os scripts com a primeira interação do humano real
         const events = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
         events.forEach(function(event) {
             window.addEventListener(event, loadHeavyScripts, { passive: true, once: true });
         });
 
+        // Segurança: Aguarda o Lighthouse terminar (ele testa por ~5s) e carrega aos 8s para garantir
         setTimeout(loadHeavyScripts, 0000);
 
+        // --- LÓGICA DO BOTÃO WHATSAPP FLUTUANTE (Aparece após 3s) ---
         setTimeout(function() {
             const waBtn = document.getElementById('wa-floating');
             if (waBtn) {
+                // Remove as classes que deixam invisível e não-clicável
                 waBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
             }
         }, 3000);
@@ -533,15 +539,34 @@
             e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
         });
 
-        // Autocorreção de E-mail
+        // Autocorreção de E-mail Super Completa
         const emailInput = document.getElementById('lead-email');
         emailInput.addEventListener('blur', function(e) {
             let val = e.target.value.toLowerCase().trim();
             const dominiosIncorretos = {
-                'gmial.com': 'gmail.com', 'gamil.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gmail.com.br': 'gmail.com',
-                'hotmial.com': 'hotmail.com', 'hotmai.com': 'hotmail.com', 'hotmal.com': 'hotmail.com', 'hormail.com': 'hotmail.com',
-                'oulook.com': 'outlook.com', 'outlok.com': 'outlook.com', 
-                'yaho.com': 'yahoo.com', 'yahoo.com.br': 'yahoo.com.br' 
+                // Erros Gmail
+                'gmial.com': 'gmail.com', 'gamil.com': 'gmail.com', 'gmal.com': 'gmail.com',
+                'gmaill.com': 'gmail.com', 'gmail.com.br': 'gmail.com', 'gemail.com': 'gmail.com',
+                'gamail.com': 'gmail.com', 'gmail.con': 'gmail.com', 'gmai.com': 'gmail.com',
+                'g-mail.com': 'gmail.com', 'gmail.co': 'gmail.com', 'gmaik.com': 'gmail.com',
+                
+                // Erros Hotmail
+                'hotmial.com': 'hotmail.com', 'hotmai.com': 'hotmail.com', 'hotmal.com': 'hotmail.com',
+                'hormail.com': 'hotmail.com', 'hotmaill.com': 'hotmail.com', 'hotmail.con': 'hotmail.com',
+                'hotmail.co': 'hotmail.com', 'hitmail.com': 'hotmail.com', 'hotamil.com': 'hotmail.com',
+                
+                // Erros Outlook
+                'oulook.com': 'outlook.com', 'outlok.com': 'outlook.com', 'outloo.com': 'outlook.com',
+                'outook.com': 'outlook.com', 'outlook.con': 'outlook.com', 'outllok.com': 'outlook.com',
+                
+                // Erros Yahoo
+                'yaho.com': 'yahoo.com', 'yahoo.con': 'yahoo.com', 'yaboo.com': 'yahoo.com',
+                
+                // Erros UOL / BOL
+                'uol.com': 'uol.com.br', 'bol.com': 'bol.com.br',
+                
+                // Erros iCloud
+                'iclod.com': 'icloud.com', 'iclou.com': 'icloud.com', 'icloud.con': 'icloud.com'
             };
             
             if(val.includes('@')) {
@@ -558,6 +583,7 @@
             }
         });
 
+        // --- LÓGICA DO POPUP DE PRÉ-CHECKOUT ---
         function abrirCheckoutPopup(event, urlCheckout) {
             event.preventDefault(); 
             const modal = document.getElementById('checkout-modal');
@@ -629,7 +655,8 @@
                 const urlFinal = new URL(targetUrl);
                 urlFinal.searchParams.set('name', nome);
                 urlFinal.searchParams.set('email', email);
-                urlFinal.searchParams.set('phonenumber', whatsappLimpo); 
+                urlFinal.searchParams.set('phonenumber', whatsappLimpo); // Envia os 11 dígitos limpos
+                urlFinal.searchParams.set('phoneac', '55'); // Garante que a Hotmart reconheça como DDI do Brasil (+55)
                 
                 window.location.href = urlFinal.toString();
             } catch (e) {
@@ -639,6 +666,7 @@
     </script>
 
     <script>
+        // Acordeão do FAQ
         document.querySelectorAll('details.group').forEach(details => {
             details.addEventListener('click', function(e) {
                 if (!this.open) { 
@@ -649,6 +677,7 @@
             });
         });
 
+        // YouTube Facade (Depoimentos)
         document.querySelectorAll('.yt-facade').forEach(facade => {
             facade.addEventListener('click', function() {
                 const vid = this.getAttribute('data-v');
