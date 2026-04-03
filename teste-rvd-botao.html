@@ -96,6 +96,12 @@
         .btn-pulsar:hover { animation-play-state: paused; }
         .pulse-green { animation: pulse-green 2s infinite ease-in-out; }
         .animate-bounce-custom { animation: bounce 2s infinite; }
+        
+        /* Ajustes no Scrollbar do dropdown customizado */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
     </style>
 </head>
 
@@ -457,24 +463,55 @@
                     <label class="mb-1 block text-sm font-medium text-gray-700" for="lead-whatsapp">WhatsApp *</label>
                     
                     <div class="flex rounded-lg border border-gray-300 bg-white transition-shadow focus-within:border-[#3730a3] focus-within:ring-2 focus-within:ring-[#3730a3]/50">
-                        <div class="relative flex items-center border-r border-gray-300 bg-gray-50 px-2 rounded-l-lg shrink-0">
-                            <select id="lead-ddi" class="h-full py-0 pl-2 pr-7 bg-transparent text-gray-700 focus:outline-none text-sm appearance-none cursor-pointer">
-                                <option value="55" selected>🇧🇷 +55</option>
-                                <option value="1">🇺🇸 +1</option>
-                                <option value="351">🇵🇹 +351</option>
-                                <option value="244">🇦🇴 +244</option>
-                                <option value="258">🇲🇿 +258</option>
-                                <option value="238">🇨🇻 +238</option>
-                                <option value="54">🇦🇷 +54</option>
-                                <option value="56">🇨🇱 +56</option>
-                                <option value="57">🇨🇴 +57</option>
-                                <option value="52">🇲🇽 +52</option>
-                                <option value="34">🇪🇸 +34</option>
-                                <option value="other">Outro...</option>
-                            </select>
-                            <div class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-gray-500">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </div>
+                        
+                        <div class="relative flex items-center border-r border-gray-300 bg-gray-50 rounded-l-lg shrink-0 select-none" id="ddi-container">
+                            <input type="hidden" id="lead-ddi" value="55">
+                            
+                            <button type="button" id="ddi-button" class="flex items-center h-full px-3 py-3 text-sm text-gray-700 focus:outline-none hover:bg-gray-100 transition-colors rounded-l-lg">
+                                <img src="https://flagcdn.com/w20/br.png" alt="BR" class="w-5 h-auto mr-1.5 rounded-[2px] shadow-sm object-cover" id="ddi-selected-flag">
+                                <span id="ddi-selected-text" class="font-medium">+55</span>
+                                <svg class="h-4 w-4 ml-1 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+
+                            <ul id="ddi-menu" class="absolute top-full left-0 mt-1 w-56 bg-white border border-gray-200 rounded-lg shadow-xl z-50 hidden max-h-60 overflow-y-auto custom-scrollbar">
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="55" data-code="br">
+                                    <img src="https://flagcdn.com/w20/br.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Brasil (+55)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="1" data-code="us">
+                                    <img src="https://flagcdn.com/w20/us.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Estados Unidos (+1)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="351" data-code="pt">
+                                    <img src="https://flagcdn.com/w20/pt.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Portugal (+351)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="244" data-code="ao">
+                                    <img src="https://flagcdn.com/w20/ao.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Angola (+244)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="258" data-code="mz">
+                                    <img src="https://flagcdn.com/w20/mz.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Moçambique (+258)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="238" data-code="cv">
+                                    <img src="https://flagcdn.com/w20/cv.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Cabo Verde (+238)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="54" data-code="ar">
+                                    <img src="https://flagcdn.com/w20/ar.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Argentina (+54)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="56" data-code="cl">
+                                    <img src="https://flagcdn.com/w20/cl.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Chile (+56)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="57" data-code="co">
+                                    <img src="https://flagcdn.com/w20/co.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Colômbia (+57)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="52" data-code="mx">
+                                    <img src="https://flagcdn.com/w20/mx.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">México (+52)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="34" data-code="es">
+                                    <img src="https://flagcdn.com/w20/es.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Espanha (+34)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="other" data-code="other">
+                                    <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span class="text-gray-700 font-medium text-[0.85rem]">Outro país...</span>
+                                </li>
+                            </ul>
                         </div>
                         
                         <input required type="tel" id="lead-whatsapp" class="w-full bg-transparent px-4 py-3 text-gray-900 focus:outline-none rounded-r-lg" placeholder="(00) 00000-0000" maxlength="20">
@@ -537,16 +574,68 @@
             }
         }, 3000);
 
-        // --- LÓGICA DO FORMULÁRIO ---
-        
+        // --- LÓGICA DO DROPDOWN CUSTOMIZADO DE DDI ---
+        const ddiButton = document.getElementById('ddi-button');
+        const ddiMenu = document.getElementById('ddi-menu');
+        const ddiInput = document.getElementById('lead-ddi');
         const phoneInput = document.getElementById('lead-whatsapp');
-        const ddiSelect = document.getElementById('lead-ddi');
+
+        // Abrir/Fechar menu
+        ddiButton.addEventListener('click', function() {
+            ddiMenu.classList.toggle('hidden');
+        });
+
+        // Fechar ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!document.getElementById('ddi-container').contains(e.target)) {
+                ddiMenu.classList.add('hidden');
+            }
+        });
+
+        // Selecionar um país
+        document.querySelectorAll('.ddi-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                const code = this.getAttribute('data-code');
+                const textSpan = document.getElementById('ddi-selected-text');
+                const flagElement = document.getElementById('ddi-selected-flag');
+                
+                // Atualiza o input escondido
+                ddiInput.value = value;
+                
+                if (code === 'other') {
+                    // Troca a imagem por um ícone de globo SVG
+                    flagElement.outerHTML = `<svg id="ddi-selected-flag" class="w-5 h-5 text-gray-500 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+                    textSpan.innerText = '';
+                } else {
+                    // Atualiza a imagem da bandeira (se era SVG, recria a IMG)
+                    if(flagElement.tagName.toLowerCase() === 'svg') {
+                         flagElement.outerHTML = `<img src="https://flagcdn.com/w20/${code}.png" class="w-5 h-auto mr-1.5 rounded-[2px] shadow-sm object-cover" id="ddi-selected-flag" alt="${code}">`;
+                    } else {
+                         flagElement.src = `https://flagcdn.com/w20/${code}.png`;
+                    }
+                    textSpan.innerText = '+' + value;
+                }
+
+                ddiMenu.classList.add('hidden');
+                
+                // Aciona a lógica de máscara e placeholder para atualizar
+                let v = phoneInput.value.replace(/\D/g, '');
+                if(value === '55') {
+                    phoneInput.placeholder = "(00) 00000-0000";
+                    phoneInput.dispatchEvent(new Event('input')); // Força a máscara a reformatar
+                } else {
+                    phoneInput.placeholder = "Número do WhatsApp";
+                    phoneInput.value = v; // Tira a máscara deixando só os números
+                }
+            });
+        });
 
         // Máscara Dinâmica de Telefone
         phoneInput.addEventListener('input', function(e) {
             let v = e.target.value.replace(/\D/g, ''); // Remove tudo que não é número
             
-            if (ddiSelect.value === '55') {
+            if (ddiInput.value === '55') {
                 // Máscara Brasil (10 ou 11 dígitos)
                 if (v.length <= 10) {
                     v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
@@ -562,25 +651,11 @@
             }
         });
 
-        // Reavalia a máscara se o usuário trocar a bandeirinha
-        ddiSelect.addEventListener('change', function(e) {
-            let v = phoneInput.value.replace(/\D/g, '');
-            if(e.target.value === '55') {
-                phoneInput.placeholder = "(00) 00000-0000";
-                // Dispara o evento de input para formatar o que já foi digitado
-                phoneInput.dispatchEvent(new Event('input'));
-            } else {
-                phoneInput.placeholder = "Número do WhatsApp";
-                phoneInput.value = v; // Deixa apenas os números limpos
-            }
-        });
-
-        // Autocorreção de E-mail Separada (Provedor vs Sufixo)
+        // --- LÓGICA DO FORMULÁRIO (E-MAIL) ---
         const emailInput = document.getElementById('lead-email');
         emailInput.addEventListener('blur', function(e) {
             let val = e.target.value.toLowerCase().trim();
             
-            // Dicionários
             const provedoresIncorretos = {
                 'gmial': 'gmail', 'gamil': 'gmail', 'gmal': 'gmail', 'gmaill': 'gmail', 'gemail': 'gmail',
                 'hotmial': 'hotmail', 'hotmai': 'hotmail', 'hotmal': 'hotmail', 'hormail': 'hotmail', 'hotmaill': 'hotmail',
@@ -604,19 +679,16 @@
                 let fullDomain = parts[1];
                 let alterado = false;
 
-                // Divide o domínio na primeira ocorrência do ponto
                 let domainIndex = fullDomain.indexOf('.');
                 if(domainIndex > -1) {
-                    let domainName = fullDomain.substring(0, domainIndex); // ex: gmial
-                    let suffix = fullDomain.substring(domainIndex); // ex: .com ou .com.br
+                    let domainName = fullDomain.substring(0, domainIndex);
+                    let suffix = fullDomain.substring(domainIndex); 
 
-                    // 1. Corrige o provedor (antes do ponto)
                     if (provedoresIncorretos[domainName]) {
                         domainName = provedoresIncorretos[domainName];
                         alterado = true;
                     }
 
-                    // 2. Corrige o sufixo (depois do ponto)
                     for (let item of sufixosIncorretos) {
                         if (suffix === item.erro) {
                             suffix = item.certo;
@@ -625,7 +697,6 @@
                         }
                     }
 
-                    // Se algo foi alterado, atualiza o campo e avisa o usuário
                     if (alterado) {
                         e.target.value = user + '@' + domainName + suffix;
                         document.getElementById('erro-email').classList.remove('hidden');
@@ -674,15 +745,14 @@
             
             let isValid = true;
             const nomeEl = document.getElementById('lead-nome');
-            const whatsappEl = document.getElementById('lead-whatsapp');
             const ddi = document.getElementById('lead-ddi').value;
             const emailEl = document.getElementById('lead-email');
             
             const nome = nomeEl.value.trim();
             const email = emailEl.value.trim();
-            const whatsappLimpo = whatsappEl.value.replace(/\D/g, ''); 
+            const whatsappLimpo = phoneInput.value.replace(/\D/g, ''); 
             
-            // 1. Valida se tem pelo menos 2 nomes
+            // 1. Valida Nome
             if (nome.split(' ').length < 2) {
                 document.getElementById('erro-nome').classList.remove('hidden');
                 isValid = false;
@@ -690,10 +760,9 @@
                 document.getElementById('erro-nome').classList.add('hidden');
             }
 
-            // 2. Valida o telefone baseado no País
+            // 2. Valida Telefone
             const erroWhatsAppEl = document.getElementById('erro-whatsapp');
             if (ddi === '55') {
-                // Brasil: deve ter 10 ou 11
                 if (whatsappLimpo.length !== 10 && whatsappLimpo.length !== 11) {
                     erroWhatsAppEl.innerText = "Insira um número válido com DDD (10 ou 11 dígitos).";
                     erroWhatsAppEl.classList.remove('hidden');
@@ -702,7 +771,6 @@
                     erroWhatsAppEl.classList.add('hidden');
                 }
             } else {
-                // Outro país: garante que digitou algo decente
                 if (whatsappLimpo.length < 5) {
                     erroWhatsAppEl.innerText = "Insira um número de telefone válido.";
                     erroWhatsAppEl.classList.remove('hidden');
@@ -712,7 +780,6 @@
                 }
             }
 
-            // Se falhou em alguma validação, trava o envio
             if(!isValid) return;
 
             const targetUrl = document.getElementById('checkout-url-target').value;
@@ -723,7 +790,6 @@
                 urlFinal.searchParams.set('email', email);
                 urlFinal.searchParams.set('phonenumber', whatsappLimpo); 
                 
-                // Envia o DDI se não for "outro" (para o Hotmart reconhecer a bandeira no checkout)
                 if(ddi !== 'other') {
                     urlFinal.searchParams.set('phoneac', ddi); 
                 }
@@ -736,7 +802,6 @@
     </script>
 
     <script>
-        // Acordeão do FAQ
         document.querySelectorAll('details.group').forEach(details => {
             details.addEventListener('click', function(e) {
                 if (!this.open) { 
@@ -747,7 +812,6 @@
             });
         });
 
-        // YouTube Facade (Depoimentos)
         document.querySelectorAll('.yt-facade').forEach(facade => {
             facade.addEventListener('click', function() {
                 const vid = this.getAttribute('data-v');
