@@ -453,17 +453,20 @@
                 
                 <div class="mb-4">
                     <label class="mb-1 block text-sm font-medium text-gray-700" for="lead-nome">Nome completo *</label>
-                    <input required type="text" id="lead-nome" class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#3730a3]/50 transition-shadow" placeholder="Como você quer ser chamado?">
+                    <input required type="text" id="lead-nome" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#3730a3]/50 transition-shadow" placeholder="Ex: Mateus Augusto">
+                    <p id="erro-nome" class="mt-1 hidden text-xs font-medium text-red-500">Por favor, insira pelo menos nome e sobrenome.</p>
                 </div>
                 
                 <div class="mb-4">
                     <label class="mb-1 block text-sm font-medium text-gray-700" for="lead-email">E-mail *</label>
-                    <input required type="email" id="lead-email" class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#3730a3]/50 transition-shadow" placeholder="seu@melhoremail.com">
+                    <input required type="email" id="lead-email" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#3730a3]/50 transition-shadow" placeholder="seu@melhoremail.com">
+                    <p id="erro-email" class="mt-1 hidden text-xs font-medium text-[#ea9f38]">Corrigimos um pequeno erro de digitação no seu e-mail!</p>
                 </div>
                 
                 <div class="mb-6">
                     <label class="mb-1 block text-sm font-medium text-gray-700" for="lead-whatsapp">WhatsApp *</label>
-                    <input required type="tel" id="lead-whatsapp" class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#3730a3]/50 transition-shadow" placeholder="(00) 90000-0000">
+                    <input required type="tel" id="lead-whatsapp" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#3730a3]/50 transition-shadow" placeholder="(00) 90000-0000" maxlength="15">
+                    <p id="erro-whatsapp" class="mt-1 hidden text-xs font-medium text-red-500">Insira um número válido com DDD e o 9 (11 dígitos).</p>
                 </div>
                 
                 <button type="submit" class="w-full rounded-xl bg-[#badc20] px-4 py-4 text-lg font-bold uppercase text-[#222] shadow-[0_8px_20px_rgba(186,220,32,0.4)] transition-all hover:-translate-y-1 hover:bg-[#a3c417]">
@@ -489,18 +492,15 @@
             if (scriptsLoaded) return;
             scriptsLoaded = true;
 
-            // 1. Carrega o Google Tag Manager
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PDH6QGB2');
 
-            // 2. Carrega o Tailwind
             var twScript = document.createElement('script');
             twScript.src = 'https://cdn.tailwindcss.com';
             
-            // 3. Avisa a página que o Tailwind carregou (Remove o FOUC da tag main)
             twScript.onload = function() {
                 setTimeout(function() {
                     document.body.classList.add('tailwind-ready');
@@ -510,29 +510,63 @@
             document.body.appendChild(twScript);
         }
 
-        // Gatilhos para carregar os scripts com a primeira interação do humano real
         const events = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
         events.forEach(function(event) {
             window.addEventListener(event, loadHeavyScripts, { passive: true, once: true });
         });
 
-        // Segurança: Aguarda o Lighthouse terminar (ele testa por ~5s) e carrega aos 8s para garantir
         setTimeout(loadHeavyScripts, 0000);
 
-        // --- LÓGICA DO BOTÃO WHATSAPP FLUTUANTE (Aparece após 3s) ---
         setTimeout(function() {
             const waBtn = document.getElementById('wa-floating');
             if (waBtn) {
-                // Remove as classes que deixam invisível e não-clicável
                 waBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
             }
         }, 3000);
 
-        // --- LÓGICA DO POPUP DE PRÉ-CHECKOUT ---
+        // --- LÓGICA DO FORMULÁRIO (MÁSCARA E AUTOCORREÇÃO) ---
+        
+        // Máscara dinâmica para o Telefone
+        const phoneInput = document.getElementById('lead-whatsapp');
+        phoneInput.addEventListener('input', function(e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+
+        // Autocorreção de E-mail
+        const emailInput = document.getElementById('lead-email');
+        emailInput.addEventListener('blur', function(e) {
+            let val = e.target.value.toLowerCase().trim();
+            const dominiosIncorretos = {
+                'gmial.com': 'gmail.com', 'gamil.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gmail.com.br': 'gmail.com',
+                'hotmial.com': 'hotmail.com', 'hotmai.com': 'hotmail.com', 'hotmal.com': 'hotmail.com', 'hormail.com': 'hotmail.com',
+                'oulook.com': 'outlook.com', 'outlok.com': 'outlook.com', 
+                'yaho.com': 'yahoo.com', 'yahoo.com.br': 'yahoo.com.br' 
+            };
+            
+            if(val.includes('@')) {
+                let parts = val.split('@');
+                let user = parts[0];
+                let domain = parts[1];
+                
+                if(dominiosIncorretos[domain]) {
+                    e.target.value = user + '@' + dominiosIncorretos[domain];
+                    document.getElementById('erro-email').classList.remove('hidden');
+                    // Esconde o aviso de correção após 4 segundos
+                    setTimeout(() => document.getElementById('erro-email').classList.add('hidden'), 4000);
+                }
+            }
+        });
+
         function abrirCheckoutPopup(event, urlCheckout) {
             event.preventDefault(); 
             const modal = document.getElementById('checkout-modal');
             const modalContent = document.getElementById('modal-content');
+            
+            // Limpa as mensagens de erro ao reabrir
+            document.getElementById('erro-nome').classList.add('hidden');
+            document.getElementById('erro-whatsapp').classList.add('hidden');
+            document.getElementById('erro-email').classList.add('hidden');
             
             document.getElementById('checkout-url-target').value = urlCheckout;
             
@@ -561,16 +595,41 @@
         function enviarLeadERedirecionar(event) {
             event.preventDefault(); 
             
-            const nome = document.getElementById('lead-nome').value;
-            const email = document.getElementById('lead-email').value;
-            const whatsapp = document.getElementById('lead-whatsapp').value;
+            let isValid = true;
+            const nomeEl = document.getElementById('lead-nome');
+            const whatsappEl = document.getElementById('lead-whatsapp');
+            const emailEl = document.getElementById('lead-email');
+            
+            const nome = nomeEl.value.trim();
+            const email = emailEl.value.trim();
+            const whatsappLimpo = whatsappEl.value.replace(/\D/g, ''); // Extrai apenas os números
+            
+            // 1. Valida se tem pelo menos 2 nomes (1 espaço no meio)
+            if (nome.split(' ').length < 2) {
+                document.getElementById('erro-nome').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('erro-nome').classList.add('hidden');
+            }
+
+            // 2. Valida se o número tem 11 dígitos (DDD + 9 + 8 números)
+            if (whatsappLimpo.length !== 11) {
+                document.getElementById('erro-whatsapp').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('erro-whatsapp').classList.add('hidden');
+            }
+
+            // Se falhou em alguma validação, trava o envio
+            if(!isValid) return;
+
             const targetUrl = document.getElementById('checkout-url-target').value;
 
             try {
                 const urlFinal = new URL(targetUrl);
                 urlFinal.searchParams.set('name', nome);
                 urlFinal.searchParams.set('email', email);
-                urlFinal.searchParams.set('phonenumber', whatsapp); 
+                urlFinal.searchParams.set('phonenumber', whatsappLimpo); 
                 
                 window.location.href = urlFinal.toString();
             } catch (e) {
