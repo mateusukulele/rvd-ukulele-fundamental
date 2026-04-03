@@ -26,10 +26,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap"></noscript>
 
-    <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/69cef55755e32eb116f50389/v4/player.js" as="script">
-    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-    <link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/699070e844e6bfed35718aec/main.m3u8" as="fetch">
-    
     <link rel="dns-prefetch" href="https://cdn.converteai.net">
     <link rel="dns-prefetch" href="https://scripts.converteai.net">
     <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -40,8 +36,7 @@
     
     <style>
         /* =========================================================
-           CSS CRÍTICO NATIVO: Proteção contra site "Quebrado" (FOUC)
-           Isso garante que a primeira tela carregue perfeita ANTES do Tailwind
+           CSS CRÍTICO NATIVO: Página totalmente visível desde o frame 1
         ========================================================= */
         :root {
             --bg-main: #4338ca;      
@@ -75,29 +70,17 @@
         .video-wrapper vturb-smartplayer { display: block; width: 100% !important; min-height: 250px; }
         @media (min-width: 768px) { .video-wrapper vturb-smartplayer { min-height: 480px; } }
 
-        /* Botão nativo para não quebrar o visual antes do JS agir */
         .cta-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 0.5rem; margin-bottom: 2rem; }
         .cta-container { width: 100%; max-width: 800px; background-color: #3730a3; border-radius: 15px; padding: 0.75rem; text-align: center; box-shadow: 0 5px 20px rgba(55,48,163,0.2); }
-        .cta-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; max-width: 550px; background-color: var(--btn-color); color: #222; padding: 1rem 1.5rem; border-radius: 10px; font-weight: 800; text-transform: uppercase; text-decoration: none; box-shadow: 0 8px 20px rgba(186,220,32,0.4); transition: all 0.3s ease; }
+        .cta-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; max-width: 550px; background-color: var(--btn-color); color: #222; padding: 1rem 1.5rem; border-radius: 10px; font-weight: 800; text-transform: uppercase; text-decoration: none; box-shadow: 0 8px 20px rgba(186,220,32,0.4); transition: all 0.3s ease; cursor: pointer; }
         .cta-button svg { margin-left: 0.5rem; width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
         @media (min-width: 768px) { .cta-button { font-size: 1.15rem; } }
         @media (max-width: 767px) { .cta-button { font-size: 0.9rem; } }
 
-        /* Esconde os elementos problemáticos ATÉ o Tailwind assumir o controle */
-        #main-content {
-            display: none;
-            opacity: 0;
-        }
-        body.tailwind-ready #main-content {
-            display: block;
-            animation: fadeInTailwind 0.6s ease-in-out forwards;
-        }
-
-        /* ANIMAÇÕES NATIVAS */
+        /* Animações e fontes */
         .font-merriweather { font-family: 'Merriweather', Georgia, serif; }
         .font-poppins { font-family: 'Poppins', system-ui, -apple-system, sans-serif; }
         
-        @keyframes fadeInTailwind { from { opacity: 0; } to { opacity: 1; } }
         @keyframes pulsar-suave { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } }
         @keyframes pulse-green { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
@@ -106,6 +89,12 @@
         .btn-pulsar:hover { animation-play-state: paused; }
         .pulse-green { animation: pulse-green 2s infinite ease-in-out; }
         .animate-bounce-custom { animation: bounce 2s infinite; }
+        
+        /* Ajustes no Scrollbar do dropdown customizado */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
     </style>
 </head>
 
@@ -126,14 +115,15 @@
             <vturb-smartplayer id="vid-69cef55755e32eb116f50389" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> 
             <script type="text/javascript"> 
                 var s=document.createElement("script"); 
-                s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/69cef55755e32eb116f50389/v4/player.js", 
-                s.async=!0,document.head.appendChild(s); 
+                s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/69cef55755e32eb116f50389/v4/player.js";
+                s.defer=true; /* OTIMIZAÇÃO: DEFER adicionado */
+                document.head.appendChild(s); 
             </script>
         </div>
 
         <div class="cta-wrapper">
             <div class="cta-container">
-                <a href="https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO-ALUNO&hideBillet=1" class="btn-pulsar cta-button hover:bg-[#a3c417] hover:-translate-y-1">
+                <a href="#" onclick="abrirCheckoutPopup(event, 'https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO-ALUNO&hideBillet=1')" class="btn-pulsar cta-button hover:bg-[#a3c417] hover:-translate-y-1">
                     QUERO ACESSO IMEDIATO E VITALÍCIO
                     <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
                 </a>
@@ -141,7 +131,7 @@
         </div>
     </header>
 
-    <main id="main-content" class="bg-gray-50 text-gray-900 w-full font-poppins">
+    <main id="main-content" class="bg-gray-50 text-gray-900 w-full font-poppins block">
 
         <section class="py-16 px-4" aria-labelledby="prova-social-title">
             <div class="max-w-6xl mx-auto bg-white rounded-[25px] p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.08)]">
@@ -192,7 +182,7 @@
 
         <section class="py-2 px-4 flex justify-center">
             <div class="w-full max-w-[800px] bg-[#3730a3] rounded-[15px] p-3 text-center shadow-[0_5px_20px_rgba(55,48,163,0.2)]">
-                <a href="https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO-ALUNO&hideBillet=1" class="btn-pulsar inline-flex items-center justify-center w-full max-w-[550px] bg-[#badc20] hover:bg-[#a3c417] hover:-translate-y-1 text-[#222] py-4 px-6 rounded-[10px] text-[0.9rem] md:text-[1.15rem] font-extrabold uppercase transition-all shadow-[0_8px_20px_rgba(186,220,32,0.4)]">
+                <a href="#" onclick="abrirCheckoutPopup(event, 'https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO-ALUNO&hideBillet=1')" class="btn-pulsar inline-flex items-center justify-center w-full max-w-[550px] bg-[#badc20] hover:bg-[#a3c417] hover:-translate-y-1 text-[#222] py-4 px-6 rounded-[10px] text-[0.9rem] md:text-[1.15rem] font-extrabold uppercase transition-all shadow-[0_8px_20px_rgba(186,220,32,0.4)]">
                     QUERO ACESSO IMEDIATO E VITALÍCIO
                     <svg aria-hidden="true" class="ml-2 w-5 h-5 fill-none stroke-current stroke-[3] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
                 </a>
@@ -311,7 +301,7 @@
                         <li class="flex items-start text-[0.95rem] text-[#444]"><svg aria-hidden="true" class="w-5 h-5 mr-3 fill-none stroke-[#3730a3] stroke-[3] shrink-0" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><b class="text-black">BÔNUS</b>: Workshop de Canto com Ukulele</span></li>
                     </ul>
 
-                    <a href="https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO-ALUNO&hideBillet=1" class="flex items-center justify-center w-full bg-[#badc20] hover:bg-[#a3c417] hover:-translate-y-1 text-[#222] py-5 px-6 rounded-xl text-xl font-extrabold uppercase transition-all shadow-[0_10px_30px_rgba(186,220,32,0.5)] btn-pulsar">
+                    <a href="#" onclick="abrirCheckoutPopup(event, 'https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO-ALUNO&hideBillet=1')" class="flex items-center justify-center w-full bg-[#badc20] hover:bg-[#a3c417] hover:-translate-y-1 text-[#222] py-5 px-6 rounded-xl text-xl font-extrabold uppercase transition-all shadow-[0_10px_30px_rgba(186,220,32,0.5)] btn-pulsar">
                         QUERO COMEÇAR AGORA
                         <svg aria-hidden="true" class="w-6 h-6 ml-2 fill-none stroke-current stroke-[3] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
                     </a>
@@ -436,6 +426,109 @@
 
     </main>
 
+    <div id="checkout-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/70 px-4 font-poppins opacity-0 transition-opacity duration-300">
+        <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
+            
+            <div class="mb-4 flex items-center justify-between">
+                <h3 class="font-merriweather text-xl font-bold text-gray-900">Falta muito pouco!</h3>
+                <button onclick="fecharCheckoutPopup()" class="text-gray-400 hover:text-gray-600 transition-colors" aria-label="Fechar">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <p class="mb-6 text-sm text-gray-600">Preencha o formulário para garantir seu desconto e acesso vitalício ao Ukulele Fundamental!</p>
+            
+            <form id="lead-form" onsubmit="enviarLeadERedirecionar(event)">
+                <input type="hidden" id="checkout-url-target" value="">
+                
+                <div class="mb-4">
+                    <label class="mb-1 block text-sm font-medium text-gray-700" for="lead-nome">Nome completo *</label>
+                    <input required type="text" id="lead-nome" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#3730a3]/50 transition-shadow" placeholder="Ex: Fulano de Tal">
+                    <p id="erro-nome" class="mt-1 hidden text-xs font-medium text-red-500">Por favor, insira pelo menos nome e sobrenome.</p>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="mb-1 block text-sm font-medium text-gray-700" for="lead-email">E-mail *</label>
+                    <input required type="email" id="lead-email" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#3730a3]/50 transition-shadow" placeholder="seu@melhoremail.com">
+                    <p id="erro-email" class="mt-1 hidden text-xs font-medium text-[#ea9f38]">Corrigimos um pequeno erro de digitação no seu e-mail!</p>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="mb-1 block text-sm font-medium text-gray-700" for="lead-whatsapp">WhatsApp *</label>
+                    
+                    <div class="flex rounded-lg border border-gray-300 bg-white transition-shadow focus-within:border-[#3730a3] focus-within:ring-2 focus-within:ring-[#3730a3]/50">
+                        
+                        <div class="relative flex items-center border-r border-gray-300 bg-gray-50 rounded-l-lg shrink-0 select-none" id="ddi-container">
+                            <input type="hidden" id="lead-ddi" value="55">
+                            
+                            <button type="button" id="ddi-button" class="flex items-center h-full px-3 py-3 text-sm text-gray-700 focus:outline-none hover:bg-gray-100 transition-colors rounded-l-lg">
+                                <img src="https://flagcdn.com/w20/br.png" alt="BR" class="w-5 h-auto mr-1.5 rounded-[2px] shadow-sm object-cover" id="ddi-selected-flag">
+                                <span id="ddi-selected-text" class="font-medium">+55</span>
+                                <svg class="h-4 w-4 ml-1 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+
+                            <ul id="ddi-menu" class="absolute top-full left-0 mt-1 w-56 bg-white border border-gray-200 rounded-lg shadow-xl z-50 hidden max-h-60 overflow-y-auto custom-scrollbar">
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="55" data-code="br">
+                                    <img src="https://flagcdn.com/w20/br.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Brasil (+55)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="1" data-code="us">
+                                    <img src="https://flagcdn.com/w20/us.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Estados Unidos (+1)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="351" data-code="pt">
+                                    <img src="https://flagcdn.com/w20/pt.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Portugal (+351)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="244" data-code="ao">
+                                    <img src="https://flagcdn.com/w20/ao.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Angola (+244)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="258" data-code="mz">
+                                    <img src="https://flagcdn.com/w20/mz.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Moçambique (+258)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="238" data-code="cv">
+                                    <img src="https://flagcdn.com/w20/cv.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Cabo Verde (+238)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="54" data-code="ar">
+                                    <img src="https://flagcdn.com/w20/ar.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Argentina (+54)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="56" data-code="cl">
+                                    <img src="https://flagcdn.com/w20/cl.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Chile (+56)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="57" data-code="co">
+                                    <img src="https://flagcdn.com/w20/co.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Colômbia (+57)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="52" data-code="mx">
+                                    <img src="https://flagcdn.com/w20/mx.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">México (+52)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="34" data-code="es">
+                                    <img src="https://flagcdn.com/w20/es.png" class="w-5 h-auto mr-3 rounded-[2px] shadow-sm object-cover"> <span class="text-gray-700 font-medium text-[0.85rem]">Espanha (+34)</span>
+                                </li>
+                                <li class="ddi-option px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center text-sm transition-colors" data-value="other" data-code="other">
+                                    <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span class="text-gray-700 font-medium text-[0.85rem]">Outro país...</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <input required type="tel" id="lead-whatsapp" class="w-full bg-transparent px-4 py-3 text-gray-900 focus:outline-none rounded-r-lg" placeholder="(00) 00000-0000" maxlength="20">
+                    </div>
+                    <p id="erro-whatsapp" class="mt-1 hidden text-xs font-medium text-red-500">Insira um número válido com DDD (10 ou 11 dígitos).</p>
+                </div>
+                
+                <button type="submit" class="w-full rounded-xl bg-[#badc20] px-4 py-4 text-lg font-bold uppercase text-[#222] shadow-[0_8px_20px_rgba(186,220,32,0.4)] transition-all hover:-translate-y-1 hover:bg-[#a3c417]">
+                    Ir para o Pagamento
+                </button>
+            </form>
+            
+            <div class="mt-4 flex items-center justify-center text-xs font-medium text-gray-500">
+                <svg class="mr-1.5 h-4 w-4 fill-[#25d366]" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                Ambiente 100% Seguro pela Hotmart
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/553198585286?text=Olá,%20tenho%20uma%20dúvida%20sobre%20o%20curso%20Ukulele%20Fundamental." target="_blank" aria-label="Falar com suporte pelo WhatsApp" id="wa-floating" class="fixed bottom-6 right-6 z-[9000] flex items-center justify-center w-14 h-14 bg-[#25d366] text-white rounded-full shadow-[0_10px_20px_rgba(37,211,102,0.4)] transition-all duration-700 hover:-translate-y-2 hover:bg-[#1ebe57] hover:scale-110 pulse-green">
+        <svg aria-hidden="true" class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
     <script>
         let scriptsLoaded = false;
         
@@ -443,35 +536,288 @@
             if (scriptsLoaded) return;
             scriptsLoaded = true;
 
-            // 1. Carrega o Google Tag Manager
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PDH6QGB2');
 
-            // 2. Carrega o Tailwind
             var twScript = document.createElement('script');
             twScript.src = 'https://cdn.tailwindcss.com';
-            
-            // 3. Avisa a página que o Tailwind carregou (Remove o FOUC da tag main)
-            twScript.onload = function() {
-                setTimeout(function() {
-                    document.body.classList.add('tailwind-ready');
-                }, 100);
-            };
-            
             document.body.appendChild(twScript);
         }
 
-        // Gatilhos para carregar os scripts com a primeira interação do humano real
         const events = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
         events.forEach(function(event) {
             window.addEventListener(event, loadHeavyScripts, { passive: true, once: true });
         });
 
-        // Segurança: Aguarda o Lighthouse terminar (ele testa por ~5s) e carrega aos 8s para garantir
-        setTimeout(loadHeavyScripts, 0000);
+        // OTIMIZAÇÃO: GTM carrega se não houver interação após 4 segundos.
+        setTimeout(loadHeavyScripts, 4000);
+
+        // --- LÓGICA DO DROPDOWN CUSTOMIZADO DE DDI ---
+        const ddiButton = document.getElementById('ddi-button');
+        const ddiMenu = document.getElementById('ddi-menu');
+        const ddiInput = document.getElementById('lead-ddi');
+        const phoneInput = document.getElementById('lead-whatsapp');
+
+        ddiButton.addEventListener('click', function() {
+            ddiMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!document.getElementById('ddi-container').contains(e.target)) {
+                ddiMenu.classList.add('hidden');
+            }
+        });
+
+        document.querySelectorAll('.ddi-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                const code = this.getAttribute('data-code');
+                const textSpan = document.getElementById('ddi-selected-text');
+                const flagElement = document.getElementById('ddi-selected-flag');
+                
+                ddiInput.value = value;
+                
+                if (code === 'other') {
+                    flagElement.outerHTML = `<svg id="ddi-selected-flag" class="w-5 h-5 text-gray-500 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+                    textSpan.innerText = '';
+                } else {
+                    if(flagElement.tagName.toLowerCase() === 'svg') {
+                         flagElement.outerHTML = `<img src="https://flagcdn.com/w20/${code}.png" class="w-5 h-auto mr-1.5 rounded-[2px] shadow-sm object-cover" id="ddi-selected-flag" alt="${code}">`;
+                    } else {
+                         flagElement.src = `https://flagcdn.com/w20/${code}.png`;
+                    }
+                    textSpan.innerText = '+' + value;
+                }
+
+                ddiMenu.classList.add('hidden');
+                
+                let v = phoneInput.value.replace(/\D/g, '');
+                if(value === '55') {
+                    phoneInput.placeholder = "(00) 00000-0000";
+                    phoneInput.dispatchEvent(new Event('input')); 
+                } else {
+                    phoneInput.placeholder = "Número do WhatsApp";
+                    phoneInput.value = v; 
+                }
+            });
+        });
+
+        phoneInput.addEventListener('input', function(e) {
+            let v = e.target.value.replace(/\D/g, ''); 
+            
+            if (ddiInput.value === '55') {
+                if (v.length <= 10) {
+                    v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    v = v.replace(/(\d{4})(\d)/, '$1-$2');
+                } else {
+                    v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    v = v.replace(/(\d{5})(\d)/, '$1-$2');
+                }
+                e.target.value = v.substring(0, 15);
+            } else {
+                e.target.value = v.substring(0, 20);
+            }
+        });
+
+        // --- LÓGICA DO FORMULÁRIO (E-MAIL) ---
+        const emailInput = document.getElementById('lead-email');
+        emailInput.addEventListener('blur', function(e) {
+            let val = e.target.value.toLowerCase().trim();
+            
+            const provedoresIncorretos = {
+                'gmial': 'gmail', 'gamil': 'gmail', 'gmal': 'gmail', 'gmaill': 'gmail', 'gemail': 'gmail',
+                'hotmial': 'hotmail', 'hotmai': 'hotmail', 'hotmal': 'hotmail', 'hormail': 'hotmail', 'hotmaill': 'hotmail',
+                'oulook': 'outlook', 'outlok': 'outlook', 'outloo': 'outlook', 'yaho': 'yahoo'
+            };
+
+            const sufixosIncorretos = [
+                { erro: '.comm', certo: '.com' },
+                { erro: '.cm', certo: '.com' },
+                { erro: '.cmo', certo: '.com' },
+                { erro: '.xom', certo: '.com' },
+                { erro: '.con', certo: '.com' },
+                { erro: '.cm.br', certo: '.com.br' },
+                { erro: '.con.br', certo: '.com.br' },
+                { erro: '.com.brr', certo: '.com.br' }
+            ];
+            
+            if(val.includes('@')) {
+                let parts = val.split('@');
+                let user = parts[0];
+                let fullDomain = parts[1];
+                let alterado = false;
+
+                let domainIndex = fullDomain.indexOf('.');
+                if(domainIndex > -1) {
+                    let domainName = fullDomain.substring(0, domainIndex);
+                    let suffix = fullDomain.substring(domainIndex); 
+
+                    if (provedoresIncorretos[domainName]) {
+                        domainName = provedoresIncorretos[domainName];
+                        alterado = true;
+                    }
+
+                    for (let item of sufixosIncorretos) {
+                        if (suffix === item.erro) {
+                            suffix = item.certo;
+                            alterado = true;
+                            break;
+                        }
+                    }
+
+                    if (alterado) {
+                        e.target.value = user + '@' + domainName + suffix;
+                        document.getElementById('erro-email').classList.remove('hidden');
+                        setTimeout(() => document.getElementById('erro-email').classList.add('hidden'), 4000);
+                    }
+                }
+            }
+        });
+
+        // --- LÓGICA DO POPUP DE PRÉ-CHECKOUT ---
+        function abrirCheckoutPopup(event, urlCheckout) {
+            event.preventDefault(); 
+            const modal = document.getElementById('checkout-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            document.getElementById('erro-nome').classList.add('hidden');
+            document.getElementById('erro-whatsapp').classList.add('hidden');
+            document.getElementById('erro-email').classList.add('hidden');
+            
+            document.getElementById('checkout-url-target').value = urlCheckout;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function fecharCheckoutPopup() {
+            const modal = document.getElementById('checkout-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        // ==========================================
+        // SUBMIT TURBINADO: Valida, Rastreia e Redireciona
+        // ==========================================
+        function enviarLeadERedirecionar(event) {
+            event.preventDefault(); 
+            
+            let isValid = true;
+            const nomeEl = document.getElementById('lead-nome');
+            const ddi = document.getElementById('lead-ddi').value;
+            const emailEl = document.getElementById('lead-email');
+            const phoneInputEl = document.getElementById('lead-whatsapp'); 
+            
+            const nome = nomeEl.value.trim();
+            const email = emailEl.value.trim();
+            const whatsappLimpo = phoneInputEl.value.replace(/\D/g, ''); 
+            
+            // 1. Valida Nome
+            if (nome.split(' ').length < 2) {
+                document.getElementById('erro-nome').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('erro-nome').classList.add('hidden');
+            }
+
+            // 2. Valida Telefone
+            const erroWhatsAppEl = document.getElementById('erro-whatsapp');
+            if (ddi === '55') {
+                if (whatsappLimpo.length !== 10 && whatsappLimpo.length !== 11) {
+                    erroWhatsAppEl.innerText = "Insira um número válido com DDD (10 ou 11 dígitos).";
+                    erroWhatsAppEl.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    erroWhatsAppEl.classList.add('hidden');
+                }
+            } else {
+                if (whatsappLimpo.length < 5) {
+                    erroWhatsAppEl.innerText = "Insira um número de telefone válido.";
+                    erroWhatsAppEl.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    erroWhatsAppEl.classList.add('hidden');
+                }
+            }
+
+            if(!isValid) return;
+
+            // ==========================================
+            // ENVIA DADOS PARA O DATALAYER (GTM)
+            // ==========================================
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'pre_checkout_submit',
+                'lead_name': nome,
+                'lead_email': email,
+                'lead_phone': ddi === '55' ? whatsappLimpo : ddi + whatsappLimpo
+            });
+
+            const targetUrl = document.getElementById('checkout-url-target').value;
+
+            try {
+                const urlFinal = new URL(targetUrl);
+                
+                // Dados para a Hotmart
+                urlFinal.searchParams.set('name', nome);
+                urlFinal.searchParams.set('email', email);
+                urlFinal.searchParams.set('phonenumber', whatsappLimpo); 
+                if(ddi !== 'other') {
+                    urlFinal.searchParams.set('phoneac', ddi); 
+                }
+
+                // UTMs e SCK
+                const urlParams = new URLSearchParams(window.location.search);
+                const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+                let utmsEncontradas = [];
+
+                utmKeys.forEach(key => {
+                    const value = urlParams.get(key);
+                    if (value) {
+                        urlFinal.searchParams.set(key, value); 
+                        utmsEncontradas.push(value); 
+                    }
+                });
+
+                if (utmsEncontradas.length > 0) {
+                    urlFinal.searchParams.set('sck', utmsEncontradas.join('|'));
+                }
+
+                // Cookie xcod
+                function getCookieValue(name) {
+                    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                    return match ? decodeURIComponent(match[2]) : null;
+                }
+                const cookieUserId = getCookieValue('user_id');
+                if (cookieUserId) {
+                    urlFinal.searchParams.set('xcod', cookieUserId);
+                }
+
+                setTimeout(() => {
+                    window.location.href = urlFinal.toString();
+                }, 500);
+                
+            } catch (e) {
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 500);
+            }
+        }
     </script>
 
     <script>
