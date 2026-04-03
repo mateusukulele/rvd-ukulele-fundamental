@@ -455,7 +455,30 @@
                 
                 <div class="mb-6">
                     <label class="mb-1 block text-sm font-medium text-gray-700" for="lead-whatsapp">WhatsApp *</label>
-                    <input required type="tel" id="lead-whatsapp" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#3730a3]/50 transition-shadow" placeholder="(00) 0000-0000" maxlength="15">
+                    
+                    <div class="flex rounded-lg border border-gray-300 bg-white transition-shadow focus-within:border-[#3730a3] focus-within:ring-2 focus-within:ring-[#3730a3]/50">
+                        <div class="relative flex items-center border-r border-gray-300 bg-gray-50 px-2 rounded-l-lg shrink-0">
+                            <select id="lead-ddi" class="h-full py-0 pl-2 pr-7 bg-transparent text-gray-700 focus:outline-none text-sm appearance-none cursor-pointer">
+                                <option value="55" selected>🇧🇷 +55</option>
+                                <option value="1">🇺🇸 +1</option>
+                                <option value="351">🇵🇹 +351</option>
+                                <option value="244">🇦🇴 +244</option>
+                                <option value="258">🇲🇿 +258</option>
+                                <option value="238">🇨🇻 +238</option>
+                                <option value="54">🇦🇷 +54</option>
+                                <option value="56">🇨🇱 +56</option>
+                                <option value="57">🇨🇴 +57</option>
+                                <option value="52">🇲🇽 +52</option>
+                                <option value="34">🇪🇸 +34</option>
+                                <option value="other">Outro...</option>
+                            </select>
+                            <div class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-gray-500">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                        
+                        <input required type="tel" id="lead-whatsapp" class="w-full bg-transparent px-4 py-3 text-gray-900 focus:outline-none rounded-r-lg" placeholder="(00) 00000-0000" maxlength="20">
+                    </div>
                     <p id="erro-whatsapp" class="mt-1 hidden text-xs font-medium text-red-500">Insira um número válido com DDD (10 ou 11 dígitos).</p>
                 </div>
                 
@@ -482,18 +505,15 @@
             if (scriptsLoaded) return;
             scriptsLoaded = true;
 
-            // 1. Carrega o Google Tag Manager
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PDH6QGB2');
 
-            // 2. Carrega o Tailwind
             var twScript = document.createElement('script');
             twScript.src = 'https://cdn.tailwindcss.com';
             
-            // 3. Avisa a página que o Tailwind carregou (Remove o FOUC da tag main)
             twScript.onload = function() {
                 setTimeout(function() {
                     document.body.classList.add('tailwind-ready');
@@ -503,105 +523,114 @@
             document.body.appendChild(twScript);
         }
 
-        // Gatilhos para carregar os scripts com a primeira interação do humano real
         const events = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
         events.forEach(function(event) {
             window.addEventListener(event, loadHeavyScripts, { passive: true, once: true });
         });
 
-        // Segurança: Aguarda o Lighthouse terminar (ele testa por ~5s) e carrega aos 8s para garantir
         setTimeout(loadHeavyScripts, 0000);
 
-        // --- LÓGICA DO BOTÃO WHATSAPP FLUTUANTE (Aparece após 3s) ---
         setTimeout(function() {
             const waBtn = document.getElementById('wa-floating');
             if (waBtn) {
-                // Remove as classes que deixam invisível e não-clicável
                 waBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
             }
         }, 3000);
 
-        // --- LÓGICA DO FORMULÁRIO (MÁSCARA E AUTOCORREÇÃO) ---
+        // --- LÓGICA DO FORMULÁRIO ---
         
-        // Máscara dinâmica para o Telefone (10 ou 11 dígitos)
         const phoneInput = document.getElementById('lead-whatsapp');
+        const ddiSelect = document.getElementById('lead-ddi');
+
+        // Máscara Dinâmica de Telefone
         phoneInput.addEventListener('input', function(e) {
-            let v = e.target.value.replace(/\D/g, '');
-            if (v.length <= 10) {
-                v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
-                v = v.replace(/(\d{4})(\d)/, '$1-$2');
+            let v = e.target.value.replace(/\D/g, ''); // Remove tudo que não é número
+            
+            if (ddiSelect.value === '55') {
+                // Máscara Brasil (10 ou 11 dígitos)
+                if (v.length <= 10) {
+                    v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    v = v.replace(/(\d{4})(\d)/, '$1-$2');
+                } else {
+                    v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    v = v.replace(/(\d{5})(\d)/, '$1-$2');
+                }
+                e.target.value = v.substring(0, 15);
             } else {
-                v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
-                v = v.replace(/(\d{5})(\d)/, '$1-$2');
+                // Máscara Internacional (apenas números, até 20 dígitos)
+                e.target.value = v.substring(0, 20);
             }
-            e.target.value = v.substring(0, 15);
         });
 
-        // Autocorreção de E-mail Super Completa
+        // Reavalia a máscara se o usuário trocar a bandeirinha
+        ddiSelect.addEventListener('change', function(e) {
+            let v = phoneInput.value.replace(/\D/g, '');
+            if(e.target.value === '55') {
+                phoneInput.placeholder = "(00) 00000-0000";
+                // Dispara o evento de input para formatar o que já foi digitado
+                phoneInput.dispatchEvent(new Event('input'));
+            } else {
+                phoneInput.placeholder = "Número do WhatsApp";
+                phoneInput.value = v; // Deixa apenas os números limpos
+            }
+        });
+
+        // Autocorreção de E-mail Separada (Provedor vs Sufixo)
         const emailInput = document.getElementById('lead-email');
         emailInput.addEventListener('blur', function(e) {
             let val = e.target.value.toLowerCase().trim();
-            const dominiosIncorretos = {
-                // Erros Gmail
-                'gmial.com': 'gmail.com', 'gamil.com': 'gmail.com', 'gmal.com': 'gmail.com',
-                'gmaill.com': 'gmail.com', 'gmail.com.br': 'gmail.com', 'gemail.com': 'gmail.com',
-                'gamail.com': 'gmail.com', 'gmail.con': 'gmail.com', 'gmai.com': 'gmail.com',
-                'g-mail.com': 'gmail.com', 'gmail.co': 'gmail.com', 'gmaik.com': 'gmail.com',
-                'gmail.comm': 'gmail.com', 'gmail.cm': 'gmail.com', 'gmail.cmo': 'gmail.com',
-                'gmai.con': 'gmail.com', 'gmial.com.br': 'gmail.com', 'gmaill.com.br': 'gmail.com',
-                
-                // Erros Hotmail
-                'hotmial.com': 'hotmail.com', 'hotmai.com': 'hotmail.com', 'hotmal.com': 'hotmail.com',
-                'hormail.com': 'hotmail.com', 'hotmaill.com': 'hotmail.com', 'hotmail.con': 'hotmail.com',
-                'hotmail.co': 'hotmail.com', 'hitmail.com': 'hotmail.com', 'hotamil.com': 'hotmail.com',
-                'hotmail.comm': 'hotmail.com', 'hotmail.cm': 'hotmail.com', 'hotmail.cmo': 'hotmail.com',
-                
-                // Erros Outlook
-                'oulook.com': 'outlook.com', 'outlok.com': 'outlook.com', 'outloo.com': 'outlook.com',
-                'outook.com': 'outlook.com', 'outlook.con': 'outlook.com', 'outllok.com': 'outlook.com',
-                'outlook.comm': 'outlook.com', 'outlook.cm': 'outlook.com', 'outlook.cmo': 'outlook.com',
-                
-                // Erros Yahoo
-                'yaho.com': 'yahoo.com', 'yahoo.con': 'yahoo.com', 'yaboo.com': 'yahoo.com',
-                'yahoo.comm': 'yahoo.com', 'yahoo.cm': 'yahoo.com', 'yahoo.cmo': 'yahoo.com',
-                
-                // Erros UOL / BOL
-                'uol.con': 'uol.com.br', 'bol.con': 'bol.com.br', 'uol.com.brr': 'uol.com.br',
-                
-                // Erros iCloud
-                'iclod.com': 'icloud.com', 'iclou.com': 'icloud.com', 'icloud.con': 'icloud.com',
-                'icloud.comm': 'icloud.com', 'icloud.cm': 'icloud.com', 'icloud.cmo': 'icloud.com'
+            
+            // Dicionários
+            const provedoresIncorretos = {
+                'gmial': 'gmail', 'gamil': 'gmail', 'gmal': 'gmail', 'gmaill': 'gmail', 'gemail': 'gmail',
+                'hotmial': 'hotmail', 'hotmai': 'hotmail', 'hotmal': 'hotmail', 'hormail': 'hotmail', 'hotmaill': 'hotmail',
+                'oulook': 'outlook', 'outlok': 'outlook', 'outloo': 'outlook', 'yaho': 'yahoo'
             };
+
+            const sufixosIncorretos = [
+                { erro: '.comm', certo: '.com' },
+                { erro: '.cm', certo: '.com' },
+                { erro: '.cmo', certo: '.com' },
+                { erro: '.xom', certo: '.com' },
+                { erro: '.con', certo: '.com' },
+                { erro: '.cm.br', certo: '.com.br' },
+                { erro: '.con.br', certo: '.com.br' },
+                { erro: '.com.brr', certo: '.com.br' }
+            ];
             
             if(val.includes('@')) {
                 let parts = val.split('@');
                 let user = parts[0];
-                let domain = parts[1];
+                let fullDomain = parts[1];
                 let alterado = false;
-                
-                // 1. Busca no dicionário exato
-                if(dominiosIncorretos[domain]) {
-                    domain = dominiosIncorretos[domain];
-                    alterado = true;
-                } else {
-                    // 2. Busca e substitui terminações erradas que não caíram no dicionário (ex: empresa.comm -> empresa.com)
-                    const typposComuns = ['.con', '.comm', '.cm', '.cmo', '.xom', '.com.b', '.com.brr'];
-                    const correcoes = ['.com', '.com', '.com', '.com', '.com', '.com.br', '.com.br'];
-                    
-                    for(let i=0; i < typposComuns.length; i++) {
-                        if(domain.endsWith(typposComuns[i])) {
-                            domain = domain.slice(0, -typposComuns[i].length) + correcoes[i];
+
+                // Divide o domínio na primeira ocorrência do ponto
+                let domainIndex = fullDomain.indexOf('.');
+                if(domainIndex > -1) {
+                    let domainName = fullDomain.substring(0, domainIndex); // ex: gmial
+                    let suffix = fullDomain.substring(domainIndex); // ex: .com ou .com.br
+
+                    // 1. Corrige o provedor (antes do ponto)
+                    if (provedoresIncorretos[domainName]) {
+                        domainName = provedoresIncorretos[domainName];
+                        alterado = true;
+                    }
+
+                    // 2. Corrige o sufixo (depois do ponto)
+                    for (let item of sufixosIncorretos) {
+                        if (suffix === item.erro) {
+                            suffix = item.certo;
                             alterado = true;
-                            break; 
+                            break;
                         }
                     }
-                }
 
-                if (alterado) {
-                    e.target.value = user + '@' + domain;
-                    document.getElementById('erro-email').classList.remove('hidden');
-                    // Esconde o aviso de correção após 4 segundos
-                    setTimeout(() => document.getElementById('erro-email').classList.add('hidden'), 4000);
+                    // Se algo foi alterado, atualiza o campo e avisa o usuário
+                    if (alterado) {
+                        e.target.value = user + '@' + domainName + suffix;
+                        document.getElementById('erro-email').classList.remove('hidden');
+                        setTimeout(() => document.getElementById('erro-email').classList.add('hidden'), 4000);
+                    }
                 }
             }
         });
@@ -612,7 +641,6 @@
             const modal = document.getElementById('checkout-modal');
             const modalContent = document.getElementById('modal-content');
             
-            // Limpa as mensagens de erro ao reabrir
             document.getElementById('erro-nome').classList.add('hidden');
             document.getElementById('erro-whatsapp').classList.add('hidden');
             document.getElementById('erro-email').classList.add('hidden');
@@ -647,13 +675,14 @@
             let isValid = true;
             const nomeEl = document.getElementById('lead-nome');
             const whatsappEl = document.getElementById('lead-whatsapp');
+            const ddi = document.getElementById('lead-ddi').value;
             const emailEl = document.getElementById('lead-email');
             
             const nome = nomeEl.value.trim();
             const email = emailEl.value.trim();
-            const whatsappLimpo = whatsappEl.value.replace(/\D/g, ''); // Extrai apenas os números
+            const whatsappLimpo = whatsappEl.value.replace(/\D/g, ''); 
             
-            // 1. Valida se tem pelo menos 2 nomes (1 espaço no meio)
+            // 1. Valida se tem pelo menos 2 nomes
             if (nome.split(' ').length < 2) {
                 document.getElementById('erro-nome').classList.remove('hidden');
                 isValid = false;
@@ -661,12 +690,26 @@
                 document.getElementById('erro-nome').classList.add('hidden');
             }
 
-            // 2. Valida se o número tem 10 ou 11 dígitos
-            if (whatsappLimpo.length !== 10 && whatsappLimpo.length !== 11) {
-                document.getElementById('erro-whatsapp').classList.remove('hidden');
-                isValid = false;
+            // 2. Valida o telefone baseado no País
+            const erroWhatsAppEl = document.getElementById('erro-whatsapp');
+            if (ddi === '55') {
+                // Brasil: deve ter 10 ou 11
+                if (whatsappLimpo.length !== 10 && whatsappLimpo.length !== 11) {
+                    erroWhatsAppEl.innerText = "Insira um número válido com DDD (10 ou 11 dígitos).";
+                    erroWhatsAppEl.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    erroWhatsAppEl.classList.add('hidden');
+                }
             } else {
-                document.getElementById('erro-whatsapp').classList.add('hidden');
+                // Outro país: garante que digitou algo decente
+                if (whatsappLimpo.length < 5) {
+                    erroWhatsAppEl.innerText = "Insira um número de telefone válido.";
+                    erroWhatsAppEl.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    erroWhatsAppEl.classList.add('hidden');
+                }
             }
 
             // Se falhou em alguma validação, trava o envio
@@ -679,7 +722,11 @@
                 urlFinal.searchParams.set('name', nome);
                 urlFinal.searchParams.set('email', email);
                 urlFinal.searchParams.set('phonenumber', whatsappLimpo); 
-                urlFinal.searchParams.set('phoneac', '55'); // Garante que a Hotmart reconheça como DDI do Brasil (+55)
+                
+                // Envia o DDI se não for "outro" (para o Hotmart reconhecer a bandeira no checkout)
+                if(ddi !== 'other') {
+                    urlFinal.searchParams.set('phoneac', ddi); 
+                }
                 
                 window.location.href = urlFinal.toString();
             } catch (e) {
