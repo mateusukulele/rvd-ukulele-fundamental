@@ -26,10 +26,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap"></noscript>
 
-    <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/69cef55755e32eb116f50389/v4/player.js" as="script">
-    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-    <link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/699070e844e6bfed35718aec/main.m3u8" as="fetch">
-    
     <link rel="dns-prefetch" href="https://cdn.converteai.net">
     <link rel="dns-prefetch" href="https://scripts.converteai.net">
     <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -125,8 +121,10 @@
             <vturb-smartplayer id="vid-69cef55755e32eb116f50389" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> 
             <script type="text/javascript"> 
                 var s=document.createElement("script"); 
-                s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/69cef55755e32eb116f50389/v4/player.js", 
-                s.async=!0,document.head.appendChild(s); 
+                s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/69cef55755e32eb116f50389/v4/player.js";
+                // ADICIONADO DEFER PARA NÃO TRAVAR O PAGESPEED
+                s.defer = true;
+                document.head.appendChild(s); 
             </script>
         </div>
 
@@ -551,6 +549,7 @@
             'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PDH6QGB2');
 
+            // Mantido aqui para garantir que carregue depois para não prejudicar o FCP
             var twScript = document.createElement('script');
             twScript.src = 'https://cdn.tailwindcss.com';
             
@@ -568,7 +567,8 @@
             window.addEventListener(event, loadHeavyScripts, { passive: true, once: true });
         });
 
-        setTimeout(loadHeavyScripts, 0000);
+        // OTIMIZAÇÃO: Se não houver interação, carrega o GTM só depois de 4 segundos
+        setTimeout(loadHeavyScripts, 4000);
 
         // ==========================================
         // 1. DELAY DO PITCH DA VSL (740 SEGUNDOS)
@@ -576,14 +576,12 @@
         const PITCH_DELAY_SECONDS = 740;
         
         setTimeout(function() {
-            // Revela o botão no Header
             const ctaHeader = document.getElementById('cta-header');
             if(ctaHeader) {
                 ctaHeader.classList.remove('pitch-hidden');
                 ctaHeader.classList.add('pitch-visible');
             }
             
-            // Revela todo o conteúdo abaixo do vídeo
             const mainContent = document.getElementById('main-content');
             if(mainContent) {
                 mainContent.classList.remove('pitch-hidden');
@@ -600,7 +598,7 @@
             if (waBtn) {
                 waBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
             }
-        }, 5000); // Exatos 5 segundos
+        }, 5000); 
 
 
         // --- LÓGICA DO DROPDOWN CUSTOMIZADO DE DDI ---
@@ -609,19 +607,16 @@
         const ddiInput = document.getElementById('lead-ddi');
         const phoneInput = document.getElementById('lead-whatsapp');
 
-        // Abrir/Fechar menu
         ddiButton.addEventListener('click', function() {
             ddiMenu.classList.toggle('hidden');
         });
 
-        // Fechar ao clicar fora
         document.addEventListener('click', function(e) {
             if (!document.getElementById('ddi-container').contains(e.target)) {
                 ddiMenu.classList.add('hidden');
             }
         });
 
-        // Selecionar um país
         document.querySelectorAll('.ddi-option').forEach(option => {
             option.addEventListener('click', function() {
                 const value = this.getAttribute('data-value');
@@ -629,15 +624,12 @@
                 const textSpan = document.getElementById('ddi-selected-text');
                 const flagElement = document.getElementById('ddi-selected-flag');
                 
-                // Atualiza o input escondido
                 ddiInput.value = value;
                 
                 if (code === 'other') {
-                    // Troca a imagem por um ícone de globo SVG
                     flagElement.outerHTML = `<svg id="ddi-selected-flag" class="w-5 h-5 text-gray-500 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
                     textSpan.innerText = '';
                 } else {
-                    // Atualiza a imagem da bandeira (se era SVG, recria a IMG)
                     if(flagElement.tagName.toLowerCase() === 'svg') {
                          flagElement.outerHTML = `<img src="https://flagcdn.com/w20/${code}.png" class="w-5 h-auto mr-1.5 rounded-[2px] shadow-sm object-cover" id="ddi-selected-flag" alt="${code}">`;
                     } else {
@@ -648,24 +640,22 @@
 
                 ddiMenu.classList.add('hidden');
                 
-                // Aciona a lógica de máscara e placeholder para atualizar
                 let v = phoneInput.value.replace(/\D/g, '');
                 if(value === '55') {
                     phoneInput.placeholder = "(00) 00000-0000";
-                    phoneInput.dispatchEvent(new Event('input')); // Força a máscara a reformatar
+                    phoneInput.dispatchEvent(new Event('input')); 
                 } else {
                     phoneInput.placeholder = "Número do WhatsApp";
-                    phoneInput.value = v; // Tira a máscara deixando só os números
+                    phoneInput.value = v; 
                 }
             });
         });
 
         // Máscara Dinâmica de Telefone
         phoneInput.addEventListener('input', function(e) {
-            let v = e.target.value.replace(/\D/g, ''); // Remove tudo que não é número
+            let v = e.target.value.replace(/\D/g, ''); 
             
             if (ddiInput.value === '55') {
-                // Máscara Brasil (10 ou 11 dígitos)
                 if (v.length <= 10) {
                     v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
                     v = v.replace(/(\d{4})(\d)/, '$1-$2');
@@ -675,7 +665,6 @@
                 }
                 e.target.value = v.substring(0, 15);
             } else {
-                // Máscara Internacional (apenas números, até 20 dígitos)
                 e.target.value = v.substring(0, 20);
             }
         });
@@ -769,6 +758,9 @@
             }, 300);
         }
 
+        // ==========================================
+        // SUBMIT TURBINADO: Valida, Rastreia e Redireciona
+        // ==========================================
         function enviarLeadERedirecionar(event) {
             event.preventDefault(); 
             
@@ -776,10 +768,11 @@
             const nomeEl = document.getElementById('lead-nome');
             const ddi = document.getElementById('lead-ddi').value;
             const emailEl = document.getElementById('lead-email');
+            const phoneInputEl = document.getElementById('lead-whatsapp'); 
             
             const nome = nomeEl.value.trim();
             const email = emailEl.value.trim();
-            const whatsappLimpo = phoneInput.value.replace(/\D/g, ''); 
+            const whatsappLimpo = phoneInputEl.value.replace(/\D/g, ''); 
             
             // 1. Valida Nome
             if (nome.split(' ').length < 2) {
@@ -811,21 +804,67 @@
 
             if(!isValid) return;
 
+            // ==========================================
+            // ENVIA DADOS PARA O DATALAYER (GTM)
+            // ==========================================
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'pre_checkout_submit',
+                'lead_name': nome,
+                'lead_email': email,
+                'lead_phone': ddi === '55' ? whatsappLimpo : ddi + whatsappLimpo
+            });
+
             const targetUrl = document.getElementById('checkout-url-target').value;
 
             try {
                 const urlFinal = new URL(targetUrl);
+                
+                // Dados do usuário para a Hotmart
                 urlFinal.searchParams.set('name', nome);
                 urlFinal.searchParams.set('email', email);
                 urlFinal.searchParams.set('phonenumber', whatsappLimpo); 
-                
                 if(ddi !== 'other') {
                     urlFinal.searchParams.set('phoneac', ddi); 
                 }
+
+                // Captura UTMs da página e repassa
+                const urlParams = new URLSearchParams(window.location.search);
+                const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+                let utmsEncontradas = [];
+
+                utmKeys.forEach(key => {
+                    const value = urlParams.get(key);
+                    if (value) {
+                        urlFinal.searchParams.set(key, value); 
+                        utmsEncontradas.push(value); 
+                    }
+                });
+
+                // Criação do SCK da Hotmart (se existirem UTMs)
+                if (utmsEncontradas.length > 0) {
+                    urlFinal.searchParams.set('sck', utmsEncontradas.join('|'));
+                }
+
+                // Captura do Cookie "user_id" para usar como xcod
+                function getCookieValue(name) {
+                    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                    return match ? decodeURIComponent(match[2]) : null;
+                }
+                const cookieUserId = getCookieValue('user_id');
+                if (cookieUserId) {
+                    urlFinal.searchParams.set('xcod', cookieUserId);
+                }
+
+                // Atraso de 500ms para garantir que o GTM dispare as tags antes de sair da página
+                setTimeout(() => {
+                    window.location.href = urlFinal.toString();
+                }, 500);
                 
-                window.location.href = urlFinal.toString();
             } catch (e) {
-                window.location.href = targetUrl;
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 500);
             }
         }
     </script>
