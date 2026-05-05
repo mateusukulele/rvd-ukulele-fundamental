@@ -39,10 +39,10 @@
            CSS CRÍTICO NATIVO: Página totalmente visível desde o frame 1
         ========================================================= */
         :root {
-            --bg-main: #4338ca;      /* Indigo 600 - Cor Principal */
-            --bg-dark: #312e81;      /* Indigo 900 - Contraste Escuro */
-            --text-light: #e0e7ff;   /* Indigo 100 - Texto Claro */
-            --btn-color: #badc20;    /* Verde Lima - Botões e Headline */
+            --bg-main: #4338ca;      
+            --bg-dark: #312e81;      
+            --text-light: #e0e7ff;   
+            --btn-color: #badc20;    
             --text-dark: #312e81;    
         }
         body {
@@ -51,12 +51,12 @@
             color: white;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
         ::selection { background-color: var(--btn-color); color: var(--text-dark); }
         
         .hero-section { max-width: 56rem; margin: 0 auto; padding: 3rem 1rem; text-align: center; }
         
-        /* Nova cor da Headline principal */
         .hero-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 1rem 0; line-height: 1.25; color: var(--btn-color); }
         .hero-subtitle { font-size: 1rem; color: var(--text-light); margin: 0 auto 2.5rem auto; max-width: 48rem; line-height: 1.5; font-weight: 500; }
         
@@ -75,7 +75,6 @@
 
         .cta-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 0.5rem; margin-bottom: 2rem; }
         
-        /* Cor de fundo da caixa CTA unificada com o BG principal */
         .cta-container { width: 100%; max-width: 800px; background-color: var(--bg-main); border-radius: 15px; padding: 0.75rem; text-align: center; box-shadow: 0 5px 20px rgba(49,46,129,0.2); }
         .cta-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; max-width: 550px; background-color: var(--btn-color); color: #222; padding: 1rem 1.5rem; border-radius: 10px; font-weight: 800; text-transform: uppercase; text-decoration: none; box-shadow: 0 8px 20px rgba(186,220,32,0.4); transition: all 0.3s ease; cursor: pointer; }
         .cta-button svg { margin-left: 0.5rem; width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
@@ -101,9 +100,17 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 8px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
         
-        /* Prevenção de FOUC: Oculta o conteúdo abaixo da dobra até o Tailwind carregar */
-        #main-content, #wa-floating { opacity: 0; transition: opacity 0.8s ease-in-out; }
-        body.tailwind-loaded #main-content, body.tailwind-loaded #wa-floating { opacity: 1; }
+        /* SCROLL REVEAL - UX Premium */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -125,7 +132,7 @@
             <script type="text/javascript"> 
                 var s=document.createElement("script"); 
                 s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js";
-                s.defer=true; /* OTIMIZAÇÃO: DEFER adicionado */
+                s.defer=true;
                 document.head.appendChild(s); 
             </script>
         </div>
@@ -140,10 +147,9 @@
         </div>
     </header>
 
-    <!-- O CONTEÚDO PRINCIPAL (Fade-in suave após carregamento estrutural) -->
     <main id="main-content" class="bg-white text-gray-800 w-full font-poppins block">
 
-        <section class="py-16 px-4 bg-gray-50" aria-labelledby="prova-social-title">
+        <section class="reveal-section py-16 px-4 bg-gray-50" aria-labelledby="prova-social-title">
             <div class="max-w-6xl mx-auto bg-white rounded-[25px] p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-gray-100">
                 <h2 id="prova-social-title" class="font-merriweather text-2xl md:text-[2rem] text-center text-gray-900 mb-10 leading-snug font-bold">
                     Veja o que aconteceu com quem decidiu aplicar esse método prático e direto ao ponto:
@@ -190,8 +196,7 @@
             </div>
         </section>
 
-        <section class="py-2 px-4 flex justify-center bg-gray-50">
-            <!-- Box de CTA igualado ao Hero bg-[#4338ca] para continuidade visual -->
+        <section class="reveal-section py-2 px-4 flex justify-center bg-gray-50">
             <div class="w-full max-w-[800px] bg-[#4338ca] rounded-[15px] p-3 text-center shadow-[0_5px_20px_rgba(49,46,129,0.2)]">
                 <a href="#" onclick="abrirCheckoutPopup(event, 'https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO&hideBillet=1')" class="btn-pulsar inline-flex items-center justify-center w-full max-w-[550px] bg-[#badc20] hover:bg-[#a3c417] hover:-translate-y-1 text-[#222] py-4 px-6 rounded-[10px] text-[0.9rem] md:text-[1.15rem] font-extrabold uppercase transition-all shadow-[0_8px_20px_rgba(186,220,32,0.4)]">
                     QUERO ACESSO IMEDIATO E VITALÍCIO
@@ -200,7 +205,7 @@
             </div>
         </section>
 
-        <section class="py-16 px-4 bg-white">
+        <section class="reveal-section py-16 px-4 bg-white">
             <div class="max-w-[900px] mx-auto bg-gray-50 rounded-[25px] p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-gray-100">
                 <h2 class="font-merriweather text-2xl md:text-[2rem] text-center text-gray-900 mb-10 leading-snug flex flex-col md:flex-row justify-center items-center gap-3 font-bold">
                     <svg aria-hidden="true" class="w-8 h-8 fill-none stroke-gray-800 stroke-2 stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -231,7 +236,7 @@
             </div>
         </section>
 
-        <section class="py-16 px-4 bg-gray-50">
+        <section class="reveal-section py-16 px-4 bg-gray-50">
             <div class="max-w-[800px] mx-auto bg-white rounded-[25px] p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.05)] text-center border border-gray-100">
                 <h2 class="font-merriweather text-[1.8rem] md:text-[2.2rem] text-gray-900 mb-8 leading-tight font-bold">Eu sei exatamente o que passa pela sua cabeça…</h2>
                 <blockquote class="text-lg md:text-[1.2rem] text-gray-600 italic mb-10">
@@ -248,7 +253,7 @@
             </div>
         </section>
 
-        <section class="py-16 px-4 bg-white">
+        <section class="reveal-section py-16 px-4 bg-white">
             <div class="max-w-[800px] mx-auto bg-[#4338ca] rounded-[25px] p-10 md:p-16 text-center text-white shadow-[0_15px_40px_rgba(67,56,202,0.3)]">
                 <h2 class="font-merriweather text-5xl md:text-[4rem] font-black text-[#badc20] mb-8 tracking-wide">MAS...</h2>
                 <p class="text-[1.1rem] md:text-[1.25rem] leading-relaxed mb-10">E se eu te dissesse que é possível tocar suas músicas favoritas mesmo sem saber nada, sem ter talento e sem precisar ficar horas e horas treinando por dia?</p>
@@ -259,7 +264,7 @@
             </div>
         </section>
 
-        <section class="py-20 px-4 bg-gray-50" aria-labelledby="bio-title">
+        <section class="reveal-section py-20 px-4 bg-gray-50" aria-labelledby="bio-title">
             <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 text-center md:text-left">
                 <div class="flex-1 w-full">
                     <img loading="lazy" decoding="async" width="400" height="400" src="https://static-public.pages.hotmart.com/uploads/media/file/3222622/foto-mateus.jpg" alt="Foto do professor Mateus Augusto" class="w-full max-w-[300px] md:max-w-[400px] mx-auto rounded-2xl object-cover bg-gray-200 shadow-md">
@@ -284,7 +289,7 @@
             </div>
         </section>
 
-        <section class="py-16 px-4 bg-white flex flex-col items-center">
+        <section class="reveal-section py-16 px-4 bg-white flex flex-col items-center">
             <div class="w-full max-w-[900px] bg-[#4338ca] rounded-[25px] p-10 md:p-16 text-center shadow-[0_15px_40px_rgba(67,56,202,0.3)]">
                 <h2 class="font-merriweather text-white text-[1.7rem] md:text-[2.2rem] mb-10 leading-tight font-bold">Comece sua jornada hoje</h2>
                 <div class="bg-white w-full max-w-[600px] mx-auto rounded-2xl p-8 md:p-10 shadow-xl">
@@ -321,7 +326,7 @@
             </div>
         </section>
 
-        <section class="py-16 px-4 bg-gray-50">
+        <section class="reveal-section py-16 px-4 bg-gray-50">
             <div class="max-w-[800px] mx-auto bg-white rounded-[25px] p-8 md:p-12 text-center shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-gray-100">
                 <div class="w-20 h-20 bg-amber-50 rounded-full flex justify-center items-center mx-auto mb-8">
                     <svg aria-hidden="true" class="w-10 h-10 stroke-amber-500 stroke-2 fill-none stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
@@ -332,7 +337,7 @@
             </div>
         </section>
 
-        <section class="py-16 px-4 bg-white">
+        <section class="reveal-section py-16 px-4 bg-white">
             <div class="max-w-[1100px] mx-auto bg-[#4338ca] rounded-[25px] p-10 md:p-16 shadow-[0_15px_40px_rgba(67,56,202,0.25)]">
                 <h2 class="font-merriweather text-[1.8rem] md:text-[2.5rem] text-center text-white mb-5 font-bold leading-tight">Ainda com dúvidas?</h2>
                 <p class="text-center text-indigo-100 text-[1.1rem] mb-12 max-w-[700px] mx-auto">Se você se identifica com algum desses problemas, tenho certeza que esse programa é para você:</p>
@@ -381,7 +386,7 @@
             </div>
         </section>
 
-        <section class="py-16 px-4 bg-gray-50">
+        <section class="reveal-section py-16 px-4 bg-gray-50">
             <div class="max-w-[900px] mx-auto bg-white rounded-[25px] p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-gray-100">
                 <h2 class="font-merriweather text-[1.8rem] md:text-[2.5rem] text-center text-gray-900 mb-10 font-bold">Perguntas frequentes</h2>
                 <div class="space-y-4">
@@ -424,7 +429,7 @@
             </div>
         </section>
 
-        <section class="pt-16 pb-24 px-4 bg-white">
+        <section class="reveal-section pt-16 pb-24 px-4 bg-white">
             <div class="max-w-[800px] mx-auto bg-gray-50 rounded-[25px] p-10 md:p-16 text-center shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-gray-100">
                 <h2 class="font-merriweather text-[1.7rem] md:text-[2.2rem] text-gray-900 mb-4 font-bold">Fale com a minha equipe</h2>
                 <p class="text-[1rem] md:text-[1.1rem] text-gray-600 mb-10 max-w-[500px] mx-auto">Ficou com alguma dúvida sobre o curso ou quer saber se ele é para você? Clique no botão abaixo e fale conosco.</p>
@@ -554,6 +559,29 @@
     </a>
 
     <script>
+        // --- SCROLL REVEAL OBSERVER ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Dispara quando 15% da seção estiver visível
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Anima apenas 1 vez
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // --- SCRIPTS PESADOS OTIMIZADOS ---
         let scriptsLoaded = false;
         
         function loadHeavyScripts() {
@@ -566,15 +594,8 @@
             'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PDH6QGB2');
 
-            // Carregamento do Tailwind via CDN com aviso de término para resolver o FOUC
             var twScript = document.createElement('script');
             twScript.src = 'https://cdn.tailwindcss.com';
-            twScript.onload = function() {
-                // Pequeno atraso para garantir que as classes foram aplicadas pelo script
-                setTimeout(function() {
-                    document.body.classList.add('tailwind-loaded');
-                }, 100);
-            };
             document.body.appendChild(twScript);
         }
 
@@ -583,7 +604,6 @@
             window.addEventListener(event, loadHeavyScripts, { passive: true, once: true });
         });
 
-        // OTIMIZAÇÃO: GTM e Tailwind carregam se não houver interação após 4 segundos.
         setTimeout(loadHeavyScripts, 4000);
 
         // --- LÓGICA DO DROPDOWN CUSTOMIZADO DE DDI ---
