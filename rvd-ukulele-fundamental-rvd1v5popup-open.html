@@ -42,7 +42,7 @@
             --bg-main: #4338ca;      /* Indigo 600 - Cor Principal */
             --bg-dark: #312e81;      /* Indigo 900 - Contraste Escuro */
             --text-light: #e0e7ff;   /* Indigo 100 - Texto Claro */
-            --btn-color: #badc20;    /* Verde Lima - Botões */
+            --btn-color: #badc20;    /* Verde Lima - Botões e Headline */
             --text-dark: #312e81;    
         }
         body {
@@ -55,8 +55,10 @@
         ::selection { background-color: var(--btn-color); color: var(--text-dark); }
         
         .hero-section { max-width: 56rem; margin: 0 auto; padding: 3rem 1rem; text-align: center; }
-        .hero-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 1rem 0; line-height: 1.25; }
-        .hero-subtitle { font-size: 1rem; color: var(--text-light); margin: 0 auto 2.5rem auto; max-width: 48rem; line-height: 1.5; }
+        
+        /* Nova cor da Headline principal */
+        .hero-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 1rem 0; line-height: 1.25; color: var(--btn-color); }
+        .hero-subtitle { font-size: 1rem; color: var(--text-light); margin: 0 auto 2.5rem auto; max-width: 48rem; line-height: 1.5; font-weight: 500; }
         
         @media (min-width: 768px) {
             .hero-section { padding: 5rem 1rem; }
@@ -72,7 +74,9 @@
         @media (min-width: 768px) { .video-wrapper vturb-smartplayer { min-height: 480px; } }
 
         .cta-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 0.5rem; margin-bottom: 2rem; }
-        .cta-container { width: 100%; max-width: 800px; background-color: var(--bg-dark); border-radius: 15px; padding: 0.75rem; text-align: center; box-shadow: 0 5px 20px rgba(49,46,129,0.2); }
+        
+        /* Cor de fundo da caixa CTA unificada com o BG principal */
+        .cta-container { width: 100%; max-width: 800px; background-color: var(--bg-main); border-radius: 15px; padding: 0.75rem; text-align: center; box-shadow: 0 5px 20px rgba(49,46,129,0.2); }
         .cta-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; max-width: 550px; background-color: var(--btn-color); color: #222; padding: 1rem 1.5rem; border-radius: 10px; font-weight: 800; text-transform: uppercase; text-decoration: none; box-shadow: 0 8px 20px rgba(186,220,32,0.4); transition: all 0.3s ease; cursor: pointer; }
         .cta-button svg { margin-left: 0.5rem; width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
         @media (min-width: 768px) { .cta-button { font-size: 1.15rem; } }
@@ -96,6 +100,10 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 8px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+        
+        /* Prevenção de FOUC: Oculta o conteúdo abaixo da dobra até o Tailwind carregar */
+        #main-content, #wa-floating { opacity: 0; transition: opacity 0.8s ease-in-out; }
+        body.tailwind-loaded #main-content, body.tailwind-loaded #wa-floating { opacity: 1; }
     </style>
 </head>
 
@@ -132,6 +140,7 @@
         </div>
     </header>
 
+    <!-- O CONTEÚDO PRINCIPAL (Fade-in suave após carregamento estrutural) -->
     <main id="main-content" class="bg-white text-gray-800 w-full font-poppins block">
 
         <section class="py-16 px-4 bg-gray-50" aria-labelledby="prova-social-title">
@@ -182,7 +191,8 @@
         </section>
 
         <section class="py-2 px-4 flex justify-center bg-gray-50">
-            <div class="w-full max-w-[800px] bg-[#312e81] rounded-[15px] p-3 text-center shadow-[0_5px_20px_rgba(49,46,129,0.2)]">
+            <!-- Box de CTA igualado ao Hero bg-[#4338ca] para continuidade visual -->
+            <div class="w-full max-w-[800px] bg-[#4338ca] rounded-[15px] p-3 text-center shadow-[0_5px_20px_rgba(49,46,129,0.2)]">
                 <a href="#" onclick="abrirCheckoutPopup(event, 'https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO&hideBillet=1')" class="btn-pulsar inline-flex items-center justify-center w-full max-w-[550px] bg-[#badc20] hover:bg-[#a3c417] hover:-translate-y-1 text-[#222] py-4 px-6 rounded-[10px] text-[0.9rem] md:text-[1.15rem] font-extrabold uppercase transition-all shadow-[0_8px_20px_rgba(186,220,32,0.4)]">
                     QUERO ACESSO IMEDIATO E VITALÍCIO
                     <svg aria-hidden="true" class="ml-2 w-5 h-5 fill-none stroke-current stroke-[3] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
@@ -239,7 +249,7 @@
         </section>
 
         <section class="py-16 px-4 bg-white">
-            <div class="max-w-[800px] mx-auto bg-[#312e81] rounded-[25px] p-10 md:p-16 text-center text-white shadow-[0_15px_40px_rgba(49,46,129,0.3)]">
+            <div class="max-w-[800px] mx-auto bg-[#4338ca] rounded-[25px] p-10 md:p-16 text-center text-white shadow-[0_15px_40px_rgba(67,56,202,0.3)]">
                 <h2 class="font-merriweather text-5xl md:text-[4rem] font-black text-[#badc20] mb-8 tracking-wide">MAS...</h2>
                 <p class="text-[1.1rem] md:text-[1.25rem] leading-relaxed mb-10">E se eu te dissesse que é possível tocar suas músicas favoritas mesmo sem saber nada, sem ter talento e sem precisar ficar horas e horas treinando por dia?</p>
                 <p class="text-xl md:text-[1.4rem] font-semibold mb-3 text-indigo-50">Seria bom para você?</p>
@@ -288,7 +298,7 @@
                     
                     <div class="mb-8">
                         <div class="text-gray-400 line-through text-base mb-1">De R$ 597,00</div>
-                        <div class="font-merriweather text-[#312e81] text-[2.8rem] md:text-[3.5rem] font-black leading-none mb-1">
+                        <div class="font-merriweather text-[#4338ca] text-[2.8rem] md:text-[3.5rem] font-black leading-none mb-1">
                             <span class="text-2xl font-bold align-middle" aria-label="Reais">R$</span> 397
                         </div>
                         <div class="text-gray-900 text-[1.1rem] font-bold">ou 12x de R$ 41,00 no cartão</div>
@@ -323,7 +333,7 @@
         </section>
 
         <section class="py-16 px-4 bg-white">
-            <div class="max-w-[1100px] mx-auto bg-[#312e81] rounded-[25px] p-10 md:p-16 shadow-[0_15px_40px_rgba(49,46,129,0.25)]">
+            <div class="max-w-[1100px] mx-auto bg-[#4338ca] rounded-[25px] p-10 md:p-16 shadow-[0_15px_40px_rgba(67,56,202,0.25)]">
                 <h2 class="font-merriweather text-[1.8rem] md:text-[2.5rem] text-center text-white mb-5 font-bold leading-tight">Ainda com dúvidas?</h2>
                 <p class="text-center text-indigo-100 text-[1.1rem] mb-12 max-w-[700px] mx-auto">Se você se identifica com algum desses problemas, tenho certeza que esse programa é para você:</p>
                 
@@ -556,8 +566,15 @@
             'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PDH6QGB2');
 
+            // Carregamento do Tailwind via CDN com aviso de término para resolver o FOUC
             var twScript = document.createElement('script');
             twScript.src = 'https://cdn.tailwindcss.com';
+            twScript.onload = function() {
+                // Pequeno atraso para garantir que as classes foram aplicadas pelo script
+                setTimeout(function() {
+                    document.body.classList.add('tailwind-loaded');
+                }, 100);
+            };
             document.body.appendChild(twScript);
         }
 
@@ -566,7 +583,7 @@
             window.addEventListener(event, loadHeavyScripts, { passive: true, once: true });
         });
 
-        // OTIMIZAÇÃO: GTM carrega se não houver interação após 4 segundos.
+        // OTIMIZAÇÃO: GTM e Tailwind carregam se não houver interação após 4 segundos.
         setTimeout(loadHeavyScripts, 4000);
 
         // --- LÓGICA DO DROPDOWN CUSTOMIZADO DE DDI ---
