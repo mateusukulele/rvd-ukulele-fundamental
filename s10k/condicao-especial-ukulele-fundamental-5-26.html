@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Condição Especial - Ukulele Fundamental VIP</title>
-    <meta name="description" content="Tire o ukulele do canto da sala e toque suas músicas favoritas com 20 minutos por dia. Condição exclusiva no Grupo VIP.">
+    <title>Condição Especial - Ukulele Fundamental</title>
     
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
 
@@ -15,377 +14,330 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { 
-                        sans: ['Poppins', 'sans-serif'], 
-                        display: ['Montserrat', 'sans-serif'] 
-                    },
-                    colors: { 
-                        brand: { 
-                            blue: '#2d6dbf', 
-                            orange: '#fb6719', 
-                            dark: '#1e293b', 
-                            light: '#f8fafc', 
-                            cta: '#ea580c', 
-                            ctahover: '#c2410c' 
-                        } 
-                    }
+                    fontFamily: { sans: ['Poppins', 'sans-serif'], display: ['Montserrat', 'sans-serif'] },
+                    colors: { brand: { blue: '#2d6dbf', orange: '#fb6719', dark: '#1e293b', light: '#f8fafc', cta: '#ea580c', ctahover: '#c2410c' } }
                 }
             }
         }
     </script>
 
     <style>
-        /* Animações e Estilos Críticos */
-        .cascade-section { display: none; }
-        .cascade-section.animate-reveal { display: block; animation: cascadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes cascadeIn {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+        .cascade-section { display: none; opacity: 0; }
+        .cascade-section.animate-reveal { display: block; animation: cascadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes cascadeIn { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
         
-        .btn-pulsar { animation: pulsar-suave 2.5s infinite ease-in-out; }
-        @keyframes pulsar-suave {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.025); }
-        }
+        .btn-pulsar:hover { transform: translateY(-4px); box-shadow: 0 15px 30px -5px rgba(234, 88, 12, 0.4); }
+        .btn-pulsar { transition: all 0.3s ease; }
+        
+        .bg-vitalicio { position: relative; overflow: hidden; }
+        .bg-vitalicio::before { content: 'VITALÍCIO'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12vw; font-weight: 800; color: rgba(45, 109, 191, 0.07); z-index: 0; white-space: nowrap; pointer-events: none; }
 
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
 </head>
 
-<body class="font-sans text-slate-700 bg-brand-light antialiased selection:bg-brand-orange selection:text-white">
-
+<body class="font-sans text-slate-700 bg-brand-light antialiased">
     <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <main id="main-content" class="w-full">
-
-        <header class="cascade-section bg-brand-dark text-white pt-12 pb-20 px-4 text-center rounded-b-[40px] shadow-lg">
-            <div class="max-w-4xl mx-auto mt-4">
-                
-                <span class="inline-block bg-brand-blue/20 border border-brand-blue/50 text-brand-light text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6">
-                    Condição Exclusiva no Grupo VIP do WhatsApp
-                </span>
-
-                <h1 class="font-display text-3xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight text-white">
-                    Tire o ukulele do canto da sala e toque suas músicas favoritas com <span class="text-brand-orange">20 minutos por dia</span>
-                </h1>
-                
-                <p class="text-base md:text-lg text-slate-300 mb-10 max-w-3xl mx-auto font-medium">
-                    Mesmo que você já tenha tentado antes e travado no caminho, e mesmo que ache que não tenha talento pra música.
-                </p>
-
-                <div class="w-full max-w-3xl mx-auto bg-slate-800 rounded-2xl aspect-video flex items-center justify-center border border-slate-700 shadow-2xl mb-8 overflow-hidden">
-                    <span class="text-slate-500 font-semibold">[ Inserir Imagem 1: Mateus + Prints de Alunos (1200x600px) ]</span>
-                </div>
-
-                <div class="flex flex-col items-center justify-center w-full max-w-lg mx-auto">
-                    <button onclick="abrirCaptura()" class="btn-pulsar w-full bg-brand-cta hover:bg-brand-ctahover text-white py-4 px-6 rounded-2xl font-display font-extrabold text-lg uppercase shadow-lg hover:-translate-y-1 transition-all flex items-center justify-center">
-                        Quero Entrar no Grupo VIP
-                        <svg class="w-5 h-5 ml-2 stroke-current stroke-[3] fill-none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
-                    <p class="mt-3 text-sm font-semibold text-slate-400">
-                        De: <span class="line-through">R$597</span> Por: <strong class="text-brand-light">SURPRESA no Grupo</strong>
-                    </p>
-                </div>
-            </div>
-        </header>
-
-        <section class="cascade-section py-20 px-4 bg-brand-light">
-            <div class="max-w-5xl mx-auto">
-                
-                <div class="flex flex-wrap justify-center gap-4 mb-12">
-                    <span class="bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100 font-bold text-brand-dark flex items-center text-sm"><span class="text-brand-orange mr-2">✓</span> +6.000 Alunos</span>
-                    <span class="bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100 font-bold text-brand-dark flex items-center text-sm"><span class="text-brand-orange mr-2">✓</span> 14 Dias de Garantia</span>
-                    <span class="bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100 font-bold text-brand-dark flex items-center text-sm"><span class="text-brand-orange mr-2">✓</span> Acesso Imediato</span>
-                </div>
-
-                <div class="text-center mb-12">
-                    <h2 class="font-display text-2xl md:text-4xl text-brand-dark font-extrabold mb-6 leading-tight">O método 3D que transforma <span class="text-brand-blue">adulto travado em adulto tocando</span></h2>
-                    <p class="text-slate-600 max-w-3xl mx-auto leading-relaxed mb-6">Aprender música em vídeo avulso do YouTube é como receber peças de quebra-cabeça soltas vindas de caixas diferentes. Cada tutorial ensina um pedaço, mas ninguém te mostra onde encaixa, e a culpa parece sua quando você não evolui.</p>
-                    <p class="text-slate-600 max-w-3xl mx-auto leading-relaxed font-semibold">O Método 3D faz o oposto. Ele funciona baseado em 3 pilares, e o domínio chega como consequência.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:border-brand-blue transition-colors">
-                        <div class="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center font-display font-extrabold text-xl mb-4">1</div>
-                        <h3 class="font-display font-bold text-xl text-brand-dark mb-3">Dividir</h3>
-                        <p class="text-slate-600 text-sm">Cada música em peças pequenas e altamente gerenciáveis para o seu cérebro processar.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:border-brand-blue transition-colors">
-                        <div class="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center font-display font-extrabold text-xl mb-4">2</div>
-                        <h3 class="font-display font-bold text-xl text-brand-dark mb-3">Destravar</h3>
-                        <p class="text-slate-600 text-sm">Cada peça treinada com repetição inteligente em velocidade reduzida, tirando o peso do erro.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:border-brand-blue transition-colors">
-                        <div class="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center font-display font-extrabold text-xl mb-4">3</div>
-                        <h3 class="font-display font-bold text-xl text-brand-dark mb-3">Dominar</h3>
-                        <p class="text-slate-600 text-sm">A música flui naturalmente, o som sai limpo, o ritmo fica firme e você toca do início ao fim.</p>
-                    </div>
-                </div>
-
-                <div class="flex justify-center">
-                    <button onclick="abrirCaptura()" class="btn-pulsar w-full max-w-md bg-brand-cta hover:bg-brand-ctahover text-white py-4 px-6 rounded-2xl font-display font-extrabold text-lg uppercase shadow-lg hover:-translate-y-1 transition-all">
-                        Quero Entrar no Grupo VIP
-                    </button>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="cascade-section py-20 px-4 bg-white">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="font-display text-2xl md:text-3xl text-center text-brand-dark font-extrabold mb-10">Dúvidas Frequentes</h2>
-                
-                <div class="space-y-4">
-                    <details class="group bg-brand-light border border-slate-200 rounded-xl overflow-hidden shadow-sm open:shadow-md transition-all">
-                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-display font-bold text-brand-dark">
-                            Já tentei aprender com vídeo do YouTube e não consegui. Vai ser diferente aqui?
-                            <span class="w-3 h-3 border-r-2 border-b-2 border-slate-400 transform rotate-45 group-open:-rotate-[135deg] group-open:border-brand-orange transition-transform shrink-0"></span>
-                        </summary>
-                        <div class="px-5 md:px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4 mt-1">
-                            Vai. O problema do YouTube não é a falta de conteúdo, é a falta de sequência. Você assiste um vídeo de hoje, outro de semana passada, e cada um ensina fora de ordem. Dentro do curso, você segue um caminho linear em 4 etapas. O Método 3D garante que cada peça encaixa na próxima.
-                        </div>
-                    </details>
-                    
-                    <details class="group bg-brand-light border border-slate-200 rounded-xl overflow-hidden shadow-sm open:shadow-md transition-all">
-                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-display font-bold text-brand-dark">
-                            Tenho mais de 50 anos. Não passou da hora?
-                            <span class="w-3 h-3 border-r-2 border-b-2 border-slate-400 transform rotate-45 group-open:-rotate-[135deg] group-open:border-brand-orange transition-transform shrink-0"></span>
-                        </summary>
-                        <div class="px-5 md:px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4 mt-1">
-                            Não passou. Temos alunos de todas as idades tocando. O ukulele é o instrumento de entrada mais leve que existe, são só 4 cordas, não machuca os dedos como o violão, e a primeira música sai com acordes de um dedo só. Se eu aprendi com os dedos sensibilizados pela quimioterapia, idade não é desculpa!
-                        </div>
-                    </details>
-                    
-                    <details class="group bg-brand-light border border-slate-200 rounded-xl overflow-hidden shadow-sm open:shadow-md transition-all">
-                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-display font-bold text-brand-dark">
-                            Eu ainda não tenho o ukulele. Posso entrar no curso assim mesmo?
-                            <span class="w-3 h-3 border-r-2 border-b-2 border-slate-400 transform rotate-45 group-open:-rotate-[135deg] group-open:border-brand-orange transition-transform shrink-0"></span>
-                        </summary>
-                        <div class="px-5 md:px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4 mt-1">
-                            Pode. Muitos alunos entram no curso antes de comprar e usam os primeiros dias para escolher o modelo certo com a nossa ajuda. Te orientamos sobre modelos de entrada acessíveis, com critérios para não errar. Quando o ukulele chegar, você já vai estar pronto.
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <div id="capture-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center bg-brand-dark/80 px-4 backdrop-blur-sm opacity-0 transition-opacity duration-300">
-        <div class="w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl transform scale-95 transition-transform duration-300" id="capture-content">
+    <header class="cascade-section bg-brand-dark text-white pt-16 pb-24 px-4 text-center rounded-b-[50px] shadow-2xl">
+        <div class="max-w-4xl mx-auto">
+            <span class="inline-block bg-brand-orange/20 border border-brand-orange/40 text-brand-orange text-xs font-bold px-5 py-2 rounded-full uppercase tracking-[0.2em] mb-8">
+                🔥 Condição exclusiva no Grupo VIP do WhatsApp 🔥
+            </span>
+            <h1 class="font-display text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
+                Tire o ukulele do canto da sala e toque suas músicas favoritas com <span class="text-brand-orange">20 minutos por dia</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+                Mesmo que você já tenha tentado antes e travado no caminho, e mesmo que ache que não tenha talento pra música.
+            </p>
             
-            <div class="mb-6 flex items-center justify-between">
-                <h3 class="font-display text-xl font-extrabold text-brand-dark">Garantir Acesso ao VIP</h3>
-                <button onclick="fecharCaptura()" class="text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-2 transition-colors">
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            <div class="bg-slate-800/50 rounded-3xl p-4 border border-slate-700 mb-12 max-w-3xl mx-auto shadow-inner">
+                <div class="bg-slate-900 rounded-2xl aspect-video flex flex-col items-center justify-center text-slate-500 italic p-8">
+                    <p class="mb-2 font-bold text-slate-400">[ IMAGEM: MATEUS + PRINTS DE ALUNOS ]</p>
+                    <p class="text-xs">Recomendação: 1280x720px - Mostra autoridade e resultado social imediato</p>
+                </div>
+            </div>
+
+            <div class="max-w-md mx-auto">
+                <button onclick="abrirCaptura()" class="btn-pulsar w-full bg-brand-cta text-white py-5 px-8 rounded-2xl font-display font-extrabold text-xl uppercase tracking-tight shadow-lg">
+                    Quero Entrar no Grupo VIP
                 </button>
+                <p class="mt-4 text-slate-400 font-bold">
+                    De: <span class="line-through">R$597</span> <span class="text-white ml-2">Por: SURPRESA no Grupo</span>
+                </p>
             </div>
-            
-            <p class="mb-6 text-sm text-slate-600 font-medium">Preencha os dados abaixo para receber o link exclusivo de acesso ao Grupo VIP no seu WhatsApp.</p>
-            
-            <form id="lead-form" onsubmit="handleCapture(event)">
-                
-                <div class="mb-4">
-                    <label class="mb-1.5 block text-sm font-semibold text-brand-dark" for="lead-nome">Nome e Sobrenome *</label>
-                    <input required type="text" id="lead-nome" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-700 focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all" placeholder="Ex: João da Silva">
-                    <p id="erro-nome" class="mt-1.5 hidden text-xs font-semibold text-red-500">Insira seu nome e sobrenome.</p>
-                </div>
-                
-                <div class="mb-4">
-                    <label class="mb-1.5 block text-sm font-semibold text-brand-dark" for="lead-email">E-mail *</label>
-                    <input required type="email" id="lead-email" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3.5 text-slate-700 focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all" placeholder="seu@melhoremail.com">
-                </div>
-                
-                <div class="mb-6">
-                    <label class="mb-1.5 block text-sm font-semibold text-brand-dark" for="lead-whatsapp">WhatsApp *</label>
-                    <div class="flex rounded-xl border border-slate-300 bg-slate-50 transition-all focus-within:border-brand-blue focus-within:bg-white focus-within:ring-2 focus-within:ring-brand-blue/20">
-                        
-                        <div class="relative flex items-center border-r border-slate-300 shrink-0 select-none" id="ddi-container">
-                            <input type="hidden" id="lead-ddi" value="55">
-                            <button type="button" id="ddi-button" class="flex items-center h-full px-3 text-sm font-semibold text-slate-700 focus:outline-none hover:bg-slate-200/50 rounded-l-xl transition-colors">
-                                <img src="https://flagcdn.com/w20/br.png" class="w-5 h-auto mr-1.5 rounded-[2px] shadow-sm" id="ddi-selected-flag">
-                                <span id="ddi-selected-text">+55</span>
-                                <svg class="h-4 w-4 ml-1 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
+        </div>
+    </header>
 
-                            <ul id="ddi-menu" class="absolute top-full left-0 mt-2 w-56 bg-white border border-slate-200 rounded-xl shadow-xl z-50 hidden max-h-48 overflow-y-auto custom-scrollbar">
-                                <li class="ddi-option px-4 py-2.5 hover:bg-slate-50 cursor-pointer flex items-center text-sm" data-value="55" data-code="br">
-                                    <img src="https://flagcdn.com/w20/br.png" class="w-5 h-auto mr-3 rounded-[2px]"> <span class="font-medium text-slate-700">Brasil (+55)</span>
-                                </li>
-                                <li class="ddi-option px-4 py-2.5 hover:bg-slate-50 cursor-pointer flex items-center text-sm" data-value="1" data-code="us">
-                                    <img src="https://flagcdn.com/w20/us.png" class="w-5 h-auto mr-3 rounded-[2px]"> <span class="font-medium text-slate-700">EUA (+1)</span>
-                                </li>
-                                <li class="ddi-option px-4 py-2.5 hover:bg-slate-50 cursor-pointer flex items-center text-sm" data-value="351" data-code="pt">
-                                    <img src="https://flagcdn.com/w20/pt.png" class="w-5 h-auto mr-3 rounded-[2px]"> <span class="font-medium text-slate-700">Portugal (+351)</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <input required type="tel" id="lead-whatsapp" class="w-full bg-transparent px-4 py-3.5 text-slate-700 focus:outline-none rounded-r-xl" placeholder="(00) 00000-0000" maxlength="20">
-                    </div>
-                    <p id="erro-whatsapp" class="mt-1.5 hidden text-xs font-semibold text-red-500">Insira um número válido (10 a 11 dígitos para o Brasil).</p>
+    <section class="cascade-section py-24 px-4">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="font-display text-3xl md:text-4xl text-brand-dark font-extrabold mb-8 leading-tight">
+                    O método 3D que transforma <br><span class="text-brand-blue">adulto travado em adulto tocando</span>
+                </h2>
+                <div class="space-y-6 text-slate-600 leading-relaxed">
+                    <p>Aprender música em vídeo avulso do YouTube é como receber peças de quebra-cabeça soltas vindas de caixas diferentes. Cada tutorial ensina um pedaço, mas ninguém te mostra onde encaixa.</p>
+                    <p class="font-semibold text-brand-dark italic bg-brand-blue/5 p-4 rounded-xl border-l-4 border-brand-blue">O Método 3D faz o oposto. Divide cada música, cada acorde e cada batida em peças pequenas, destrava cada peça com repetição inteligente, e o domínio chega como consequência.</p>
                 </div>
-                
-                <button type="submit" id="btn-submit" class="w-full rounded-2xl bg-brand-cta hover:bg-brand-ctahover px-4 py-4 text-base font-display font-extrabold uppercase text-white shadow-lg transition-all hover:-translate-y-1 flex justify-center items-center">
-                    Entrar no Grupo VIP Agora
+                <div class="mt-10 flex gap-8">
+                    <div class="text-center"><span class="block text-2xl font-extrabold text-brand-dark">+6k</span><span class="text-xs uppercase font-bold text-slate-400">Alunos</span></div>
+                    <div class="text-center"><span class="block text-2xl font-extrabold text-brand-dark">14</span><span class="text-xs uppercase font-bold text-slate-400">Dias Garantia</span></div>
+                    <div class="text-center"><span class="block text-2xl font-extrabold text-brand-dark">∞</span><span class="text-xs uppercase font-bold text-slate-400">Acesso Vitalício</span></div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-[40px] shadow-xl border border-slate-100">
+                <div class="space-y-8">
+                    <div class="flex items-center gap-6 p-6 bg-brand-light rounded-2xl border border-slate-200">
+                        <span class="w-12 h-12 flex items-center justify-center bg-brand-dark text-white rounded-full font-bold">1</span>
+                        <div><h4 class="font-bold text-brand-dark">Dividir</h4><p class="text-sm">Cada música em peças pequenas e gerenciáveis.</p></div>
+                    </div>
+                    <div class="text-center text-slate-300">↓</div>
+                    <div class="flex items-center gap-6 p-6 bg-brand-light rounded-2xl border border-slate-200">
+                        <span class="w-12 h-12 flex items-center justify-center bg-brand-blue text-white rounded-full font-bold">2</span>
+                        <div><h4 class="font-bold text-brand-dark">Destravar</h4><p class="text-sm">Repetição inteligente em velocidade reduzida.</p></div>
+                    </div>
+                    <div class="text-center text-slate-300">↓</div>
+                    <div class="flex items-center gap-6 p-6 bg-brand-blue/10 rounded-2xl border border-brand-blue/20">
+                        <span class="w-12 h-12 flex items-center justify-center bg-brand-orange text-white rounded-full font-bold">3</span>
+                        <div><h4 class="font-bold text-brand-dark">Dominar</h4><p class="text-sm">A música flui, som limpo e ritmo firme.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cascade-section bg-vitalicio py-24 px-4 bg-white border-y border-slate-100">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <h2 class="font-display text-3xl md:text-4xl text-brand-dark font-extrabold mb-12">
+                Dentro do Ukulele Fundamental, você tem <span class="text-brand-blue">tudo o que precisa</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 text-left space-y-6">
+                    <div class="flex gap-4"><span class="text-brand-orange font-bold text-xl">✓</span><p class="text-slate-600 font-medium">Curso completo em 4 etapas estruturadas, do zero à autonomia.</p></div>
+                    <div class="flex gap-4"><span class="text-brand-orange font-bold text-xl">✓</span><p class="text-slate-600 font-medium">Aulas curtas para caber em 20 minutos por dia.</p></div>
+                    <div class="flex gap-4"><span class="text-brand-orange font-bold text-xl">✓</span><p class="text-slate-600 font-medium">Aplicação prática com música real já na Etapa 1.</p></div>
+                    <div class="flex gap-4"><span class="text-brand-orange font-bold text-xl">✓</span><p class="text-slate-600 font-medium">Selo de Acesso Vitalício incluso nesta condição.</p></div>
+                </div>
+                <div class="order-1 md:order-2 bg-slate-100 rounded-3xl aspect-square flex flex-col items-center justify-center p-8 border border-slate-200">
+                    <p class="font-bold text-slate-400 text-center">[ IMAGEM MOCKUP: MULTIDISPOSITIVOS ESTILO NETFLIX ]</p>
+                    <p class="text-xs text-slate-400 mt-4 italic">Aulas gravadas em alta qualidade, no seu ritmo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cascade-section py-24 px-4 bg-brand-light">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="font-display text-3xl font-extrabold text-brand-dark mb-16">Em 4 etapas simples, você sai do zero ou destrava de vez</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 text-left">
+                    <div class="bg-slate-100 h-40 rounded-2xl mb-6 flex items-center justify-center text-xs text-slate-400 font-bold">[FOTO ETAPA 1]</div>
+                    <span class="text-[10px] font-black bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full uppercase mb-4 inline-block">Fase 1</span>
+                    <h3 class="font-display font-bold text-brand-dark mb-3">Início Imediato</h3>
+                    <p class="text-xs leading-relaxed text-slate-500">Postura, afinação e sua primeira música completa com um dedo só.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 text-left">
+                    <div class="bg-slate-100 h-40 rounded-2xl mb-6 flex items-center justify-center text-xs text-slate-400 font-bold">[FOTO ETAPA 2]</div>
+                    <span class="text-[10px] font-black bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full uppercase mb-4 inline-block">Fase 2</span>
+                    <h3 class="font-display font-bold text-brand-dark mb-3">Fundamentos</h3>
+                    <p class="text-xs leading-relaxed text-slate-500">Domine as 3 batidas coringas e troque acordes sem engasgar.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 text-left">
+                    <div class="bg-slate-100 h-40 rounded-2xl mb-6 flex items-center justify-center text-xs text-slate-400 font-bold">[FOTO ETAPA 3]</div>
+                    <span class="text-[10px] font-black bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full uppercase mb-4 inline-block">Fase 3</span>
+                    <h3 class="font-display font-bold text-brand-dark mb-3">Temperar o Som</h3>
+                    <p class="text-xs leading-relaxed text-slate-500">Som limpo, cristalino e técnicas de abafamento profissionais.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 text-left">
+                    <div class="bg-slate-100 h-40 rounded-2xl mb-6 flex items-center justify-center text-xs text-slate-400 font-bold">[FOTO ETAPA 4]</div>
+                    <span class="text-[10px] font-black bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full uppercase mb-4 inline-block">Fase 4</span>
+                    <h3 class="font-display font-bold text-brand-dark mb-3">Autonomia Musical</h3>
+                    <p class="text-xs leading-relaxed text-slate-500">Reggae, baião, pestana e liberdade para tocar o que você ama.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cascade-section py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-display text-3xl font-extrabold text-center text-brand-dark mb-16">Você ainda leva <span class="text-brand-orange">4 bônus exclusivos</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-brand-blue/5 rounded-2xl p-8 mb-6 h-32 flex items-center justify-center font-bold text-brand-blue">Comunidade VIP</div>
+                    <h4 class="font-bold mb-2">Comunidade</h4>
+                    <p class="text-xs text-slate-500">Tira-dúvidas direto com os professores por 1 ano.</p>
+                    <span class="text-[10px] font-bold text-brand-orange block mt-2">DE: R$ 297 | GRÁTIS</span>
+                </div>
+                <div class="text-center">
+                    <div class="bg-brand-blue/5 rounded-2xl p-8 mb-6 h-32 flex items-center justify-center font-bold text-brand-blue">Biblioteca 150+</div>
+                    <h4 class="font-bold mb-2">Repertório</h4>
+                    <p class="text-xs text-slate-500">Mais de 150 músicas passo a passo.</p>
+                    <span class="text-[10px] font-bold text-brand-orange block mt-2">DE: R$ 297 | GRÁTIS</span>
+                </div>
+                <div class="text-center">
+                    <div class="bg-brand-blue/5 rounded-2xl p-8 mb-6 h-32 flex items-center justify-center font-bold text-brand-blue">W. Canto</div>
+                    <h4 class="font-bold mb-2">Workshop Canto</h4>
+                    <p class="text-xs text-slate-500">Aprenda a tocar e cantar afinado.</p>
+                    <span class="text-[10px] font-bold text-brand-orange block mt-2">DE: R$ 147 | GRÁTIS</span>
+                </div>
+                <div class="text-center border-2 border-brand-orange/30 p-4 rounded-3xl bg-brand-orange/5">
+                    <div class="bg-brand-orange/10 rounded-2xl p-8 mb-6 h-32 flex items-center justify-center font-bold text-brand-orange">VITALÍCIO</div>
+                    <h4 class="font-bold mb-2">Acesso Vitalício</h4>
+                    <p class="text-xs text-slate-500">Assista no seu tempo para sempre.</p>
+                    <span class="text-[10px] font-bold text-brand-orange block mt-2">DE: R$ 597 | GRÁTIS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cascade-section py-20 px-4 bg-brand-dark text-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-display text-3xl font-extrabold mb-12">🔥 Bônus Exclusivos da Semana 🔥</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700">
+                    <div class="text-brand-orange font-bold text-xs mb-4 uppercase tracking-widest">Apenas esta semana</div>
+                    <h3 class="font-display text-xl font-bold mb-4">Acompanhamento Uke a Uke</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Envie 3 vídeos com o seu Ukulele e o Mateus responderá pessoalmente com correções e direção.</p>
+                </div>
+                <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700">
+                    <div class="text-brand-orange font-bold text-xs mb-4 uppercase tracking-widest">Nas 2 primeiras horas</div>
+                    <h3 class="font-display text-xl font-bold mb-4">Dicionário de Acordes</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Bate o olho, vê a posição, toca. O guia de consulta definitiva para não travar nos estudos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cascade-section py-24 px-4 bg-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-display text-4xl font-extrabold text-brand-dark mb-12">Tudo o que você leva hoje:</h2>
+            <div class="text-left bg-brand-light p-10 rounded-[40px] border border-slate-200 mb-12">
+                <ul class="space-y-4 font-semibold text-slate-600">
+                    <li class="flex justify-between"><span>✅ Curso Ukulele Fundamental</span> <span>R$ 597</span></li>
+                    <li class="flex justify-between"><span>✅ Comunidade VIP por 1 Ano</span> <span>R$ 297</span></li>
+                    <li class="flex justify-between"><span>✅ Biblioteca com 150+ Músicas</span> <span>R$ 297</span></li>
+                    <li class="flex justify-between"><span>✅ Workshop de Canto</span> <span>R$ 147</span></li>
+                    <li class="flex justify-between text-brand-blue"><span>🎁 Bônus: Acesso Vitalício</span> <span>R$ 597</span></li>
+                    <li class="flex justify-between text-brand-orange pt-4 border-t border-slate-200"><span>TOTAL REAL:</span> <span>R$ 2.512,00</span></li>
+                </ul>
+                <div class="mt-12 text-center">
+                    <p class="text-slate-400 line-through text-xl">De: R$ 2.512,00</p>
+                    <p class="text-slate-400 text-sm">Por apenas SURPRESA no Grupo</p>
+                    <div class="mt-8">
+                        <button onclick="abrirCaptura()" class="btn-pulsar w-full bg-brand-cta text-white py-6 px-10 rounded-3xl font-display font-extrabold text-2xl uppercase shadow-2xl">
+                            Quero Reservar Minha Vaga VIP
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cascade-section py-24 px-4 bg-brand-light">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-display text-3xl font-extrabold text-center text-brand-dark mb-16">Dúvidas Frequentes</h2>
+            <div class="space-y-4">
+                <details class="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <summary class="list-none p-6 cursor-pointer flex justify-between items-center font-bold text-brand-dark">
+                        Trabalho o dia inteiro, vou conseguir?
+                        <span class="w-3 h-3 border-r-2 border-b-2 border-slate-400 transform rotate-45 group-open:-rotate-[135deg] transition-transform"></span>
+                    </summary>
+                    <div class="p-6 pt-0 text-slate-500 text-sm leading-relaxed">Sim. O curso foi feito para caber em 20 minutos. As aulas são curtas e gravadas, você assiste quando puder.</div>
+                </details>
+                </div>
+            
+            <div class="mt-20 p-8 bg-[#25d366]/10 rounded-3xl border border-[#25d366]/30 text-center">
+                <h4 class="font-bold text-brand-dark mb-4">Ainda com dúvidas?</h4>
+                <a href="https://wa.me/553198585286" target="_blank" class="inline-flex items-center gap-3 bg-[#25d366] text-white px-8 py-4 rounded-2xl font-bold uppercase text-sm hover:scale-105 transition-transform shadow-lg">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.992-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.63 4.144 1.732 5.768l-1.074 3.92 4.031-1.057-.202-.33z"/></svg>
+                    Falar com a Equipe no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="capture-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center bg-brand-dark/90 px-4 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="w-full max-w-md rounded-[40px] bg-white p-10 shadow-2xl transform scale-95 transition-transform duration-300" id="capture-content">
+            <h3 class="font-display text-2xl font-extrabold text-brand-dark mb-2">Falta muito pouco!</h3>
+            <p class="text-slate-500 text-sm mb-8">Preencha os dados abaixo para liberar seu acesso ao Grupo VIP.</p>
+            
+            <form onsubmit="handleCapture(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2 ml-1" for="lead-nome">Nome Completo</label>
+                    <input required type="text" id="lead-nome" class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:border-brand-blue focus:outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2 ml-1" for="lead-email">Seu Melhor E-mail</label>
+                    <input required type="email" id="lead-email" class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:border-brand-blue focus:outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2 ml-1" for="lead-whatsapp">WhatsApp com DDD</label>
+                    <div class="flex gap-2">
+                        <input type="hidden" id="lead-ddi" value="55">
+                        <input required type="tel" id="lead-whatsapp" class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:border-brand-blue focus:outline-none transition-all" placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+                <button type="submit" id="btn-submit" class="w-full bg-brand-cta text-white py-5 rounded-2xl font-display font-extrabold uppercase shadow-lg mt-4">
+                    Liberar Acesso Agora
                 </button>
             </form>
-            
-            <div class="mt-5 text-center text-xs font-medium text-slate-400 flex justify-center items-center gap-1.5">
-                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                Seus dados estão 100% seguros
-            </div>
+            <button onclick="fecharCaptura()" class="mt-6 text-slate-300 text-xs hover:text-slate-500 transition-colors uppercase font-bold tracking-widest">Fechar Janela</button>
         </div>
     </div>
 
     <script>
-        // 1. INICIALIZAÇÃO E CASCATA
+        // Lógica de Cascata
         function iniciarCascata() {
             const sections = document.querySelectorAll('.cascade-section');
-            let delay = 0;
-            sections.forEach((sec) => {
-                setTimeout(() => { sec.classList.add('animate-reveal'); }, delay);
-                delay += 150; 
+            sections.forEach((sec, i) => {
+                setTimeout(() => {
+                    sec.classList.add('animate-reveal');
+                }, i * 150);
             });
         }
-        window.addEventListener('DOMContentLoaded', () => { setTimeout(iniciarCascata, 100); });
+        window.onload = iniciarCascata;
 
-        // 2. CONTROLE DO MODAL DE CAPTURA
+        // Modal Controls
         function abrirCaptura() {
-            const modal = document.getElementById('capture-modal');
-            const content = document.getElementById('capture-content');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                content.classList.remove('scale-95');
-            }, 10);
+            const m = document.getElementById('capture-modal');
+            m.classList.remove('hidden'); m.classList.add('flex');
+            setTimeout(() => { m.classList.remove('opacity-0'); document.getElementById('capture-content').classList.remove('scale-95'); }, 10);
         }
-
         function fecharCaptura() {
-            const modal = document.getElementById('capture-modal');
-            const content = document.getElementById('capture-content');
-            modal.classList.add('opacity-0');
-            content.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }, 300);
+            const m = document.getElementById('capture-modal');
+            m.classList.add('opacity-0'); document.getElementById('capture-content').classList.add('scale-95');
+            setTimeout(() => m.classList.add('hidden'), 300);
         }
 
-        // 3. COMPONENTE DDI & MÁSCARA WHATSAPP
-        const ddiBtn = document.getElementById('ddi-button');
-        const ddiMenu = document.getElementById('ddi-menu');
-        const ddiInput = document.getElementById('lead-ddi');
-        const waInput = document.getElementById('lead-whatsapp');
-
-        ddiBtn.addEventListener('click', () => ddiMenu.classList.toggle('hidden'));
-        document.addEventListener('click', (e) => {
-            if (!document.getElementById('ddi-container').contains(e.target)) ddiMenu.classList.add('hidden');
-        });
-
-        document.querySelectorAll('.ddi-option').forEach(opt => {
-            opt.addEventListener('click', function() {
-                const val = this.dataset.value;
-                const code = this.dataset.code;
-                ddiInput.value = val;
-                document.getElementById('ddi-selected-flag').src = `https://flagcdn.com/w20/${code}.png`;
-                document.getElementById('ddi-selected-text').innerText = '+' + val;
-                ddiMenu.classList.add('hidden');
-                
-                waInput.value = waInput.value.replace(/\D/g, '');
-                if(val === '55') waInput.placeholder = "(00) 00000-0000";
-                else waInput.placeholder = "Número do WhatsApp";
-                waInput.dispatchEvent(new Event('input'));
-            });
-        });
-
-        waInput.addEventListener('input', function(e) {
-            let v = e.target.value.replace(/\D/g, ''); 
-            if (ddiInput.value === '55') {
-                if (v.length <= 10) {
-                    v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
-                    v = v.replace(/(\d{4})(\d)/, '$1-$2');
-                } else {
-                    v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
-                    v = v.replace(/(\d{5})(\d)/, '$1-$2');
-                }
-                e.target.value = v.substring(0, 15);
-            } else {
-                e.target.value = v.substring(0, 20);
-            }
-        });
-
-        // 4. VALIDAÇÃO E SUBMISSÃO (HANDLE CAPTURE)
+        // RASTREAMENTO E SUBMISSÃO (MANUAL ITEM 4)
         function handleCapture(event) {
             event.preventDefault();
-            let isValid = true;
-            
-            const nomeInput = document.getElementById('lead-nome');
-            const emailInput = document.getElementById('lead-email');
+            const btn = document.getElementById('btn-submit');
+            const name = document.getElementById('lead-nome').value;
+            const email = document.getElementById('lead-email').value;
+            const phone = document.getElementById('lead-whatsapp').value;
             const ddi = document.getElementById('lead-ddi').value;
-            const waClean = waInput.value.replace(/\D/g, '');
-            const btnSubmit = document.getElementById('btn-submit');
-            
-            // Validação Nome
-            if (nomeInput.value.trim().split(' ').length < 2) {
-                document.getElementById('erro-nome').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('erro-nome').style.display = 'none';
-            }
-
-            // Validação WhatsApp
-            if (ddi === '55' && (waClean.length < 10 || waClean.length > 11)) {
-                document.getElementById('erro-whatsapp').style.display = 'block';
-                isValid = false;
-            } else if (ddi !== '55' && waClean.length < 5) {
-                document.getElementById('erro-whatsapp').innerText = "Insira um número válido.";
-                document.getElementById('erro-whatsapp').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('erro-whatsapp').style.display = 'none';
-            }
-
-            if(!isValid) return;
+            const fullPhone = ddi + phone.replace(/\D/g, '');
 
             // Feedback Visual
-            const btnOriginalText = btnSubmit.innerHTML;
-            btnSubmit.innerHTML = 'LIBERANDO ACESSO... <svg class="animate-spin ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
-            btnSubmit.disabled = true;
-            btnSubmit.classList.add('opacity-80', 'cursor-not-allowed');
+            btn.innerHTML = "Processando...";
+            btn.disabled = true;
 
-            const fullPhone = ddi + waClean;
-
-            // Rastreamento GTM
-            window.dataLayer = window.dataLayer || [];
+            // Push DataLayer
             window.dataLayer.push({
                 'event': 'lead_capture_vip',
-                'lead_name': nomeInput.value.trim(),
-                'lead_email': emailInput.value.trim(),
+                'lead_name': name,
+                'lead_email': email,
                 'lead_phone': fullPhone
             });
 
-            // Redirecionamento após 500ms
+            // Redirect
             setTimeout(() => {
-                // Link de destino (Pode alterar para o link do Grupo do WhatsApp Oficial)
-                window.location.href = "https://chat.whatsapp.com/SEULINKAQUI";
-            }, 500);
+                window.location.href = "https://chat.whatsapp.com/SEU_ID_DO_GRUPO_VIP";
+            }, 600);
         }
-
-        // Accordion FAQ (Comportamento de abrir apenas 1 por vez)
-        document.querySelectorAll('details.group').forEach(details => {
-            details.addEventListener('click', function() {
-                if (!this.open) { 
-                    document.querySelectorAll('details.group').forEach(other => { 
-                        if (other !== this && other.open) other.removeAttribute('open'); 
-                    }); 
-                }
-            });
-        });
     </script>
 </body>
 </html>
