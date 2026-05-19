@@ -12,17 +12,32 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Poppins', 'sans-serif'], display: ['Montserrat', 'sans-serif'] },
+                    fontFamily: { 
+                        sans: ['Poppins', 'sans-serif'], 
+                        display: ['Montserrat', 'sans-serif'] 
+                    },
                     colors: { 
-                        brand: { blue: '#2d6dbf', orange: '#fb6719', dark: '#1e293b', light: '#f8fafc', cta: '#ea580c', ctahover: '#c2410c' } 
+                        brand: { 
+                            blue: '#2d6dbf', 
+                            orange: '#fb6719', 
+                            dark: '#1e293b', 
+                            light: '#f8fafc' 
+                        } 
                     }
                 }
             }
         }
     </script>
     <style>
-        .btn-whatsapp { background: #25d366; transition: all 0.3s ease; }
-        .btn-whatsapp:hover { background: #128c7e; transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4); }
+        .btn-whatsapp { 
+            background: #25d366; 
+            transition: all 0.3s ease; 
+        }
+        .btn-whatsapp:hover { 
+            background: #128c7e; 
+            transform: translateY(-4px); 
+            box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4); 
+        }
     </style>
 </head>
 <body class="font-sans text-slate-700 bg-brand-light antialiased">
@@ -56,6 +71,13 @@
             </div>
         </div>
     </main>
+
+    <script>
+        // Aguarda 3 segundos para garantir que o GTM dispare, depois redireciona
+        setTimeout(function() {
+            window.location.href = "https://chat.whatsapp.com/F7PBiJMVlCpA4NfSnsja6n";
+        }, 3000); 
+    </script>
 
 </body>
 </html>
