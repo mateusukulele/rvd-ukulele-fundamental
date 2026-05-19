@@ -72,7 +72,7 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        @media (max-height: 740px) { .hero-title { font-size: 1.4rem !important; } }
+        @media (max-height: 740px) { .hero-title { font-size: 1.3rem !important; } }
     </style>
 </head>
 
@@ -81,30 +81,35 @@
 
     <main id="main-content" class="w-full overflow-x-hidden">
 
-        <header class="cascade-section bg-brand-dark text-white h-[100dvh] min-h-[580px] w-full rounded-b-[40px] shadow-2xl relative flex items-center justify-center px-4 overflow-hidden">
-            <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-12 h-full py-6 lg:py-12">
-                <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start text-center lg:text-left h-full space-y-4 lg:space-y-6">
-                    <span class="inline-block bg-brand-orange/20 border border-brand-orange/40 text-brand-orange text-[10px] lg:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest flex-shrink-0">
+        <header class="cascade-section bg-brand-dark text-white h-[100dvh] min-h-[620px] w-full rounded-b-[40px] shadow-2xl relative flex items-center justify-center px-4 overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-12 h-full py-5 lg:py-12">
+                
+                <div class="w-full lg:hidden flex-shrink-0 h-[22vh] min-h-[140px] bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700 shadow-inner relative overflow-hidden">
+                    <p class="text-[10px] font-bold text-slate-500 uppercase">FOTO MATEUS + PRINTS</p>
+                </div>
+
+                <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start text-center lg:text-left h-full space-y-3 lg:space-y-6">
+                    <span class="inline-block bg-brand-orange/20 border border-brand-orange/40 text-brand-orange text-[10px] lg:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest flex-shrink-0 mt-1 lg:mt-0">
                         🔥 Condição exclusiva no Grupo VIP 🔥
                     </span>
-                    <h1 class="hero-title font-display text-[1.5rem] leading-tight sm:text-3xl lg:text-5xl font-extrabold flex-shrink-0">
+                    <h1 class="hero-title font-display text-[1.35rem] leading-tight sm:text-3xl lg:text-5xl font-extrabold flex-shrink-0">
                         Tire o ukulele do canto da sala e toque suas músicas favoritas com <span class="text-brand-orange">20 minutos por dia</span>
                     </h1>
-                    <div class="w-full flex-grow lg:hidden max-h-[35vh] bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700 my-2 shadow-inner overflow-hidden relative">
-                        <p class="text-[10px] font-bold text-slate-500 uppercase">FOTO MATEUS + PRINTS</p>
-                    </div>
-                    <p class="hidden sm:block text-sm lg:text-lg text-slate-300 max-w-xl font-medium">
+                    
+                    <p class="text-[13px] sm:text-sm lg:text-lg text-slate-300 max-w-xl font-medium leading-snug">
                         Mesmo que você já tenha tentado antes e travado no caminho, e mesmo que ache que não tenha talento.
                     </p>
-                    <div class="w-full max-w-md mt-auto lg:mt-0 pb-2">
-                        <button onclick="abrirCaptura()" class="btn-pulsar w-full bg-brand-cta text-white py-4 md:py-5 px-6 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-lg">
+                    
+                    <div class="w-full max-w-md mt-auto lg:mt-0 pb-2 pt-2 lg:pt-0">
+                        <button onclick="abrirCaptura()" class="btn-pulsar w-full bg-brand-cta text-white py-4 md:py-5 px-4 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-lg leading-tight">
                             Quero Entrar no Grupo VIP
                         </button>
-                        <p class="mt-3 text-[10px] md:text-sm text-slate-400 font-bold uppercase tracking-tight text-center lg:text-left">
-                            De: <span class="line-through text-slate-500">R$ 597</span> <span class="text-white ml-1">Por: SURPRESA no Grupo, dia 23/05</span>
+                        <p class="mt-3 text-[11px] md:text-sm text-slate-300 font-bold uppercase tracking-tight text-center lg:text-left">
+                            De: <span class="line-through text-slate-400">R$ 597</span> <span class="text-white ml-1">Por: SURPRESA no Grupo, dia 23/05</span>
                         </p>
                     </div>
                 </div>
+
                 <div class="hidden lg:flex w-full lg:w-1/2 h-full bg-slate-800/50 rounded-3xl border border-slate-700 items-center justify-center shadow-inner relative overflow-hidden">
                     <p class="font-bold text-slate-500 uppercase text-xs">FOTO MATEUS + PRINTS</p>
                 </div>
@@ -154,7 +159,7 @@
                         <p>O mesmo método que mais de <b>6.000 alunos</b> usaram para sair do zero ou destravar.</p>
                     </div>
                     <div class="pt-8 w-full flex justify-center lg:justify-start">
-                        <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-10 rounded-2xl font-display font-extrabold text-lg md:text-xl uppercase shadow-xl transition-all tracking-tight text-center">
+                        <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-xl transition-all tracking-tight text-center leading-tight">
                             Quero RECEBER A OFERTA no Grupo VIP NO DIA 23/05
                         </button>
                     </div>
@@ -196,7 +201,7 @@
                 </div>
                 
                 <div class="mt-14 w-full flex justify-center">
-                    <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-10 rounded-2xl font-display font-extrabold text-lg md:text-xl uppercase shadow-xl transition-all tracking-tight text-center">
+                    <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-xl transition-all tracking-tight text-center leading-tight">
                         Quero participar do Grupo VIP e receber a oferta
                     </button>
                 </div>
@@ -222,7 +227,7 @@
                     <div class="bg-slate-800/50 p-6 md:p-8 rounded-[40px] border border-slate-700 flex flex-col">
                         <div class="flex justify-between items-start mb-6">
                             <span class="bg-brand-blue/20 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 01</span>
-                            <div class="text-right"><span class="price-old text-slate-400 text-xs block">R$ 297,00/ano</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+                            <div class="text-right"><span class="price-old text-slate-300 font-bold text-xs block">R$ 297,00/ano</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
                         </div>
                         <h4 class="font-display font-extrabold text-xl mb-4 text-white uppercase">Comunidade Exclusiva</h4>
                         <p class="text-sm text-slate-400 leading-relaxed">Tira-dúvidas direto com professores e alunos, missões mensais com encontros ao vivo e o lugar onde você vê outras pessoas exatamente onde você está hoje.</p>
@@ -230,7 +235,7 @@
                     <div class="bg-slate-800/50 p-6 md:p-8 rounded-[40px] border border-slate-700 flex flex-col">
                         <div class="flex justify-between items-start mb-6">
                             <span class="bg-brand-blue/20 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 02</span>
-                            <div class="text-right"><span class="price-old text-slate-400 text-xs block">R$ 297,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+                            <div class="text-right"><span class="price-old text-slate-300 font-bold text-xs block">R$ 297,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
                         </div>
                         <h4 class="font-display font-extrabold text-xl mb-4 text-white uppercase">Biblioteca 150+ Músicas</h4>
                         <p class="text-sm text-slate-400 leading-relaxed">Repertório em pop, rock, reggae, gospel e MPB ensinado passo a passo, para você nunca mais ficar procurando tutorial avulso no YouTube.</p>
@@ -238,7 +243,7 @@
                     <div class="bg-slate-800/50 p-6 md:p-8 rounded-[40px] border border-slate-700 flex flex-col">
                         <div class="flex justify-between items-start mb-6">
                             <span class="bg-brand-blue/20 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 03</span>
-                            <div class="text-right"><span class="price-old text-slate-400 text-xs block">R$ 147,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+                            <div class="text-right"><span class="price-old text-slate-300 font-bold text-xs block">R$ 147,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
                         </div>
                         <h4 class="font-display font-extrabold text-xl mb-4 text-white uppercase">Workshop de Canto</h4>
                         <p class="text-sm text-slate-400 leading-relaxed">Aprenda a encontrar seu tom, aquecer a voz e tocar e cantar ao mesmo tempo afinado, mesmo se você nunca se considerou bom de voz.</p>
@@ -246,7 +251,7 @@
                     <div class="bg-brand-orange/10 p-6 md:p-8 rounded-[40px] border-2 border-brand-orange/40 flex flex-col">
                         <div class="flex justify-between items-start mb-6">
                             <span class="bg-brand-orange/20 text-brand-orange text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus Especial</span>
-                            <div class="text-right"><span class="price-old text-slate-400 text-xs block">R$ 597,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+                            <div class="text-right"><span class="price-old text-slate-300 font-bold text-xs block">R$ 597,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
                         </div>
                         <h4 class="font-display font-extrabold text-xl mb-4 text-white uppercase">Acesso Vitalício</h4>
                         <p class="text-sm text-slate-300 leading-relaxed italic">Como bônus desta condição, o acesso vira vitalício: você assiste no seu ritmo, refaz quantas vezes precisar e recebe todas as atualizações futuras.</p>
@@ -278,7 +283,7 @@
                 </div>
                 
                 <div class="mt-12 w-full flex justify-center">
-                    <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-10 rounded-2xl font-display font-extrabold text-lg md:text-xl uppercase shadow-xl transition-all tracking-tight text-center">
+                    <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-xl transition-all tracking-tight text-center leading-tight">
                         Quero Entrar no Grupo VIP e receber a oferta no dia 23/05
                     </button>
                 </div>
@@ -335,41 +340,43 @@
                     <ul class="text-left space-y-5 mb-10 text-sm md:text-base border-b border-slate-700/50 pb-10">
                         <li class="flex justify-between items-start gap-4">
                             <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Curso Ukulele Fundamental completo</b> (4 etapas, do zero à autonomia musical)</span></span>
-                            <span class="price-old text-slate-500 font-medium whitespace-nowrap">R$ 597</span>
+                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 597</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
                             <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Comunidade Exclusiva por 1 Ano</b> (tira-dúvidas e Missão Uke ao vivo)</span></span>
-                            <span class="price-old text-slate-500 font-medium whitespace-nowrap">R$ 297</span>
+                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 297</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
                             <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Biblioteca com Mais de 150 Músicas</b> (pop, rock, reggae, gospel, MPB)</span></span>
-                            <span class="price-old text-slate-500 font-medium whitespace-nowrap">R$ 297</span>
+                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 297</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
                             <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Workshop de Canto com Ukulele</b> (tocar e cantar afinado ao mesmo tempo)</span></span>
-                            <span class="price-old text-slate-500 font-medium whitespace-nowrap">R$ 147</span>
+                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 147</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
                             <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Acesso Vitalício</b> (sem prazo, com todas as atualizações futuras)</span></span>
-                            <span class="price-old text-slate-500 font-medium whitespace-nowrap">R$ 297</span>
+                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 297</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
                             <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Acompanhamento Uke a Uke com o Mateus</b> (bônus exclusivo para inscrições no dia 23/05 pela oferta especial)</span></span>
-                            <span class="price-old text-slate-500 font-medium whitespace-nowrap">R$ 497</span>
+                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 497</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
                             <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Dicionário de Acordes do Ukulele</b> (nas 2 primeiras horas de abertura no dia 23/05)</span></span>
-                            <span class="price-old text-slate-500 font-medium whitespace-nowrap">R$ 27</span>
+                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 27</span>
                         </li>
                     </ul>
                     
                     <div class="text-center">
-                        <p class="text-slate-400 text-lg md:text-xl font-bold mb-3">De: <span class="price-old text-slate-500">R$ 2.159,00</span> | Por:</p>
-                        <p class="text-white text-base md:text-xl uppercase tracking-widest mb-10 font-medium">
-                            <span class="bg-brand-orange/20 border border-brand-orange/50 text-brand-orange px-6 py-2.5 rounded-xl font-black shadow-sm text-2xl md:text-4xl text-glow whitespace-nowrap">SURPRESA, liberada no dia 23/05 somente no grupo vip</span>
+                        <p class="text-slate-300 text-xl md:text-2xl font-bold mb-3">De: <span class="price-old text-slate-400">R$ 2.159,00</span> | Por:</p>
+                        <p class="text-white text-base md:text-xl uppercase tracking-widest mb-10 font-medium px-2">
+                            <span class="inline-block bg-brand-orange/20 border border-brand-orange/50 text-brand-orange px-4 md:px-6 py-3 rounded-xl font-black shadow-sm text-lg md:text-3xl text-glow leading-tight">
+                                SURPRESA, liberada no dia 23/05<br class="hidden lg:block"> somente no grupo vip
+                            </span>
                         </p>
                         <div class="w-full flex justify-center">
-                            <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-10 rounded-2xl font-display font-extrabold text-lg md:text-xl uppercase shadow-2xl transition-all tracking-tight text-center">
+                            <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-2xl transition-all tracking-tight text-center leading-tight">
                                 Quero Entrar no Grupo VIP
                             </button>
                         </div>
@@ -412,7 +419,7 @@
             </div>
             
             <div class="max-w-5xl mx-auto mt-12 w-full flex justify-center">
-                <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-10 rounded-2xl font-display font-extrabold text-lg md:text-xl uppercase shadow-xl transition-all tracking-tight text-center">
+                <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-xl transition-all tracking-tight text-center leading-tight">
                     Quero receber a oferta especial, dia 23/05, no Grupo VIP
                 </button>
             </div>
@@ -469,7 +476,7 @@
             <div class="max-w-3xl mx-auto flex flex-col items-center text-center">
                 <h2 class="font-display text-2xl md:text-4xl font-extrabold text-brand-dark mb-8 leading-tight">Sua chance de destravar no ukulele começa agora</h2>
                 <div class="w-full flex justify-center">
-                    <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-10 rounded-2xl font-display font-extrabold text-lg md:text-xl uppercase shadow-xl transition-all tracking-tight text-center">
+                    <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-xl transition-all tracking-tight text-center leading-tight">
                         Quero Entrar no Grupo VIP e receber a oferta dia 23/05
                     </button>
                 </div>
