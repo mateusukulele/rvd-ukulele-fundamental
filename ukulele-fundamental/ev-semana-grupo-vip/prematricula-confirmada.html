@@ -3,46 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pré-inscrição Confirmada! - Ukulele Fundamental</title>
+    <title>Inscrição Confirmada! - Clube do Ukulele</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: { sans: ['Poppins', 'sans-serif'], display: ['Montserrat', 'sans-serif'] },
-                    colors: { brand: { blue: '#2d6dbf', orange: '#fb6719', dark: '#1e293b', light: '#f8fafc', cta: '#ea580c' } }
+                    colors: { 
+                        brand: { blue: '#2d6dbf', orange: '#fb6719', dark: '#1e293b', light: '#f8fafc', cta: '#ea580c', ctahover: '#c2410c' } 
+                    }
                 }
             }
         }
     </script>
+    <style>
+        .btn-whatsapp { background: #25d366; transition: all 0.3s ease; }
+        .btn-whatsapp:hover { background: #128c7e; transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4); }
+    </style>
 </head>
-<body class="font-sans bg-brand-light text-slate-700 min-h-screen flex flex-col">
+<body class="font-sans text-slate-700 bg-brand-light antialiased">
 
-    <main class="flex-grow flex items-center justify-center p-4">
-        <div class="max-w-xl w-full bg-white p-8 md:p-12 rounded-[40px] shadow-2xl text-center border border-slate-100">
-            <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-8">
-                <i class="fa-solid fa-check"></i>
-            </div>
-            <h1 class="font-display text-2xl md:text-4xl font-extrabold text-brand-dark mb-4">Pré-inscrição confirmada!</h1>
-            <p class="text-slate-600 mb-8 leading-relaxed">Você está a um passo de garantir sua vaga com as condições especiais. Para acessar o Grupo VIP e receber a oferta, clique no botão abaixo:</p>
+    <main class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-2xl w-full bg-white p-8 md:p-16 rounded-[40px] shadow-2xl text-center border border-slate-100">
             
+            <div class="w-24 h-24 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center text-5xl mx-auto mb-8 animate-bounce">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <h1 class="font-display text-3xl md:text-5xl font-extrabold text-brand-dark mb-6 leading-tight">
+                Inscrição <span class="text-brand-blue">confirmada!</span>
+            </h1>
+            
+            <p class="text-slate-600 mb-10 text-lg leading-relaxed max-w-md mx-auto">
+                Você acaba de garantir seu lugar. Agora, o passo final para receber a <b>oferta especial</b> é entrar no nosso grupo VIP.
+            </p>
+
             <a href="https://chat.whatsapp.com/F7PBiJMVlCpA4NfSnsja6n" 
-               class="block w-full bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 rounded-2xl font-display font-extrabold text-lg uppercase shadow-xl transition-all tracking-tight">
-                Entrar no Grupo VIP no WhatsApp
+               class="btn-whatsapp block w-full text-white py-5 px-6 rounded-2xl font-display font-extrabold text-lg md:text-xl uppercase shadow-xl tracking-tight flex items-center justify-center gap-3">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                Entrar no Grupo VIP
             </a>
+
+            <div class="mt-12 pt-8 border-t border-slate-100">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">O que acontece agora?</p>
+                <p class="text-sm text-slate-500 italic">
+                    "O link da oferta será enviado exclusivamente neste grupo no dia <b>25/05</b>. Não perca."
+                </p>
+            </div>
         </div>
     </main>
 
-    <section class="py-12 px-4 text-center">
-        <div class="max-w-2xl mx-auto">
-            <h3 class="font-display font-bold text-brand-dark mb-2">Por que entrar no Grupo VIP?</h3>
-            <p class="text-sm text-slate-500">
-                O Grupo VIP é o único lugar onde liberaremos o link da condição especial de lançamento no dia <b>25/05</b>. 
-                Fique atento às notificações do grupo para não perder a oportunidade de acesso vitalício e bônus exclusivos.
-            </p>
-        </div>
-    </section>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </body>
 </html>
