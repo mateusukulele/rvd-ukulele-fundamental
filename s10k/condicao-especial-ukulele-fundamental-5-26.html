@@ -45,8 +45,8 @@
         .method-card { border: 2px solid transparent; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .method-card:hover { transform: scale(1.05); border-color: #fb6719; }
 
-        /* Preço Sobretraçado */
-        .price-old { text-decoration: line-through; text-decoration-color: #f87171; text-decoration-thickness: 2px; }
+        /* Preço Sobretraçado (Ajustado para maior legibilidade) */
+        .price-old { text-decoration: line-through; text-decoration-color: #ef4444; text-decoration-thickness: 3px; }
 
         /* Estilização Dobra de Resultado (Resumindo) */
         .outcome-card {
@@ -222,39 +222,43 @@
         <section class="cascade-section py-24 px-4 bg-brand-dark text-white rounded-[60px] my-10 shadow-2xl mx-2 md:mx-4">
             <div class="max-w-6xl mx-auto">
                 <h2 class="font-display text-3xl md:text-5xl font-extrabold text-center mb-4 text-white">Você ainda leva <span class="text-brand-orange italic">4 bônus exclusivos</span></h2>
-                <p class="text-center text-slate-400 mb-16 max-w-2xl mx-auto">Tudo o que você precisa para transformar o aprendizado em um hobby para a vida toda.</p>
+                <p class="text-center text-slate-400 mb-16 max-w-2xl mx-auto text-lg">Tudo o que você precisa para transformar o aprendizado em um hobby para a vida toda.</p>
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-slate-800/50 p-6 md:p-8 rounded-[40px] border border-slate-700 flex flex-col">
+                    <div class="bg-white p-6 md:p-8 rounded-[40px] shadow-xl flex flex-col">
                         <div class="flex justify-between items-start mb-6">
-                            <span class="bg-brand-blue/20 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 01</span>
-                            <div class="text-right"><span class="price-old text-slate-300 font-bold text-xs block">R$ 297,00/ano</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+                            <span class="bg-brand-blue/10 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 01</span>
+                            <div class="text-right"><span class="price-old text-slate-400 font-black text-sm md:text-base block">R$ 297,00/ano</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
                         </div>
-                        <h4 class="font-display font-extrabold text-xl mb-4 text-white uppercase">Comunidade Exclusiva</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed">Tira-dúvidas direto com professores e alunos, missões mensais com encontros ao vivo e o lugar onde você vê outras pessoas exatamente onde você está hoje.</p>
+                        <h4 class="font-display font-extrabold text-2xl mb-4 text-brand-dark uppercase">Comunidade Exclusiva</h4>
+                        <p class="text-base md:text-lg text-slate-600 font-medium leading-relaxed">Tira-dúvidas direto com professores e alunos, missões mensais com encontros ao vivo e o lugar onde você vê outras pessoas exatamente onde você está hoje.</p>
                     </div>
-                    <div class="bg-slate-800/50 p-6 md:p-8 rounded-[40px] border border-slate-700 flex flex-col">
+                    
+                    <div class="bg-white p-6 md:p-8 rounded-[40px] shadow-xl flex flex-col">
                         <div class="flex justify-between items-start mb-6">
-                            <span class="bg-brand-blue/20 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 02</span>
-                            <div class="text-right"><span class="price-old text-slate-300 font-bold text-xs block">R$ 297,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+                            <span class="bg-brand-blue/10 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 02</span>
+                            <div class="text-right"><span class="price-old text-slate-400 font-black text-sm md:text-base block">R$ 297,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
                         </div>
-                        <h4 class="font-display font-extrabold text-xl mb-4 text-white uppercase">Biblioteca 150+ Músicas</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed">Repertório em pop, rock, reggae, gospel e MPB ensinado passo a passo, para você nunca mais ficar procurando tutorial avulso no YouTube.</p>
+                        <h4 class="font-display font-extrabold text-2xl mb-4 text-brand-dark uppercase">Biblioteca 150+ Músicas</h4>
+                        <p class="text-base md:text-lg text-slate-600 font-medium leading-relaxed">Repertório em pop, rock, reggae, gospel e MPB ensinado passo a passo, para você nunca mais ficar procurando tutorial avulso no YouTube.</p>
                     </div>
-                    <div class="bg-slate-800/50 p-6 md:p-8 rounded-[40px] border border-slate-700 flex flex-col">
+                    
+                    <div class="bg-white p-6 md:p-8 rounded-[40px] shadow-xl flex flex-col">
                         <div class="flex justify-between items-start mb-6">
-                            <span class="bg-brand-blue/20 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 03</span>
-                            <div class="text-right"><span class="price-old text-slate-300 font-bold text-xs block">R$ 147,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+                            <span class="bg-brand-blue/10 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 03</span>
+                            <div class="text-right"><span class="price-old text-slate-400 font-black text-sm md:text-base block">R$ 147,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
                         </div>
-                        <h4 class="font-display font-extrabold text-xl mb-4 text-white uppercase">Workshop de Canto</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed">Aprenda a encontrar seu tom, aquecer a voz e tocar e cantar ao mesmo tempo afinado, mesmo se você nunca se considerou bom de voz.</p>
+                        <h4 class="font-display font-extrabold text-2xl mb-4 text-brand-dark uppercase">Workshop de Canto</h4>
+                        <p class="text-base md:text-lg text-slate-600 font-medium leading-relaxed">Aprenda a encontrar seu tom, aquecer a voz e tocar e cantar ao mesmo tempo afinado, mesmo se você nunca se considerou bom de voz.</p>
                     </div>
-                    <div class="bg-brand-orange/10 p-6 md:p-8 rounded-[40px] border-2 border-brand-orange/40 flex flex-col">
+                    
+                    <div class="bg-gradient-to-br from-brand-orange to-brand-cta p-6 md:p-8 rounded-[40px] shadow-xl flex flex-col">
                         <div class="flex justify-between items-start mb-6">
-                            <span class="bg-brand-orange/20 text-brand-orange text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus Especial</span>
-                            <div class="text-right"><span class="price-old text-slate-300 font-bold text-xs block">R$ 597,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+                            <span class="bg-white/20 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus Especial</span>
+                            <div class="text-right"><span class="price-old text-white/80 font-black text-sm md:text-base block">R$ 597,00</span><span class="text-white font-black text-sm uppercase drop-shadow-md">Grátis</span></div>
                         </div>
-                        <h4 class="font-display font-extrabold text-xl mb-4 text-white uppercase">Acesso Vitalício</h4>
-                        <p class="text-sm text-slate-300 leading-relaxed italic">Como bônus desta condição, o acesso vira vitalício: você assiste no seu ritmo, refaz quantas vezes precisar e recebe todas as atualizações futuras.</p>
+                        <h4 class="font-display font-extrabold text-2xl mb-4 text-white uppercase">Acesso Vitalício</h4>
+                        <p class="text-base md:text-lg text-white font-medium leading-relaxed italic">Como bônus desta condição, o acesso vira vitalício: você assiste no seu ritmo, refaz quantas vezes precisar e recebe todas as atualizações futuras.</p>
                     </div>
                 </div>
             </div>
@@ -337,39 +341,39 @@
                 <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-12 uppercase tracking-tighter">Certo, mas quanto vai custar tudo isso?</h2>
                 
                 <div class="bg-slate-900/80 backdrop-blur-md rounded-[40px] p-6 md:p-14 border border-slate-700 shadow-inner">
-                    <ul class="text-left space-y-5 mb-10 text-sm md:text-base border-b border-slate-700/50 pb-10">
+                    <ul class="text-left space-y-6 mb-10 text-base md:text-lg text-slate-200 border-b border-slate-700/50 pb-10">
                         <li class="flex justify-between items-start gap-4">
-                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Curso Ukulele Fundamental completo</b> (4 etapas, do zero à autonomia musical)</span></span>
-                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 597</span>
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Curso Ukulele Fundamental completo</b> (4 etapas, do zero à autonomia musical)</span></span>
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 597</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
-                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Comunidade Exclusiva por 1 Ano</b> (tira-dúvidas e Missão Uke ao vivo)</span></span>
-                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 297</span>
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Comunidade Exclusiva por 1 Ano</b> (tira-dúvidas e Missão Uke ao vivo)</span></span>
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 297</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
-                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Biblioteca com Mais de 150 Músicas</b> (pop, rock, reggae, gospel, MPB)</span></span>
-                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 297</span>
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Biblioteca com Mais de 150 Músicas</b> (pop, rock, reggae, gospel, MPB)</span></span>
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 297</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
-                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Workshop de Canto com Ukulele</b> (tocar e cantar afinado ao mesmo tempo)</span></span>
-                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 147</span>
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Workshop de Canto com Ukulele</b> (tocar e cantar afinado ao mesmo tempo)</span></span>
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 147</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
-                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Acesso Vitalício</b> (sem prazo, com todas as atualizações futuras)</span></span>
-                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 297</span>
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Acesso Vitalício</b> (sem prazo, com todas as atualizações futuras)</span></span>
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 297</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
-                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Acompanhamento Uke a Uke com o Mateus</b> (bônus exclusivo para inscrições no dia 23/05 pela oferta especial)</span></span>
-                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 497</span>
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Acompanhamento Uke a Uke com o Mateus</b> (bônus exclusivo para inscrições no dia 23/05 pela oferta especial)</span></span>
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 497</span>
                         </li>
                         <li class="flex justify-between items-start gap-4">
-                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-lg">✅</span> <span><b>Dicionário de Acordes do Ukulele</b> (nas 2 primeiras horas de abertura no dia 23/05)</span></span>
-                            <span class="price-old text-slate-400 font-bold whitespace-nowrap text-base">R$ 27</span>
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Dicionário de Acordes do Ukulele</b> (nas 2 primeiras horas de abertura no dia 23/05)</span></span>
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 27</span>
                         </li>
                     </ul>
                     
                     <div class="text-center">
-                        <p class="text-slate-300 text-xl md:text-2xl font-bold mb-3">De: <span class="price-old text-slate-400">R$ 2.159,00</span> | Por:</p>
+                        <p class="text-slate-300 text-xl md:text-2xl font-bold mb-4 flex flex-wrap items-center justify-center gap-2">De: <span class="price-old text-red-400 font-black text-3xl md:text-4xl mx-2">R$ 2.159,00</span> | Por:</p>
                         <p class="text-white text-base md:text-xl uppercase tracking-widest mb-10 font-medium px-2">
                             <span class="inline-block bg-brand-orange/20 border border-brand-orange/50 text-brand-orange px-4 md:px-6 py-3 rounded-xl font-black shadow-sm text-lg md:text-3xl text-glow leading-tight">
                                 SURPRESA, liberada no dia 23/05<br class="hidden lg:block"> somente no grupo vip
