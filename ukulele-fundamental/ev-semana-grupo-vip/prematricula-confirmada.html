@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscrição Confirmada! - Clube do Ukulele</title>
     
+    <link rel="icon" type="image/svg+xml" href="../../img/favicon-mini-ukulele.svg">
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { 
-                        sans: ['Poppins', 'sans-serif'], 
-                        display: ['Montserrat', 'sans-serif'] 
-                    },
+                    fontFamily: { sans: ['Poppins', 'sans-serif'], display: ['Montserrat', 'sans-serif'] },
                     colors: { 
                         brand: { 
                             blue: '#2d6dbf', 
                             orange: '#fb6719', 
                             dark: '#1e293b', 
-                            light: '#f8fafc' 
+                            light: '#f8fafc', 
+                            cta: '#ea580c', 
+                            ctahover: '#c2410c' 
                         } 
                     }
                 }
@@ -29,18 +31,12 @@
         }
     </script>
     <style>
-        .btn-whatsapp { 
-            background: #25d366; 
-            transition: all 0.3s ease; 
-        }
-        .btn-whatsapp:hover { 
-            background: #128c7e; 
-            transform: translateY(-4px); 
-            box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4); 
-        }
+        .btn-whatsapp { background: #25d366; transition: all 0.3s ease; }
+        .btn-whatsapp:hover { background: #128c7e; transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4); }
     </style>
 </head>
-<body class="font-sans text-slate-700 bg-brand-light antialiased">
+
+<body class="font-sans text-slate-700 bg-brand-light antialiased selection:bg-brand-orange selection:text-white">
 
     <main class="min-h-screen flex items-center justify-center p-4">
         <div class="max-w-2xl w-full bg-white p-8 md:p-16 rounded-[40px] shadow-2xl text-center border border-slate-100">
@@ -63,7 +59,11 @@
                 Entrar no Grupo VIP
             </a>
 
-            <div class="mt-12 pt-8 border-t border-slate-100">
+            <div class="mt-12 flex justify-center">
+                <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto" class="w-24 h-24 rounded-full border-4 border-brand-light shadow-md object-cover">
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-slate-100">
                 <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">O que acontece agora?</p>
                 <p class="text-sm text-slate-500 italic">
                     "O link da oferta será enviado exclusivamente neste grupo no dia <b>25/05</b>. Não perca."
@@ -73,10 +73,9 @@
     </main>
 
     <script>
-        // Aguarda 3 segundos para garantir que o GTM dispare, depois redireciona
         setTimeout(function() {
             window.location.href = "https://chat.whatsapp.com/F7PBiJMVlCpA4NfSnsja6n";
-        }, 6000); 
+        }, 3000);
     </script>
 
 </body>
