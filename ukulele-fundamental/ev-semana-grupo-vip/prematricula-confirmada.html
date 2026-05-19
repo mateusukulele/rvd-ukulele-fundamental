@@ -6,7 +6,6 @@
     <title>Inscrição Confirmada! - Clube do Ukulele</title>
     
     <link rel="icon" type="image/svg+xml" href="../../img/favicon-mini-ukulele.svg">
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -17,14 +16,7 @@
                 extend: {
                     fontFamily: { sans: ['Poppins', 'sans-serif'], display: ['Montserrat', 'sans-serif'] },
                     colors: { 
-                        brand: { 
-                            blue: '#2d6dbf', 
-                            orange: '#fb6719', 
-                            dark: '#1e293b', 
-                            light: '#f8fafc', 
-                            cta: '#ea580c', 
-                            ctahover: '#c2410c' 
-                        } 
+                        brand: { blue: '#2d6dbf', orange: '#fb6719', dark: '#1e293b', light: '#f8fafc', cta: '#ea580c', ctahover: '#c2410c' } 
                     }
                 }
             }
@@ -36,7 +28,7 @@
     </style>
 </head>
 
-<body class="font-sans text-slate-700 bg-brand-light antialiased selection:bg-brand-orange selection:text-white">
+<body class="font-sans text-slate-700 bg-brand-light antialiased">
 
     <main class="min-h-screen flex items-center justify-center p-4">
         <div class="max-w-2xl w-full bg-white p-8 md:p-16 rounded-[40px] shadow-2xl text-center border border-slate-100">
@@ -50,7 +42,7 @@
             </h1>
             
             <p class="text-slate-600 mb-10 text-lg leading-relaxed max-w-md mx-auto">
-                Você acaba de garantir seu lugar. Agora, o passo final para receber a <b>oferta especial</b> é entrar no nosso grupo VIP.
+                Você acaba de garantir seu lugar. Entre no nosso grupo VIP para receber a <b>oferta especial</b>.
             </p>
 
             <a href="https://chat.whatsapp.com/F7PBiJMVlCpA4NfSnsja6n" 
@@ -60,22 +52,37 @@
             </a>
 
             <div class="mt-12 flex justify-center">
-                <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto" class="w-24 h-24 rounded-full border-4 border-brand-light shadow-md object-cover">
+                <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto" class="w-32 h-32 rounded-full border-4 border-brand-light shadow-md object-contain bg-slate-100">
+            </div>
+
+            <div class="mt-8">
+                <p id="timer-text" class="text-sm font-bold text-slate-500">
+                    Redirecionando automaticamente em <span id="count" class="text-brand-orange">7</span> segundos...
+                </p>
             </div>
 
             <div class="mt-8 pt-8 border-t border-slate-100">
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">O que acontece agora?</p>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">O que acontece agora?</p>
                 <p class="text-sm text-slate-500 italic">
-                    "O link da oferta será enviado exclusivamente neste grupo no dia <b>25/05</b>. Não perca."
+                    "O link da oferta será enviado exclusivamente neste grupo no dia <b>25/05</b>."
                 </p>
             </div>
         </div>
     </main>
 
     <script>
+        let count = 7;
+        const countEl = document.getElementById('count');
+        
+        const interval = setInterval(() => {
+            count--;
+            countEl.innerText = count;
+            if (count <= 0) clearInterval(interval);
+        }, 1000);
+
         setTimeout(function() {
             window.location.href = "https://chat.whatsapp.com/F7PBiJMVlCpA4NfSnsja6n";
-        }, 3000);
+        }, 7000); // 7 segundos
     </script>
 
 </body>
