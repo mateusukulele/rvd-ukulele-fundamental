@@ -1,110 +1,1259 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Pré-Matrícula Ukulele Fundamental - Oferta Especial GRUPO VIP</title>
+
     
+
     <link rel="icon" type="image/svg+xml" href="../../img/favicon-mini-ukulele.svg">
+
     
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
 
+
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
+
         tailwind.config = {
+
             theme: {
+
                 extend: {
+
                     fontFamily: { sans: ['Poppins', 'sans-serif'], display: ['Montserrat', 'sans-serif'] },
+
                     colors: { 
-                        brand: { blue: '#2d6dbf', orange: '#fb6719', dark: '#1e293b', light: '#f8fafc', cta: '#ea580c', ctahover: '#c2410c' } 
+
+                        brand: { 
+
+                            blue: '#2d6dbf', 
+
+                            orange: '#fb6719', 
+
+                            dark: '#1e293b', 
+
+                            light: '#f8fafc', 
+
+                            cta: '#ea580c', 
+
+                            ctahover: '#c2410c' 
+
+                        } 
+
                     }
+
                 }
+
             }
+
         }
+
     </script>
+
+
 
     <style>
+
+        /* 1. CONFIGURAÇÕES BASE & ANIMAÇÕES */
+
         .cascade-section { display: none; opacity: 0; }
+
         .cascade-section.animate-reveal { display: block; animation: cascadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
         @keyframes cascadeIn { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        
+
         .btn-pulsar { animation: pulse-cta 2s infinite; transition: all 0.3s ease; }
+
         @keyframes pulse-cta { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
         .btn-pulsar:hover { transform: translateY(-4px); filter: brightness(1.1); box-shadow: 0 20px 25px -5px rgba(234, 88, 12, 0.4); }
+
+
+
+        /* Estilização Cards Método 3D */
+
         .method-card { border: 2px solid transparent; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
         .method-card:hover { transform: scale(1.05); border-color: #fb6719; }
+
+
+
+        /* Preço Sobretraçado (Ajustado para maior legibilidade) */
+
         .price-old { text-decoration: line-through; text-decoration-color: #ef4444; text-decoration-thickness: 3px; }
-        .outcome-card { background: white; border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 1.5rem; display: flex; align-items: center; gap: 1rem; transition: all 0.3s ease; }
+
+
+
+        /* Estilização Dobra de Resultado (Resumindo) */
+
+        .outcome-card {
+
+            background: white;
+
+            border: 1px solid #e2e8f0;
+
+            padding: 1.5rem;
+
+            border-radius: 1.5rem;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+
+            transition: all 0.3s ease;
+
+        }
+
         .outcome-card:hover { border-color: #2d6dbf; transform: translateX(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .outcome-icon { width: 45px; height: 45px; border-radius: 12px; background: #f0f9ff; color: #2d6dbf; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.2rem; }
+
+        .outcome-icon {
+
+            width: 45px; height: 45px; border-radius: 12px;
+
+            background: #f0f9ff; color: #2d6dbf;
+
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+
+            font-size: 1.2rem;
+
+        }
+
+
+
+        /* Scrollbar */
+
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+
+
         @media (max-height: 740px) { .hero-title { font-size: 1.3rem !important; } }
+
     </style>
+
 </head>
 
+
+
 <body class="font-sans text-slate-700 bg-brand-light antialiased selection:bg-brand-orange selection:text-white">
+
     <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <div id="capture-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center bg-brand-dark/95 px-4 backdrop-blur-md opacity-0 transition-opacity duration-300">
-        <div class="w-full max-w-md rounded-[40px] bg-white p-6 md:p-10 shadow-2xl transform scale-95 transition-transform duration-300" id="capture-content">
-            <h3 class="font-display text-xl md:text-2xl font-extrabold text-brand-dark mb-2 text-center">Falta muito pouco!</h3>
-            <p class="text-slate-500 text-xs md:text-sm mb-6 md:mb-8 text-center leading-tight">Preencha seus dados para receber o link de acesso ao Grupo VIP no WhatsApp.</p>
-            <form onsubmit="handleCapture(event)" class="space-y-4 md:space-y-5">
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2 ml-2">Nome Completo *</label>
-                    <input required type="text" id="lead-nome" class="w-full px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 focus:border-brand-blue focus:outline-none text-sm" placeholder="Ex: Mateus Augusto" oninput="document.getElementById('erro-nome').classList.add('hidden')">
-                    <p id="erro-nome" class="mt-1 hidden text-[10px] font-bold text-red-500 ml-2">Por favor, insira nome e sobrenome.</p>
+
+
+    <main id="main-content" class="w-full overflow-x-hidden">
+
+
+
+        <header class="cascade-section bg-brand-dark text-white h-[100dvh] min-h-[620px] w-full rounded-b-[40px] shadow-2xl relative flex items-center justify-center px-4 overflow-hidden">
+
+            <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-12 h-full py-5 lg:py-12">
+
+                
+
+                <div class="w-full lg:hidden flex-shrink-0 h-[22vh] min-h-[140px] bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700 shadow-inner relative overflow-hidden">
+
+                    <p class="text-[10px] font-bold text-slate-500 uppercase">FOTO MATEUS + PRINTS</p>
+
                 </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2 ml-2">Melhor E-mail *</label>
-                    <input required type="email" id="lead-email" class="w-full px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 focus:border-brand-blue focus:outline-none text-sm" placeholder="seu@email.com">
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2 ml-2">WhatsApp com DDD *</label>
-                    <div class="flex rounded-2xl border border-slate-200 bg-slate-50 focus-within:border-brand-blue overflow-hidden">
-                        <div class="bg-slate-100 border-r border-slate-200 flex items-center px-4"><span class="text-sm font-bold text-slate-700">+55</span></div>
-                        <input required type="tel" id="lead-whatsapp" class="w-full px-4 py-3 bg-transparent focus:outline-none text-slate-700 font-medium text-sm" placeholder="(00) 00000-0000" oninput="document.getElementById('erro-tel').classList.add('hidden')">
+
+
+
+                <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start text-center lg:text-left h-full space-y-3 lg:space-y-6">
+
+                    <span class="inline-block bg-brand-orange/20 border border-brand-orange/40 text-brand-orange text-[10px] lg:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest flex-shrink-0 mt-1 lg:mt-0">
+
+                        🔥 Condição exclusiva no Grupo VIP 🔥
+
+                    </span>
+
+                    <h1 class="hero-title font-display text-[1.35rem] leading-tight sm:text-3xl lg:text-5xl font-extrabold flex-shrink-0">
+
+                        Tire o ukulele do canto da sala e toque suas músicas favoritas com <span class="text-brand-orange">20 minutos por dia</span>
+
+                    </h1>
+
+                    
+
+                    <p class="text-[13px] sm:text-sm lg:text-lg text-slate-300 max-w-xl font-medium leading-snug">
+
+                        Mesmo que você já tenha tentado antes e travado no caminho, e mesmo que ache que não tenha talento.
+
+                    </p>
+
+                    
+
+                    <div class="w-full max-w-md mt-auto lg:mt-0 pb-2 pt-2 lg:pt-0">
+
+                        <button onclick="abrirCaptura()" class="btn-pulsar w-full bg-brand-cta text-white py-4 md:py-5 px-4 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-lg leading-tight">
+
+                            Quero Entrar no Grupo VIP
+
+                        </button>
+
+                        
+
+                        <div class="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-2">
+
+                            <span class="text-slate-300 text-[11px] md:text-sm font-bold uppercase tracking-tight">De:</span>
+
+                            <span class="price-old text-red-400 font-black text-sm md:text-base">R$ 597,00</span>
+
+                            <span class="text-brand-orange bg-brand-orange/20 border border-brand-orange/40 font-black text-[11px] md:text-sm uppercase tracking-wide px-3 py-1.5 rounded-lg shadow-sm">
+
+                                Por: <span class="font-bold text-white">SURPRESA</span> no Grupo, dia 25/05
+
+                            </span>
+
+                        </div>
+
                     </div>
-                    <p id="erro-tel" class="mt-1 hidden text-[10px] font-bold text-red-500 ml-2">Número inválido.</p>
+
                 </div>
-                <button type="submit" id="btn-submit" class="w-full bg-brand-cta text-white py-4 rounded-2xl font-display font-extrabold uppercase shadow-lg hover:-translate-y-1 transition-all mt-2 text-sm">Liberar Vaga no Grupo VIP</button>
-            </form>
+
+
+
+                <div class="hidden lg:flex w-full lg:w-1/2 h-full bg-slate-800/50 rounded-3xl border border-slate-700 items-center justify-center shadow-inner relative overflow-hidden">
+
+                    <p class="font-bold text-slate-500 uppercase text-xs">FOTO MATEUS + PRINTS</p>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="cascade-section py-8 bg-white border-b border-slate-100">
+
+            <div class="max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-6 md:gap-16 px-4 text-brand-dark">
+
+                <div class="flex items-center gap-3"><span class="text-brand-orange font-black text-xl">+6.000</span> <span class="font-bold text-xs uppercase">Alunos</span></div>
+
+                <div class="flex items-center gap-3"><span class="text-brand-orange font-black text-xl">14</span> <span class="font-bold text-xs uppercase">Dias de Garantia</span></div>
+
+                <div class="flex items-center gap-3"><span class="text-brand-orange font-black text-xl">Acesso</span> <span class="font-bold text-xs uppercase">VITALÍCIO!</span></div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-20 px-4 bg-brand-light">
+
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <div class="lg:col-span-5 space-y-6">
+
+                    <div class="method-card bg-white p-6 rounded-[32px] shadow-sm flex items-center gap-6">
+
+                        <div class="w-16 h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-3xl flex-shrink-0">🧩</div>
+
+                        <div>
+
+                            <h4 class="font-display font-extrabold text-brand-dark text-lg">1. Dividir</h4>
+
+                            <p class="text-xs text-slate-500 leading-relaxed">Cada música em peças pequenas e gerenciáveis para o seu cérebro.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="method-card bg-white p-6 rounded-[32px] shadow-sm flex items-center gap-6">
+
+                        <div class="w-16 h-16 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center text-3xl flex-shrink-0">🔓</div>
+
+                        <div>
+
+                            <h4 class="font-display font-extrabold text-brand-dark text-lg">2. Destravar</h4>
+
+                            <p class="text-xs text-slate-500 leading-relaxed">Treino com repetição inteligente em velocidade reduzida.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="method-card bg-white p-6 rounded-[32px] shadow-sm flex items-center gap-6 border-brand-orange/30">
+
+                        <div class="w-16 h-16 bg-brand-orange text-white rounded-full flex items-center justify-center text-3xl flex-shrink-0">🎵</div>
+
+                        <div>
+
+                            <h4 class="font-display font-extrabold text-brand-dark text-lg">3. Dominar</h4>
+
+                            <p class="text-xs text-slate-500 leading-relaxed">A música flui, o som sai limpo e o ritmo fica firme.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-7 space-y-8">
+
+                    <h2 class="font-display text-3xl md:text-5xl text-brand-dark font-extrabold leading-tight">
+
+                        O método 3D que transforma <span class="text-brand-blue">adulto travado em adulto tocando</span>
+
+                    </h2>
+
+                    <div class="space-y-6 text-slate-600 text-sm md:text-base leading-relaxed">
+
+                        <p>Aprender música em vídeo avulso do YouTube é como receber peças de quebra-cabeça soltas vindas de caixas diferentes. Cada tutorial ensina um pedaço, mas ninguém te mostra onde encaixa, e a culpa parece sua quando você não evolui.</p>
+
+                        <p class="font-bold text-brand-dark bg-white p-6 rounded-2xl border-l-4 border-brand-orange shadow-sm">O Método 3D faz o oposto. Divide cada música, cada acorde e cada batida em peças pequenas, destrava cada peça com repetição inteligente, e o domínio chega como consequência.</p>
+
+                        <p>O mesmo método que mais de <b>6.000 alunos</b> usaram para sair do zero ou destravar.</p>
+
+                    </div>
+
+                    <div class="pt-8 w-full flex justify-center lg:justify-start">
+
+                        <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-xl transition-all tracking-tight text-center leading-tight">
+
+                            Quero RECEBER A OFERTA no Grupo VIP NO DIA 25/05
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-20 px-4 bg-white relative overflow-hidden">
+
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+                
+
+                <div class="relative order-1 lg:order-none flex justify-center">
+
+                    <div class="absolute -top-6 -right-4 md:-right-8 z-20 bg-brand-dark text-white p-5 rounded-2xl rotate-12 flex flex-col items-center shadow-xl border-2 border-brand-blue">
+
+                        <span class="text-[10px] font-black uppercase tracking-widest opacity-80">Acesso</span>
+
+                        <span class="text-2xl font-black">VITALÍCIO</span>
+
+                        <div class="w-8 h-1 bg-brand-orange mt-1 rounded-full"></div>
+
+                    </div>
+
+                    <img src="../../img/Mockup - Mateus + aulas e tal.webp" alt="Conteúdo do curso Ukulele Fundamental" class="w-full max-w-[500px] h-auto object-contain drop-shadow-2xl">
+
+                </div>
+
+
+
+                <div>
+
+                    <h2 class="font-display text-3xl md:text-4xl text-brand-dark font-extrabold mb-10 leading-tight">Dentro do Ukulele Fundamental, <span class="text-brand-blue">você tem tudo</span>:</h2>
+
+                    <ul class="space-y-6 text-sm md:text-base text-slate-600">
+
+                        <li class="flex gap-4 items-start bg-brand-light p-5 rounded-2xl border border-slate-100"><span class="text-brand-orange font-bold text-xl">✅</span> <p><b>Curso completo</b> em 4 etapas estruturadas, do zero à autonomia.</p></li>
+
+                        <li class="flex gap-4 items-start bg-brand-light p-5 rounded-2xl border border-slate-100"><span class="text-brand-orange font-bold text-xl">✅</span> <p><b>Aulas curtas</b> pensadas para caber em 20 min/dia, no seu horário.</p></li>
+
+                        <li class="flex gap-4 items-start bg-brand-light p-5 rounded-2xl border border-slate-100"><span class="text-brand-orange font-bold text-xl">✅</span> <p><b>Aplicação prática imediata</b> com música real já na Primeira Fase.</p></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        
+
+        <section class="cascade-section py-20 px-4 bg-brand-light">
+
+            <div class="max-w-6xl mx-auto">
+
+                <h2 class="font-display text-2xl md:text-3xl font-extrabold text-center text-brand-dark mb-16 uppercase tracking-tighter">Em 4 etapas simples, você sai do zero</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <div class="bg-white p-6 rounded-3xl shadow-sm group">
+
+                        <div class="mx-auto w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-brand-blue flex justify-center items-center">
+
+                            <img src="../../img/1c.webp" alt="Fase 1" loading="lazy" class="w-full h-full object-cover">
+
+                        </div>
+
+                        <span class="text-[10px] font-black text-brand-blue uppercase bg-brand-blue/5 px-2 py-1 rounded-md mb-2 inline-block">Fase 1</span>
+
+                        <h4 class="font-bold text-brand-dark text-sm mb-2 uppercase">Início Imediato</h4>
+
+                        <p class="text-[11px] text-slate-500 leading-relaxed">Postura, afinação e sua primeira música já na etapa 1.</p>
+
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl shadow-sm group">
+
+                        <div class="mx-auto w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-brand-orange flex justify-center items-center">
+
+                            <img src="../../img/2c.webp" alt="Fase 2" loading="lazy" class="w-full h-full object-cover">
+
+                        </div>
+
+                        <span class="text-[10px] font-black text-brand-blue uppercase bg-brand-blue/5 px-2 py-1 rounded-md mb-2 inline-block">Fase 2</span>
+
+                        <h4 class="font-bold text-brand-dark text-sm mb-2 uppercase">Destrave</h4>
+
+                        <p class="text-[11px] text-slate-500 leading-relaxed">Domine as batidas coringas e troque acordes sem engasgar.</p>
+
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl shadow-sm group">
+
+                        <div class="mx-auto w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-brand-blue flex justify-center items-center">
+
+                            <img src="../../img/3c.webp" alt="Fase 3" loading="lazy" class="w-full h-full object-cover">
+
+                        </div>
+
+                        <span class="text-[10px] font-black text-brand-blue uppercase bg-brand-blue/5 px-2 py-1 rounded-md mb-2 inline-block">Fase 3</span>
+
+                        <h4 class="font-bold text-brand-dark text-sm mb-2 uppercase">Temperar</h4>
+
+                        <p class="text-[11px] text-slate-500 leading-relaxed">Refine o toque para um som limpo e cristalino.</p>
+
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl shadow-sm group">
+
+                        <div class="mx-auto w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-brand-orange flex justify-center items-center">
+
+                            <img src="../../img/4b.webp" alt="Fase 4" loading="lazy" class="w-full h-full object-cover">
+
+                        </div>
+
+                        <span class="text-[10px] font-black text-brand-blue uppercase bg-brand-blue/5 px-2 py-1 rounded-md mb-2 inline-block">Fase 4</span>
+
+                        <h4 class="font-bold text-brand-dark text-sm mb-2 uppercase">Autonomia</h4>
+
+                        <p class="text-[11px] text-slate-500 leading-relaxed">Toque diferentes estilos, como reggae e baião e ganhe liberdade musical total.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-20 px-4 bg-white">
+
+            <div class="max-w-6xl mx-auto">
+
+                <h2 class="font-display text-2xl font-extrabold mb-12 text-center text-brand-dark">O que nossos alunos dizem:</h2>
+
+                
+
+                <div class="flex flex-wrap justify-center gap-6">
+
+                    <div class="w-full sm:w-[350px]"><img src="../../img/Depoimento Aline (b).webp" alt="Depoimento Aluno" class="w-full rounded-2xl shadow-sm border border-slate-100"></div>
+
+                    <div class="w-full sm:w-[350px]"><img src="../../img/Depoimento Leila.webp" alt="Depoimento Aluno" class="w-full rounded-2xl shadow-sm border border-slate-100"></div>
+
+                    <div class="w-full sm:w-[350px]"><img src="../../img/Depoimento Marcelo.webp" alt="Depoimento Aluno" class="w-full rounded-2xl shadow-sm border border-slate-100"></div>
+
+                    <div class="w-full sm:w-[350px]"><img src="../../img/Depoimento Maria.webp" alt="Depoimento Aluno" class="w-full rounded-2xl shadow-sm border border-slate-100"></div>
+
+                    <div class="w-full sm:w-[350px]"><img src="../../img/Depoimento Wellen b.webp" alt="Depoimento Aluno" class="w-full rounded-2xl shadow-sm border border-slate-100"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-24 px-4 bg-brand-dark text-white rounded-[60px] my-10 shadow-2xl mx-2 md:mx-4">
+
+            <div class="max-w-6xl mx-auto">
+
+                <h2 class="font-display text-3xl md:text-5xl font-extrabold text-center mb-4 text-white">Você ainda leva <span class="text-brand-orange italic">4 bônus exclusivos</span></h2>
+
+                <p class="text-center text-slate-400 mb-16 max-w-2xl mx-auto text-lg">Tudo o que você precisa para transformar o aprendizado em um hobby para a vida toda.</p>
+
+                
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <div class="bg-white p-6 md:p-8 rounded-[40px] shadow-xl flex flex-col">
+
+                        <div class="flex justify-between items-start mb-6">
+
+                            <span class="bg-brand-blue/10 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 01</span>
+
+                            <div class="text-right"><span class="price-old text-slate-400 font-black text-sm md:text-base block">R$ 297,00/ano</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+
+                        </div>
+
+                        <h4 class="font-display font-extrabold text-2xl mb-4 text-brand-dark uppercase">Comunidade Exclusiva</h4>
+
+                        <p class="text-base md:text-lg text-slate-600 font-medium leading-relaxed">Tira-dúvidas direto com professores e alunos, missões mensais com encontros ao vivo e o lugar onde você vê outras pessoas exatamente onde você está hoje.</p>
+
+                    </div>
+
+                    
+
+                    <div class="bg-white p-6 md:p-8 rounded-[40px] shadow-xl flex flex-col">
+
+                        <div class="flex justify-between items-start mb-6">
+
+                            <span class="bg-brand-blue/10 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 02</span>
+
+                            <div class="text-right"><span class="price-old text-slate-400 font-black text-sm md:text-base block">R$ 297,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+
+                        </div>
+
+                        <h4 class="font-display font-extrabold text-2xl mb-4 text-brand-dark uppercase">Biblioteca 150+ Músicas</h4>
+
+                        <p class="text-base md:text-lg text-slate-600 font-medium leading-relaxed">Repertório em pop, rock, reggae, gospel e MPB ensinado passo a passo, para você nunca mais ficar procurando tutorial avulso no YouTube.</p>
+
+                    </div>
+
+                    
+
+                    <div class="bg-white p-6 md:p-8 rounded-[40px] shadow-xl flex flex-col">
+
+                        <div class="flex justify-between items-start mb-6">
+
+                            <span class="bg-brand-blue/10 text-brand-blue text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus 03</span>
+
+                            <div class="text-right"><span class="price-old text-slate-400 font-black text-sm md:text-base block">R$ 147,00</span><span class="text-brand-orange font-black text-sm uppercase">Grátis</span></div>
+
+                        </div>
+
+                        <h4 class="font-display font-extrabold text-2xl mb-4 text-brand-dark uppercase">Workshop de Canto</h4>
+
+                        <p class="text-base md:text-lg text-slate-600 font-medium leading-relaxed">Aprenda a encontrar seu tom, aquecer a voz e tocar e cantar ao mesmo tempo afinado, mesmo se você nunca se considerou bom de voz.</p>
+
+                    </div>
+
+                    
+
+                    <div class="bg-gradient-to-br from-brand-orange to-brand-cta p-6 md:p-8 rounded-[40px] shadow-xl flex flex-col">
+
+                        <div class="flex justify-between items-start mb-6">
+
+                            <span class="bg-white/20 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">Bônus Especial</span>
+
+                            <div class="text-right"><span class="price-old text-white/80 font-black text-sm md:text-base block">R$ 597,00</span><span class="text-white font-black text-sm uppercase drop-shadow-md">Grátis</span></div>
+
+                        </div>
+
+                        <h4 class="font-display font-extrabold text-2xl mb-4 text-white uppercase">Acesso Vitalício</h4>
+
+                        <p class="text-base md:text-lg text-white font-medium leading-relaxed italic">Como bônus desta condição, o acesso vira vitalício: você assiste no seu ritmo, refaz quantas vezes precisar e recebe todas as atualizações futuras.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-20 px-4 bg-brand-light">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-16 rounded-[40px] shadow-xl border-t-8 border-brand-cta -mt-16 relative z-20">
+
+        <h2 class="font-display text-2xl md:text-3xl font-extrabold text-center text-brand-dark mb-12">🔥 Bônus Exclusivos da Semana 🔥</h2>
+
+        <div class="space-y-6">
+
+            
+
+            <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-center p-6 md:p-8 bg-slate-50 border border-slate-100 rounded-3xl">
+
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-brand-blue/5 rounded-full flex items-center justify-center text-3xl md:text-4xl flex-shrink-0">🎥</div>
+
+                <div class="text-center md:text-left">
+
+                    <h4 class="font-display font-extrabold text-brand-dark text-lg md:text-xl mb-2 uppercase">Acompanhamento Uke a Uke</h4>
+
+                    <p class="text-sm text-slate-500 mb-3">Envie 3 vídeos tocando e receba correções personalizadas em vídeo pelo Mateus.</p>
+
+                    <span class="text-[10px] font-black bg-brand-orange text-white px-3 py-1 rounded-md uppercase">Para inscrições feitas no dia 25/05</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-center p-6 md:p-8 bg-slate-50 border border-slate-100 rounded-3xl">
+
+                <div class="w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center">
+
+                    <img src="../../img/Dicionário mockup melhor.webp" alt="eBook Dicionário de Acordes" class="w-full h-full object-contain drop-shadow-lg">
+
+                </div>
+
+                <div class="text-center md:text-left">
+
+                    <h4 class="font-display font-extrabold text-brand-dark text-xl mb-2 uppercase">Dicionário de Acordes (eBook)</h4>
+
+                    <p class="text-sm text-slate-500 mb-3 leading-tight">Bate o olho, vê a posição e toca. Guia de consulta definitiva.</p>
+
+                    <span class="text-[10px] font-black bg-brand-orange text-white px-3 py-1 rounded-md uppercase tracking-tight">Nas 2 primeiras horas de abertura da oferta, no dia 25/05</span>
+
+                </div>
+
+            </div>
+
+
+
         </div>
+
+        
+
+        <div class="mt-12 w-full flex justify-center">
+
+            <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-xl transition-all tracking-tight text-center leading-tight">
+
+                Quero Entrar no Grupo VIP e receber a oferta no dia 25/05
+
+            </button>
+
+        </div>
+
     </div>
 
+</section>
+
+
+
+        <section class="cascade-section py-24 px-4 bg-white text-center">
+
+            <div class="max-w-6xl mx-auto">
+
+                <span class="text-brand-blue font-bold text-xs uppercase tracking-widest mb-4 block">Sua Nova Jornada</span>
+
+                <h2 class="font-display text-3xl md:text-5xl font-black text-brand-dark mb-16 leading-tight">
+
+                    Resumindo, você sai <br class="hidden md:block">desse curso <span class="text-brand-orange">assim:</span>
+
+                </h2>
+
+                
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
+
+                    <div class="outcome-card">
+
+                        <div class="outcome-icon"><i class="fa-solid fa-music"></i></div>
+
+                        <p class="font-bold text-sm text-brand-dark text-left">Tocando músicas do início ao fim</p>
+
+                    </div>
+
+                    <div class="outcome-card">
+
+                        <div class="outcome-icon"><i class="fa-solid fa-hands"></i></div>
+
+                        <p class="font-bold text-sm text-brand-dark text-left">Trocando acordes sem engasgar</p>
+
+                    </div>
+
+                    <div class="outcome-card">
+
+                        <div class="outcome-icon"><i class="fa-solid fa-fingerprint"></i></div>
+
+                        <p class="font-bold text-sm text-brand-dark text-left">Com a pestana destravada de vez</p>
+
+                    </div>
+
+                    <div class="outcome-card">
+
+                        <div class="outcome-icon"><i class="fa-solid fa-users"></i></div>
+
+                        <p class="font-bold text-sm text-brand-dark text-left">Pronto para tocar na roda de amigos</p>
+
+                    </div>
+
+                    <div class="outcome-card">
+
+                        <div class="outcome-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+
+                        <p class="font-bold text-sm text-brand-dark text-left">Cantando e tocando ao mesmo tempo</p>
+
+                    </div>
+
+                    <div class="outcome-card">
+
+                        <div class="outcome-icon"><i class="fa-solid fa-drum"></i></div>
+
+                        <p class="font-bold text-sm text-brand-dark text-left">Dominando mais de 10 batidas</p>
+
+                    </div>
+
+                    <div class="outcome-card lg:col-span-3 bg-brand-blue/5 border-2 border-brand-blue/20 lg:justify-center lg:py-8 lg:px-12 group">
+
+                        <div class="outcome-icon bg-brand-blue text-white group-hover:scale-110 transition-transform"><i class="fa-solid fa-rocket"></i></div>
+
+                        <p class="font-display font-black text-lg md:text-xl text-brand-blue text-left lg:text-center uppercase tracking-tighter">
+
+                            Sabendo como praticar para evoluir sem limites
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-24 px-4 bg-brand-dark rounded-[60px] mx-2 md:mx-4 mb-16 shadow-2xl">
+
+            <div class="max-w-4xl mx-auto text-white text-center">
+
+                <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-12 uppercase tracking-tighter">Certo, mas quanto vai custar tudo isso?</h2>
+
+                
+
+                <div class="bg-slate-900/80 backdrop-blur-md rounded-[40px] p-6 md:p-14 border border-slate-700 shadow-inner">
+
+                    <ul class="text-left space-y-6 mb-10 text-base md:text-lg text-slate-200 border-b border-slate-700/50 pb-10">
+
+                        <li class="flex justify-between items-start gap-4">
+
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Curso Ukulele Fundamental completo</b> (4 etapas, do zero à autonomia musical)</span></span>
+
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 597</span>
+
+                        </li>
+
+                        <li class="flex justify-between items-start gap-4">
+
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Comunidade Exclusiva por 1 Ano</b> (tira-dúvidas e Missão Uke ao vivo)</span></span>
+
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 297</span>
+
+                        </li>
+
+                        <li class="flex justify-between items-start gap-4">
+
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Biblioteca com Mais de 150 Músicas</b> (pop, rock, reggae, gospel, MPB)</span></span>
+
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 297</span>
+
+                        </li>
+
+                        <li class="flex justify-between items-start gap-4">
+
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Workshop de Canto com Ukulele</b> (tocar e cantar afinado ao mesmo tempo)</span></span>
+
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 147</span>
+
+                        </li>
+
+                        <li class="flex justify-between items-start gap-4">
+
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Acesso Vitalício</b> (sem prazo, com todas as atualizações futuras)</span></span>
+
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 297</span>
+
+                        </li>
+
+                        <li class="flex justify-between items-start gap-4">
+
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Acompanhamento Uke a Uke com o Mateus</b> (bônus exclusivo para inscrições no dia 25/05 pela oferta especial)</span></span>
+
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 497</span>
+
+                        </li>
+
+                        <li class="flex justify-between items-start gap-4">
+
+                            <span class="flex items-start gap-3"><span class="text-brand-orange mt-0.5 text-xl">✅</span> <span><b>Dicionário de Acordes do Ukulele (eBook)</b> (nas 2 primeiras horas de abertura no dia 25/05)</span></span>
+
+                            <span class="price-old text-slate-400 font-black whitespace-nowrap text-lg md:text-xl">R$ 27</span>
+
+                        </li>
+
+                    </ul>
+
+                    
+
+                    <div class="text-center">
+
+                        <p class="text-slate-300 text-xl md:text-2xl font-bold mb-4 flex flex-wrap items-center justify-center gap-2">De: <span class="price-old text-red-400 font-black text-3xl md:text-4xl mx-2">R$ 2.159,00</span> | Por:</p>
+
+                        <p class="text-white text-base md:text-xl uppercase tracking-widest mb-10 font-medium px-2">
+
+                            <span class="inline-block bg-brand-orange/20 border border-brand-orange/50 text-brand-orange px-4 md:px-6 py-3 rounded-xl font-black shadow-sm text-lg md:text-3xl text-glow leading-tight">
+
+                                SURPRESA, liberada no dia 25/05<br class="hidden lg:block"> somente no grupo vip
+
+                            </span>
+
+                        </p>
+
+                        <div class="w-full flex justify-center">
+
+                            <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-2xl transition-all tracking-tight text-center leading-tight">
+
+                                Quero Entrar no Grupo VIP
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-8 px-4 bg-white">
+
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-white to-slate-50 border border-slate-200 p-8 md:p-12 rounded-[40px] shadow-lg relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-10">
+
+                <div class="absolute -right-10 -top-10 text-brand-blue opacity-[0.03] text-[200px] pointer-events-none">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                
+
+                <div class="w-24 h-24 md:w-32 md:h-32 bg-brand-light rounded-full flex items-center justify-center text-5xl md:text-6xl border-4 border-white shadow-md flex-shrink-0 z-10 relative">
+
+                    <div class="absolute inset-0 bg-brand-blue/10 rounded-full animate-ping opacity-50"></div>
+
+                    🛡️
+
+                </div>
+
+                
+
+                <div class="text-center md:text-left z-10">
+
+                    <span class="text-brand-orange font-bold text-xs uppercase tracking-widest mb-2 block">100% Livre de Risco</span>
+
+                    <h2 class="font-display text-2xl md:text-3xl font-extrabold text-brand-dark mb-4 leading-tight">Garantia incondicional de 14 dias</h2>
+
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed">Você entra no curso, testa o método e toca a primeira música. Se por qualquer motivo não gostar da metodologia, devolvemos 100% do seu dinheiro sem letras miúdas e sem fricção. O risco está todo nas nossas costas.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-16 px-4 bg-brand-light">
+
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                <div class="bg-slate-200 rounded-[40px] aspect-[4/5] shadow-lg border-8 border-white relative overflow-hidden group">
+
+                    <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto - Professor e Mentor do Ukulele Fundamental" loading="lazy" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-in-out">
+
+                </div>
+
+                <div class="space-y-6">
+
+                    <h2 class="font-display text-3xl md:text-4xl font-extrabold text-brand-dark leading-tight">O seu mentor nessa jornada é o <span class="text-brand-blue font-black">Mateus Augusto</span></h2>
+
+                    <div class="space-y-4 text-sm md:text-base text-slate-600 leading-relaxed">
+
+                        <p class="flex gap-4"><span class="text-brand-orange text-xl">✓</span> Há 30 anos aprendendo e tocando instrumentos musicais.</p>
+
+                        <p class="flex gap-4"><span class="text-brand-orange text-xl">✓</span> Em 2014, o Ukulele foi seu refúgio no tratamento contra um câncer.</p>
+
+                        <p class="flex gap-4"><span class="text-brand-orange text-xl">✓</span> Quando se curou, transformou essa experiência em missão de ensinar pessoas comuns a ter o mesmo refúgio.</p>
+
+                        <p class="flex gap-4"><span class="text-brand-orange text-xl">✓</span> Desde então, já formou mais de 6.000 alunos em todos os cantos do Brasil e do mundo, além de ter +300.000 seguidores nas redes sociais.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="max-w-5xl mx-auto mt-12 w-full flex justify-center">
+
+                <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-xl transition-all tracking-tight text-center leading-tight">
+
+                    Quero receber a oferta especial, dia 25/05, no Grupo VIP
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-16 px-4 bg-white pb-16">
+
+            <div class="max-w-[900px] mx-auto bg-white rounded-[30px] p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-slate-100">
+
+                <h2 class="font-display text-3xl md:text-4xl text-center text-brand-dark mb-10 font-extrabold">Perguntas frequentes</h2>
+
+                <div class="space-y-4 text-left">
+
+                    <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden shadow-sm open:shadow-md transition-all">
+
+                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-display font-bold text-brand-dark text-sm md:text-base">
+
+                            Nunca toquei nenhum instrumento. Esse curso é para mim?
+
+                            <span aria-hidden="true" class="w-3 h-3 border-r-2 border-b-2 border-slate-400 transform rotate-45 group-open:-rotate-[135deg] group-open:border-brand-orange transition-transform ml-4 shrink-0"></span>
+
+                        </summary>
+
+                        <div class="px-5 md:px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4 mt-1">Sim! O Ukulele Fundamental foi criado exatamente para quem está começando do zero. Você vai aprender passo a passo, com segurança e praticidade.</div>
+
+                    </details>
+
+                    
+
+                    <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden shadow-sm open:shadow-md transition-all">
+
+                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-display font-bold text-brand-dark text-sm md:text-base">
+
+                            Já sei o básico, mas ainda travo. Vai me ajudar?
+
+                            <span aria-hidden="true" class="w-3 h-3 border-r-2 border-b-2 border-slate-400 transform rotate-45 group-open:-rotate-[135deg] group-open:border-brand-orange transition-transform ml-4 shrink-0"></span>
+
+                        </summary>
+
+                        <div class="px-5 md:px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4 mt-1">Com certeza. Se você já começou a aprender, mas sente que não evolui, o curso vai corrigir sua base e acelerar sua autonomia musical.</div>
+
+                    </details>
+
+                    
+
+                    <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden shadow-sm open:shadow-md transition-all">
+
+                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-display font-bold text-brand-dark text-sm md:text-base">
+
+                            Eu não tenho coordenação ou ritmo. Mesmo assim consigo?
+
+                            <span aria-hidden="true" class="w-3 h-3 border-r-2 border-b-2 border-slate-400 transform rotate-45 group-open:-rotate-[135deg] group-open:border-brand-orange transition-transform ml-4 shrink-0"></span>
+
+                        </summary>
+
+                        <div class="px-5 md:px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4 mt-1">Sim. O método 3D (Dividir, Destravar, Dominar) foi feito justamente para ajudar quem sente os dedos duros ou travados. A coordenação aparece com os exercícios certos.</div>
+
+                    </details>
+
+                    
+
+                    <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden shadow-sm open:shadow-md transition-all">
+
+                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-display font-bold text-brand-dark text-sm md:text-base">
+
+                            Preciso saber teoria musical?
+
+                            <span aria-hidden="true" class="w-3 h-3 border-r-2 border-b-2 border-slate-400 transform rotate-45 group-open:-rotate-[135deg] group-open:border-brand-orange transition-transform ml-4 shrink-0"></span>
+
+                        </summary>
+
+                        <div class="px-5 md:px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4 mt-1">Não! Você aprende direto na prática, dentro de músicas reais. A teoria que você aprende aqui é a que faz sentido na hora que você precisa.</div>
+
+                    </details>
+
+                    
+
+                    <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden shadow-sm open:shadow-md transition-all">
+
+                        <summary class="list-none p-5 md:p-6 cursor-pointer flex justify-between items-center font-display font-bold text-brand-dark text-sm md:text-base">
+
+                            O acesso ao curso é por tempo limitado?
+
+                            <span aria-hidden="true" class="w-3 h-3 border-r-2 border-b-2 border-slate-400 transform rotate-45 group-open:-rotate-[135deg] group-open:border-brand-orange transition-transform ml-4 shrink-0"></span>
+
+                        </summary>
+
+                        <div class="px-5 md:px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4 mt-1">Não! O acesso é vitalício. Você pode seguir no seu ritmo, sem pressão, e revisitar as aulas sempre que quiser.</div>
+
+                    </details>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="cascade-section py-16 px-4 bg-brand-light border-t border-slate-200">
+
+            <div class="max-w-3xl mx-auto flex flex-col items-center text-center">
+
+                <h2 class="font-display text-2xl md:text-4xl font-extrabold text-brand-dark mb-8 leading-tight">Sua chance de destravar no ukulele começa agora</h2>
+
+                <div class="w-full flex justify-center">
+
+                    <button onclick="abrirCaptura()" class="btn-pulsar w-full sm:w-auto inline-block bg-brand-cta hover:bg-brand-ctahover text-white py-5 px-6 md:px-10 rounded-2xl font-display font-extrabold text-[15px] md:text-xl uppercase shadow-xl transition-all tracking-tight text-center leading-tight">
+
+                        Quero Entrar no Grupo VIP e receber a oferta dia 25/05
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+
+
+    <div id="capture-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center bg-brand-dark/95 px-4 backdrop-blur-md opacity-0 transition-opacity duration-300">
+
+        <div class="w-full max-w-md rounded-[40px] bg-white p-6 md:p-10 shadow-2xl transform scale-95 transition-transform duration-300" id="capture-content">
+
+            <h3 class="font-display text-xl md:text-2xl font-extrabold text-brand-dark mb-2 text-center">Falta muito pouco!</h3>
+
+            <p class="text-slate-500 text-xs md:text-sm mb-6 md:mb-8 text-center leading-tight">Preencha seus dados para receber o link de acesso ao Grupo VIP no WhatsApp.</p>
+
+            <form onsubmit="handleCapture(event)" class="space-y-4 md:space-y-5">
+
+                <div>
+
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2 ml-2">Nome Completo *</label>
+
+                    <input required type="text" id="lead-nome" class="w-full px-4 md:px-5 py-3 md:py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:border-brand-blue focus:bg-white focus:outline-none transition-all text-sm" placeholder="Ex: Mateus Augusto">
+
+                    <p id="erro-nome" class="mt-1.5 hidden text-[10px] font-bold text-red-500 ml-2">Por favor, insira nome e sobrenome.</p>
+
+                </div>
+
+                <div>
+
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2 ml-2">Melhor E-mail *</label>
+
+                    <input required type="email" id="lead-email" class="w-full px-4 md:px-5 py-3 md:py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:border-brand-blue focus:bg-white focus:outline-none transition-all text-sm" placeholder="seu@email.com">
+
+                </div>
+
+                <div>
+
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2 ml-2">WhatsApp com DDD *</label>
+
+                    <div class="flex rounded-2xl border border-slate-200 bg-slate-50 focus-within:border-brand-blue transition-all overflow-hidden">
+
+                        <div class="relative shrink-0 bg-slate-100 border-r border-slate-200 flex items-center px-3 md:px-4">
+
+                            <input type="hidden" id="lead-ddi" value="55">
+
+                            <img src="https://flagcdn.com/w20/br.png" class="w-4 md:w-5 h-auto rounded-[1px] shadow-sm mr-2" alt="BR">
+
+                            <span class="text-xs md:text-sm font-bold text-slate-700">+55</span>
+
+                        </div>
+
+                        <input required type="tel" id="lead-whatsapp" class="w-full px-3 md:px-4 py-3 md:py-4 bg-transparent focus:outline-none text-slate-700 font-medium text-sm" placeholder="(00) 00000-0000">
+
+                    </div>
+
+                </div>
+
+                <button type="submit" id="btn-submit" class="w-full bg-brand-cta text-white py-4 md:py-5 rounded-2xl font-display font-extrabold text-base md:text-lg uppercase shadow-lg hover:-translate-y-1 transition-all mt-2 tracking-tighter">Liberar Vaga no Grupo VIP</button>
+
+            </form>
+
+            <button onclick="fecharCaptura()" class="mt-4 md:mt-6 w-full text-center text-slate-400 text-[10px] uppercase font-bold tracking-widest hover:text-slate-600">Fechar Janela</button>
+
+        </div>
+
+    </div>
+
+
+
     <script>
-        // Modal & Animações
-        function abrirCaptura() { document.getElementById('capture-modal').classList.remove('hidden'); document.getElementById('capture-modal').classList.add('flex'); setTimeout(() => document.getElementById('capture-modal').classList.remove('opacity-0'), 10); }
-        
+
+        // Animação de entrada
+
+        function iniciarCascata() {
+
+            const sections = document.querySelectorAll('.cascade-section');
+
+            sections.forEach((sec, i) => { setTimeout(() => { sec.classList.add('animate-reveal'); }, i * 120); });
+
+        }
+
+        window.onload = iniciarCascata;
+
+
+
+        // Modal Controles
+
+        function abrirCaptura() {
+
+            const m = document.getElementById('capture-modal');
+
+            const c = document.getElementById('capture-content');
+
+            m.classList.remove('hidden'); m.classList.add('flex');
+
+            setTimeout(() => { m.classList.remove('opacity-0'); c.classList.remove('scale-95'); }, 10);
+
+        }
+
+        function fecharCaptura() {
+
+            const m = document.getElementById('capture-modal');
+
+            const c = document.getElementById('capture-content');
+
+            m.classList.add('opacity-0'); c.classList.add('scale-95');
+
+            setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
+
+        }
+
+
+
         // Máscara WhatsApp
+
         const waInput = document.getElementById('lead-whatsapp');
+
         waInput.addEventListener('input', (e) => {
+
             let v = e.target.value.replace(/\D/g, '');
+
             if (v.length > 11) v = v.substring(0, 11);
+
             if (v.length > 2) v = '(' + v.substring(0,2) + ') ' + v.substring(2);
-            if (v.length > 7) v = v.substring(0,9) + '-' + v.substring(9);
+
+            if (v.length > 9) v = v.substring(0,9) + '-' + v.substring(9);
+
             e.target.value = v;
+
         });
 
-        // Validação Final
+
+
+        // Submissão do Formulário
+
         function handleCapture(event) {
+
             event.preventDefault();
-            const nome = document.getElementById('lead-nome').value.trim();
-            const email = document.getElementById('lead-email').value.trim();
-            const phone = waInput.value.replace(/\D/g, '');
-            
-            // Validações
-            if (nome.split(' ').length < 2 || nome.length < 5) { document.getElementById('erro-nome').classList.remove('hidden'); return; }
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert("E-mail inválido"); return; }
-            if (phone.length < 10 || phone.length > 11) { document.getElementById('erro-tel').classList.remove('hidden'); return; }
 
             const btn = document.getElementById('btn-submit');
+
+            const nome = document.getElementById('lead-nome').value.trim();
+
+            const email = document.getElementById('lead-email').value.trim();
+
+            const phone = waInput.value.replace(/\D/g, '');
+
+            const ddi = document.getElementById('lead-ddi').value;
+
+            
+
+            if (nome.split(' ').length < 2) { document.getElementById('erro-nome').classList.remove('hidden'); return; }
+
             btn.innerHTML = "Liberando..."; btn.disabled = true;
 
-            window.dataLayer.push({'event': 'lead_capture_vip', 'lead_name': nome, 'lead_email': email, 'lead_phone': phone});
+
+
+            // Tracking
+
+            window.dataLayer.push({
+
+                'event': 'lead_capture_vip',
+
+                'lead_name': nome,
+
+                'lead_email': email,
+
+                'lead_phone': ddi + phone
+
+            });
+
+
+
+            // Redirect para link do Grupo VIP
+
             window.location.href = "https://cursos.comotocarukulele.com/ukulele-fundamental/ev-semana-grupo-vip/prematricula-confirmada";
+
         }
+
+
+
+        // FAQ Interaction
+
+        document.querySelectorAll('details.group').forEach(details => {
+
+            details.addEventListener('click', function() {
+
+                if (!this.open) { 
+
+                    document.querySelectorAll('details.group').forEach(other => { 
+
+                        if (other !== this && other.open) other.removeAttribute('open'); 
+
+                    }); 
+
+                }
+
+            });
+
+        });
+
     </script>
+
 </body>
+
 </html>
