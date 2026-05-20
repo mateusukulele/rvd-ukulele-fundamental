@@ -931,17 +931,19 @@ document.querySelectorAll('details.faq-item').forEach(function(d){
 </script>
 
 <script>
-// GTM carrega só quando navegador estiver ocioso, max 3s após load
+// GTM dispara ~1.5s após DOMContentLoaded, garantindo tracking confiável de PageView
+// sem bloquear o LCP. Inicializa dataLayer imediatamente para capturar eventos
+// disparados antes do carregamento (ex: lead_capture_vip).
+window.dataLayer = window.dataLayer || [];
 (function(){
   function loadGTM(){
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');
+    (function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');
   }
-  function bootGTM(){
-    if('requestIdleCallback' in window){requestIdleCallback(loadGTM,{timeout:3000})}
-    else{setTimeout(loadGTM,3000)}
+  if(document.readyState==='complete'||document.readyState==='interactive'){
+    setTimeout(loadGTM,1500);
+  } else {
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(loadGTM,1500)},{once:true});
   }
-  if(document.readyState==='complete'){bootGTM()}
-  else{window.addEventListener('load',bootGTM,{once:true})}
 })();
 </script>
 <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
