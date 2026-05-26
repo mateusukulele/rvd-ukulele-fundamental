@@ -1,1 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O que você recebe no Ukulele Fundamental - Grupo VIP</title>
+<link rel="icon" type="image/svg+xml" href="../../img/favicon-mini-ukulele.svg">
 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://serversidegtm.comotocarukulele.com">
+<link rel="dns-prefetch" href="https://connect.facebook.net">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+<link rel="preload" as="image" href="../../img/Hero.webp" fetchpriority="high" imagesrcset="../../img/Hero-mobile.webp 820w, ../../img/Hero.webp 1086w" imagesizes="(max-width: 1023px) 82vw, 50vw">
+
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap"></noscript>
+
+<style>
+/* === RESET & BASE === */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'Poppins',system-ui,-apple-system,sans-serif;color:#334155;background:#f8fafc;-webkit-font-smoothing:antialiased;line-height:1.5}
+body::selection,body *::selection{background:#fb6719;color:#fff}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4{margin:0;font-family:'Montserrat',system-ui,sans-serif;line-height:1.1}
+p,ul{margin:0}
+ul{padding:0;list-style:none}
+
+/* === CORES === */
+:root{
+  --brand-blue:#2d6dbf;
+  --brand-orange:#fb6719;
+  --brand-dark:#1e293b;
+  --brand-light:#f8fafc;
+}
+
+/* === ANIMAÇÕES === */
+.cascade-section{display:none;opacity:0}
+.cascade-section.animate-reveal{display:block;animation:cascadeIn .8s cubic-bezier(.16,1,.3,1) forwards}
+.cascade-section.hero-section{display:flex;opacity:1}
+@keyframes cascadeIn{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+
+@keyframes ping{75%,100%{transform:scale(2);opacity:0}}
+
+/* === COMPONENTES === */
+.method-card{border:2px solid transparent;transition:transform .4s cubic-bezier(.175,.885,.32,1.275),border-color .4s}
+.method-card:hover{transform:scale(1.05);border-color:#fb6719}
+
+.price-old{text-decoration:line-through;text-decoration-color:#ef4444;text-decoration-thickness:3px}
+
+.outcome-card{background:#fff;border:1px solid #e2e8f0;padding:1.5rem;border-radius:1.5rem;display:flex;align-items:center;gap:1rem;transition:transform .3s,border-color .3s,box-shadow .3s}
+.outcome-card:hover{border-color:#2d6dbf;transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.outcome-icon{width:45px;height:45px;border-radius:12px;background:#f0f9ff;color:#2d6dbf;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.outcome-icon svg{width:22px;height:22px}
+
+/* === HERO === */
+.hero-image-wrap{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.hero-image-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(251,103,25,.18) 0%,transparent 65%);border-radius:24px;z-index:0}
+.hero-image-wrap img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 25px 30px rgba(0,0,0,.4))}
+
+@media (max-height:740px){.hero-title{font-size:1.2rem!important}}
+@media (max-height:680px){.hero-title{font-size:1.1rem!important}}
+
+/* === LAYOUT === */
+.main-wrap{width:100%;overflow-x:hidden}
+.container{width:100%;max-width:1280px;margin:0 auto;padding:0 1rem}
+.container-6xl{max-width:1152px}
+.container-5xl{max-width:1024px}
+.container-4xl{max-width:896px}
+.container-3xl{max-width:768px}
+.container-900{max-width:900px}
+
+/* === HEADER === */
+header.hero-section{background:#1e293b;color:#fff;min-height:auto;width:100%;border-radius:0 0 40px 40px;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);position:relative;align-items:center;justify-content:center;padding:3rem 1rem;overflow:hidden}
+.hero-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
+.hero-img-mobile{width:100%;display:flex;align-items:center;justify-content:center;padding:.5rem 0}
+.hero-img-mobile .hero-image-wrap{max-height:42vh}
+.hero-img-desktop{display:none}
+.hero-text{width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1rem}
+.hero-badge{display:inline-block;background:rgba(251,103,25,.2);border:1px solid rgba(251,103,25,.4);color:#fb6719;font-size:10px;font-weight:700;padding:.25rem .75rem;border-radius:9999px;text-transform:uppercase;letter-spacing:.1em}
+.hero-title{font-family:'Montserrat',sans-serif;font-size:1.5rem;line-height:1.1;font-weight:800;margin:0}
+.hero-title span{color:#fb6719}
+.hero-sub{font-size:14px;color:#cbd5e1;max-width:36rem;font-weight:500;line-height:1.5}
+.hero-date{margin-top:.5rem;display:inline-block;background:rgba(45,109,191,.2);border:1px solid rgba(45,109,191,.4);color:#93c5fd;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.05em;padding:.5rem 1.25rem;border-radius:.75rem}
+.hero-date b{color:#fff}
+
+@media (min-width:1024px){
+  header.hero-section{padding:4rem 1rem}
+  .hero-inner{flex-direction:row;gap:3rem}
+  .hero-img-mobile{display:none}
+  .hero-img-desktop{display:flex;width:45%;align-items:center;justify-content:center}
+  .hero-img-desktop .hero-image-wrap{max-height:70vh}
+  .hero-text{width:55%;align-items:flex-start;text-align:left;gap:1.5rem}
+  .hero-badge{font-size:12px}
+  .hero-title{font-size:3rem}
+  .hero-sub{font-size:1.125rem}
+  .hero-date{font-size:15px}
+}
+@media (min-width:640px) and (max-width:1023px){
+  .hero-title{font-size:2rem}
+  .hero-sub{font-size:15px}
+}
+
+/* === SOCIAL PROOF BAR === */
+.proof-bar{padding:2rem 0;background:#fff;border-bottom:1px solid #f1f5f9}
+.proof-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.5rem;color:#1e293b}
+.proof-item{display:flex;align-items:center;gap:.75rem}
+.proof-num{color:#fb6719;font-weight:900;font-size:1.25rem}
+.proof-text{font-weight:700;font-size:12px;text-transform:uppercase}
+@media (min-width:768px){.proof-inner{gap:4rem}}
+
+/* === SECTIONS GENÉRICAS === */
+.sec{padding:5rem 1rem}
+.sec-light{background:#f8fafc}
+.sec-white{background:#fff}
+.sec-dark{background:#1e293b;color:#fff;border-radius:60px;margin:2.5rem .5rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);padding:6rem 1rem}
+.sec-dark2{background:#1e293b;border-radius:60px;margin:0 .5rem 4rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);padding:6rem 1rem}
+@media (min-width:768px){.sec-dark,.sec-dark2{margin-left:1rem;margin-right:1rem}}
+
+/* === MÉTODO 3D === */
+.metodo-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+.metodo-cards{display:flex;flex-direction:column;gap:1.5rem}
+.metodo-card{background:#fff;padding:1.5rem;border-radius:32px;box-shadow:0 1px 2px rgba(0,0,0,.05);display:flex;align-items:center;gap:1.5rem;border:2px solid transparent;transition:transform .4s cubic-bezier(.175,.885,.32,1.275),border-color .4s}
+.metodo-card:hover{transform:scale(1.05);border-color:#fb6719}
+.metodo-card.highlight{border-color:rgba(251,103,25,.3)}
+.metodo-icon{width:4rem;height:4rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:1.875rem;flex-shrink:0}
+.metodo-icon.blue{background:rgba(45,109,191,.1);color:#2d6dbf}
+.metodo-icon.orange-light{background:rgba(251,103,25,.1);color:#fb6719}
+.metodo-icon.orange-solid{background:#fb6719;color:#fff}
+.metodo-card h4{font-family:'Montserrat',sans-serif;font-weight:800;color:#1e293b;font-size:1.125rem}
+.metodo-card p{font-size:12px;color:#64748b;line-height:1.625}
+.metodo-content h2{font-family:'Montserrat',sans-serif;font-size:1.875rem;color:#1e293b;font-weight:800;line-height:1.1;margin-bottom:2rem}
+.metodo-content h2 span{color:#2d6dbf}
+.metodo-content .prose{display:flex;flex-direction:column;gap:1.5rem;color:#475569;font-size:14px;line-height:1.625}
+.metodo-content .highlight-box{font-weight:700;color:#1e293b;background:#fff;padding:1.5rem;border-radius:1rem;border-left:4px solid #fb6719;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+@media (min-width:1024px){
+  .metodo-grid{grid-template-columns:5fr 7fr}
+  .metodo-content h2{font-size:3rem}
+  .metodo-content .prose{font-size:16px}
+}
+
+/* === DENTRO DO CURSO === */
+.dentro-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+.dentro-img-wrap{position:relative;display:flex;justify-content:center}
+.dentro-badge{position:absolute;top:-1.5rem;right:-1rem;z-index:20;background:#1e293b;color:#fff;padding:1.25rem;border-radius:1rem;transform:rotate(12deg);display:flex;flex-direction:column;align-items:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);border:2px solid #2d6dbf}
+.dentro-badge span:first-child{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;opacity:.8}
+.dentro-badge span:nth-child(2){font-size:1.5rem;font-weight:900}
+.dentro-badge .bar{width:2rem;height:.25rem;background:#fb6719;margin-top:.25rem;border-radius:9999px}
+.dentro-img{width:100%;max-width:500px;height:auto;object-fit:contain;filter:drop-shadow(0 25px 25px rgba(0,0,0,.15))}
+.dentro-content h2{font-family:'Montserrat',sans-serif;font-size:1.875rem;color:#1e293b;font-weight:800;margin-bottom:2.5rem;line-height:1.1}
+.dentro-content h2 span{color:#2d6dbf}
+.dentro-list{display:flex;flex-direction:column;gap:1.5rem;font-size:14px;color:#475569}
+.dentro-list li{display:flex;gap:1rem;align-items:flex-start;background:#f8fafc;padding:1.25rem;border-radius:1rem;border:1px solid #f1f5f9}
+.dentro-list .check{color:#fb6719;font-weight:700;font-size:1.25rem}
+@media (min-width:768px){.dentro-img-wrap{margin-right:-1rem}.dentro-content h2{font-size:2.25rem}.dentro-list{font-size:16px}}
+@media (min-width:1024px){.dentro-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+
+/* === 4 FASES === */
+.fases-title{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;text-align:center;color:#1e293b;margin-bottom:4rem;text-transform:uppercase;letter-spacing:-.05em}
+.fases-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+.fase-card{background:#fff;padding:1.5rem;border-radius:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.fase-img{margin:0 auto 1rem;width:8rem;height:8rem;border-radius:9999px;overflow:hidden;border:2px solid #2d6dbf;display:flex;justify-content:center;align-items:center}
+.fase-img.orange{border-color:#fb6719}
+.fase-img img{width:100%;height:100%;object-fit:cover}
+.fase-badge{font-size:10px;font-weight:900;color:#2d6dbf;text-transform:uppercase;background:rgba(45,109,191,.05);padding:.25rem .5rem;border-radius:.375rem;margin-bottom:.5rem;display:inline-block}
+.fase-card h4{font-weight:700;color:#1e293b;font-size:14px;margin-bottom:.5rem;text-transform:uppercase}
+.fase-card p{font-size:11px;color:#64748b;line-height:1.625}
+@media (min-width:640px){.fases-grid{grid-template-columns:1fr 1fr}.fases-title{font-size:1.875rem}}
+@media (min-width:1024px){.fases-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* === DEPOIMENTOS === */
+.depo-title{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:3rem;text-align:center;color:#1e293b}
+.depo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
+.depo-item{width:100%}
+.depo-item img{width:100%;height:auto;border-radius:1rem;box-shadow:0 1px 2px rgba(0,0,0,.05);border:1px solid #f1f5f9}
+@media (min-width:640px){.depo-item{width:350px}}
+
+/* === BÔNUS === */
+.bonus-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:800;text-align:center;margin-bottom:1rem;color:#fff}
+.bonus-title span{color:#fb6719;font-style:italic}
+.bonus-sub{text-align:center;color:#94a3b8;margin-bottom:4rem;max-width:36rem;margin-left:auto;margin-right:auto;font-size:1.125rem}
+.bonus-grid{display:grid;grid-template-columns:1fr;gap:2rem}
+.bonus-card{background:#fff;padding:1.5rem;border-radius:40px;box-shadow:0 20px 25px -5px rgba(0,0,0,.1);display:flex;flex-direction:column}
+.bonus-card.gradient{background:linear-gradient(to bottom right,#fb6719,#ea580c)}
+.bonus-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
+.bonus-tag{background:rgba(45,109,191,.1);color:#2d6dbf;font-size:10px;font-weight:900;padding:.375rem 1rem;border-radius:9999px;text-transform:uppercase;letter-spacing:.1em}
+.bonus-card.gradient .bonus-tag{background:rgba(255,255,255,.2);color:#fff}
+.bonus-prices{text-align:right}
+.bonus-prices .price-old{color:#94a3b8;font-weight:900;font-size:14px;display:block}
+.bonus-card.gradient .bonus-prices .price-old{color:rgba(255,255,255,.8)}
+.bonus-prices .gratis{color:#fb6719;font-weight:900;font-size:14px;text-transform:uppercase}
+.bonus-card.gradient .bonus-prices .gratis{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.bonus-card h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:1rem;color:#1e293b;text-transform:uppercase}
+.bonus-card.gradient h4{color:#fff}
+.bonus-card p{font-size:16px;color:#475569;font-weight:500;line-height:1.625}
+.bonus-card.gradient p{color:#fff;font-style:italic}
+@media (min-width:768px){.bonus-title{font-size:3rem}.bonus-grid{grid-template-columns:1fr 1fr}.bonus-card{padding:2rem}.bonus-card p{font-size:1.125rem}}
+
+/* === RESUMINDO === */
+.outcome-eyebrow{color:#2d6dbf;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:block}
+.outcome-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:900;color:#1e293b;margin-bottom:4rem;line-height:1.1}
+.outcome-title span{color:#fb6719}
+.outcome-grid{display:grid;grid-template-columns:1fr;gap:1rem;max-width:1152px;margin:0 auto}
+.outcome-card p{font-weight:700;font-size:14px;color:#1e293b;text-align:left;margin:0}
+.outcome-card.featured{background:rgba(45,109,191,.05);border:2px solid rgba(45,109,191,.2)}
+.outcome-card.featured .outcome-icon{background:#2d6dbf;color:#fff;transition:transform .3s}
+.outcome-card.featured:hover .outcome-icon{transform:scale(1.1)}
+.outcome-card.featured p{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.125rem;color:#2d6dbf;text-transform:uppercase;letter-spacing:-.05em}
+@media (min-width:768px){.outcome-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.outcome-title{font-size:3rem}}
+@media (min-width:1024px){.outcome-grid{grid-template-columns:repeat(3,1fr);gap:2rem}.outcome-card.featured{grid-column:span 3;justify-content:center;padding:2rem 3rem}.outcome-card.featured p{font-size:1.25rem;text-align:center}}
+
+/* === VALOR (sem CTA) === */
+.price-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:800;margin-bottom:3rem;text-transform:uppercase;letter-spacing:-.05em;color:#fff;text-align:center}
+.price-box{background:rgba(15,23,42,.8);backdrop-filter:blur(12px);border-radius:40px;padding:1.5rem;border:1px solid #334155;box-shadow:inset 0 2px 4px rgba(0,0,0,.06)}
+.price-list{text-align:left;display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem;font-size:16px;color:#e2e8f0;border-bottom:1px solid rgba(51,65,85,.5);padding-bottom:2.5rem}
+.price-list li{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.price-list .item{display:flex;align-items:flex-start;gap:.75rem;flex:1}
+.price-list .check{color:#fb6719;margin-top:.125rem;font-size:1.25rem}
+.price-list .price-old{color:#94a3b8;font-weight:900;white-space:nowrap;font-size:1.125rem}
+.price-final{text-align:center}
+.price-final-line{color:#cbd5e1;font-size:1.25rem;font-weight:700;margin-bottom:1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem}
+.price-final-line .price-old{color:#fca5a5;font-weight:900;font-size:1.875rem;margin:0 .5rem}
+.price-surprise{color:#fff;font-size:16px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:0;font-weight:500;padding:0 .5rem}
+.price-surprise-box{display:inline-block;background:rgba(251,103,25,.2);border:1px solid rgba(251,103,25,.5);color:#fb6719;padding:.75rem 1rem;border-radius:.75rem;font-weight:900;box-shadow:0 1px 2px rgba(0,0,0,.05);font-size:1.125rem;line-height:1.1}
+@media (min-width:768px){
+  .price-title{font-size:3rem}
+  .price-box{padding:3.5rem}
+  .price-list{font-size:1.125rem}
+  .price-list .price-old{font-size:1.25rem}
+  .price-final-line{font-size:1.5rem}
+  .price-final-line .price-old{font-size:2.25rem}
+  .price-surprise{font-size:1.25rem}
+  .price-surprise-box{font-size:1.875rem;padding:.75rem 1.5rem}
+}
+
+/* === GARANTIA === */
+.guarantee-box{max-width:896px;margin:0 auto;background:linear-gradient(to bottom right,#fff,#f8fafc);border:1px solid #e2e8f0;padding:2rem;border-radius:40px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center}
+.guarantee-bg{position:absolute;right:-2.5rem;top:-2.5rem;color:#2d6dbf;opacity:.03;font-size:200px;pointer-events:none;line-height:1}
+.guarantee-icon{width:6rem;height:6rem;background:#f8fafc;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:3rem;border:4px solid #fff;box-shadow:0 4px 6px -1px rgba(0,0,0,.1);flex-shrink:0;z-index:10;position:relative}
+.guarantee-icon-ping{position:absolute;inset:0;background:rgba(45,109,191,.1);border-radius:9999px;animation:ping 1s cubic-bezier(0,0,.2,1) infinite;opacity:.5}
+.guarantee-content{z-index:10}
+.guarantee-eyebrow{color:#fb6719;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;display:block}
+.guarantee-content h2{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;color:#1e293b;margin-bottom:1rem;line-height:1.1}
+.guarantee-content p{color:#475569;font-size:14px;line-height:1.625}
+@media (min-width:768px){.guarantee-box{flex-direction:row;text-align:left;padding:3rem;gap:2.5rem}.guarantee-icon{width:8rem;height:8rem;font-size:3.75rem}.guarantee-content h2{font-size:1.875rem}.guarantee-content p{font-size:16px}}
+
+/* === MENTOR === */
+.mentor-grid{max-width:1024px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+.mentor-img-wrap{background:#e2e8f0;border-radius:40px;aspect-ratio:4/5;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);border:8px solid #fff;position:relative;overflow:hidden}
+.mentor-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .7s ease-in-out}
+.mentor-img-wrap:hover img{transform:scale(1.05)}
+.mentor-content{display:flex;flex-direction:column;gap:1.5rem}
+.mentor-content h2{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:800;color:#1e293b;line-height:1.1}
+.mentor-content h2 span{color:#2d6dbf;font-weight:900}
+.mentor-list{display:flex;flex-direction:column;gap:1rem;font-size:14px;color:#475569;line-height:1.625}
+.mentor-list p{display:flex;gap:1rem;margin:0}
+.mentor-list .check{color:#fb6719;font-size:1.25rem}
+@media (min-width:768px){.mentor-grid{grid-template-columns:1fr 1fr;gap:3rem}.mentor-content h2{font-size:2.25rem}.mentor-list{font-size:16px}}
+@media (min-width:1024px){.mentor-grid{gap:5rem}}
+
+/* === FAQ === */
+.faq-wrap{max-width:900px;margin:0 auto;background:#fff;border-radius:30px;padding:2rem;box-shadow:0 15px 40px rgba(0,0,0,.05);border:1px solid #f1f5f9}
+.faq-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;text-align:center;color:#1e293b;margin-bottom:2.5rem;font-weight:800}
+.faq-list{display:flex;flex-direction:column;gap:1rem;text-align:left}
+.faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05);transition:box-shadow .2s}
+.faq-item[open]{box-shadow:0 4px 6px -1px rgba(0,0,0,.1)}
+.faq-summary{list-style:none;padding:1.25rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Montserrat',sans-serif;font-weight:700;color:#1e293b;font-size:14px}
+.faq-summary::-webkit-details-marker{display:none}
+.faq-arrow{width:.75rem;height:.75rem;border-right:2px solid #94a3b8;border-bottom:2px solid #94a3b8;transform:rotate(45deg);transition:transform .2s,border-color .2s;margin-left:1rem;flex-shrink:0}
+.faq-item[open] .faq-arrow{transform:rotate(-135deg);border-color:#fb6719}
+.faq-content{padding:1rem 1.25rem 1.5rem;color:#475569;font-size:14px;line-height:1.625;border-top:1px solid #e2e8f0;margin-top:.25rem}
+@media (min-width:768px){.faq-wrap{padding:3rem}.faq-title{font-size:2.25rem}.faq-summary{padding:1.5rem;font-size:16px}.faq-content{padding:1rem 1.5rem 1.5rem}}
+
+/* === MENSAGEM FINAL (sem CTA) === */
+.final-wrap{max-width:768px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.5rem}
+.final-wrap h2{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;color:#1e293b;line-height:1.1}
+.final-wrap p{color:#475569;font-size:16px;line-height:1.625;max-width:36rem}
+.final-date{display:inline-block;background:#1e293b;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;padding:1rem 2rem;border-radius:1rem;box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.final-date span{color:#fb6719}
+@media (min-width:768px){.final-wrap h2{font-size:2.25rem}.final-date{font-size:1.125rem}}
+</style>
+</head>
+
+<body>
+<main class="main-wrap">
+
+<header class="cascade-section hero-section">
+  <div class="hero-inner">
+
+    <div class="hero-img-mobile">
+      <div class="hero-image-wrap">
+        <img src="../../img/Hero.webp"
+             srcset="../../img/Hero-mobile.webp 820w, ../../img/Hero.webp 1086w"
+             sizes="82vw"
+             alt="Mateus Augusto tocando ukulele"
+             width="820" height="1094"
+             fetchpriority="high" decoding="async">
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <span class="hero-badge">🎸 Você já está no Grupo VIP 🎸</span>
+      <h1 class="hero-title">Veja tudo o que você vai destravar quando o <span>Ukulele Fundamental</span> abrir</h1>
+      <p class="hero-sub">Você garantiu seu lugar no grupo e agora pode conhecer com calma cada parte do curso, do método às aulas, antes da oferta ser liberada.</p>
+      <span class="hero-date">A oferta abre dia <b>28/05</b>, aqui no grupo</span>
+    </div>
+
+    <div class="hero-img-desktop">
+      <div class="hero-image-wrap">
+        <img src="../../img/Hero.webp"
+             alt="Mateus Augusto tocando ukulele"
+             width="1086" height="1448"
+             fetchpriority="high" decoding="async">
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<section class="cascade-section proof-bar">
+  <div class="container container-6xl proof-inner">
+    <div class="proof-item"><span class="proof-num">+6.000</span> <span class="proof-text">Alunos</span></div>
+    <div class="proof-item"><span class="proof-num">14</span> <span class="proof-text">Dias de Garantia</span></div>
+    <div class="proof-item"><span class="proof-num">Acesso</span> <span class="proof-text">VITALÍCIO!</span></div>
+  </div>
+</section>
+
+<section class="cascade-section sec sec-light">
+  <div class="container container-6xl metodo-grid">
+    <div class="metodo-cards">
+      <div class="metodo-card">
+        <div class="metodo-icon blue">🧩</div>
+        <div>
+          <h4>1. Dividir</h4>
+          <p>Cada música em peças pequenas e gerenciáveis para o seu cérebro.</p>
+        </div>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-icon orange-light">🔓</div>
+        <div>
+          <h4>2. Destravar</h4>
+          <p>Treino com repetição inteligente em velocidade reduzida.</p>
+        </div>
+      </div>
+      <div class="metodo-card highlight">
+        <div class="metodo-icon orange-solid">🎵</div>
+        <div>
+          <h4>3. Dominar</h4>
+          <p>A música flui, o som sai limpo e o ritmo fica firme.</p>
+        </div>
+      </div>
+    </div>
+    <div class="metodo-content">
+      <h2>O método 3D transforma <span>a forma de aprender e de tocar</span></h2>
+      <div class="prose">
+        <p>Aprender música em vídeo avulso do YouTube é como receber peças de quebra-cabeça soltas vindas de caixas diferentes. Cada tutorial ensina um pedaço, mas ninguém te mostra onde encaixa, e a culpa parece sua quando você não evolui.</p>
+        <p class="highlight-box">O Método 3D faz o oposto. Divide cada música, cada acorde e cada batida em peças pequenas, destrava cada peça com repetição inteligente, e o domínio chega como consequência.</p>
+        <p>O mesmo método que mais de <b>6.000 alunos</b> usaram para sair do zero ou destravar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec sec-white" style="position:relative;overflow:hidden">
+  <div class="container container-6xl dentro-grid">
+    <div class="dentro-img-wrap">
+      <div class="dentro-badge">
+        <span>Acesso</span>
+        <span>VITALÍCIO</span>
+        <div class="bar"></div>
+      </div>
+      <img src="../../img/Mockup - Mateus + aulas e tal.webp" alt="Conteúdo do curso Ukulele Fundamental" width="800" height="440" loading="lazy" decoding="async" class="dentro-img">
+    </div>
+    <div class="dentro-content">
+      <h2>Dentro do Ukulele Fundamental, <span>você tem tudo</span>:</h2>
+      <ul class="dentro-list">
+        <li><span class="check">✅</span> <p><b>Curso completo</b> em 4 etapas estruturadas, do zero à autonomia.</p></li>
+        <li><span class="check">✅</span> <p><b>Aulas curtas</b> pensadas para caber em 20 min/dia, no seu horário.</p></li>
+        <li><span class="check">✅</span> <p><b>Aplicação prática imediata</b> com música real já na Primeira Fase.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec sec-light">
+  <div class="container container-6xl">
+    <h2 class="fases-title">Em 4 etapas simples, você sai do zero</h2>
+    <div class="fases-grid">
+      <div class="fase-card">
+        <div class="fase-img"><img src="../../img/1c.webp" alt="Fase 1" width="128" height="128" loading="lazy" decoding="async"></div>
+        <span class="fase-badge">Fase 1</span>
+        <h4>Início Imediato</h4>
+        <p>Postura, afinação e sua primeira música já na etapa 1.</p>
+      </div>
+      <div class="fase-card">
+        <div class="fase-img orange"><img src="../../img/2c.webp" alt="Fase 2" width="128" height="128" loading="lazy" decoding="async"></div>
+        <span class="fase-badge">Fase 2</span>
+        <h4>Destrave</h4>
+        <p>Domine as batidas coringas e troque acordes sem engasgar.</p>
+      </div>
+      <div class="fase-card">
+        <div class="fase-img"><img src="../../img/3c.webp" alt="Fase 3" width="128" height="128" loading="lazy" decoding="async"></div>
+        <span class="fase-badge">Fase 3</span>
+        <h4>Temperar</h4>
+        <p>Refine o toque para um som limpo e cristalino.</p>
+      </div>
+      <div class="fase-card">
+        <div class="fase-img orange"><img src="../../img/4b.webp" alt="Fase 4" width="128" height="128" loading="lazy" decoding="async"></div>
+        <span class="fase-badge">Fase 4</span>
+        <h4>Autonomia</h4>
+        <p>Toque diferentes estilos, como reggae e baião e ganhe liberdade musical total.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec sec-white">
+  <div class="container container-6xl">
+    <h2 class="depo-title">O que nossos alunos dizem:</h2>
+    <div class="depo-grid">
+      <div class="depo-item"><img src="../../img/Depoimento Aline (b).webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Leila.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Marcelo.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Maria.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Wellen b.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec-dark">
+  <div class="container container-6xl">
+    <h2 class="bonus-title">Você ainda leva <span>4 bônus exclusivos</span></h2>
+    <p class="bonus-sub">Tudo o que você precisa para transformar o aprendizado em um hobby para a vida toda.</p>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-head">
+          <span class="bonus-tag">Bônus 01</span>
+          <div class="bonus-prices"><span class="price-old">R$ 297,00/ano</span><span class="gratis">Grátis</span></div>
+        </div>
+        <h4>Comunidade Exclusiva</h4>
+        <p>Tira-dúvidas direto com professores e alunos, missões mensais com encontros ao vivo e o lugar onde você vê outras pessoas exatamente onde você está hoje.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-head">
+          <span class="bonus-tag">Bônus 02</span>
+          <div class="bonus-prices"><span class="price-old">R$ 297,00</span><span class="gratis">Grátis</span></div>
+        </div>
+        <h4>Biblioteca 150+ Músicas</h4>
+        <p>Repertório em pop, rock, reggae, gospel e MPB ensinado passo a passo, para você nunca mais ficar procurando tutorial avulso no YouTube.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-head">
+          <span class="bonus-tag">Bônus 03</span>
+          <div class="bonus-prices"><span class="price-old">R$ 147,00</span><span class="gratis">Grátis</span></div>
+        </div>
+        <h4>Workshop de Canto</h4>
+        <p>Aprenda a encontrar seu tom, aquecer a voz e tocar e cantar ao mesmo tempo afinado, mesmo se você nunca se considerou bom de voz.</p>
+      </div>
+      <div class="bonus-card gradient">
+        <div class="bonus-head">
+          <span class="bonus-tag">Bônus Especial</span>
+          <div class="bonus-prices"><span class="price-old">R$ 597,00</span><span class="gratis">Grátis</span></div>
+        </div>
+        <h4>Acesso Vitalício</h4>
+        <p>Como bônus desta condição, o acesso vira vitalício: você assiste no seu ritmo, refaz quantas vezes precisar e recebe todas as atualizações futuras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec sec-white" style="text-align:center">
+  <div class="container container-6xl">
+    <span class="outcome-eyebrow">Sua Nova Jornada</span>
+    <h2 class="outcome-title">Resumindo, você sai desse curso <span>assim:</span></h2>
+    <div class="outcome-grid">
+      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div><p>Tocando músicas do início ao fim</p></div>
+      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 7c0-1.66-1.34-3-3-3-1.06 0-2 .55-2.54 1.38l-.13.2-.12-.2C14.66 4.55 13.72 4 12.66 4c-.96 0-1.81.45-2.36 1.15L9 7l-1.3-1.85C7.15 4.45 6.3 4 5.34 4 4.28 4 3.34 4.55 2.8 5.38L2 7l5 7v6h12v-6l5-7-.8-1.62C20.66 4.55 19.72 4 18.66 4z"/></svg></div><p>Trocando acordes sem engasgar</p></div>
+      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15z"/></svg></div><p>Com a pestana destravada de vez</p></div>
+      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><p>Pronto para tocar na roda de amigos</p></div>
+      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg></div><p>Cantando e tocando ao mesmo tempo</p></div>
+      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.93 12.79c1.62 3.96 4.34 6.79 8.27 8.36l3.05-3.05c.39-.39.39-.99 0-1.38l-3.05-3.05c-.39-.39-.99-.39-1.38 0l-1.27 1.27c-2.06-1.06-3.7-2.69-4.76-4.76l1.27-1.27c.39-.39.39-.99 0-1.38L9.01 4.46c-.39-.39-.99-.39-1.38 0L4.58 7.51c1.57 3.93 4.4 6.65 8.36 8.27z"/></svg></div><p>Dominando mais de 10 batidas</p></div>
+      <div class="outcome-card featured"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55l1.33.26zM11.17 17s3.74-1.55 5.89-3.7c5.4-5.4 4.5-9.62 4.21-10.57-.95-.3-5.17-1.19-10.57 4.21C8.55 9.09 7 12.83 7 12.83L11.17 17z"/></svg></div><p>Sabendo como praticar para evoluir sem limites</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec-dark2">
+  <div class="container container-4xl" style="color:#fff;text-align:center">
+    <h2 class="price-title">Tudo isso que você recebe junto:</h2>
+    <div class="price-box">
+      <ul class="price-list">
+        <li><span class="item"><span class="check">✅</span> <span><b>Curso Ukulele Fundamental completo</b> (4 etapas, do zero à autonomia musical)</span></span><span class="price-old">R$ 597</span></li>
+        <li><span class="item"><span class="check">✅</span> <span><b>Comunidade Exclusiva por 1 Ano</b> (tira-dúvidas e Missão Uke ao vivo)</span></span><span class="price-old">R$ 297</span></li>
+        <li><span class="item"><span class="check">✅</span> <span><b>Biblioteca com Mais de 150 Músicas</b> (pop, rock, reggae, gospel, MPB)</span></span><span class="price-old">R$ 297</span></li>
+        <li><span class="item"><span class="check">✅</span> <span><b>Workshop de Canto com Ukulele</b> (tocar e cantar afinado ao mesmo tempo)</span></span><span class="price-old">R$ 147</span></li>
+        <li><span class="item"><span class="check">✅</span> <span><b>Acesso Vitalício</b> (sem prazo, com todas as atualizações futuras)</span></span><span class="price-old">R$ 297</span></li>
+      </ul>
+      <div class="price-final">
+        <p class="price-final-line">Valor somado de tudo: <span class="price-old">R$ 1.635,00</span></p>
+        <p class="price-surprise"><span class="price-surprise-box">A condição especial você descobre no dia 28/05, aqui no grupo</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec-white" style="padding:2rem 1rem">
+  <div class="guarantee-box">
+    <div class="guarantee-bg"><svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+    <div class="guarantee-icon"><div class="guarantee-icon-ping"></div>🛡️</div>
+    <div class="guarantee-content">
+      <span class="guarantee-eyebrow">100% Livre de Risco</span>
+      <h2>Garantia incondicional de 14 dias</h2>
+      <p>Você entra no curso, testa o método e toca a primeira música. Se por qualquer motivo não gostar da metodologia, devolvemos 100% do seu dinheiro sem letras miúdas e sem fricção. O risco está todo nas nossas costas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec-light" style="padding:4rem 1rem">
+  <div class="mentor-grid">
+    <div class="mentor-img-wrap">
+      <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto - Professor e Mentor do Ukulele Fundamental" width="800" height="1000" loading="lazy" decoding="async">
+    </div>
+    <div class="mentor-content">
+      <h2>O seu mentor nessa jornada é o <span>Mateus Augusto</span></h2>
+      <div class="mentor-list">
+        <p><span class="check">✓</span> Há 30 anos aprendendo e tocando instrumentos musicais.</p>
+        <p><span class="check">✓</span> Em 2014, o Ukulele foi seu refúgio no tratamento contra um câncer.</p>
+        <p><span class="check">✓</span> Quando se curou, transformou essa experiência em missão de ensinar pessoas comuns a ter o mesmo refúgio.</p>
+        <p><span class="check">✓</span> Desde então, já formou mais de 6.000 alunos em todos os cantos do Brasil e do mundo, além de ter +300.000 seguidores nas redes sociais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec-white" style="padding:4rem 1rem">
+  <div class="faq-wrap">
+    <h2 class="faq-title">Perguntas frequentes</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-summary">Nunca toquei nenhum instrumento. Esse curso é para mim?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Sim! O Ukulele Fundamental foi criado exatamente para quem está começando do zero. Você vai aprender passo a passo, com segurança e praticidade.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Já sei o básico, mas ainda travo. Vai me ajudar?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Com certeza. Se você já começou a aprender, mas sente que não evolui, o curso vai corrigir sua base e acelerar sua autonomia musical.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Eu não tenho coordenação ou ritmo. Mesmo assim consigo?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Sim. O método 3D (Dividir, Destravar, Dominar) foi feito justamente para ajudar quem sente os dedos duros ou travados. A coordenação aparece com os exercícios certos.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Preciso saber teoria musical?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Não! Você aprende direto na prática, dentro de músicas reais. A teoria que você aprende aqui é a que faz sentido na hora que você precisa.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">O acesso ao curso é por tempo limitado?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Não! O acesso é vitalício. Você pode seguir no seu ritmo, sem pressão, e revisitar as aulas sempre que quiser.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec-light" style="padding:4rem 1rem;border-top:1px solid #e2e8f0">
+  <div class="final-wrap">
+    <h2>Agora você já conhece tudo o que vem pela frente</h2>
+    <p>No dia 28/05 a oferta abre aqui mesmo, dentro do grupo. Fica de olho nas mensagens para não perder o aviso e a condição especial que vamos liberar.</p>
+    <span class="final-date">Anota aí: <span>28/05</span>, no grupo</span>
+  </div>
+</section>
+
+</main>
+
+<script>
+// ============================
+// CASCATA (defer com requestIdleCallback)
+// ============================
+function iniciarCascata(){
+  var s=document.querySelectorAll('.cascade-section:not(.hero-section)');
+  for(var i=0;i<s.length;i++){
+    (function(el,idx){setTimeout(function(){el.classList.add('animate-reveal')},idx*100)})(s[i],i);
+  }
+}
+function bootCascata(){
+  if('requestIdleCallback' in window){requestIdleCallback(iniciarCascata,{timeout:1000})}
+  else{setTimeout(iniciarCascata,200)}
+}
+if(document.readyState==='complete'){bootCascata()}
+else{window.addEventListener('load',bootCascata,{once:true})}
+
+// ============================
+// FAQ
+// ============================
+document.querySelectorAll('details.faq-item').forEach(function(d){
+  d.addEventListener('click',function(){
+    if(!this.open){
+      document.querySelectorAll('details.faq-item').forEach(function(o){if(o!==this&&o.open)o.removeAttribute('open')}.bind(this));
+    }
+  });
+});
+</script>
+
+<script>
+// GTM dispara ~1.5s após DOM pronto, com dataLayer pré-inicializado
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({event:'vip_preview_view',page_type:'preview',page_name:'o-que-voce-recebe'});
+(function(){
+  function loadGTM(){
+    (function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');
+  }
+  if(document.readyState==='complete'||document.readyState==='interactive'){
+    setTimeout(loadGTM,1500);
+  } else {
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(loadGTM,1500)},{once:true});
+  }
+})();
+</script>
+<noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+</body>
+</html>
