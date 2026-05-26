@@ -272,6 +272,30 @@ header.hero-section{background:#1e293b;color:#fff;min-height:auto;width:100%;bor
 .faq-content{padding:1rem 1.25rem 1.5rem;color:#475569;font-size:14px;line-height:1.625;border-top:1px solid #e2e8f0;margin-top:.25rem}
 @media (min-width:768px){.faq-wrap{padding:3rem}.faq-title{font-size:2.25rem}.faq-summary{padding:1.5rem;font-size:16px}.faq-content{padding:1rem 1.5rem 1.5rem}}
 
+/* === BÔNUS POR JANELA DE HORÁRIO === */
+.window-intro{text-align:center;max-width:768px;margin:0 auto 3.5rem}
+.window-eyebrow{color:#fb6719;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:block}
+.window-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:900;color:#fff;line-height:1.1;margin-bottom:1rem}
+.window-title span{color:#fb6719}
+.window-sub{color:#94a3b8;font-size:16px;line-height:1.625}
+.window-grid{max-width:1024px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1.5rem}
+.window-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;padding:1.75rem;display:flex;flex-direction:column;gap:1rem;position:relative;overflow:hidden}
+.window-card.gold{border-color:rgba(251,103,25,.5);background:rgba(251,103,25,.08)}
+.window-badge-time{display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;background:rgba(45,109,191,.2);border:1px solid rgba(45,109,191,.4);color:#93c5fd;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:.375rem .875rem;border-radius:9999px}
+.window-card.gold .window-badge-time{background:rgba(251,103,25,.2);border-color:rgba(251,103,25,.5);color:#fb6719}
+.window-badge-time svg{width:.875rem;height:.875rem;flex-shrink:0}
+.window-card h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.25rem;color:#fff;line-height:1.2}
+.window-card p{color:#cbd5e1;font-size:14px;line-height:1.6}
+.window-card .window-value{margin-top:auto;font-size:13px;font-weight:700;color:#94a3b8}
+.window-card .window-value b{color:#fb6719;text-transform:uppercase}
+.window-scarcity{display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;background:#fb6719;color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:.375rem .875rem;border-radius:9999px}
+@media (min-width:768px){
+  .window-title{font-size:2.5rem}
+  .window-grid{grid-template-columns:repeat(3,1fr)}
+  .window-card{padding:2rem}
+  .window-card h4{font-size:1.375rem}
+}
+
 /* === CURRÍCULO DETALHADO === */
 .curr-intro{text-align:center;max-width:768px;margin:0 auto 4rem}
 .curr-eyebrow{color:#2d6dbf;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:block}
@@ -337,7 +361,7 @@ header.hero-section{background:#1e293b;color:#fff;min-height:auto;width:100%;bor
       <span class="hero-badge">🎸 Você já está no Grupo VIP 🎸</span>
       <h1 class="hero-title">Veja tudo o que você vai destravar quando o <span>Ukulele Fundamental</span> abrir</h1>
       <p class="hero-sub">Você garantiu seu lugar no grupo e agora pode conhecer com calma cada parte do curso, do método às aulas, antes da oferta ser liberada.</p>
-      <span class="hero-date">A oferta abre dia <b>28/05</b>, aqui no grupo</span>
+      <span class="hero-date">A oferta abre dia <b>28/05, às 8h</b>, aqui no grupo</span>
     </div>
 
     <div class="hero-img-desktop">
@@ -683,11 +707,47 @@ header.hero-section{background:#1e293b;color:#fff;min-height:auto;width:100%;bor
         <li><span class="item"><span class="check">✅</span> <span><b>Biblioteca com Mais de 150 Músicas</b> (pop, rock, reggae, gospel, MPB)</span></span><span class="price-old">R$ 297</span></li>
         <li><span class="item"><span class="check">✅</span> <span><b>Workshop de Canto com Ukulele</b> (tocar e cantar afinado ao mesmo tempo)</span></span><span class="price-old">R$ 147</span></li>
         <li><span class="item"><span class="check">✅</span> <span><b>Acesso Vitalício</b> (sem prazo, com todas as atualizações futuras)</span></span><span class="price-old">R$ 297</span></li>
+        <li><span class="item"><span class="check">✅</span> <span><b>Acompanhamento Uke a Uke com o Mateus</b> (bônus exclusivo para inscrições no dia 28/05 pela oferta especial)</span></span><span class="price-old">R$ 497</span></li>
+        <li><span class="item"><span class="check">✅</span> <span><b>Dicionário de Acordes do Ukulele (eBook)</b> (nas 2 primeiras horas de abertura no dia 28/05)</span></span><span class="price-old">R$ 27</span></li>
       </ul>
       <div class="price-final">
-        <p class="price-final-line">Valor somado de tudo: <span class="price-old">R$ 1.635,00</span></p>
-        <p class="price-surprise"><span class="price-surprise-box">A condição especial você descobre no dia 28/05, aqui no grupo</span></p>
+        <p class="price-final-line">De: <span class="price-old">R$ 2.159,00</span> | Por:</p>
+        <p class="price-surprise"><span class="price-surprise-box">SURPRESA, liberada no dia 28/05 somente no grupo vip</span></p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec-dark2">
+  <div class="container container-5xl">
+    <div class="window-intro">
+      <span class="window-eyebrow">Quanto mais cedo, mais você leva</span>
+      <h2 class="window-title">Bônus que dependem da <span>hora que você entrar</span></h2>
+      <p class="window-sub">No dia 28/05 a oferta abre às 8h da manhã. Quem chega mais cedo destrava bônus extras, e os 5 primeiros levam algo que ninguém mais pega.</p>
+    </div>
+    <div class="window-grid">
+
+      <div class="window-card gold">
+        <span class="window-scarcity">🔥 Só os 5 primeiros</span>
+        <h4>Destrava Dedo</h4>
+        <p>Mini curso com 21 exercícios para destravar os dedos e acelerar o desenvolvimento da sua coordenação motora desde o primeiro dia.</p>
+        <span class="window-value">Exclusivo para as <b>5 primeiras inscrições</b></span>
+      </div>
+
+      <div class="window-card">
+        <span class="window-badge-time"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>Das 8h às 10h</span>
+        <h4>Dicionário de Acordes (eBook)</h4>
+        <p>Bate o olho, vê a posição e toca. O guia de consulta definitivo para você nunca mais travar procurando um acorde.</p>
+        <span class="window-value">Para quem entrar nas <b>2 primeiras horas</b></span>
+      </div>
+
+      <div class="window-card">
+        <span class="window-badge-time"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>Das 8h às 20h</span>
+        <h4>Acompanhamento Uke a Uke</h4>
+        <p>Você envia 3 vídeos tocando e o Mateus devolve uma análise em vídeo de cada um, com correções pensadas para o seu jeito de tocar.</p>
+        <span class="window-value">Para inscrições feitas <b>ao longo do dia 28/05</b></span>
+      </div>
+
     </div>
   </div>
 </section>
@@ -752,8 +812,8 @@ header.hero-section{background:#1e293b;color:#fff;min-height:auto;width:100%;bor
 <section class="cascade-section sec-light" style="padding:4rem 1rem;border-top:1px solid #e2e8f0">
   <div class="final-wrap">
     <h2>Agora você já conhece tudo o que vem pela frente</h2>
-    <p>No dia 28/05 a oferta abre aqui mesmo, dentro do grupo. Fica de olho nas mensagens para não perder o aviso e a condição especial que vamos liberar.</p>
-    <span class="final-date">Anota aí: <span>28/05</span>, no grupo</span>
+    <p>No dia 28/05, às 8h da manhã, a oferta abre aqui mesmo, dentro do grupo. Quem chega cedo leva mais bônus, e os 5 primeiros garantem o Destrava Dedo. Fica de olho nas mensagens para não perder o aviso e a condição especial.</p>
+    <span class="final-date">Anota aí: <span>28/05, às 8h</span>, no grupo</span>
   </div>
 </section>
 
