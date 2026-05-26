@@ -272,6 +272,40 @@ header.hero-section{background:#1e293b;color:#fff;min-height:auto;width:100%;bor
 .faq-content{padding:1rem 1.25rem 1.5rem;color:#475569;font-size:14px;line-height:1.625;border-top:1px solid #e2e8f0;margin-top:.25rem}
 @media (min-width:768px){.faq-wrap{padding:3rem}.faq-title{font-size:2.25rem}.faq-summary{padding:1.5rem;font-size:16px}.faq-content{padding:1rem 1.5rem 1.5rem}}
 
+/* === CURRÍCULO DETALHADO === */
+.curr-intro{text-align:center;max-width:768px;margin:0 auto 4rem}
+.curr-eyebrow{color:#2d6dbf;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:block}
+.curr-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:900;color:#1e293b;line-height:1.1;margin-bottom:1rem}
+.curr-title span{color:#fb6719}
+.curr-sub{color:#475569;font-size:16px;line-height:1.625}
+.curr-phases{max-width:1024px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem}
+.curr-phase{background:#fff;border:1px solid #e2e8f0;border-radius:1.5rem;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.curr-phase-head{display:flex;align-items:center;gap:1rem;padding:1.5rem;background:#1e293b;color:#fff}
+.curr-phase-num{width:3rem;height:3rem;flex-shrink:0;border-radius:9999px;background:#fb6719;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.25rem}
+.curr-phase-head h3{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;line-height:1.2}
+.curr-phase-head h3 span{display:block;color:#fb6719;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:.25rem}
+.curr-block{padding:1.5rem}
+.curr-block+.curr-block{border-top:1px solid #f1f5f9}
+.curr-block-label{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#2d6dbf;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.curr-block-label svg{width:1rem;height:1rem;flex-shrink:0}
+.curr-topics{display:grid;grid-template-columns:1fr;gap:.625rem}
+.curr-topics li{display:flex;gap:.625rem;align-items:flex-start;font-size:13px;color:#475569;line-height:1.45}
+.curr-topics .dot{color:#fb6719;font-weight:900;flex-shrink:0;line-height:1.45}
+.curr-songs{display:flex;flex-wrap:wrap;gap:.5rem}
+.curr-song{background:#f8fafc;border:1px solid #e2e8f0;border-radius:9999px;padding:.375rem .875rem;font-size:12px;color:#334155;font-weight:500}
+.curr-song b{font-weight:700;color:#1e293b}
+.curr-note{margin-top:1rem;font-size:12px;color:#94a3b8;font-style:italic;line-height:1.5}
+@media (min-width:768px){
+  .curr-title{font-size:2.75rem}
+  .curr-phase-head{padding:1.75rem 2rem}
+  .curr-phase-head h3{font-size:1.25rem}
+  .curr-phase-num{width:3.5rem;height:3.5rem;font-size:1.5rem}
+  .curr-block{padding:2rem}
+  .curr-topics{grid-template-columns:1fr 1fr;gap:.75rem 2rem}
+  .curr-topics li{font-size:14px}
+  .curr-song{font-size:13px}
+}
+
 /* === MENSAGEM FINAL (sem CTA) === */
 .final-wrap{max-width:768px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.5rem}
 .final-wrap h2{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;color:#1e293b;line-height:1.1}
@@ -411,6 +445,160 @@ header.hero-section{background:#1e293b;color:#fff;min-height:auto;width:100%;bor
         <h4>Autonomia</h4>
         <p>Toque diferentes estilos, como reggae e baião e ganhe liberdade musical total.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec sec-white">
+  <div class="container container-6xl">
+    <div class="curr-intro">
+      <span class="curr-eyebrow">O conteúdo por dentro</span>
+      <h2 class="curr-title">Cada fase, aula por aula e <span>música por música</span></h2>
+      <p class="curr-sub">Esse é o mapa completo do que você vai estudar. Da primeira nota até tocar progressões inteiras com liberdade, tudo aplicado em músicas reais que você já conhece.</p>
+    </div>
+
+    <div class="curr-phases">
+
+      <div class="curr-phase">
+        <div class="curr-phase-head">
+          <div class="curr-phase-num">1</div>
+          <h3><span>Fase 1</span>Início Imediato: do zero à 1ª música</h3>
+        </div>
+        <div class="curr-block">
+          <p class="curr-block-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>O que você aprende</p>
+          <ul class="curr-topics">
+            <li><span class="dot">›</span> Os 7 erros fatais de quem começa</li>
+            <li><span class="dot">›</span> Tipos, tamanhos e partes do ukulele</li>
+            <li><span class="dot">›</span> Como afinar o ukulele (gCEA)</li>
+            <li><span class="dot">›</span> Como segurar e usar os dedos nas batidas</li>
+            <li><span class="dot">›</span> Os 5 passos para tirar qualquer música</li>
+            <li><span class="dot">›</span> Batida Bate e Desce</li>
+            <li><span class="dot">›</span> Acordes com 1 dedo: C e Fadd9</li>
+          </ul>
+        </div>
+        <div class="curr-block">
+          <p class="curr-block-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Músicas que você toca</p>
+          <div class="curr-songs">
+            <span class="curr-song"><b>Parabéns pra Você</b></span>
+            <span class="curr-song"><b>Jackie Tequila</b> · Skank</span>
+            <span class="curr-song"><b>Te Ver</b> · Skank</span>
+            <span class="curr-song"><b>Garota Nacional</b> · Skank</span>
+            <span class="curr-song"><b>W/Brasil</b> · Jorge Ben Jor</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="curr-phase">
+        <div class="curr-phase-head">
+          <div class="curr-phase-num">2</div>
+          <h3><span>Fase 2</span>Fundamentos do ukulele</h3>
+        </div>
+        <div class="curr-block">
+          <p class="curr-block-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>O que você aprende</p>
+          <ul class="curr-topics">
+            <li><span class="dot">›</span> Nomenclatura e posicionamento dos dedos</li>
+            <li><span class="dot">›</span> Exercício 1234 e uso do polegar</li>
+            <li><span class="dot">›</span> Praticar vs. tocar: a diferença na prática</li>
+            <li><span class="dot">›</span> Pulsação, compasso e andamento</li>
+            <li><span class="dot">›</span> Como usar o metrônomo</li>
+            <li><span class="dot">›</span> Acordes C7, G6, D7 e Em7</li>
+            <li><span class="dot">›</span> Exercícios de ritmo A, B, C e D</li>
+            <li><span class="dot">›</span> Batida Mãe, Movimento Perpétuo e Swing Time</li>
+            <li><span class="dot">›</span> Gancho, peteleco e acento na batida</li>
+            <li><span class="dot">›</span> Teoria aplicada: notas, tom e semitom</li>
+            <li><span class="dot">›</span> Notas no braço do ukulele</li>
+            <li><span class="dot">›</span> Batidas Pop 1 e Pop 2 e Dinâmica Simples</li>
+            <li><span class="dot">›</span> Dedo guia, tríades e troca de acordes</li>
+            <li><span class="dot">›</span> Low G vs High G e ukulele barítono</li>
+            <li><span class="dot">›</span> Como achar cifras e mudar o tom de uma música</li>
+          </ul>
+        </div>
+        <div class="curr-block">
+          <p class="curr-block-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Músicas que você toca</p>
+          <div class="curr-songs">
+            <span class="curr-song"><b>Sossego</b> · Tim Maia</span>
+            <span class="curr-song"><b>La Bella Luna</b> · Paralamas</span>
+            <span class="curr-song"><b>Flores</b> · Titãs</span>
+            <span class="curr-song"><b>Samba da Benção</b> · Vinícius</span>
+            <span class="curr-song"><b>Preta Pretinha</b> · Novos Baianos</span>
+            <span class="curr-song"><b>Palavras ao Vento</b> · Cássia Eller</span>
+            <span class="curr-song"><b>Aeroplane</b> · RHCP</span>
+            <span class="curr-song"><b>Scar Tissue</b> · RHCP</span>
+            <span class="curr-song"><b>Acima do Sol</b></span>
+            <span class="curr-song"><b>A Horse With No Name</b> · America</span>
+            <span class="curr-song"><b>Songbird</b> · Oasis</span>
+          </div>
+          <p class="curr-note">Mais músicas extras: Somewhere Over the Rainbow, Oitavo Andar, Free, Havana e outras.</p>
+        </div>
+      </div>
+
+      <div class="curr-phase">
+        <div class="curr-phase-head">
+          <div class="curr-phase-num">3</div>
+          <h3><span>Fase 3</span>Temperando e refinando</h3>
+        </div>
+        <div class="curr-block">
+          <p class="curr-block-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>O que você aprende</p>
+          <ul class="curr-topics">
+            <li><span class="dot">›</span> Batida Reggae 1 e abafamento tipo Chunk</li>
+            <li><span class="dot">›</span> Símbolos usados nas cifras</li>
+            <li><span class="dot">›</span> Desapegar das setinhas de batida</li>
+            <li><span class="dot">›</span> Viradas para dar personalidade ao final</li>
+            <li><span class="dot">›</span> Tocar as cordas parcialmente</li>
+            <li><span class="dot">›</span> Pestana: tipos e como fazer sem força</li>
+            <li><span class="dot">›</span> Pinça, alavanca e os 3 pontos de pressão</li>
+            <li><span class="dot">›</span> Exercícios de pestana na 5ª e 3ª casa</li>
+            <li><span class="dot">›</span> Acordes com dedos empilhados (D, G7M)</li>
+            <li><span class="dot">›</span> Acordes m7 e diminuto</li>
+            <li><span class="dot">›</span> Acordes que pedem flexibilidade (F7M, E, C#m)</li>
+            <li><span class="dot">›</span> Alongamentos para mãos e dedos</li>
+          </ul>
+        </div>
+        <div class="curr-block">
+          <p class="curr-block-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Músicas que você toca</p>
+          <div class="curr-songs">
+            <span class="curr-song"><b>Three Little Birds</b> · Bob Marley</span>
+            <span class="curr-song"><b>Melô do Marinheiro</b> · Paralamas</span>
+            <span class="curr-song"><b>Blurred Lines</b> · Robin Thicke</span>
+            <span class="curr-song"><b>Stand by Me</b> · Ben E. King</span>
+            <span class="curr-song"><b>Hey Soul Sister</b> · Train</span>
+            <span class="curr-song"><b>What a Wonderful World</b></span>
+            <span class="curr-song"><b>Elephant Gun</b> · Beirut</span>
+          </div>
+          <p class="curr-note">Mais de 20 músicas extras nessa fase, de O Rappa e Natiruts a Elvis, Tribalistas, Clarice Falcão e clássicos de Natal.</p>
+        </div>
+      </div>
+
+      <div class="curr-phase">
+        <div class="curr-phase-head">
+          <div class="curr-phase-num">4</div>
+          <h3><span>Fase 4</span>Autonomia musical</h3>
+        </div>
+        <div class="curr-block">
+          <p class="curr-block-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>O que você aprende</p>
+          <ul class="curr-topics">
+            <li><span class="dot">›</span> Progressões de acordes: o que são e como estudar</li>
+            <li><span class="dot">›</span> Progressões I V, I V7, I IV V e I IV V7</li>
+            <li><span class="dot">›</span> Batida Baião e meia batida</li>
+            <li><span class="dot">›</span> Batida Havaiana</li>
+            <li><span class="dot">›</span> 8 novas batidas para tocar de tudo</li>
+            <li><span class="dot">›</span> Os 4 acordes mágicos e suas progressões</li>
+            <li><span class="dot">›</span> Progressões VIm IV I V, I IV V VIm e I VIm IV V</li>
+          </ul>
+        </div>
+        <div class="curr-block">
+          <p class="curr-block-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Músicas que você toca</p>
+          <div class="curr-songs">
+            <span class="curr-song"><b>Oh Susana</b></span>
+            <span class="curr-song"><b>Menino da Porteira</b> · Sérgio Reis</span>
+            <span class="curr-song"><b>Pagode em Brasília</b> · Tião Carreiro</span>
+            <span class="curr-song"><b>La Bamba</b> · Trini Lopez</span>
+            <span class="curr-song"><b>Twist and Shout</b> · Beatles</span>
+          </div>
+          <p class="curr-note">Ao fim dessa fase você combina batidas, acordes e progressões para tocar praticamente qualquer música sozinho.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
