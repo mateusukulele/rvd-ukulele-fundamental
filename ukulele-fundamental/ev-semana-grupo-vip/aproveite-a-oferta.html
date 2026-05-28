@@ -412,8 +412,8 @@ header.hero-section{background:#1e293b;color:#fff;min-height:auto;width:100%;bor
 <div class="bar-fixed" id="bar-fixed">
   <div class="bar-inner">
     <div class="bar-label">
-      <span class="bar-label-top" id="bar-label-top">A oferta termina em</span>
-      <span class="bar-label-bottom">Ukulele Fundamental · 28/05</span>
+      <span class="bar-label-top" id="bar-label-top">Esta condição especial encerra às 20h</span>
+      <span class="bar-label-bottom">Faltam apenas:</span>
     </div>
     <div class="bar-timer" id="bar-timer">
       <div class="bar-timer-block"><span class="bar-timer-num" id="t-h">00</span><span class="bar-timer-lbl">Horas</span></div>
@@ -962,13 +962,14 @@ document.querySelectorAll('details.faq-item').forEach(function(d){
 // Fechada: 28/05/2026, 20:00 BRT (UTC-3) -> 23:00 UTC
 // ============================
 (function(){
-  var OPEN_UTC  = Date.UTC(2026, 4, 28, 11, 0, 0); // mês é 0-indexed: 4 = maio
-  var CLOSE_UTC = Date.UTC(2026, 4, 28, 23, 0, 0);
-  var WA_URL = 'https://wa.me/5531985852860?text=' + encodeURIComponent('Olá! Vim da página do Ukulele Fundamental.');
+  var OPEN_UTC  = Date.UTC(2026, 4, 28, 10, 50, 0); // 28/05/2026 07:50 BRT
+  var CLOSE_UTC = Date.UTC(2026, 4, 28, 23, 0, 0);  // 28/05/2026 20:00 BRT
+  var WA_URL = 'https://wa.me/5531985852860?text=' + encodeURIComponent('Oi! Eu gostaria de aproveitar a condição especial do dia 28/05, mas cheguei depois do término. Pode me ajudar com isso?');
   var HOTMART_URL = 'https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO-GRUPO-VIP&hideBillet=1';
 
   var bar = document.getElementById('bar-fixed');
   var labelTop = document.getElementById('bar-label-top');
+  var labelBottom = document.querySelector('.bar-label-bottom');
   var th = document.getElementById('t-h');
   var tm = document.getElementById('t-m');
   var ts = document.getElementById('t-s');
@@ -980,20 +981,22 @@ document.querySelectorAll('details.faq-item').forEach(function(d){
   function pad(n){return n<10?'0'+n:''+n}
 
   function setBeforeOpen(){
-    if(labelTop) labelTop.textContent = 'A oferta abre em';
-    if(heroBadge) heroBadge.innerHTML = '⏳ A oferta abre dia 28/05 às 8h ⏳';
+    if(labelTop) labelTop.textContent = 'A condição especial abre às 8h00';
+    if(labelBottom) labelBottom.textContent = 'Começa em:';
+    if(heroBadge) heroBadge.innerHTML = '⏳ A oferta abre dia 28/05 às 8h00 ⏳';
     if(finalTitle) finalTitle.textContent = 'A oferta ainda não abriu';
-    if(finalText) finalText.innerHTML = 'A condição especial começa <b>28/05 às 8h</b> e vai até <b>20h</b>, horário de Brasília. Volte aqui no horário para garantir.';
+    if(finalText) finalText.innerHTML = 'A condição especial começa <b>28/05 às 8h00</b> e vai até <b>20h</b>, horário de Brasília. Volte aqui no horário para garantir.';
     for(var i=0;i<ctaLinks.length;i++){
       var el = ctaLinks[i];
       el.classList.add('disabled');
       el.removeAttribute('href');
-      el.textContent = 'Abre 28/05 às 8h';
+      el.textContent = 'Abre 28/05 às 8h00';
     }
   }
 
   function setOpen(){
-    if(labelTop) labelTop.textContent = 'A oferta termina em';
+    if(labelTop) labelTop.textContent = 'Esta condição especial encerra às 20h';
+    if(labelBottom) labelBottom.textContent = 'Faltam apenas:';
     if(heroBadge) heroBadge.innerHTML = '🔥 Oferta Especial Liberada 🔥';
     for(var i=0;i<ctaLinks.length;i++){
       var el = ctaLinks[i];
