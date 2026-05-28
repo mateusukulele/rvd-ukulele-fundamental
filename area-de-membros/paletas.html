@@ -230,7 +230,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
   <div class="section" style="padding-bottom:0">
     <span class="section-tag" id="palName">Ameixa &amp; Dourado</span>
     <h1 class="section-h">Identidade visual em prática</h1>
-    <p class="section-sub" id="palDesc">Use os botões acima para alternar entre as três paletas roxas e o modo claro/escuro. Tudo abaixo é a mesma marca, só muda a cor. Repare que o fundo claro não é branco puro: cada paleta tem um off-white tingido com a sua própria temperatura.</p>
+    <p class="section-sub" id="palDesc">Use os botões acima para alternar entre as cinco paletas e o modo claro/escuro. Tudo abaixo é a mesma marca, só muda a cor. Repare que o fundo claro não é branco puro: cada paleta tem um off-white tingido com a sua própria temperatura.</p>
     <div class="sw-grid" id="swatches"></div>
   </div>
 
@@ -452,9 +452,25 @@ const PALETTES = {
     dark:{anchor:"#AB6E8A",anchorDeep:"#D2A4BA",accent:"#E6B752",accentDeep:"#F2D58A",sale:"#F07A53",ink:"#F2ECEF",surface:"#20151B",page:"#170F14",card:"#241820",muted:"#AE9CA6",line:"#362630"},
     pros:["Une suas duas preferências (roxo + vinho)","Quente, elegante e distinta (48°)","Versátil entre o sério e o divertido","Harmoniza muito bem com tom de pele","Dourado fecha com calor sofisticado"],
     cons:["Por ser híbrida, personalidade menos 'pura'","Pode pesar se virar grande área de fundo","Tom exige atenção para não escurecer demais no escuro"]
+  },
+  rosa:{
+    name:"Uva & Rosa-framboesa", dot:"#3A1F44",
+    desc:"Roxo-uva profundo de âncora, com rosa-framboesa elegante entrando só em detalhes. Um rosa moderno e adulto, nada infantil, porque a base escura e séria o segura. Sofisticado e marcante.",
+    light:{anchor:"#3A1F44",anchorDeep:"#27142F",accent:"#E0457E",accentDeep:"#8f1d49",sale:"#F25C5C",ink:"#231A26",surface:"#EFEAF1",page:"#F6F1F6",card:"#FFFFFF",muted:"#6E6675",line:"#E6DEE9"},
+    dark:{anchor:"#A172B0",anchorDeep:"#CDA6D6",accent:"#F2779F",accentDeep:"#F9B3CC",sale:"#F47A7A",ink:"#F1EBF3",surface:"#1D1422",page:"#150E19",card:"#211827",muted:"#A99BB0",line:"#33273A"},
+    pros:["Rosa elegante e atual, sem cair no infantil","Âncora roxa distinta do nicho (56°)","O rosa em detalhe vira assinatura memorável","Forte apelo moderno e de design","Funciona muito bem em claro e escuro"],
+    cons:["Rosa exige dose pequena e disciplinada","Pode parecer ligado a beleza/moda se exagerar","Acento e CTA de venda precisam ficar bem distintos"]
+  },
+  indigo:{
+    name:"Índigo & Coral-rosa", dot:"#3A2C5C",
+    desc:"Minha aposta: índigo-violeta profundo de âncora, sério e atemporal, com coral-rosado quente de acento. Entrega 'premium mas humano' como nenhuma outra, e tem ar de produto digital de primeira linha.",
+    light:{anchor:"#3A2C5C",anchorDeep:"#261C40",accent:"#E86270",accentDeep:"#9c2f3c",sale:"#F2683E",ink:"#1E1B2A",surface:"#EBEAF1",page:"#F2F1F7",card:"#FFFFFF",muted:"#67667A",line:"#E0DEEA"},
+    dark:{anchor:"#8A7CC0",anchorDeep:"#BBB0E0",accent:"#F2828E",accentDeep:"#F9BDC4",sale:"#F4855E",ink:"#ECEAF4",surface:"#181626",page:"#11101C",card:"#1D1B2D",muted:"#9D9AB5",line:"#2D2A40"},
+    pros:["'Premium mas humano' como nenhuma outra","Índigo-violeta foge do azul do nicho (30°)","Coral harmoniza lindamente com tom de pele","Ar contemporâneo de produto digital top","Excelente em claro e escuro"],
+    cons:["Índigo precisa ficar arroxeado para não virar azul comum","Coral pede dose certa para não competir com o índigo","É a mais 'tech' das cinco, menos clássica"]
   }
 };
-const ORDER=["ameixa","berinjela","bordo"];
+const ORDER=["ameixa","berinjela","bordo","rosa","indigo"];
 let current="ameixa", mode="light";
 
 const root=document.documentElement;
