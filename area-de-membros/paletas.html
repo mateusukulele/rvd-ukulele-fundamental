@@ -75,10 +75,15 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
 .btn:active{transform:scale(.97)}
 .btn-anchor{background:var(--anchor);color:#fff;padding:10px 18px}
 .btn-anchor:hover{filter:brightness(1.12)}
-.btn-sale{background:var(--sale);color:#fff;padding:12px 24px;font-size:15px}
+.btn-sale{background:var(--sale);color:#fff;padding:12px 24px;font-size:15px;box-shadow:0 5px 16px -5px var(--sale)}
 .btn-sale:hover{filter:brightness(1.07)}
 .btn-ghost{background:transparent;border:1.5px solid var(--anchor);color:var(--anchor);padding:9px 17px}
 .btn-ghost:hover{background:var(--anchor);color:#fff}
+/* unified button hierarchy */
+.btn-accent{background:var(--accent);color:var(--accent-deep);padding:10px 18px;display:inline-flex;align-items:center;gap:7px}
+.btn-accent:hover{filter:brightness(1.05)}
+.btn-link{background:transparent;color:var(--anchor);padding:9px 8px;text-decoration:underline;text-underline-offset:3px}
+.btn-link:hover{filter:brightness(1.2)}
 
 /* ===== Hero ===== */
 .hero{padding:54px 24px 60px;background:var(--card);position:relative;overflow:hidden;transition:background .35s}
@@ -144,6 +149,16 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
 .cifra .ch{color:var(--anchor);font-weight:500}
 .cifra-note{font-size:12px;color:var(--muted);margin-top:12px;font-style:italic}
 
+/* ===== Button system reference ===== */
+.btn-sys{display:flex;flex-direction:column}
+.btn-sys-row{display:flex;align-items:center;gap:20px;padding:15px 0;border-bottom:1px solid var(--line)}
+.btn-sys-row:last-child{border-bottom:none}
+.btn-sys-demo{width:200px;flex-shrink:0;display:flex;justify-content:center}
+.btn-sys-txt h4{font-family:'Montserrat';font-weight:700;font-size:14px;color:var(--ink);margin-bottom:3px}
+.btn-sys-txt h4 span{font-weight:500;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-left:6px}
+.btn-sys-txt p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+@media(max-width:560px){.btn-sys-row{flex-direction:column;align-items:flex-start;gap:10px}.btn-sys-demo{width:auto}}
+
 /* ===== Real lesson page mock ===== */
 .lesson-app{display:flex;min-height:520px;background:var(--page);transition:background .35s}
 .lsb{width:230px;background:var(--anchor-deep);color:#fff;padding:18px 0;flex-shrink:0;transition:background .35s}
@@ -170,20 +185,20 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
 .lbtn:active{transform:scale(.97)}
 .lbtn-prev{background:var(--card);border:2px solid var(--anchor);color:var(--anchor)}
 .lbtn-prev:hover{background:var(--anchor);color:#fff}
-.lbtn-next{background:var(--sale);color:#fff;font-weight:800}
-.lbtn-next:hover{filter:brightness(1.08)}
+.lbtn-next{background:var(--anchor);color:#fff;font-weight:800}
+.lbtn-next:hover{filter:brightness(1.12)}
 .lcards{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
 .lcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;transition:background .35s,border-color .35s}
 .lcard-t{display:flex;align-items:center;gap:8px;font-family:'Montserrat';font-weight:700;font-size:14px;color:var(--ink);margin-bottom:12px}
 .lcard-i{color:var(--anchor);font-size:15px}
 .lcard p{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:8px}
-.lmat{display:flex;align-items:center;justify-content:space-between;padding:13px;border:2px solid var(--line);border-radius:11px;background:var(--surface);text-decoration:none;cursor:pointer;transition:border-color .2s}
-.lmat:hover{border-color:var(--sale)}
+.lmat{display:flex;align-items:center;justify-content:space-between;padding:13px;border-radius:11px;background:var(--accent);text-decoration:none;cursor:pointer;transition:filter .2s}
+.lmat:hover{filter:brightness(1.05)}
 .lmat-l{display:flex;align-items:center;gap:11px}
-.lmat-ico{width:34px;height:34px;border-radius:9px;background:var(--anchor);color:#fff;display:grid;place-items:center;font-size:15px;flex-shrink:0}
-.lmat-l small{display:block;font-size:11px;font-weight:400;color:var(--muted)}
-.lmat-l>span:last-child{font-size:13px;font-weight:700;color:var(--ink)}
-.lmat-arrow{color:var(--anchor);font-weight:700}
+.lmat-ico{width:34px;height:34px;border-radius:9px;background:var(--accent-deep);color:#fff;display:grid;place-items:center;font-size:15px;flex-shrink:0}
+.lmat-l small{display:block;font-size:11px;font-weight:400;color:var(--accent-deep);opacity:.85}
+.lmat-l>span:last-child{font-size:13px;font-weight:700;color:var(--accent-deep)}
+.lmat-arrow{color:var(--accent-deep);font-weight:700}
 
 .foot{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}.legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:14px}
 .legend span{display:flex;align-items:center;gap:7px;font-size:12px}
@@ -257,6 +272,37 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
     </div>
   </div>
 
+  <!-- ===== BUTTON SYSTEM ===== -->
+  <div class="section">
+    <span class="section-tag">Sistema</span>
+    <h2 class="section-h">Hierarquia de botões</h2>
+    <p class="section-sub">Cinco tipos de botão, três cores só. A cor da marca serve aos três primeiros (variando o peso), o dourado é utilitário, o laranja é exclusivo de venda. Atualiza com a paleta acima.</p>
+    <div class="frame" style="padding:24px">
+      <div class="btn-sys">
+        <div class="btn-sys-row">
+          <div class="btn-sys-demo"><button class="btn btn-anchor">Próxima aula ›</button></div>
+          <div class="btn-sys-txt"><h4>1 · Primário <span>cor da marca, cheio</span></h4><p>A ação principal da tela, na área logada. Avançar, salvar, confirmar. Um por tela.</p></div>
+        </div>
+        <div class="btn-sys-row">
+          <div class="btn-sys-demo"><button class="btn btn-ghost">Aula anterior</button></div>
+          <div class="btn-sys-txt"><h4>2 · Secundário <span>cor da marca, contorno</span></h4><p>Ação alternativa que coexiste com a principal. Voltar, cancelar, ver detalhes.</p></div>
+        </div>
+        <div class="btn-sys-row">
+          <div class="btn-sys-demo"><button class="btn btn-link">Pular introdução</button></div>
+          <div class="btn-sys-txt"><h4>3 · Terciário / link <span>texto puro</span></h4><p>Baixa importância. Pular, "ver mais", links. Quase invisível até precisar.</p></div>
+        </div>
+        <div class="btn-sys-row">
+          <div class="btn-sys-demo"><button class="btn btn-accent">⤓ Baixar cifra</button></div>
+          <div class="btn-sys-txt"><h4>4 · Utilitário <span>acento dourado</span></h4><p>Ações úteis e neutras: download, copiar, compartilhar. Distingue sem roubar foco.</p></div>
+        </div>
+        <div class="btn-sys-row">
+          <div class="btn-sys-demo"><button class="btn btn-sale">Quero fazer parte</button></div>
+          <div class="btn-sys-txt"><h4>5 · Venda <span>laranja, fora da paleta</span></h4><p>Só em página de venda e oferta. Pode chamar atenção. Nunca na área logada comum.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== MEMBERS ===== -->
   <div class="section">
     <span class="section-tag">Aplicação 2</span>
@@ -271,7 +317,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
       <div class="members">
         <div class="mem-top">
           <div class="mem-greet">Olá, Bárbara<small>Continue de onde parou</small></div>
-          <button class="btn btn-anchor">Retomar aula ▸</button>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost">Ver minha trilha</button><button class="btn btn-anchor">Retomar aula ▸</button></div>
         </div>
         <div class="progress-card">
           <div class="pc-l"><div class="t">Ciclo Básico</div><div class="s">Faixa 5 de 12 · você está indo bem</div></div>
@@ -293,7 +339,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
   <div class="section">
     <span class="section-tag">Aplicação 3</span>
     <h2 class="section-h">Sua página de aula real</h2>
-    <p class="section-sub">A interface que você já usa hoje, repintada na marca nova. O azul original virou a cor âncora, e o laranja fixo virou o acento e o CTA conforme a função de cada elemento. Troque a paleta acima para ver sua tela em cada roxo.</p>
+    <p class="section-sub">A interface que você já usa hoje, repintada na marca nova e com a hierarquia de botões correta: "Próxima aula" agora é primário (cor da marca, não venda), "Aula anterior" é secundário (contorno), e o download de cifra é utilitário (dourado). Troque a paleta acima para ver sua tela em cada roxo.</p>
     <div class="frame">
       <div class="frame-bar"><span class="b" style="background:#ff5f57"></span><span class="b" style="background:#febc2e"></span><span class="b" style="background:#28c840"></span><span class="frame-url">comotocarukulele.com/primeiramusica/v1/sua-primeira-musica</span></div>
       <div class="lesson-app">
@@ -370,9 +416,9 @@ do primeiro acorde que aprendeu aqui</pre>
   <div class="foot">
     <strong>Clube do Ukulele</strong> · demonstração de paletas para decisão de marca
     <div class="legend">
-      <span><span class="d" style="background:var(--anchor)"></span>Âncora (marca)</span>
-      <span><span class="d" style="background:var(--accent)"></span>Acento (alegria)</span>
-      <span><span class="d" style="background:var(--sale)"></span>CTA de venda</span>
+      <span><span class="d" style="background:var(--anchor)"></span>Marca · botões primário e secundário</span>
+      <span><span class="d" style="background:var(--accent)"></span>Acento · botão utilitário</span>
+      <span><span class="d" style="background:var(--sale)"></span>Venda · só em ofertas</span>
       <span><span class="d" style="background:var(--easy)"></span>Fácil</span>
       <span><span class="d" style="background:var(--med)"></span>Médio</span>
       <span><span class="d" style="background:var(--hard)"></span>Avançado</span>
