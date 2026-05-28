@@ -69,10 +69,10 @@ ul{padding:0;list-style:none}
 /* === BOTÕES DE OFERTA === */
 .btn-pulsar{animation:pulse-cta 2s infinite;transition:transform .3s,filter .3s,box-shadow .3s,background-color .3s}
 @keyframes pulse-cta{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-.btn-pulsar:hover{transform:translateY(-4px);filter:brightness(1.1);box-shadow:0 20px 25px -5px rgba(234,88,12,.4)}
+.btn-pulsar:hover{transform:translateY(-4px);filter:brightness(1.1);box-shadow:0 20px 25px -5px rgba(22,163,74,.4)}
 
-.cta-btn{display:inline-block;background:#ea580c;color:#fff;padding:1.25rem 1.5rem;border-radius:1rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;box-shadow:0 20px 25px -5px rgba(0,0,0,.1);letter-spacing:-.025em;line-height:1.1;width:100%;text-align:center;text-decoration:none;border:0;cursor:pointer;transition:background-color .3s,transform .3s,box-shadow .3s}
-.cta-btn:hover{background:#c2410c}
+.cta-btn{display:inline-block;background:#16a34a;color:#fff;padding:1.25rem 1.5rem;border-radius:1rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;box-shadow:0 20px 25px -5px rgba(0,0,0,.1);letter-spacing:-.025em;line-height:1.1;width:100%;text-align:center;text-decoration:none;border:0;cursor:pointer;transition:background-color .3s,transform .3s,box-shadow .3s}
+.cta-btn:hover{background:#15803d}
 .cta-btn.disabled,.cta-btn.disabled:hover{background:#475569;color:#cbd5e1;cursor:not-allowed;animation:none;transform:none;box-shadow:none;filter:none}
 .cta-btn.whatsapp{background:#25d366;animation:none}
 .cta-btn.whatsapp:hover{background:#128c7e;transform:translateY(-4px);box-shadow:0 20px 25px -5px rgba(37,211,102,.4)}
@@ -82,8 +82,8 @@ ul{padding:0;list-style:none}
 .cta-wrap{display:flex;justify-content:center;width:100%}
 
 /* HERO CTA (sobrescreve quando aplicável) */
-.hero-cta{width:100%;background:#ea580c;color:#fff;padding:1rem 1rem;border-radius:1rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);line-height:1.1;display:inline-block;text-align:center;text-decoration:none;border:0;cursor:pointer;transition:background-color .3s,transform .3s,box-shadow .3s}
-.hero-cta:hover{background:#c2410c}
+.hero-cta{width:100%;background:#16a34a;color:#fff;padding:1rem 1rem;border-radius:1rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);line-height:1.1;display:inline-block;text-align:center;text-decoration:none;border:0;cursor:pointer;transition:background-color .3s,transform .3s,box-shadow .3s}
+.hero-cta:hover{background:#15803d}
 .hero-cta.disabled,.hero-cta.disabled:hover{background:#475569;color:#cbd5e1;cursor:not-allowed;animation:none;transform:none;box-shadow:none}
 .hero-cta.whatsapp{background:#25d366;animation:none}
 .hero-cta.whatsapp:hover{background:#128c7e}
@@ -981,16 +981,16 @@ document.querySelectorAll('details.faq-item').forEach(function(d){
   function pad(n){return n<10?'0'+n:''+n}
 
   function setBeforeOpen(){
-    if(labelTop) labelTop.textContent = 'A condição especial abre às 8h00';
+    if(labelTop) labelTop.textContent = 'A condição especial abre às 7h50';
     if(labelBottom) labelBottom.textContent = 'Começa em:';
-    if(heroBadge) heroBadge.innerHTML = '⏳ A oferta abre dia 28/05 às 8h00 ⏳';
+    if(heroBadge) heroBadge.innerHTML = '⏳ A oferta abre dia 28/05 às 7h50 ⏳';
     if(finalTitle) finalTitle.textContent = 'A oferta ainda não abriu';
-    if(finalText) finalText.innerHTML = 'A condição especial começa <b>28/05 às 8h00</b> e vai até <b>20h</b>, horário de Brasília. Volte aqui no horário para garantir.';
+    if(finalText) finalText.innerHTML = 'A condição especial começa <b>28/05 às 7h50</b> e vai até <b>20h</b>, horário de Brasília. Volte aqui no horário para garantir.';
     for(var i=0;i<ctaLinks.length;i++){
       var el = ctaLinks[i];
       el.classList.add('disabled');
       el.removeAttribute('href');
-      el.textContent = 'Abre 28/05 às 8h00';
+      el.textContent = 'Abre 28/05 às 7h50';
     }
   }
 
