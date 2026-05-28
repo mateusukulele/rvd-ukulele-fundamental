@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clube do Ukulele · Demonstração de Paletas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* defaults overwritten by JS per palette + mode */
+  --anchor:#4A2950; --anchor-deep:#321A38; --accent:#D6A12E; --accent-deep:#8a661a;
+  --sale:#E8643C; --ink:#211A24; --surface:#F4F1F2; --page:#FFFFFF;
+  --card:#FFFFFF; --muted:#6E6A70; --line:#E7E3E6;
+  --easy:#3B6D11; --easy-bg:#E4F0DC; --med:#9A6A0E; --med-bg:#F6ECCF; --hard:#A33324; --hard-bg:#F6DAD3;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',sans-serif;background:var(--page);color:var(--ink);
+  transition:background .35s ease,color .35s ease;line-height:1.6;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.01em;line-height:1.05}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ===== Sticky control bar ===== */
+.controls{
+  position:sticky;top:0;z-index:50;background:var(--page);
+  border-bottom:1px solid var(--line);transition:background .35s,border-color .35s;
+}
+.controls .wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
+.controls .lab{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600}
+.pal-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.pal-tab{
+  border:1px solid var(--line);background:transparent;color:var(--ink);
+  padding:8px 14px;border-radius:30px;font-family:'Montserrat';font-weight:600;font-size:13px;
+  cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s;
+}
+.pal-tab:hover{border-color:var(--anchor)}
+.pal-tab.active{background:var(--anchor);color:#fff;border-color:var(--anchor)}
+.pal-tab .dot{width:13px;height:13px;border-radius:50%;border:1px solid rgba(0,0,0,.15)}
+.spacer{flex:1}
+.mode-btn{
+  border:1px solid var(--line);background:transparent;color:var(--ink);width:42px;height:42px;
+  border-radius:50%;cursor:pointer;font-size:18px;display:grid;place-items:center;transition:all .2s
+}
+.mode-btn:hover{border-color:var(--anchor)}
+
+/* ===== Section scaffolding ===== */
+.section{padding:54px 0 10px}
+.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent-deep);background:var(--accent);padding:5px 12px;border-radius:6px;margin-bottom:14px}
+.section-h{font-size:clamp(26px,4vw,40px);margin-bottom:6px;text-transform:uppercase}
+.section-sub{color:var(--muted);font-size:15px;margin-bottom:26px;max-width:560px}
+
+/* ===== Mock browser frame ===== */
+.frame{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card);
+  box-shadow:0 18px 50px -28px rgba(0,0,0,.4);transition:background .35s,border-color .35s}
+.frame-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:var(--surface);border-bottom:1px solid var(--line);transition:background .35s,border-color .35s}
+.frame-bar .b{width:11px;height:11px;border-radius:50%}
+.frame-url{margin-left:10px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono'}
+
+/* ===== Site header mock ===== */
+.site-head{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--card);transition:background .35s}
+.brandmark{display:flex;align-items:center;gap:10px}
+.brand-badge{width:34px;height:34px;border-radius:9px;background:var(--anchor);display:grid;place-items:center;color:#fff;font-family:'Anton';font-size:18px}
+.brand-name{font-family:'Anton';font-size:20px;text-transform:uppercase;letter-spacing:.02em}
+.nav{display:flex;gap:22px;align-items:center}
+.nav a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;opacity:.85}
+.nav a:hover{color:var(--anchor);opacity:1}
+.btn{border:none;cursor:pointer;font-family:'Montserrat';font-weight:600;border-radius:9px;transition:transform .12s,filter .2s;font-size:14px}
+.btn:active{transform:scale(.97)}
+.btn-anchor{background:var(--anchor);color:#fff;padding:10px 18px}
+.btn-anchor:hover{filter:brightness(1.12)}
+.btn-sale{background:var(--sale);color:#fff;padding:12px 24px;font-size:15px}
+.btn-sale:hover{filter:brightness(1.07)}
+.btn-ghost{background:transparent;border:1.5px solid var(--anchor);color:var(--anchor);padding:9px 17px}
+.btn-ghost:hover{background:var(--anchor);color:#fff}
+
+/* ===== Hero ===== */
+.hero{padding:54px 24px 60px;background:var(--card);position:relative;overflow:hidden;transition:background .35s}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.hero h2{font-size:clamp(32px,5vw,56px);text-transform:uppercase;margin-bottom:16px}
+.hero h2 .hl{color:var(--anchor)}
+.hero p{color:var(--muted);font-size:16px;margin-bottom:24px;max-width:440px}
+.hero-cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.hero-art{aspect-ratio:4/3;border-radius:16px;background:var(--anchor);position:relative;overflow:hidden;display:grid;place-items:center}
+.hero-art .ring{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.16)}
+.hero-art .uke{font-family:'Anton';color:#fff;font-size:60px;text-transform:uppercase;text-align:center;line-height:.92;z-index:2;opacity:.96}
+.hero-art .accent-blob{position:absolute;width:160px;height:160px;border-radius:50%;background:var(--accent);opacity:.9;right:-40px;bottom:-40px;filter:blur(2px)}
+.stat-row{display:flex;gap:28px;margin-top:30px}
+.stat .n{font-family:'Anton';font-size:30px;color:var(--anchor)}
+.stat .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+/* ===== Members area ===== */
+.members{background:var(--surface);padding:26px 24px;transition:background .35s}
+.mem-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:12px}
+.mem-greet{font-family:'Anton';font-size:24px;text-transform:uppercase}
+.mem-greet small{display:block;font-family:'Montserrat';font-weight:500;font-size:13px;color:var(--muted);text-transform:none;letter-spacing:0}
+.progress-card{background:var(--anchor);color:#fff;border-radius:14px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:14px}
+.progress-card .pc-l .t{font-family:'Anton';font-size:20px;text-transform:uppercase}
+.progress-card .pc-l .s{font-size:13px;opacity:.85}
+.bar{width:220px;height:9px;border-radius:20px;background:rgba(255,255,255,.22);overflow:hidden}
+.bar i{display:block;height:100%;width:42%;background:var(--accent);border-radius:20px}
+.lessons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.lesson{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;transition:transform .15s,box-shadow .2s,background .35s,border-color .35s}
+.lesson:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(0,0,0,.4)}
+.lesson .thumb{aspect-ratio:5/3;background:var(--anchor);position:relative;display:grid;place-items:center}
+.lesson .thumb .num{font-family:'Anton';font-size:40px;color:rgba(255,255,255,.92)}
+.lesson .thumb .band{position:absolute;top:0;left:0;right:0;height:6px}
+.lesson .body{padding:13px 14px}
+.lesson .body h4{font-family:'Montserrat';font-weight:700;font-size:14px;margin-bottom:8px}
+.lesson .meta{display:flex;align-items:center;justify-content:space-between}
+.pill{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em}
+.pill-easy{background:var(--easy-bg);color:var(--easy)}
+.pill-med{background:var(--med-bg);color:var(--med)}
+.pill-hard{background:var(--hard-bg);color:var(--hard)}
+.play{width:30px;height:30px;border-radius:50%;background:var(--anchor);color:#fff;display:grid;place-items:center;font-size:12px}
+
+/* ===== Swatch reference ===== */
+.sw-grid{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.sw{border:1px solid var(--line);border-radius:11px;overflow:hidden;width:130px}
+.sw .c{height:56px}
+.sw .m{padding:7px 10px}
+.sw .r{font-size:10px;color:var(--muted);display:block;text-transform:uppercase;letter-spacing:.05em}
+.sw .x{font-size:12px;font-weight:500;font-family:'JetBrains Mono'}
+
+/* ===== pros cons ===== */
+.pc-box{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.pc-card{border:1px solid var(--line);border-radius:13px;padding:18px;background:var(--card);transition:background .35s,border-color .35s}
+.pc-card h4{font-family:'Montserrat';font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.pc-card.pro h4{color:var(--easy)}
+.pc-card.con h4{color:var(--hard)}
+.pc-card ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.pc-card li{font-size:13px;color:var(--muted);padding-left:16px;position:relative}
+.pc-card li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+/* ===== cifra sample ===== */
+.cifra{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px 22px;transition:background .35s,border-color .35s}
+.cifra pre{font-family:'JetBrains Mono';font-size:13px;line-height:1.9;white-space:pre;overflow-x:auto;color:var(--ink)}
+.cifra .ch{color:var(--anchor);font-weight:500}
+.cifra-note{font-size:12px;color:var(--muted);margin-top:12px;font-style:italic}
+
+.foot{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.legend span{display:flex;align-items:center;gap:7px;font-size:12px}
+.legend .d{width:13px;height:13px;border-radius:4px}
+
+@media(max-width:840px){
+  .hero-grid{grid-template-columns:1fr}.lessons{grid-template-columns:1fr 1fr}
+  .pc-box{grid-template-columns:1fr}.nav{display:none}
+}
+@media(max-width:560px){.lessons{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ===== CONTROLS ===== -->
+<div class="controls">
+  <div class="wrap">
+    <span class="lab">Paleta</span>
+    <div class="pal-tabs" id="palTabs"></div>
+    <div class="spacer"></div>
+    <button class="mode-btn" id="modeBtn" title="Alternar claro/escuro">◐</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ===== INTRO ===== -->
+  <div class="section" style="padding-bottom:0">
+    <span class="section-tag" id="palName">Ameixa &amp; Dourado</span>
+    <h1 class="section-h">Identidade visual em prática</h1>
+    <p class="section-sub" id="palDesc">Use os botões acima para alternar entre as três paletas roxas e o modo claro/escuro. Tudo abaixo é a mesma marca, só muda a cor.</p>
+    <div class="sw-grid" id="swatches"></div>
+  </div>
+
+  <!-- ===== HOMEPAGE ===== -->
+  <div class="section">
+    <span class="section-tag">Aplicação 1</span>
+    <h2 class="section-h">Homepage do site</h2>
+    <p class="section-sub">Como a marca aparece para quem ainda não é aluno. Header, hero e o botão de venda em destaque.</p>
+    <div class="frame">
+      <div class="frame-bar"><span class="b" style="background:#ff5f57"></span><span class="b" style="background:#febc2e"></span><span class="b" style="background:#28c840"></span><span class="frame-url">clubedoukulele.com.br</span></div>
+      <div class="site-head">
+        <div class="brandmark"><div class="brand-badge">U</div><span class="brand-name">Clube do Ukulele</span></div>
+        <nav class="nav"><a>Método</a><a>Aulas</a><a>Sobre</a><a>Blog</a><button class="btn btn-ghost">Entrar</button></nav>
+      </div>
+      <div class="hero">
+        <div class="hero-grid">
+          <div>
+            <h2>Do zero ao seu primeiro <span class="hl">solo</span> de ukulele</h2>
+            <p>Um método claro, do básico à autonomia, com acompanhamento em vídeo aula por aula. No seu ritmo, sem enrolação.</p>
+            <div class="hero-cta">
+              <button class="btn btn-sale">Começar agora</button>
+              <button class="btn btn-ghost">Ver o método</button>
+            </div>
+            <div class="stat-row">
+              <div class="stat"><div class="n">12</div><div class="l">faixas no ciclo</div></div>
+              <div class="stat"><div class="n">+800</div><div class="l">alunos</div></div>
+              <div class="stat"><div class="n">4.9</div><div class="l">avaliação</div></div>
+            </div>
+          </div>
+          <div class="hero-art">
+            <div class="ring" style="width:300px;height:300px"></div>
+            <div class="ring" style="width:210px;height:210px"></div>
+            <div class="ring" style="width:120px;height:120px"></div>
+            <div class="uke">UKE</div>
+            <div class="accent-blob"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MEMBERS ===== -->
+  <div class="section">
+    <span class="section-tag">Aplicação 2</span>
+    <h2 class="section-h">Área de membros</h2>
+    <p class="section-sub">Fundo branco fixo, como você precisa. A cor da marca vive no header, nos cards, na barra de progresso e no CTA. As capas do Ciclo Básico usam o semáforo de dificuldade.</p>
+    <div class="frame">
+      <div class="frame-bar"><span class="b" style="background:#ff5f57"></span><span class="b" style="background:#febc2e"></span><span class="b" style="background:#28c840"></span><span class="frame-url">app.clubedoukulele.com.br/aulas</span></div>
+      <div class="site-head" style="border-bottom:1px solid var(--line)">
+        <div class="brandmark"><div class="brand-badge">U</div><span class="brand-name" style="font-size:18px">Clube do Ukulele</span></div>
+        <nav class="nav"><a>Minhas aulas</a><a>Cifras</a><a>Comunidade</a><div class="brand-badge" style="border-radius:50%;background:var(--accent);color:var(--accent-deep)">B</div></nav>
+      </div>
+      <div class="members">
+        <div class="mem-top">
+          <div class="mem-greet">Olá, Bárbara<small>Continue de onde parou</small></div>
+          <button class="btn btn-anchor">Retomar aula ▸</button>
+        </div>
+        <div class="progress-card">
+          <div class="pc-l"><div class="t">Ciclo Básico</div><div class="s">Faixa 5 de 12 · você está indo bem</div></div>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="lessons">
+          <div class="lesson"><div class="thumb"><div class="band" style="background:var(--easy)"></div><span class="num">01</span></div><div class="body"><h4>Primeiros acordes</h4><div class="meta"><span class="pill pill-easy">Fácil</span><span class="play">▸</span></div></div></div>
+          <div class="lesson"><div class="thumb"><div class="band" style="background:var(--easy)"></div><span class="num">02</span></div><div class="body"><h4>Ritmo e batida base</h4><div class="meta"><span class="pill pill-easy">Fácil</span><span class="play">▸</span></div></div></div>
+          <div class="lesson"><div class="thumb"><div class="band" style="background:var(--med)"></div><span class="num">05</span></div><div class="body"><h4>Trocas rápidas</h4><div class="meta"><span class="pill pill-med">Médio</span><span class="play">▸</span></div></div></div>
+          <div class="lesson"><div class="thumb"><div class="band" style="background:var(--med)"></div><span class="num">07</span></div><div class="body"><h4>Dedilhado fingerstyle</h4><div class="meta"><span class="pill pill-med">Médio</span><span class="play">▸</span></div></div></div>
+          <div class="lesson"><div class="thumb"><div class="band" style="background:var(--hard)"></div><span class="num">10</span></div><div class="body"><h4>Pestana e barra</h4><div class="meta"><span class="pill pill-hard">Avançado</span><span class="play">▸</span></div></div></div>
+          <div class="lesson"><div class="thumb"><div class="band" style="background:var(--hard)"></div><span class="num">12</span></div><div class="body"><h4>Seu primeiro solo</h4><div class="meta"><span class="pill pill-hard">Avançado</span><span class="play">▸</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CIFRA ===== -->
+  <div class="section">
+    <span class="section-tag">Aplicação 3</span>
+    <h2 class="section-h">Material de cifra</h2>
+    <p class="section-sub">A fonte monoespaçada (Iosevka Mono no projeto real) mantém o alinhamento perfeito dos acordes sobre a letra. Os acordes usam a cor da marca para se destacarem do texto.</p>
+    <div class="cifra">
+<pre><span class="ch">C</span>              <span class="ch">G</span>
+Ukulele na mão, vou tocar
+<span class="ch">Am</span>             <span class="ch">F</span>
+uma canção pra você lembrar
+<span class="ch">C</span>              <span class="ch">G</span>           <span class="ch">F</span>   <span class="ch">C</span>
+do primeiro acorde que aprendeu aqui</pre>
+      <div class="cifra-note">Demonstração com JetBrains Mono. No material final, a fonte é a Iosevka Mono, que você já usa.</div>
+    </div>
+  </div>
+
+  <!-- ===== PROS/CONS ===== -->
+  <div class="section">
+    <span class="section-tag">Análise</span>
+    <h2 class="section-h" id="pcTitle">Prós e contras desta paleta</h2>
+    <p class="section-sub">Atualiza conforme você troca a paleta acima.</p>
+    <div class="pc-box">
+      <div class="pc-card pro"><h4>✓ Prós</h4><ul id="prosList"></ul></div>
+      <div class="pc-card con"><h4>✕ Contras</h4><ul id="consList"></ul></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <strong>Clube do Ukulele</strong> · demonstração de paletas para decisão de marca
+    <div class="legend">
+      <span><span class="d" style="background:var(--anchor)"></span>Âncora (marca)</span>
+      <span><span class="d" style="background:var(--accent)"></span>Acento (alegria)</span>
+      <span><span class="d" style="background:var(--sale)"></span>CTA de venda</span>
+      <span><span class="d" style="background:var(--easy)"></span>Fácil</span>
+      <span><span class="d" style="background:var(--med)"></span>Médio</span>
+      <span><span class="d" style="background:var(--hard)"></span>Avançado</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const PALETTES = {
+  ameixa:{
+    name:"Ameixa & Dourado", dot:"#4A2950",
+    desc:"Roxo-ameixa profundo com dourado-mostarda. A mais distinta do nicho e a que melhor equilibra ousadia e elegância. Recomendada nº1.",
+    light:{anchor:"#4A2950",anchorDeep:"#321A38",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#211A24",surface:"#F4F1F2",page:"#FFFFFF",card:"#FFFFFF",muted:"#6E6A70",line:"#E7E3E6"},
+    dark:{anchor:"#9B6FA6",anchorDeep:"#C9A6D1",accent:"#E6B752",accentDeep:"#F2D58A",sale:"#F07A53",ink:"#F1ECF2",surface:"#1E1620",page:"#161019",card:"#211826",muted:"#A99CB0",line:"#332838"},
+    pros:["Máxima distância dos concorrentes (63° de matiz)","Família roxo que você mais gostou","Dourado traz alegria sem cair no laranja do nicho","Sério e premium sem ser sombrio","Funciona muito bem em claro e escuro"],
+    cons:["Roxo pede consistência para não parecer aleatório","Dourado precisa de bom contraste em texto pequeno","Exige disciplina de aplicação no início"]
+  },
+  berinjela:{
+    name:"Berinjela & Pêssego", dot:"#3C2440",
+    desc:"Roxo mais escuro e contido, com pêssego suave de acento. Menos luxo-dourado, mais digital contemporâneo. Recomendada nº2.",
+    light:{anchor:"#3C2440",anchorDeep:"#281830",accent:"#E5946B",accentDeep:"#9a5230",sale:"#E2583A",ink:"#1E1822",surface:"#F3F1F2",page:"#FFFFFF",card:"#FFFFFF",muted:"#6C6770",line:"#E6E3E6"},
+    dark:{anchor:"#9466A0",anchorDeep:"#C29CCB",accent:"#F0A87F",accentDeep:"#F6C9AC",sale:"#EE7253",ink:"#EFE9F1",surface:"#1B1420",page:"#140E18",card:"#1F1726",muted:"#A697AD",line:"#312539"},
+    pros:["Muito distinta e moderna (63°)","Pêssego é amigável e atual","Berinjela é sério sem ser pesado","Cara de produto digital de 2026","Ótimo contraste em ambos os modos"],
+    cons:["Pêssego e CTA de venda ficam próximos, precisa diferenciar","Menos sensação de luxo que o dourado","Roxo escuro pode parecer austero se usado demais"]
+  },
+  bordo:{
+    name:"Bordô-roxo & Dourado", dot:"#5A2440",
+    desc:"A fusão das suas duas famílias favoritas: roxo e vinho ao mesmo tempo. Quente, elegante e inédita. Recomendada nº3.",
+    light:{anchor:"#5A2440",anchorDeep:"#3D182C",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#231A20",surface:"#F4F1F1",page:"#FFFFFF",card:"#FFFFFF",muted:"#6F6A6D",line:"#E7E3E4"},
+    dark:{anchor:"#AB6E8A",anchorDeep:"#D2A4BA",accent:"#E6B752",accentDeep:"#F2D58A",sale:"#F07A53",ink:"#F2ECEF",surface:"#20151B",page:"#170F14",card:"#241820",muted:"#AE9CA6",line:"#362630"},
+    pros:["Une suas duas preferências (roxo + vinho)","Quente, elegante e distinta (48°)","Versátil entre o sério e o divertido","Harmoniza muito bem com tom de pele","Dourado fecha com calor sofisticado"],
+    cons:["Por ser híbrida, personalidade menos 'pura'","Pode pesar se virar grande área de fundo","Tom exige atenção para não escurecer demais no escuro"]
+  }
+};
+const ORDER=["ameixa","berinjela","bordo"];
+let current="ameixa", mode="light";
+
+const root=document.documentElement;
+function applyVars(p,m){
+  const v=p[m];
+  root.style.setProperty('--anchor',v.anchor);
+  root.style.setProperty('--anchor-deep',v.anchorDeep);
+  root.style.setProperty('--accent',v.accent);
+  root.style.setProperty('--accent-deep',v.accentDeep);
+  root.style.setProperty('--sale',v.sale);
+  root.style.setProperty('--ink',v.ink);
+  root.style.setProperty('--surface',v.surface);
+  root.style.setProperty('--page',v.page);
+  root.style.setProperty('--card',v.card);
+  root.style.setProperty('--muted',v.muted);
+  root.style.setProperty('--line',v.line);
+  // semaforo adapts subtly for dark
+  if(m==='dark'){
+    root.style.setProperty('--easy','#8FCB6A');root.style.setProperty('--easy-bg','#23331A');
+    root.style.setProperty('--med','#E6B23E');root.style.setProperty('--med-bg','#332813');
+    root.style.setProperty('--hard','#E87C68');root.style.setProperty('--hard-bg','#3a201b');
+  }else{
+    root.style.setProperty('--easy','#3B6D11');root.style.setProperty('--easy-bg','#E4F0DC');
+    root.style.setProperty('--med','#9A6A0E');root.style.setProperty('--med-bg','#F6ECCF');
+    root.style.setProperty('--hard','#A33324');root.style.setProperty('--hard-bg','#F6DAD3');
+  }
+}
+function renderSwatches(p,m){
+  const v=p[m];
+  const items=[["Âncora",v.anchor],["Acento",v.accent],["CTA venda",v.sale],["Texto",v.ink],["Superfície",v.surface]];
+  document.getElementById('swatches').innerHTML=items.map(([r,x])=>
+    `<div class="sw"><div class="c" style="background:${x}"></div><div class="m"><span class="r">${r}</span><span class="x">${x.toUpperCase()}</span></div></div>`).join('');
+}
+function renderPC(p){
+  document.getElementById('prosList').innerHTML=p.pros.map(t=>`<li>${t}</li>`).join('');
+  document.getElementById('consList').innerHTML=p.cons.map(t=>`<li>${t}</li>`).join('');
+}
+function refresh(){
+  const p=PALETTES[current];
+  applyVars(p,mode);
+  document.getElementById('palName').textContent=p.name;
+  document.getElementById('palDesc').textContent=p.desc;
+  renderSwatches(p,mode);
+  renderPC(p);
+  document.querySelectorAll('.pal-tab').forEach(t=>t.classList.toggle('active',t.dataset.k===current));
+}
+// build tabs
+document.getElementById('palTabs').innerHTML=ORDER.map(k=>
+  `<button class="pal-tab" data-k="${k}"><span class="dot" style="background:${PALETTES[k].dot}"></span>${PALETTES[k].name}</button>`).join('');
+document.querySelectorAll('.pal-tab').forEach(t=>t.onclick=()=>{current=t.dataset.k;refresh()});
+document.getElementById('modeBtn').onclick=()=>{mode=(mode==='light'?'dark':'light');refresh()};
+refresh();
+</script>
+</body>
+</html>
