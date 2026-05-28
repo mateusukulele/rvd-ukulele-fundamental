@@ -215,7 +215,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
   <div class="section" style="padding-bottom:0">
     <span class="section-tag" id="palName">Ameixa &amp; Dourado</span>
     <h1 class="section-h">Identidade visual em prática</h1>
-    <p class="section-sub" id="palDesc">Use os botões acima para alternar entre as três paletas roxas e o modo claro/escuro. Tudo abaixo é a mesma marca, só muda a cor.</p>
+    <p class="section-sub" id="palDesc">Use os botões acima para alternar entre as três paletas roxas e o modo claro/escuro. Tudo abaixo é a mesma marca, só muda a cor. Repare que o fundo claro não é branco puro: cada paleta tem um off-white tingido com a sua própria temperatura.</p>
     <div class="sw-grid" id="swatches"></div>
   </div>
 
@@ -261,7 +261,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
   <div class="section">
     <span class="section-tag">Aplicação 2</span>
     <h2 class="section-h">Área de membros</h2>
-    <p class="section-sub">Fundo branco fixo, como você precisa. A cor da marca vive no header, nos cards, na barra de progresso e no CTA. As capas do Ciclo Básico usam o semáforo de dificuldade.</p>
+    <p class="section-sub">O fundo agora é um off-white levemente tingido com a cor da marca, não branco puro. Os cards ficam mais claros que o fundo, criando profundidade sem sombra pesada. A cor da marca vive no header, na barra de progresso e no CTA.</p>
     <div class="frame">
       <div class="frame-bar"><span class="b" style="background:#ff5f57"></span><span class="b" style="background:#febc2e"></span><span class="b" style="background:#28c840"></span><span class="frame-url">app.clubedoukulele.com.br/aulas</span></div>
       <div class="site-head" style="border-bottom:1px solid var(--line)">
@@ -386,7 +386,7 @@ const PALETTES = {
   ameixa:{
     name:"Ameixa & Dourado", dot:"#4A2950",
     desc:"Roxo-ameixa profundo com dourado-mostarda. A mais distinta do nicho e a que melhor equilibra ousadia e elegância. Recomendada nº1.",
-    light:{anchor:"#4A2950",anchorDeep:"#321A38",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#211A24",surface:"#F4F1F2",page:"#FFFFFF",card:"#FFFFFF",muted:"#6E6A70",line:"#E7E3E6"},
+    light:{anchor:"#4A2950",anchorDeep:"#321A38",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#241B28",surface:"#EFEAF0",page:"#F6F2F6",card:"#FFFFFF",muted:"#6E6675",line:"#E5DEE8"},
     dark:{anchor:"#9B6FA6",anchorDeep:"#C9A6D1",accent:"#E6B752",accentDeep:"#F2D58A",sale:"#F07A53",ink:"#F1ECF2",surface:"#1E1620",page:"#161019",card:"#211826",muted:"#A99CB0",line:"#332838"},
     pros:["Máxima distância dos concorrentes (63° de matiz)","Família roxo que você mais gostou","Dourado traz alegria sem cair no laranja do nicho","Sério e premium sem ser sombrio","Funciona muito bem em claro e escuro"],
     cons:["Roxo pede consistência para não parecer aleatório","Dourado precisa de bom contraste em texto pequeno","Exige disciplina de aplicação no início"]
@@ -394,7 +394,7 @@ const PALETTES = {
   berinjela:{
     name:"Berinjela & Pêssego", dot:"#3C2440",
     desc:"Roxo mais escuro e contido, com pêssego suave de acento. Menos luxo-dourado, mais digital contemporâneo. Recomendada nº2.",
-    light:{anchor:"#3C2440",anchorDeep:"#281830",accent:"#E5946B",accentDeep:"#9a5230",sale:"#E2583A",ink:"#1E1822",surface:"#F3F1F2",page:"#FFFFFF",card:"#FFFFFF",muted:"#6C6770",line:"#E6E3E6"},
+    light:{anchor:"#3C2440",anchorDeep:"#281830",accent:"#E5946B",accentDeep:"#9a5230",sale:"#E2583A",ink:"#1F1824",surface:"#EEEAF0",page:"#F4F1F6",card:"#FFFFFF",muted:"#6C6573",line:"#E4DEE8"},
     dark:{anchor:"#9466A0",anchorDeep:"#C29CCB",accent:"#F0A87F",accentDeep:"#F6C9AC",sale:"#EE7253",ink:"#EFE9F1",surface:"#1B1420",page:"#140E18",card:"#1F1726",muted:"#A697AD",line:"#312539"},
     pros:["Muito distinta e moderna (63°)","Pêssego é amigável e atual","Berinjela é sério sem ser pesado","Cara de produto digital de 2026","Ótimo contraste em ambos os modos"],
     cons:["Pêssego e CTA de venda ficam próximos, precisa diferenciar","Menos sensação de luxo que o dourado","Roxo escuro pode parecer austero se usado demais"]
@@ -402,7 +402,7 @@ const PALETTES = {
   bordo:{
     name:"Bordô-roxo & Dourado", dot:"#5A2440",
     desc:"A fusão das suas duas famílias favoritas: roxo e vinho ao mesmo tempo. Quente, elegante e inédita. Recomendada nº3.",
-    light:{anchor:"#5A2440",anchorDeep:"#3D182C",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#231A20",surface:"#F4F1F1",page:"#FFFFFF",card:"#FFFFFF",muted:"#6F6A6D",line:"#E7E3E4"},
+    light:{anchor:"#5A2440",anchorDeep:"#3D182C",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#251A20",surface:"#F1EAEC",page:"#F8F1F3",card:"#FFFFFF",muted:"#71696D",line:"#EBDFE3"},
     dark:{anchor:"#AB6E8A",anchorDeep:"#D2A4BA",accent:"#E6B752",accentDeep:"#F2D58A",sale:"#F07A53",ink:"#F2ECEF",surface:"#20151B",page:"#170F14",card:"#241820",muted:"#AE9CA6",line:"#362630"},
     pros:["Une suas duas preferências (roxo + vinho)","Quente, elegante e distinta (48°)","Versátil entre o sério e o divertido","Harmoniza muito bem com tom de pele","Dourado fecha com calor sofisticado"],
     cons:["Por ser híbrida, personalidade menos 'pura'","Pode pesar se virar grande área de fundo","Tom exige atenção para não escurecer demais no escuro"]
@@ -438,7 +438,7 @@ function applyVars(p,m){
 }
 function renderSwatches(p,m){
   const v=p[m];
-  const items=[["Âncora",v.anchor],["Acento",v.accent],["CTA venda",v.sale],["Texto",v.ink],["Superfície",v.surface]];
+  const items=[["Âncora",v.anchor],["Acento",v.accent],["CTA venda",v.sale],["Fundo claro",v.page],["Card",v.card],["Texto",v.ink]];
   document.getElementById('swatches').innerHTML=items.map(([r,x])=>
     `<div class="sw"><div class="c" style="background:${x}"></div><div class="m"><span class="r">${r}</span><span class="x">${x.toUpperCase()}</span></div></div>`).join('');
 }
