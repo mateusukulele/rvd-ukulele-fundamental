@@ -21,7 +21,7 @@
 html{scroll-behavior:smooth}
 body{
   font-family:'Montserrat',sans-serif;background:var(--page);color:var(--ink);
-  transition:background .35s ease,color .35s ease;line-height:1.6;
+  transition:background .35s ease,color .35s ease;line-height:1.6;font-size:16px;
 }
 .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.01em;line-height:1.05}
@@ -55,7 +55,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
 .section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
   color:var(--accent-deep);background:var(--accent);padding:5px 12px;border-radius:6px;margin-bottom:14px}
 .section-h{font-size:clamp(26px,4vw,40px);margin-bottom:6px;text-transform:uppercase}
-.section-sub{color:var(--muted);font-size:15px;margin-bottom:26px;max-width:560px}
+.section-sub{color:var(--muted);font-size:15px;margin-bottom:26px;max-width:560px;font-weight:500}
 
 /* ===== Mock browser frame ===== */
 .frame{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card);
@@ -228,7 +228,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
 .s-mico-2{background:color-mix(in srgb,var(--accent) 20%,transparent)}
 .s-mico-3{background:var(--accent)}
 .s-mcard strong{font-family:'Montserrat';font-weight:700;font-size:13px;color:var(--ink)}
-.s-mcard p{font-size:11px;color:var(--muted);line-height:1.4;margin-top:3px}
+.s-mcard p{font-size:12px;color:var(--muted);line-height:1.45;margin-top:3px;font-weight:500}
 .s-pricebox{margin:24px;background:var(--anchor-deep);border-radius:18px;padding:24px;color:#fff}
 .s-pricebox-h{font-family:'Anton';font-size:18px;text-transform:uppercase;text-align:center;margin-bottom:16px}
 .s-pricelist{display:flex;flex-direction:column;gap:10px;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:14px}
@@ -270,7 +270,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
   <div class="section" style="padding-bottom:0">
     <span class="section-tag" id="palName">Ameixa &amp; Dourado</span>
     <h1 class="section-h">Identidade visual em prática</h1>
-    <p class="section-sub" id="palDesc">As duas finalistas (Petróleo & Âmbar, Índigo & Coral-rosa) agora têm variações de tom, mais duas inéditas leves e divertidas (Verde-ardósia e Ameixa-turquesa). Use os botões acima para alternar e o ◐ para claro/escuro. Cada paleta tem fundo claro tingido com a própria temperatura.</p>
+    <p class="section-sub" id="palDesc">As três finalistas, com contraste reforçado para leitura confortável (público +45): texto principal bem escuro, botão de venda escurecido para passar no padrão de acessibilidade, e texto escuro sobre os acentos. Use os botões acima para alternar e o ◐ para claro/escuro.</p>
     <div class="sw-grid" id="swatches"></div>
   </div>
 
@@ -526,6 +526,14 @@ do primeiro acorde que aprendeu aqui</pre>
 
 <script>
 const PALETTES = {
+  petroclaroambar:{
+    name:"Petróleo-claro & Âmbar-mel", dot:"#1A5E5F",
+    desc:"Âncora em verde-petróleo médio, fresca e respirável, com âmbar-mel quente e dourado de acento. Combina o frescor da âncora clara com o calor convidativo do mel. Contraste alto, ótima legibilidade para todas as idades.",
+    light:{anchor:"#175152",anchorDeep:"#0F3839",accent:"#C98A1E",accentDeep:"#352505",sale:"#C2410C",ink:"#142322",surface:"#EAF1F1",page:"#F4F7F7",card:"#FFFFFF",muted:"#54625F",line:"#DBE6E6"},
+    dark:{anchor:"#52B4B5",anchorDeep:"#94D6D6",accent:"#E6B752",accentDeep:"#F4DB97",sale:"#E5602F",ink:"#EAF2F1",surface:"#0E201F",page:"#091514",card:"#13211F",muted:"#94A6A5",line:"#243634"},
+    pros:["Âncora fresca e respirável, alto contraste","Âmbar-mel quente e convidativo","Distinto do azul-claro do nicho","Excelente legibilidade para +45","Forte em claro e escuro"],
+    cons:["Petróleo médio tem menos peso que o escuro","Âmbar fica perto do dourado, identidade depende do tom","Acento e CTA de venda precisam se distinguir"]
+  },
   ameixa:{
     name:"Ameixa & Dourado", dot:"#4A2950",
     desc:"Roxo-ameixa profundo com dourado-mostarda. A mais distinta do nicho e a que melhor equilibra ousadia e elegância. Recomendada nº1.",
@@ -617,7 +625,7 @@ const PALETTES = {
   indigoviol:{
     name:"Índigo-violeta & Rosa-coral", dot:"#443468",
     desc:"Variação da Índigo & Coral-rosa com a âncora mais clara e violeta (mais roxo, menos azul) e o acento em rosa-coral suave. Fica mais leve, lúdica e moderna, sem perder a elegância.",
-    light:{anchor:"#443468",anchorDeep:"#2D2249",accent:"#E87A85",accentDeep:"#9c343f",sale:"#F2683E",ink:"#1F1A2B",surface:"#ECEAF1",page:"#F5F4F7",card:"#FFFFFF",muted:"#66647A",line:"#E3E0E9"},
+    light:{anchor:"#443468",anchorDeep:"#2D2249",accent:"#E87A85",accentDeep:"#4D1A20",sale:"#C2410C",ink:"#1F1A2B",surface:"#ECEAF1",page:"#F5F4F7",card:"#FFFFFF",muted:"#5C5A70",line:"#E3E0E9"},
     dark:{anchor:"#9282C2",anchorDeep:"#C2B6E4",accent:"#F294A0",accentDeep:"#F9C6CD",sale:"#F4855E",ink:"#ECEAF4",surface:"#181527",page:"#110F1D",card:"#1E1B2E",muted:"#9D9AB5",line:"#2E2B42"},
     pros:["Âncora violeta mais leve e lúdica","Rosa-coral suave é alegre e moderno","Mais 'divertida' que a original","Foge do azul do nicho (30°)","Forte em claro e escuro"],
     cons:["Mais clara, um pouco menos premium-séria","Rosa-coral pede dose certa","Acento e CTA de venda precisam se distinguir"]
@@ -633,14 +641,14 @@ const PALETTES = {
   ameixaturq:{
     name:"Ameixa-suave & Turquesa", dot:"#3D3450",
     desc:"Inédita e divertida: âncora em ameixa-acinzentada (roxo dessaturado, suave e elegante) com turquesa-suave de acento. Frescor lúdico e moderno, alegre e leve sem saturação alta. A mais 'feliz' do conjunto.",
-    light:{anchor:"#3D3450",anchorDeep:"#282138",accent:"#54B9A8",accentDeep:"#1f6f62",sale:"#F2683E",ink:"#1D1926",surface:"#ECEAF1",page:"#F5F4F7",card:"#FFFFFF",muted:"#67647A",line:"#E3E0E9"},
+    light:{anchor:"#3D3450",anchorDeep:"#282138",accent:"#54B9A8",accentDeep:"#103730",sale:"#C2410C",ink:"#1D1926",surface:"#ECEAF1",page:"#F5F4F7",card:"#FFFFFF",muted:"#5D5A70",line:"#E3E0E9"},
     dark:{anchor:"#8B7FB0",anchorDeep:"#BBB0DA",accent:"#6FD0BE",accentDeep:"#A8E6DA",sale:"#F4855E",ink:"#EBEAF4",surface:"#171425",page:"#100E1B",card:"#1D1A2B",muted:"#9B98B2",line:"#2C2A3E"},
     pros:["Turquesa traz frescor lúdico e alegre","Ameixa-suave é elegante e moderna","A combinação mais 'feliz e leve' do conjunto","Distinta do nicho (31°)","Funciona bem em claro e escuro"],
     cons:["Turquesa é fria, precisa de calor em outros pontos","Pode parecer menos 'séria' que as escuras","Acento turquesa não deve virar verde de sucesso"]
   }
 };
-const ORDER=["ameixa","berinjela","bordo","rosa","indigo","bordoindigo","grafite","petroleo","petroescuro","petroclaro","indigoprof","indigoviol","ardosia","ameixaturq"];
-let current="ameixa", mode="light";
+const ORDER=["petroclaroambar","indigoviol","ameixaturq"];
+let current=ORDER[0], mode="light";
 
 const root=document.documentElement;
 function applyVars(p,m){
