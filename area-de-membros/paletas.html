@@ -144,16 +144,57 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
 .cifra .ch{color:var(--anchor);font-weight:500}
 .cifra-note{font-size:12px;color:var(--muted);margin-top:12px;font-style:italic}
 
-.foot{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
-.legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+/* ===== Real lesson page mock ===== */
+.lesson-app{display:flex;min-height:520px;background:var(--page);transition:background .35s}
+.lsb{width:230px;background:var(--anchor-deep);color:#fff;padding:18px 0;flex-shrink:0;transition:background .35s}
+.lsb-tag{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:0 18px 8px}
+.lsb-item{display:flex;align-items:center;gap:11px;padding:9px 18px;color:rgba(255,255,255,.9);font-size:12.5px;font-weight:500;text-decoration:none;border-left:3px solid transparent;cursor:pointer;transition:background .15s}
+.lsb-item:hover{background:rgba(255,255,255,.08)}
+.lsb-item.active{background:rgba(0,0,0,.18);border-left-color:var(--accent);font-weight:700}
+.lsb-item.next{margin-top:12px;font-weight:700}
+.lsb-num{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;font-size:11px;font-weight:700;flex-shrink:0}
+.lsb-num.on{background:var(--accent);color:var(--accent-deep)}
+.lsb-ico{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;flex-shrink:0;background:rgba(255,255,255,.16)}
+.lsb-ico.bolt{background:var(--accent);color:var(--accent-deep)}
+.lcontent{flex:1;display:flex;flex-direction:column;min-width:0}
+.lhead{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:var(--card);border-bottom:1px solid var(--line);transition:background .35s,border-color .35s}
+.lhead-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.lhead-brand span{font-family:'Montserrat';font-weight:800;font-size:14px;color:var(--anchor);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lbadge{width:30px;height:30px;border-radius:8px;background:var(--anchor);color:#fff;display:grid;place-items:center;font-family:'Anton';font-size:16px;flex-shrink:0}
+.lhead-welcome{font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+.lbody{padding:22px;background:var(--surface);flex:1;transition:background .35s}
+.ltitle{font-family:'Montserrat';font-weight:800;font-size:20px;color:var(--ink);margin-bottom:16px}
+.lvideo{aspect-ratio:16/7;background:var(--anchor-deep);border-radius:14px;display:grid;place-items:center;color:rgba(255,255,255,.8);font-size:14px;font-weight:600;margin-bottom:16px}
+.lnav{display:flex;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.lbtn{border:none;cursor:pointer;font-family:'Montserrat';font-weight:700;border-radius:11px;padding:11px 20px;font-size:13px;transition:transform .12s,filter .2s}
+.lbtn:active{transform:scale(.97)}
+.lbtn-prev{background:var(--card);border:2px solid var(--anchor);color:var(--anchor)}
+.lbtn-prev:hover{background:var(--anchor);color:#fff}
+.lbtn-next{background:var(--sale);color:#fff;font-weight:800}
+.lbtn-next:hover{filter:brightness(1.08)}
+.lcards{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+.lcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;transition:background .35s,border-color .35s}
+.lcard-t{display:flex;align-items:center;gap:8px;font-family:'Montserrat';font-weight:700;font-size:14px;color:var(--ink);margin-bottom:12px}
+.lcard-i{color:var(--anchor);font-size:15px}
+.lcard p{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.lmat{display:flex;align-items:center;justify-content:space-between;padding:13px;border:2px solid var(--line);border-radius:11px;background:var(--surface);text-decoration:none;cursor:pointer;transition:border-color .2s}
+.lmat:hover{border-color:var(--sale)}
+.lmat-l{display:flex;align-items:center;gap:11px}
+.lmat-ico{width:34px;height:34px;border-radius:9px;background:var(--anchor);color:#fff;display:grid;place-items:center;font-size:15px;flex-shrink:0}
+.lmat-l small{display:block;font-size:11px;font-weight:400;color:var(--muted)}
+.lmat-l>span:last-child{font-size:13px;font-weight:700;color:var(--ink)}
+.lmat-arrow{color:var(--anchor);font-weight:700}
+
+.foot{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}.legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:14px}
 .legend span{display:flex;align-items:center;gap:7px;font-size:12px}
 .legend .d{width:13px;height:13px;border-radius:4px}
 
 @media(max-width:840px){
   .hero-grid{grid-template-columns:1fr}.lessons{grid-template-columns:1fr 1fr}
   .pc-box{grid-template-columns:1fr}.nav{display:none}
+  .lsb{width:170px}.lcards{grid-template-columns:1fr}
 }
-@media(max-width:560px){.lessons{grid-template-columns:1fr}}
+@media(max-width:560px){.lessons{grid-template-columns:1fr}.lsb{display:none}}
 </style>
 </head>
 <body>
@@ -248,9 +289,60 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
     </div>
   </div>
 
-  <!-- ===== CIFRA ===== -->
+  <!-- ===== REAL LESSON PAGE ===== -->
   <div class="section">
     <span class="section-tag">Aplicação 3</span>
+    <h2 class="section-h">Sua página de aula real</h2>
+    <p class="section-sub">A interface que você já usa hoje, repintada na marca nova. O azul original virou a cor âncora, e o laranja fixo virou o acento e o CTA conforme a função de cada elemento. Troque a paleta acima para ver sua tela em cada roxo.</p>
+    <div class="frame">
+      <div class="frame-bar"><span class="b" style="background:#ff5f57"></span><span class="b" style="background:#febc2e"></span><span class="b" style="background:#28c840"></span><span class="frame-url">comotocarukulele.com/primeiramusica/v1/sua-primeira-musica</span></div>
+      <div class="lesson-app">
+        <aside class="lsb">
+          <div class="lsb-tag">Navegação</div>
+          <a class="lsb-item"><span class="lsb-ico">⌂</span> Início / Painel</a>
+          <div class="lsb-tag" style="margin-top:14px">Trilha do Curso Gratuito</div>
+          <a class="lsb-item"><span class="lsb-num">1</span> Comece Por Aqui!</a>
+          <a class="lsb-item"><span class="lsb-num">5</span> Como Segurar o Ukulele</a>
+          <a class="lsb-item"><span class="lsb-num">7</span> Primeiros Acordes</a>
+          <a class="lsb-item active"><span class="lsb-num on">8</span> Sua Primeira Música</a>
+          <a class="lsb-item"><span class="lsb-num">9</span> O Mapa do Iniciante</a>
+          <a class="lsb-item next"><span class="lsb-ico bolt">⚡</span> Seus Próximos Passos</a>
+        </aside>
+        <div class="lcontent">
+          <div class="lhead">
+            <div class="lhead-brand"><div class="lbadge">U</div><span>Do ZERO à 1ª Música no Ukulele!</span></div>
+            <span class="lhead-welcome">Bem-vindo(a)!</span>
+          </div>
+          <div class="lbody">
+            <h3 class="ltitle">Aula 8: Sua primeira música no Ukulele!</h3>
+            <div class="lvideo"><span>▸ vídeo da aula</span></div>
+            <div class="lnav">
+              <button class="lbtn lbtn-prev">‹ Aula Anterior</button>
+              <button class="lbtn lbtn-next">Próxima Aula ›</button>
+            </div>
+            <div class="lcards">
+              <div class="lcard">
+                <h4 class="lcard-t"><span class="lcard-i">ⓘ</span> Instruções da Aula</h4>
+                <p>Você já tem o ritmo e os acordes nas mãos. Agora vai tocar sua primeira música completa: uma versão simplificada de "Jackie Tequila", do Skank.</p>
+                <p>Usando só o Dó Maior e o Fá com nona, e a batida Bate-Desce que você já aprendeu, eu te guio passo a passo.</p>
+              </div>
+              <div class="lcard lcard-mat">
+                <h4 class="lcard-t"><span class="lcard-i">⛓</span> Materiais</h4>
+                <a class="lmat">
+                  <span class="lmat-l"><span class="lmat-ico">▦</span><span>Baixar Cifra<small>Jackie Tequila · Skank</small></span></span>
+                  <span class="lmat-arrow">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CIFRA ===== -->
+  <div class="section">
+    <span class="section-tag">Aplicação 4</span>
     <h2 class="section-h">Material de cifra</h2>
     <p class="section-sub">A fonte monoespaçada (Iosevka Mono no projeto real) mantém o alinhamento perfeito dos acordes sobre a letra. Os acordes usam a cor da marca para se destacarem do texto.</p>
     <div class="cifra">
