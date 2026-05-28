@@ -203,6 +203,43 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
 .lmat-l>span:last-child{font-size:13px;font-weight:700;color:var(--accent-deep)}
 .lmat-arrow{color:var(--accent-deep);font-weight:700}
 
+/* ===== Sales page mock ===== */
+.sales{background:var(--page);transition:background .35s}
+.s-hero{background:var(--anchor-deep);color:#fff;padding:30px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.s-badge{display:inline-block;background:color-mix(in srgb,var(--sale) 22%,transparent);border:1px solid color-mix(in srgb,var(--sale) 45%,transparent);color:var(--sale);font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.s-hero-title{font-family:'Anton';font-size:clamp(20px,3.2vw,30px);text-transform:uppercase;line-height:1.08;max-width:620px}
+.s-hero-title span{color:var(--sale)}
+.s-hero-sub{font-size:13px;color:rgba(255,255,255,.7);max-width:440px}
+.s-price-line{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:10px;font-size:12px}
+.s-de s{color:#f7a;opacity:.7}
+.s-de{color:rgba(255,255,255,.7);font-weight:700}
+.s-por{color:var(--sale);background:color-mix(in srgb,var(--sale) 18%,transparent);border:1px solid color-mix(in srgb,var(--sale) 40%,transparent);font-weight:700;padding:5px 10px;border-radius:7px}
+.s-proof{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:18px 24px;background:var(--card);border-bottom:1px solid var(--line)}
+.s-proof-item{font-size:12px;font-weight:700;color:var(--ink);text-transform:uppercase;display:flex;align-items:center;gap:7px}
+.s-proof-num{color:var(--sale);font-family:'Anton';font-size:18px}
+.s-method{padding:30px 24px;background:var(--surface)}
+.s-method-h{font-family:'Anton';font-size:clamp(18px,2.6vw,26px);text-transform:uppercase;text-align:center;margin-bottom:18px;color:var(--ink)}
+.s-method-h span{color:var(--anchor)}
+.s-method-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.s-mcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;transition:background .35s,border-color .35s}
+.s-mcard-hl{border-color:color-mix(in srgb,var(--accent) 50%,transparent)}
+.s-mico{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:20px}
+.s-mico-1{background:color-mix(in srgb,var(--anchor) 14%,transparent)}
+.s-mico-2{background:color-mix(in srgb,var(--accent) 20%,transparent)}
+.s-mico-3{background:var(--accent)}
+.s-mcard strong{font-family:'Montserrat';font-weight:700;font-size:13px;color:var(--ink)}
+.s-mcard p{font-size:11px;color:var(--muted);line-height:1.4;margin-top:3px}
+.s-pricebox{margin:24px;background:var(--anchor-deep);border-radius:18px;padding:24px;color:#fff}
+.s-pricebox-h{font-family:'Anton';font-size:18px;text-transform:uppercase;text-align:center;margin-bottom:16px}
+.s-pricelist{display:flex;flex-direction:column;gap:10px;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:16px;margin-bottom:14px}
+.s-pricelist li{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:rgba(255,255,255,.9)}
+.s-pricelist s{color:rgba(255,255,255,.45);white-space:nowrap}
+.s-pricefinal{text-align:center;font-size:14px;color:rgba(255,255,255,.85)}
+.s-pricefinal s{color:#f7a;opacity:.7;margin:0 4px}
+.s-surprise{display:inline-block;background:color-mix(in srgb,var(--sale) 22%,transparent);border:1px solid color-mix(in srgb,var(--sale) 45%,transparent);color:var(--sale);font-weight:700;padding:4px 10px;border-radius:7px;margin-left:4px}
+.s-guarantee{text-align:center;font-size:12px;color:rgba(255,255,255,.7);margin-top:14px}
+@media(max-width:560px){.s-method-cards{grid-template-columns:1fr}}
+
 .foot{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}.legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:14px}
 .legend span{display:flex;align-items:center;gap:7px;font-size:12px}
 .legend .d{width:13px;height:13px;border-radius:4px}
@@ -233,7 +270,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
   <div class="section" style="padding-bottom:0">
     <span class="section-tag" id="palName">Ameixa &amp; Dourado</span>
     <h1 class="section-h">Identidade visual em prática</h1>
-    <p class="section-sub" id="palDesc">Use os botões acima para alternar entre as seis paletas e o modo claro/escuro. Tudo abaixo é a mesma marca, só muda a cor. Repare que o fundo claro não é branco puro: cada paleta tem um off-white tingido com a sua própria temperatura.</p>
+    <p class="section-sub" id="palDesc">Use os botões acima para alternar entre as oito paletas e o modo claro/escuro. Tudo abaixo é a mesma marca, só muda a cor. Repare que o fundo claro não é branco puro: cada paleta tem um off-white tingido com a sua própria temperatura.</p>
     <div class="sw-grid" id="swatches"></div>
   </div>
 
@@ -396,9 +433,58 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
     </div>
   </div>
 
-  <!-- ===== CIFRA ===== -->
+  <!-- ===== SALES PAGE ===== -->
   <div class="section">
     <span class="section-tag">Aplicação 4</span>
+    <h2 class="section-h">Sua página de vendas real</h2>
+    <p class="section-sub">Dobras reais da sua landing de vendas, repintadas na marca. Aqui o botão de venda (laranja, fora da paleta) trabalha no hábitat natural dele, e você vê a diferença entre ele e os elementos da marca. Troque a paleta acima.</p>
+    <div class="frame">
+      <div class="frame-bar"><span class="b" style="background:#ff5f57"></span><span class="b" style="background:#febc2e"></span><span class="b" style="background:#28c840"></span><span class="frame-url">cursos.comotocarukulele.com/ukulele-fundamental</span></div>
+      <div class="sales">
+        <!-- hero -->
+        <div class="s-hero">
+          <span class="s-badge">🔥 Condição exclusiva no Grupo VIP</span>
+          <h3 class="s-hero-title">Tire o ukulele do canto da sala e toque suas músicas favoritas com <span>20 minutos por dia</span></h3>
+          <p class="s-hero-sub">Mesmo que você já tenha tentado antes e travado no caminho.</p>
+          <button class="btn btn-sale" style="margin-top:14px">Quero entrar no Grupo VIP</button>
+          <div class="s-price-line"><span class="s-de">De: <s>R$ 597</s></span> <span class="s-por">Por: surpresa no Grupo, dia 28/05</span></div>
+        </div>
+        <!-- proof bar -->
+        <div class="s-proof">
+          <div class="s-proof-item"><span class="s-proof-num">+6.000</span> alunos</div>
+          <div class="s-proof-item"><span class="s-proof-num">14</span> dias de garantia</div>
+          <div class="s-proof-item"><span class="s-proof-num">Acesso</span> vitalício</div>
+        </div>
+        <!-- method 3D -->
+        <div class="s-method">
+          <h4 class="s-method-h">O método 3D transforma <span>a forma de aprender</span></h4>
+          <div class="s-method-cards">
+            <div class="s-mcard"><span class="s-mico s-mico-1">🧩</span><div><strong>1. Dividir</strong><p>Cada música em peças pequenas.</p></div></div>
+            <div class="s-mcard"><span class="s-mico s-mico-2">🔓</span><div><strong>2. Destravar</strong><p>Repetição inteligente em velocidade reduzida.</p></div></div>
+            <div class="s-mcard s-mcard-hl"><span class="s-mico s-mico-3">🎵</span><div><strong>3. Dominar</strong><p>A música flui, o som sai limpo.</p></div></div>
+          </div>
+        </div>
+        <!-- price box -->
+        <div class="s-pricebox">
+          <h4 class="s-pricebox-h">Tudo o que você leva</h4>
+          <ul class="s-pricelist">
+            <li><span>✓ Curso Ukulele Fundamental completo</span><s>R$ 597</s></li>
+            <li><span>✓ Comunidade exclusiva por 1 ano</span><s>R$ 297</s></li>
+            <li><span>✓ Biblioteca com +150 músicas</span><s>R$ 297</s></li>
+            <li><span>✓ Workshop de canto com ukulele</span><s>R$ 147</s></li>
+            <li><span>✓ Acesso vitalício + atualizações</span><s>R$ 297</s></li>
+          </ul>
+          <div class="s-pricefinal">De <s>R$ 2.159</s> por <span class="s-surprise">surpresa no Grupo VIP</span></div>
+          <button class="btn btn-sale" style="width:100%;margin-top:14px">Quero entrar no Grupo VIP</button>
+          <div class="s-guarantee">🛡️ Garantia incondicional de 14 dias</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CIFRA ===== -->
+  <div class="section">
+    <span class="section-tag">Aplicação 5</span>
     <h2 class="section-h">Material de cifra</h2>
     <p class="section-sub">A fonte monoespaçada (Iosevka Mono no projeto real) mantém o alinhamento perfeito dos acordes sobre a letra. Os acordes usam a cor da marca para se destacarem do texto.</p>
     <div class="cifra">
@@ -443,7 +529,7 @@ const PALETTES = {
   ameixa:{
     name:"Ameixa & Dourado", dot:"#4A2950",
     desc:"Roxo-ameixa profundo com dourado-mostarda. A mais distinta do nicho e a que melhor equilibra ousadia e elegância. Recomendada nº1.",
-    light:{anchor:"#4A2950",anchorDeep:"#321A38",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#241B28",surface:"#EFEAF0",page:"#F6F2F6",card:"#FFFFFF",muted:"#6E6675",line:"#E5DEE8"},
+    light:{anchor:"#4A2950",anchorDeep:"#321A38",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#241B28",surface:"#F0E9F1",page:"#F7F3F7",card:"#FFFFFF",muted:"#6E6675",line:"#E8DFEA"},
     dark:{anchor:"#9B6FA6",anchorDeep:"#C9A6D1",accent:"#E6B752",accentDeep:"#F2D58A",sale:"#F07A53",ink:"#F1ECF2",surface:"#1E1620",page:"#161019",card:"#211826",muted:"#A99CB0",line:"#332838"},
     pros:["Máxima distância dos concorrentes (63° de matiz)","Família roxo que você mais gostou","Dourado traz alegria sem cair no laranja do nicho","Sério e premium sem ser sombrio","Funciona muito bem em claro e escuro"],
     cons:["Roxo pede consistência para não parecer aleatório","Dourado precisa de bom contraste em texto pequeno","Exige disciplina de aplicação no início"]
@@ -451,7 +537,7 @@ const PALETTES = {
   berinjela:{
     name:"Berinjela & Pêssego", dot:"#3C2440",
     desc:"Roxo mais escuro e contido, com pêssego suave de acento. Menos luxo-dourado, mais digital contemporâneo. Recomendada nº2.",
-    light:{anchor:"#3C2440",anchorDeep:"#281830",accent:"#E5946B",accentDeep:"#9a5230",sale:"#E2583A",ink:"#1F1824",surface:"#EEEAF0",page:"#F4F1F6",card:"#FFFFFF",muted:"#6C6573",line:"#E4DEE8"},
+    light:{anchor:"#3C2440",anchorDeep:"#281830",accent:"#E5946B",accentDeep:"#9a5230",sale:"#E2583A",ink:"#1F1824",surface:"#F1E9F1",page:"#F7F3F7",card:"#FFFFFF",muted:"#6C6573",line:"#E9DFEA"},
     dark:{anchor:"#9466A0",anchorDeep:"#C29CCB",accent:"#F0A87F",accentDeep:"#F6C9AC",sale:"#EE7253",ink:"#EFE9F1",surface:"#1B1420",page:"#140E18",card:"#1F1726",muted:"#A697AD",line:"#312539"},
     pros:["Muito distinta e moderna (63°)","Pêssego é amigável e atual","Berinjela é sério sem ser pesado","Cara de produto digital de 2026","Ótimo contraste em ambos os modos"],
     cons:["Pêssego e CTA de venda ficam próximos, precisa diferenciar","Menos sensação de luxo que o dourado","Roxo escuro pode parecer austero se usado demais"]
@@ -459,7 +545,7 @@ const PALETTES = {
   bordo:{
     name:"Bordô-roxo & Dourado", dot:"#5A2440",
     desc:"A fusão das suas duas famílias favoritas: roxo e vinho ao mesmo tempo. Quente, elegante e inédita. Recomendada nº3.",
-    light:{anchor:"#5A2440",anchorDeep:"#3D182C",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#251A20",surface:"#F1EAEC",page:"#F8F1F3",card:"#FFFFFF",muted:"#71696D",line:"#EBDFE3"},
+    light:{anchor:"#5A2440",anchorDeep:"#3D182C",accent:"#D6A12E",accentDeep:"#7d5e12",sale:"#E8643C",ink:"#251A20",surface:"#F1E9ED",page:"#F7F3F5",card:"#FFFFFF",muted:"#71696D",line:"#EADFE4"},
     dark:{anchor:"#AB6E8A",anchorDeep:"#D2A4BA",accent:"#E6B752",accentDeep:"#F2D58A",sale:"#F07A53",ink:"#F2ECEF",surface:"#20151B",page:"#170F14",card:"#241820",muted:"#AE9CA6",line:"#362630"},
     pros:["Une suas duas preferências (roxo + vinho)","Quente, elegante e distinta (48°)","Versátil entre o sério e o divertido","Harmoniza muito bem com tom de pele","Dourado fecha com calor sofisticado"],
     cons:["Por ser híbrida, personalidade menos 'pura'","Pode pesar se virar grande área de fundo","Tom exige atenção para não escurecer demais no escuro"]
@@ -467,7 +553,7 @@ const PALETTES = {
   rosa:{
     name:"Uva & Rosa-framboesa", dot:"#3A1F44",
     desc:"Roxo-uva profundo de âncora, com rosa-framboesa elegante entrando só em detalhes. Um rosa moderno e adulto, nada infantil, porque a base escura e séria o segura. Sofisticado e marcante.",
-    light:{anchor:"#3A1F44",anchorDeep:"#27142F",accent:"#E0457E",accentDeep:"#8f1d49",sale:"#F25C5C",ink:"#231A26",surface:"#EFEAF1",page:"#F6F1F6",card:"#FFFFFF",muted:"#6E6675",line:"#E6DEE9"},
+    light:{anchor:"#3A1F44",anchorDeep:"#27142F",accent:"#E0457E",accentDeep:"#8f1d49",sale:"#F25C5C",ink:"#231A26",surface:"#EFE9F1",page:"#F6F3F7",card:"#FFFFFF",muted:"#6E6675",line:"#E7DFEA"},
     dark:{anchor:"#A172B0",anchorDeep:"#CDA6D6",accent:"#F2779F",accentDeep:"#F9B3CC",sale:"#F47A7A",ink:"#F1EBF3",surface:"#1D1422",page:"#150E19",card:"#211827",muted:"#A99BB0",line:"#33273A"},
     pros:["Rosa elegante e atual, sem cair no infantil","Âncora roxa distinta do nicho (56°)","O rosa em detalhe vira assinatura memorável","Forte apelo moderno e de design","Funciona muito bem em claro e escuro"],
     cons:["Rosa exige dose pequena e disciplinada","Pode parecer ligado a beleza/moda se exagerar","Acento e CTA de venda precisam ficar bem distintos"]
@@ -475,7 +561,7 @@ const PALETTES = {
   indigo:{
     name:"Índigo & Coral-rosa", dot:"#3A2C5C",
     desc:"Minha aposta: índigo-violeta profundo de âncora, sério e atemporal, com coral-rosado quente de acento. Entrega 'premium mas humano' como nenhuma outra, e tem ar de produto digital de primeira linha.",
-    light:{anchor:"#3A2C5C",anchorDeep:"#261C40",accent:"#E86270",accentDeep:"#9c2f3c",sale:"#F2683E",ink:"#1E1B2A",surface:"#EBEAF1",page:"#F2F1F7",card:"#FFFFFF",muted:"#67667A",line:"#E0DEEA"},
+    light:{anchor:"#3A2C5C",anchorDeep:"#261C40",accent:"#E86270",accentDeep:"#9c2f3c",sale:"#F2683E",ink:"#1E1B2A",surface:"#EBE9F1",page:"#F4F3F7",card:"#FFFFFF",muted:"#67667A",line:"#E2DFEA"},
     dark:{anchor:"#8A7CC0",anchorDeep:"#BBB0E0",accent:"#F2828E",accentDeep:"#F9BDC4",sale:"#F4855E",ink:"#ECEAF4",surface:"#181626",page:"#11101C",card:"#1D1B2D",muted:"#9D9AB5",line:"#2D2A40"},
     pros:["'Premium mas humano' como nenhuma outra","Índigo-violeta foge do azul do nicho (30°)","Coral harmoniza lindamente com tom de pele","Ar contemporâneo de produto digital top","Excelente em claro e escuro"],
     cons:["Índigo precisa ficar arroxeado para não virar azul comum","Coral pede dose certa para não competir com o índigo","É a mais 'tech' das cinco, menos clássica"]
@@ -483,13 +569,29 @@ const PALETTES = {
   bordoindigo:{
     name:"Bordô-vinho & Coral-rosa", dot:"#4A2440",
     desc:"A mesma lógica do índigo (âncora fria + acento quente humano), mas com a âncora puxada para o bordô-vinho arroxeado: mais quente, avinhada e elegante, sem perder a seriedade. Fusão das suas duas favoritas.",
-    light:{anchor:"#4A2440",anchorDeep:"#33182C",accent:"#E86270",accentDeep:"#9c2f3c",sale:"#F2683E",ink:"#241A20",surface:"#EFEAEC",page:"#F7F1F4",card:"#FFFFFF",muted:"#6E6569",line:"#E8DEE3"},
+    light:{anchor:"#4A2440",anchorDeep:"#33182C",accent:"#E86270",accentDeep:"#9c2f3c",sale:"#F2683E",ink:"#241A20",surface:"#F1E9EF",page:"#F7F3F6",card:"#FFFFFF",muted:"#6E6569",line:"#EADFE7"},
     dark:{anchor:"#AE6E92",anchorDeep:"#D4A4BE",accent:"#F2828E",accentDeep:"#F9BDC4",sale:"#F4855E",ink:"#F1EAEE",surface:"#1F141A",page:"#160E13",card:"#231823",muted:"#AC9AA4",line:"#352633"},
     pros:["Âncora bordô-vinho muito distinta (61°)","Quente e elegante, com a seriedade que você quer","Coral-rosa dá calor humano e combina com seu rosto","Une o avinhado que você gosta ao moderno do coral","Forte em claro e escuro"],
     cons:["Bordô e coral são ambos quentes, exige equilíbrio","Pode pesar se a âncora virar área grande de fundo","Acento e CTA de venda precisam ficar bem distintos"]
+  },
+  grafite:{
+    name:"Grafite & Rosa-magenta", dot:"#2C2A2D",
+    desc:"Base de grafite neutro e quente (excelente para UI séria e legível) com rosa-magenta moderno de destaque. Grafite + rosa é uma das combinações mais atuais em produto digital: sóbria na base, vibrante no detalhe.",
+    light:{anchor:"#2C2A2D",anchorDeep:"#1A1819",accent:"#E8458A",accentDeep:"#a31e5a",sale:"#F2683E",ink:"#1F1E20",surface:"#EEEBEF",page:"#F6F4F6",card:"#FFFFFF",muted:"#69666B",line:"#E5E2E6"},
+    dark:{anchor:"#B8B3BC",anchorDeep:"#E2DEE4",accent:"#F277A8",accentDeep:"#FAB6D0",sale:"#F4855E",ink:"#EEECEF",surface:"#1A181B",page:"#121013",card:"#1E1C20",muted:"#9D99A0",line:"#2C2930"},
+    pros:["Grafite neutro é base de UI excelente e legível","Rosa-magenta vira assinatura moderna e distinta (42°)","Combinação muito atual em produto digital","Neutro nunca compete com capas e fotos","Forte contraste em claro e escuro"],
+    cons:["Grafite sozinho é sóbrio, depende do rosa para ter alma","Rosa exige dose certa para não pesar","Menos 'quente/acolhedor' que as paletas roxas"]
+  },
+  petroleo:{
+    name:"Petróleo & Âmbar", dot:"#13494C",
+    desc:"Azul-petróleo profundo (confiança e calma, ótima base de interface) com âmbar-dourado quente de acento. Clássico de boa UX: sério e estável na base, com energia no detalhe. Distinto do azul-claro do nicho.",
+    light:{anchor:"#13494C",anchorDeep:"#0C3133",accent:"#D99A2B",accentDeep:"#8a5f12",sale:"#E5602F",ink:"#162224",surface:"#EAF0F1",page:"#F4F7F7",card:"#FFFFFF",muted:"#5F6B6C",line:"#E0E8E9"},
+    dark:{anchor:"#4FA6A8",anchorDeep:"#92CFD0",accent:"#E6B752",accentDeep:"#F2D58A",sale:"#F0783F",ink:"#E9F1F1",surface:"#10201F",page:"#0A1615",card:"#15211F",muted:"#90A1A1",line:"#243634"},
+    pros:["Petróleo passa confiança e calma, base de UI sólida","Âmbar dá energia e calor sem ser o laranja do nicho","Distinto do azul-claro dos concorrentes (19°)","Premium e atemporal, ótima legibilidade","Excelente em claro e escuro"],
+    cons:["Petróleo é mais frio, menos 'acolhedor humano'","Âmbar fica perto do dourado, precisa de identidade própria","Menos ousada que as opções com rosa ou roxo"]
   }
 };
-const ORDER=["ameixa","berinjela","bordo","rosa","indigo","bordoindigo"];
+const ORDER=["ameixa","berinjela","bordo","rosa","indigo","bordoindigo","grafite","petroleo"];
 let current="ameixa", mode="light";
 
 const root=document.documentElement;
