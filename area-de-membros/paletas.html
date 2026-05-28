@@ -270,7 +270,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:
   <div class="section" style="padding-bottom:0">
     <span class="section-tag" id="palName">Ameixa &amp; Dourado</span>
     <h1 class="section-h">Identidade visual em prática</h1>
-    <p class="section-sub" id="palDesc">Use os botões acima para alternar entre as oito paletas e o modo claro/escuro. Tudo abaixo é a mesma marca, só muda a cor. Repare que o fundo claro não é branco puro: cada paleta tem um off-white tingido com a sua própria temperatura.</p>
+    <p class="section-sub" id="palDesc">As duas finalistas (Petróleo & Âmbar, Índigo & Coral-rosa) agora têm variações de tom, mais duas inéditas leves e divertidas (Verde-ardósia e Ameixa-turquesa). Use os botões acima para alternar e o ◐ para claro/escuro. Cada paleta tem fundo claro tingido com a própria temperatura.</p>
     <div class="sw-grid" id="swatches"></div>
   </div>
 
@@ -589,9 +589,57 @@ const PALETTES = {
     dark:{anchor:"#4FA6A8",anchorDeep:"#92CFD0",accent:"#E6B752",accentDeep:"#F2D58A",sale:"#F0783F",ink:"#E9F1F1",surface:"#10201F",page:"#0A1615",card:"#15211F",muted:"#90A1A1",line:"#243634"},
     pros:["Petróleo passa confiança e calma, base de UI sólida","Âmbar dá energia e calor sem ser o laranja do nicho","Distinto do azul-claro dos concorrentes (19°)","Premium e atemporal, ótima legibilidade","Excelente em claro e escuro"],
     cons:["Petróleo é mais frio, menos 'acolhedor humano'","Âmbar fica perto do dourado, precisa de identidade própria","Menos ousada que as opções com rosa ou roxo"]
+  },
+  petroescuro:{
+    name:"Petróleo-escuro & Âmbar-mel", dot:"#0E3B3E",
+    desc:"Variação da Petróleo & Âmbar com a âncora mais escura e profunda, e o âmbar puxado para o mel (mais quente e dourado). Fica mais intensa e premium, com o acento mais convidativo.",
+    light:{anchor:"#0E3B3E",anchorDeep:"#082729",accent:"#E0A93D",accentDeep:"#8a6612",sale:"#E5602F",ink:"#132021",surface:"#EAF0F1",page:"#F4F7F7",card:"#FFFFFF",muted:"#5E6A6B",line:"#E0E8E9"},
+    dark:{anchor:"#46A0A2",anchorDeep:"#8ACBCC",accent:"#EBC25E",accentDeep:"#F4DB97",sale:"#F0783F",ink:"#E8F0F0",surface:"#0D1C1B",page:"#081312",card:"#121D1C",muted:"#8D9E9E",line:"#213230"},
+    pros:["Âncora mais profunda e premium que a original","Âmbar-mel é mais quente e convidativo","Excelente contraste e legibilidade","Distinto do nicho","Forte em claro e escuro"],
+    cons:["Âncora muito escura pede cuidado em áreas grandes","Continua na família fria, menos 'humano'","Âmbar próximo do dourado, identidade depende do tom"]
+  },
+  petroclaro:{
+    name:"Petróleo-claro & Terracota", dot:"#1A5E5F",
+    desc:"Variação da Petróleo & Âmbar com a âncora mais clara e aberta (verde-petróleo médio) e o acento em terracota-dourado, mais terroso. Fica mais leve e fresca, com um calor terroso no acento.",
+    light:{anchor:"#1A5E5F",anchorDeep:"#114142",accent:"#CE8842",accentDeep:"#85541e",sale:"#E5602F",ink:"#162525",surface:"#EAF1F1",page:"#F4F7F7",card:"#FFFFFF",muted:"#5F6C6C",line:"#E0E8E9"},
+    dark:{anchor:"#52B4B5",anchorDeep:"#94D6D6",accent:"#DCA260",accentDeep:"#F0C998",sale:"#F0783F",ink:"#E9F1F1",surface:"#0E201F",page:"#091514",card:"#13211F",muted:"#8FA1A1",line:"#233634"},
+    pros:["Âncora mais clara e fresca, mais respirável","Terracota traz calor terroso e acolhedor","Mais leve que a versão escura","Distinto do nicho","Bom em claro e escuro"],
+    cons:["Petróleo médio tem menos peso premium que o escuro","Terracota fica perto do laranja, exige dose certa","Acento e CTA de venda precisam se distinguir"]
+  },
+  indigoprof:{
+    name:"Índigo-profundo & Coral-vivo", dot:"#2E2350",
+    desc:"Variação da Índigo & Coral-rosa com a âncora mais profunda e fechada, e o coral mais vivo e energético. Fica mais intensa e contrastante, com o acento puxando mais energia.",
+    light:{anchor:"#2E2350",anchorDeep:"#1C1538",accent:"#EC5A60",accentDeep:"#9c2730",sale:"#F2683E",ink:"#1B1729",surface:"#EBEAF1",page:"#F4F4F7",card:"#FFFFFF",muted:"#65647A",line:"#E2E0E9"},
+    dark:{anchor:"#7E72B8",anchorDeep:"#B3A8E0",accent:"#F2787C",accentDeep:"#F9B8BB",sale:"#F4855E",ink:"#EBEAF4",surface:"#161426",page:"#100E1C",card:"#1C1A2D",muted:"#9B98B5",line:"#2C2A40"},
+    pros:["Âncora mais profunda dá mais peso premium","Coral-vivo traz mais energia e calor","Contraste forte e marcante","Foge do azul do nicho","Excelente em claro e escuro"],
+    cons:["Coral mais vivo exige equilíbrio para não pesar","Âncora escura pede cuidado em áreas grandes","Acento e CTA de venda ficam próximos"]
+  },
+  indigoviol:{
+    name:"Índigo-violeta & Rosa-coral", dot:"#443468",
+    desc:"Variação da Índigo & Coral-rosa com a âncora mais clara e violeta (mais roxo, menos azul) e o acento em rosa-coral suave. Fica mais leve, lúdica e moderna, sem perder a elegância.",
+    light:{anchor:"#443468",anchorDeep:"#2D2249",accent:"#E87A85",accentDeep:"#9c343f",sale:"#F2683E",ink:"#1F1A2B",surface:"#ECEAF1",page:"#F5F4F7",card:"#FFFFFF",muted:"#66647A",line:"#E3E0E9"},
+    dark:{anchor:"#9282C2",anchorDeep:"#C2B6E4",accent:"#F294A0",accentDeep:"#F9C6CD",sale:"#F4855E",ink:"#ECEAF4",surface:"#181527",page:"#110F1D",card:"#1E1B2E",muted:"#9D9AB5",line:"#2E2B42"},
+    pros:["Âncora violeta mais leve e lúdica","Rosa-coral suave é alegre e moderno","Mais 'divertida' que a original","Foge do azul do nicho (30°)","Forte em claro e escuro"],
+    cons:["Mais clara, um pouco menos premium-séria","Rosa-coral pede dose certa","Acento e CTA de venda precisam se distinguir"]
+  },
+  ardosia:{
+    name:"Verde-ardósia & Coral-rosa", dot:"#2E4D4A",
+    desc:"Inédita e leve: âncora em verde-ardósia (um teal acinzentado calmo e sofisticado) com coral-rosa claro de acento. Transmite alegria tranquila e frescor, divertida sem ser vibrante. Calma na base, sorriso no detalhe.",
+    light:{anchor:"#2E4D4A",anchorDeep:"#1E3331",accent:"#EE8095",accentDeep:"#9c3850",sale:"#F2683E",ink:"#172321",surface:"#EAF1F0",page:"#F4F7F7",card:"#FFFFFF",muted:"#5E6B69",line:"#E0E9E8"},
+    dark:{anchor:"#5FB0AA",anchorDeep:"#93CDC8",accent:"#F296A7",accentDeep:"#F9C4CF",sale:"#F4855E",ink:"#E8F1F0",surface:"#0F201E",page:"#0A1514",card:"#13211F",muted:"#8D9E9C",line:"#223633"},
+    pros:["Verde-ardósia é calmo, fresco e original","Coral-rosa claro traz alegria leve, não berrante","Combinação inédita e marcante","Distinto do nicho (28°)","Sofisticado e divertido ao mesmo tempo"],
+    cons:["Verde precisa ficar acinzentado para não virar 'fácil' do semáforo","Acento claro exige bom contraste em texto","Tom calmo pode pedir mais energia em CTAs"]
+  },
+  ameixaturq:{
+    name:"Ameixa-suave & Turquesa", dot:"#3D3450",
+    desc:"Inédita e divertida: âncora em ameixa-acinzentada (roxo dessaturado, suave e elegante) com turquesa-suave de acento. Frescor lúdico e moderno, alegre e leve sem saturação alta. A mais 'feliz' do conjunto.",
+    light:{anchor:"#3D3450",anchorDeep:"#282138",accent:"#54B9A8",accentDeep:"#1f6f62",sale:"#F2683E",ink:"#1D1926",surface:"#ECEAF1",page:"#F5F4F7",card:"#FFFFFF",muted:"#67647A",line:"#E3E0E9"},
+    dark:{anchor:"#8B7FB0",anchorDeep:"#BBB0DA",accent:"#6FD0BE",accentDeep:"#A8E6DA",sale:"#F4855E",ink:"#EBEAF4",surface:"#171425",page:"#100E1B",card:"#1D1A2B",muted:"#9B98B2",line:"#2C2A3E"},
+    pros:["Turquesa traz frescor lúdico e alegre","Ameixa-suave é elegante e moderna","A combinação mais 'feliz e leve' do conjunto","Distinta do nicho (31°)","Funciona bem em claro e escuro"],
+    cons:["Turquesa é fria, precisa de calor em outros pontos","Pode parecer menos 'séria' que as escuras","Acento turquesa não deve virar verde de sucesso"]
   }
 };
-const ORDER=["ameixa","berinjela","bordo","rosa","indigo","bordoindigo","grafite","petroleo"];
+const ORDER=["ameixa","berinjela","bordo","rosa","indigo","bordoindigo","grafite","petroleo","petroescuro","petroclaro","indigoprof","indigoviol","ardosia","ameixaturq"];
 let current="ameixa", mode="light";
 
 const root=document.documentElement;
