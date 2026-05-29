@@ -474,6 +474,8 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
 .exit-title span{color:#fb6719}
 .exit-text{color:#475569;font-size:14px;line-height:1.6;margin-bottom:1.5rem;max-width:24rem;margin-left:auto;margin-right:auto}
 .exit-actions{display:flex;flex-direction:column;gap:.625rem}
+.exit-actions-single{flex-direction:column}
+.exit-actions-single .exit-btn{flex:none;width:100%;font-size:14px;padding:1.125rem 1.25rem}
 .exit-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1rem 1.25rem;border-radius:.875rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:-.025em;line-height:1.1;text-decoration:none;transition:transform .25s,background-color .25s,box-shadow .25s;cursor:pointer;border:0;width:100%}
 .exit-btn svg{width:1.125rem;height:1.125rem;flex-shrink:0}
 .exit-btn-primary{background:#16a34a;color:#fff;box-shadow:0 10px 20px -5px rgba(22,163,74,.4)}
@@ -488,7 +490,9 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
   .exit-title{font-size:1.625rem}
   .exit-text{font-size:15px}
   .exit-actions{flex-direction:row;gap:.75rem}
+  .exit-actions-single{flex-direction:column}
   .exit-btn{flex:1;font-size:13px;padding:1rem .875rem}
+  .exit-actions-single .exit-btn{flex:none;font-size:15px;padding:1.25rem 1.5rem}
 }
 
 /* === BOTÃO FLUTUANTE DE WHATSAPP === */
@@ -1037,6 +1041,24 @@ body.modal-open .wa-float{opacity:0;pointer-events:none;transform:scale(.5)}
   </div>
 </div>
 
+<div id="exit-modal-locked" class="exit-modal" role="dialog" aria-labelledby="exit-title-locked" aria-modal="true">
+  <div class="exit-content" id="exit-content-locked">
+    <button type="button" class="exit-x" onclick="fecharExitPopupLocked()" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="exit-icon">😔</div>
+    <h2 class="exit-title" id="exit-title-locked">Espera só um <span>pouquinho</span></h2>
+    <p class="exit-text">Quantas vezes você já disse <i>"depois eu vejo"</i> e o depois nunca chegou? Cuidar de você costuma ser a primeira coisa que entra nessa lista. Termina de assistir o vídeo, são poucos minutos, e no fim você decide com calma o que faz sentido.</p>
+    <div class="exit-actions exit-actions-single">
+      <button type="button" class="exit-btn exit-btn-primary" onclick="voltarParaVideo()">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        Quero continuar assistindo
+      </button>
+    </div>
+    <button type="button" class="exit-dismiss" onclick="fecharExitPopupLocked()">Vou sair por agora</button>
+  </div>
+</div>
+
 <a href="https://wa.me/5531985852860?text=Oi!%20Tenho%20interesse%20no%20curso%20Ukulele%20Fundamental%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener" class="wa-float" aria-label="Falar com a equipe no WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   <span class="wa-tooltip">Tem alguma dúvida? Fale com nossa equipe</span>
@@ -1447,18 +1469,21 @@ document.querySelectorAll('.depo-video-thumb').forEach(function(el){
 
 <script>
 // ============================
-// EXIT POPUP (apenas desktop, com guardas)
+// EXIT POPUP DUAL (locked: durante o vídeo / unlocked: depois da oferta abrir)
+// Apenas desktop, com guardas
 // ============================
 (function(){
   // Guarda 1: ignorar mobile/tablet (mouseleave não é confiável em touch)
   if(window.matchMedia('(hover:none),(pointer:coarse),(max-width:768px)').matches)return;
 
-  // Guarda 2: já mostrou nessa sessão?
-  if(sessionStorage.getItem('exitPopupShown')==='1')return;
+  var exitModal,exitContent,exitModalLocked,exitContentLocked;
+  var scrollReached=false,armedUnlocked=false,armedLocked=false;
+  var loadTime=Date.now();
 
-  var exitModal,exitContent,scrollReached=false,armed=false;
-
-  // Só ativa o gatilho depois que a pessoa rolou pelo menos 30% da página
+  // ============================
+  // GATILHO DO POPUP UNLOCKED (oferta aberta)
+  // Mesmas guardas anteriores: 30% scroll + 8s + 2s pós-scroll
+  // ============================
   function onScroll(){
     var maxScroll=document.documentElement.scrollHeight-window.innerHeight;
     if(maxScroll<=0)return;
@@ -1466,27 +1491,45 @@ document.querySelectorAll('.depo-video-thumb').forEach(function(el){
     if(pct>=0.3){
       scrollReached=true;
       window.removeEventListener('scroll',onScroll);
-      // Pequeno delay extra (8s mínimo na página) pra evitar disparo prematuro
-      setTimeout(function(){armed=true},2000);
+      setTimeout(function(){armedUnlocked=true},2000);
     }
   }
   window.addEventListener('scroll',onScroll,{passive:true});
+  setTimeout(function(){if(scrollReached)armedUnlocked=true},8000);
 
-  // Delay de 8s mínimo desde o load antes de armar (mesmo se rolar tudo logo)
-  setTimeout(function(){
-    if(scrollReached)armed=true;
-  },8000);
+  // ============================
+  // GATILHO DO POPUP LOCKED (durante o vídeo, oferta não abriu ainda)
+  // Sem scroll mínimo (a página não tem onde rolar)
+  // Mas precisa ter pelo menos 30s na página (sinaliza que começou a assistir)
+  // ============================
+  setTimeout(function(){armedLocked=true},30000);
 
-  // Detecta intenção de sair: cursor sobe pra fora pelo topo
+  // Detector universal de saída
   document.addEventListener('mouseleave',function(e){
-    if(!armed)return;
-    if(e.clientY>10)return; // só conta se saiu pelo topo
-    // Não dispara se popup de checkout está aberto
+    if(e.clientY>10)return; // só conta saída pelo topo
+    // Não dispara se popup de checkout aberto (relevante só no unlocked)
     var checkoutModal=document.getElementById('capture-modal');
     if(checkoutModal&&checkoutModal.classList.contains('open'))return;
-    abrirExitPopup();
+
+    var locked=document.getElementById('locked-content');
+    var isUnlocked=locked&&locked.classList.contains('unlocked');
+
+    if(isUnlocked){
+      // ESTADO: oferta já abriu → popup com WhatsApp + Continuar inscrição
+      if(!armedUnlocked)return;
+      if(sessionStorage.getItem('exitPopupShown')==='1')return;
+      abrirExitPopup();
+    } else {
+      // ESTADO: ainda no vídeo → popup de procrastinação
+      if(!armedLocked)return;
+      if(sessionStorage.getItem('exitPopupLockedShown')==='1')return;
+      abrirExitPopupLocked();
+    }
   });
 
+  // ============================
+  // POPUP UNLOCKED (igual à P3)
+  // ============================
   window.abrirExitPopup=function(){
     if(sessionStorage.getItem('exitPopupShown')==='1')return;
     sessionStorage.setItem('exitPopupShown','1');
@@ -1498,11 +1541,9 @@ document.querySelectorAll('.depo-video-thumb').forEach(function(el){
       exitModal.classList.add('visible');
       exitContent.classList.add('visible');
     });
-    // Trackeia no GTM
     window.dataLayer=window.dataLayer||[];
-    window.dataLayer.push({event:'exit_popup_shown'});
+    window.dataLayer.push({event:'exit_popup_shown',popup_type:'unlocked'});
   };
-
   window.fecharExitPopup=function(){
     if(!exitModal)exitModal=document.getElementById('exit-modal');
     if(!exitContent)exitContent=document.getElementById('exit-content');
@@ -1511,27 +1552,66 @@ document.querySelectorAll('.depo-video-thumb').forEach(function(el){
     document.body.classList.remove('modal-open');
     setTimeout(function(){exitModal.classList.remove('open')},400);
   };
-
   window.exitParaCheckout=function(){
     window.dataLayer=window.dataLayer||[];
-    window.dataLayer.push({event:'exit_popup_choice',choice:'continue_inscription'});
+    window.dataLayer.push({event:'exit_popup_choice',choice:'continue_inscription',popup_type:'unlocked'});
     fecharExitPopup();
     setTimeout(function(){abrirCaptura()},250);
   };
-
   window.dispatchExitChoice=function(choice){
     window.dataLayer=window.dataLayer||[];
-    window.dataLayer.push({event:'exit_popup_choice',choice:choice});
+    window.dataLayer.push({event:'exit_popup_choice',choice:choice,popup_type:'unlocked'});
   };
 
-  // Fechar clicando fora
+  // ============================
+  // POPUP LOCKED (novo)
+  // ============================
+  window.abrirExitPopupLocked=function(){
+    if(sessionStorage.getItem('exitPopupLockedShown')==='1')return;
+    sessionStorage.setItem('exitPopupLockedShown','1');
+    exitModalLocked=exitModalLocked||document.getElementById('exit-modal-locked');
+    exitContentLocked=exitContentLocked||document.getElementById('exit-content-locked');
+    exitModalLocked.classList.add('open');
+    document.body.classList.add('modal-open');
+    requestAnimationFrame(function(){
+      exitModalLocked.classList.add('visible');
+      exitContentLocked.classList.add('visible');
+    });
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'exit_popup_shown',popup_type:'locked'});
+  };
+  window.fecharExitPopupLocked=function(){
+    if(!exitModalLocked)exitModalLocked=document.getElementById('exit-modal-locked');
+    if(!exitContentLocked)exitContentLocked=document.getElementById('exit-content-locked');
+    exitModalLocked.classList.remove('visible');
+    exitContentLocked.classList.remove('visible');
+    document.body.classList.remove('modal-open');
+    setTimeout(function(){exitModalLocked.classList.remove('open')},400);
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'exit_popup_choice',choice:'dismiss',popup_type:'locked'});
+  };
+  window.voltarParaVideo=function(){
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'exit_popup_choice',choice:'continue_watching',popup_type:'locked'});
+    fecharExitPopupLocked();
+    setTimeout(function(){
+      try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){window.scrollTo(0,0)}
+    },300);
+  };
+
+  // ============================
+  // CONTROLES UNIVERSAIS (backdrop, ESC) - cobrem os dois popups
+  // ============================
   document.getElementById('exit-modal').addEventListener('click',function(e){
     if(e.target===this)fecharExitPopup();
   });
-
-  // Fechar com ESC
+  document.getElementById('exit-modal-locked').addEventListener('click',function(e){
+    if(e.target===this)fecharExitPopupLocked();
+  });
   document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'&&exitModal&&exitModal.classList.contains('open'))fecharExitPopup();
+    if(e.key!=='Escape')return;
+    if(exitModal&&exitModal.classList.contains('open'))fecharExitPopup();
+    else if(exitModalLocked&&exitModalLocked.classList.contains('open'))fecharExitPopupLocked();
   });
 })();
 </script>
