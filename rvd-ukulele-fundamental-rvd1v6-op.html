@@ -427,6 +427,31 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
 .custom-scrollbar::-webkit-scrollbar-track{background:#f1f1f1}
 .custom-scrollbar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:10px}
 
+/* === DEPOIMENTOS EM VÍDEO (YOUTUBE FACADE) === */
+.depo-video-wrap{max-width:768px;margin:0 auto}
+.depo-video-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+.depo-video-card{background:#fff;border:1px solid #e2e8f0;border-radius:1.5rem;padding:1rem;box-shadow:0 1px 2px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s,border-color .3s}
+.depo-video-card:hover{transform:translateY(-4px);box-shadow:0 12px 24px -6px rgba(0,0,0,.1);border-color:#2d6dbf}
+.depo-video-thumb{position:relative;aspect-ratio:16/9;border-radius:1rem;overflow:hidden;cursor:pointer;background:#000;margin-bottom:1rem}
+.depo-video-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.depo-video-thumb:hover img{transform:scale(1.05)}
+.depo-video-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.3) 100%);transition:background-color .3s}
+.depo-video-thumb:hover .depo-video-overlay{background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.45) 100%)}
+.depo-video-play{width:4rem;height:3rem;background:#ef4444;border-radius:.875rem;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.3);transition:transform .3s,background-color .3s}
+.depo-video-thumb:hover .depo-video-play{transform:scale(1.1);background:#dc2626}
+.depo-video-play svg{width:1.5rem;height:1.5rem;fill:#fff;margin-left:.25rem}
+.depo-video-quote{padding:.25rem .75rem 1rem;color:#475569;font-size:14px;line-height:1.6;font-style:italic;text-align:center;font-weight:500}
+.depo-video-quote::before{content:'"';color:#fb6719;font-weight:700;margin-right:.125rem}
+.depo-video-quote::after{content:'"';color:#fb6719;font-weight:700;margin-left:.125rem}
+.depo-video-iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (min-width:768px){
+  .depo-video-grid{gap:2rem}
+  .depo-video-grid.two-cols{grid-template-columns:1fr 1fr;max-width:none}
+  .depo-video-wrap.single{max-width:640px}
+  .depo-video-wrap.duo{max-width:1024px}
+  .depo-video-quote{font-size:15px;padding:.5rem 1rem 1.25rem}
+}
+
 /* === EXIT POPUP === */
 .exit-modal{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;background:rgba(30,41,59,.92);padding:1rem;backdrop-filter:blur(10px);opacity:0;transition:opacity .4s ease}
 .exit-modal.open{display:flex}
@@ -770,6 +795,25 @@ body.modal-open .wa-float{opacity:0;pointer-events:none;transform:scale(.5)}
   </div>
 </section>
 
+<section class="cascade-section sec sec-light">
+  <div class="container container-6xl">
+    <h2 class="depo-title">Veja como é na prática:</h2>
+    <div class="depo-video-wrap single">
+      <div class="depo-video-grid">
+        <div class="depo-video-card">
+          <div class="depo-video-thumb" data-v="Wey4EfhXWtc" role="button" tabindex="0" aria-label="Assistir depoimento em vídeo">
+            <img src="https://i.ytimg.com/vi/Wey4EfhXWtc/hqdefault.jpg" alt="Capa do depoimento" loading="lazy" decoding="async">
+            <div class="depo-video-overlay">
+              <div class="depo-video-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+          </div>
+          <p class="depo-video-quote">Eu não acreditava que eu poderia tocar as músicas que eu gosto. É o que eu tô fazendo agora e é uma diversão aqui em casa. É uma terapia pra mim.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cascade-section sec sec-white">
   <div class="container container-6xl">
     <h2 class="depo-title">O que nossos alunos dizem:</h2>
@@ -779,6 +823,34 @@ body.modal-open .wa-float{opacity:0;pointer-events:none;transform:scale(.5)}
       <div class="depo-item"><img src="../../img/Depoimento Marcelo.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
       <div class="depo-item"><img src="../../img/Depoimento Maria.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
       <div class="depo-item"><img src="../../img/Depoimento Wellen b.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec sec-light">
+  <div class="container container-6xl">
+    <h2 class="depo-title">Mais alunos que destravaram o ukulele:</h2>
+    <div class="depo-video-wrap duo">
+      <div class="depo-video-grid two-cols">
+        <div class="depo-video-card">
+          <div class="depo-video-thumb" data-v="gMjxSJMxPSc" role="button" tabindex="0" aria-label="Assistir depoimento em vídeo">
+            <img src="https://i.ytimg.com/vi/gMjxSJMxPSc/hqdefault.jpg" alt="Capa do depoimento" loading="lazy" decoding="async">
+            <div class="depo-video-overlay">
+              <div class="depo-video-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+          </div>
+          <p class="depo-video-quote">Eu já tenho aprendido a tocar algumas músicas que eu gosto e posso tocar com meus amigos.</p>
+        </div>
+        <div class="depo-video-card">
+          <div class="depo-video-thumb" data-v="_Uo3NvXyH4A" role="button" tabindex="0" aria-label="Assistir depoimento em vídeo">
+            <img src="https://i.ytimg.com/vi/_Uo3NvXyH4A/hqdefault.jpg" alt="Capa do depoimento" loading="lazy" decoding="async">
+            <div class="depo-video-overlay">
+              <div class="depo-video-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+          </div>
+          <p class="depo-video-quote">A música tem me ajudado bastante a ser mais paciente comigo mesma.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1267,6 +1339,18 @@ document.querySelectorAll('details.faq-item').forEach(function(d){
       document.querySelectorAll('details.faq-item').forEach(function(o){if(o!==this&&o.open)o.removeAttribute('open')}.bind(this));
     }
   });
+});
+
+// ============================
+// FACADE YOUTUBE - depoimentos em vídeo
+// ============================
+document.querySelectorAll('.depo-video-thumb').forEach(function(el){
+  function activate(){
+    var vid=el.getAttribute('data-v');
+    el.innerHTML='<iframe class="depo-video-iframe" src="https://www.youtube-nocookie.com/embed/'+vid+'?autoplay=1&rel=0" title="Depoimento de aluno" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  }
+  el.addEventListener('click',activate);
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();activate()}});
 });
 </script>
 
