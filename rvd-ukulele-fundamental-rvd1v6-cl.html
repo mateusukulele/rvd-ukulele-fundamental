@@ -35,6 +35,14 @@ body.content-locked{background:#1e293b;transition:background-color .8s ease}
 body.content-locked header.hero-section{border-radius:0;box-shadow:none}
 body:not(.content-locked){transition:background-color .8s ease}
 
+/* CTA do hero revelado APÓS o unlock (escondido enquanto content-locked) */
+.hero-cta-revealed{display:none;width:100%;max-width:28rem;flex-direction:column;align-items:center;gap:.75rem;padding-top:.5rem;margin:0 auto}
+body:not(.content-locked) .hero-cta-revealed{display:flex;animation:heroFadeUp .7s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes heroFadeUp{
+  0%{opacity:0;transform:translateY(20px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+
 /* === RESET & BASE === */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -103,8 +111,8 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
 .hero-watch{display:inline-flex;align-items:center;gap:.5rem;background:rgba(45,109,191,.2);border:1px solid rgba(45,109,191,.4);color:#93c5fd;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding:.5rem 1rem;border-radius:9999px}
 .hero-watch svg{width:.875rem;height:.875rem;flex-shrink:0}
 
-.video-wrapper{position:relative;width:100%;max-width:768px;background:#000;border-radius:1rem;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);margin:0 auto}
-.video-wrapper vturb-smartplayer{display:block;width:100%!important;min-height:250px}
+.video-wrapper{position:relative;width:100%;max-width:768px;border-radius:1rem;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);margin:0 auto;aspect-ratio:16/9}
+.video-wrapper vturb-smartplayer{display:block;width:100%!important;height:100%!important}
 
 .hero-cta-wrap{width:100%;max-width:28rem;display:flex;flex-direction:column;gap:.75rem;padding-top:.5rem}
 .hero-price{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem}
@@ -119,7 +127,6 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
   .hero-sub{font-size:1rem}
   .hero-badge{font-size:12px}
   .hero-watch{font-size:13px}
-  .video-wrapper vturb-smartplayer{min-height:432px}
   .hero-price-label{font-size:14px}
   .hero-price-old{font-size:16px}
   .hero-price-new{font-size:14px}
@@ -537,6 +544,19 @@ body.modal-open .wa-float{opacity:0;pointer-events:none;transform:scale(.5)}
         document.head.appendChild(s);
       </script>
     </div>
+
+    <div class="hero-cta-revealed">
+      <button onclick="abrirCaptura()" class="btn-pulsar hero-cta cta-link">Quero acesso imediato e vitalício</button>
+      <div class="hero-price">
+        <span class="hero-price-label">De:</span>
+        <span class="price-old hero-price-old">R$ 597,00</span>
+        <span class="hero-price-new">Com cupom: <b>12x R$ 41</b> ou R$ 397 à vista</span>
+      </div>
+      <div class="cta-coupon-note" style="color:#86efac;margin-top:.25rem">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        Desconto exclusivo desta página, aplicado direto no checkout
+      </div>
+    </div>
   </div>
 </header>
 
@@ -793,6 +813,14 @@ body.modal-open .wa-float{opacity:0;pointer-events:none;transform:scale(.5)}
       </div>
 
     </div>
+
+    <div style="padding-top:3rem;display:flex;flex-direction:column;align-items:center;gap:0">
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn cta-link">Quero acesso imediato e vitalício</button>
+      <div class="cta-coupon-note">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        Cupom de R$ 200 já aplicado · 12x de R$ 41
+      </div>
+    </div>
   </div>
 </section>
 
@@ -949,7 +977,7 @@ body.modal-open .wa-float{opacity:0;pointer-events:none;transform:scale(.5)}
   </div>
 </section>
 
-<section class="cascade-section sec-white" style="padding:2rem 1rem">
+<section class="cascade-section sec-white" style="padding:2rem 1rem 3rem">
   <div class="guarantee-box">
     <div class="guarantee-bg"><svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
     <div class="guarantee-icon"><div class="guarantee-icon-ping"></div>🛡️</div>
@@ -957,6 +985,13 @@ body.modal-open .wa-float{opacity:0;pointer-events:none;transform:scale(.5)}
       <span class="guarantee-eyebrow">100% Livre de Risco</span>
       <h2>Garantia incondicional de 14 dias</h2>
       <p>Você entra no curso, testa o método e toca a primeira música. Se por qualquer motivo não gostar da metodologia, devolvemos 100% do seu dinheiro sem letras miúdas e sem fricção. O risco está todo nas nossas costas.</p>
+    </div>
+  </div>
+  <div style="max-width:896px;margin:2.5rem auto 0;display:flex;flex-direction:column;align-items:center;gap:0">
+    <button onclick="abrirCaptura()" class="btn-pulsar cta-btn cta-link">Quero acesso imediato e vitalício</button>
+    <div class="cta-coupon-note">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      14 dias pra testar · Cupom de R$ 200 aplicado
     </div>
   </div>
 </section>
