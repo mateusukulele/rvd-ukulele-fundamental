@@ -427,22 +427,49 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
 .custom-scrollbar::-webkit-scrollbar-track{background:#f1f1f1}
 .custom-scrollbar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:10px}
 
+/* === EXIT POPUP === */
+.exit-modal{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;background:rgba(30,41,59,.92);padding:1rem;backdrop-filter:blur(10px);opacity:0;transition:opacity .4s ease}
+.exit-modal.open{display:flex}
+.exit-modal.visible{opacity:1}
+.exit-content{width:100%;max-width:30rem;background:#fff;border-radius:32px;padding:2rem 1.5rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.4);transform:scale(.9) translateY(20px);transition:transform .4s cubic-bezier(.16,1,.3,1);position:relative;text-align:center}
+.exit-content.visible{transform:scale(1) translateY(0)}
+.exit-x{position:absolute;top:1rem;right:1rem;width:2.25rem;height:2.25rem;display:flex;align-items:center;justify-content:center;background:#f1f5f9;border-radius:9999px;color:#64748b;transition:background-color .2s,color .2s,transform .2s;z-index:2}
+.exit-x:hover{background:#e2e8f0;color:#1e293b;transform:rotate(90deg)}
+.exit-x svg{width:1.125rem;height:1.125rem}
+.exit-icon{width:5rem;height:5rem;border-radius:9999px;background:linear-gradient(135deg,rgba(45,109,191,.15),rgba(251,103,25,.15));margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.exit-title{font-family:'Montserrat',sans-serif;font-size:1.375rem;font-weight:800;color:#1e293b;line-height:1.2;margin-bottom:.75rem}
+.exit-title span{color:#fb6719}
+.exit-text{color:#475569;font-size:14px;line-height:1.6;margin-bottom:1.5rem;max-width:24rem;margin-left:auto;margin-right:auto}
+.exit-actions{display:flex;flex-direction:column;gap:.625rem}
+.exit-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1rem 1.25rem;border-radius:.875rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:-.025em;line-height:1.1;text-decoration:none;transition:transform .25s,background-color .25s,box-shadow .25s;cursor:pointer;border:0;width:100%}
+.exit-btn svg{width:1.125rem;height:1.125rem;flex-shrink:0}
+.exit-btn-primary{background:#16a34a;color:#fff;box-shadow:0 10px 20px -5px rgba(22,163,74,.4)}
+.exit-btn-primary:hover{background:#15803d;transform:translateY(-2px);box-shadow:0 14px 24px -5px rgba(22,163,74,.5)}
+.exit-btn-secondary{background:#25d366;color:#fff;box-shadow:0 10px 20px -5px rgba(37,211,102,.4)}
+.exit-btn-secondary:hover{background:#128c7e;transform:translateY(-2px);box-shadow:0 14px 24px -5px rgba(37,211,102,.5)}
+.exit-btn-secondary svg{fill:currentColor}
+.exit-dismiss{margin-top:1rem;color:#94a3b8;font-size:12px;font-weight:600;letter-spacing:.025em;padding:.5rem;background:none;border:0;cursor:pointer;text-decoration:underline;transition:color .2s}
+.exit-dismiss:hover{color:#1e293b}
+@media (min-width:640px){
+  .exit-content{padding:2.5rem 2rem}
+  .exit-title{font-size:1.625rem}
+  .exit-text{font-size:15px}
+  .exit-actions{flex-direction:row;gap:.75rem}
+  .exit-btn{flex:1;font-size:13px;padding:1rem .875rem}
+}
+
 /* === BOTÃO FLUTUANTE DE WHATSAPP === */
-.wa-float{position:fixed;bottom:1.25rem;right:1.25rem;z-index:90;width:3.5rem;height:3.5rem;background:#25d366;color:#fff;border-radius:9999px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px -3px rgba(37,211,102,.5),0 4px 6px -2px rgba(0,0,0,.15);text-decoration:none;transition:transform .3s,box-shadow .3s,background-color .3s,opacity .3s;animation:wa-pulse 2.5s infinite}
-.wa-float:hover{background:#128c7e;transform:scale(1.08);box-shadow:0 15px 30px -3px rgba(37,211,102,.6),0 8px 10px -3px rgba(0,0,0,.2);animation:none}
-.wa-float svg{width:2rem;height:2rem;fill:currentColor}
-.wa-tooltip{position:absolute;right:calc(100% + .75rem);top:50%;transform:translateY(-50%) translateX(.5rem);background:#1e293b;color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;padding:.625rem .875rem;border-radius:.5rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:0 10px 15px -3px rgba(0,0,0,.25)}
+.wa-float{position:fixed;bottom:1.25rem;right:1.25rem;z-index:90;width:3.25rem;height:3.25rem;background:#2d6dbf;color:#fff;border-radius:9999px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px -5px rgba(45,109,191,.45),0 4px 6px -2px rgba(0,0,0,.15);text-decoration:none;transition:transform .3s,box-shadow .3s,background-color .3s,opacity .5s ease,visibility .5s;opacity:0;visibility:hidden;pointer-events:none}
+.wa-float.revealed{opacity:1;visibility:visible;pointer-events:auto}
+.wa-float:hover{background:#1e293b;transform:scale(1.08);box-shadow:0 15px 30px -3px rgba(30,41,59,.5),0 8px 10px -3px rgba(0,0,0,.2)}
+.wa-float svg{width:1.625rem;height:1.625rem;fill:currentColor}
+.wa-tooltip{position:absolute;right:calc(100% + .75rem);top:50%;transform:translateY(-50%) translateX(.5rem);background:#1e293b;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;padding:.5rem .75rem;border-radius:.5rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:0 10px 15px -3px rgba(0,0,0,.25)}
 .wa-tooltip::after{content:'';position:absolute;left:100%;top:50%;transform:translateY(-50%);border:6px solid transparent;border-left-color:#1e293b}
 .wa-float:hover .wa-tooltip{opacity:1;transform:translateY(-50%) translateX(0)}
-@keyframes wa-pulse{
-  0%{box-shadow:0 10px 25px -3px rgba(37,211,102,.5),0 4px 6px -2px rgba(0,0,0,.15),0 0 0 0 rgba(37,211,102,.55)}
-  70%{box-shadow:0 10px 25px -3px rgba(37,211,102,.5),0 4px 6px -2px rgba(0,0,0,.15),0 0 0 14px rgba(37,211,102,0)}
-  100%{box-shadow:0 10px 25px -3px rgba(37,211,102,.5),0 4px 6px -2px rgba(0,0,0,.15),0 0 0 0 rgba(37,211,102,0)}
-}
 @media (max-width:640px){
   .wa-tooltip{display:none}
-  .wa-float{bottom:1rem;right:1rem;width:3.25rem;height:3.25rem}
-  .wa-float svg{width:1.75rem;height:1.75rem}
+  .wa-float{bottom:1rem;right:1rem;width:3rem;height:3rem}
+  .wa-float svg{width:1.5rem;height:1.5rem}
 }
 /* Esconde botão quando modal está aberto */
 body.modal-open{overflow:hidden}
@@ -922,9 +949,31 @@ body.modal-open .wa-float{opacity:0;pointer-events:none;transform:scale(.5)}
 
 </main>
 
+<div id="exit-modal" class="exit-modal" role="dialog" aria-labelledby="exit-title" aria-modal="true">
+  <div class="exit-content" id="exit-content">
+    <button type="button" class="exit-x" onclick="fecharExitPopup()" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="exit-icon">🎸</div>
+    <h2 class="exit-title" id="exit-title">Antes de você ir, <span>posso te ajudar?</span></h2>
+    <p class="exit-text">Se ficou alguma dúvida sobre o curso ou sobre o método, nosso time pode te responder agora no WhatsApp, sem compromisso. Ou, se você só queria pensar mais um pouco, é só voltar pra página.</p>
+    <div class="exit-actions">
+      <a href="https://wa.me/5531985852860?text=Oi!%20Tenho%20interesse%20no%20curso%20Ukulele%20Fundamental%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener" class="exit-btn exit-btn-secondary" onclick="dispatchExitChoice('whatsapp')">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Tirar dúvida no WhatsApp
+      </a>
+      <button type="button" class="exit-btn exit-btn-primary" onclick="exitParaCheckout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Continuar inscrição
+      </button>
+    </div>
+    <button type="button" class="exit-dismiss" onclick="fecharExitPopup()">Não, vou continuar olhando</button>
+  </div>
+</div>
+
 <a href="https://wa.me/5531985852860?text=Oi!%20Tenho%20interesse%20no%20curso%20Ukulele%20Fundamental%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener" class="wa-float" aria-label="Falar com a equipe no WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-  <span class="wa-tooltip">Tirar uma dúvida pelo WhatsApp</span>
+  <span class="wa-tooltip">Já tem dúvida? Fale com nosso time</span>
 </a>
 
 <div id="capture-modal" class="modal">
@@ -1219,6 +1268,125 @@ document.querySelectorAll('details.faq-item').forEach(function(d){
     }
   });
 });
+</script>
+
+<script>
+// ============================
+// EXIT POPUP (apenas desktop, com guardas)
+// ============================
+(function(){
+  // Guarda 1: ignorar mobile/tablet (mouseleave não é confiável em touch)
+  if(window.matchMedia('(hover:none),(pointer:coarse),(max-width:768px)').matches)return;
+
+  // Guarda 2: já mostrou nessa sessão?
+  if(sessionStorage.getItem('exitPopupShown')==='1')return;
+
+  var exitModal,exitContent,scrollReached=false,armed=false;
+
+  // Só ativa o gatilho depois que a pessoa rolou pelo menos 30% da página
+  function onScroll(){
+    var maxScroll=document.documentElement.scrollHeight-window.innerHeight;
+    if(maxScroll<=0)return;
+    var pct=window.scrollY/maxScroll;
+    if(pct>=0.3){
+      scrollReached=true;
+      window.removeEventListener('scroll',onScroll);
+      // Pequeno delay extra (8s mínimo na página) pra evitar disparo prematuro
+      setTimeout(function(){armed=true},2000);
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  // Delay de 8s mínimo desde o load antes de armar (mesmo se rolar tudo logo)
+  setTimeout(function(){
+    if(scrollReached)armed=true;
+  },8000);
+
+  // Detecta intenção de sair: cursor sobe pra fora pelo topo
+  document.addEventListener('mouseleave',function(e){
+    if(!armed)return;
+    if(e.clientY>10)return; // só conta se saiu pelo topo
+    // Não dispara se popup de checkout está aberto
+    var checkoutModal=document.getElementById('capture-modal');
+    if(checkoutModal&&checkoutModal.classList.contains('open'))return;
+    abrirExitPopup();
+  });
+
+  window.abrirExitPopup=function(){
+    if(sessionStorage.getItem('exitPopupShown')==='1')return;
+    sessionStorage.setItem('exitPopupShown','1');
+    exitModal=exitModal||document.getElementById('exit-modal');
+    exitContent=exitContent||document.getElementById('exit-content');
+    exitModal.classList.add('open');
+    document.body.classList.add('modal-open');
+    requestAnimationFrame(function(){
+      exitModal.classList.add('visible');
+      exitContent.classList.add('visible');
+    });
+    // Trackeia no GTM
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'exit_popup_shown'});
+  };
+
+  window.fecharExitPopup=function(){
+    if(!exitModal)exitModal=document.getElementById('exit-modal');
+    if(!exitContent)exitContent=document.getElementById('exit-content');
+    exitModal.classList.remove('visible');
+    exitContent.classList.remove('visible');
+    document.body.classList.remove('modal-open');
+    setTimeout(function(){exitModal.classList.remove('open')},400);
+  };
+
+  window.exitParaCheckout=function(){
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'exit_popup_choice',choice:'continue_inscription'});
+    fecharExitPopup();
+    setTimeout(function(){abrirCaptura()},250);
+  };
+
+  window.dispatchExitChoice=function(choice){
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'exit_popup_choice',choice:choice});
+  };
+
+  // Fechar clicando fora
+  document.getElementById('exit-modal').addEventListener('click',function(e){
+    if(e.target===this)fecharExitPopup();
+  });
+
+  // Fechar com ESC
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&exitModal&&exitModal.classList.contains('open'))fecharExitPopup();
+  });
+})();
+</script>
+
+<script>
+// ============================
+// REVELAÇÃO TARDIA DO BOTÃO DE WHATSAPP
+// Filtra "curiosos" que tentariam pular o vídeo pelo atalho
+// Só revela quando: 60s na página + 25% de scroll (ambas condições)
+// ============================
+(function(){
+  var waBtn=document.querySelector('.wa-float');
+  if(!waBtn)return;
+  var timeOk=false,scrollOk=false,revealed=false;
+
+  function tryReveal(){
+    if(timeOk&&scrollOk&&!revealed){
+      revealed=true;
+      waBtn.classList.add('revealed');
+      window.removeEventListener('scroll',onScroll);
+    }
+  }
+  function onScroll(){
+    var maxScroll=document.documentElement.scrollHeight-window.innerHeight;
+    if(maxScroll<=0){scrollOk=true;tryReveal();return}
+    if(window.scrollY/maxScroll>=0.25){scrollOk=true;tryReveal()}
+  }
+  setTimeout(function(){timeOk=true;tryReveal()},60000);
+  window.addEventListener('scroll',onScroll,{passive:true});
+})();
 </script>
 
 <script>
