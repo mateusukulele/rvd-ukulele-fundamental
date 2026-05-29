@@ -1147,10 +1147,11 @@ function iniciarCascata(){
 
 // ============================
 // SISTEMA DE UNLOCK POR TEMPO DE PÁGINA
-// Após 20:55 (1255 segundos) desde o carregamento da página, o conteúdo é liberado
+// Após X segundos desde o carregamento da página, o conteúdo é liberado
+// IMPORTANTE: trocar TARGET_TIME_MS para 1255000 quando for produção (20m55s)
 // ============================
 (function(){
-  var TARGET_TIME_MS=10000; // 20 minutos e 55 segundos em milissegundos
+  var TARGET_TIME_MS=10000; // 10 SEGUNDOS - APENAS PARA TESTE. Em produção: 1255000 (20m55s)
   var unlocked=false;
 
   function unlock(){
@@ -1161,16 +1162,11 @@ function iniciarCascata(){
     var locked=document.getElementById('locked-content');
     if(!locked)return;
     locked.classList.add('unlocked');
-    // Inicia a cascata das seções
+    // Inicia a cascata das seções (cada uma aparece com 100ms de diferença)
     iniciarCascata();
-    // Scroll suave pra revelar o início do conteúdo após 800ms (espera a animação)
-    setTimeout(function(){
-      var firstSection=locked.querySelector('.cascade-section');
-      if(firstSection){
-        var top=firstSection.getBoundingClientRect().top+window.scrollY-20;
-        try{window.scrollTo({top:top,behavior:'smooth'})}catch(e){window.scrollTo(0,top)}
-      }
-    },800);
+    // SEM auto-scroll: o vídeo permanece em foco
+    // A animação de fade-in + slide-up já sinaliza que há conteúdo novo abaixo
+    // O usuário rola por conta própria quando quiser explorar
     // GTM track
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'offer_unlocked',trigger_time_seconds:TARGET_TIME_MS/1000});
@@ -1183,7 +1179,7 @@ function iniciarCascata(){
     setTimeout(unlock,2000);return;
   }
 
-  // Timer simples: libera o conteúdo após 20:55 desde o carregamento
+  // Timer simples: libera o conteúdo após X segundos desde o carregamento
   setTimeout(unlock,TARGET_TIME_MS);
 })();
 
