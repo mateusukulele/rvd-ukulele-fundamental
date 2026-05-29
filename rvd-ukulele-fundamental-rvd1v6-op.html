@@ -282,6 +282,47 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
 .faq-content{padding:1rem 1.25rem 1.5rem;color:#475569;font-size:14px;line-height:1.625;border-top:1px solid #e2e8f0;margin-top:.25rem}
 @media (min-width:768px){.faq-wrap{padding:3rem}.faq-title{font-size:2.25rem}.faq-summary{padding:1.5rem;font-size:16px}.faq-content{padding:1rem 1.5rem 1.5rem}}
 
+/* === SELO E COMPONENTES DO CUPOM === */
+.coupon-tag{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(90deg,#16a34a,#15803d);color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:.5rem 1rem;border-radius:9999px;box-shadow:0 4px 12px rgba(22,163,74,.35);line-height:1}
+.coupon-tag svg{width:.875rem;height:.875rem;flex-shrink:0}
+@media (min-width:768px){.coupon-tag{font-size:12px;padding:.5rem 1.125rem}}
+
+.coupon-banner{max-width:768px;margin:0 auto 3rem;background:linear-gradient(135deg,#16a34a 0%,#15803d 100%);border-radius:1.5rem;padding:1.5rem;box-shadow:0 20px 40px -10px rgba(22,163,74,.4);position:relative;overflow:hidden}
+.coupon-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(255,255,255,.15) 0%,transparent 60%);pointer-events:none}
+.coupon-inner{position:relative;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:center;text-align:center}
+.coupon-icon{width:3.5rem;height:3.5rem;background:rgba(255,255,255,.18);border:2px dashed rgba(255,255,255,.5);border-radius:9999px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+.coupon-icon svg{width:1.75rem;height:1.75rem}
+.coupon-text{color:#fff;flex:1;min-width:200px}
+.coupon-text-top{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.875rem;text-transform:uppercase;letter-spacing:.05em;opacity:.95;line-height:1.1;margin-bottom:.25rem}
+.coupon-text-main{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.25rem;line-height:1.15}
+.coupon-text-main b{background:#fff;color:#15803d;padding:0 .375rem;border-radius:.25rem;font-weight:900}
+.coupon-applied{display:inline-flex;align-items:center;gap:.375rem;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:.375rem .75rem;border-radius:9999px;margin-top:.625rem}
+.coupon-applied svg{width:.875rem;height:.875rem;flex-shrink:0}
+@media (min-width:768px){
+  .coupon-banner{padding:2rem 2.5rem}
+  .coupon-inner{flex-wrap:nowrap;text-align:left;gap:1.5rem}
+  .coupon-icon{width:4rem;height:4rem}
+  .coupon-icon svg{width:2rem;height:2rem}
+  .coupon-text-top{font-size:.9375rem}
+  .coupon-text-main{font-size:1.5rem}
+}
+
+/* Desconto destacado na caixa de preço */
+.price-discount-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.25rem;background:rgba(22,163,74,.12);border:1px solid rgba(22,163,74,.35);border-radius:.75rem;margin-bottom:1.5rem}
+.price-discount-row .item{display:flex;align-items:center;gap:.625rem;flex:1;font-weight:700;color:#86efac;font-size:14px;text-align:left}
+.price-discount-row .item svg{width:1.25rem;height:1.25rem;color:#22c55e;flex-shrink:0}
+.price-discount-row .value{color:#22c55e;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.125rem;white-space:nowrap}
+@media (min-width:768px){
+  .price-discount-row .item{font-size:16px}
+  .price-discount-row .value{font-size:1.375rem}
+}
+
+/* CTA helper - subtexto verde abaixo do botão */
+.cta-coupon-note{display:flex;align-items:center;justify-content:center;gap:.375rem;margin-top:.875rem;font-size:12px;font-weight:700;color:#16a34a}
+.cta-coupon-note svg{width:.875rem;height:.875rem;flex-shrink:0}
+.cta-coupon-note.dark{color:#86efac}
+@media (min-width:768px){.cta-coupon-note{font-size:13px}}
+
 /* === CURRÍCULO DETALHADO === */
 .curr-intro{text-align:center;max-width:768px;margin:0 auto 4rem}
 .curr-eyebrow{color:#2d6dbf;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:block}
@@ -404,12 +445,21 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
       </script>
     </div>
 
+    <span class="coupon-tag">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+      Cupom de R$ 200 OFF já aplicado para você
+    </span>
+
     <div class="hero-cta-wrap">
       <button onclick="abrirCaptura()" class="btn-pulsar hero-cta cta-link">Quero acesso imediato e vitalício</button>
       <div class="hero-price">
         <span class="hero-price-label">De:</span>
         <span class="price-old hero-price-old">R$ 597,00</span>
-        <span class="hero-price-new">Por: <b>12x R$ 41</b> ou R$ 397 à vista</span>
+        <span class="hero-price-new">Com cupom: <b>12x R$ 41</b> ou R$ 397 à vista</span>
+      </div>
+      <div class="cta-coupon-note dark" style="color:#86efac">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        Desconto exclusivo desta página, aplicado direto no checkout
       </div>
     </div>
   </div>
@@ -753,11 +803,22 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
         <li><span class="item"><span class="check">✅</span> <span><b>Workshop de Canto com Ukulele</b> (tocar e cantar afinado ao mesmo tempo)</span></span><span class="price-old">R$ 147</span></li>
         <li><span class="item"><span class="check">✅</span> <span><b>Acesso Vitalício</b> (sem prazo, com todas as atualizações futuras)</span></span><span class="price-old">R$ 297</span></li>
       </ul>
+      <div class="price-discount-row">
+        <span class="item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+          Cupom exclusivo desta página, já aplicado
+        </span>
+        <span class="value">- R$ 200</span>
+      </div>
       <div class="price-final">
-        <p class="price-final-line">De: <span class="price-old">R$ 1.635,00</span> | Por:</p>
+        <p class="price-final-line">De: <span class="price-old">R$ 597,00</span> | Por:</p>
         <p class="price-surprise"><span class="price-surprise-box">12x de R$ 41 ou R$ 397 à vista</span></p>
-        <div style="padding-top:1.5rem;display:flex;justify-content:center">
+        <div style="padding-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0">
           <button onclick="abrirCaptura()" class="btn-pulsar cta-btn cta-link">Quero acesso imediato e vitalício</button>
+          <div class="cta-coupon-note dark">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Cupom aplicado direto no checkout, sem precisar digitar nada
+          </div>
         </div>
       </div>
     </div>
@@ -824,9 +885,13 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
 <section class="cascade-section sec-light" style="padding:4rem 1rem;border-top:1px solid #e2e8f0">
   <div class="final-wrap">
     <h2>Comece sua jornada no ukulele hoje</h2>
-    <p>Acesso vitalício, 14 dias de garantia incondicional e um método que já tirou mais de 6 mil pessoas do zero. O risco é todo nosso.</p>
-    <div class="cta-wrap">
+    <p>Acesso vitalício, 14 dias de garantia incondicional e o cupom de R$ 200 já aplicado para você. O risco é todo nosso.</p>
+    <div class="cta-wrap" style="flex-direction:column;align-items:center;gap:0">
       <button onclick="abrirCaptura()" class="btn-pulsar cta-btn cta-link">Quero acesso imediato e vitalício</button>
+      <div class="cta-coupon-note">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        Desconto de R$ 200 desta página, aplicado direto no checkout
+      </div>
     </div>
   </div>
 </section>
@@ -837,6 +902,10 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
   <div class="modal-content" id="capture-content">
     <h3>Falta muito pouco!</h3>
     <p class="modal-sub">Preencha seus dados para garantir o seu acesso ao Ukulele Fundamental.</p>
+    <span class="coupon-tag" style="margin:0 auto 1.5rem;display:flex;justify-content:center;width:fit-content">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+      Cupom de R$ 200 já aplicado
+    </span>
     <form onsubmit="handleCapture(event)" class="modal-form">
       <div>
         <label for="lead-nome">Nome Completo *</label>
