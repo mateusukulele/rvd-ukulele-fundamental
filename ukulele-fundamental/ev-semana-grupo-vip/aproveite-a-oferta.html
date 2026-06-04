@@ -917,7 +917,7 @@ header.hero-section{background:#1e293b;color:#fff;min-height:auto;width:100%;bor
 <section class="cascade-section sec-light" style="padding:4rem 1rem;border-top:1px solid #e2e8f0">
   <div class="final-wrap">
     <h2 id="final-title">Oferta Especial Liberada</h2>
-    <p id="final-text">Início <b>04/06 às 8h</b> e fim hoje mesmo, <b>às 20h</b>, horário de Brasília. Depois desse horário, a condição especial não volta. Aproveite agora.</p>
+    <p id="final-text">Início <b>04/06 às 7h59</b> e fim hoje mesmo, <b>às 20h</b>, horário de Brasília. Depois desse horário, a condição especial não volta. Aproveite agora.</p>
     <div class="cta-wrap">
       <a href="https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO-GRUPO-VIP&hideBillet=1" class="btn-pulsar cta-btn cta-link" data-cta-label="final">Quero aproveitar a oferta</a>
     </div>
@@ -958,12 +958,13 @@ document.querySelectorAll('details.faq-item').forEach(function(d){
 <script>
 // ============================
 // CONTROLE DE ESTADO DA OFERTA (horário de Brasília)
-// Aberta: 04/06/2026, 08:00 BRT (UTC-3) -> 11:00 UTC
+// Aberta: 04/06/2026, 07:59 BRT (UTC-3) -> 10:59 UTC
 // Fechada: 04/06/2026, 20:00 BRT (UTC-3) -> 23:00 UTC
+// LEMBRETE: mês em JavaScript começa em 0! Janeiro=0, Fevereiro=1, ... Junho=5
 // ============================
 (function(){
-  var OPEN_UTC  = Date.UTC(2026, 4, 28, 10, 50, 0); // 04/06/2026 07:50 BRT
-  var CLOSE_UTC = Date.UTC(2026, 4, 28, 23, 0, 0);  // 04/06/2026 20:00 BRT
+  var OPEN_UTC  = Date.UTC(2026, 5, 4, 10, 59, 0); // 04/06/2026 07:59 BRT
+  var CLOSE_UTC = Date.UTC(2026, 5, 4, 23, 0, 0);  // 04/06/2026 20:00 BRT
   var WA_URL = 'https://wa.me/5531985852860?text=' + encodeURIComponent('Oi! Eu gostaria de aproveitar a condição especial do dia 04/06, mas cheguei depois do término. Pode me ajudar com isso?');
   var HOTMART_URL = 'https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO-GRUPO-VIP&hideBillet=1';
 
@@ -981,16 +982,16 @@ document.querySelectorAll('details.faq-item').forEach(function(d){
   function pad(n){return n<10?'0'+n:''+n}
 
   function setBeforeOpen(){
-    if(labelTop) labelTop.textContent = 'A condição especial abre às 7h50';
+    if(labelTop) labelTop.textContent = 'A condição especial abre às 7h59';
     if(labelBottom) labelBottom.textContent = 'Começa em:';
-    if(heroBadge) heroBadge.innerHTML = '⏳ A oferta abre dia 04/06 às 7h50 ⏳';
+    if(heroBadge) heroBadge.innerHTML = '⏳ A oferta abre dia 04/06 às 7h59 ⏳';
     if(finalTitle) finalTitle.textContent = 'A oferta ainda não abriu';
-    if(finalText) finalText.innerHTML = 'A condição especial começa <b>04/06 às 7h50</b> e vai até <b>20h</b>, horário de Brasília. Volte aqui no horário para garantir.';
+    if(finalText) finalText.innerHTML = 'A condição especial começa <b>04/06 às 7h59</b> e vai até <b>20h</b>, horário de Brasília. Volte aqui no horário para garantir.';
     for(var i=0;i<ctaLinks.length;i++){
       var el = ctaLinks[i];
       el.classList.add('disabled');
       el.removeAttribute('href');
-      el.textContent = 'Abre 04/06 às 7h50';
+      el.textContent = 'Abre 04/06 às 7h59';
     }
   }
 
@@ -1061,7 +1062,7 @@ document.querySelectorAll('details.faq-item').forEach(function(d){
 <script>
 // GTM dispara ~1.5s após DOM pronto, com dataLayer pré-inicializado
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({event:'offer_page_view',page_type:'offer',page_name:'oferta-especial-28-05'});
+window.dataLayer.push({event:'offer_page_view',page_type:'offer',page_name:'oferta-especial-04-06'});
 (function(){
   function loadGTM(){
     (function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');
