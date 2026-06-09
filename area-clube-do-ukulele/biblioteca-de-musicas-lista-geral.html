@@ -340,9 +340,9 @@ function separarTitulo(t) {
 
 /* ---------- classe da pilula de dificuldade ---------- */
 function classeDif(d) {
-  d = (d || "").toLowerCase();
-  if (d.indexOf("desaf") !== -1 || d.indexOf("avan") !== -1 || d.indexOf("dif") !== -1) return "desafio";
-  if (d.indexOf("med")  !== -1) return "media";
+  d = norm(d); // minusculo e SEM acento (media, basica, desafio...)
+  if (d.indexOf("desaf") !== -1 || d.indexOf("avan") !== -1 || d.indexOf("dificil") !== -1) return "desafio";
+  if (d.indexOf("med") !== -1) return "media";
   return "facil";
 }
 
