@@ -71,13 +71,12 @@
   }
 
   .filters {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 3), 1fr);
     gap: 8px;
   }
   .filters select {
-    flex: 1 1 calc(33.333% - 6px);
-    min-width: 110px;
+    width: 100%;
     font-size: 13.5px;
     padding: 9px 12px;
     border: 1px solid rgba(68,52,104,0.18);
@@ -226,7 +225,6 @@
   @media (min-width: 600px) {
     .row .musica { font-size: 16px; }
     .row .artista { font-size: 13.5px; }
-    .filters select { flex-basis: calc(33.333% - 6px); }
   }
 </style>
 </head>
@@ -349,6 +347,7 @@ var FILTROS = [
    - "limpar" nunca remove                                            */
 var LOCKS = {};
 var PRE_URL = {};   // filtros livres pre-aplicados via URL (1a carga)
+var HIDE = {};      // filtros apenas ocultados (sem travar valor)
 
 /* ---------- lê parâmetros da URL ----------
    ?campo=Valor       -> pre-aplica (aluno pode mudar)
@@ -362,6 +361,11 @@ function lerURL() {
     if (lock) { LOCKS[f.campo] = lock; }
     else if (pred) { pre[f.campo] = pred; }
   });
+  // hide=campo1,campo2  -> oculta esses filtros (sem travar valor)
+  var hide = p.get("hide");
+  if (hide) {
+    hide.split(",").forEach(function (c) { HIDE[c.trim()] = true; });
+  }
   return { pre: pre, busca: p.get("busca") || "" };
 }
 
@@ -388,10 +392,41 @@ function ordenarValores(valores, f) {
   });
 }
 
+/* ---------- escolhe nº de colunas que distribui os filtros visíveis
+   sem nunca deixar 1 sozinho na última linha ---------- */
+function ajustarColunas() {
+  var selects = document.querySelectorAll(".filters select");
+  var visiveis = 0;
+  selects.forEach(function (s) { if (s.style.display !== "none") visiveis++; });
+  if (visiveis === 0) return;
+
+  var larg = window.innerWidth;
+  var maxCols = larg < 480 ? 2 : (larg < 760 ? 3 : 4);
+
+  var cols = Math.min(visiveis, maxCols);
+  for (var c = cols; c >= 2; c--) {
+    if (visiveis % c !== 1) { cols = c; break; }
+    cols = c;
+  }
+  if (visiveis <= 3) cols = Math.min(visiveis, maxCols);
+
+  var filtros = document.querySelector(".filters");
+  filtros.style.setProperty("--cols", cols);
+
+  // se ainda sobrar exatamente 1 na ultima linha (caso de 2 colunas),
+  // faz o ultimo select visivel ocupar a linha inteira (sem item solto)
+  var visiveisEls = [];
+  selects.forEach(function (s) { if (s.style.display !== "none") visiveisEls.push(s); });
+  visiveisEls.forEach(function (s) { s.style.gridColumn = ""; });
+  if (visiveis % cols === 1 && cols >= 2) {
+    visiveisEls[visiveisEls.length - 1].style.gridColumn = "1 / -1";
+  }
+}
+
 /* ---------- esconde selects travados (uma vez, no init) ---------- */
 function ocultarTravados() {
   FILTROS.forEach(function (f) {
-    if (LOCKS.hasOwnProperty(f.campo)) {
+    if (LOCKS.hasOwnProperty(f.campo) || HIDE.hasOwnProperty(f.campo)) {
       document.getElementById(f.id).style.display = "none";
     }
   });
@@ -418,6 +453,7 @@ function filtrarBase(ativos, q, ignorarCampo) {
 function repopularSelects(ativos, q) {
   FILTROS.forEach(function (f) {
     if (LOCKS.hasOwnProperty(f.campo)) return; // travado: nem mexe
+    if (HIDE.hasOwnProperty(f.campo)) return;  // oculto: nao precisa popular
 
     var sel = document.getElementById(f.id);
     var selecionado = sel.value; // preserva escolha atual
@@ -573,6 +609,7 @@ function init() {
 
       lerURL();           // preenche LOCKS
       ocultarTravados();  // esconde selects travados
+      ajustarColunas();   // calcula colunas ideais p/ filtros visiveis
 
       // guarda os pre-valores da URL para aplicar apos a 1a repopulacao
       var u = lerURL();
@@ -588,6 +625,7 @@ function init() {
 }
 
 document.getElementById("busca").addEventListener("input", aplicar);
+window.addEventListener("resize", ajustarColunas);
 FILTROS.forEach(function (f) {
   document.getElementById(f.id).addEventListener("change", aplicar);
 });
