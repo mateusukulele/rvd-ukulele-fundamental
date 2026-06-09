@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aulas do Clube do Ukulele</title>
+<style>
+  :root {
+    --anchor: #443468;
+    --anchor-deep: #2D2249;
+    --coral: #E87A85;
+    --coral-text: #4D1A20;
+    --text: #1F1A2B;
+    --text-soft: #5C5A70;
+    --surface: #ECEAF1;
+    --bg: #F5F4F7;
+    --card: #FFFFFF;
+    --facil: #2C7A33;   --facil-bg: #E4F1E5;   --facil-tx: #205C27;
+    --medio: #C98A1E;   --medio-bg: #FAEFD6;   --medio-tx: #8A5C0C;
+    --avancado: #B83A2E; --avancado-bg: #F7E0DC; --avancado-tx: #8F291F;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    padding: 16px 12px 40px;
+  }
+
+  .wrap { max-width: 820px; margin: 0 auto; }
+
+  /* ---------- BARRA DE CONTROLES ---------- */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    padding: 8px 0 12px;
+    margin-bottom: 4px;
+  }
+
+  .search {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .search input {
+    width: 100%;
+    font-size: 16px;
+    padding: 13px 16px 13px 44px;
+    border: 1px solid rgba(68,52,104,0.18);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .search input:focus {
+    border-color: var(--anchor);
+    box-shadow: 0 0 0 3px rgba(68,52,104,0.12);
+  }
+  .search .ico {
+    position: absolute;
+    left: 15px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-soft);
+    font-size: 17px;
+    pointer-events: none;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .filters select {
+    flex: 1 1 calc(33.333% - 6px);
+    min-width: 110px;
+    font-size: 13.5px;
+    padding: 9px 12px;
+    border: 1px solid rgba(68,52,104,0.18);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235C5A70' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 30px;
+  }
+  .filters select:focus { border-color: var(--anchor); }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 12px 2px 6px;
+    font-size: 12.5px;
+    color: var(--text-soft);
+  }
+  .meta .clear {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--surface);
+    border: 1px solid rgba(68,52,104,0.18);
+    color: var(--anchor);
+    font-weight: 600;
+    font-size: 12.5px;
+    cursor: pointer;
+    padding: 5px 11px;
+    border-radius: 999px;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .meta .clear::before { content: "✕"; font-size: 11px; }
+  .meta .clear:hover { background: #E0DCEA; border-color: rgba(68,52,104,0.35); }
+  .meta .clear[hidden] { display: none; }
+
+  /* ---------- LISTA ---------- */
+  .list { display: flex; flex-direction: column; }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 14px;
+    background: var(--card);
+    border: 1px solid rgba(68,52,104,0.10);
+    border-radius: 10px;
+    margin-bottom: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.08s, box-shadow 0.15s, border-color 0.15s;
+  }
+  .row:hover {
+    border-color: rgba(68,52,104,0.28);
+    box-shadow: 0 4px 14px rgba(68,52,104,0.10);
+    transform: translateY(-1px);
+  }
+  .row:focus-visible {
+    outline: 3px solid var(--anchor);
+    outline-offset: 2px;
+  }
+
+  .row .info {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+  .row .artista {
+    font-size: 13px;
+    color: var(--text-soft);
+    font-weight: 500;
+  }
+  .row .artista::after {
+    content: "·";
+    margin-left: 7px;
+    color: rgba(68,52,104,0.35);
+  }
+  .row .musica {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--anchor);
+    line-height: 1.3;
+  }
+  .row .versao {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-soft);
+  }
+
+  .pill {
+    flex: 0 0 auto;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .pill.facil    { background: var(--facil);    color: #fff; }
+  .pill.media    { background: var(--medio);    color: #fff; }
+  .pill.desafio  { background: var(--avancado); color: #fff; }
+
+  /* pilula de versao: cinza (principal) -> rosa crescente (simpl/super) */
+  .pill-ver { flex: 0 0 auto; font-size: 10px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; white-space: nowrap; }
+  .pill-ver.principal { background: #E6E4EC; color: #5C5A70; }
+  .pill-ver.simplificada { background: #F6D2D6; color: #8A3A42; }
+  .pill-ver.super { background: var(--coral); color: #fff; }
+
+  .row .chev {
+    flex: 0 0 auto;
+    color: var(--text-soft);
+    font-size: 18px;
+    opacity: 0.5;
+  }
+
+  /* ---------- ESTADOS ---------- */
+  .state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-soft);
+    font-size: 15px;
+  }
+  .state strong { color: var(--anchor); display: block; font-size: 17px; margin-bottom: 4px; }
+
+  .spinner {
+    width: 28px; height: 28px;
+    border: 3px solid var(--surface);
+    border-top-color: var(--anchor);
+    border-radius: 50%;
+    margin: 0 auto 14px;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (min-width: 600px) {
+    .row .musica { font-size: 16px; }
+    .row .artista { font-size: 13.5px; }
+    .filters select { flex-basis: calc(33.333% - 6px); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="controls">
+    <div class="search">
+      <span class="ico">⌕</span>
+      <input id="busca" type="text" placeholder="Buscar por música ou artista..." autocomplete="off">
+    </div>
+    <div class="filters">
+      <select id="f-dificuldade"><option value="">Dificuldade</option></select>
+      <select id="f-nivel"><option value="">Nível</option></select>
+      <select id="f-genero"><option value="">Gênero</option></select>
+      <select id="f-versao"><option value="">Versão</option></select>
+      <select id="f-batida"><option value="">Batida</option></select>
+      <select id="f-acordes"><option value="">Acordes</option></select>
+    </div>
+    <div class="meta">
+      <span id="contador">Carregando...</span>
+      <button class="clear" id="limpar" hidden>Limpar filtros</button>
+    </div>
+  </div>
+
+  <div id="lista" class="list"></div>
+  <div id="estado" class="state">
+    <div class="spinner"></div>
+    Carregando as aulas...
+  </div>
+
+</div>
+
+<script>
+/* =================================================================
+   CONFIGURAÇÃO - cole aqui o link CSV publicado da aba Dados Cademi
+   (Arquivo > Compartilhar > Publicar na web > aba Dados Cademi > CSV)
+   ================================================================= */
+var CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRy2QJ6wsuYsrE67kx4sn3cdgvExgZGYwig3UVhLyugdBg9nYDEJ757gAc5ydTjMjt-aMQtqTeaXB0N/pub?gid=1267938487&single=true&output=csv";
+
+/* Índices das colunas na aba Dados Cademi (base 0):
+   A=0 Título | F=5 Link da Aula | G=6 Dificuldade | H=7 Nível
+   I=8 Gênero | J=9 Versão | M=12 Batida                          */
+var COL = { titulo:0, link:5, dificuldade:6, nivel:7, genero:8, versao:9, batida:12, acordes:13 };
+
+var todas = [];
+
+/* ---------- parser de CSV simples e robusto ---------- */
+function parseCSV(texto) {
+  var linhas = [], campo = "", linha = [], dentroAspas = false;
+  for (var i = 0; i < texto.length; i++) {
+    var c = texto[i], prox = texto[i+1];
+    if (dentroAspas) {
+      if (c === '"' && prox === '"') { campo += '"'; i++; }
+      else if (c === '"') { dentroAspas = false; }
+      else { campo += c; }
+    } else {
+      if (c === '"') { dentroAspas = true; }
+      else if (c === ',') { linha.push(campo); campo = ""; }
+      else if (c === '\n') { linha.push(campo); linhas.push(linha); linha = []; campo = ""; }
+      else if (c === '\r') { /* ignora */ }
+      else { campo += c; }
+    }
+  }
+  if (campo.length > 0 || linha.length > 0) { linha.push(campo); linhas.push(linha); }
+  return linhas;
+}
+
+/* ---------- separa "Artista | Musica (Versao)" ---------- */
+function separarTitulo(t) {
+  t = (t || "").trim();
+  var artista = "", resto = t;
+  if (t.indexOf("|") !== -1) {
+    var p = t.split("|");
+    artista = p[0].trim();
+    resto = p.slice(1).join("|").trim();
+  }
+  // extrai versao do parenteses final, se houver
+  var versao = "", musica = resto;
+  var m = resto.match(/^(.*)\(([^()]*)\)\s*$/);
+  if (m) { musica = m[1].trim(); versao = m[2].trim(); }
+  return { artista: artista, musica: musica, versao: versao };
+}
+
+/* ---------- classe da pilula de dificuldade ---------- */
+function classeDif(d) {
+  d = (d || "").toLowerCase();
+  if (d.indexOf("desaf") !== -1 || d.indexOf("avan") !== -1 || d.indexOf("dif") !== -1) return "desafio";
+  if (d.indexOf("med")  !== -1) return "media";
+  return "facil";
+}
+
+/* ---------- classe da pilula de versao ---------- */
+function classeVer(v) {
+  v = (v || "").toLowerCase();
+  if (v.indexOf("super") !== -1) return "super";
+  if (v.indexOf("simpl") !== -1) return "simplificada";
+  return "principal";
+}
+
+/* ---------- normaliza para comparar (sem acento, minusculo) ---------- */
+function norm(s) {
+  return (s || "").toString().trim().toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+/* ---------- definição dos filtros (campo + id do select) ---------- */
+var FILTROS = [
+  { campo: "dificuldade", id: "f-dificuldade", ordem: ["Básica","Média","Desafio"] },
+  { campo: "nivel",       id: "f-nivel", ordem: ["Iniciante 0","Iniciante 1","Iniciante 2","Intermediário 1","Intermediário 2","Avançado 1","Avançado 2"] },
+  { campo: "genero",      id: "f-genero" },
+  { campo: "versao",      id: "f-versao", ordem: ["Principal","Simplificada","Super Simplificada"] },
+  { campo: "batida",      id: "f-batida", ordem: ["Pop 0","Pop 1","Pop 2","Mãe","Dinâmica","Reggae Simples","Reggae Técnica"], penultima: "Dedilhado", ultima: "Outras" },
+  { campo: "acordes",     id: "f-acordes", numerico: true }
+];
+
+/* travas vindas da URL: lock_<campo>=Valor
+   - trava o filtro naquele valor
+   - esconde o select
+   - "limpar" nunca remove                                            */
+var LOCKS = {};
+var PRE_URL = {};   // filtros livres pre-aplicados via URL (1a carga)
+
+/* ---------- lê parâmetros da URL ----------
+   ?campo=Valor       -> pre-aplica (aluno pode mudar)
+   ?lock_campo=Valor  -> trava e esconde (aluno nao mexe)             */
+function lerURL() {
+  var p = new URLSearchParams(window.location.search);
+  var pre = {};
+  FILTROS.forEach(function (f) {
+    var lock = p.get("lock_" + f.campo);
+    var pred = p.get(f.campo);
+    if (lock) { LOCKS[f.campo] = lock; }
+    else if (pred) { pre[f.campo] = pred; }
+  });
+  return { pre: pre, busca: p.get("busca") || "" };
+}
+
+/* ---------- ordena valores conforme a config do filtro ---------- */
+function ordenarValores(valores, f) {
+  if (f.numerico) {
+    return valores.sort(function (a, b) { return (parseFloat(a) || 0) - (parseFloat(b) || 0); });
+  }
+  function pos(v) {
+    var vn = norm(v);
+    if (f.ultima && vn === norm(f.ultima)) return 100000;
+    if (f.penultima && vn === norm(f.penultima)) return 99999;
+    if (f.ordem) {
+      for (var i = 0; i < f.ordem.length; i++) {
+        if (norm(f.ordem[i]) === vn) return i;
+      }
+    }
+    return 50000; // valores novos/desconhecidos
+  }
+  return valores.sort(function (a, b) {
+    var pa = pos(a), pb = pos(b);
+    if (pa !== pb) return pa - pb;
+    return a.localeCompare(b, "pt-BR");
+  });
+}
+
+/* ---------- esconde selects travados (uma vez, no init) ---------- */
+function ocultarTravados() {
+  FILTROS.forEach(function (f) {
+    if (LOCKS.hasOwnProperty(f.campo)) {
+      document.getElementById(f.id).style.display = "none";
+    }
+  });
+}
+
+/* ---------- filtra a base por um conjunto de valores ativos ---------- */
+function filtrarBase(ativos, q, ignorarCampo) {
+  return todas.filter(function (m) {
+    for (var i = 0; i < FILTROS.length; i++) {
+      var campo = FILTROS[i].campo;
+      if (campo === ignorarCampo) continue; // ignora o proprio filtro
+      var val = ativos[campo];
+      if (val && norm(m[campo]) !== norm(val)) return false;
+    }
+    if (q) {
+      var alvo = norm(m.artista + " " + m.musica);
+      if (alvo.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+}
+
+/* ---------- repopula cada select com as opções que ainda existem ---------- */
+function repopularSelects(ativos, q) {
+  FILTROS.forEach(function (f) {
+    if (LOCKS.hasOwnProperty(f.campo)) return; // travado: nem mexe
+
+    var sel = document.getElementById(f.id);
+    var selecionado = sel.value; // preserva escolha atual
+
+    // valores possiveis considerando os OUTROS filtros (nao este)
+    var base = filtrarBase(ativos, q, f.campo);
+    var vistos = {}, valores = [];
+    base.forEach(function (m) {
+      var v = (m[f.campo] || "").trim();
+      if (v && !vistos[norm(v)]) { vistos[norm(v)] = 1; valores.push(v); }
+    });
+    valores = ordenarValores(valores, f);
+
+    // reconstroi o select
+    var label = sel.options[0] ? sel.options[0].textContent : "";
+    sel.innerHTML = "";
+    var op0 = document.createElement("option");
+    op0.value = ""; op0.textContent = label;
+    sel.appendChild(op0);
+    valores.forEach(function (v) {
+      var o = document.createElement("option");
+      o.value = v;
+      o.textContent = f.numerico ? (v + (parseFloat(v) === 1 ? " acorde" : " acordes")) : v;
+      sel.appendChild(o);
+    });
+
+    // pre-valor da URL (so na 1a vez): aplica se ainda existir nas opcoes
+    if (PRE_URL.hasOwnProperty(f.campo)) {
+      var pv = PRE_URL[f.campo];
+      if (valores.some(function (v) { return norm(v) === norm(pv); })) {
+        sel.value = valores.filter(function (v) { return norm(v) === norm(pv); })[0];
+      }
+      delete PRE_URL[f.campo]; // consome uma vez
+      return;
+    }
+
+    // mantem a selecao se ela ainda existe entre as opcoes
+    var aindaExiste = valores.some(function (v) { return norm(v) === norm(selecionado); });
+    sel.value = aindaExiste ? selecionado : "";
+  });
+}
+
+/* ---------- aplica filtros + busca e re-renderiza ---------- */
+function aplicar() {
+  var q = norm(document.getElementById("busca").value);
+
+  // valor efetivo de cada filtro = trava (se houver) ou valor do select
+  var ativos = {};
+  FILTROS.forEach(function (f) {
+    if (LOCKS.hasOwnProperty(f.campo)) {
+      ativos[f.campo] = LOCKS[f.campo];
+    } else {
+      ativos[f.campo] = document.getElementById(f.id).value;
+    }
+  });
+
+  // repopula os selects mostrando so opcoes que ainda existem
+  repopularSelects(ativos, q);
+
+  // re-le os valores (a repopulacao pode ter limpado uma selecao invalida)
+  FILTROS.forEach(function (f) {
+    if (!LOCKS.hasOwnProperty(f.campo)) {
+      ativos[f.campo] = document.getElementById(f.id).value;
+    }
+  });
+
+  // "limpar" aparece se houver busca ou algum filtro LIVRE ativo
+  var temFiltroLivre = !!q;
+  FILTROS.forEach(function (f) {
+    if (!LOCKS.hasOwnProperty(f.campo) && document.getElementById(f.id).value) {
+      temFiltroLivre = true;
+    }
+  });
+  document.getElementById("limpar").hidden = !temFiltroLivre;
+
+  var res = filtrarBase(ativos, q, null);
+  render(res);
+}
+
+/* ---------- desenha a lista ---------- */
+function render(itens) {
+  var lista = document.getElementById("lista");
+  var estado = document.getElementById("estado");
+  lista.innerHTML = "";
+
+  document.getElementById("contador").textContent =
+    itens.length + (itens.length === 1 ? " aula" : " aulas");
+
+  if (itens.length === 0) {
+    estado.innerHTML = "<strong>Nenhuma aula encontrada</strong>Tente outra busca ou limpe os filtros.";
+    estado.style.display = "block";
+    return;
+  }
+  estado.style.display = "none";
+
+  var frag = document.createDocumentFragment();
+  itens.forEach(function (m) {
+    var a = document.createElement("a");
+    a.className = "row";
+    a.href = m.link;
+    a.target = "_top";
+    a.innerHTML =
+      '<div class="info">' +
+        (m.artista ? '<div class="artista">' + escapeHtml(m.artista) + '</div>' : '') +
+        '<div class="musica">' + escapeHtml(m.musica) + '</div>' +
+      '</div>' +
+      (m.versao ? '<span class="pill-ver ' + classeVer(m.versao) + '">' + escapeHtml(m.versao) + '</span>' : '') +
+      (m.dificuldade ? '<span class="pill ' + classeDif(m.dificuldade) + '">' + escapeHtml(m.dificuldade) + '</span>' : '') +
+      '<span class="chev">›</span>';
+    frag.appendChild(a);
+  });
+  lista.appendChild(frag);
+}
+
+function escapeHtml(t) {
+  return (t || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+/* ---------- carrega o CSV e inicializa ---------- */
+function init() {
+  if (CSV_URL.indexOf("COLE_AQUI") === 0) {
+    document.getElementById("estado").innerHTML =
+      "<strong>Configuração pendente</strong>Cole o link CSV da planilha no código (variável CSV_URL).";
+    return;
+  }
+  fetch(CSV_URL)
+    .then(function (r) { return r.text(); })
+    .then(function (txt) {
+      var linhas = parseCSV(txt);
+      linhas.shift(); // remove cabeçalho
+      todas = linhas.map(function (l) {
+        var t = separarTitulo(l[COL.titulo]);
+        return {
+          artista: t.artista,
+          musica: t.musica,
+          versao: t.versao || (l[COL.versao] || "").trim(),
+          dificuldade: (l[COL.dificuldade] || "").trim(),
+          nivel: (l[COL.nivel] || "").trim(),
+          genero: (l[COL.genero] || "").trim(),
+          batida: (l[COL.batida] || "").trim(),
+          acordes: (l[COL.acordes] || "").trim(),
+          link: (l[COL.link] || "").trim()
+        };
+      })
+      // some quem nao tem link de aula ou nao tem musica
+      .filter(function (m) { return m.link && m.musica; });
+
+      // ordem alfabetica por artista, depois por musica
+      todas.sort(function (a, b) {
+        var aa = a.artista.localeCompare(b.artista, "pt-BR");
+        return aa !== 0 ? aa : a.musica.localeCompare(b.musica, "pt-BR");
+      });
+
+      lerURL();           // preenche LOCKS
+      ocultarTravados();  // esconde selects travados
+
+      // guarda os pre-valores da URL para aplicar apos a 1a repopulacao
+      var u = lerURL();
+      PRE_URL = u.pre;
+      if (u.busca) document.getElementById("busca").value = u.busca;
+
+      aplicar();          // repopula selects (ja respeitando PRE_URL) e renderiza
+    })
+    .catch(function (e) {
+      document.getElementById("estado").innerHTML =
+        "<strong>Não foi possível carregar</strong>Confira se a planilha está publicada como CSV.";
+    });
+}
+
+document.getElementById("busca").addEventListener("input", aplicar);
+FILTROS.forEach(function (f) {
+  document.getElementById(f.id).addEventListener("change", aplicar);
+});
+document.getElementById("limpar").addEventListener("click", function () {
+  document.getElementById("busca").value = "";
+  // limpa apenas os filtros LIVRES; travas permanecem
+  FILTROS.forEach(function (f) {
+    if (!LOCKS.hasOwnProperty(f.campo)) {
+      document.getElementById(f.id).value = "";
+    }
+  });
+  aplicar();
+});
+
+init();
+</script>
+</body>
+</html>
