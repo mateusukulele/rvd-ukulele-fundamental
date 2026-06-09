@@ -210,6 +210,27 @@
     color: var(--text-soft);
     font-size: 15px;
   }
+  #ver-mais {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    margin: 10px 0 4px;
+    padding: 13px 18px;
+    background: var(--card);
+    border: 1px solid rgba(68,52,104,0.18);
+    border-radius: 12px;
+    color: var(--anchor);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.08s;
+  }
+  #ver-mais:hover { background: var(--surface); border-color: rgba(68,52,104,0.32); }
+  #ver-mais:active { transform: scale(0.99); }
+  #ver-mais .vm-seta { font-size: 16px; line-height: 1; }
   .state strong { color: var(--anchor); display: block; font-size: 17px; margin-bottom: 4px; }
 
   .spinner {
@@ -251,6 +272,12 @@
   </div>
 
   <div id="lista" class="list"></div>
+
+  <button id="ver-mais" style="display:none;">
+    <span class="vm-txt">Ver mais</span>
+    <span class="vm-seta">⌄</span>
+  </button>
+
   <div id="estado" class="state">
     <div class="spinner"></div>
     Carregando as aulas...
@@ -271,6 +298,9 @@ var CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRy2QJ6wsuYsrE67k
 var COL = { titulo:0, link:5, dificuldade:6, nivel:7, genero:8, versao:9, batida:12, acordes:13 };
 
 var todas = [];
+var POR_VEZ = 20;       // quantas musicas mostrar por vez
+var mostrando = POR_VEZ; // quantas estao visiveis no momento
+var ultimoResultado = []; // resultado atual do filtro (para o "ver mais")
 
 /* ---------- parser de CSV simples e robusto ---------- */
 function parseCSV(texto) {
@@ -530,6 +560,8 @@ function aplicar() {
   document.getElementById("limpar").hidden = !temFiltroLivre;
 
   var res = filtrarBase(ativos, q, null);
+  ultimoResultado = res;
+  mostrando = POR_VEZ;   // volta ao topo da paginacao a cada novo filtro/busca
   render(res);
 }
 
@@ -545,12 +577,17 @@ function render(itens) {
   if (itens.length === 0) {
     estado.innerHTML = "<strong>Nenhuma aula encontrada</strong>Tente outra busca ou limpe os filtros.";
     estado.style.display = "block";
+    var vm0 = document.getElementById("ver-mais");
+    if (vm0) vm0.style.display = "none";
     return;
   }
   estado.style.display = "none";
 
+  // mostra apenas ate "mostrando" itens
+  var visiveis = itens.slice(0, mostrando);
+
   var frag = document.createDocumentFragment();
-  itens.forEach(function (m) {
+  visiveis.forEach(function (m) {
     var a = document.createElement("a");
     a.className = "row";
     a.href = m.link;
@@ -566,17 +603,17 @@ function render(itens) {
     frag.appendChild(a);
   });
   lista.appendChild(frag);
-  enviarAltura();
-}
 
-/* ---------- envia a altura do conteudo para a pagina que embeda (auto-resize) ---------- */
-function enviarAltura() {
-  if (window.parent === window) return; // nao esta em iframe
-  // espera o layout assentar antes de medir
-  requestAnimationFrame(function () {
-    var h = document.documentElement.scrollHeight;
-    window.parent.postMessage({ tipo: "altura-lista-ukulele", altura: h }, "*");
-  });
+  // botao "ver mais": aparece se ha mais itens do que os mostrados
+  var vm = document.getElementById("ver-mais");
+  var restantes = itens.length - visiveis.length;
+  if (restantes > 0) {
+    vm.style.display = "flex";
+    vm.querySelector(".vm-txt").textContent =
+      "Ver mais (" + restantes + " " + (restantes === 1 ? "música" : "músicas") + ")";
+  } else {
+    vm.style.display = "none";
+  }
 }
 
 function escapeHtml(t) {
@@ -636,7 +673,11 @@ function init() {
 }
 
 document.getElementById("busca").addEventListener("input", aplicar);
-window.addEventListener("resize", function () { ajustarColunas(); enviarAltura(); });
+document.getElementById("ver-mais").addEventListener("click", function () {
+  mostrando += POR_VEZ;
+  render(ultimoResultado);
+});
+window.addEventListener("resize", function () { ajustarColunas(); });
 FILTROS.forEach(function (f) {
   document.getElementById(f.id).addEventListener("change", aplicar);
 });
