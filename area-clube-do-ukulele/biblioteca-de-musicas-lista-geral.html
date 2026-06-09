@@ -566,6 +566,17 @@ function render(itens) {
     frag.appendChild(a);
   });
   lista.appendChild(frag);
+  enviarAltura();
+}
+
+/* ---------- envia a altura do conteudo para a pagina que embeda (auto-resize) ---------- */
+function enviarAltura() {
+  if (window.parent === window) return; // nao esta em iframe
+  // espera o layout assentar antes de medir
+  requestAnimationFrame(function () {
+    var h = document.documentElement.scrollHeight;
+    window.parent.postMessage({ tipo: "altura-lista-ukulele", altura: h }, "*");
+  });
 }
 
 function escapeHtml(t) {
@@ -625,7 +636,7 @@ function init() {
 }
 
 document.getElementById("busca").addEventListener("input", aplicar);
-window.addEventListener("resize", ajustarColunas);
+window.addEventListener("resize", function () { ajustarColunas(); enviarAltura(); });
 FILTROS.forEach(function (f) {
   document.getElementById(f.id).addEventListener("change", aplicar);
 });
