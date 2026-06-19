@@ -99,8 +99,9 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
 .hero-watch{display:inline-flex;align-items:center;gap:.5rem;background:rgba(45,109,191,.2);border:1px solid rgba(45,109,191,.4);color:#93c5fd;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding:.5rem 1rem;border-radius:9999px}
 .hero-watch svg{width:.875rem;height:.875rem;flex-shrink:0}
 
-.video-wrapper{position:relative;width:100%;max-width:768px;background:#000;border-radius:1rem;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);margin:0 auto}
-.video-wrapper vturb-smartplayer{display:block;width:100%!important;min-height:250px}
+/* === PLAYER: igual à versão fechada (aspect-ratio reserva o espaço) === */
+.video-wrapper{position:relative;width:100%;max-width:768px;border-radius:1rem;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);margin:0 auto;aspect-ratio:16/9}
+.video-wrapper vturb-smartplayer{display:block;width:100%!important;height:100%!important}
 
 .hero-cta-wrap{width:100%;max-width:28rem;display:flex;flex-direction:column;gap:.75rem;padding-top:.5rem}
 .hero-price{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem}
@@ -115,7 +116,6 @@ header.hero-section{background:#1e293b;color:#fff;width:100%;border-radius:0 0 4
   .hero-sub{font-size:1rem}
   .hero-badge{font-size:12px}
   .hero-watch{font-size:13px}
-  .video-wrapper vturb-smartplayer{min-height:432px}
   .hero-price-label{font-size:14px}
   .hero-price-old{font-size:16px}
   .hero-price-new{font-size:14px}
@@ -520,13 +520,17 @@ body.modal-open .wa-float{opacity:0;pointer-events:none;transform:scale(.5)}
     <h1 class="hero-title">Tire o ukulele do canto da sala e toque suas músicas favoritas com <span>20 minutos por dia</span></h1>
     <p class="hero-sub">Mesmo que você nunca tenha tocado nada antes, mesmo que ache que não tem talento. Aperte o play e veja como funciona o método que já tirou mais de 6 mil brasileiros do zero.</p>
 
-<vturb-smartplayer id="vid-6990711d72552541034ddec0" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
-<script type="text/javascript">
-  var s=document.createElement("script");
-  s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js";
-  s.async=true;
-  document.head.appendChild(s);
-</script>
+    <!-- ===== PLAYER VTURB: idêntico à versão fechada (wrapper com aspect-ratio + script async) ===== -->
+    <div class="video-wrapper">
+      <vturb-smartplayer id="vid-6990711d72552541034ddec0" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
+      <script type="text/javascript">
+        var s=document.createElement("script");
+        s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6990711d72552541034ddec0/v4/player.js";
+        s.async=true;
+        document.head.appendChild(s);
+      </script>
+    </div>
+    <!-- ===== FIM PLAYER VTURB ===== -->
 
     <span class="coupon-tag">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
