@@ -117,7 +117,7 @@
     border-radius: 999px;
     transition: background 0.15s, border-color 0.15s;
   }
-  .meta .clear::before { content: "✕"; font-size: 11px; }
+  .meta .clear::before { content: "‚úï"; font-size: 11px; }
   .meta .clear:hover { background: #E0DCEA; border-color: rgba(68,52,104,0.35); }
   .meta .clear[hidden] { display: none; }
 
@@ -161,7 +161,7 @@
     font-weight: 500;
   }
   .row .artista::after {
-    content: "·";
+    content: "¬∑";
     margin-left: 7px;
     color: rgba(68,52,104,0.35);
   }
@@ -254,14 +254,14 @@
 
   <div class="controls">
     <div class="search">
-      <span class="ico">⌕</span>
-      <input id="busca" type="text" placeholder="Buscar por música ou artista..." autocomplete="off">
+      <span class="ico">‚åï</span>
+      <input id="busca" type="text" placeholder="Buscar por m√∫sica ou artista..." autocomplete="off">
     </div>
     <div class="filters">
       <select id="f-dificuldade"><option value="">Dificuldade</option></select>
-      <select id="f-nivel"><option value="">Nível</option></select>
-      <select id="f-genero"><option value="">Gênero</option></select>
-      <select id="f-versao"><option value="">Versão</option></select>
+      <select id="f-nivel"><option value="">N√≠vel</option></select>
+      <select id="f-genero"><option value="">G√™nero</option></select>
+      <select id="f-versao"><option value="">Vers√£o</option></select>
       <select id="f-batida"><option value="">Batida</option></select>
       <select id="f-acordes"><option value="">Acordes</option></select>
     </div>
@@ -286,58 +286,15 @@
 
 <script>
 /* =================================================================
-   CONFIGURAÇÃO - cole aqui o link CSV publicado da aba Dados Cademi
-   (Arquivo > Compartilhar > Publicar na web > aba Dados Cademi > CSV)
+   CONFIGURA√á√ÉO - endere√ßo do seu Worker do Cloudflare.
+   Ele entrega a lista pronta (JSON), r√°pido, da borda da Cloudflare.
    ================================================================= */
-  
-var WORKER_URL = "https://biblioteca-de-musicas-lista-geral.mateusaugusto91.workers.dev/";
-  
-/* Índices das colunas na aba Dados Cademi (base 0):
-   A=0 Título | F=5 Link da Aula | G=6 Dificuldade | H=7 Nível
-   I=8 Gênero | J=9 Versão | M=12 Batida                          */
-var COL = { titulo:0, link:5, dificuldade:6, nivel:7, genero:8, versao:9, batida:12, acordes:13 };
+var WORKER_URL = "https://biblioteca-de-musicas-lista-geral.mateusaugusto91.workers.dev";
 
 var todas = [];
 var POR_VEZ = 20;       // quantas musicas mostrar por vez
 var mostrando = POR_VEZ; // quantas estao visiveis no momento
 var ultimoResultado = []; // resultado atual do filtro (para o "ver mais")
-
-/* ---------- parser de CSV simples e robusto ---------- */
-function parseCSV(texto) {
-  var linhas = [], campo = "", linha = [], dentroAspas = false;
-  for (var i = 0; i < texto.length; i++) {
-    var c = texto[i], prox = texto[i+1];
-    if (dentroAspas) {
-      if (c === '"' && prox === '"') { campo += '"'; i++; }
-      else if (c === '"') { dentroAspas = false; }
-      else { campo += c; }
-    } else {
-      if (c === '"') { dentroAspas = true; }
-      else if (c === ',') { linha.push(campo); campo = ""; }
-      else if (c === '\n') { linha.push(campo); linhas.push(linha); linha = []; campo = ""; }
-      else if (c === '\r') { /* ignora */ }
-      else { campo += c; }
-    }
-  }
-  if (campo.length > 0 || linha.length > 0) { linha.push(campo); linhas.push(linha); }
-  return linhas;
-}
-
-/* ---------- separa "Artista | Musica (Versao)" ---------- */
-function separarTitulo(t) {
-  t = (t || "").trim();
-  var artista = "", resto = t;
-  if (t.indexOf("|") !== -1) {
-    var p = t.split("|");
-    artista = p[0].trim();
-    resto = p.slice(1).join("|").trim();
-  }
-  // extrai versao do parenteses final, se houver
-  var versao = "", musica = resto;
-  var m = resto.match(/^(.*)\(([^()]*)\)\s*$/);
-  if (m) { musica = m[1].trim(); versao = m[2].trim(); }
-  return { artista: artista, musica: musica, versao: versao };
-}
 
 /* ---------- classe da pilula de dificuldade ---------- */
 function classeDif(d) {
@@ -361,13 +318,13 @@ function norm(s) {
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-/* ---------- definição dos filtros (campo + id do select) ---------- */
+/* ---------- defini√ß√£o dos filtros (campo + id do select) ---------- */
 var FILTROS = [
-  { campo: "dificuldade", id: "f-dificuldade", ordem: ["Básica","Média","Desafio"] },
-  { campo: "nivel",       id: "f-nivel", ordem: ["Iniciante 0","Iniciante 1","Iniciante 2","Intermediário 1","Intermediário 2","Avançado 1","Avançado 2"] },
+  { campo: "dificuldade", id: "f-dificuldade", ordem: ["B√°sica","M√©dia","Desafio"] },
+  { campo: "nivel",       id: "f-nivel", ordem: ["Iniciante 0","Iniciante 1","Iniciante 2","Intermedi√°rio 1","Intermedi√°rio 2","Avan√ßado 1","Avan√ßado 2"] },
   { campo: "genero",      id: "f-genero" },
   { campo: "versao",      id: "f-versao", ordem: ["Principal","Simplificada","Super Simplificada"] },
-  { campo: "batida",      id: "f-batida", ordem: ["Pop 0","Pop 1","Pop 2","Mãe","Dinâmica","Reggae Simples","Reggae Técnica"], penultima: "Dedilhado", ultima: "Outras" },
+  { campo: "batida",      id: "f-batida", ordem: ["Pop 0","Pop 1","Pop 2","M√£e","Din√¢mica","Reggae Simples","Reggae T√©cnica"], penultima: "Dedilhado", ultima: "Outras" },
   { campo: "acordes",     id: "f-acordes", numerico: true }
 ];
 
@@ -379,7 +336,7 @@ var LOCKS = {};
 var PRE_URL = {};   // filtros livres pre-aplicados via URL (1a carga)
 var HIDE = {};      // filtros apenas ocultados (sem travar valor)
 
-/* ---------- lê parâmetros da URL ----------
+/* ---------- l√™ par√¢metros da URL ----------
    ?campo=Valor       -> pre-aplica (aluno pode mudar)
    ?lock_campo=Valor  -> trava e esconde (aluno nao mexe)             */
 function lerURL() {
@@ -422,8 +379,8 @@ function ordenarValores(valores, f) {
   });
 }
 
-/* ---------- escolhe nº de colunas que distribui os filtros visíveis
-   sem nunca deixar 1 sozinho na última linha ---------- */
+/* ---------- escolhe n¬∫ de colunas que distribui os filtros vis√≠veis
+   sem nunca deixar 1 sozinho na √∫ltima linha ---------- */
 function ajustarColunas() {
   var selects = document.querySelectorAll(".filters select");
   var visiveis = 0;
@@ -479,7 +436,7 @@ function filtrarBase(ativos, q, ignorarCampo) {
   });
 }
 
-/* ---------- repopula cada select com as opções que ainda existem ---------- */
+/* ---------- repopula cada select com as op√ß√µes que ainda existem ---------- */
 function repopularSelects(ativos, q) {
   FILTROS.forEach(function (f) {
     if (LOCKS.hasOwnProperty(f.campo)) return; // travado: nem mexe
@@ -599,7 +556,7 @@ function render(itens) {
       '</div>' +
       (m.versao ? '<span class="pill-ver ' + classeVer(m.versao) + '">' + escapeHtml(m.versao) + '</span>' : '') +
       (m.dificuldade ? '<span class="pill ' + classeDif(m.dificuldade) + '">' + escapeHtml(m.dificuldade) + '</span>' : '') +
-      '<span class="chev">›</span>';
+      '<span class="chev">‚Ä∫</span>';
     frag.appendChild(a);
   });
   lista.appendChild(frag);
@@ -610,7 +567,7 @@ function render(itens) {
   if (restantes > 0) {
     vm.style.display = "flex";
     vm.querySelector(".vm-txt").textContent =
-      "Ver mais (" + restantes + " " + (restantes === 1 ? "música" : "músicas") + ")";
+      "Ver mais (" + restantes + " " + (restantes === 1 ? "m√∫sica" : "m√∫sicas") + ")";
   } else {
     vm.style.display = "none";
   }
@@ -644,27 +601,26 @@ function escapeHtml(t) {
   return (t || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
-/* ---------- carrega o CSV e inicializa ---------- */
 /* ---------- carrega a lista pronta do Worker e inicializa ---------- */
 function init() {
   fetch(WORKER_URL)
     .then(function (r) { return r.json(); })
     .then(function (dados) {
-      todas = dados;   // já vem limpo e ordenado do Worker
+      todas = dados;   // j√° vem limpo e ordenado do Worker
 
       lerURL();           // preenche LOCKS
       ocultarTravados();  // esconde selects travados
-      ajustarColunas();   // colunas dos filtros
+      ajustarColunas();   // calcula colunas ideais p/ filtros visiveis
 
       var u = lerURL();
       PRE_URL = u.pre;
       if (u.busca) document.getElementById("busca").value = u.busca;
 
-      aplicar();          // repopula filtros e desenha
+      aplicar();          // repopula selects (ja respeitando PRE_URL) e renderiza
     })
     .catch(function (e) {
       document.getElementById("estado").innerHTML =
-        "<strong>Não foi possível carregar</strong>Tente recarregar a página.";
+        "<strong>N√£o foi poss√≠vel carregar</strong>Tente recarregar a p√°gina.";
     });
 }
 
