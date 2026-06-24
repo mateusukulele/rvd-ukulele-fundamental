@@ -289,8 +289,9 @@
    CONFIGURAÇÃO - cole aqui o link CSV publicado da aba Dados Cademi
    (Arquivo > Compartilhar > Publicar na web > aba Dados Cademi > CSV)
    ================================================================= */
-var CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRy2QJ6wsuYsrE67kx4sn3cdgvExgZGYwig3UVhLyugdBg9nYDEJ757gAc5ydTjMjt-aMQtqTeaXB0N/pub?gid=1267938487&single=true&output=csv";
-
+  
+var WORKER_URL = "https://biblioteca-de-musicas-lista-geral.mateusaugusto91.workers.dev/";
+  
 /* Índices das colunas na aba Dados Cademi (base 0):
    A=0 Título | F=5 Link da Aula | G=6 Dificuldade | H=7 Nível
    I=8 Gênero | J=9 Versão | M=12 Batida                          */
@@ -644,54 +645,26 @@ function escapeHtml(t) {
 }
 
 /* ---------- carrega o CSV e inicializa ---------- */
+/* ---------- carrega a lista pronta do Worker e inicializa ---------- */
 function init() {
-  if (CSV_URL.indexOf("COLE_AQUI") === 0) {
-    document.getElementById("estado").innerHTML =
-      "<strong>Configuração pendente</strong>Cole o link CSV da planilha no código (variável CSV_URL).";
-    return;
-  }
-  fetch(CSV_URL)
-    .then(function (r) { return r.text(); })
-    .then(function (txt) {
-      var linhas = parseCSV(txt);
-      linhas.shift(); // remove cabeçalho
-      todas = linhas.map(function (l) {
-        var t = separarTitulo(l[COL.titulo]);
-        return {
-          artista: t.artista,
-          musica: t.musica,
-          versao: t.versao || (l[COL.versao] || "").trim(),
-          dificuldade: (l[COL.dificuldade] || "").trim(),
-          nivel: (l[COL.nivel] || "").trim(),
-          genero: (l[COL.genero] || "").trim(),
-          batida: (l[COL.batida] || "").trim(),
-          acordes: (l[COL.acordes] || "").trim(),
-          link: (l[COL.link] || "").trim()
-        };
-      })
-      // some quem nao tem link de aula ou nao tem musica
-      .filter(function (m) { return m.link && m.musica; });
-
-      // ordem alfabetica por artista, depois por musica
-      todas.sort(function (a, b) {
-        var aa = a.artista.localeCompare(b.artista, "pt-BR");
-        return aa !== 0 ? aa : a.musica.localeCompare(b.musica, "pt-BR");
-      });
+  fetch(WORKER_URL)
+    .then(function (r) { return r.json(); })
+    .then(function (dados) {
+      todas = dados;   // já vem limpo e ordenado do Worker
 
       lerURL();           // preenche LOCKS
       ocultarTravados();  // esconde selects travados
-      ajustarColunas();   // calcula colunas ideais p/ filtros visiveis
+      ajustarColunas();   // colunas dos filtros
 
-      // guarda os pre-valores da URL para aplicar apos a 1a repopulacao
       var u = lerURL();
       PRE_URL = u.pre;
       if (u.busca) document.getElementById("busca").value = u.busca;
 
-      aplicar();          // repopula selects (ja respeitando PRE_URL) e renderiza
+      aplicar();          // repopula filtros e desenha
     })
     .catch(function (e) {
       document.getElementById("estado").innerHTML =
-        "<strong>Não foi possível carregar</strong>Confira se a planilha está publicada como CSV.";
+        "<strong>Não foi possível carregar</strong>Tente recarregar a página.";
     });
 }
 
