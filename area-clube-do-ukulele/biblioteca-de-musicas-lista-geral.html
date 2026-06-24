@@ -117,7 +117,7 @@
     border-radius: 999px;
     transition: background 0.15s, border-color 0.15s;
   }
-  .meta .clear::before { content: "‚úï"; font-size: 11px; }
+  .meta .clear::before { content: "✕"; font-size: 11px; }
   .meta .clear:hover { background: #E0DCEA; border-color: rgba(68,52,104,0.35); }
   .meta .clear[hidden] { display: none; }
 
@@ -161,7 +161,7 @@
     font-weight: 500;
   }
   .row .artista::after {
-    content: "¬∑";
+    content: "·";
     margin-left: 7px;
     color: rgba(68,52,104,0.35);
   }
@@ -254,14 +254,14 @@
 
   <div class="controls">
     <div class="search">
-      <span class="ico">‚åï</span>
-      <input id="busca" type="text" placeholder="Buscar por m√∫sica ou artista..." autocomplete="off">
+      <span class="ico">⌕</span>
+      <input id="busca" type="text" placeholder="Buscar por música ou artista..." autocomplete="off">
     </div>
     <div class="filters">
       <select id="f-dificuldade"><option value="">Dificuldade</option></select>
-      <select id="f-nivel"><option value="">N√≠vel</option></select>
-      <select id="f-genero"><option value="">G√™nero</option></select>
-      <select id="f-versao"><option value="">Vers√£o</option></select>
+      <select id="f-nivel"><option value="">Nível</option></select>
+      <select id="f-genero"><option value="">Gênero</option></select>
+      <select id="f-versao"><option value="">Versão</option></select>
       <select id="f-batida"><option value="">Batida</option></select>
       <select id="f-acordes"><option value="">Acordes</option></select>
     </div>
@@ -286,8 +286,8 @@
 
 <script>
 /* =================================================================
-   CONFIGURA√á√ÉO - endere√ßo do seu Worker do Cloudflare.
-   Ele entrega a lista pronta (JSON), r√°pido, da borda da Cloudflare.
+   CONFIGURAÇÃO - endereço do seu Worker do Cloudflare.
+   Ele entrega a lista pronta (JSON), rápido, da borda da Cloudflare.
    ================================================================= */
 var WORKER_URL = "https://biblioteca-de-musicas-lista-geral.mateusaugusto91.workers.dev";
 
@@ -318,13 +318,13 @@ function norm(s) {
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-/* ---------- defini√ß√£o dos filtros (campo + id do select) ---------- */
+/* ---------- definicao dos filtros (campo + id do select) ---------- */
 var FILTROS = [
-  { campo: "dificuldade", id: "f-dificuldade", ordem: ["B√°sica","M√©dia","Desafio"] },
-  { campo: "nivel",       id: "f-nivel", ordem: ["Iniciante 0","Iniciante 1","Iniciante 2","Intermedi√°rio 1","Intermedi√°rio 2","Avan√ßado 1","Avan√ßado 2"] },
+  { campo: "dificuldade", id: "f-dificuldade", ordem: ["Básica","Média","Desafio"] },
+  { campo: "nivel",       id: "f-nivel", ordem: ["Iniciante 0","Iniciante 1","Iniciante 2","Intermediário 1","Intermediário 2","Avançado 1","Avançado 2"] },
   { campo: "genero",      id: "f-genero" },
   { campo: "versao",      id: "f-versao", ordem: ["Principal","Simplificada","Super Simplificada"] },
-  { campo: "batida",      id: "f-batida", ordem: ["Pop 0","Pop 1","Pop 2","M√£e","Din√¢mica","Reggae Simples","Reggae T√©cnica"], penultima: "Dedilhado", ultima: "Outras" },
+  { campo: "batida",      id: "f-batida", ordem: ["Pop 0","Pop 1","Pop 2","Mãe","Dinâmica","Reggae Simples","Reggae Técnica"], penultima: "Dedilhado", ultima: "Outras" },
   { campo: "acordes",     id: "f-acordes", numerico: true }
 ];
 
@@ -336,7 +336,7 @@ var LOCKS = {};
 var PRE_URL = {};   // filtros livres pre-aplicados via URL (1a carga)
 var HIDE = {};      // filtros apenas ocultados (sem travar valor)
 
-/* ---------- l√™ par√¢metros da URL ----------
+/* ---------- le parametros da URL ----------
    ?campo=Valor       -> pre-aplica (aluno pode mudar)
    ?lock_campo=Valor  -> trava e esconde (aluno nao mexe)             */
 function lerURL() {
@@ -379,8 +379,8 @@ function ordenarValores(valores, f) {
   });
 }
 
-/* ---------- escolhe n¬∫ de colunas que distribui os filtros vis√≠veis
-   sem nunca deixar 1 sozinho na √∫ltima linha ---------- */
+/* ---------- escolhe nº de colunas que distribui os filtros visiveis
+   sem nunca deixar 1 sozinho na última linha ---------- */
 function ajustarColunas() {
   var selects = document.querySelectorAll(".filters select");
   var visiveis = 0;
@@ -436,7 +436,7 @@ function filtrarBase(ativos, q, ignorarCampo) {
   });
 }
 
-/* ---------- repopula cada select com as op√ß√µes que ainda existem ---------- */
+/* ---------- repopula cada select com as opcoes que ainda existem ---------- */
 function repopularSelects(ativos, q) {
   FILTROS.forEach(function (f) {
     if (LOCKS.hasOwnProperty(f.campo)) return; // travado: nem mexe
@@ -556,7 +556,7 @@ function render(itens) {
       '</div>' +
       (m.versao ? '<span class="pill-ver ' + classeVer(m.versao) + '">' + escapeHtml(m.versao) + '</span>' : '') +
       (m.dificuldade ? '<span class="pill ' + classeDif(m.dificuldade) + '">' + escapeHtml(m.dificuldade) + '</span>' : '') +
-      '<span class="chev">‚Ä∫</span>';
+      '<span class="chev">›</span>';
     frag.appendChild(a);
   });
   lista.appendChild(frag);
@@ -567,7 +567,7 @@ function render(itens) {
   if (restantes > 0) {
     vm.style.display = "flex";
     vm.querySelector(".vm-txt").textContent =
-      "Ver mais (" + restantes + " " + (restantes === 1 ? "m√∫sica" : "m√∫sicas") + ")";
+      "Ver mais (" + restantes + " " + (restantes === 1 ? "música" : "músicas") + ")";
   } else {
     vm.style.display = "none";
   }
@@ -606,7 +606,7 @@ function init() {
   fetch(WORKER_URL)
     .then(function (r) { return r.json(); })
     .then(function (dados) {
-      todas = dados;   // j√° vem limpo e ordenado do Worker
+      todas = dados;   // já vem limpo e ordenado do Worker
 
       lerURL();           // preenche LOCKS
       ocultarTravados();  // esconde selects travados
@@ -620,7 +620,7 @@ function init() {
     })
     .catch(function (e) {
       document.getElementById("estado").innerHTML =
-        "<strong>N√£o foi poss√≠vel carregar</strong>Tente recarregar a p√°gina.";
+        "<strong>Não foi possível carregar</strong>Tente recarregar a página.";
     });
 }
 
