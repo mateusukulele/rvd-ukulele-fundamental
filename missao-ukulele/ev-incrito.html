@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
+<!-- End Google Tag Manager -->
+<title>Pagamento confirmado · Missão Ukulele</title>
+<meta name="robots" content="noindex">
+
+<!--
+  ============================================================
+  PÁGINA DE OBRIGADO — MISSÃO UKULELE (pós-pagamento / redirect do checkout)
+  Fluxo de dados: CHECKOUT → PESQUISA (nesta página) → dataLayer → GTM → N8N → Supabase
+
+  COMO OS DADOS SAEM DAQUI (camada de captação):
+  Tudo é empurrado pro window.dataLayer. No GTM você cria:
+   • Variáveis da Camada de Dados (Data Layer Variables) com as chaves abaixo.
+   • Acionadores (Custom Event) nos eventos abaixo.
+   • Uma tag (ex.: Custom HTML ou HTTP Request) que manda pro webhook do N8N.
+
+  EVENTOS empurrados pro dataLayer:
+   1) event: "checkout_lead"      → no carregamento. Campos: lead_nome, lead_email, lead_telefone.
+   2) event: "pesquisa_resposta"  → a CADA pergunta respondida (uma a uma). Campos: lead_email,
+                                     pergunta_id, pergunta, resposta_valor, resposta_texto, pergunta_indice.
+   3) event: "pesquisa_concluida" → ao finalizar. Campos: lead_nome, lead_email, lead_telefone,
+                                     + cada pergunta achatada como variável própria (chaves genéricas):
+                                       pesquisa_p1, pesquisa_p2, pesquisa_p3
+                                     + objetos respostas{} e respostas_texto{}.
+   4) event: "pesquisa_pulada"    → se a pessoa pular a pesquisa. Campos: lead_email, transacao.
+   5) event: "pesquisa_parcial"   → se a pessoa SAIR/esconder a aba sem terminar. Captura o que já
+                                     foi respondido (inclusive opção marcada sem clicar "Próximo").
+                                     Campos: motivo, respondidas, total, concluida:false, lead_*,
+                                     transacao, respostas{}, + pesquisa_p1..p3 (achatado).
+
+  TODOS os eventos carregam a CHAVE DE CRUZAMENTO. São duas:
+   • lead_email  (principal) — normalizado (trim + minúsculas) p/ casar 1:1 com o e-mail de compra.
+   • transacao   (secundária) — código da transação da Hotmart (transaction/tid), caso o e-mail
+                                 não venha na URL. No N8N, cruzar por lead_email e, no fallback, por transacao.
+
+  CAPTURA PARCIAL — entrega na saída: cada pergunta já dispara "pesquisa_resposta" ao avançar, então
+  P1 e P2 ficam salvas mesmo que a pessoa abandone na P3. O "pesquisa_parcial" é o reforço no fechamento.
+  Para a tag não se perder no unload, configure no GTM o envio ao N8N via navigator.sendBeacon
+  (ou fetch com keepalive:true) nesses eventos de saída.
+
+  NOME / EMAIL / TELEFONE vêm do CHECKOUT pela querystring da URL de obrigado.
+  Configure a URL de redirecionamento na Hotmart, ex.:
+    https://SEU-DOMINIO/obrigado?nome={NOME}&email={EMAIL}&telefone={TELEFONE}
+  (ajuste os nomes dos parâmetros conforme o que a Hotmart/checkout envia — ver CFG.paramKeys abaixo,
+   que já aceita várias grafias e usa a primeira que existir.)
+
+  TROCAR ANTES DE PUBLICAR:
+   • GRUPO WHATSAPP: https://chat.whatsapp.com/SEU_LINK  (procure por SEU_LINK)
+   • Conferir os nomes dos parâmetros da querystring (CFG.paramKeys).
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#100d20; --surface:#1b1633; --card:#221c3c; --line:#332c52;
+  --text:#ECEAF4; --muted:#A39FBE; --indigo:#9282C2; --rose:#F294A0;
+  --green:#25D366; --green-deep:#1aa851; --ok:#3FB985;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,sans-serif;background:
+  radial-gradient(800px 460px at 50% -8%,rgba(63,185,133,.16),transparent 60%),
+  radial-gradient(700px 420px at 80% 10%,rgba(146,130,194,.16),transparent 60%),
+  var(--bg);
+  color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:34px 18px 60px}
+.anton{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.5px;line-height:1.05}
+.wrap{width:100%;max-width:560px}
+
+.brand{display:flex;align-items:center;justify-content:center;gap:9px;font-family:'Anton';font-size:17px;letter-spacing:1px;color:var(--muted);margin-bottom:22px}
+.brand img{height:26px;background:#fff;padding:4px 7px;border-radius:6px}
+
+/* Confirmação */
+.confirm{text-align:center}
+.tick{width:88px;height:88px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;background:rgba(63,185,133,.14);border:2px solid rgba(63,185,133,.45);box-shadow:0 0 0 8px rgba(63,185,133,.06)}
+.tick svg{width:44px;height:44px}
+.confirm h1{font-family:'Anton';text-transform:uppercase;font-size:clamp(30px,6vw,44px);letter-spacing:.5px;margin-bottom:8px}
+.confirm h1 .ok{color:var(--ok)}
+.confirm .sub{color:#D9D5EC;font-size:17px;max-width:440px;margin:0 auto}
+
+/* Barra 96% */
+.prog{margin:26px 0 8px}
+.prog .top{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px}
+.prog .top b{color:var(--rose)}
+.prog .track{height:12px;background:#241f3d;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.prog .fill{height:100%;width:96%;border-radius:20px;background:linear-gradient(90deg,var(--ok),#34d399);box-shadow:0 0 16px rgba(63,185,133,.5);animation:grow 1s ease both}
+@keyframes grow{from{width:0}to{width:96%}}
+.prog .step{text-align:center;margin-top:12px;font-weight:700;font-size:15px}
+.prog .step span{color:var(--ok)}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:22px}
+.card h2{font-size:19px;font-weight:800;margin-bottom:4px}
+.card .hint{color:var(--muted);font-size:14px;margin-bottom:14px}
+
+/* Pesquisa nativa (uma pergunta por vez) */
+.qmeta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin:2px 0 10px}
+.qmeta b{color:var(--rose)}
+.qmeta a{color:var(--indigo);text-decoration:underline;cursor:pointer}
+.qbar{height:6px;background:#241f3d;border-radius:20px;overflow:hidden;border:1px solid var(--line);margin-bottom:20px}
+.qbar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--indigo),var(--rose));transition:width .35s ease}
+.qstep{display:none}
+.qstep.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.qtitle{font-size:19px;font-weight:800;margin-bottom:16px;line-height:1.32}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#1c1736;border:1.5px solid var(--line);color:var(--text);padding:15px 16px;border-radius:12px;font:inherit;font-size:15.5px;cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--indigo)}
+.opt .rdio{width:20px;height:20px;border-radius:50%;border:2px solid #4a4470;flex:none;position:relative;transition:border-color .15s}
+.opt.sel{border-color:var(--ok);background:rgba(63,185,133,.10)}
+.opt.sel .rdio{border-color:var(--ok)}
+.opt.sel .rdio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--ok)}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}
+.btn-voltar{background:none;border:0;color:var(--muted);font:inherit;font-weight:600;cursor:pointer;text-decoration:underline}
+.btn-prox{background:linear-gradient(135deg,var(--indigo),#6f5fb0);color:#fff;border:0;font:inherit;font-weight:800;font-size:16px;padding:14px 32px;border-radius:12px;cursor:pointer;transition:filter .12s,opacity .12s}
+.btn-prox:hover{filter:brightness(1.08)}
+.btn-prox:disabled{opacity:.4;cursor:not-allowed}
+.done-tick{width:60px;height:60px;border-radius:50%;margin:4px auto 14px;display:grid;place-items:center;background:rgba(63,185,133,.14);border:2px solid rgba(63,185,133,.5);color:var(--ok);font-size:30px;font-weight:800}
+
+/* Botão WhatsApp */
+.wa{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:linear-gradient(135deg,#25D366,#12a150);color:#06351c;font-family:'Montserrat';font-weight:800;font-size:18px;padding:20px;border-radius:14px;box-shadow:0 14px 32px -10px rgba(37,211,102,.55);transition:transform .12s ease,filter .12s ease;text-decoration:none;text-transform:uppercase;letter-spacing:.3px}
+.wa:hover{filter:brightness(1.06);transform:translateY(-2px)}
+.wa:active{transform:scale(.99)}
+.wa svg{width:26px;height:26px;flex:none}
+
+/* Countdown */
+.cd{text-align:center;margin-top:18px;color:var(--muted);font-size:14.5px}
+.cd .num{font-family:'Anton';color:var(--rose);font-size:18px;font-variant-numeric:tabular-nums}
+.cd .pause{display:inline-block;margin-top:8px;font-size:13px;color:var(--indigo);text-decoration:underline;cursor:pointer;background:none;border:0;font-family:inherit}
+
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:26px;opacity:.8}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDH6QGB2"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrap">
+
+  <div class="brand">
+    <img src="../04%20-%20Midia/Logos/IMG%20-%20Logo%20Clube%20-%201600%20x%20838.png" alt="" onerror="this.style.display='none'">
+    Missão Ukulele
+  </div>
+
+  <!-- 01 · Confirmação + barra 96% -->
+  <div class="confirm">
+    <div class="tick">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#3FB985" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+    <h1>Pagamento <span class="ok">confirmado!</span></h1>
+    <p class="sub" id="confirm-sub">Sua vaga na Missão Ukulele está garantida. Bem-vindo!</p>
+  </div>
+
+  <div class="prog">
+    <div class="top"><span>Sua inscrição</span><b>96%</b></div>
+    <div class="track"><div class="fill"></div></div>
+    <div class="step">Falta só <span>1 passo</span>: entrar no grupo do WhatsApp.</div>
+  </div>
+
+  <!-- 02 · Pesquisa nativa (qualificação pro pitch — não é filtro) -->
+  <div class="card survey" id="survey">
+    <div id="survey-body">
+      <h2>Antes de entrar, responde rapidinho 👇</h2>
+      <p class="hint">São 3 perguntas (uns 30 segundos). Isso me ajuda a preparar as aulas certas pra você.</p>
+      <div class="qmeta"><span>Pergunta <b id="q-count">1 de 3</b></span><a id="btn-pular">Pular</a></div>
+      <div class="qbar"><div class="qbar-fill" id="survey-prog"></div></div>
+      <div id="survey-steps"><!-- perguntas geradas via JS --></div>
+      <div class="qnav">
+        <button type="button" class="btn-voltar" id="btn-voltar" style="visibility:hidden">Voltar</button>
+        <button type="button" class="btn-prox" id="btn-prox" disabled>Próximo</button>
+      </div>
+    </div>
+    <div id="survey-done" style="display:none;text-align:center">
+      <div class="done-tick">✓</div>
+      <h2>Prontinho, obrigado! 🙌</h2>
+      <p class="hint" style="margin-bottom:0">Suas respostas foram registradas. Agora é só entrar no grupo do WhatsApp aqui embaixo. 👇</p>
+    </div>
+  </div>
+
+  <!-- 03 · Botão WhatsApp (countdown só arma depois da pesquisa) -->
+  <div class="card" style="text-align:center">
+    <h2 style="margin-bottom:14px">Seu último passo</h2>
+    <a class="wa" id="wa" href="https://chat.whatsapp.com/SEU_LINK">
+      <svg viewBox="0 0 24 24" fill="#06351c"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      Entrar no grupo do WhatsApp
+    </a>
+    <div class="cd" id="cd-box" style="display:none">
+      Você vai entrar no grupo automaticamente em <span class="num" id="cd">15</span>s.<br>
+      <button class="pause" id="pause" type="button">Quer entrar com calma? Pausar contador</button>
+    </div>
+  </div>
+
+  <div class="foot">Missão Ukulele · Clube do Ukulele · Como Tocar Ukulele (Mateus Augusto)</div>
+</div>
+
+<script>
+(function(){
+  var dl = window.dataLayer = window.dataLayer || [];
+
+  /* ===================== CONFIG ===================== */
+  var CFG = {
+    whatsapp: "https://chat.whatsapp.com/SEU_LINK",
+    redirectSeconds: 15,
+    // chaves possíveis na querystring vinda do checkout (Hotmart). Usa a 1ª que existir.
+    paramKeys: {
+      nome:      ["nome","name","first_name","full_name","buyer_name"],
+      email:     ["email","e-mail","buyer_email"],
+      telefone:  ["telefone","phone","tel","whatsapp","celular","buyer_phone","phone_number"],
+      // chave SECUNDÁRIA de cruzamento (Hotmart manda o código da transação no redirect)
+      transacao: ["transaction","tid","trans","transacao","hottok"]
+    }
+  };
+
+  /* ============= LEAD vindo do checkout ============= */
+  function getParam(keys){
+    var q = new URLSearchParams(window.location.search);
+    for (var i=0;i<keys.length;i++){ var v=q.get(keys[i]); if (v) return v.trim(); }
+    return "";
+  }
+  var lead = {
+    nome:      getParam(CFG.paramKeys.nome),
+    email:     getParam(CFG.paramKeys.email),
+    telefone:  getParam(CFG.paramKeys.telefone),
+    transacao: getParam(CFG.paramKeys.transacao)
+  };
+  // CHAVE DE CRUZAMENTO: normaliza o e-mail (trim + minúsculas) para casar 1:1 com o e-mail de
+  // compra (Hotmart) no Supabase. É o elemento em comum entre pesquisa e compra.
+  lead.email = lead.email.toLowerCase();
+
+  // personaliza a saudação se o nome veio do checkout
+  if (lead.nome){
+    var primeiro = lead.nome.split(" ")[0];
+    var sub = document.getElementById("confirm-sub");
+    if (sub) sub.textContent = "Sua vaga na Missão Ukulele está garantida, " + primeiro + "!";
+  }
+
+  // disponibiliza o lead no dataLayer já no carregamento (mesmo que não responda a pesquisa)
+  dl.push({
+    event: "checkout_lead",
+    lead_nome: lead.nome,
+    lead_email: lead.email,
+    lead_telefone: lead.telefone,
+    transacao: lead.transacao
+  });
+
+  /* ================== PERGUNTAS ===================== */
+  // O "id" de cada pergunta é a CHAVE que você mapeia como variável no GTM.
+  var PERGUNTAS = [
+    { id:"pesquisa_p1", titulo:"Qual é a sua relação com o ukulele hoje?", opcoes:[
+      {v:"nunca_toquei",          t:"Nunca toquei"},
+      {v:"tentei_e_parei",        t:"Já tentei e parei"},
+      {v:"toco_pouco_sem_metodo", t:"Já toco um pouco, mas sem técnica/método"},
+      {v:"ja_toco_bem",           t:"Já toco bem"}
+    ]},
+    { id:"pesquisa_p2", titulo:"O que mais te move a querer tocar ukulele agora?", opcoes:[
+      {v:"hobby_relaxar", t:"Hobby e relaxar"},
+      {v:"familia_amigos",t:"Tocar pra família e amigos"},
+      {v:"igreja",        t:"Tocar na igreja"},
+      {v:"sonho_antigo",  t:"Realizar um sonho antigo"},
+      {v:"outro",         t:"Outro"}
+    ]},
+    { id:"pesquisa_p3", titulo:"Você já investiu em aprender música antes (curso, aula, material)?", opcoes:[
+      {v:"sim_varias", t:"Sim, mais de uma vez"},
+      {v:"sim_uma",    t:"Sim, uma vez"},
+      {v:"nunca",      t:"Nunca investi"}
+    ]}
+  ];
+
+  var respostas = {};        // id -> valor
+  var respostasTexto = {};   // id -> texto
+  var atual = 0;
+  var concluido = false;     // true após finalizar ou pular (trava o evento parcial)
+  var ultimoParcial = "";    // assinatura do último parcial enviado (evita duplicar igual)
+
+  var elSteps = document.getElementById("survey-steps");
+  var elProx  = document.getElementById("btn-prox");
+  var elVolta = document.getElementById("btn-voltar");
+  var elProg  = document.getElementById("survey-prog");
+  var elCount = document.getElementById("q-count");
+
+  // monta os passos (uma pergunta por div)
+  PERGUNTAS.forEach(function(p, idx){
+    var step = document.createElement("div");
+    step.className = "qstep" + (idx===0 ? " active" : "");
+    step.setAttribute("data-idx", idx);
+
+    var h = document.createElement("div");
+    h.className = "qtitle";
+    h.textContent = p.titulo;
+    step.appendChild(h);
+
+    var opts = document.createElement("div");
+    opts.className = "opts";
+    p.opcoes.forEach(function(o){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "opt";
+      b.innerHTML = '<span class="rdio"></span><span>' + o.t + '</span>';
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(opts.children, function(c){ c.classList.remove("sel"); });
+        b.classList.add("sel");
+        respostas[p.id] = o.v;
+        respostasTexto[p.id] = o.t;
+        elProx.disabled = false;
+      });
+      opts.appendChild(b);
+    });
+    step.appendChild(opts);
+    elSteps.appendChild(step);
+  });
+
+  function render(){
+    Array.prototype.forEach.call(elSteps.children, function(s){
+      s.classList.toggle("active", (+s.getAttribute("data-idx")) === atual);
+    });
+    var p = PERGUNTAS[atual];
+    elProx.disabled = !respostas[p.id];
+    elProx.textContent = (atual === PERGUNTAS.length-1) ? "Finalizar" : "Próximo";
+    elVolta.style.visibility = (atual === 0) ? "hidden" : "visible";
+    elCount.textContent = (atual+1) + " de " + PERGUNTAS.length;
+    elProg.style.width = ((atual) / PERGUNTAS.length * 100) + "%";
+  }
+
+  elProx.addEventListener("click", function(){
+    var p = PERGUNTAS[atual];
+    if (!respostas[p.id]) return;
+
+    // PUSH da resposta individual — "uma a uma" (granular pro GTM/N8N)
+    dl.push({
+      event: "pesquisa_resposta",
+      lead_email: lead.email,
+      transacao: lead.transacao,
+      pergunta_id: p.id,
+      pergunta: p.titulo,
+      resposta_valor: respostas[p.id],
+      resposta_texto: respostasTexto[p.id],
+      pergunta_indice: atual + 1
+    });
+
+    if (atual < PERGUNTAS.length-1){ atual++; render(); }
+    else { finalizar(); }
+  });
+
+  elVolta.addEventListener("click", function(){ if (atual > 0){ atual--; render(); } });
+
+  function finalizar(){
+    // PUSH consolidado — cada pergunta vira uma chave própria (fácil de mapear no GTM)
+    var payload = {
+      event: "pesquisa_concluida",
+      lead_nome: lead.nome,
+      lead_email: lead.email,
+      lead_telefone: lead.telefone,
+      transacao: lead.transacao,
+      respondidas: PERGUNTAS.length,
+      total: PERGUNTAS.length,
+      concluida: true,
+      respostas: JSON.parse(JSON.stringify(respostas)),
+      respostas_texto: JSON.parse(JSON.stringify(respostasTexto))
+    };
+    PERGUNTAS.forEach(function(p){ payload[p.id] = respostas[p.id] || ""; });
+    dl.push(payload);
+
+    elProg.style.width = "100%";
+    concluir();
+  }
+
+  document.getElementById("btn-pular").addEventListener("click", function(e){
+    e.preventDefault();
+    dl.push({ event: "pesquisa_pulada", lead_email: lead.email, transacao: lead.transacao });
+    concluir();
+  });
+
+  function concluir(){
+    concluido = true;
+    document.getElementById("survey-body").style.display = "none";
+    document.getElementById("survey-done").style.display = "block";
+    armarWhats();
+  }
+
+  /* ===== Captura PARCIAL: salva o que já foi respondido se a pessoa sair/esconder a aba ===== */
+  // Mesmo sem clicar "Próximo", a opção marcada já fica em respostas{}, então entra no parcial.
+  function pushParcial(motivo){
+    if (concluido) return;                                   // já finalizou/pulou: não precisa de parcial
+    var snap = {}, snapTexto = {}, n = 0;
+    PERGUNTAS.forEach(function(p){
+      if (respostas[p.id]) { snap[p.id] = respostas[p.id]; snapTexto[p.id] = respostasTexto[p.id]; n++; }
+    });
+    if (n === 0) return;                                     // nada marcado ainda
+    var assinatura = JSON.stringify(snap);
+    if (assinatura === ultimoParcial) return;                // evita duplicar snapshot idêntico
+    ultimoParcial = assinatura;
+
+    var payload = {
+      event: "pesquisa_parcial",
+      motivo: motivo || "saida",
+      concluida: false,
+      respondidas: n,
+      total: PERGUNTAS.length,
+      lead_nome: lead.nome,
+      lead_email: lead.email,
+      lead_telefone: lead.telefone,
+      transacao: lead.transacao,
+      respostas: snap,
+      respostas_texto: snapTexto
+    };
+    PERGUNTAS.forEach(function(p){ payload[p.id] = respostas[p.id] || ""; }); // achatado p/ GTM
+    dl.push(payload);
+  }
+
+  // visibilitychange (hidden) é o gatilho mais confiável de saída em mobile/desktop; pagehide é o reforço.
+  document.addEventListener("visibilitychange", function(){
+    if (document.visibilityState === "hidden") pushParcial("aba_oculta");
+  });
+  window.addEventListener("pagehide", function(){ pushParcial("saida_pagina"); });
+
+  render();
+
+  /* ============ WhatsApp + countdown (só arma após a pesquisa) ============ */
+  var armed = false;
+  function armarWhats(){
+    if (armed) return; armed = true;
+    document.getElementById("wa").setAttribute("href", CFG.whatsapp);
+
+    var left = CFG.redirectSeconds, paused = false;
+    var box = document.getElementById("cd-box"); box.style.display = "block";
+    var el = document.getElementById("cd");
+    var pauseBtn = document.getElementById("pause");
+
+    pauseBtn.addEventListener("click", function(){
+      paused = !paused;
+      pauseBtn.textContent = paused ? "Contador pausado · clique pra retomar" : "Quer entrar com calma? Pausar contador";
+    });
+
+    var timer = setInterval(function(){
+      if (paused) return;
+      left--;
+      if (left <= 0){ clearInterval(timer); el.textContent = "0"; window.location.href = CFG.whatsapp; return; }
+      el.textContent = left;
+    }, 1000);
+  }
+})();
+</script>
+</body>
+</html>
