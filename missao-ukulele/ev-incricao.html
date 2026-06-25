@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
+<!-- End Google Tag Manager -->
+<title>Missão Ukulele · Evento Online AO VIVO com Mateus Augusto</title>
+<meta name="description" content="6 dias pra você tocar de verdade no ukulele: do zero, ou destravando o que já sabe. Evento AO VIVO, de 06 a 12 de julho, às 7h.">
+
+<!--
+  ============================================================
+  PÁGINA DE VENDAS · MISSÃO UKULELE (Evento Online AO VIVO) · Clube do Ukulele
+  - VARIANTE AO VIVO: exceção do 1º evento (aulas ao vivo). NÃO consta na estratégia (que é gravada/semanal).
+  - Todos os botões levam para o checkout da Hotmart (placeholder abaixo).
+  - Sem formulário, sem popup, sem pergunta. Só narrativa de venda.
+  - TROCAR ANTES DE PUBLICAR:
+      1) PREÇO DO INGRESSO: hoje "R$ 47" (placeholder, benchmark R$47-97). Procure por data-price.
+      2) CHECKOUT: https://pay.hotmart.com/SEU_LINK  (procure por SEU_LINK)
+      3) PROVA SOCIAL: blocos marcados [INSERIR PROVA REAL].
+  - Cores e fontes seguem o brandbook (índigo + rosa-coral; laranja só nos CTAs).
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#100d20; --bg2:#15112a; --surface:#1b1633; --card:#221c3c; --card2:#2a2347;
+  --line:#332c52; --text:#ECEAF4; --muted:#A39FBE;
+  --indigo:#9282C2; --indigo-deep:#5b4a92; --rose:#F294A0; --rose-deep:#E87A85;
+  --sale:#EE6B2E; --sale-deep:#C2410C;
+  --easy:#3FB985;
+  --maxw:1080px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.anton{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px;line-height:1.05;text-transform:uppercase}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.rose{color:var(--rose)}
+.indigo{color:var(--indigo)}
+.sale-txt{color:var(--sale)}
+section{padding:72px 0;position:relative}
+.alt{background:var(--bg2)}
+.kicker{font-family:'Montserrat';font-weight:700;text-transform:uppercase;letter-spacing:3px;font-size:13px;color:var(--rose);margin-bottom:16px;display:inline-block}
+.sec-title{font-size:clamp(28px,4.4vw,46px);margin-bottom:14px}
+.sec-sub{color:var(--muted);font-size:18px;max-width:720px;margin-bottom:36px}
+
+/* Sticky bar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(16,13,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Anton';font-size:18px;letter-spacing:1px}
+.brand img{height:30px;width:auto;display:block;background:#fff;padding:4px 7px;border-radius:6px}
+.cd{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.cd b{color:var(--text)}
+.cd .clock{font-variant-numeric:tabular-nums;font-weight:700;color:var(--rose);letter-spacing:1px}
+
+/* Buttons */
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#F4855E,#C2410C);color:#fff;font-family:'Montserrat';font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.5px;padding:18px 34px;border-radius:14px;box-shadow:0 12px 30px -8px rgba(238,107,46,.5);transition:transform .12s ease,filter .12s ease,box-shadow .12s ease;border:none;cursor:pointer;text-align:center}
+.cta:hover{filter:brightness(1.07);transform:translateY(-2px);box-shadow:0 16px 38px -8px rgba(238,107,46,.6)}
+.cta:active{transform:translateY(0) scale(.99)}
+.cta.sm{padding:11px 20px;font-size:14px;border-radius:10px}
+.cta.big{font-size:19px;padding:22px 44px}
+.sub-cta{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* Hero */
+.hero{padding:64px 0 80px;background:radial-gradient(900px 500px at 70% -10%,rgba(146,130,194,.20),transparent 60%),radial-gradient(700px 400px at 0% 20%,rgba(232,122,133,.12),transparent 55%)}
+.hero h1{font-size:clamp(36px,6.4vw,68px);margin:14px 0 18px}
+.hero .lead{font-size:clamp(17px,2.2vw,21px);color:#D9D5EC;max-width:640px;margin-bottom:26px}
+.checks{list-style:none;display:grid;gap:12px;margin:26px 0 30px;max-width:640px}
+.checks li{position:relative;padding-left:38px;font-size:16.5px;color:#E3E0F2;line-height:1.55}
+.checks li b{color:#fff;font-weight:700}
+.checks li::before{content:"✓";position:absolute;left:0;top:1px;width:25px;height:25px;border-radius:50%;background:rgba(242,148,160,.16);color:var(--rose);display:grid;place-items:center;font-weight:800;font-size:13px}
+.trust{margin-top:22px;font-size:14px;color:var(--muted);border-left:3px solid var(--rose-deep);padding-left:14px}
+/* Hero centralizado + lockup da marca */
+
+/* generic grids */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.card h3{font-size:20px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+.icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:rgba(146,130,194,.16);margin-bottom:16px}
+.m3 .icon{background:#fff;box-shadow:0 4px 14px -6px rgba(0,0,0,.5)}
+
+/* outcomes */
+.out{display:flex;gap:14px;align-items:flex-start}
+.out .q{font-family:'Anton';font-size:30px;color:var(--indigo-deep);line-height:1}
+
+/* method 3D */
+.m3{counter-reset:step}
+.m3 .card{position:relative}
+.m3 .step{font-family:'Anton';font-size:14px;color:var(--rose);letter-spacing:2px;margin-bottom:10px}
+
+/* aulas */
+.aula{display:flex;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;transition:border-color .15s ease,transform .15s ease}
+.aula:hover{border-color:var(--indigo-deep);transform:translateX(3px)}
+.aula .day{flex:none;width:96px;text-align:center}
+.aula .day .d{font-family:'Anton';font-size:13px;letter-spacing:1px;color:var(--rose)}
+.aula .day .dt{font-size:12px;color:var(--muted)}
+.aula .day .dur{display:inline-block;margin-top:4px;font-size:11px;color:var(--indigo);border:1px solid var(--line);border-radius:20px;padding:2px 8px}
+.aula .info h3{font-size:18px;text-transform:none;font-family:'Montserrat';font-weight:800;letter-spacing:0;margin-bottom:3px}
+.aula .info p{color:var(--muted);font-size:14px}
+.aula.pitch{background:linear-gradient(135deg,rgba(146,130,194,.18),rgba(232,122,133,.10));border-color:var(--indigo-deep)}
+
+/* fit (pra quem é / não é) */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fit .col{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.fit h3{font-size:20px;margin-bottom:16px}
+.fit ul{list-style:none;display:grid;gap:11px}
+.fit li{display:flex;gap:10px;font-size:15px;color:#DEDAF0}
+.fit .yes li::before{content:"✓";color:var(--easy);font-weight:800}
+.fit .no li::before{content:"✕";color:var(--rose-deep);font-weight:800}
+.fit .no{opacity:.92}
+
+/* price */
+.price-box{max-width:620px;margin:0 auto;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--indigo-deep);border-radius:22px;padding:34px;box-shadow:0 30px 70px -30px rgba(146,130,194,.5)}
+.price-box .inc{list-style:none;display:grid;gap:12px;margin:6px 0 24px}
+.price-box .inc li{display:flex;justify-content:space-between;gap:14px;font-size:15px;border-bottom:1px dashed var(--line);padding-bottom:11px;color:#E3E0F2}
+.price-box .inc li span:last-child{color:var(--muted);white-space:nowrap}
+.price-now{text-align:center;margin:18px 0 6px}
+.price-now .lote{font-size:13px;color:var(--rose);text-transform:uppercase;letter-spacing:2px;font-weight:700}
+.price-now .val{font-family:'Anton';font-size:64px;line-height:1;margin:6px 0}
+.price-now .val small{font-size:24px;color:var(--muted)}
+.price-now .cond{font-size:14px;color:var(--muted)}
+.price-box .cta{width:100%;margin-top:18px}
+
+/* guarantee */
+.guar{display:flex;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:780px;margin:0 auto}
+.guar .seal{flex:none;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-size:34px;background:rgba(63,185,133,.14);border:2px solid rgba(63,185,133,.4)}
+.guar h3{font-size:22px;margin-bottom:6px}
+.guar p{color:var(--muted);font-size:15px}
+
+/* instructor */
+.inst{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:center}
+.inst .photo{border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:var(--surface)}
+.inst .photo img{width:100%;height:100%;object-fit:cover;display:block}
+.inst .stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:18px}
+.inst .stats .n{font-family:'Anton';font-size:30px;color:var(--rose)}
+.inst .stats .l{font-size:13px;color:var(--muted)}
+
+/* proof */
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proof-card{background:var(--card);border:1px dashed var(--indigo-deep);border-radius:14px;min-height:200px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:13px;padding:18px}
+
+/* faq */
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq summary{cursor:pointer;padding:18px 22px;font-weight:700;font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:'Anton';color:var(--rose);font-size:22px;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{padding:0 22px 20px;color:var(--muted);font-size:15px}
+
+/* footer */
+footer{padding:40px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
+
+@media(max-width:860px){
+  .g3{grid-template-columns:1fr 1fr}
+  .inst{grid-template-columns:1fr;text-align:center}
+  .inst .photo{max-width:280px;margin:0 auto;aspect-ratio:4/4}
+  .inst .stats{justify-content:center}
+  .proof-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  section{padding:54px 0}
+  .g3,.g2,.fit{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:1fr}
+  .aula{flex-direction:column;align-items:flex-start;gap:10px}
+  .aula .day{display:flex;gap:10px;align-items:center;width:auto}
+  .cd{font-size:12px;gap:8px}
+  .hero h1{font-size:40px}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDH6QGB2"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ===== Sticky bar ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <img src="../04%20-%20Midia/Logos/IMG%20-%20Logo%20Clube%20-%201600%20x%20838.png" alt="Clube do Ukulele" onerror="this.style.display='none'">
+      Missão Ukulele
+    </div>
+    <div class="cd">
+      <span>Começa <b>06/07</b>, às <b>7h</b> · vagas por tempo limitado</span>
+      <span class="clock" id="cd">--d --:--:--</span>
+      <a class="cta sm" href="https://pay.hotmart.com/SEU_LINK">Garantir vaga</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">Evento Online AO VIVO · 06 a 12 de julho</span>
+    <h1>Em 6 dias, você vai <span class="rose">tocar de verdade</span> no ukulele</h1>
+    <p class="lead">Do zero, ou destravando o que você já sabe, sem teoria chata e sem estudar sozinho. Tudo ao vivo, e o professor ainda corrige os seus vídeos.</p>
+    <ul class="checks">
+      <li>Toque <b>suas primeiras músicas</b> já nos primeiros dias e destrave a batida e a troca de acorde.</li>
+      <li>6 dias de aulas <b>ao vivo</b> com o Mateus, às 7h, na plataforma do Clube do Ukulele.</li>
+      <li><b>Método 3D:</b> tudo dividido em passos pequenos, sem teoria.</li>
+      <li>Feito pra quem <b>nunca tocou</b> e também pra quem <b>já toca mas empacou</b>.</li>
+      <li><b>Intercâmbio de vídeos:</b> você grava o que está tocando e um professor te corrige, então nunca fica na dúvida se está fazendo certo. É o nosso maior diferencial e o que te dá segurança no aprendizado.</li>
+      <li><b>Grupo de WhatsApp:</b> espaço para tirar dúvidas e ter contato com os alunos durante a Missão.</li>
+    </ul>
+    <a class="cta big" href="https://pay.hotmart.com/SEU_LINK">Entrar no Missão Ukulele</a>
+    <p class="trust">Com <b>Mateus Augusto</b> · ensina ukulele desde 2017 · +6.000 alunos formados · +300 mil seguidores.</p>
+  </div>
+</header>
+
+<!-- ===== Prova social (2ª dobra) ===== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Quem já aprende com o Mateus</span>
+    <h2 class="sec-title">Gente comum, de toda idade, tocando</h2>
+    <p class="sec-sub">A faixa 40+ é cheia de alunos que começaram do zero e hoje tocam. A idade é prova de que dá certo.</p>
+    <div class="proof-grid">
+      <!-- [INSERIR PROVA REAL]: trocar por print/vídeo/depoimento real do aluno -->
+      <div class="proof-card">[ Espaço para depoimento / print real de aluno ]</div>
+      <div class="proof-card">[ Espaço para depoimento / print real de aluno ]</div>
+      <div class="proof-card">[ Espaço para depoimento / print real de aluno ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O que vai conquistar ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">O que muda em 6 dias</span>
+    <h2 class="sec-title">No fim da Missão, você vai dizer:</h2>
+    <div class="grid g3">
+      <div class="card out"><div class="q">1</div><div><h3>"Eu consigo."</h3><p>Você toca uma música de verdade logo no começo, e o "não levo jeito" cai por terra.</p></div></div>
+      <div class="card out"><div class="q">2</div><div><h3>"A culpa não era minha."</h3><p>Você entende que travou por falta de método e ordem, não de talento.</p></div></div>
+      <div class="card out"><div class="q">3</div><div><h3>"Eu tenho ritmo, SIM."</h3><p>A batida e a troca de acorde, a maior dor de quem toca, não serão problemas para voê.</p></div></div>
+      <div class="card out"><div class="q">4</div><div><h3>"Eu faço o uke cantar."</h3><p>O que antes parecia difícil, agora é super possível e até fácil.</p></div></div>
+      <div class="card out"><div class="q">5</div><div><h3>"+100 músicas ao meu alcance."</h3><p>Com 4 acordes e uma batida coringa, você destrava um repertório gigante.</p></div></div>
+      <div class="card out"><div class="q">6</div><div><h3>"Não preciso fazer TUDO sozinho."</h3><p>Você descobre o caminho pra continuar evoluindo, com método e acompanhamento.</p></div></div>
+    </div>
+    <div style="text-align:center;margin-top:34px"><a class="cta" href="https://pay.hotmart.com/SEU_LINK">Quero garantir minha vaga</a></div>
+  </div>
+</section>
+
+<!-- ===== Por que funciona (mecanismo) ===== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Por que a Missão funciona (e o YouTube solto não)</span>
+    <h2 class="sec-title">Aprender ukulele não é só assistir vídeos soltos e aleatórios</h2>
+    <p class="sec-sub">É ter um caminho organizado, em passos pequenos. É esse o Método 3D que sustenta cada aula da Missão.</p>
+    <div class="grid g3 m3">
+      <div class="card"><div class="step">Passo 1</div><div class="icon">🧩</div><h3>Dividir</h3><p>Cada música, acorde e batida vira uma peça pequena, do tamanho que o seu cérebro absorve de uma vez.</p></div>
+      <div class="card"><div class="step">Passo 2</div><div class="icon">🔓</div><h3>Destravar</h3><p>Você treina cada peça separada, no seu tempo, até ela sair firme e sem esforço.</p></div>
+      <div class="card"><div class="step">Passo 3</div><div class="icon">🎵</div><h3>Dominar</h3><p>Quando as peças se juntam, a música flui, o som sai limpo e o ritmo fica no lugar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== As aulas ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">O que acontece em cada dia</span>
+    <h2 class="sec-title">Os 6 dias da Missão Ukulele</h2>
+    <p class="sec-sub">Ao vivo na plataforma do Clube do Ukulele, às 7h da manhã de cada dia.</p>
+
+    <div class="aula">
+      <div class="day"><div class="d">Aula 1</div><div class="dt">Seg · 06/07</div><div class="dur">50 min</div></div>
+      <div class="info"><h3>Os 7 erros que travam você no ukulele</h3><p>Do iniciante a quem já toca: os erros de base que seguram todo mundo, e como corrigir cada um.</p></div>
+    </div>
+    <div class="aula">
+      <div class="day"><div class="d">Aula 2</div><div class="dt">Ter · 07/07</div><div class="dur">50 min</div></div>
+      <div class="info"><h3>Os 5 passos pra tocar qualquer música</h3><p>O sistema repetível pra aprender qualquer música, sem depender de sorte nem decorar uma de cada vez.</p></div>
+    </div>
+    <div class="aula">
+      <div class="day"><div class="d">Aula 3</div><div class="dt">Qua · 08/07</div><div class="dur">55 min</div></div>
+      <div class="info"><h3>O segredo das batidas e as primeiras músicas</h3><p>A Batida Mãe destrava todas as outras, e você toca suas primeiras músicas inteiras.</p></div>
+    </div>
+    <div class="aula">
+      <div class="day"><div class="d">Aula 4</div><div class="dt">Qui · 09/07</div><div class="dur">45 min</div></div>
+      <div class="info"><h3>Fazendo seu ukulele cantar</h3><p>Vá além de fazer batidas e toque melodias super conhecidas.</p></div>
+    </div>
+    <div class="aula">
+      <div class="day"><div class="d">Aula 5</div><div class="dt">Sex · 10/07</div><div class="dur">45 min</div></div>
+      <div class="info"><h3>+100 músicas com 4 acordes e 1 batida coringa</h3><p>Com poucos acordes você abre um repertório gigante, e vê o caminho pra nunca mais travar.</p></div>
+    </div>
+    <div class="aula">
+      <div class="day"><div class="d">Sábado</div><div class="dt">11/07</div><div class="dur">opcional</div></div>
+      <div class="info"><h3>Tira-dúvidas</h3><p>Um encontro extra pra você não ficar com nenhuma pergunta antes do grande dia.</p></div>
+    </div>
+    <div class="aula pitch">
+      <div class="day"><div class="d">Aula 6</div><div class="dt">Dom · 12/07</div><div class="dur">07h</div></div>
+      <div class="info"><h3>O Mapa do Iniciante</h3><p>O caminho para continuar sua evolução e saber exatamente o que e como estudar.</p></div>
+    </div>
+
+    <div style="text-align:center;margin-top:30px"><a class="cta" href="https://pay.hotmart.com/SEU_LINK">Quero participar dos 6 dias</a></div>
+  </div>
+</section>
+
+<!-- ===== Instrutor ===== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Quem te guia</span>
+    <h2 class="sec-title">Mateus Augusto</h2>
+    <div class="inst">
+      <div class="photo"><img src="../04%20-%20Midia/Fotos/IMG%20-%20Foto%20Mateus.jpg" alt="Mateus Augusto" onerror="this.parentNode.style.display='none'"></div>
+      <div>
+        <ul class="checks" style="margin:0 0 6px;max-width:none">
+          <li>Toca instrumentos desde criança e <b>ensina ukulele desde 2017</b>.</li>
+          <li>Construiu <b>uma das maiores audiências de ukulele do Brasil</b>.</li>
+          <li>Ensina do jeito mais leve e direto: conversa de gente pra gente, <b>sem teoria chata e sem promessa mágica</b>.</li>
+          <li>O resultado vem da <b>constância</b>, e ele faz questão de dizer isso.</li>
+        </ul>
+        <div class="stats">
+          <div><div class="n">+6.000</div><div class="l">alunos formados</div></div>
+          <div><div class="n">+300 mil</div><div class="l">seguidores</div></div>
+          <div><div class="n">desde 2017</div><div class="l">ensinando ukulele</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pra quem é / não é ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Isso é pra você?</span>
+    <h2 class="sec-title">Pra quem é a Missão Ukulele</h2>
+    <div class="fit">
+      <div class="col yes">
+        <h3 class="rose">É pra você se…</h3>
+        <ul>
+          <li>Você sempre quis tocar e nunca encostou num instrumento.</li>
+          <li>Já tentou (talvez no violão ou ukulele), travou e guardou, e quer um recomeço leve.</li>
+          <li>Já arranha algumas músicas, mas sente que falta base, técnica e método.</li>
+          <li>Quer um hobby prazeroso que cabe em 20 minutos por dia.</li>
+          <li>Quer tocar pra família e amigos, e ter algo que seja só seu.</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h3 class="indigo">Não é pra você se…</h3>
+        <ul>
+          <li>Você espera tocar bem em poucos dias sem dedicar tempo nenhum.</li>
+          <li>Busca teoria musical avançada ou formação acadêmica.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Bônus ===== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Você ainda leva</span>
+    <h2 class="sec-title">Bônus que vêm com a sua inscrição</h2>
+    <div class="grid g3">
+      <div class="card">
+        <div style="font-family:'Anton';font-size:13px;letter-spacing:2px;color:var(--easy);margin-bottom:10px">BÔNUS 1</div>
+        <div class="icon" style="background:#fff;box-shadow:0 4px 14px -6px rgba(0,0,0,.5)">🎥</div>
+        <h3>Intercâmbio de vídeos</h3>
+        <p>Você grava o que está tocando e um professor te corrige. É a sua rede de segurança pra nunca ficar na dúvida se está no caminho certo.</p>
+      </div>
+      <div class="card">
+        <div style="font-family:'Anton';font-size:13px;letter-spacing:2px;color:var(--easy);margin-bottom:10px">BÔNUS 2</div>
+        <div class="icon" style="background:#fff;box-shadow:0 4px 14px -6px rgba(0,0,0,.5)">🎸</div>
+        <h3>Guia de qual ukulele comprar</h3>
+        <p>Pra não errar na hora de escolher (ou trocar) o seu instrumento: tamanho, tipo e o que faz diferença de verdade.</p>
+      </div>
+      <div class="card">
+        <div style="font-family:'Anton';font-size:13px;letter-spacing:2px;color:var(--easy);margin-bottom:10px">BÔNUS 3</div>
+        <div class="icon" style="background:#fff;box-shadow:0 4px 14px -6px rgba(0,0,0,.5)">🎵</div>
+        <h3>15 aulas de músicas escolhidas a dedo</h3>
+        <p>No nível de quem está entrando, pra você ter repertório pra praticar e tocar desde já.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Oferta / Preço ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Sua vaga na Missão</span>
+    <h2 class="sec-title" style="text-align:center">Garanta sua entrada</h2>
+    <div class="price-box">
+      <ul class="inc">
+        <li><span>6 dias de aulas ao vivo (seg a dom, 7h)</span><span>incluído</span></li>
+        <li><span>Grupo de WhatsApp com o Mateus e o time</span><span>incluído</span></li>
+        <li><span>Tira-dúvidas no sábado</span><span>incluído</span></li>
+        <li><span>Tarefas guiadas todos os dias</span><span>incluído</span></li>
+        <li><span>Aulas organizadas na Plataforma do Clube do Ukulele</span><span>incluído</span></li>
+        <li><span>Acesso às gravações por <b>1 ano</b></span><span>incluído</span></li>
+        <li><span>🎁 <b>Bônus:</b> 3 Intercâmbio de vídeos com correção do professor</span><span style="color:var(--easy);font-weight:700">bônus</span></li>
+        <li><span>🎁 <b>Bônus:</b> Guia de qual ukulele comprar</span><span style="color:var(--easy);font-weight:700">bônus</span></li>
+        <li><span>🎁 <b>Bônus:</b> 15 aulas de músicas escolhidas a dedo</span><span style="color:var(--easy);font-weight:700">bônus</span></li>
+      </ul>
+      <div class="price-now">
+        <!-- DEFINIR PREÇO DO INGRESSO (placeholder R$ 47 · benchmark R$47-97) -->
+        <div class="lote">Inscrição da Missão</div>
+        <div class="val" data-price>R$ 47</div>
+        <div class="cond">à vista ou parcelado no cartão · pagamento 100% seguro pela Hotmart</div>
+      </div>
+      <a class="cta big" href="https://pay.hotmart.com/SEU_LINK">Quero garantir minha vaga</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Garantia ===== -->
+<section class="alt">
+  <div class="wrap">
+    <div class="guar">
+      <div class="seal">🛡️</div>
+      <div>
+        <h3>Garantia incondicional de 7 dias</h3>
+        <p>Se por qualquer motivo você desistir, chegar em 7 dias e não conseguir executar, devolvo 100% do investimento. Sem burocracias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Antes de entrar</span>
+    <h2 class="sec-title">Dúvidas frequentes</h2>
+    <div class="faq">
+      <details><summary>Preciso saber alguma coisa antes pra acompanhar?</summary><div class="ans">Não. A Missão começa do zero absoluto, sem teoria. Se você consegue bater palma, você consegue acompanhar.</div></details>
+      <details><summary>E se eu já toco um pouco? Vou aproveitar?</summary><div class="ans">Sim, e muito. A Missão foi pensada também pra quem já arranha mas empacou: você corrige a base, ganha método, destrava a batida e aprende a ir além disso, tocando melodias super conhecidas.</div></details>
+      <details><summary>As aulas têm horário? E se eu não puder assistir na hora?</summary><div class="ans">As aulas acontecem AO VIVO às 7h de cada dia, com o Mateus. Se você não puder estar ao vivo, a gravação fica disponível na plataforma dentro do período da Missão. Você terá acesso ao conteúdo por 1 (um) ano, e o intercâmbio de vídeos acontece somente durante o período da Missão.</div></details>
+      <details><summary>De qual ukulele eu preciso?</summary><div class="ans">Qualquer ukulele soprano, concerto ou tenor serve. Se ainda não tem, não se preocupe. Assim que entrar na plataforma, você vai receber um guia super completo sobre Qual Ukulele Comprar, com recomendações de marcas e modelos.</div></details>
+      <details><summary>Quanto tempo por dia eu preciso dedicar?</summary><div class="ans">As aulas terão duração de cerca de 45 minutos a 1 hora. Além disso, você precisa se dedicar para entregar as tarefas no dia e aguardar a próxima aula com a tarefa concluída.</div></details>
+      <details><summary>Até quando preciso enviar os vídeos para o Mateus analisar?</summary><div class="ans">Você tem até domingo para finalizar as tarefas. A ideia, na verdade, é que você envie a cada aula, pra manter a sua evolução de acordo com o curso. E pode mandar a qualquer momento do dia.</div></details>
+      <details><summary>A Missão é o Clube do Ukulele?</summary><div class="ans">Não. A Missão é o desafio de 6 dias. No último dia, pra quem quiser continuar evoluindo, o Mateus mostra como dar o próximo passo. Isso é opcional. Primeiro vem curtir com a gente essa evolução bem legal que você vai ter no Ukulele. Depois você avalia se faz sentido para você.</div></details>
+    </div>
+    <div style="text-align:center;margin-top:34px"><a class="cta big" href="https://pay.hotmart.com/SEU_LINK">Entrar na Missão Ukulele</a><div class="sub-cta">Começa 06/07, às 7h. Garanta sua vaga antes que feche.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Missão Ukulele · Clube do Ukulele · Como Tocar Ukulele (Mateus Augusto)<br>
+    Pagamento processado com segurança pela Hotmart.
+  </div>
+</footer>
+
+<script>
+// Countdown do evento. ATUALIZAR a cada semana, com a mesma data exibida na página (ISO, -03:00 Brasília):
+(function(){
+  var target=new Date("2026-07-06T07:00:00-03:00").getTime();
+  var el=document.getElementById("cd");
+  function tick(){
+    var diff=target-Date.now();
+    if(diff<=0){ el.textContent="A Missão começou!"; return; }
+    var d=Math.floor(diff/86400000),
+        h=Math.floor(diff%86400000/3600000),
+        m=Math.floor(diff%3600000/60000),
+        s=Math.floor(diff%60000/1000);
+    function p(n){return(n<10?"0":"")+n;}
+    el.textContent=d+"d "+p(h)+":"+p(m)+":"+p(s);
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
