@@ -32,7 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                      + cada pergunta achatada como variável própria (chaves genéricas):
                                        pesquisa_p1 … pesquisa_p7 = o TEXTO da resposta (igual à tela).
                                        P6 (múltipla) = textos juntos por " | "; P7 = texto aberto.
-                                       + pesquisa_p5_outro e pesquisa_p6_outro (texto do campo "Outros").
+                                       (o texto do "Outros" já vem concatenado no próprio campo, ex.: pesquisa_p5 = "Outros: Bossa nova")
                                      + respostas{} = os CÓDIGOS (backup técnico) · respostas_texto{} = os textos.
    4) (removido) "pesquisa_pulada" — a pesquisa agora é OBRIGATÓRIA; não há mais "Pular".
    5) event: "pesquisa_parcial"   → se a pessoa SAIR/esconder a aba sem terminar. Captura o que já
@@ -346,7 +346,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return true;
   }
   function valDe(p){ return (p.tipo === "multi") ? (respostas[p.id]||[]).join(",") : (respostas[p.id]||""); }
-  function txtDe(p){ return (p.tipo === "multi") ? (respostasTexto[p.id]||[]).join(" | ") : (respostasTexto[p.id]||""); }
+  function txtDe(p){
+    // concatena o texto do "Outros" no próprio campo: vira "Outros: <texto digitado>"
+    if (p.tipo === "multi"){
+      var arr = (respostasTexto[p.id]||[]).slice();
+      if (outroSelecionado(p) && (outros[p.id]||"").trim()){
+        var i = (respostas[p.id]||[]).indexOf("outros");
+        if (i !== -1) arr[i] = arr[i] + ": " + outros[p.id];
+      }
+      return arr.join(" | ");
+    }
+    var t = respostasTexto[p.id] || "";
+    if (outroSelecionado(p) && (outros[p.id]||"").trim()) t = t + ": " + outros[p.id];
+    return t;
+  }
   function atualizarProx(){ elProx.disabled = !respondida(PERGUNTAS[atual]); }
 
   PERGUNTAS.forEach(function(p, idx){
@@ -446,7 +459,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       pergunta_id: p.id, pergunta: p.titulo,
       resposta_valor: valDe(p), resposta_texto: txtDe(p), pergunta_indice: atual+1
     };
-    if (temCampoOutro(p) && outroSelecionado(p)) ev[p.id + "_outro"] = outros[p.id] || "";
     dl.push(ev);
     if (atual < PERGUNTAS.length-1){ atual++; render(); }
     else { finalizar(); }
@@ -460,7 +472,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     PERGUNTAS.forEach(function(p){
       var v = valDe(p);            // código (pra detectar se respondeu e pro backup)
       out[p.id] = txtDe(p);        // CAMPO PRINCIPAL = TEXTO, igual à tela
-      if (temCampoOutro(p)) out[p.id + "_outro"] = outros[p.id] || "";
       if (v){ respObj[p.id] = v; respTxt[p.id] = txtDe(p); n++; }
     });
     out.respostas = respObj; out.respostas_texto = respTxt;
