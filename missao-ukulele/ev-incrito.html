@@ -30,13 +30,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                      pergunta_id, pergunta, resposta_valor, resposta_texto, pergunta_indice.
    3) event: "pesquisa_concluida" → ao finalizar. Campos: lead_nome, lead_email, lead_telefone,
                                      + cada pergunta achatada como variável própria (chaves genéricas):
-                                       pesquisa_p1, pesquisa_p2, pesquisa_p3
-                                     + objetos respostas{} e respostas_texto{}.
-   4) event: "pesquisa_pulada"    → se a pessoa pular a pesquisa. Campos: lead_email, transacao.
+                                       pesquisa_p1 … pesquisa_p7 = o TEXTO da resposta (igual à tela).
+                                       P6 (múltipla) = textos juntos por " | "; P7 = texto aberto.
+                                       + pesquisa_p5_outro e pesquisa_p6_outro (texto do campo "Outros").
+                                     + respostas{} = os CÓDIGOS (backup técnico) · respostas_texto{} = os textos.
+   4) (removido) "pesquisa_pulada" — a pesquisa agora é OBRIGATÓRIA; não há mais "Pular".
    5) event: "pesquisa_parcial"   → se a pessoa SAIR/esconder a aba sem terminar. Captura o que já
                                      foi respondido (inclusive opção marcada sem clicar "Próximo").
                                      Campos: motivo, respondidas, total, concluida:false, lead_*,
-                                     transacao, respostas{}, + pesquisa_p1..p3 (achatado).
+                                     transacao, respostas{}, + pesquisa_p1..p7 (achatado).
 
   TODOS os eventos carregam a CHAVE DE CRUZAMENTO. São duas:
    • lead_email  (principal) — normalizado (trim + minúsculas) p/ casar 1:1 com o e-mail de compra.
@@ -127,6 +129,14 @@ body{font-family:'Montserrat',system-ui,sans-serif;background:
 .btn-prox:hover{filter:brightness(1.08)}
 .btn-prox:disabled{opacity:.4;cursor:not-allowed}
 .done-tick{width:60px;height:60px;border-radius:50%;margin:4px auto 14px;display:grid;place-items:center;background:rgba(63,185,133,.14);border:2px solid rgba(63,185,133,.5);color:var(--ok);font-size:30px;font-weight:800}
+/* múltipla escolha = indicador quadrado (vs círculo do single) */
+.opts.multi .rdio{border-radius:6px}
+.opts.multi .opt.sel .rdio::after{border-radius:2px}
+/* textarea (pergunta aberta e campo "Outros") */
+.q-outro-wrap{margin-top:10px}
+.q-textarea{width:100%;min-height:84px;background:#1c1736;border:1.5px solid var(--line);color:var(--text);border-radius:12px;padding:12px 14px;font:inherit;font-size:15px;line-height:1.5;resize:vertical}
+.q-textarea:focus{outline:none;border-color:var(--indigo)}
+.q-textarea::placeholder{color:#6f6a90}
 
 /* Botão WhatsApp */
 .wa{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:linear-gradient(135deg,#25D366,#12a150);color:#06351c;font-family:'Montserrat';font-weight:800;font-size:18px;padding:20px;border-radius:14px;box-shadow:0 14px 32px -10px rgba(37,211,102,.55);transition:transform .12s ease,filter .12s ease;text-decoration:none;text-transform:uppercase;letter-spacing:.3px}
@@ -173,8 +183,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="card survey" id="survey">
     <div id="survey-body">
       <h2>Antes de entrar, responde rapidinho 👇</h2>
-      <p class="hint">São 3 perguntas (uns 30 segundos). Isso me ajuda a preparar as aulas certas pra você.</p>
-      <div class="qmeta"><span>Pergunta <b id="q-count">1 de 3</b></span><a id="btn-pular">Pular</a></div>
+      <p class="hint">São 7 perguntas rapidinhas (1 minutinho). Isso me ajuda a preparar as aulas certas pra você.</p>
+      <div class="qmeta"><span>Pergunta <b id="q-count">1 de 7</b></span></div>
       <div class="qbar"><div class="qbar-fill" id="survey-prog"></div></div>
       <div id="survey-steps"><!-- perguntas geradas via JS --></div>
       <div class="qnav">
@@ -189,8 +199,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <!-- 03 · Botão WhatsApp (countdown só arma depois da pesquisa) -->
-  <div class="card" style="text-align:center">
+  <!-- 03 · Botão WhatsApp (aparece só depois de concluir a pesquisa obrigatória) -->
+  <div class="card" id="wa-card" style="text-align:center;display:none">
     <h2 style="margin-bottom:14px">Seu último passo</h2>
     <a class="wa" id="wa" href="https://chat.whatsapp.com/SEU_LINK">
       <svg viewBox="0 0 24 24" fill="#06351c"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -255,34 +265,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     transacao: lead.transacao
   });
 
-  /* ================== PERGUNTAS ===================== */
-  // O "id" de cada pergunta é a CHAVE que você mapeia como variável no GTM.
+  /* ================== PERGUNTAS (NÃO ALTERAR — muda os códigos e quebra a análise) ============
+     tipo: "single" (1 resposta) | "multi" (várias) | "aberta" (texto livre).
+     opção com outro:true abre um campo de texto. Em "multi", exclusiva:true desmarca as outras.
+     Chaves no dataLayer: pesquisa_p1..p7 + pesquisa_p5_outro / pesquisa_p6_outro (texto do "Outros").
+     ============================================================================================ */
   var PERGUNTAS = [
-    { id:"pesquisa_p1", titulo:"Qual é a sua relação com o ukulele hoje?", opcoes:[
-      {v:"nunca_toquei",          t:"Nunca toquei"},
-      {v:"tentei_e_parei",        t:"Já tentei e parei"},
-      {v:"toco_pouco_sem_metodo", t:"Já toco um pouco, mas sem técnica/método"},
-      {v:"ja_toco_bem",           t:"Já toco bem"}
+    { id:"pesquisa_p1", tipo:"single", titulo:"Qual é a sua faixa de idade?", opcoes:[
+      {v:"ate_25",  t:"Até 25"},
+      {v:"26_39",   t:"26 a 39"},
+      {v:"40_49",   t:"40 a 49"},
+      {v:"50_59",   t:"50 a 59"},
+      {v:"60_mais", t:"60 ou mais"}
     ]},
-    { id:"pesquisa_p2", titulo:"O que mais te move a querer tocar ukulele agora?", opcoes:[
-      {v:"hobby_relaxar", t:"Hobby e relaxar"},
-      {v:"familia_amigos",t:"Tocar pra família e amigos"},
+    { id:"pesquisa_p2", tipo:"single", titulo:"Você já tem um ukulele?", opcoes:[
+      {v:"sim", t:"Sim"},
+      {v:"nao", t:"Não"}
+    ]},
+    { id:"pesquisa_p3", tipo:"single", titulo:"Qual é a sua relação com o ukulele hoje?", opcoes:[
+      {v:"nunca_toquei",          t:"Nunca toquei"},
+      {v:"tentei_parei",          t:"Já tentei e parei"},
+      {v:"toco_pouco_sem_metodo", t:"Já toco um pouco, sem método"},
+      {v:"toco_bem",              t:"Já toco bem"}
+    ]},
+    { id:"pesquisa_p4", tipo:"single", titulo:"O que mais te move a querer tocar ukulele agora?", opcoes:[
+      {v:"hobby_relaxar", t:"Hobby e relaxar tocando sozinho"},
+      {v:"familia_amigos",t:"Tocar para família e amigos"},
       {v:"igreja",        t:"Tocar na igreja"},
       {v:"sonho_antigo",  t:"Realizar um sonho antigo"},
-      {v:"outro",         t:"Outro"}
+      {v:"mente_memoria", t:"Cuidar da mente e exercitar a memória"}
     ]},
-    { id:"pesquisa_p3", titulo:"Você já investiu em aprender música antes (curso, aula, material)?", opcoes:[
-      {v:"sim_varias", t:"Sim, mais de uma vez"},
-      {v:"sim_uma",    t:"Sim, uma vez"},
-      {v:"nunca",      t:"Nunca investi"}
-    ]}
+    { id:"pesquisa_p5", tipo:"single", titulo:"Que tipo de música você mais sonha em tocar?", opcoes:[
+      {v:"mpb",       t:"MPB"},
+      {v:"sertanejo", t:"Sertanejo"},
+      {v:"pop_rock",  t:"Pop/rock"},
+      {v:"reggae",    t:"Reggae"},
+      {v:"gospel",    t:"Gospel/louvor"},
+      {v:"infantil",  t:"Música infantil"},
+      {v:"outros",    t:"Outros", outro:true}
+    ]},
+    { id:"pesquisa_p6", tipo:"multi", titulo:"Você se identifica com alguma dessas frases?", opcoes:[
+      {v:"nao_levo_jeito", t:"Acho que não levo jeito pra música."},
+      {v:"tarde_demais",   t:"Tenho medo de já ser tarde pra mim."},
+      {v:"falta_tempo",    t:"Tenho medo de não ter tempo pra praticar."},
+      {v:"tentei_desisti", t:"Já tentei aprender antes e acabei desistindo."},
+      {v:"dedos_ritmo",    t:"Sinto que meus dedos são travados e não pego o ritmo."},
+      {v:"falta_tecnica",  t:"Já arranho um pouco, mas falta técnica e método pra evoluir."},
+      {v:"nenhuma",        t:"Não me identifico com nenhuma dessas.", exclusiva:true},
+      {v:"outros",         t:"Outros", outro:true}
+    ]},
+    { id:"pesquisa_p7", tipo:"aberta", titulo:"O que te influenciou a entrar para a Missão Ukulele e qual é o seu objetivo?", placeholder:"Pode escrever à vontade..." }
   ];
 
-  var respostas = {};        // id -> valor
-  var respostasTexto = {};   // id -> texto
-  var atual = 0;
-  var concluido = false;     // true após finalizar ou pular (trava o evento parcial)
-  var ultimoParcial = "";    // assinatura do último parcial enviado (evita duplicar igual)
+  var respostas = {};       // id -> string (single/aberta) | array (multi)
+  var respostasTexto = {};  // id -> texto legível (string ou array)
+  var outros = {};          // id -> texto do campo "Outros"
+  var atual = 0, concluido = false, ultimoParcial = "";
 
   var elSteps = document.getElementById("survey-steps");
   var elProx  = document.getElementById("btn-prox");
@@ -290,7 +328,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var elProg  = document.getElementById("survey-prog");
   var elCount = document.getElementById("q-count");
 
-  // monta os passos (uma pergunta por div)
+  function temCampoOutro(p){
+    if (p.tipo === "aberta") return false;
+    for (var i=0;i<p.opcoes.length;i++){ if (p.opcoes[i].outro) return true; }
+    return false;
+  }
+  function outroSelecionado(p){
+    if (p.tipo === "multi") return (respostas[p.id]||[]).indexOf("outros") !== -1;
+    return respostas[p.id] === "outros";
+  }
+  function respondida(p){
+    if (p.tipo === "aberta") return true; // opcional
+    var r = respostas[p.id];
+    var tem = (p.tipo === "multi") ? (r && r.length > 0) : !!r;
+    if (!tem) return false;
+    if (outroSelecionado(p) && !((outros[p.id]||"").trim())) return false; // "Outros" exige texto
+    return true;
+  }
+  function valDe(p){ return (p.tipo === "multi") ? (respostas[p.id]||[]).join(",") : (respostas[p.id]||""); }
+  function txtDe(p){ return (p.tipo === "multi") ? (respostasTexto[p.id]||[]).join(" | ") : (respostasTexto[p.id]||""); }
+  function atualizarProx(){ elProx.disabled = !respondida(PERGUNTAS[atual]); }
+
   PERGUNTAS.forEach(function(p, idx){
     var step = document.createElement("div");
     step.className = "qstep" + (idx===0 ? " active" : "");
@@ -301,23 +359,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     h.textContent = p.titulo;
     step.appendChild(h);
 
+    if (p.tipo === "aberta"){
+      var ta = document.createElement("textarea");
+      ta.className = "q-textarea"; ta.rows = 3;
+      ta.placeholder = p.placeholder || "Escreva aqui...";
+      ta.addEventListener("input", function(){
+        respostas[p.id] = ta.value.trim();
+        respostasTexto[p.id] = ta.value.trim();
+        atualizarProx();
+      });
+      step.appendChild(ta);
+      elSteps.appendChild(step);
+      return;
+    }
+
+    respostas[p.id] = (p.tipo === "multi") ? [] : "";
+    respostasTexto[p.id] = (p.tipo === "multi") ? [] : "";
+
     var opts = document.createElement("div");
-    opts.className = "opts";
+    opts.className = "opts" + (p.tipo === "multi" ? " multi" : "");
+
+    var outroWrap = null;
+    if (temCampoOutro(p)){
+      outroWrap = document.createElement("div");
+      outroWrap.className = "q-outro-wrap";
+      outroWrap.style.display = "none";
+      var outroTa = document.createElement("textarea");
+      outroTa.className = "q-textarea"; outroTa.rows = 3;
+      outroTa.placeholder = "Qual? Pode escrever aqui...";
+      outroTa.addEventListener("input", function(){ outros[p.id] = outroTa.value.trim(); atualizarProx(); });
+      outroWrap.appendChild(outroTa);
+    }
+
     p.opcoes.forEach(function(o){
       var b = document.createElement("button");
-      b.type = "button";
-      b.className = "opt";
+      b.type = "button"; b.className = "opt";
       b.innerHTML = '<span class="rdio"></span><span>' + o.t + '</span>';
       b.addEventListener("click", function(){
-        Array.prototype.forEach.call(opts.children, function(c){ c.classList.remove("sel"); });
-        b.classList.add("sel");
-        respostas[p.id] = o.v;
-        respostasTexto[p.id] = o.t;
-        elProx.disabled = false;
+        if (p.tipo === "single"){
+          Array.prototype.forEach.call(opts.children, function(c){ c.classList.remove("sel"); });
+          b.classList.add("sel");
+          respostas[p.id] = o.v; respostasTexto[p.id] = o.t;
+        } else {
+          var arr = respostas[p.id], arrT = respostasTexto[p.id];
+          var ix = arr.indexOf(o.v);
+          if (o.exclusiva){
+            Array.prototype.forEach.call(opts.children, function(c){ c.classList.remove("sel"); });
+            if (ix === -1){ b.classList.add("sel"); respostas[p.id] = [o.v]; respostasTexto[p.id] = [o.t]; }
+            else { respostas[p.id] = []; respostasTexto[p.id] = []; }
+          } else {
+            p.opcoes.forEach(function(oo, k){
+              if (oo.exclusiva){ var ex = arr.indexOf(oo.v); if (ex !== -1){ arr.splice(ex,1); arrT.splice(ex,1); } opts.children[k].classList.remove("sel"); }
+            });
+            if (ix === -1){ b.classList.add("sel"); arr.push(o.v); arrT.push(o.t); }
+            else { b.classList.remove("sel"); arr.splice(ix,1); arrT.splice(ix,1); }
+          }
+        }
+        if (outroWrap) outroWrap.style.display = outroSelecionado(p) ? "block" : "none";
+        atualizarProx();
       });
       opts.appendChild(b);
     });
+
     step.appendChild(opts);
+    if (outroWrap) step.appendChild(outroWrap);
     elSteps.appendChild(step);
   });
 
@@ -325,104 +430,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     Array.prototype.forEach.call(elSteps.children, function(s){
       s.classList.toggle("active", (+s.getAttribute("data-idx")) === atual);
     });
-    var p = PERGUNTAS[atual];
-    elProx.disabled = !respostas[p.id];
     elProx.textContent = (atual === PERGUNTAS.length-1) ? "Finalizar" : "Próximo";
     elVolta.style.visibility = (atual === 0) ? "hidden" : "visible";
     elCount.textContent = (atual+1) + " de " + PERGUNTAS.length;
-    elProg.style.width = ((atual) / PERGUNTAS.length * 100) + "%";
+    elProg.style.width = (atual / PERGUNTAS.length * 100) + "%";
+    atualizarProx();
   }
 
   elProx.addEventListener("click", function(){
     var p = PERGUNTAS[atual];
-    if (!respostas[p.id]) return;
-
-    // PUSH da resposta individual — "uma a uma" (granular pro GTM/N8N)
-    dl.push({
+    if (!respondida(p)) return;
+    var ev = {
       event: "pesquisa_resposta",
-      lead_email: lead.email,
-      transacao: lead.transacao,
-      pergunta_id: p.id,
-      pergunta: p.titulo,
-      resposta_valor: respostas[p.id],
-      resposta_texto: respostasTexto[p.id],
-      pergunta_indice: atual + 1
-    });
-
+      lead_email: lead.email, transacao: lead.transacao,
+      pergunta_id: p.id, pergunta: p.titulo,
+      resposta_valor: valDe(p), resposta_texto: txtDe(p), pergunta_indice: atual+1
+    };
+    if (temCampoOutro(p) && outroSelecionado(p)) ev[p.id + "_outro"] = outros[p.id] || "";
+    dl.push(ev);
     if (atual < PERGUNTAS.length-1){ atual++; render(); }
     else { finalizar(); }
   });
 
   elVolta.addEventListener("click", function(){ if (atual > 0){ atual--; render(); } });
 
-  function finalizar(){
-    // PUSH consolidado — cada pergunta vira uma chave própria (fácil de mapear no GTM)
-    var payload = {
-      event: "pesquisa_concluida",
-      lead_nome: lead.nome,
-      lead_email: lead.email,
-      lead_telefone: lead.telefone,
-      transacao: lead.transacao,
-      respondidas: PERGUNTAS.length,
-      total: PERGUNTAS.length,
-      concluida: true,
-      respostas: JSON.parse(JSON.stringify(respostas)),
-      respostas_texto: JSON.parse(JSON.stringify(respostasTexto))
-    };
-    PERGUNTAS.forEach(function(p){ payload[p.id] = respostas[p.id] || ""; });
-    dl.push(payload);
+  function montarPayload(extra){
+    var out = { lead_nome: lead.nome, lead_email: lead.email, lead_telefone: lead.telefone, transacao: lead.transacao };
+    var respObj = {}, respTxt = {}, n = 0;
+    PERGUNTAS.forEach(function(p){
+      var v = valDe(p);            // código (pra detectar se respondeu e pro backup)
+      out[p.id] = txtDe(p);        // CAMPO PRINCIPAL = TEXTO, igual à tela
+      if (temCampoOutro(p)) out[p.id + "_outro"] = outros[p.id] || "";
+      if (v){ respObj[p.id] = v; respTxt[p.id] = txtDe(p); n++; }
+    });
+    out.respostas = respObj; out.respostas_texto = respTxt;
+    out.respondidas = n; out.total = PERGUNTAS.length;
+    for (var k in extra){ out[k] = extra[k]; }
+    return out;
+  }
 
+  function finalizar(){
+    dl.push(montarPayload({ event: "pesquisa_concluida", concluida: true }));
     elProg.style.width = "100%";
     concluir();
   }
-
-  document.getElementById("btn-pular").addEventListener("click", function(e){
-    e.preventDefault();
-    dl.push({ event: "pesquisa_pulada", lead_email: lead.email, transacao: lead.transacao });
-    concluir();
-  });
 
   function concluir(){
     concluido = true;
     document.getElementById("survey-body").style.display = "none";
     document.getElementById("survey-done").style.display = "block";
+    document.getElementById("wa-card").style.display = "block";
     armarWhats();
   }
 
-  /* ===== Captura PARCIAL: salva o que já foi respondido se a pessoa sair/esconder a aba ===== */
-  // Mesmo sem clicar "Próximo", a opção marcada já fica em respostas{}, então entra no parcial.
+  /* Captura PARCIAL: salva o que já foi respondido se a pessoa sair/esconder a aba */
   function pushParcial(motivo){
-    if (concluido) return;                                   // já finalizou/pulou: não precisa de parcial
-    var snap = {}, snapTexto = {}, n = 0;
-    PERGUNTAS.forEach(function(p){
-      if (respostas[p.id]) { snap[p.id] = respostas[p.id]; snapTexto[p.id] = respostasTexto[p.id]; n++; }
-    });
-    if (n === 0) return;                                     // nada marcado ainda
-    var assinatura = JSON.stringify(snap);
-    if (assinatura === ultimoParcial) return;                // evita duplicar snapshot idêntico
+    if (concluido) return;
+    var payload = montarPayload({ event: "pesquisa_parcial", motivo: motivo || "saida", concluida: false });
+    if (payload.respondidas === 0) return;
+    var assinatura = JSON.stringify(payload.respostas);
+    if (assinatura === ultimoParcial) return;
     ultimoParcial = assinatura;
-
-    var payload = {
-      event: "pesquisa_parcial",
-      motivo: motivo || "saida",
-      concluida: false,
-      respondidas: n,
-      total: PERGUNTAS.length,
-      lead_nome: lead.nome,
-      lead_email: lead.email,
-      lead_telefone: lead.telefone,
-      transacao: lead.transacao,
-      respostas: snap,
-      respostas_texto: snapTexto
-    };
-    PERGUNTAS.forEach(function(p){ payload[p.id] = respostas[p.id] || ""; }); // achatado p/ GTM
     dl.push(payload);
   }
-
-  // visibilitychange (hidden) é o gatilho mais confiável de saída em mobile/desktop; pagehide é o reforço.
-  document.addEventListener("visibilitychange", function(){
-    if (document.visibilityState === "hidden") pushParcial("aba_oculta");
-  });
+  document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") pushParcial("aba_oculta"); });
   window.addEventListener("pagehide", function(){ pushParcial("saida_pagina"); });
 
   render();
