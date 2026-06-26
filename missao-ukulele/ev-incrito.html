@@ -17,7 +17,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ============================================================
   PÁGINA DE OBRIGADO — MISSÃO UKULELE (pós-pagamento / redirect do checkout)
   Fluxo de dados: CHECKOUT → PESQUISA (nesta página) → dataLayer → GTM → N8N → Supabase
-  Contingência (redundância): a página manda o MESMO payload direto pro Google Sheets (Apps Script) via sendBeacon.
 
   COMO OS DADOS SAEM DAQUI (camada de captação):
   Tudo é empurrado pro window.dataLayer. No GTM você cria:
@@ -35,21 +34,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                        P6 (múltipla) = textos juntos por " | "; P7 = texto aberto.
                                        (o texto do "Outros" já vem concatenado no próprio campo, ex.: pesquisa_p5 = "Outros: Bossa nova")
                                      + respostas{} = os CÓDIGOS (backup técnico) · respostas_texto{} = os textos.
-   4) (removido) "pesquisa_pulada" — a pesquisa agora é OBRIGATÓRIA; não há mais "Pular".
-   5) event: "pesquisa_parcial"   → se a pessoa SAIR/esconder a aba sem terminar. Captura o que já
-                                     foi respondido (inclusive opção marcada sem clicar "Próximo").
-                                     Campos: motivo, respondidas, total, concluida:false, lead_*,
-                                     transacao, respostas{}, + pesquisa_p1..p7 (achatado).
+   4) (removido) "pesquisa_pulada" — não há "Pular" dentro da pesquisa; quem não quiser responder
+                                     usa o botão de WhatsApp no fim (sem disparar evento).
+   5) event: "pesquisa_parcial"   → dispara no CLIQUE do botão de WhatsApp (motivo "clicou_whatsapp"),
+                                     com o que já foi respondido até ali. Campos: motivo, respondidas,
+                                     total, concluida:false, lead_*, transacao, respostas{}, + pesquisa_p1..p7.
 
   TODOS os eventos carregam a CHAVE DE CRUZAMENTO. São duas:
    • lead_email  (principal) — normalizado (trim + minúsculas) p/ casar 1:1 com o e-mail de compra.
    • transacao   (secundária) — código da transação da Hotmart (transaction/tid), caso o e-mail
                                  não venha na URL. No N8N, cruzar por lead_email e, no fallback, por transacao.
 
-  CAPTURA PARCIAL — entrega na saída: cada pergunta já dispara "pesquisa_resposta" ao avançar, então
-  P1 e P2 ficam salvas mesmo que a pessoa abandone na P3. O "pesquisa_parcial" é o reforço no fechamento.
-  Para a tag não se perder no unload, configure no GTM o envio ao N8N via navigator.sendBeacon
-  (ou fetch com keepalive:true) nesses eventos de saída.
+  CAPTURA PARCIAL — sem sendBeacon: o "pesquisa_parcial" dispara no CLIQUE do WhatsApp. O botão abre em
+  nova aba (target="_blank"), então a página continua viva e a tag do GTM tem tempo de enviar pro N8N.
+  No GTM: dispare a tag do N8N em "pesquisa_concluida" e "pesquisa_parcial". No N8N: upsert por transaction.
 
   NOME / EMAIL / TELEFONE vêm do CHECKOUT pela querystring da URL de obrigado.
   Configure a URL de redirecionamento na Hotmart, ex.:
@@ -60,7 +58,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   TROCAR ANTES DE PUBLICAR:
    • GRUPO WHATSAPP: https://chat.whatsapp.com/HhsixRBrwuyI4J57ZTkj55  (procure por SEU_LINK)
    • Conferir os nomes dos parâmetros da querystring (CFG.paramKeys).
-   • CONTINGÊNCIA SHEETS: cole a URL do App da Web em CFG.sheetsUrl (procure por COLE_AQUI). Vazio = desligado.
   ============================================================
 -->
 
@@ -201,10 +198,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <!-- 03 · Botão WhatsApp (aparece só depois de concluir a pesquisa obrigatória) -->
-  <div class="card" id="wa-card" style="text-align:center;display:none">
-    <h2 style="margin-bottom:14px">Seu último passo</h2>
-    <a class="wa" id="wa" href="https://chat.whatsapp.com/HhsixRBrwuyI4J57ZTkj55">
+  <!-- 03 · Botão WhatsApp (sempre visível — quem não quiser responder a pesquisa entra direto) -->
+  <div class="card" id="wa-card" style="text-align:center">
+    <h2 style="margin-bottom:6px">Seu último passo</h2>
+    <p class="hint" style="margin-bottom:16px">Responder a pesquisa acima leva 1 minutinho e me ajuda a preparar suas aulas. Mas se preferir, já pode entrar no grupo:</p>
+    <a class="wa" id="wa" target="_blank" rel="noopener" href="https://chat.whatsapp.com/HhsixRBrwuyI4J57ZTkj55">
       <svg viewBox="0 0 24 24" fill="#06351c"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
       Entrar no grupo do WhatsApp
     </a>
@@ -225,8 +223,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var CFG = {
     whatsapp: "https://chat.whatsapp.com/HhsixRBrwuyI4J57ZTkj55",
     redirectSeconds: 15,
-    // CONTINGÊNCIA: URL do App da Web do Apps Script (Google Sheets). Vazio "" = desligado.
-    sheetsUrl: "COLE_AQUI_A_URL_DO_APP_DA_WEB",
     // chaves possíveis na querystring vinda do checkout (Hotmart). Usa a 1ª que existir.
     paramKeys: {
       nome:      ["nome","name","first_name","full_name","buyer_name"],
@@ -484,20 +480,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return out;
   }
 
-  // CONTINGÊNCIA: manda o MESMO payload direto pro Google Sheets (independente do GTM/N8N).
-  function enviarSheets(payload){
-    if (!CFG.sheetsUrl || CFG.sheetsUrl.indexOf("COLE_") === 0) return; // não configurado
-    try {
-      var p = JSON.parse(JSON.stringify(payload));
-      p.path = location.pathname;
-      navigator.sendBeacon(CFG.sheetsUrl, new Blob([JSON.stringify(p)], { type: "text/plain;charset=UTF-8" }));
-    } catch (e) {}
-  }
-
   function finalizar(){
     var payload = montarPayload({ event: "pesquisa_concluida", concluida: true });
     dl.push(payload);
-    enviarSheets(payload);
     elProg.style.width = "100%";
     concluir();
   }
@@ -510,7 +495,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     armarWhats();
   }
 
-  /* Captura PARCIAL: salva o que já foi respondido se a pessoa sair/esconder a aba */
+  /* Captura PARCIAL: dispara no CLIQUE do WhatsApp, com o que já foi respondido até ali */
   function pushParcial(motivo){
     if (concluido) return;
     var payload = montarPayload({ event: "pesquisa_parcial", motivo: motivo || "saida", concluida: false });
@@ -519,10 +504,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (assinatura === ultimoParcial) return;
     ultimoParcial = assinatura;
     dl.push(payload);
-    enviarSheets(payload);
   }
-  document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") pushParcial("aba_oculta"); });
-  window.addEventListener("pagehide", function(){ pushParcial("saida_pagina"); });
+  // Envia o PARCIAL no CLIQUE do WhatsApp. Como o botão abre em nova aba (target="_blank"),
+  // a página de obrigado continua viva e a tag do GTM dispara/chega no N8N — sem sendBeacon.
+  document.getElementById("wa").addEventListener("click", function(){ pushParcial("clicou_whatsapp"); });
 
   render();
 
