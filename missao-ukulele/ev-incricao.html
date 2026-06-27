@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   - Sem formulário, sem popup, sem pergunta. Só narrativa de venda.
   - TROCAR ANTES DE PUBLICAR:
       1) PREÇO DO INGRESSO: hoje "R$ 47" (placeholder, benchmark R$47-97). Procure por data-price.
-      2) CHECKOUT: https://pay.hotmart.com/U106499999P?checkoutMode=10  (procure por SEU_LINK)
+      2) CHECKOUT: https://pay.hotmart.com/U106499999P?checkoutMode=10  (já configurado)
       3) PROVA SOCIAL: blocos marcados [INSERIR PROVA REAL].
   - Cores e fontes seguem o brandbook (índigo + rosa-coral; laranja só nos CTAs).
   ============================================================
@@ -177,7 +177,13 @@ footer{padding:40px 0;border-top:1px solid var(--line);text-align:center;color:v
   .proof-grid{grid-template-columns:1fr}
   .aula{flex-direction:column;align-items:flex-start;gap:10px}
   .aula .day{display:flex;gap:10px;align-items:center;width:auto}
-  .cd{font-size:12px;gap:8px}
+.topbar .wrap{gap:10px;padding-top:9px;padding-bottom:9px}
+  .brand{font-size:16px;gap:8px}
+  .brand img{height:26px}
+  .cd{width:100%;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:12px;row-gap:9px;font-size:12px}
+  .cd>span:first-child{grid-column:1 / -1;line-height:1.35}
+  .cd .clock{grid-column:1;font-size:16px;white-space:nowrap}
+  .cd .cta.sm{grid-column:2;width:100%;padding:13px 10px}
   .hero h1{font-size:40px}
 }
 </style>
@@ -281,7 +287,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="info"><h3>+100 músicas com 4 acordes e 1 batida coringa</h3><p>Com poucos acordes você abre um repertório gigante, e vê o caminho pra nunca mais travar.</p></div>
     </div>
     <div class="aula">
-      <div class="day"><div class="d">Sábado</div><div class="dt">11/07</div><div class="dur">opcional</div></div>
+      <div class="day"><div class="d">Sábado</div><div class="dt">11/07</div><div class="dur">ao vivo</div></div>
       <div class="info"><h3>Tira-dúvidas</h3><p>Um encontro extra pra você não ficar com nenhuma pergunta antes do grande dia.</p></div>
     </div>
     <div class="aula pitch">
@@ -425,7 +431,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <details><summary>De qual ukulele eu preciso?</summary><div class="ans">Qualquer ukulele soprano, concerto ou tenor serve. Se ainda não tem, não se preocupe. Assim que entrar na plataforma, você vai receber um guia super completo sobre Qual Ukulele Comprar, com recomendações de marcas e modelos.</div></details>
       <details><summary>Quanto tempo por dia eu preciso dedicar?</summary><div class="ans">As aulas terão duração de cerca de 45 minutos a 1 hora. Além disso, você precisa se dedicar para entregar as tarefas no dia e aguardar a próxima aula com a tarefa concluída.</div></details>
       <details><summary>Até quando preciso enviar os vídeos para o Mateus analisar?</summary><div class="ans">Você tem até domingo para finalizar as tarefas. A ideia, na verdade, é que você envie a cada aula, pra manter a sua evolução de acordo com o curso. E pode mandar a qualquer momento do dia.</div></details>
-      <details><summary>A Missão é o Clube do Ukulele?</summary><div class="ans">Não. A Missão é o desafio de 6 dias. No último dia, pra quem quiser continuar evoluindo, o Mateus mostra como dar o próximo passo. Isso é opcional. Primeiro vem curtir com a gente essa evolução bem legal que você vai ter no Ukulele. Depois você avalia se faz sentido para você.</div></details>
+      <details><summary>A Missão é o Clube do Ukulele?</summary><div class="ans">Não. A Missão é o desafio de 6 dias. No último dia, pra quem quiser continuar evoluindo, o Mateus mostra como dar o próximo passo. Primeiro vem curtir com a gente essa evolução bem legal que você vai ter no Ukulele. Depois você avalia se faz sentido para você.</div></details>
     </div>
     <div style="text-align:center;margin-top:34px"><a class="cta big" href="https://pay.hotmart.com/U106499999P?checkoutMode=10">Entrar na Missão Ukulele</a><div class="sub-cta">Começa 06/07, às 7h. Garanta sua vaga antes que feche.</div></div>
   </div>
