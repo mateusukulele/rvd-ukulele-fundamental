@@ -280,17 +280,8 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 body.locked .gate{display:none!important}
 body.locked .sticky{display:none!important}
 body.locked .wa{display:none!important}
-body:not(.locked) .lock-note{display:none}
 @keyframes gateIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 body.unlocked .gate{animation:gateIn .6s ease both}
-.lock-note{display:flex;flex-direction:column;align-items:center;gap:.9rem;text-align:center;max-width:34rem;margin-top:.5rem;color:var(--muted)}
-.lock-note p{font-size:clamp(.92rem,2.3vw,1.06rem);font-weight:600;line-height:1.5}
-.lock-note b{color:var(--coral-deep)}
-.lock-dots{display:flex;gap:.5rem}
-.lock-dots span{width:.6rem;height:.6rem;border-radius:999px;background:var(--purple);opacity:.35;animation:dot 1.4s ease-in-out infinite}
-.lock-dots span:nth-child(2){animation-delay:.2s}
-.lock-dots span:nth-child(3){animation-delay:.4s}
-@keyframes dot{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-5px)}}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -336,11 +327,6 @@ body.unlocked .gate{animation:gateIn .6s ease both}
         s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a441e7f46cd7a90d105783a/v4/player.js";
         s.async=true;document.head.appendChild(s);
       </script>
-    </div>
-
-    <div class="lock-note" id="lock-note">
-      <div class="lock-dots"><span></span><span></span><span></span></div>
-      <p>🎬 Assista à apresentação até o fim. Ao terminar, <b>liberamos aqui embaixo</b> a sua condição especial de acesso ao Ukulele Fundamental.</p>
     </div>
 
     <div class="cta-block gate">
