@@ -29,8 +29,6 @@
 <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a441e7f46cd7a90d105783a/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
 <link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a441c6ae0432f7daecbee89/main.m3u8" as="fetch">
-<link rel="preconnect" href="https://cdn.converteai.net" crossorigin>
-<link rel="preconnect" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -693,11 +691,8 @@ document.querySelectorAll('.vid').forEach(function(el){
 <script>
 window.dataLayer=window.dataLayer||[];
 window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'ukulele-fundamental-uxui'});
-(function(){var done=false;function g(){if(done){return;}done=true;(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');}
-/* Carrega o GTM cedo (dado de anúncio em tempo hábil) mas fora do caminho crítico:
-   dispara na 1ª interação (clique no play / scroll) OU quando a thread fica ociosa, com teto de 2s. */
-['pointerdown','keydown','touchstart','scroll'].forEach(function(ev){addEventListener(ev,g,{once:true,passive:true});});
-if('requestIdleCallback' in window){requestIdleCallback(g,{timeout:2000});}else{setTimeout(g,1200);}})();
+(function(){function g(){(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');}
+if(document.readyState!=='loading'){setTimeout(g,1500);}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(g,1500);},{once:true});}})();
 </script>
 
 </body>
