@@ -379,9 +379,11 @@ header.hero-section{background:#2A1854;color:#fff;width:100%;border-radius:0 0 4
 
 
 /* CTA helper - subtexto verde abaixo do botão */
-.cta-coupon-note{display:flex;align-items:center;justify-content:center;gap:.375rem;margin-top:.875rem;font-size:12px;font-weight:700;color:#EA546C}
-.cta-coupon-note svg{width:.875rem;height:.875rem;flex-shrink:0}
+.cta-coupon-note{display:flex;align-items:flex-start;justify-content:center;gap:.4rem;margin-top:.875rem;font-size:12px;font-weight:600;color:#EA546C;text-align:left;line-height:1.35}
+.cta-coupon-note svg{width:.8rem;height:.8rem;flex-shrink:0;margin-top:2px}
 .cta-coupon-note.dark{color:#F4A9B4}
+.cta-notes{display:flex;flex-direction:column;gap:.3rem;margin-top:.55rem}
+.cta-notes .cta-coupon-note{margin-top:0}
 @media (min-width:768px){.cta-coupon-note{font-size:13px}}
 
 
@@ -627,12 +629,6 @@ body.modal-open .sticky-cta{transform:translateY(115%)!important}
     <!-- ===== FIM PLAYER VTURB ===== -->
 
 
-    <span class="coupon-tag">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
-      Cupom de R$ 200 OFF já aplicado para você
-    </span>
-
-
     <div class="hero-cta-wrap">
       <button onclick="abrirCaptura()" class="btn-pulsar hero-cta cta-link">Quero acesso imediato e vitalício</button>
       <div class="hero-price">
@@ -640,9 +636,15 @@ body.modal-open .sticky-cta{transform:translateY(115%)!important}
         <span class="price-old hero-price-old">R$ 597,00</span>
         <span class="hero-price-new">Com cupom: <b>12x R$ 41</b> ou R$ 397 à vista</span>
       </div>
-      <div class="cta-coupon-note dark" style="color:#F4A9B4">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        Desconto limitado e exclusivo desta página, aplicado direto no checkout
+      <div class="cta-notes">
+        <div class="cta-coupon-note dark">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Cupom de R$ 200 OFF já aplicado para você
+        </div>
+        <div class="cta-coupon-note dark">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Desconto limitado e exclusivo desta página, aplicado direto no checkout
+        </div>
       </div>
     </div>
   </div>
@@ -1105,7 +1107,7 @@ var paises=[['55','br','Brasil (+55)'],['1','us','EUA / Canadá (+1)'],['351','p
 
 
 // URL do checkout Hotmart
-var HOTMART_URL='https://pay.hotmart.com/P104484680Y?off=2upo8fye&checkoutMode=10&offDiscount=UKE-VITALICIO&hideBillet=1';
+var HOTMART_URL='https://pay.hotmart.com/F106563581S?off=di3klttp&checkoutMode=10&offDiscount=UKE-VITALICIO&hideBillet=1';
 
 
 // ============================
@@ -1562,15 +1564,21 @@ window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'ukul
 (function(){
   var bar=document.getElementById('sticky-cta'),hero=document.querySelector('header.hero-section');
   if(!bar||!hero)return;
+  var ctas=document.querySelectorAll('.final-wrap .cta-btn');
+  var finalCta=ctas.length?ctas[ctas.length-1]:null;
   var ticking=false;
+  function setShown(on){
+    if(on===bar.classList.contains('show'))return;
+    bar.classList.toggle('show',on);
+    document.body.classList.toggle('sticky-on',on);
+    bar.setAttribute('aria-hidden',on?'false':'true');
+  }
   function update(){
     ticking=false;
-    var trigger=hero.offsetHeight-80;
-    if(window.scrollY>trigger){
-      if(!bar.classList.contains('show')){bar.classList.add('show');document.body.classList.add('sticky-on');bar.setAttribute('aria-hidden','false');}
-    } else if(bar.classList.contains('show')){
-      bar.classList.remove('show');document.body.classList.remove('sticky-on');bar.setAttribute('aria-hidden','true');
-    }
+    var pastHero=window.scrollY>hero.offsetHeight-80;
+    // esconde quando o CTA final entra na tela (evita botão duplicado no rodapé)
+    var finalVisible=finalCta&&finalCta.offsetParent!==null&&finalCta.getBoundingClientRect().top<window.innerHeight-40;
+    setShown(pastHero&&!finalVisible);
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
   update();
