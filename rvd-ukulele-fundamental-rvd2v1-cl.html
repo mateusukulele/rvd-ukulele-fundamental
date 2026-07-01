@@ -288,15 +288,30 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
-<body class="locked">
+<body>
 <script>
-/* Libera o conteúdo abaixo do vídeo após 19 min NA PÁGINA (persiste entre reloads). */
+/* GATE da VSL — libera o conteúdo abaixo do vídeo após 19 min NA PÁGINA (persiste entre reloads).
+   À PROVA DE ERRO (fail-open): a trava só é aplicada SE o JS rodar. Com JS desligado ou erro no
+   script, a página NUNCA fica presa fechada — mostra a oferta. Nunca abre cedo com JS ligado.
+   Verifica pelo relógio (a cada 3s + quando a aba volta ao foco), então funciona mesmo em 2º plano. */
 (function(){
-  var MS=19*60*1000, K='uke_unlock_at', now=Date.now(), at=0;
-  try{ at=parseInt(localStorage.getItem(K)||'0',10)||0; if(!at){ at=now+MS; localStorage.setItem(K,at); } }catch(e){ at=now+MS; }
-  function unlock(){ document.body.classList.remove('locked'); document.body.classList.add('unlocked'); }
-  var rem=at-now;
-  if(rem<=0){ unlock(); } else { setTimeout(unlock, rem); }
+  var b=document.body; b.classList.add('locked'); /* trava antes de pintar o conteúdo, sem "piscar" */
+  var MS=19*60*1000, K='uke_unlock_at', qs=location.search;
+  /* Atalhos de teste (não afetam o visitante real, que chega sem parâmetro):
+     ?unlock=1 → abre na hora | ?reset=1 → zera e recomeça os 19 min */
+  if(/[?&]reset=1/.test(qs)){ try{ localStorage.removeItem(K); }catch(e){} }
+  if(/[?&]unlock=1/.test(qs)){ b.classList.remove('locked'); b.classList.add('unlocked'); return; }
+  var at;
+  try{ at=parseInt(localStorage.getItem(K)||'0',10)||0; if(!at){ at=Date.now()+MS; localStorage.setItem(K,String(at)); } }catch(e){ at=Date.now()+MS; }
+  var done=false, iv=null;
+  function check(){
+    if(done){ return; }
+    if(Date.now()>=at){ done=true; if(iv){clearInterval(iv);} b.classList.remove('locked'); b.classList.add('unlocked'); }
+  }
+  iv=setInterval(check, 3000);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden){ check(); } });
+  window.addEventListener('focus', check);
+  check();
 })();
 </script>
 
