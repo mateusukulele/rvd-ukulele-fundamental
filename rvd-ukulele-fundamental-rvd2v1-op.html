@@ -28,7 +28,7 @@
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
 <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a46c0dbaa82a3f31adc7636/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a441c6ae0432f7daecbee89/main.m3u8" as="fetch">
+<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a46bf645a7995d481ae09fa/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -237,7 +237,7 @@ body.sticky-on .wa{bottom:5.3rem}
 .wa svg{width:1.7rem;height:1.7rem;fill:currentColor}
 
 /* Modal */
-dialog.modal{width:min(30rem,92vw);border:0;border-radius:24px;padding:0;background:#fff;color:var(--text);box-shadow:0 30px 70px -20px rgba(0,0,0,.5)}
+dialog.modal{width:min(30rem,92vw);max-height:92vh;overflow-y:auto;border:0;border-radius:24px;padding:0;background:#fff;color:var(--text);box-shadow:0 30px 70px -20px rgba(0,0,0,.5)}
 dialog.modal::backdrop{background:rgba(42,24,84,.6);backdrop-filter:blur(4px)}
 .modal-bd{padding:clamp(1.4rem,4vw,2rem);position:relative}
 .modal-x{position:absolute;top:.8rem;right:.8rem;width:2.1rem;height:2.1rem;border:0;border-radius:999px;background:var(--cream);color:var(--muted);display:grid;place-items:center;cursor:pointer}
@@ -251,12 +251,12 @@ dialog.modal::backdrop{background:rgba(42,24,84,.6);backdrop-filter:blur(4px)}
 .field input{width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--cream);font:inherit;font-size:15px;color:var(--ink)}
 .field input:focus{outline:0;border-color:var(--purple);background:#fff}
 .phone{display:flex;gap:.5rem}
-.phone select{flex-shrink:0;border:1px solid var(--line);border-radius:12px;background:var(--cream);font:inherit;font-size:14px;color:var(--ink);padding:.85rem .6rem}
+.phone select{flex-shrink:0;max-width:42%;border:1px solid var(--line);border-radius:12px;background:var(--cream);font:inherit;font-size:13.5px;color:var(--ink);padding:.85rem .5rem}
 .phone select:focus{outline:0;border-color:var(--purple)}
-.phone input{flex:1}
-.radios{display:flex;gap:1.2rem;padding:.2rem .3rem}
-.radios label{display:flex;align-items:center;gap:.4rem;font-size:14px;color:var(--ink);cursor:pointer;text-transform:none;font-weight:500}
-.radios input{accent-color:var(--purple)}
+.phone input{flex:1;min-width:0}
+.radios{display:flex;flex-wrap:wrap;gap:1.5rem;padding:.2rem .3rem}
+.radios label{display:inline-flex;align-items:center;gap:.5rem;font-size:14px;color:var(--ink);cursor:pointer;text-transform:none;font-weight:500}
+.radios input{width:1.15rem;height:1.15rem;flex-shrink:0;margin:0;accent-color:var(--purple)}
 .hint{font-size:11px;color:#B26B00;font-weight:600;margin:.35rem 0 0 .3rem;display:none}
 .hint.on{display:block}
 .err{color:#D93A3A;font-size:11px;font-weight:600;margin:.3rem 0 0 .3rem;display:none}
