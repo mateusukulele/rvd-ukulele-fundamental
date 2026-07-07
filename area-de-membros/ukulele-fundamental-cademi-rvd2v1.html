@@ -654,6 +654,9 @@ document.getElementById('lead').addEventListener('submit',function(e){
   var btn=document.getElementById('go'); btn.textContent='Liberando\u2026'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
   window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other'});
+  // RELAY para a pagina-pai (Cademi): dentro do iframe o GTM nao dispara. O codigo custom da
+  // Cademi recebe estes dados e aciona o submit_cadastro no parent (first-party), onde funciona.
+  try{ if(window.parent && window.parent!==window){ window.parent.postMessage({__cdu:'lead', nome:nome, email:email, wa:waIn.value, ddi:ddi.value}, '*'); } }catch(_){}
   var url;
   try{
     url=new URL(HOTMART_URL);
