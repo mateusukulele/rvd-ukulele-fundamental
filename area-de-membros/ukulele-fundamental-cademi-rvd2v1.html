@@ -41,8 +41,8 @@
 
 <style>
 :root{
-  --ink:#2A1854;--purple:#423066;--coral:#EA546C;--coral-deep:#C9364F;
-  --cream:#FBF7F2;--card:#fff;--text:#463F58;--muted:#6E687F;--line:#ECE6F2;
+  --ink:#2A1854;--purple:#423066;--coral:#EA546C;--coral-deep:#C9364F;--coral-soft:#FBEAEC;
+  --cream:#F2EEF9;--card:#fff;--text:#463F58;--muted:#6E687F;--line:#ECE6F2;
   --cta:#0FA968;--cta-deep:#0B8A55;--wa:#25D366;
   --maxw:1120px;--gap:clamp(1rem,2.5vw,1.5rem);--r:20px;
 }
@@ -63,6 +63,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .section{padding-block:clamp(3rem,7vw,5.5rem)}
 .surface-white{background:var(--card)}
 .surface-cream{background:var(--cream)}
+.surface-soft{background:var(--coral-soft)}
 .surface-dark{background:var(--ink);color:#E7E1F2}
 .surface-dark h2,.surface-dark h3{color:#fff}
 .hairline{border-top:1px solid var(--line)}
@@ -89,7 +90,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .note svg{width:.85rem;height:.85rem;flex-shrink:0;margin-top:3px;color:var(--cta)}
 
 /* HERO (fundo claro) */
-.hero{background:linear-gradient(180deg,#F4EFFA 0%,#FBF7F2 100%);border-bottom:1px solid var(--line);border-radius:0 0 34px 34px;overflow:hidden}
+.hero{background:linear-gradient(180deg,#EFE9FB 0%,#F5F2FB 100%);border-bottom:1px solid var(--line);border-radius:0 0 34px 34px;overflow:hidden}
 .hero .container{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(.85rem,2vw,1.15rem);max-width:56rem;padding-block:clamp(1.6rem,4vw,3rem) clamp(2.4rem,5vw,3.6rem)}
 .badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(234,84,108,.12);border:1px solid rgba(234,84,108,.35);color:var(--coral-deep);font-size:clamp(10px,2vw,12px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .85rem;border-radius:999px}
 .hero h1{font-size:clamp(1.55rem,5.2vw,2.9rem);font-weight:900}
@@ -228,12 +229,6 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .sticky-tx span{color:#F6A9B4;font-size:12.5px;font-weight:600}
 .sticky .btn{width:100%}
 @media (min-width:720px){.sticky-in{justify-content:space-between}.sticky-tx{display:flex}.sticky .btn{width:auto;flex-shrink:0}}
-body.sticky-on .wa{bottom:5.3rem}
-
-/* WhatsApp */
-.wa{position:fixed;right:1rem;bottom:1rem;z-index:70;width:3.2rem;height:3.2rem;border-radius:999px;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px -6px rgba(37,211,102,.55);transition:transform .25s,bottom .3s}
-.wa:hover{transform:scale(1.08);background:#128C7E}
-.wa svg{width:1.7rem;height:1.7rem;fill:currentColor}
 
 /* Modal */
 dialog.modal{width:min(30rem,92vw);max-height:92vh;overflow-y:auto;border:0;border-radius:24px;padding:0;background:#fff;color:var(--text);box-shadow:0 30px 70px -20px rgba(0,0,0,.5)}
@@ -334,6 +329,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>6 corre&#231;&#245;es em v&#237;deo do professor</b>: voc&#234; grava 6 atividades e o Mateus responde cada uma em v&#237;deo, olhando o seu caso.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Aulas curtas</b> para caber em 20 min/dia, com m&#250;sica real j&#225; na Primeira Etapa.</p></li>
     </ul>
+    <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero acesso imediato e vital&#237;cio</button></div>
   </div>
 </section>
 
@@ -347,6 +343,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <div class="step"><img src="https://cursos.comotocarukulele.com/img/3c.webp" alt="Etapa 3 do curso de ukulele" width="128" height="128" loading="lazy" decoding="async"><span class="n">Etapa 3</span><h3>Soltando as M&#227;os</h3><p>Trocas de acorde sem engasgar, acordes de tr&#234;s dedos e as batidas coringas. A m&#250;sica sai inteira, mais redonda.</p></div>
       <div class="step"><img src="https://cursos.comotocarukulele.com/img/4b.webp" alt="Etapa 4 do curso de ukulele" width="128" height="128" loading="lazy" decoding="async"><span class="n">Etapa 4</span><h3>Os 4 Acordes M&#225;gicos</h3><p>Quais s&#227;o os 4 acordes, por que abrem tantas portas e as sequ&#234;ncias cl&#225;ssicas. Daqui pra frente, nunca falta o que tocar.</p></div>
     </div>
+    <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero come&#231;ar do zero hoje</button></div>
   </div>
 </section>
 
@@ -374,6 +371,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <button type="button" data-src="https://cursos.comotocarukulele.com/img/Depoimento%20Marcelo.webp" aria-label="Ampliar depoimento do aluno Marcelo"><img src="https://cursos.comotocarukulele.com/img/Depoimento%20Marcelo.webp" alt="Depoimento do aluno Marcelo sobre o curso Ukulele Fundamental" width="1080" height="1080" loading="lazy" decoding="async"></button>
       <button type="button" data-src="https://cursos.comotocarukulele.com/img/Depoimento%20Maria.webp" aria-label="Ampliar depoimento da aluna Maria"><img src="https://cursos.comotocarukulele.com/img/Depoimento%20Maria.webp" alt="Depoimento da aluna Maria sobre o curso Ukulele Fundamental" width="1080" height="1080" loading="lazy" decoding="async"></button>
     </div>
+    <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero resultados como esses</button></div>
   </div>
 </section>
 
@@ -412,12 +410,13 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 </section>
 
 <!-- Garantia -->
-<section class="section surface-cream cv">
+<section class="section surface-soft cv">
   <div class="container">
     <div class="guarantee">
       <div class="seal">&#128737;&#65039;</div>
       <div class="gc"><span class="eyebrow" style="margin-bottom:.3rem">100% livre de risco</span><h2>Garantia incondicional de 14 dias</h2><p>Voc&#234; entra no curso, testa o m&#233;todo e envia suas primeiras atividades. Se por qualquer motivo n&#227;o gostar, devolvemos 100% do seu dinheiro &#8212; sem letras mi&#250;das e sem fric&#231;&#227;o. O risco &#233; todo nosso.</p></div>
     </div>
+    <div class="cta-center"><button class="btn" onclick="openCheckout()">Come&#231;ar sem risco por 14 dias</button></div>
   </div>
 </section>
 
@@ -434,6 +433,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <details><summary>Ainda n&#227;o tenho ukulele. Consigo come&#231;ar?</summary><div class="a">Sim. Logo no in&#237;cio o Mateus te ajuda a escolher o seu primeiro ukulele, sem gastar errado, e j&#225; garante o instrumento certo pra voc&#234;.</div></details>
       <details><summary>O acesso ao curso &#233; por tempo limitado?</summary><div class="a">As aulas s&#227;o vital&#237;cias &#8212; voc&#234; segue no seu ritmo e revisita quando quiser. Os tr&#234;s b&#244;nus (corre&#231;&#227;o em v&#237;deo, biblioteca e workshop de canto) ficam liberados por 1 ano.</div></details>
     </div>
+    <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero garantir meu acesso</button></div>
   </div>
 </section>
 
@@ -456,11 +456,6 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <button class="btn" onclick="openCheckout()">Quero acesso imediato e vital&#237;cio</button>
   </div>
 </div>
-
-<!-- WhatsApp -->
-<a class="wa" href="https://wa.me/553198585286?text=Oi!%20Tenho%20interesse%20no%20curso%20Ukulele%20Fundamental%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>
 
 <!-- Lightbox depoimentos -->
 <dialog class="lightbox" id="lightbox" aria-label="Depoimento ampliado">
