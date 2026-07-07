@@ -554,23 +554,24 @@ function montaUrlHotmart(nome, email, tel, uid){
   return url;
 }
 
-// abre o checkout FORA do iframe; se n\u00e3o estiver em iframe, window.top === window
+// abre o checkout em NOVA ABA: a pagina do curso continua aberta e viva, entao o GTM
+// consegue enviar o evento antes de a pagina sair (era esse o problema dentro da Cademi).
+// window.open precisa ser chamado no mesmo clique (sincrono), senao o navegador bloqueia a aba.
+// Se por acaso a aba for bloqueada, cai para trocar a pagina como fallback.
 function irParaCheckout(url){
-  try{ window.top.location.href = url; }
-  catch(_){ location.href = url; }
+  var w = window.open(url, '_blank');
+  try{ if(w){ w.opener=null; } }catch(_){}
+  if(!w){ try{ window.top.location.href = url; }catch(_){ location.href = url; } }
 }
 
 function irDiretoCademi(){
-  // mesmo esquema de dataLayer da pagina original, disparado em segundo plano (sem popup).
-  // Dentro do iframe da Cademi, sair na hora matava o evento antes do GTM enviar.
-  // Por isso esperamos o GTM confirmar (eventCallback) antes de redirecionar, com teto de 2s.
+  // aluno logado: sem popup visivel, ja pre-preenchido. Dispara o mesmo evento da pagina
+  // original e abre o checkout em nova aba. Como a pagina do curso continua aberta e viva,
+  // o GTM envia o evento normalmente (nao sai da pagina no meio do envio).
   var ddiC = (CADEMI.tel.length>11 && CADEMI.tel.indexOf('55')===0) ? '55' : 'other';
-  var destino = montaUrlHotmart(CADEMI.nome, CADEMI.email, CADEMI.tel, CADEMI.uid);
-  var foi=false;
-  function seguir(){ if(foi) return; foi=true; irParaCheckout(destino); }
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:CADEMI.nome,lead_email:CADEMI.email,lead_phone:CADEMI.tel,lead_ddi:ddiC,eventCallback:seguir,eventTimeout:2000});
-  setTimeout(seguir, 2000);
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:CADEMI.nome,lead_email:CADEMI.email,lead_phone:CADEMI.tel,lead_ddi:ddiC});
+  irParaCheckout(montaUrlHotmart(CADEMI.nome, CADEMI.email, CADEMI.tel, CADEMI.uid));
 }
 
 function openCheckout(){
@@ -646,7 +647,9 @@ document.getElementById('lead').addEventListener('submit',function(e){
     var uid=CADEMI.uid || cookie('user_id'); if(uid) url.searchParams.set('xcod',uid);
     url=url.toString();
   }catch(_){ url=HOTMART_URL; }
-  setTimeout(function(){ irParaCheckout(url); },400);
+  irParaCheckout(url);
+  try{ dlg.close(); }catch(_){}
+  btn.textContent='Ir para o pagamento'; btn.disabled=false;
 });
 
 /* Lightbox depoimentos (pop-up, sem sair da p\u00e1gina) */
