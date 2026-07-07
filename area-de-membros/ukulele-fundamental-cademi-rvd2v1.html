@@ -498,7 +498,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <h3 id="ckt">Falta muito pouco!</h3>
     <div class="modal-coupon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> Cupom de R$ 400 OFF j&#225; aplicado</div>
     <p class="sub">Preencha para garantir seu acesso ao Ukulele Fundamental.</p>
-    <form id="lead" novalidate>
+    <div id="lead">
       <div class="field"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Ex: Mateus Augusto" required><p class="err" id="e-nome">Insira nome e sobrenome.</p></div>
       <div class="field"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="hint" id="h-email">Corrigimos um poss&#237;vel erro de digita&#231;&#227;o. Confira se est&#225; certo.</p><p class="err" id="e-email">Verifique o e-mail.</p></div>
       <div class="field"><label for="wa">WhatsApp</label>
@@ -517,9 +517,9 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
         </div>
         <p class="err" id="e-wa">N&#250;mero com DDD (10 ou 11 d&#237;gitos).</p>
       </div>
-      <button class="btn btn--block" type="submit" id="go">Ir para o pagamento</button>
+      <button class="btn btn--block" type="button" id="go">Ir para o pagamento</button>
       <p class="secure"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Ambiente 100% seguro pela Hotmart</p>
-    </form>
+    </div>
   </div>
 </dialog>
 
@@ -583,18 +583,18 @@ function irDiretoCademi(){
   var ddiC = (CADEMI.tel.length>11 && CADEMI.tel.indexOf('55')===0) ? '55' : 'other';
   window.dataLayer=window.dataLayer||[];
   window.dataLayer.push({event:'lead_capture_uke',lead_name:CADEMI.nome,lead_email:CADEMI.email,lead_phone:CADEMI.tel,lead_ddi:ddiC});
-  dispararFormCademi();
+  dispararFormRastreio(CADEMI.nome, CADEMI.email, CADEMI.tel);
   irParaCheckout(montaUrlHotmart(CADEMI.nome, CADEMI.email, CADEMI.tel, CADEMI.uid));
 }
 
-// preenche o form oculto e dispara o submit para o listener do GTM (submit_cadastro).
-// Se o GTM ainda nao anexou o listener, tenta de novo por ate ~3s (isso e assincrono e
-// nao depende do clique; a aba do checkout ja abriu na hora).
-function dispararFormCademi(){
+// UNICO form de rastreio (ids lc-nome / lc-email / lc-tel). Os DOIS fluxos (aluno logado e
+// popup) preenchem e disparam o submit deste mesmo form, entao o GTM sempre le os mesmos ids.
+// Se o GTM ainda nao anexou o listener, tenta de novo por ate ~3s (assincrono, nao trava o clique).
+function dispararFormRastreio(nome, email, tel){
   var f=document.getElementById('lead-cademi');
   if(!f) return;
   var n=document.getElementById('lc-nome'), e=document.getElementById('lc-email'), t=document.getElementById('lc-tel');
-  if(n) n.value=CADEMI.nome; if(e) e.value=CADEMI.email; if(t) t.value=CADEMI.tel;
+  if(n) n.value=nome||''; if(e) e.value=email||''; if(t) t.value=tel||'';
   var tentativas=0;
   (function tenta(){
     if(f.getAttribute('data-gtm-listener-attached')==='true' || tentativas>=20){
@@ -649,8 +649,7 @@ emailIn.addEventListener('blur',function(){
 
 function cookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
 
-document.getElementById('lead').addEventListener('submit',function(e){
-  e.preventDefault();
+document.getElementById('go').addEventListener('click',function(){
   var nome=document.getElementById('nome').value.trim();
   var r=fixEmail(emailIn.value); if(r.c) emailIn.value=r.v;
   var email=emailIn.value.trim();
@@ -664,6 +663,8 @@ document.getElementById('lead').addEventListener('submit',function(e){
   var btn=document.getElementById('go'); btn.textContent='Liberando\u2026'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
   window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other'});
+  // aciona o gatilho do GTM pelo MESMO form de rastreio (lc-*) usado no fluxo do aluno logado
+  dispararFormRastreio(nome, email, (ddi.value||'')+tel);
   var url;
   try{
     url=new URL(HOTMART_URL);
@@ -680,6 +681,8 @@ document.getElementById('lead').addEventListener('submit',function(e){
   try{ dlg.close(); }catch(_){}
   btn.textContent='Ir para o pagamento'; btn.disabled=false;
 });
+// Enter em qualquer campo do popup aciona o botao (o popup nao e mais um <form>)
+['nome','email','wa'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('keydown',function(ev){if(ev.key==='Enter'){ev.preventDefault();document.getElementById('go').click();}});});
 
 /* Lightbox depoimentos (pop-up, sem sair da p\u00e1gina) */
 var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lb-img');
