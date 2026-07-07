@@ -242,8 +242,10 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 @media (min-width:720px){.sticky-in{justify-content:space-between}.sticky-tx{display:flex}.sticky .btn{width:auto;flex-shrink:0}}
 
 /* Modal */
-dialog.modal{width:min(30rem,92vw);max-height:92vh;overflow-y:auto;border:0;border-radius:24px;padding:0;background:#fff;color:var(--text);box-shadow:0 30px 70px -20px rgba(0,0,0,.5)}
-dialog.modal::backdrop{background:rgba(42,24,84,.6);backdrop-filter:blur(4px)}
+dialog.modal{width:min(30rem,92vw);max-height:92vh;overflow-y:auto;border:0;border-radius:24px;padding:0;background:#fff;color:var(--text);box-shadow:0 30px 70px -20px rgba(0,0,0,.5);position:absolute;margin:0;left:50%;transform:translateX(-50%);top:40px;z-index:120}
+dialog.modal::backdrop{background:transparent}
+#modal-backdrop{position:absolute;top:0;left:0;width:100%;background:rgba(42,24,84,.55);backdrop-filter:blur(3px);z-index:110;display:none}
+#modal-backdrop.on{display:block}
 .modal-bd{padding:clamp(1.4rem,4vw,2rem);position:relative}
 .modal-x{position:absolute;top:.8rem;right:.8rem;width:2.1rem;height:2.1rem;border:0;border-radius:999px;background:var(--cream);color:var(--muted);display:grid;place-items:center;cursor:pointer}
 .modal-x:hover{background:var(--line);color:var(--ink)}
@@ -482,7 +484,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <!-- Modal de captura (usado s&#243; quando N&#195;O h&#225; dados do aluno vindos da Cademi) -->
 <dialog class="modal" id="checkout" aria-labelledby="ckt">
   <div class="modal-bd">
-    <button class="modal-x" type="button" onclick="document.getElementById('checkout').close()" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <button class="modal-x" type="button" onclick="fecharModal()" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     <h3 id="ckt">Falta muito pouco!</h3>
     <div class="modal-coupon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> Cupom de R$ 400 OFF j&#225; aplicado</div>
     <p class="sub">Preencha para garantir seu acesso ao Ukulele Fundamental.</p>
@@ -577,9 +579,27 @@ function openCheckout(){
     if(num.length>11 && num.indexOf('55')===0){ ddi.value='55'; num=num.slice(2); }
     waIn.value=num; maskWa();
   }
-  dlg.showModal ? dlg.showModal() : dlg.setAttribute('open','');
+  // posiciona o popup ONDE o aluno clicou. Dentro do iframe da Cademi, o centro do dialog
+  // cairia no meio da pagina inteira (gigante), longe da tela visivel. _clickY = Y do clique.
+  var topo = (_clickY!=null) ? Math.max(16, _clickY - 90) : 40;
+  dlg.style.top = topo + 'px';
+  var _f=_fundo(); _f.style.height=document.documentElement.scrollHeight+'px'; _f.classList.add('on');
+  dlg.show ? dlg.show() : dlg.setAttribute('open','');
 }
-dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+// guarda a posicao do ultimo clique, para abrir o popup ali
+var _clickY = null;
+document.addEventListener('click', function(e){ if(typeof e.pageY==='number' && e.pageY) _clickY=e.pageY; }, true);
+// fundo escuro atras do popup (criado uma vez)
+var _bd;
+function _fundo(){
+  if(_bd) return _bd;
+  _bd=document.createElement('div'); _bd.id='modal-backdrop';
+  _bd.addEventListener('click',fecharModal);
+  document.body.appendChild(_bd);
+  return _bd;
+}
+function fecharModal(){ try{ dlg.close(); }catch(_){ dlg.removeAttribute('open'); } if(_bd) _bd.classList.remove('on'); }
+document.addEventListener('keydown',function(e){ if(e.key==='Escape' && dlg.open) fecharModal(); });
 
 function maskWa(){
   var v=waIn.value.replace(/\D/g,'');
@@ -647,7 +667,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
     url=url.toString();
   }catch(_){ url=HOTMART_URL; }
   irParaCheckout(url);
-  try{ dlg.close(); }catch(_){}
+  fecharModal();
   btn.textContent='Ir para o pagamento'; btn.disabled=false;
 });
 
