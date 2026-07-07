@@ -296,6 +296,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <input type="text" name="name" id="lc-nome" autocomplete="off" tabindex="-1">
     <input type="email" name="email" id="lc-email" autocomplete="off" tabindex="-1">
     <input type="tel" name="tel" id="lc-tel" autocomplete="off" tabindex="-1">
+    <button type="submit" tabindex="-1" aria-hidden="true" style="display:none"></button>
   </form>
 </div>
 
@@ -595,11 +596,15 @@ function dispararFormRastreio(nome, email, tel){
   if(!f) return;
   var n=document.getElementById('lc-nome'), e=document.getElementById('lc-email'), t=document.getElementById('lc-tel');
   if(n) n.value=nome||''; if(e) e.value=email||''; if(t) t.value=tel||'';
+  function enviar(){
+    // ENVIO REAL do form (igual a clicar no botao). onsubmit="return false" impede navegar.
+    try{ if(f.requestSubmit){ f.requestSubmit(); return; } }catch(_){}
+    try{ f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})); }catch(_){}
+  }
   var tentativas=0;
   (function tenta(){
-    if(f.getAttribute('data-gtm-listener-attached')==='true' || tentativas>=20){
-      try{ f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})); }catch(_){}
-    } else { tentativas++; setTimeout(tenta,150); }
+    if(f.getAttribute('data-gtm-listener-attached')==='true' || tentativas>=20){ enviar(); }
+    else { tentativas++; setTimeout(tenta,150); }
   })();
 }
 
