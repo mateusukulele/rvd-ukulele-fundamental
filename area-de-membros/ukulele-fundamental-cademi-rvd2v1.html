@@ -281,6 +281,12 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 </head>
 <body>
 
+<!-- Variaveis da Cademi: substituidas ao servir a pagina dinamica (ficam ocultas).
+     Fora da Cademi permanecem literais ({email}) e sao ignoradas pelo JS. -->
+<span id="cd-nome" style="display:none">{nome}</span>
+<span id="cd-nome-completo" style="display:none">{nome_completo}</span>
+<span id="cd-email" style="display:none">{email}</span>
+
 <!-- HERO (fundo claro) -->
 <header class="hero">
   <div class="container">
@@ -514,13 +520,15 @@ var dlg=document.getElementById('checkout');
    a Cademi injeta os dados do aluno logado como par\u00e2metros na URL do iframe.
    Refer\u00eancia: cuser_id, cuser_gratis, cuser_fname, cuser_name, cuser_email, cuser_phone, cuser_avatar */
 var _cq = new URLSearchParams(location.search);
+// le uma variavel HTML da Cademi (span oculto). Se ainda tiver '{', nao foi substituida -> ignora.
+function _cdVar(id){ var e=document.getElementById(id); var v=e?(e.textContent||'').trim():''; return (v && v.indexOf('{')<0) ? v : ''; }
 var CADEMI = {
-  nome:  _cq.get('cuser_name') || _cq.get('cuser_fname') || '',
-  email: _cq.get('cuser_email') || '',
+  nome:  _cq.get('cuser_name') || _cq.get('cuser_fname') || _cdVar('cd-nome-completo') || _cdVar('cd-nome') || '',
+  email: _cq.get('cuser_email') || _cdVar('cd-email') || '',
   tel:   (_cq.get('cuser_phone') || '').replace(/\D/g,''),
   uid:   _cq.get('cuser_id') || ''
 };
-// s\u00f3 pula o popup se temos o dado essencial (e-mail)
+// pula o popup se temos o dado essencial (e-mail), venha do parametro GET ou da variavel HTML da Cademi
 var TEM_DADOS_CADEMI = !!CADEMI.email;
 
 function montaUrlHotmart(nome, email, tel, uid){
@@ -553,11 +561,16 @@ function irParaCheckout(url){
 }
 
 function irDiretoCademi(){
-  // mesmo esquema de dataLayer da pagina original, disparado em segundo plano (sem popup)
+  // mesmo esquema de dataLayer da pagina original, disparado em segundo plano (sem popup).
+  // Dentro do iframe da Cademi, sair na hora matava o evento antes do GTM enviar.
+  // Por isso esperamos o GTM confirmar (eventCallback) antes de redirecionar, com teto de 2s.
   var ddiC = (CADEMI.tel.length>11 && CADEMI.tel.indexOf('55')===0) ? '55' : 'other';
+  var destino = montaUrlHotmart(CADEMI.nome, CADEMI.email, CADEMI.tel, CADEMI.uid);
+  var foi=false;
+  function seguir(){ if(foi) return; foi=true; irParaCheckout(destino); }
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:CADEMI.nome,lead_email:CADEMI.email,lead_phone:CADEMI.tel,lead_ddi:ddiC});
-  irParaCheckout(montaUrlHotmart(CADEMI.nome, CADEMI.email, CADEMI.tel, CADEMI.uid));
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:CADEMI.nome,lead_email:CADEMI.email,lead_phone:CADEMI.tel,lead_ddi:ddiC,eventCallback:seguir,eventTimeout:2000});
+  setTimeout(seguir, 2000);
 }
 
 function openCheckout(){
