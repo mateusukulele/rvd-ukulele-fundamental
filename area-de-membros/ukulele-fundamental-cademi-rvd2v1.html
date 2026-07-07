@@ -287,6 +287,18 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <span id="cd-nome-completo" style="display:none">{nome_completo}</span>
 <span id="cd-email" style="display:none">{email}</span>
 
+<!-- Form OCULTO so para o rastreio. O script do GTM anexa um listener de "submit" em
+     forms visiveis e dispara o evento submit_cadastro. Fica fora da tela (mas com
+     offsetParent != null, senao o GTM ignora). No fluxo do aluno logado preenchemos e
+     damos submit neste form, acionando o submit_cadastro sem mostrar popup. -->
+<div aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden">
+  <form id="lead-cademi" onsubmit="return false">
+    <input type="text" name="name" id="lc-nome" autocomplete="off" tabindex="-1">
+    <input type="email" name="email" id="lc-email" autocomplete="off" tabindex="-1">
+    <input type="tel" name="tel" id="lc-tel" autocomplete="off" tabindex="-1">
+  </form>
+</div>
+
 <!-- HERO (fundo claro) -->
 <header class="hero">
   <div class="container">
@@ -565,13 +577,30 @@ function irParaCheckout(url){
 }
 
 function irDiretoCademi(){
-  // aluno logado: sem popup visivel, ja pre-preenchido. Dispara o mesmo evento da pagina
-  // original e abre o checkout em nova aba. Como a pagina do curso continua aberta e viva,
-  // o GTM envia o evento normalmente (nao sai da pagina no meio do envio).
+  // aluno logado: sem popup visivel. Alem do nosso evento, ACIONAMOS o gatilho do GTM,
+  // que depende do SUBMIT de um formulario (evento submit_cadastro). Preenchemos um form
+  // oculto e disparamos o submit dele. Depois abrimos o checkout em nova aba.
   var ddiC = (CADEMI.tel.length>11 && CADEMI.tel.indexOf('55')===0) ? '55' : 'other';
   window.dataLayer=window.dataLayer||[];
   window.dataLayer.push({event:'lead_capture_uke',lead_name:CADEMI.nome,lead_email:CADEMI.email,lead_phone:CADEMI.tel,lead_ddi:ddiC});
+  dispararFormCademi();
   irParaCheckout(montaUrlHotmart(CADEMI.nome, CADEMI.email, CADEMI.tel, CADEMI.uid));
+}
+
+// preenche o form oculto e dispara o submit para o listener do GTM (submit_cadastro).
+// Se o GTM ainda nao anexou o listener, tenta de novo por ate ~3s (isso e assincrono e
+// nao depende do clique; a aba do checkout ja abriu na hora).
+function dispararFormCademi(){
+  var f=document.getElementById('lead-cademi');
+  if(!f) return;
+  var n=document.getElementById('lc-nome'), e=document.getElementById('lc-email'), t=document.getElementById('lc-tel');
+  if(n) n.value=CADEMI.nome; if(e) e.value=CADEMI.email; if(t) t.value=CADEMI.tel;
+  var tentativas=0;
+  (function tenta(){
+    if(f.getAttribute('data-gtm-listener-attached')==='true' || tentativas>=20){
+      try{ f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})); }catch(_){}
+    } else { tentativas++; setTimeout(tenta,150); }
+  })();
 }
 
 function openCheckout(){
