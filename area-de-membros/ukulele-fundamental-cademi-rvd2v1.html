@@ -40,10 +40,21 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap"></noscript>
 
 <style>
+/* ============================================================
+   PAINEL DE CORES - edite aqui para mudar as dobras.
+   No GitHub: aperte Cmd+F, procure o nome (ex: --cream) e troque o hex.
+     --cream       = dobras claras e o hero (fundo claro)
+     --fold-purple = dobras roxas (Dentro, Depoimentos, Oferta, Final)
+     --coral-soft  = dobra coral (Garantia)
+   Para trocar a cor de uma SECAO inteira: no HTML mais abaixo ache
+   o <section...> e troque a palavra da classe:
+     surface-cream (clara) | surface-dark (roxa) | surface-soft (coral) | surface-white (branca)
+   ============================================================ */
 :root{
   --ink:#2A1854;--purple:#423066;--coral:#EA546C;--coral-deep:#C9364F;--coral-soft:#FBEAEC;
   --cream:#F5F4F7;--card:#fff;--text:#463F58;--muted:#6E687F;--line:#ECE6F2;
   --cta:#0FA968;--cta-deep:#0B8A55;--wa:#25D366;
+  --fold-purple:linear-gradient(135deg,#443468,#2D2249);
   --maxw:1120px;--gap:clamp(1rem,2.5vw,1.5rem);--r:20px;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -64,7 +75,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .surface-white{background:var(--card)}
 .surface-cream{background:var(--cream)}
 .surface-soft{background:var(--coral-soft)}
-.surface-dark{background:linear-gradient(135deg,#443468,#2D2249);color:#E7E1F2}
+.surface-dark{background:var(--fold-purple);color:#E7E1F2}
 .surface-dark h2,.surface-dark h3{color:#fff}
 .hairline{border-top:1px solid var(--line)}
 .cv{content-visibility:auto;contain-intrinsic-size:auto 700px}
@@ -90,7 +101,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .note svg{width:.85rem;height:.85rem;flex-shrink:0;margin-top:3px;color:var(--cta)}
 
 /* HERO (fundo claro) */
-.hero{background:linear-gradient(180deg,#FCFCFD 0%,#F5F4F7 100%);border-bottom:1px solid var(--line);border-radius:0 0 34px 34px;overflow:hidden}
+.hero{background:var(--cream);border-bottom:1px solid var(--line);border-radius:0 0 34px 34px;overflow:hidden}
 .hero .container{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(.85rem,2vw,1.15rem);max-width:56rem;padding-block:clamp(1.6rem,4vw,3rem) clamp(2.4rem,5vw,3.6rem)}
 .badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(234,84,108,.12);border:1px solid rgba(234,84,108,.35);color:var(--coral-deep);font-size:clamp(10px,2vw,12px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .85rem;border-radius:999px}
 .hero h1{font-size:clamp(1.55rem,5.2vw,2.9rem);font-weight:900}
