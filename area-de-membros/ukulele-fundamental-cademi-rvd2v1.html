@@ -293,9 +293,9 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
      damos submit neste form, acionando o submit_cadastro sem mostrar popup. -->
 <div aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden">
   <form id="lead-cademi" onsubmit="return false">
-    <input type="text" name="name" id="lc-nome" autocomplete="off" tabindex="-1">
-    <input type="email" name="email" id="lc-email" autocomplete="off" tabindex="-1">
-    <input type="tel" name="tel" id="lc-tel" autocomplete="off" tabindex="-1">
+    <input type="text" name="lc-nome" id="lc-nome" autocomplete="off" tabindex="-1">
+    <input type="email" name="lc-email" id="lc-email" autocomplete="off" tabindex="-1">
+    <input type="tel" name="lc-tel" id="lc-tel" autocomplete="off" tabindex="-1">
     <button type="submit" tabindex="-1" aria-hidden="true" style="display:none"></button>
   </form>
 </div>
@@ -527,6 +527,20 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <script>
 var HOTMART_URL='https://pay.hotmart.com/F106563581S?off=di3klttp&checkoutMode=10&offDiscount=UKE-VITALICIO&hideBillet=1';
 var dlg=document.getElementById('checkout');
+
+// Garante submit_cadastro no envio do form de rastreio, MESMO que a tag do GTM que faz isso
+// nao rode dentro do iframe da Cademi. Mesma logica e guarda do seu script do GTM.
+(function(){
+  var f=document.getElementById('lead-cademi');
+  if(!f) return;
+  f.addEventListener('submit',function(){
+    if(f.getAttribute('data-gtm-submitted')==='true') return;
+    f.setAttribute('data-gtm-submitted','true');
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'submit_cadastro'});
+  });
+  f.setAttribute('data-gtm-listener-attached','true');
+})();
 
 /* ===== Integra\u00e7\u00e3o Cademi =====
    Quando esta p\u00e1gina roda dentro da \u00e1rea de membros (P\u00e1gina Din\u00e2mica / iframe),
