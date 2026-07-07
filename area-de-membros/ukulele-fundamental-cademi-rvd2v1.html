@@ -499,7 +499,6 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
         </div>
         <p class="err" id="e-wa">N&#250;mero com DDD (10 ou 11 d&#237;gitos).</p>
       </div>
-      <div class="field"><label>Voc&#234; j&#225; possui um ukulele?</label><div class="radios"><label><input type="radio" name="uke" value="Sim"> Sim</label><label><input type="radio" name="uke" value="N&#227;o"> N&#227;o</label></div><p class="err" id="e-uke">Responda essa pergunta.</p></div>
       <button class="btn btn--block" type="submit" id="go">Ir para o pagamento</button>
       <p class="secure"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Ambiente 100% seguro pela Hotmart</p>
     </form>
@@ -554,8 +553,10 @@ function irParaCheckout(url){
 }
 
 function irDiretoCademi(){
+  // mesmo esquema de dataLayer da pagina original, disparado em segundo plano (sem popup)
+  var ddiC = (CADEMI.tel.length>11 && CADEMI.tel.indexOf('55')===0) ? '55' : 'other';
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:CADEMI.nome,lead_email:CADEMI.email,lead_phone:CADEMI.tel,lead_source:'cademi_membro'});
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:CADEMI.nome,lead_email:CADEMI.email,lead_phone:CADEMI.tel,lead_ddi:ddiC});
   irParaCheckout(montaUrlHotmart(CADEMI.nome, CADEMI.email, CADEMI.tel, CADEMI.uid));
 }
 
@@ -611,17 +612,15 @@ document.getElementById('lead').addEventListener('submit',function(e){
   var r=fixEmail(emailIn.value); if(r.c) emailIn.value=r.v;
   var email=emailIn.value.trim();
   var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
-  var uke=(document.querySelector('input[name=uke]:checked')||{}).value;
   var ok=true;
   function mark(id,cond){document.getElementById(id).classList.toggle('on',!cond);if(!cond)ok=false;}
   mark('e-nome', nome.split(' ').filter(Boolean).length>=2);
   mark('e-email', emailOk(email));
   mark('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
-  mark('e-uke', !!uke);
   if(!ok) return;
   var btn=document.getElementById('go'); btn.textContent='Liberando\u2026'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:uke});
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other'});
   var url;
   try{
     url=new URL(HOTMART_URL);
