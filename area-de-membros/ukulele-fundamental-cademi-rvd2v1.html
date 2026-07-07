@@ -702,8 +702,11 @@ document.querySelectorAll('.vid').forEach(function(el){
 <script>
 window.dataLayer=window.dataLayer||[];
 window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'ukulele-fundamental-cademi'});
-(function(){function g(){(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');}
-if(document.readyState!=='loading'){setTimeout(g,1500);}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(g,1500);},{once:true});}})();
+// GTM carregado IMEDIATAMENTE (snippet padrao do Google, sem o setTimeout de 1500ms).
+// Dentro do iframe da Cademi, timers de segundo plano sao estrangulados pelo navegador,
+// entao o GTM nao carregava a tempo do clique e o evento nao era enviado. Carregando na
+// hora, o GTM ja esta pronto quando o aluno clica no CTA.
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');
 </script>
 
 <!-- ===== Depend&#234;ncia obrigat&#243;ria da P&#225;gina Din&#226;mica da Cademi (comunica&#231;&#227;o/resize do iframe) ===== -->
