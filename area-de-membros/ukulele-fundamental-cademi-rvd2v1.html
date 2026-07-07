@@ -293,9 +293,9 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
      damos submit neste form, acionando o submit_cadastro sem mostrar popup. -->
 <div aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden">
   <form id="lead-cademi" onsubmit="return false">
-    <input type="text" name="lc-nome" id="lc-nome" autocomplete="off" tabindex="-1">
-    <input type="email" name="lc-email" id="lc-email" autocomplete="off" tabindex="-1">
-    <input type="tel" name="lc-tel" id="lc-tel" autocomplete="off" tabindex="-1">
+    <input type="text" name="nome" id="nome" autocomplete="off" tabindex="-1">
+    <input type="email" name="email" id="email" autocomplete="off" tabindex="-1">
+    <input type="tel" name="tel" id="tel" autocomplete="off" tabindex="-1">
     <button type="submit" tabindex="-1" aria-hidden="true" style="display:none"></button>
   </form>
 </div>
@@ -500,9 +500,9 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <div class="modal-coupon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> Cupom de R$ 400 OFF j&#225; aplicado</div>
     <p class="sub">Preencha para garantir seu acesso ao Ukulele Fundamental.</p>
     <div id="lead">
-      <div class="field"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Ex: Mateus Augusto" required><p class="err" id="e-nome">Insira nome e sobrenome.</p></div>
-      <div class="field"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="hint" id="h-email">Corrigimos um poss&#237;vel erro de digita&#231;&#227;o. Confira se est&#225; certo.</p><p class="err" id="e-email">Verifique o e-mail.</p></div>
-      <div class="field"><label for="wa">WhatsApp</label>
+      <div class="field"><label for="v_nome">Nome completo</label><input id="v_nome" name="name" type="text" autocomplete="name" placeholder="Ex: Mateus Augusto" required><p class="err" id="e-nome">Insira nome e sobrenome.</p></div>
+      <div class="field"><label for="v_email">Melhor e-mail</label><input id="v_email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="hint" id="h-email">Corrigimos um poss&#237;vel erro de digita&#231;&#227;o. Confira se est&#225; certo.</p><p class="err" id="e-email">Verifique o e-mail.</p></div>
+      <div class="field"><label for="v_tel">WhatsApp</label>
         <div class="phone">
           <select id="ddi" aria-label="C&#243;digo do pa&#237;s">
             <option value="55" selected>Brasil +55</option>
@@ -514,7 +514,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
             <option value="44">Reino Unido +44</option>
             <option value="">Outro pa&#237;s</option>
           </select>
-          <input id="wa" name="tel" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000" required>
+          <input id="v_tel" name="tel" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000" required>
         </div>
         <p class="err" id="e-wa">N&#250;mero com DDD (10 ou 11 d&#237;gitos).</p>
       </div>
@@ -602,13 +602,13 @@ function irDiretoCademi(){
   irParaCheckout(montaUrlHotmart(CADEMI.nome, CADEMI.email, CADEMI.tel, CADEMI.uid));
 }
 
-// UNICO form de rastreio (ids lc-nome / lc-email / lc-tel). Os DOIS fluxos (aluno logado e
-// popup) preenchem e disparam o submit deste mesmo form, entao o GTM sempre le os mesmos ids.
+// UNICO form de rastreio (ids/names nome / email / tel). Os DOIS fluxos (aluno logado e
+// popup) preenchem e disparam o submit deste mesmo form, entao o GTM sempre le os mesmos campos.
 // Se o GTM ainda nao anexou o listener, tenta de novo por ate ~3s (assincrono, nao trava o clique).
 function dispararFormRastreio(nome, email, tel){
   var f=document.getElementById('lead-cademi');
   if(!f) return;
-  var n=document.getElementById('lc-nome'), e=document.getElementById('lc-email'), t=document.getElementById('lc-tel');
+  var n=document.getElementById('nome'), e=document.getElementById('email'), t=document.getElementById('tel');
   if(n) n.value=nome||''; if(e) e.value=email||''; if(t) t.value=tel||'';
   function enviar(){
     // ENVIO REAL do form (igual a clicar no botao). onsubmit="return false" impede navegar.
@@ -628,7 +628,7 @@ function openCheckout(){
 }
 dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
 
-var ddi=document.getElementById('ddi'), waIn=document.getElementById('wa');
+var ddi=document.getElementById('ddi'), waIn=document.getElementById('v_tel');
 function maskWa(){
   var v=waIn.value.replace(/\D/g,'');
   if(ddi.value==='55'){
@@ -658,7 +658,7 @@ function fixEmail(val){
   return {v:u+'@'+dn+sf,c:ch};
 }
 function emailOk(v){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);}
-var emailIn=document.getElementById('email');
+var emailIn=document.getElementById('v_email');
 emailIn.addEventListener('blur',function(){
   var h=document.getElementById('h-email'); h.classList.remove('on');
   if(!emailIn.value.trim()) return;
@@ -669,7 +669,7 @@ emailIn.addEventListener('blur',function(){
 function cookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
 
 document.getElementById('go').addEventListener('click',function(){
-  var nome=document.getElementById('nome').value.trim();
+  var nome=document.getElementById('v_nome').value.trim();
   var r=fixEmail(emailIn.value); if(r.c) emailIn.value=r.v;
   var email=emailIn.value.trim();
   var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
@@ -701,7 +701,7 @@ document.getElementById('go').addEventListener('click',function(){
   btn.textContent='Ir para o pagamento'; btn.disabled=false;
 });
 // Enter em qualquer campo do popup aciona o botao (o popup nao e mais um <form>)
-['nome','email','wa'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('keydown',function(ev){if(ev.key==='Enter'){ev.preventDefault();document.getElementById('go').click();}});});
+['v_nome','v_email','v_tel'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('keydown',function(ev){if(ev.key==='Enter'){ev.preventDefault();document.getElementById('go').click();}});});
 
 /* Lightbox depoimentos (pop-up, sem sair da p\u00e1gina) */
 var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lb-img');
