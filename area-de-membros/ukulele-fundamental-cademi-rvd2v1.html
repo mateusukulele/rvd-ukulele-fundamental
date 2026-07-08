@@ -621,6 +621,29 @@ function mostrarPopup(){
     posiciona((document.documentElement.scrollTop||0) + 40);
   }
 }
+// Aviso dispensavel depois do clique: o checkout abre em nova aba, entao NESTA pagina nada
+// muda visualmente e o aluno acha que travou. Mostra uma mensagem clara, com botao pra reabrir
+// o pagamento (caso a aba tenha sido bloqueada) e um X pra fechar e continuar a aula por aqui.
+var _confBox;
+function mostrarConfirmacao(url){
+  if(!_confBox){
+    _confBox=document.createElement('div');
+    _confBox.id='cdu-confirm';
+    _confBox.style.cssText='position:absolute;left:50%;transform:translateX(-50%);width:min(24rem,92vw);z-index:130;background:#fff;color:#2A1854;border:1px solid rgba(66,48,102,.15);border-radius:16px;box-shadow:0 24px 60px -20px rgba(0,0,0,.45);padding:1.1rem 1.2rem;font-family:inherit;line-height:1.4';
+    document.body.appendChild(_confBox);
+  }
+  _confBox.innerHTML=''
+    +'<button type="button" aria-label="Fechar" style="position:absolute;top:.5rem;right:.5rem;border:0;background:none;cursor:pointer;color:#8a7fb0;font-size:20px;line-height:1;padding:.2rem">&times;</button>'
+    +'<p style="margin:0 0 .5rem;font-weight:800;font-size:15px">Pagamento aberto em outra aba</p>'
+    +'<p style="margin:0 0 .8rem;font-size:13.5px;color:#5a5175">Abrimos o checkout seguro em uma nova aba. Voc&#234; pode continuar sua aula por aqui e voltar para o pagamento quando quiser.</p>'
+    +'<a href="'+url+'" target="_blank" rel="noopener" style="display:inline-block;background:#0FA968;color:#fff;font-weight:800;font-size:13.5px;text-decoration:none;padding:.6rem 1rem;border-radius:10px">Abrir o pagamento de novo</a>';
+  var topo=(_clickY!=null)?Math.max(16,_clickY+24):((document.documentElement.scrollTop||0)+40);
+  _confBox.style.top=topo+'px';
+  _confBox.style.display='block';
+  function fechar(){ _confBox.style.display='none'; }
+  _confBox.querySelector('button').addEventListener('click',fechar);
+  clearTimeout(_confBox._t); _confBox._t=setTimeout(fechar,20000);
+}
 // guarda a posicao do ultimo clique, para abrir o popup ali
 var _clickY = null;
 document.addEventListener('click', function(e){ if(typeof e.pageY==='number' && e.pageY) _clickY=e.pageY; }, true);
@@ -707,6 +730,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
   irParaCheckout(url);
   fecharModal();
   btn.textContent='Ir para o pagamento'; btn.disabled=false;
+  mostrarConfirmacao(url);
 });
 
 /* Seu script do GTM, embutido: garante o submit_cadastro mesmo se a tag do container nao
