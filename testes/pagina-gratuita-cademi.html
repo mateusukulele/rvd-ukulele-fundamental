@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Curso Gratuito de Ukulele: Do ZERO à 1ª Música | Mateus Augusto</title>
+    <meta name="description" content="Toque sua primeira música no ukulele do absoluto zero. Acesse 9 aulas práticas gratuitas, guia de qual ukulele comprar e o Mapa Definitivo do Iniciante.">
+
+    <link rel="icon" type="image/webp" href="/img/logo.webp">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://serversidegtm.comotocarukulele.com">
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="css/style-lp.css">
+
+    <style>
+        #capture-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 99999;
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
+            display: none; /* Inicia oculto */
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        #capture-modal.modal-active {
+            display: flex; /* Ativa estrutura flex */
+        }
+        #capture-modal.modal-visible {
+            opacity: 1; /* Fade-in */
+        }
+        #modal-content {
+            width: 100%;
+            max-width: 450px;
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        #capture-modal.modal-visible #modal-content {
+            transform: scale(1); /* Animação de pop */
+        }
+        
+        #ddi-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.25rem;
+            width: 14rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            max-height: 15rem;
+            overflow-y: auto;
+            display: none;
+        }
+        #ddi-menu.show-ddi { display: block; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+        
+        .error-msg { display: none; color: #ef4444; font-size: 0.75rem; font-weight: 500; margin-top: 0.25rem; }
+        
+        /* Estilos para os Radio Buttons */
+        .radio-group { display: flex; gap: 1.5rem; margin-top: 0.375rem; }
+        .radio-label { display: flex; align-items: center; font-size: 0.875rem; color: #334155; cursor: pointer; font-weight: 500;}
+        .radio-input { margin-right: 0.375rem; width: 1rem; height: 1rem; accent-color: #2563eb; cursor: pointer; }
+    </style>
+</head>
+<body class="font-sans text-slate-700 bg-brand-light antialiased selection:bg-brand-blue selection:text-white">
+
+    <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <main>
+        <section class="relative bg-white pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+                    <div class="lg:col-span-6 text-center lg:text-left">
+                        
+                        <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-800 font-display font-bold text-sm tracking-wide uppercase mb-6 border border-orange-200">
+                            Curso 100% Gratuito
+                        </span>
+
+                        <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-slate-900 leading-tight tracking-tight mb-6 text-balance">
+                            Do <span class="text-brand-blue">Zero</span> à Sua Primeira Música no Ukulele
+                        </h1>
+                        
+                        <p class="text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed font-medium">
+                            Toque sua primeira música completa, mesmo que nunca tenha segurado um instrumento na vida. Libere seu acesso <strong>grátis</strong> a <strong>9 aulas práticas</strong>, ao guia exato de <strong>Qual ukulele comprar</strong> e ao material bônus: <strong>Mapa Definitivo do Iniciante</strong>.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                            <button onclick="abrirPopupForm(event)" class="inline-flex justify-center items-center w-full sm:w-auto px-8 py-4 text-lg font-display font-extrabold text-white bg-brand-cta rounded-2xl hover:bg-brand-ctahover transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-cta/30 cursor-pointer border-none outline-none">
+                                Quero Liberar Meu Acesso
+                            </button>
+                        </div>
+                        <p class="mt-4 text-sm text-slate-500 flex items-center justify-center lg:justify-start gap-2">
+                            <svg aria-hidden="true" focusable="false" class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                            Curso 100% gratuito. Acesso imediato.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-6 mt-16 lg:mt-0 relative flex justify-center">
+                        <img src="img/mockup-primeiramusica-reduced.webp" alt="Mockup do Curso Do ZERO à 1ª Música" fetchpriority="high" class="w-full max-w-lg lg:max-w-full h-auto drop-shadow-2xl transform lg:scale-105 rounded-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-brand-light [content-visibility:auto] [contain-intrinsic-size:1000px]">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 mb-4">O que você vai aprender</h2>
+                    <p class="text-slate-600 text-lg">O passo a passo lógico e prático do que você receberá nas aulas para não travar.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center mb-4">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </div>
+                        <h3 class="font-display font-bold text-slate-800 text-lg mb-2">Guia: Qual ukulele comprar</h3>
+                        <p class="text-sm text-slate-600">Antes de gastar dinheiro, entenda qual tamanho e modelo faz sentido, com recomendações diretas para começar.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center mb-4">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+                        </div>
+                        <h3 class="font-display font-bold text-slate-800 text-lg mb-2">Como afinar</h3>
+                        <p class="text-sm text-slate-600">O instrumento desafinado mata a motivação. Aprenda a afinar do jeito certo desde o primeiro dia.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center mb-4">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
+                        </div>
+                        <h3 class="font-display font-bold text-slate-800 text-lg mb-2">Como segurar</h3>
+                        <p class="text-sm text-slate-600">Postura e encaixe corretos para evitar vícios que travam sua evolução na música.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center mb-4">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="font-display font-bold text-slate-800 text-lg mb-2">O primeiro ritmo</h3>
+                        <p class="text-sm text-slate-600">Domine a batida fundamental, a mais usada no ukulele, que serve de base para dezenas de músicas.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center mb-4">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                        </div>
+                        <h3 class="font-display font-bold text-slate-800 text-lg mb-2">Primeiros acordes</h3>
+                        <p class="text-sm text-slate-600">Aprenda a tocar o maior repertório possível aplicando o menor esforço nas pontas dos dedos.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center mb-4">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="font-display font-bold text-slate-800 text-lg mb-2">A 1ª música completa</h3>
+                        <p class="text-sm text-slate-600">A aplicação na prática. Você vai tocar a sua primeira música inteira, acompanhando do início ao fim.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center mb-4">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        </div>
+                        <h3 class="font-display font-bold text-slate-800 text-lg mb-2">O Método 3D</h3>
+                        <p class="text-sm text-slate-600">A lógica de ensino. Entenda as fases de Descoberta, Destrava e Domínio para facilitar qualquer música.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-orange-100 hover:shadow-md transition-shadow ring-1 ring-orange-50">
+                        <div class="w-12 h-12 bg-orange-50 text-[#c2410c] rounded-xl flex items-center justify-center mb-4">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                        </div>
+                        <span class="inline-block px-2 py-0.5 bg-orange-100 text-[#7c2d12] text-xs font-bold uppercase rounded mb-2">Material Bônus</span>
+                        <h3 class="font-display font-bold text-slate-800 text-lg mb-2">O Mapa do Iniciante</h3>
+                        <p class="text-sm text-slate-600">Um material super legal com o caminho exato e estruturado do que você precisa estudar a seguir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-[#eff6ff] [content-visibility:auto] [contain-intrinsic-size:500px]">
+            <div class="max-w-4xl mx-auto px-6 lg:px-8">
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 mb-10 text-center text-balance">Para quem é este material?</h2>
+                
+                <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-md">
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6 text-brand-blue shrink-0 mt-1 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-lg text-slate-700">Quer aprender um instrumento musical, mas não sabe por onde começar e nem tem o instrumento ainda.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6 text-brand-blue shrink-0 mt-1 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-lg text-slate-700">Comprou um ukulele, animou por uns dias e encostou no canto do quarto.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6 text-brand-blue shrink-0 mt-1 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-lg text-slate-700">Já tentou aprender pelo YouTube, mas ficou perdido sem saber a ordem do que estudar.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6 text-brand-blue shrink-0 mt-1 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-lg text-slate-700">Quer um hobby de verdade, mas tem pouco tempo e não quer gastar procurando aulas soltas na internet.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg aria-hidden="true" focusable="false" class="w-6 h-6 text-brand-blue shrink-0 mt-1 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-lg text-slate-700">Acha que não leva jeito para música. Esse curso foi feito exatamente para provar o contrário.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white [content-visibility:auto] [contain-intrinsic-size:600px]">
+            <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center md:text-left">
+                <h2 class="font-display font-extrabold text-3xl md:text-4xl text-slate-900 mb-2">Quem vai te ensinar?</h2>
+                <h3 class="font-display font-bold text-brand-blue text-xl mb-8">Prazer, Mateus Augusto</h3>
+                
+                <div class="space-y-6 text-slate-600 leading-relaxed text-lg">
+                    <p>Desde 2017 ensino ukulele para uma comunidade de mais de 300 mil pessoas nas redes sociais e já ajudei mais de 6.000 alunos a tocarem suas primeiras músicas.</p>
+                    <p>Mas a minha relação com o ukulele vai além do ensino. Em 2014, durante um intercâmbio na Austrália, recebi o diagnóstico de um câncer. Nas longas internações para quimioterapia, o ukulele foi o único instrumento que me permitiam levar para o quarto. Ele se tornou meu refúgio.</p>
+                    <p>Quando me curei, decidi fazer com que outras pessoas também encontrassem esse refúgio. Desenvolvi o Método 3D, uma abordagem que tira o desnecessário do caminho e leva direto para a prática. <strong class="font-semibold text-slate-800">A melhor aula é aquela que te faz tocar logo.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-dark text-white text-center px-6 [content-visibility:auto] [contain-intrinsic-size:500px]">
+            <div class="max-w-3xl mx-auto">
+                
+                <span class="inline-block py-1 px-3 rounded-full bg-blue-900 text-blue-50 font-display font-bold text-sm tracking-wide uppercase mb-6">
+                    Inscrições Abertas
+                </span>
+
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl mb-6 leading-tight text-balance">
+                    Você já tem tudo que precisa para começar. O único passo que falta é esse.
+                </h2>
+                <p class="text-xl text-blue-100 mb-12 font-medium">
+                    Inscreva-se no curso gratuito, baixe seus materiais bônus e toque sua primeira música ainda essa semana.
+                </p>
+                
+                <button onclick="abrirPopupForm(event)" class="inline-block w-full sm:w-auto px-10 py-5 text-xl font-display font-extrabold text-white bg-brand-cta rounded-2xl shadow-lg hover:bg-brand-ctahover transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand-cta/40 cursor-pointer border-none outline-none">
+                    Quero Liberar Meu Acesso
+                </button>
+                
+                <p class="mt-6 text-sm text-blue-200 opacity-80 font-medium">O link de acesso ao painel de alunos chegará no seu e-mail.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm [content-visibility:auto]">
+        <p>&copy; 2026 Clube do Ukulele. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="capture-modal">
+        <div id="modal-content">
+            
+            <div class="mb-5 flex items-center justify-between" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+                <h3 class="font-display text-2xl font-extrabold text-slate-900 tracking-tight" style="margin: 0;">Falta muito pouco!</h3>
+                <button onclick="fecharPopupForm()" class="text-slate-400 hover:text-slate-700 transition-colors bg-slate-100 rounded-full p-1.5" aria-label="Fechar" style="cursor: pointer; border: none; outline: none; background: #f1f5f9; padding: 0.375rem; border-radius: 9999px;">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 1.25rem; height: 1.25rem;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <p class="mb-7 text-sm font-medium text-slate-600 leading-relaxed" style="margin-bottom: 1.75rem; color: #475569;">
+                Preencha os campos abaixo para receber o acesso gratuito ao curso diretamente no seu e-mail.
+            </p>
+            
+            <form id="lead-form" autocomplete="off" onsubmit="enviarLeadGTM(event)">
+                
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #334155; margin-bottom: 0.375rem;" for="first_name">Nome *</label>
+                    <input required type="text" name="first_name" id="first_name" style="width: 100%; border-radius: 0.75rem; border: 1px solid #e2e8f0; background-color: #f8fafc; padding: 0.75rem 1rem; color: #0f172a; outline: none;" placeholder="Seu nome">
+                    <p id="erro-nome" class="error-msg">Por favor, insira pelo menos nome e sobrenome.</p>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #334155; margin-bottom: 0.375rem;" for="email">E-mail *</label>
+                    <input required type="email" name="email" id="email" style="width: 100%; border-radius: 0.75rem; border: 1px solid #e2e8f0; background-color: #f8fafc; padding: 0.75rem 1rem; color: #0f172a; outline: none;" placeholder="seu@melhoremail.com">
+                    <p id="erro-email" class="error-msg" style="color: #f97316;">Corrigimos um pequeno erro de digitação no seu e-mail!</p>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #334155; margin-bottom: 0.375rem;" for="lead-whatsapp">WhatsApp *</label>
+                    
+                    <div style="display: flex; border-radius: 0.75rem; border: 1px solid #e2e8f0; background-color: #f8fafc;">
+                        <div style="position: relative; display: flex; align-items: center; border-right: 1px solid #e2e8f0; user-select: none;" id="ddi-container">
+                            <input type="hidden" id="lead-ddi" value="55">
+                            
+                            <button type="button" id="ddi-button" style="display: flex; align-items: center; height: 100%; padding: 0.75rem; font-size: 0.875rem; color: #334155; background: transparent; border: none; cursor: pointer; outline: none;">
+                                <img src="https://flagcdn.com/w20/br.png" alt="BR" id="ddi-selected-flag" style="width: 1.25rem; height: auto; margin-right: 0.375rem; border-radius: 2px;">
+                                <span id="ddi-selected-text" style="font-weight: 500;">+55</span>
+                                <svg style="height: 1rem; width: 1rem; margin-left: 0.25rem; color: #94a3b8;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+
+                            <ul id="ddi-menu" class="custom-scrollbar">
+                                <li class="ddi-option" data-value="55" data-code="br" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;"><img src="https://flagcdn.com/w20/br.png" style="width: 1.25rem; margin-right: 0.75rem;"> <span style="color: #334155; font-weight: 500;">Brasil (+55)</span></li>
+                                <li class="ddi-option" data-value="1" data-code="us" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;"><img src="https://flagcdn.com/w20/us.png" style="width: 1.25rem; margin-right: 0.75rem;"> <span style="color: #334155; font-weight: 500;">Estados Unidos (+1)</span></li>
+                                <li class="ddi-option" data-value="351" data-code="pt" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;"><img src="https://flagcdn.com/w20/pt.png" style="width: 1.25rem; margin-right: 0.75rem;"> <span style="color: #334155; font-weight: 500;">Portugal (+351)</span></li>
+                                <li class="ddi-option" data-value="244" data-code="ao" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;"><img src="https://flagcdn.com/w20/ao.png" style="width: 1.25rem; margin-right: 0.75rem;"> <span style="color: #334155; font-weight: 500;">Angola (+244)</span></li>
+                                <li class="ddi-option" data-value="258" data-code="mz" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;"><img src="https://flagcdn.com/w20/mz.png" style="width: 1.25rem; margin-right: 0.75rem;"> <span style="color: #334155; font-weight: 500;">Moçambique (+258)</span></li>
+                                <li class="ddi-option" data-value="238" data-code="cv" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;"><img src="https://flagcdn.com/w20/cv.png" style="width: 1.25rem; margin-right: 0.75rem;"> <span style="color: #334155; font-weight: 500;">Cabo Verde (+238)</span></li>
+                                <li class="ddi-option" data-value="54" data-code="ar" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;"><img src="https://flagcdn.com/w20/ar.png" style="width: 1.25rem; margin-right: 0.75rem;"> <span style="color: #334155; font-weight: 500;">Argentina (+54)</span></li>
+                                <li class="ddi-option" data-value="56" data-code="cl" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;"><img src="https://flagcdn.com/w20/cl.png" style="width: 1.25rem; margin-right: 0.75rem;"> <span style="color: #334155; font-weight: 500;">Chile (+56)</span></li>
+                                <li class="ddi-option" data-value="57" data-code="co" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;"><img src="https://flagcdn.com/w20/co.png" style="width: 1.25rem; margin-right: 0.75rem;"> <span style="color: #334155; font-weight: 500;">Colômbia (+57)</span></li>
+                                <li class="ddi-option" data-value="other" data-code="other" style="padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; font-size: 0.875rem;">
+                                    <svg style="width: 1.25rem; height: 1.25rem; color: #94a3b8; margin-right: 0.75rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span style="color: #334155; font-weight: 500;">Outro...</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <input required type="tel" id="lead-whatsapp" style="width: 100%; background: transparent; padding: 0.75rem 1rem; color: #0f172a; outline: none; border: none;" placeholder="(00) 00000-0000" maxlength="20">
+                    </div>
+                    <p id="erro-whatsapp" class="error-msg">Insira um número válido com DDD.</p>
+                </div>
+
+                <div style="margin-bottom: 1.5rem; background-color: #f8fafc; padding: 1rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
+                    <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #334155; margin-bottom: 0.5rem;">Você já possui um ukulele? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="has_ukulele" value="Sim" required class="radio-input"> Sim
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="has_ukulele" value="Não" required class="radio-input"> Não
+                        </label>
+                    </div>
+                    <p id="erro-ukulele" class="error-msg">Por favor, responda se você já possui um ukulele.</p>
+                </div>
+
+                <input type="hidden" name="phone" id="phone_hidden">
+                
+                <button type="submit" class="bg-brand-cta hover:bg-brand-ctahover" style="width: 100%; border-radius: 1rem; padding: 1rem 1rem; font-size: 1.125rem; color: white; font-weight: 800; border: none; cursor: pointer; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                    Quero Liberar Meu Acesso
+                </button>
+            </form>
+            
+            <div style="margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 500; color: #94a3b8;">
+                <svg style="margin-right: 0.375rem; height: 1rem; width: 1rem; color: #94a3b8;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                Suas informações estão 100% seguras.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function abrirPopupForm(event) {
+            if(event) event.preventDefault(); 
+            const modal = document.getElementById('capture-modal');
+            
+            document.getElementById('erro-nome').style.display = 'none';
+            document.getElementById('erro-whatsapp').style.display = 'none';
+            document.getElementById('erro-email').style.display = 'none';
+            document.getElementById('erro-ukulele').style.display = 'none';
+            
+            modal.classList.add('modal-active');
+            setTimeout(() => { modal.classList.add('modal-visible'); }, 10);
+        }
+
+        function fecharPopupForm() {
+            const modal = document.getElementById('capture-modal');
+            modal.classList.remove('modal-visible');
+            setTimeout(() => { modal.classList.remove('modal-active'); }, 300);
+        }
+
+        const ddiButton = document.getElementById('ddi-button');
+        const ddiMenu = document.getElementById('ddi-menu');
+        const ddiInput = document.getElementById('lead-ddi');
+        const phoneInput = document.getElementById('lead-whatsapp');
+
+        ddiButton.addEventListener('click', function(e) { 
+            e.preventDefault();
+            ddiMenu.classList.toggle('show-ddi'); 
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!document.getElementById('ddi-container').contains(e.target)) {
+                ddiMenu.classList.remove('show-ddi');
+            }
+        });
+
+        document.querySelectorAll('.ddi-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                const code = this.getAttribute('data-code');
+                const textSpan = document.getElementById('ddi-selected-text');
+                const flagElement = document.getElementById('ddi-selected-flag');
+                
+                ddiInput.value = value;
+                
+                if (code === 'other') {
+                    flagElement.outerHTML = `<svg id="ddi-selected-flag" style="width: 1.25rem; height: 1.25rem; color: #94a3b8; margin-right: 0.375rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+                    textSpan.innerText = '';
+                } else {
+                    if(flagElement.tagName.toLowerCase() === 'svg') {
+                         flagElement.outerHTML = `<img src="https://flagcdn.com/w20/${code}.png" id="ddi-selected-flag" style="width: 1.25rem; height: auto; margin-right: 0.375rem; border-radius: 2px;">`;
+                    } else {
+                         flagElement.src = `https://flagcdn.com/w20/${code}.png`;
+                    }
+                    textSpan.innerText = '+' + value;
+                }
+
+                ddiMenu.classList.remove('show-ddi');
+                
+                let v = phoneInput.value.replace(/\D/g, '');
+                if(value === '55') {
+                    phoneInput.placeholder = "(00) 00000-0000";
+                    phoneInput.dispatchEvent(new Event('input')); 
+                } else {
+                    phoneInput.placeholder = "Seu número";
+                    phoneInput.value = v; 
+                }
+            });
+        });
+
+        phoneInput.addEventListener('input', function(e) {
+            let v = e.target.value.replace(/\D/g, ''); 
+            if (ddiInput.value === '55') {
+                if (v.length <= 10) {
+                    v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    v = v.replace(/(\d{4})(\d)/, '$1-$2');
+                } else {
+                    v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    v = v.replace(/(\d{5})(\d)/, '$1-$2');
+                }
+                e.target.value = v.substring(0, 15);
+            } else {
+                e.target.value = v.substring(0, 20);
+            }
+        });
+
+        const emailInput = document.getElementById('email');
+        emailInput.addEventListener('blur', function(e) {
+            let val = e.target.value.toLowerCase().trim();
+            const provedoresIncorretos = {
+                'gmial': 'gmail', 'gamil': 'gmail', 'gmal': 'gmail', 'gmaill': 'gmail', 'gemail': 'gmail',
+                'hotmial': 'hotmail', 'hotmai': 'hotmail', 'hotmal': 'hotmail', 'hormail': 'hotmail', 'hotmaill': 'hotmail',
+                'oulook': 'outlook', 'outlok': 'outlook', 'outloo': 'outlook', 'yaho': 'yahoo'
+            };
+            const sufixosIncorretos = [
+                { erro: '.comm', certo: '.com' }, { erro: '.cm', certo: '.com' }, { erro: '.cmo', certo: '.com' },
+                { erro: '.xom', certo: '.com' }, { erro: '.con', certo: '.com' }, { erro: '.cm.br', certo: '.com.br' },
+                { erro: '.con.br', certo: '.com.br' }, { erro: '.com.brr', certo: '.com.br' }
+            ];
+            
+            if(val.includes('@')) {
+                let parts = val.split('@');
+                let user = parts[0];
+                let fullDomain = parts[1];
+                let alterado = false;
+                let domainIndex = fullDomain.indexOf('.');
+                
+                if(domainIndex > -1) {
+                    let domainName = fullDomain.substring(0, domainIndex);
+                    let suffix = fullDomain.substring(domainIndex); 
+
+                    if (provedoresIncorretos[domainName]) {
+                        domainName = provedoresIncorretos[domainName];
+                        alterado = true;
+                    }
+                    for (let item of sufixosIncorretos) {
+                        if (suffix === item.erro) {
+                            suffix = item.certo;
+                            alterado = true; break;
+                        }
+                    }
+                    if (alterado) {
+                        e.target.value = user + '@' + domainName + suffix;
+                        document.getElementById('erro-email').style.display = 'block';
+                        setTimeout(() => document.getElementById('erro-email').style.display = 'none', 4000);
+                    }
+                }
+            }
+        });
+
+        // ==========================================
+        // SUBMIT CONTROLADO TOTALMENTE PELO GTM
+        // ==========================================
+        function enviarLeadGTM(event) {
+            event.preventDefault(); // Impede o formulário de tentar carregar outra página nativamente
+
+            let isValid = true;
+            const nomeEl = document.getElementById('first_name');
+            const ddi = document.getElementById('lead-ddi').value;
+            const phoneInputEl = document.getElementById('lead-whatsapp'); 
+            const emailValue = document.getElementById('email').value.trim();
+            
+            const nome = nomeEl.value.trim();
+            const whatsappLimpo = phoneInputEl.value.replace(/\D/g, ''); 
+            
+            // 1. Valida Nome
+            if (nome.split(' ').length < 2) {
+                document.getElementById('erro-nome').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('erro-nome').style.display = 'none';
+            }
+
+            // 2. Valida Telefone
+            const erroWhatsAppEl = document.getElementById('erro-whatsapp');
+            if (ddi === '55') {
+                if (whatsappLimpo.length !== 10 && whatsappLimpo.length !== 11) {
+                    erroWhatsAppEl.style.display = 'block';
+                    isValid = false;
+                } else {
+                    erroWhatsAppEl.style.display = 'none';
+                }
+            } else {
+                if (whatsappLimpo.length < 5) {
+                    erroWhatsAppEl.style.display = 'block';
+                    isValid = false;
+                } else {
+                    erroWhatsAppEl.style.display = 'none';
+                }
+            }
+
+            // 3. Valida Opção Ukulele
+            const ukuleleRadios = document.querySelectorAll('input[name="has_ukulele"]');
+            let isUkuleleSelected = false;
+            let hasUkuleleValue = "";
+
+            for (const radio of ukuleleRadios) {
+                if (radio.checked) {
+                    isUkuleleSelected = true;
+                    hasUkuleleValue = radio.value;
+                    break;
+                }
+            }
+
+            if (!isUkuleleSelected) {
+                document.getElementById('erro-ukulele').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('erro-ukulele').style.display = 'none';
+            }
+
+            // Se algo estiver inválido, para aqui
+            if(!isValid) {
+                return false;
+            }
+
+            // --- TUDO VÁLIDO DAQUI PRA BAIXO ---
+
+            const fullPhone = ddi === '55' ? whatsappLimpo : ddi + whatsappLimpo;
+            document.getElementById('phone_hidden').value = fullPhone;
+
+            // 1. Dispara o evento para o GTM
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'lead_capture_submit',
+                'lead_name': nome,
+                'lead_email': emailValue,
+                'lead_phone': fullPhone,
+                'lead_has_ukulele': hasUkuleleValue
+            });
+
+            // 2. Prepara a URL de destino (Cadastro Gratuito Cademí -> aula)
+            const cademiToken = "5b98b307b7ac85b7d077ab5f30290a95";
+            const cademiRedirect = "/area/conteudo/aula/8965290";
+            const targetUrl = "https://aluno.comotocarukulele.com/auth/cadastrar_via_url"
+                + "?token=" + cademiToken
+                + "&nome=" + encodeURIComponent(nome)
+                + "&email=" + encodeURIComponent(emailValue)
+                + "&celular=" + encodeURIComponent(fullPhone)
+                + "&redirect=" + cademiRedirect;
+
+            // Muda o botão para mostrar que está carregando (melhora a UX)
+            const btnSubmit = document.querySelector('button[type="submit"]');
+            btnSubmit.innerHTML = 'LIBERANDO ACESSO...';
+            btnSubmit.style.opacity = '0.7';
+            btnSubmit.disabled = true;
+
+            // 4. Redireciona (com um pequeno atraso de meio segundo para dar tempo do GTM enviar os dados)
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
