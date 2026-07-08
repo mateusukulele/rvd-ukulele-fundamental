@@ -579,12 +579,47 @@ function openCheckout(){
     if(num.length>11 && num.indexOf('55')===0){ ddi.value='55'; num=num.slice(2); }
     waIn.value=num; maskWa();
   }
-  // posiciona o popup ONDE o aluno clicou. Dentro do iframe da Cademi, o centro do dialog
-  // cairia no meio da pagina inteira (gigante), longe da tela visivel. _clickY = Y do clique.
-  var topo = (_clickY!=null) ? Math.max(16, _clickY - 90) : 40;
-  dlg.style.top = topo + 'px';
+  // Se o dado do aluno logado (Cademi) ja veio e passa na validacao, ENVIA escondido:
+  // dispara o MESMO submit do form (mesmos ids, mesmos eventos, mesmo postMessage) sem
+  // mostrar o popup. Se faltar dado ou o telefone nao bater, cai no popup visivel (reserva),
+  // pra nunca falhar em silencio.
+  if(TEM_DADOS_CADEMI && leadValido()){
+    var lf=document.getElementById('lead');
+    if(lf.requestSubmit) lf.requestSubmit();
+    else lf.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
+    return;
+  }
+  mostrarPopup();
+}
+// valida os campos do popup igual ao handler de submit, mas sem efeito colateral
+function leadValido(){
+  var nome=document.getElementById('nome').value.trim();
+  var email=emailIn.value.trim();
+  var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
+  if(nome.split(' ').filter(Boolean).length<2) return false;
+  if(!emailOk(email)) return false;
+  if(br ? !(tel.length===10||tel.length===11) : tel.length<6) return false;
+  return true;
+}
+// popup de RESERVA (so quando nao da pra enviar escondido). Centraliza no que o aluno ve:
+// usa o iframe-resizer da Cademi se ele expuser parentIFrame; senao, centra no ponto do clique.
+function mostrarPopup(){
   var _f=_fundo(); _f.style.height=document.documentElement.scrollHeight+'px'; _f.classList.add('on');
   dlg.show ? dlg.show() : dlg.setAttribute('open','');
+  function posiciona(top){ dlg.style.top = Math.max(16, top) + 'px'; }
+  var mh=dlg.offsetHeight||0;
+  if(window.parentIFrame && window.parentIFrame.getPageInfo){
+    window.parentIFrame.getPageInfo(function(info){
+      try{ window.parentIFrame.getPageInfo(false); }catch(_){}
+      var vTop=Math.max(0,(info.scrollTop||0)-(info.offsetTop||0));
+      var vH=info.clientHeight||info.windowHeight||600;
+      posiciona(vTop + (vH - (dlg.offsetHeight||mh))/2);
+    });
+  } else if(_clickY!=null){
+    posiciona(_clickY - mh/2);
+  } else {
+    posiciona((document.documentElement.scrollTop||0) + 40);
+  }
 }
 // guarda a posicao do ultimo clique, para abrir o popup ali
 var _clickY = null;
@@ -741,16 +776,10 @@ document.querySelectorAll('.vid').forEach(function(el){
 ]}
 </script>
 
-<noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>
-window.dataLayer=window.dataLayer||[];
-window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'ukulele-fundamental-cademi'});
-// GTM carregado IMEDIATAMENTE (snippet padrao do Google, sem o setTimeout de 1500ms).
-// Dentro do iframe da Cademi, timers de segundo plano sao estrangulados pelo navegador,
-// entao o GTM nao carregava a tempo do clique e o evento nao era enviado. Carregando na
-// hora, o GTM ja esta pronto quando o aluno clica no CTA.
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');
-</script>
+<!-- GTM do iframe REMOVIDO de proposito. Ele disparava a conversao aqui dentro E o codigo
+     pai da Cademi tambem disparava (via postMessage), gerando lead DUPLICADO no Supabase.
+     Agora o iframe so faz o postMessage; quem envia pro GTM/Supabase e SO o codigo pai.
+     Os dataLayer.push do submit continuam existindo, mas sem container aqui viram no-op. -->
 
 <!-- ===== Depend&#234;ncia obrigat&#243;ria da P&#225;gina Din&#226;mica da Cademi (comunica&#231;&#227;o/resize do iframe) ===== -->
 <script src="https://core.cademi.com.br/assets/js/remote.js"></script>
