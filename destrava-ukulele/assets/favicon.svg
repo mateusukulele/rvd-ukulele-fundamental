@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Destrava Ukulele">
+  <rect x="0" y="0" width="32" height="32" rx="7" fill="#443468"/>
+  <path d="M11 16 L11 11.5 A5 5 0 0 1 21.5 9.8" fill="none" stroke="#F5B93B" stroke-width="2.6" stroke-linecap="round"/>
+  <rect x="7.5" y="15" width="17" height="12.5" rx="3.2" fill="#F5B93B"/>
+  <circle cx="16" cy="21.2" r="2.7" fill="#2D2249"/>
+  <rect x="14.9" y="22.8" width="2.2" height="3.4" rx="1" fill="#2D2249"/>
+</svg>
