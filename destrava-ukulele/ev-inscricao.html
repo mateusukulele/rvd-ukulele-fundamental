@@ -35,12 +35,9 @@
         .btn-amber:hover{background:var(--amber-deep);transform:translateY(-2px)}
         .btn-block{width:100%}
 
-        /* ===== Header ===== */
-        header.top{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));border-bottom:3px solid var(--amber)}
-        header.top .wrap{display:flex;align-items:center;justify-content:center;padding-top:14px;padding-bottom:14px}
-        header.top img{height:46px}
-
         /* ===== Hero ===== */
+        .hero-logo{height:64px;width:auto;display:block;margin:0 auto 22px}
+        .hero-top{text-align:center;margin-bottom:28px}
         .hero{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff;padding:54px 0 64px;position:relative;overflow:hidden}
         .hero .grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
         .hero .eyebrow{background:rgba(245,185,59,.16);color:var(--amber);border:1px solid rgba(245,185,59,.35);margin-bottom:20px}
@@ -112,7 +109,8 @@
         footer .cp{opacity:.7;font-size:.78rem;margin-top:6px}
 
         @media(min-width:860px){
-            .hero{padding:70px 0 84px}
+            .hero{padding:60px 0 84px}
+            .hero-logo{height:74px;margin-bottom:26px}
             .hero .grid{grid-template-columns:1.05fr .95fr;gap:50px}
             .hero .photo{order:1;max-width:100%}
             .hero h1{font-size:2.9rem}
@@ -147,16 +145,14 @@
 <body>
     <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <header class="top">
-        <div class="wrap"><img src="assets/logo-destrava-ukulele.svg" alt="Destrava Ukulele"></div>
-    </header>
-
     <main>
         <!-- HERO -->
         <section class="hero">
-            <div class="wrap grid">
+            <div class="wrap">
+                <img class="hero-logo" src="assets/logo-destrava-ukulele.svg" alt="Destrava Ukulele">
+                <div class="hero-top"><span class="eyebrow">Evento online e gratuito · 21 a 23 de julho</span></div>
+                <div class="grid">
                 <div>
-                    <span class="eyebrow">Evento online e gratuito · 21 a 23 de julho</span>
                     <h1 class="disp"><span class="hl">Em 3 dias</span> você vai entender como destravar as trocas de acorde, parar de fugir da pestana e sair daquela mesma batidinha de sempre.</h1>
                     <button onclick="abrirPopupForm(event)" class="btn btn-amber">Garantir minha vaga gratuita</button>
                     <div class="trust">
@@ -174,6 +170,7 @@
                     </div>
                 </div>
                 <img class="photo" src="assets/mateus.webp" alt="Mateus Augusto, professor de ukulele" fetchpriority="high">
+                </div>
             </div>
         </section>
 
