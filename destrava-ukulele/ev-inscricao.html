@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destrava Ukulele | Evento gratuito e ao vivo com Mateus Augusto</title>
+    <meta name="description" content="3 aulas ao vivo e gratuitas pra destravar as trocas de acorde, encarar a pestana e soltar a mão com batidas e dedilhados novos. Dias 21, 22 e 23 de julho.">
+    <link rel="icon" type="image/svg+xml" href="assets/logo-destrava-ukulele.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap">
+
+    <style>
+        :root{
+            --indigo:#443468; --indigo-deep:#2D2249; --amber:#F5B93B; --amber-deep:#D9971C;
+            --coral:#E87A85; --bg:#F5F4F7; --card:#fff; --ink:#2D2249; --muted:#6b6480;
+            --line:#e6e3ee; --wpp:#25D366;
+        }
+        *{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+        img{max-width:100%;display:block}
+        .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 22px}
+        .disp{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.01em;line-height:1.02;text-transform:uppercase}
+        .eyebrow{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.05rem;text-transform:uppercase;letter-spacing:.02em;padding:18px 30px;border-radius:16px;border:none;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;line-height:1.1;text-align:center}
+        .btn-amber{background:var(--amber);color:var(--indigo-deep);box-shadow:0 12px 24px -8px rgba(245,185,59,.6)}
+        .btn-amber:hover{background:var(--amber-deep);transform:translateY(-2px)}
+        .btn-block{width:100%}
+
+        /* ===== Header ===== */
+        header.top{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));border-bottom:3px solid var(--amber)}
+        header.top .wrap{display:flex;align-items:center;justify-content:center;padding-top:14px;padding-bottom:14px}
+        header.top img{height:46px}
+
+        /* ===== Hero ===== */
+        .hero{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff;padding:54px 0 64px;position:relative;overflow:hidden}
+        .hero .grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+        .hero .eyebrow{background:rgba(245,185,59,.16);color:var(--amber);border:1px solid rgba(245,185,59,.35);margin-bottom:20px}
+        .hero h1{font-size:2rem;margin-bottom:18px}
+        .hero h1 .hl{color:var(--amber)}
+        .hero .sub{font-size:1.12rem;color:#e7e3f2;font-weight:500;margin-bottom:26px;max-width:36ch}
+        .hero .photo{order:-1;justify-self:center;max-width:300px;border-radius:22px;box-shadow:0 24px 60px -20px rgba(0,0,0,.6);border:3px solid rgba(245,185,59,.5)}
+        .trust{margin-top:16px;font-size:.9rem;color:#cfc9e0;display:flex;flex-wrap:wrap;gap:8px 18px}
+        .trust span{display:inline-flex;align-items:center;gap:7px}
+        .trust svg{width:16px;height:16px;color:var(--amber);flex:none}
+
+        /* ===== Countdown ===== */
+        .cd{margin-top:30px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px 20px}
+        .cd .lbl{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+        .cd .clock{display:flex;gap:10px}
+        .cd .unit{background:var(--indigo-deep);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 0;flex:1;text-align:center}
+        .cd .unit b{font-family:'Anton',sans-serif;font-size:1.7rem;display:block;line-height:1;color:#fff}
+        .cd .unit small{font-size:.64rem;text-transform:uppercase;letter-spacing:.08em;color:#b7b0cc}
+
+        /* ===== Section shells ===== */
+        section{padding:60px 0}
+        .sec-head{text-align:center;max-width:640px;margin:0 auto 40px}
+        .sec-head .eyebrow{background:#efe9fb;color:var(--indigo);margin-bottom:14px}
+        .sec-head h2{font-size:1.8rem;color:var(--indigo-deep)}
+        .sec-head p{color:var(--muted);font-size:1.05rem;margin-top:12px}
+
+        /* ===== Identificação ===== */
+        .ident{background:var(--card)}
+        .ident ul{max-width:760px;margin:0 auto;display:grid;gap:16px;list-style:none}
+        .ident li{display:flex;gap:14px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+        .ident li svg{width:24px;height:24px;color:var(--coral);flex:none;margin-top:1px}
+        .ident li span{font-size:1.04rem;color:#3d3556;font-weight:500}
+
+        /* ===== Agenda ===== */
+        .agenda-grid{display:grid;grid-template-columns:1fr;gap:20px}
+        .aula{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;position:relative;overflow:hidden}
+        .aula::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--amber)}
+        .aula .day{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);background:#efe9fb;padding:6px 12px;border-radius:999px;margin-bottom:14px}
+        .aula .num{font-family:'Anton',sans-serif;font-size:.95rem;color:var(--amber-deep);letter-spacing:.04em;margin-bottom:6px}
+        .aula h3{font-size:1.22rem;color:var(--indigo-deep);line-height:1.25}
+        .aula p{color:var(--muted);margin-top:8px;font-size:.98rem}
+
+        /* ===== Bônus ===== */
+        .bonus{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff}
+        .bonus .box{max-width:820px;margin:0 auto;text-align:center}
+        .bonus .eyebrow{background:rgba(245,185,59,.16);color:var(--amber);border:1px solid rgba(245,185,59,.35);margin-bottom:18px}
+        .bonus h2{font-size:1.7rem;margin-bottom:14px}
+        .bonus h2 .hl{color:var(--amber)}
+        .bonus p{color:#e7e3f2;font-size:1.06rem;max-width:60ch;margin:0 auto}
+
+        /* ===== Sobre ===== */
+        .sobre{background:var(--card)}
+        .sobre .in{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+        .sobre img{max-width:220px;border-radius:20px;justify-self:center;border:3px solid var(--amber)}
+        .sobre h2{font-size:1.6rem;color:var(--indigo-deep);margin-bottom:4px}
+        .sobre .role{color:var(--amber-deep);font-weight:700;margin-bottom:14px}
+        .sobre p{color:#4a4363;margin-bottom:12px}
+
+        /* ===== CTA final ===== */
+        .cta{background:var(--indigo-deep);color:#fff;text-align:center}
+        .cta h2{font-size:1.8rem;margin-bottom:16px;max-width:20ch;margin-left:auto;margin-right:auto}
+        .cta h2 .hl{color:var(--amber)}
+        .cta p{color:#cfc9e0;font-size:1.08rem;margin-bottom:28px}
+
+        /* ===== Footer ===== */
+        footer{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));border-top:3px solid var(--amber);color:#fff;text-align:center;padding:30px 22px}
+        footer img{height:40px;margin:0 auto 12px}
+        footer .ph{font-weight:600;font-size:.9rem}
+        footer .cp{opacity:.7;font-size:.78rem;margin-top:6px}
+
+        @media(min-width:860px){
+            .hero{padding:70px 0 84px}
+            .hero .grid{grid-template-columns:1.05fr .95fr;gap:50px}
+            .hero .photo{order:1;max-width:100%}
+            .hero h1{font-size:2.9rem}
+            .sec-head h2{font-size:2.2rem}
+            .agenda-grid{grid-template-columns:repeat(3,1fr)}
+            .sobre .in{grid-template-columns:240px 1fr}
+            .sobre img{justify-self:start}
+            .bonus h2,.cta h2{font-size:2.1rem}
+        }
+
+        /* ===== Popup (IDs idênticos ao sistema existente) ===== */
+        #capture-modal{position:fixed;inset:0;z-index:99999;background:rgba(45,34,73,.85);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:1rem;opacity:0;transition:opacity .3s ease}
+        #capture-modal.modal-active{display:flex}
+        #capture-modal.modal-visible{opacity:1}
+        #modal-content{width:100%;max-width:450px;background:#fff;border-radius:1.5rem;padding:2rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.35);transform:scale(.95);transition:transform .3s ease;position:relative}
+        #capture-modal.modal-visible #modal-content{transform:scale(1)}
+        #ddi-menu{position:absolute;top:100%;left:0;margin-top:.25rem;width:14rem;background:#fff;border:1px solid #e2e8f0;border-radius:.75rem;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);z-index:50;max-height:15rem;overflow-y:auto;display:none;list-style:none}
+        #ddi-menu.show-ddi{display:block}
+        .custom-scrollbar::-webkit-scrollbar{width:6px}
+        .custom-scrollbar::-webkit-scrollbar-thumb{background:#c1c1c1;border-radius:8px}
+        .error-msg{display:none;color:#ef4444;font-size:.75rem;font-weight:600;margin-top:.25rem}
+        .mdl-title{font-family:'Anton',sans-serif;font-weight:400;font-size:1.7rem;color:var(--indigo-deep);text-transform:uppercase;letter-spacing:.01em}
+        .mdl-sub{margin:.5rem 0 1.4rem;font-size:.9rem;color:#5b5470;font-weight:500}
+        .fld{margin-bottom:1rem}
+        .fld label{display:block;font-size:.8rem;font-weight:700;color:var(--indigo);margin-bottom:.35rem}
+        .fld input{width:100%;border-radius:.75rem;border:1px solid #e2e8f0;background:#f8fafc;padding:.8rem 1rem;color:#0f172a;outline:none;font-family:inherit;font-size:1rem}
+        .fld input:focus{border-color:var(--amber)}
+        .mdl-submit{width:100%;border-radius:1rem;padding:1rem;font-size:1.05rem;color:var(--indigo-deep);font-weight:800;border:none;cursor:pointer;text-transform:uppercase;background:var(--amber);transition:background .2s}
+        .mdl-submit:hover{background:var(--amber-deep)}
+    </style>
+</head>
+<body>
+    <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <header class="top">
+        <div class="wrap"><img src="assets/logo-destrava-ukulele.svg" alt="Destrava Ukulele"></div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="wrap grid">
+                <div>
+                    <span class="eyebrow">Evento online e gratuito · 21 a 23 de julho</span>
+                    <h1 class="disp">Você já toca há meses, mas ainda trava nas <span class="hl">trocas de acorde</span>, foge da pestana e vive na mesma batidinha?</h1>
+                    <p class="sub">3 aulas ao vivo e gratuitas pra destravar as trocas, encarar a pestana e soltar a mão com batidas e dedilhados novos.</p>
+                    <button onclick="abrirPopupForm(event)" class="btn btn-amber">Garantir minha vaga gratuita</button>
+                    <div class="trust">
+                        <span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 100% gratuito e ao vivo</span>
+                        <span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Aulas pelo grupo de WhatsApp</span>
+                    </div>
+                    <div class="cd" id="countdown" aria-live="polite">
+                        <div class="lbl">A primeira aula começa em</div>
+                        <div class="clock">
+                            <div class="unit"><b id="cd-d">00</b><small>dias</small></div>
+                            <div class="unit"><b id="cd-h">00</b><small>horas</small></div>
+                            <div class="unit"><b id="cd-m">00</b><small>min</small></div>
+                            <div class="unit"><b id="cd-s">00</b><small>seg</small></div>
+                        </div>
+                    </div>
+                </div>
+                <img class="photo" src="assets/mateus.webp" alt="Mateus Augusto, professor de ukulele" fetchpriority="high">
+            </div>
+        </section>
+
+        <!-- IDENTIFICAÇÃO -->
+        <section class="ident">
+            <div class="wrap">
+                <div class="sec-head">
+                    <span class="eyebrow">Isso aqui é pra você</span>
+                    <h2>Se reconhece em algum desses?</h2>
+                </div>
+                <ul>
+                    <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9" stroke-width="2"/></svg><span>Tem um ukulele há mais de 6 meses e ainda não passou das mesmas 4 músicas de sempre.</span></li>
+                    <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9" stroke-width="2"/></svg><span>Trava toda vez que precisa trocar de acorde e desvia sempre que aparece uma pestana.</span></li>
+                    <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9" stroke-width="2"/></svg><span>Repete a mesma batidinha em tudo, então todas as suas músicas soam parecidas.</span></li>
+                    <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9" stroke-width="2"/></svg><span>Tentou aprender sozinho no YouTube, se perdeu na ordem das coisas e acabou empacando.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- AGENDA -->
+        <section>
+            <div class="wrap">
+                <div class="sec-head">
+                    <span class="eyebrow">3 aulas ao vivo</span>
+                    <h2>O que você vai destravar em 3 dias</h2>
+                    <p>Todas as aulas às 19h30, ao vivo pelo grupo de WhatsApp.</p>
+                </div>
+                <div class="agenda-grid">
+                    <div class="aula">
+                        <span class="day"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg> Terça · 21/07 · 19h30</span>
+                        <div class="num">Aula 1</div>
+                        <h3>Os erros fatais dos iniciantes</h3>
+                        <p>Mais os exercícios de coordenação motora que soltam a sua mão desde o primeiro dia.</p>
+                    </div>
+                    <div class="aula">
+                        <span class="day"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg> Quarta · 22/07 · 19h30</span>
+                        <div class="num">Aula 2</div>
+                        <h3>O segredo das batidas</h3>
+                        <p>As batidas e os dedilhados coringas pra sair da mesma batidinha e dar cara nova pras suas músicas.</p>
+                    </div>
+                    <div class="aula">
+                        <span class="day"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg> Quinta · 23/07 · 19h30</span>
+                        <div class="num">Aula 3</div>
+                        <h3>O Mapa do Iniciante no Ukulele</h3>
+                        <p>O caminho na ordem certa pra você parar de estudar solto e finalmente evoluir sozinho.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BÔNUS -->
+        <section class="bonus">
+            <div class="wrap box">
+                <span class="eyebrow">Bônus de quem entrar no grupo</span>
+                <h2>Aula <span class="hl">"Como eu estudaria se começasse hoje"</span></h2>
+                <p>Uma aula que saiu do ar no YouTube e não está mais disponível em nenhum lugar. Quem entrar no grupo do evento recebe o acesso liberado na descrição.</p>
+            </div>
+        </section>
+
+        <!-- SOBRE -->
+        <section class="sobre">
+            <div class="wrap in">
+                <img src="assets/mateus.webp" alt="Mateus Augusto">
+                <div>
+                    <h2>Quem vai te ensinar</h2>
+                    <div class="role">Mateus Augusto</div>
+                    <p>Desde 2017 ensino ukulele pra uma comunidade de mais de 300 mil pessoas nas redes sociais e já ajudei mais de 6 mil alunos a saírem do básico e tocarem suas primeiras músicas.</p>
+                    <p>Nessas 3 aulas eu vou direto ao ponto: os fundamentos que ninguém te mostrou, as batidas coringas e o caminho pra você destravar e voltar a evoluir sozinho.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="cta">
+            <div class="wrap">
+                <h2 class="disp">Sua vaga no <span class="hl">Destrava Ukulele</span> está aberta</h2>
+                <p>É gratuito, ao vivo e acontece nos dias 21, 22 e 23 de julho às 19h30.</p>
+                <button onclick="abrirPopupForm(event)" class="btn btn-amber">Garantir minha vaga gratuita</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <img src="assets/logo-destrava-ukulele.svg" alt="Destrava Ukulele">
+        <div class="ph">Toque todo dia, um acorde de cada vez.</div>
+        <div class="cp">&copy; 2026 Clube do Ukulele. Todos os direitos reservados.</div>
+    </footer>
+
+    <!-- ===== POPUP DE CAPTURA ===== -->
+    <div id="capture-modal">
+        <div id="modal-content">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.4rem">
+                <h3 class="mdl-title" style="margin:0">Falta pouco!</h3>
+                <button onclick="fecharPopupForm()" aria-label="Fechar" style="cursor:pointer;border:none;background:#f1f5f9;padding:.375rem;border-radius:9999px">
+                    <svg style="width:1.25rem;height:1.25rem;color:#64748b" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <p class="mdl-sub">Preencha os campos abaixo pra garantir sua vaga gratuita e entrar no grupo do evento.</p>
+
+            <form id="lead-form" autocomplete="off" onsubmit="enviarLeadGTM(event)">
+                <div class="fld">
+                    <label for="lead-nome">Nome *</label>
+                    <input required type="text" id="lead-nome" name="lead-nome" placeholder="Seu nome completo">
+                    <p id="erro-nome" class="error-msg">Por favor, insira pelo menos nome e sobrenome.</p>
+                </div>
+                <div class="fld">
+                    <label for="lead-email">E-mail *</label>
+                    <input required type="email" id="lead-email" name="lead-email" placeholder="seu@melhoremail.com">
+                    <p id="erro-email" class="error-msg" style="color:#f97316">Corrigimos um pequeno erro de digitação no seu e-mail!</p>
+                </div>
+                <div class="fld">
+                    <label for="lead-whatsapp">WhatsApp *</label>
+                    <div style="display:flex;border-radius:.75rem;border:1px solid #e2e8f0;background:#f8fafc">
+                        <div style="position:relative;display:flex;align-items:center;border-right:1px solid #e2e8f0;user-select:none" id="ddi-container">
+                            <input type="hidden" id="lead-ddi" value="55">
+                            <button type="button" id="ddi-button" style="display:flex;align-items:center;padding:.75rem;font-size:.875rem;color:#334155;background:transparent;border:none;cursor:pointer">
+                                <img src="https://flagcdn.com/w20/br.png" alt="BR" id="ddi-selected-flag" style="width:1.25rem;margin-right:.375rem;border-radius:2px">
+                                <span id="ddi-selected-text" style="font-weight:600">+55</span>
+                                <svg style="height:1rem;width:1rem;margin-left:.25rem;color:#94a3b8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <ul id="ddi-menu" class="custom-scrollbar">
+                                <li class="ddi-option" data-value="55" data-code="br" style="padding:.5rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img src="https://flagcdn.com/w20/br.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Brasil (+55)</span></li>
+                                <li class="ddi-option" data-value="1" data-code="us" style="padding:.5rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img src="https://flagcdn.com/w20/us.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Estados Unidos (+1)</span></li>
+                                <li class="ddi-option" data-value="351" data-code="pt" style="padding:.5rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img src="https://flagcdn.com/w20/pt.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Portugal (+351)</span></li>
+                                <li class="ddi-option" data-value="244" data-code="ao" style="padding:.5rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img src="https://flagcdn.com/w20/ao.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Angola (+244)</span></li>
+                                <li class="ddi-option" data-value="258" data-code="mz" style="padding:.5rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img src="https://flagcdn.com/w20/mz.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Moçambique (+258)</span></li>
+                                <li class="ddi-option" data-value="other" data-code="other" style="padding:.5rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><svg style="width:1.25rem;height:1.25rem;color:#94a3b8;margin-right:.75rem" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span style="color:#334155;font-weight:500">Outro...</span></li>
+                            </ul>
+                        </div>
+                        <input required type="tel" id="lead-whatsapp" name="lead-whatsapp" style="width:100%;background:transparent;padding:.75rem 1rem;color:#0f172a;outline:none;border:none;font-family:inherit;font-size:1rem" placeholder="(00) 00000-0000" maxlength="20">
+                    </div>
+                    <p id="erro-whatsapp" class="error-msg">Insira um número válido com DDD.</p>
+                </div>
+
+                <input type="hidden" id="phone_hidden">
+
+                <button type="submit" class="mdl-submit">Garantir minha vaga gratuita</button>
+            </form>
+
+            <div style="margin-top:1.1rem;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:#94a3b8">
+                <svg style="margin-right:.375rem;height:1rem;width:1rem" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                Suas informações estão 100% seguras.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var REDIRECT_OBRIGADO = "ev-inscrito.html";
+
+        function abrirPopupForm(event){
+            if(event) event.preventDefault();
+            document.getElementById('erro-nome').style.display='none';
+            document.getElementById('erro-email').style.display='none';
+            document.getElementById('erro-whatsapp').style.display='none';
+            var modal=document.getElementById('capture-modal');
+            modal.classList.add('modal-active');
+            setTimeout(function(){modal.classList.add('modal-visible');},10);
+        }
+        function fecharPopupForm(){
+            var modal=document.getElementById('capture-modal');
+            modal.classList.remove('modal-visible');
+            setTimeout(function(){modal.classList.remove('modal-active');},300);
+        }
+
+        var ddiButton=document.getElementById('ddi-button');
+        var ddiMenu=document.getElementById('ddi-menu');
+        var ddiInput=document.getElementById('lead-ddi');
+        var phoneInput=document.getElementById('lead-whatsapp');
+
+        ddiButton.addEventListener('click',function(e){e.preventDefault();ddiMenu.classList.toggle('show-ddi');});
+        document.addEventListener('click',function(e){if(!document.getElementById('ddi-container').contains(e.target)){ddiMenu.classList.remove('show-ddi');}});
+
+        document.querySelectorAll('.ddi-option').forEach(function(option){
+            option.addEventListener('click',function(){
+                var value=this.getAttribute('data-value');
+                var code=this.getAttribute('data-code');
+                var textSpan=document.getElementById('ddi-selected-text');
+                var flagElement=document.getElementById('ddi-selected-flag');
+                ddiInput.value=value;
+                if(code==='other'){
+                    flagElement.outerHTML='<svg id="ddi-selected-flag" style="width:1.25rem;height:1.25rem;color:#94a3b8;margin-right:.375rem" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+                    textSpan.innerText='';
+                }else{
+                    if(flagElement.tagName.toLowerCase()==='svg'){
+                        flagElement.outerHTML='<img src="https://flagcdn.com/w20/'+code+'.png" id="ddi-selected-flag" style="width:1.25rem;margin-right:.375rem;border-radius:2px">';
+                    }else{
+                        flagElement.src='https://flagcdn.com/w20/'+code+'.png';
+                    }
+                    textSpan.innerText='+'+value;
+                }
+                ddiMenu.classList.remove('show-ddi');
+                var v=phoneInput.value.replace(/\D/g,'');
+                if(value==='55'){phoneInput.placeholder="(00) 00000-0000";phoneInput.dispatchEvent(new Event('input'));}
+                else{phoneInput.placeholder="Seu número";phoneInput.value=v;}
+            });
+        });
+
+        phoneInput.addEventListener('input',function(e){
+            var v=e.target.value.replace(/\D/g,'');
+            if(ddiInput.value==='55'){
+                if(v.length<=10){v=v.replace(/^(\d{2})(\d)/g,'($1) $2');v=v.replace(/(\d{4})(\d)/,'$1-$2');}
+                else{v=v.replace(/^(\d{2})(\d)/g,'($1) $2');v=v.replace(/(\d{5})(\d)/,'$1-$2');}
+                e.target.value=v.substring(0,15);
+            }else{e.target.value=v.substring(0,20);}
+        });
+
+        var emailInput=document.getElementById('lead-email');
+        emailInput.addEventListener('blur',function(e){
+            var val=e.target.value.toLowerCase().trim();
+            var prov={'gmial':'gmail','gamil':'gmail','gmal':'gmail','gmaill':'gmail','gemail':'gmail','hotmial':'hotmail','hotmai':'hotmail','hotmal':'hotmail','hormail':'hotmail','hotmaill':'hotmail','oulook':'outlook','outlok':'outlook','outloo':'outlook','yaho':'yahoo'};
+            var sufs=[{erro:'.comm',certo:'.com'},{erro:'.cm',certo:'.com'},{erro:'.cmo',certo:'.com'},{erro:'.xom',certo:'.com'},{erro:'.con',certo:'.com'},{erro:'.cm.br',certo:'.com.br'},{erro:'.con.br',certo:'.com.br'},{erro:'.com.brr',certo:'.com.br'}];
+            if(val.includes('@')){
+                var parts=val.split('@'),user=parts[0],fullDomain=parts[1],alterado=false,di=fullDomain.indexOf('.');
+                if(di>-1){
+                    var dn=fullDomain.substring(0,di),sf=fullDomain.substring(di);
+                    if(prov[dn]){dn=prov[dn];alterado=true;}
+                    for(var i=0;i<sufs.length;i++){if(sf===sufs[i].erro){sf=sufs[i].certo;alterado=true;break;}}
+                    if(alterado){e.target.value=user+'@'+dn+sf;document.getElementById('erro-email').style.display='block';setTimeout(function(){document.getElementById('erro-email').style.display='none';},4000);}
+                }
+            }
+        });
+
+        function enviarLeadGTM(event){
+            event.preventDefault();
+            var isValid=true;
+            var nome=document.getElementById('lead-nome').value.trim();
+            var ddi=document.getElementById('lead-ddi').value;
+            var emailValue=document.getElementById('lead-email').value.trim();
+            var whatsappLimpo=document.getElementById('lead-whatsapp').value.replace(/\D/g,'');
+
+            if(nome.split(' ').filter(Boolean).length<2){document.getElementById('erro-nome').style.display='block';isValid=false;}
+            else{document.getElementById('erro-nome').style.display='none';}
+
+            var erroW=document.getElementById('erro-whatsapp');
+            if(ddi==='55'){
+                if(whatsappLimpo.length!==10&&whatsappLimpo.length!==11){erroW.style.display='block';isValid=false;}else{erroW.style.display='none';}
+            }else{
+                if(whatsappLimpo.length<5){erroW.style.display='block';isValid=false;}else{erroW.style.display='none';}
+            }
+            if(!isValid) return false;
+
+            var fullPhone=ddi==='55'?whatsappLimpo:ddi+whatsappLimpo;
+            document.getElementById('phone_hidden').value=fullPhone;
+
+            window.dataLayer=window.dataLayer||[];
+            window.dataLayer.push({
+                'event':'lead_capture_submit',
+                'lead_name':nome,
+                'lead_email':emailValue,
+                'lead_phone':fullPhone
+            });
+
+            var btn=document.querySelector('#lead-form button[type="submit"]');
+            btn.innerHTML='GARANTINDO SUA VAGA...';
+            btn.style.opacity='0.7';btn.disabled=true;
+
+            setTimeout(function(){
+                window.location.href=REDIRECT_OBRIGADO+window.location.search;
+            },400);
+        }
+
+        (function(){
+            var target=new Date('2026-07-21T19:30:00-03:00').getTime();
+            var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
+            function pad(n){return(n<10?'0':'')+n;}
+            function tick(){
+                var diff=target-Date.now();
+                if(diff<=0){document.querySelector('#countdown .lbl').innerText='As aulas já começaram! Entre no grupo.';d.innerText=h.innerText=m.innerText=s.innerText='00';return;}
+                var dd=Math.floor(diff/86400000);diff-=dd*86400000;
+                var hh=Math.floor(diff/3600000);diff-=hh*3600000;
+                var mm=Math.floor(diff/60000);diff-=mm*60000;
+                var ss=Math.floor(diff/1000);
+                d.innerText=pad(dd);h.innerText=pad(hh);m.innerText=pad(mm);s.innerText=pad(ss);
+            }
+            tick();setInterval(tick,1000);
+        })();
+    </script>
+</body>
+</html>

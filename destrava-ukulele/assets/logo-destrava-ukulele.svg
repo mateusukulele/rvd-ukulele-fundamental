@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 372 112" width="372" height="112" role="img" aria-label="Destrava Ukulele">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Montserrat:wght@800&amp;display=swap');
+      .d{font-family:'Anton',Impact,sans-serif;fill:#F5F4F7}
+      .u{font-family:'Montserrat','Arial Black',sans-serif;font-weight:800;fill:#F5B93B;letter-spacing:.4em}
+    </style>
+  </defs>
+  <g transform="translate(6,14)">
+    <path d="M20 40 L20 26 A16 16 0 0 1 52 20" fill="none" stroke="#F5F4F7" stroke-width="8" stroke-linecap="round"/>
+    <rect x="8" y="38" width="56" height="42" rx="12" fill="#F5B93B"/>
+    <circle cx="36" cy="59" r="9" fill="#2D2249"/>
+    <line x1="28" y1="40" x2="28" y2="78" stroke="#2D2249" stroke-width="1.5"/>
+    <line x1="33" y1="40" x2="33" y2="78" stroke="#2D2249" stroke-width="1.5"/>
+    <line x1="39" y1="40" x2="39" y2="78" stroke="#2D2249" stroke-width="1.5"/>
+    <line x1="44" y1="40" x2="44" y2="78" stroke="#2D2249" stroke-width="1.5"/>
+    <rect x="27" y="72" width="18" height="3.6" rx="1.2" fill="#2D2249"/>
+  </g>
+  <text class="d" x="92" y="60" font-size="46">DESTRAVA</text>
+  <text class="u" x="94" y="90" font-size="17">UKULELE</text>
+</svg>
