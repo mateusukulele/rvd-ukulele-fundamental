@@ -422,10 +422,14 @@
             window.dataLayer=window.dataLayer||[];
             window.dataLayer.push({
                 'event':'lead_capture_submit',
-                'lead_name':nome,
-                'lead_email':emailValue,
-                'lead_phone':fullPhone
+                'origem':'destrava-ukulele',
+                'lead_nome':nome,
+                'lead_email':emailValue.toLowerCase(),
+                'lead_telefone':fullPhone
             });
+
+            // Repassa o lead pra pesquisa da página de obrigado (mesma origem, sem PII na URL)
+            try{sessionStorage.setItem('cdu_lead',JSON.stringify({nome:nome,email:emailValue.toLowerCase(),telefone:fullPhone}));}catch(e){}
 
             var btn=document.querySelector('#lead-form button[type="submit"]');
             btn.innerHTML='GARANTINDO SUA VAGA...';

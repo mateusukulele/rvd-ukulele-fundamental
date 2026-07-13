@@ -1,155 +1,405 @@
-<!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrição confirmada | Destrava Ukulele</title>
-    <meta name="robots" content="noindex">
-    <link rel="icon" type="image/svg+xml" href="assets/logo-destrava-ukulele.svg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscrição confirmada · Destrava Ukulele</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/logo-destrava-ukulele.svg">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap">
+<!--
+  ============================================================
+  PÁGINA DE OBRIGADO — DESTRAVA UKULELE (pós-inscrição gratuita)
+  Fluxo: LANDING (popup captura lead-nome/lead-email/lead-whatsapp) → sessionStorage
+         → esta página (pesquisa) → dataLayer → GTM → N8N/Supabase
+  Pesquisa DUPLICADA do missao-ukulele (mesmos ids pesquisa_p1..p7 e eventos).
+  Discriminador: todos os eventos levam origem:"destrava-ukulele" pra separar do Missão
+  (mesmo container GTM-PDH6QGB2). Chave de cruzamento: lead_email (normalizado).
+  Lead lido de sessionStorage 'cdu_lead' e, como fallback, da querystring (nome/email/telefone).
+  TROCAR ANTES DE PUBLICAR: grupo WhatsApp em CFG.whatsapp.
+  ============================================================
+-->
 
-    <style>
-        :root{
-            --indigo:#443468; --indigo-deep:#2D2249; --amber:#F5B93B; --amber-deep:#D9971C;
-            --coral:#E87A85; --bg:#F5F4F7; --card:#fff; --ink:#2D2249; --muted:#6b6480;
-            --line:#e6e3ee; --wpp:#25D366; --wpp-deep:#1eae57;
-        }
-        *{box-sizing:border-box;margin:0;padding:0}
-        body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
-        img{max-width:100%;display:block}
-        .wrap{width:100%;max-width:720px;margin:0 auto;padding:0 22px}
-        .disp{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.01em;line-height:1.05;text-transform:uppercase}
-        .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.08rem;text-transform:uppercase;letter-spacing:.02em;padding:18px 28px;border-radius:16px;border:none;cursor:pointer;text-decoration:none;transition:transform .15s,background .15s;width:100%}
-        .btn-wpp{background:var(--wpp);color:#fff;box-shadow:0 12px 24px -8px rgba(37,211,102,.5)}
-        .btn-wpp:hover{background:var(--wpp-deep);transform:translateY(-2px)}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#443468; --indigo-deep:#2D2249; --amber:#F5B93B; --amber-deep:#D9971C;
+  --coral:#E87A85; --bg:#F5F4F7; --card:#fff; --ink:#2D2249; --muted:#6b6480;
+  --line:#e6e3ee; --wpp:#25D366; --wpp-deep:#1aa851; --ok:#2fae6a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55}
+.anton{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.5px;line-height:1.03}
 
-        header.top{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));border-bottom:3px solid var(--amber)}
-        header.top .wrap{display:flex;justify-content:center;padding:14px 22px}
-        header.top img{height:44px}
+.top{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));border-bottom:3px solid var(--amber)}
+.top .in{max-width:600px;margin:0 auto;display:flex;justify-content:center;padding:9px 18px}
+.top img{height:32px}
 
-        .hero{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff;text-align:center;padding:48px 0 40px}
-        .check{width:74px;height:74px;border-radius:50%;background:rgba(37,211,102,.16);border:2px solid var(--wpp);display:flex;align-items:center;justify-content:center;margin:0 auto 22px}
-        .check svg{width:38px;height:38px;color:var(--wpp)}
-        .hero .eyebrow{display:inline-block;font-weight:700;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);background:rgba(245,185,59,.16);border:1px solid rgba(245,185,59,.35);padding:6px 14px;border-radius:999px;margin-bottom:16px}
-        .hero h1{font-size:2rem;margin-bottom:12px}
-        .hero p{color:#e7e3f2;font-size:1.08rem;max-width:44ch;margin:0 auto}
+.wrap{width:100%;max-width:600px;margin:0 auto;padding:16px 18px 50px}
 
-        main{flex:1;padding:44px 0 20px}
-        .step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;margin-bottom:22px;position:relative}
-        .step .tag{display:inline-flex;align-items:center;gap:8px;font-family:'Anton',sans-serif;font-size:.9rem;letter-spacing:.04em;color:var(--amber-deep);text-transform:uppercase;margin-bottom:12px}
-        .step .tag i{width:26px;height:26px;border-radius:50%;background:#efe9fb;color:var(--indigo);display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-style:normal;font-size:.85rem}
-        .step h2{font-size:1.35rem;color:var(--indigo-deep);margin-bottom:8px}
-        .step p{color:var(--muted);margin-bottom:18px;font-size:1rem}
-        .step p strong{color:var(--ink)}
+.confirm{text-align:center;margin-bottom:14px}
+.tick{width:48px;height:48px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;background:rgba(47,174,106,.14);border:2px solid rgba(47,174,106,.5)}
+.tick svg{width:26px;height:26px}
+.confirm h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(22px,5.5vw,30px);letter-spacing:.5px;color:var(--indigo-deep)}
+.confirm h1 .ok{color:var(--ok)}
+.confirm .sub{color:var(--muted);font-size:14.5px;font-weight:500;margin-top:4px}
+.confirm .sub b{color:var(--amber-deep)}
 
-        .agenda{list-style:none;margin:6px 0 4px}
-        .agenda li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
-        .agenda li:last-child{border-bottom:none}
-        .agenda .badge{font-family:'Anton',sans-serif;font-size:.78rem;color:#fff;background:var(--indigo);padding:8px 10px;border-radius:10px;text-align:center;line-height:1.1;flex:none;min-width:58px}
-        .agenda .info{flex:1}
-        .agenda .info b{display:block;color:var(--indigo-deep);font-size:1.02rem;line-height:1.25}
-        .agenda .info small{color:var(--muted);font-weight:600}
-        .agenda .cal{font-size:.78rem;font-weight:700;color:var(--indigo);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);padding:8px 10px;border-radius:10px}
-        .agenda .cal:hover{border-color:var(--amber);color:var(--amber-deep)}
-        .agenda .cal svg{width:14px;height:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:14px}
+.card h2{font-size:17px;font-weight:800;color:var(--indigo-deep);margin-bottom:3px}
+.card .hint{color:var(--muted);font-size:13px;margin-bottom:12px}
 
-        .bonus{background:#efe9fb;border:1px dashed #c9bde8;border-radius:16px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;margin-top:6px}
-        .bonus svg{width:26px;height:26px;color:var(--amber-deep);flex:none;margin-top:2px}
-        .bonus b{color:var(--indigo-deep)}
-        .bonus span{font-size:.96rem;color:#4a4363}
+.qmeta{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted);margin:2px 0 8px}
+.qmeta b{color:var(--amber-deep)}
+.qbar{height:6px;background:#efecf5;border-radius:20px;overflow:hidden;border:1px solid var(--line);margin-bottom:16px}
+.qbar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--indigo),var(--amber));transition:width .35s ease}
+.qstep{display:none}
+.qstep.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.qtitle{font-size:16.5px;font-weight:800;color:var(--indigo-deep);margin-bottom:13px;line-height:1.3}
+.opts{display:grid;gap:8px}
+.opt{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:#faf9fc;border:1.5px solid var(--line);color:var(--ink);padding:12px 14px;border-radius:11px;font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--indigo)}
+.opt .rdio{width:19px;height:19px;border-radius:50%;border:2px solid #c7c1db;flex:none;position:relative;transition:border-color .15s}
+.opt.sel{border-color:var(--indigo);background:#f1ecfb}
+.opt.sel .rdio{border-color:var(--indigo)}
+.opt.sel .rdio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--indigo)}
+.opts.multi .rdio{border-radius:6px}
+.opts.multi .opt.sel .rdio::after{border-radius:2px}
+.q-outro-wrap{margin-top:9px}
+.q-textarea{width:100%;min-height:76px;background:#faf9fc;border:1.5px solid var(--line);color:var(--ink);border-radius:11px;padding:11px 13px;font:inherit;font-size:14.5px;line-height:1.5;resize:vertical}
+.q-textarea:focus{outline:none;border-color:var(--indigo)}
+.q-textarea::placeholder{color:#9a94af}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}
+.btn-voltar{background:none;border:0;color:var(--muted);font:inherit;font-weight:600;cursor:pointer;text-decoration:underline}
+.btn-prox{background:var(--indigo);color:#fff;border:0;font:inherit;font-weight:800;font-size:15px;padding:13px 30px;border-radius:12px;cursor:pointer;transition:background .15s,opacity .12s}
+.btn-prox:hover{background:var(--indigo-deep)}
+.btn-prox:disabled{opacity:.35;cursor:not-allowed}
+.done-tick{width:52px;height:52px;border-radius:50%;margin:2px auto 12px;display:grid;place-items:center;background:rgba(47,174,106,.14);border:2px solid rgba(47,174,106,.5);color:var(--ok);font-size:26px;font-weight:800}
 
-        footer{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));border-top:3px solid var(--amber);color:#fff;text-align:center;padding:28px 22px}
-        footer img{height:38px;margin:0 auto 10px}
-        footer .ph{font-weight:600;font-size:.88rem}
-        footer .cp{opacity:.7;font-size:.76rem;margin-top:6px}
+.wa{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;background:var(--wpp);color:#06351c;font-family:'Montserrat';font-weight:800;font-size:16.5px;padding:17px;border-radius:13px;box-shadow:0 12px 26px -10px rgba(37,211,102,.55);transition:transform .12s,filter .12s;text-decoration:none;text-transform:uppercase;letter-spacing:.3px}
+.wa:hover{filter:brightness(1.05);transform:translateY(-2px)}
+.wa svg{width:24px;height:24px;flex:none}
+.cd{text-align:center;margin-top:14px;color:var(--muted);font-size:13.5px}
+.cd .num{font-family:'Anton',sans-serif;color:var(--amber-deep);font-size:17px;font-variant-numeric:tabular-nums}
+.cd .pause{display:inline-block;margin-top:6px;font-size:12.5px;color:var(--indigo);text-decoration:underline;cursor:pointer;background:none;border:0;font-family:inherit}
 
-        @media(min-width:680px){
-            .hero h1{font-size:2.5rem}
-        }
-        @media(max-width:520px){
-            .agenda li{flex-wrap:wrap}
-            .agenda .cal{width:100%;justify-content:center;margin-top:4px}
-        }
-    </style>
+.agenda{list-style:none}
+.agenda li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.agenda li:last-child{border-bottom:none}
+.agenda .badge{font-family:'Anton',sans-serif;font-size:12px;color:#fff;background:var(--indigo);padding:7px 9px;border-radius:9px;text-align:center;line-height:1.1;flex:none;min-width:52px}
+.agenda .info{flex:1}
+.agenda .info b{display:block;color:var(--indigo-deep);font-size:14.5px;line-height:1.25}
+.agenda .info small{color:var(--muted);font-weight:600;font-size:12.5px}
+.agenda .cal{font-size:12px;font-weight:700;color:var(--indigo);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);padding:7px 9px;border-radius:9px}
+.agenda .cal:hover{border-color:var(--amber);color:var(--amber-deep)}
+.agenda .cal svg{width:13px;height:13px}
+.bonus{background:#f1ecfb;border:1px dashed #cbbfe9;border-radius:13px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-top:14px}
+.bonus svg{width:22px;height:22px;color:var(--amber-deep);flex:none;margin-top:2px}
+.bonus b{color:var(--indigo-deep)}
+.bonus span{font-size:13.5px;color:#4a4363}
+
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:24px;opacity:.85}
+@media(max-width:520px){.agenda li{flex-wrap:wrap}.agenda .cal{width:100%;justify-content:center;margin-top:4px}}
+</style>
 </head>
 <body>
-    <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <header class="top">
-        <div class="wrap"><img src="assets/logo-destrava-ukulele.svg" alt="Destrava Ukulele"></div>
-    </header>
+<div class="top"><div class="in"><img src="assets/logo-destrava-ukulele.svg" alt="Destrava Ukulele"></div></div>
 
-    <section class="hero">
-        <div class="wrap">
-            <div class="check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div>
-            <span class="eyebrow">Inscrição confirmada</span>
-            <h1 class="disp">Sua vaga está garantida!</h1>
-            <p>Falta só um passo pra você não perder nada: entrar no grupo do evento no WhatsApp.</p>
-        </div>
-    </section>
+<div class="wrap">
 
-    <main>
-        <div class="wrap">
-            <!-- PASSO 1 -->
-            <div class="step">
-                <div class="tag"><i>1</i> Entre no grupo agora</div>
-                <h2>É pelo grupo que tudo acontece</h2>
-                <p>Os links das aulas ao vivo, os avisos e o <strong>bônus liberado</strong> ficam todos no grupo do WhatsApp. Se você não entrar, não recebe.</p>
-                <a href="https://chat.whatsapp.com/Gxu0Kuqbx3e8tO4EY8Whh1" class="btn btn-wpp" target="_blank" rel="noopener">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A7.85 7.85 0 0012 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1A7.9 7.9 0 0012 19.9a7.94 7.94 0 005.6-13.6zM12 18.5a6.6 6.6 0 01-3.4-.9l-.24-.15-2.5.66.66-2.43-.16-.25a6.59 6.59 0 019.96-8.5 6.59 6.59 0 01-4.32 11.56zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 01-1.6-1 6 6 0 01-1.1-1.37c-.12-.2 0-.31.09-.41s.2-.23.3-.35a1.4 1.4 0 00.2-.33.37.37 0 000-.35c0-.1-.44-1.06-.6-1.45s-.32-.33-.44-.34h-.38a.72.72 0 00-.52.24 2.2 2.2 0 00-.68 1.63A3.83 3.83 0 009 11.86a8.7 8.7 0 003.33 2.94c.47.2.83.32 1.11.41a2.68 2.68 0 001.23.08 2 2 0 001.31-.93 1.63 1.63 0 00.11-.92c-.05-.09-.18-.14-.38-.24z"/></svg>
-                    Entrar no grupo do WhatsApp
-                </a>
-            </div>
+  <div class="confirm">
+    <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#2fae6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+    <h1 class="anton">Inscrição <span class="ok">confirmada!</span></h1>
+    <p class="sub" id="confirm-sub">Sua vaga está garantida. Falta só <b>1 passo</b>: entrar no grupo.</p>
+  </div>
 
-            <!-- PASSO 2 -->
-            <div class="step">
-                <div class="tag"><i>2</i> Salve as datas</div>
-                <h2>São 3 aulas ao vivo, às 19h30</h2>
-                <p>Adicione na sua agenda pra não esquecer. Cada aula fica gravada só por pouco tempo, então o ao vivo é onde acontece.</p>
-                <ul class="agenda">
-                    <li>
-                        <span class="badge">TER<br>21/07</span>
-                        <div class="info"><b>Os erros fatais dos iniciantes</b><small>+ Exercícios de coordenação motora · 19h30</small></div>
-                        <a class="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Destrava+Ukulele+-+Aula+1&dates=20260721T223000Z/20260722T000000Z&details=Aula+1:+Os+erros+fatais+dos+iniciantes+%2B+Exercicios+de+Coordenacao+Motora.+Ao+vivo+pelo+grupo+de+WhatsApp.">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Agenda
-                        </a>
-                    </li>
-                    <li>
-                        <span class="badge">QUA<br>22/07</span>
-                        <div class="info"><b>O segredo das batidas</b><small>+ Batidas e dedilhados coringas · 19h30</small></div>
-                        <a class="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Destrava+Ukulele+-+Aula+2&dates=20260722T223000Z/20260723T000000Z&details=Aula+2:+O+segredo+das+batidas+%2B+Batidas+e+Dedilhados+Coringas.+Ao+vivo+pelo+grupo+de+WhatsApp.">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Agenda
-                        </a>
-                    </li>
-                    <li>
-                        <span class="badge">QUI<br>23/07</span>
-                        <div class="info"><b>O Mapa do Iniciante no Ukulele</b><small>O caminho na ordem certa · 19h30</small></div>
-                        <a class="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Destrava+Ukulele+-+Aula+3&dates=20260723T223000Z/20260724T000000Z&details=Aula+3:+O+Mapa+do+Iniciante+no+Ukulele.+Ao+vivo+pelo+grupo+de+WhatsApp.">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Agenda
-                        </a>
-                    </li>
-                </ul>
-                <div class="bonus">
-                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
-                    <span><b>Seu bônus já está te esperando:</b> a aula "Como eu estudaria se começasse hoje", que saiu do ar no YouTube, está liberada na descrição do grupo.</span>
-                </div>
-            </div>
-        </div>
-    </main>
+  <div class="card" id="survey">
+    <div id="survey-body">
+      <h2>Antes de entrar, responde rapidinho 👇</h2>
+      <p class="hint">São 7 perguntas rápidas (1 minutinho). Isso me ajuda a preparar as aulas certas pra você.</p>
+      <div class="qmeta"><span>Pergunta <b id="q-count">1 de 7</b></span></div>
+      <div class="qbar"><div class="qbar-fill" id="survey-prog"></div></div>
+      <div id="survey-steps"></div>
+      <div class="qnav">
+        <button type="button" class="btn-voltar" id="btn-voltar" style="visibility:hidden">Voltar</button>
+        <button type="button" class="btn-prox" id="btn-prox" disabled>Próximo</button>
+      </div>
+    </div>
+    <div id="survey-done" style="display:none;text-align:center">
+      <div class="done-tick">✓</div>
+      <h2>Prontinho, obrigado! 🙌</h2>
+      <p class="hint" style="margin-bottom:0">Suas respostas foram registradas. Agora é só entrar no grupo aqui embaixo. 👇</p>
+    </div>
+  </div>
 
-    <footer>
-        <img src="assets/logo-destrava-ukulele.svg" alt="Destrava Ukulele">
-        <div class="ph">Toque todo dia, um acorde de cada vez.</div>
-        <div class="cp">&copy; 2026 Clube do Ukulele. Todos os direitos reservados.</div>
-    </footer>
+  <div class="card" id="wa-card" style="text-align:center">
+    <h2 style="margin-bottom:5px">Seu último passo</h2>
+    <p class="hint" style="margin-bottom:14px">É no grupo que ficam os links das aulas, os avisos e o bônus. Responder a pesquisa leva 1 minutinho, mas se preferir já pode entrar:</p>
+    <a class="wa" id="wa" target="_blank" rel="noopener" href="https://chat.whatsapp.com/Gxu0Kuqbx3e8tO4EY8Whh1">
+      <svg viewBox="0 0 24 24" fill="#06351c"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      Entrar no grupo do WhatsApp
+    </a>
+    <div class="cd" id="cd-box" style="display:none">
+      Você entra no grupo automaticamente em <span class="num" id="cd">15</span>s.<br>
+      <button class="pause" id="pause" type="button">Quer entrar com calma? Pausar contador</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>As 3 aulas ao vivo · 19h30</h2>
+    <p class="hint">Salve na agenda pra não perder.</p>
+    <ul class="agenda">
+      <li>
+        <span class="badge">TER<br>21/07</span>
+        <div class="info"><b>Os erros fatais dos iniciantes</b><small>+ Exercícios de coordenação motora</small></div>
+        <a class="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Destrava+Ukulele+-+Aula+1&dates=20260721T223000Z/20260722T000000Z&details=Aula+1:+Os+erros+fatais+dos+iniciantes+%2B+Exercicios+de+Coordenacao+Motora.+Ao+vivo+pelo+grupo+de+WhatsApp.">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Agenda
+        </a>
+      </li>
+      <li>
+        <span class="badge">QUA<br>22/07</span>
+        <div class="info"><b>O segredo das batidas</b><small>+ Batidas e dedilhados coringas</small></div>
+        <a class="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Destrava+Ukulele+-+Aula+2&dates=20260722T223000Z/20260723T000000Z&details=Aula+2:+O+segredo+das+batidas+%2B+Batidas+e+Dedilhados+Coringas.+Ao+vivo+pelo+grupo+de+WhatsApp.">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Agenda
+        </a>
+      </li>
+      <li>
+        <span class="badge">QUI<br>23/07</span>
+        <div class="info"><b>O Mapa do Iniciante no Ukulele</b><small>O caminho na ordem certa</small></div>
+        <a class="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Destrava+Ukulele+-+Aula+3&dates=20260723T223000Z/20260724T000000Z&details=Aula+3:+O+Mapa+do+Iniciante+no+Ukulele.+Ao+vivo+pelo+grupo+de+WhatsApp.">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Agenda
+        </a>
+      </li>
+    </ul>
+    <div class="bonus">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+      <span><b>Seu bônus já está te esperando:</b> a aula "Como eu estudaria se começasse hoje", que saiu do ar no YouTube, está liberada na descrição do grupo.</span>
+    </div>
+  </div>
+
+  <div class="foot">Destrava Ukulele · Clube do Ukulele · Mateus Augusto</div>
+</div>
+
+<script>
+(function(){
+  var dl = window.dataLayer = window.dataLayer || [];
+  var ORIGEM = "destrava-ukulele";
+
+  var CFG = {
+    whatsapp: "https://chat.whatsapp.com/Gxu0Kuqbx3e8tO4EY8Whh1",
+    redirectSeconds: 15,
+    paramKeys: {
+      nome:      ["nome","name","first_name","full_name"],
+      email:     ["email","e-mail"],
+      telefone:  ["telefone","phone","tel","whatsapp","celular"],
+      transacao: ["transaction","tid","trans","transacao"]
+    }
+  };
+
+  function getParam(keys){
+    var q = new URLSearchParams(window.location.search);
+    for (var i=0;i<keys.length;i++){ var v=q.get(keys[i]); if (v) return v.trim(); }
+    return "";
+  }
+  var stored = {};
+  try{ stored = JSON.parse(sessionStorage.getItem('cdu_lead')||'{}') || {}; }catch(e){ stored = {}; }
+  var lead = {
+    nome:      stored.nome     || getParam(CFG.paramKeys.nome),
+    email:     stored.email    || getParam(CFG.paramKeys.email),
+    telefone:  stored.telefone || getParam(CFG.paramKeys.telefone),
+    transacao: getParam(CFG.paramKeys.transacao)
+  };
+  lead.email = (lead.email||"").toLowerCase();
+
+  if (lead.nome){
+    var primeiro = lead.nome.split(" ")[0];
+    var sub = document.getElementById("confirm-sub");
+    if (sub) sub.innerHTML = "Sua vaga está garantida, " + primeiro + "! Falta só <b>1 passo</b>: entrar no grupo.";
+  }
+
+  dl.push({
+    event: "checkout_lead", origem: ORIGEM,
+    lead_nome: lead.nome, lead_email: lead.email, lead_telefone: lead.telefone, transacao: lead.transacao
+  });
+
+  var PERGUNTAS = [
+    { id:"pesquisa_p1", tipo:"single", titulo:"Qual é a sua faixa de idade?", opcoes:[
+      {v:"ate_25",t:"Até 25"},{v:"26_39",t:"26 a 39"},{v:"40_49",t:"40 a 49"},{v:"50_59",t:"50 a 59"},{v:"60_mais",t:"60 ou mais"}
+    ]},
+    { id:"pesquisa_p2", tipo:"single", titulo:"Você já tem um ukulele?", opcoes:[
+      {v:"sim",t:"Sim"},{v:"nao",t:"Não"}
+    ]},
+    { id:"pesquisa_p3", tipo:"single", titulo:"Qual é a sua relação com o ukulele hoje?", opcoes:[
+      {v:"nunca_toquei",t:"Nunca toquei"},{v:"tentei_parei",t:"Já tentei e parei"},
+      {v:"toco_pouco_sem_metodo",t:"Já toco um pouco, sem método"},{v:"toco_bem",t:"Já toco bem"}
+    ]},
+    { id:"pesquisa_p4", tipo:"single", titulo:"O que mais te move a querer tocar ukulele agora?", opcoes:[
+      {v:"hobby_relaxar",t:"Hobby e relaxar tocando sozinho"},{v:"familia_amigos",t:"Tocar para família e amigos"},
+      {v:"igreja",t:"Tocar na igreja"},{v:"sonho_antigo",t:"Realizar um sonho antigo"},
+      {v:"mente_memoria",t:"Cuidar da mente e exercitar a memória"}
+    ]},
+    { id:"pesquisa_p5", tipo:"single", titulo:"Que tipo de música você mais sonha em tocar?", opcoes:[
+      {v:"mpb",t:"MPB"},{v:"sertanejo",t:"Sertanejo"},{v:"pop_rock",t:"Pop/rock"},{v:"reggae",t:"Reggae"},
+      {v:"gospel",t:"Gospel/louvor"},{v:"infantil",t:"Música infantil"},{v:"outros",t:"Outros",outro:true}
+    ]},
+    { id:"pesquisa_p6", tipo:"multi", titulo:"Você se identifica com alguma dessas frases?", opcoes:[
+      {v:"nao_levo_jeito",t:"Acho que não levo jeito pra música."},
+      {v:"tarde_demais",t:"Tenho medo de já ser tarde pra mim."},
+      {v:"falta_tempo",t:"Tenho medo de não ter tempo pra praticar."},
+      {v:"tentei_desisti",t:"Já tentei aprender antes e acabei desistindo."},
+      {v:"dedos_ritmo",t:"Sinto que meus dedos são travados e não pego o ritmo."},
+      {v:"falta_tecnica",t:"Já arranho um pouco, mas falta técnica e método pra evoluir."},
+      {v:"nenhuma",t:"Não me identifico com nenhuma dessas.",exclusiva:true},
+      {v:"outros",t:"Outros",outro:true}
+    ]},
+    { id:"pesquisa_p7", tipo:"aberta", titulo:"O que te influenciou a entrar no Destrava Ukulele e qual é o seu objetivo?", placeholder:"Pode escrever à vontade..." }
+  ];
+
+  var respostas = {}, respostasTexto = {}, outros = {};
+  var atual = 0, concluido = false, ultimoParcial = "";
+
+  var elSteps = document.getElementById("survey-steps");
+  var elProx  = document.getElementById("btn-prox");
+  var elVolta = document.getElementById("btn-voltar");
+  var elProg  = document.getElementById("survey-prog");
+  var elCount = document.getElementById("q-count");
+
+  function temCampoOutro(p){ if(p.tipo==="aberta")return false; for(var i=0;i<p.opcoes.length;i++){if(p.opcoes[i].outro)return true;} return false; }
+  function outroSelecionado(p){ if(p.tipo==="multi")return (respostas[p.id]||[]).indexOf("outros")!==-1; return respostas[p.id]==="outros"; }
+  function respondida(p){
+    if(p.tipo==="aberta")return true;
+    var r=respostas[p.id]; var tem=(p.tipo==="multi")?(r&&r.length>0):!!r;
+    if(!tem)return false;
+    if(outroSelecionado(p)&&!((outros[p.id]||"").trim()))return false;
+    return true;
+  }
+  function valDe(p){ return (p.tipo==="multi")?(respostas[p.id]||[]).join(","):(respostas[p.id]||""); }
+  function txtDe(p){
+    if(p.tipo==="multi"){
+      var arr=(respostasTexto[p.id]||[]).slice();
+      if(outroSelecionado(p)&&(outros[p.id]||"").trim()){var i=(respostas[p.id]||[]).indexOf("outros"); if(i!==-1)arr[i]=arr[i]+": "+outros[p.id];}
+      return arr.join(" | ");
+    }
+    var t=respostasTexto[p.id]||"";
+    if(outroSelecionado(p)&&(outros[p.id]||"").trim())t=t+": "+outros[p.id];
+    return t;
+  }
+  function atualizarProx(){ elProx.disabled = !respondida(PERGUNTAS[atual]); }
+
+  PERGUNTAS.forEach(function(p, idx){
+    var step=document.createElement("div");
+    step.className="qstep"+(idx===0?" active":""); step.setAttribute("data-idx",idx);
+    var h=document.createElement("div"); h.className="qtitle"; h.textContent=p.titulo; step.appendChild(h);
+
+    if(p.tipo==="aberta"){
+      var ta=document.createElement("textarea"); ta.className="q-textarea"; ta.rows=3; ta.placeholder=p.placeholder||"Escreva aqui...";
+      ta.addEventListener("input",function(){respostas[p.id]=ta.value.trim();respostasTexto[p.id]=ta.value.trim();atualizarProx();});
+      step.appendChild(ta); elSteps.appendChild(step); return;
+    }
+
+    respostas[p.id]=(p.tipo==="multi")?[]:""; respostasTexto[p.id]=(p.tipo==="multi")?[]:"";
+    var opts=document.createElement("div"); opts.className="opts"+(p.tipo==="multi"?" multi":"");
+
+    var outroWrap=null;
+    if(temCampoOutro(p)){
+      outroWrap=document.createElement("div"); outroWrap.className="q-outro-wrap"; outroWrap.style.display="none";
+      var outroTa=document.createElement("textarea"); outroTa.className="q-textarea"; outroTa.rows=2; outroTa.placeholder="Qual? Pode escrever aqui...";
+      outroTa.addEventListener("input",function(){outros[p.id]=outroTa.value.trim();atualizarProx();});
+      outroWrap.appendChild(outroTa);
+    }
+
+    p.opcoes.forEach(function(o){
+      var b=document.createElement("button"); b.type="button"; b.className="opt";
+      b.innerHTML='<span class="rdio"></span><span>'+o.t+'</span>';
+      b.addEventListener("click",function(){
+        if(p.tipo==="single"){
+          Array.prototype.forEach.call(opts.children,function(c){c.classList.remove("sel");});
+          b.classList.add("sel"); respostas[p.id]=o.v; respostasTexto[p.id]=o.t;
+        } else {
+          var arr=respostas[p.id], arrT=respostasTexto[p.id]; var ix=arr.indexOf(o.v);
+          if(o.exclusiva){
+            Array.prototype.forEach.call(opts.children,function(c){c.classList.remove("sel");});
+            if(ix===-1){b.classList.add("sel");respostas[p.id]=[o.v];respostasTexto[p.id]=[o.t];}
+            else{respostas[p.id]=[];respostasTexto[p.id]=[];}
+          } else {
+            p.opcoes.forEach(function(oo,k){ if(oo.exclusiva){var ex=arr.indexOf(oo.v); if(ex!==-1){arr.splice(ex,1);arrT.splice(ex,1);} opts.children[k].classList.remove("sel");} });
+            if(ix===-1){b.classList.add("sel");arr.push(o.v);arrT.push(o.t);}
+            else{b.classList.remove("sel");arr.splice(ix,1);arrT.splice(ix,1);}
+          }
+        }
+        if(outroWrap)outroWrap.style.display=outroSelecionado(p)?"block":"none";
+        atualizarProx();
+      });
+      opts.appendChild(b);
+    });
+    step.appendChild(opts); if(outroWrap)step.appendChild(outroWrap); elSteps.appendChild(step);
+  });
+
+  function render(){
+    Array.prototype.forEach.call(elSteps.children,function(s){ s.classList.toggle("active",(+s.getAttribute("data-idx"))===atual); });
+    elProx.textContent=(atual===PERGUNTAS.length-1)?"Finalizar":"Próximo";
+    elVolta.style.visibility=(atual===0)?"hidden":"visible";
+    elCount.textContent=(atual+1)+" de "+PERGUNTAS.length;
+    elProg.style.width=(atual/PERGUNTAS.length*100)+"%";
+    atualizarProx();
+  }
+
+  elProx.addEventListener("click",function(){
+    var p=PERGUNTAS[atual]; if(!respondida(p))return;
+    dl.push({ event:"pesquisa_resposta", origem:ORIGEM, lead_email:lead.email, transacao:lead.transacao,
+      pergunta_id:p.id, pergunta:p.titulo, resposta_valor:valDe(p), resposta_texto:txtDe(p), pergunta_indice:atual+1 });
+    if(atual<PERGUNTAS.length-1){atual++;render();} else {finalizar();}
+  });
+  elVolta.addEventListener("click",function(){ if(atual>0){atual--;render();} });
+
+  function montarPayload(extra){
+    var out={ origem:ORIGEM, lead_nome:lead.nome, lead_email:lead.email, lead_telefone:lead.telefone, transacao:lead.transacao };
+    var respObj={}, respTxt={}, n=0;
+    PERGUNTAS.forEach(function(p){ var v=valDe(p); out[p.id]=txtDe(p); if(v){respObj[p.id]=v;respTxt[p.id]=txtDe(p);n++;} });
+    out.respostas=respObj; out.respostas_texto=respTxt; out.respondidas=n; out.total=PERGUNTAS.length;
+    for(var k in extra){out[k]=extra[k];}
+    return out;
+  }
+  function finalizar(){ dl.push(montarPayload({event:"pesquisa_concluida",concluida:true})); elProg.style.width="100%"; concluir(); }
+  function concluir(){
+    concluido=true;
+    document.getElementById("survey-body").style.display="none";
+    document.getElementById("survey-done").style.display="block";
+    armarWhats();
+  }
+  function pushParcial(motivo){
+    if(concluido)return;
+    var payload=montarPayload({event:"pesquisa_parcial",motivo:motivo||"saida",concluida:false});
+    if(payload.respondidas===0)return;
+    var assinatura=JSON.stringify(payload.respostas); if(assinatura===ultimoParcial)return;
+    ultimoParcial=assinatura; dl.push(payload);
+  }
+  document.getElementById("wa").addEventListener("click",function(){ pushParcial("clicou_whatsapp"); });
+
+  render();
+
+  var armed=false;
+  function armarWhats(){
+    if(armed)return; armed=true;
+    document.getElementById("wa").setAttribute("href",CFG.whatsapp);
+    var left=CFG.redirectSeconds, paused=false;
+    var box=document.getElementById("cd-box"); box.style.display="block";
+    var el=document.getElementById("cd"); var pauseBtn=document.getElementById("pause");
+    pauseBtn.addEventListener("click",function(){ paused=!paused; pauseBtn.textContent=paused?"Contador pausado · clique pra retomar":"Quer entrar com calma? Pausar contador"; });
+    var timer=setInterval(function(){ if(paused)return; left--; if(left<=0){clearInterval(timer);el.textContent="0";window.location.href=CFG.whatsapp;return;} el.textContent=left; },1000);
+  }
+})();
+</script>
 </body>
 </html>
