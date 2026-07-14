@@ -72,11 +72,18 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 .rose{color:var(--rose)}
 
-/* strip da marca */
-.strip{background:linear-gradient(135deg,#443468,#2D2249);border-bottom:3px solid var(--rose-deep);padding:12px 0}
+/* cabeçalho: o mesmo da landing page (topbar), com a logo do produto.
+   Não é sticky aqui de propósito: não existe CTA no cabeçalho para manter à vista,
+   e um cabeçalho fixo só roubaria altura da oferta. */
+.strip{background:rgba(16,13,32,.92);border-bottom:1px solid var(--line);padding:10px 0}
 .strip .wrap{display:flex;align-items:center;gap:10px}
-.strip img{height:34px;width:auto;display:block;background:#fff;padding:4px 7px;border-radius:6px}
-.strip span{font-family:'Anton';font-size:17px;letter-spacing:1px}
+/* a logo do produto já traz o próprio fundo índigo, então não leva caixa branca */
+.strip img{height:34px;width:34px;display:block}
+.strip span{font-family:'Anton';font-size:18px;letter-spacing:1px}
+@media(max-width:560px){
+  .strip img{height:28px;width:28px}
+  .strip span{font-size:15px}
+}
 
 /* confirmação */
 .confirm{text-align:center;padding:56px 0 40px}
@@ -190,8 +197,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="strip">
   <div class="wrap">
-    <img src="assets/logo-clube.webp" alt="Clube do Ukulele" onerror="this.style.display='none'">
-    <span>Clube do Ukulele</span>
+    <img src="assets/logo-d0a1.svg" alt="Do ZERO à 1ª Música" onerror="this.style.display='none'">
+    <span>Do ZERO à 1ª Música</span>
   </div>
 </div>
 
