@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Do ZERO à 1ª Música">
+  <title>Do ZERO à 1ª Música</title>
+  <defs>
+    <linearGradient id="d0a1-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#443468"/>
+      <stop offset="1" stop-color="#2D2249"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="15" fill="url(#d0a1-bg)"/>
+
+  <!-- 4 cordas do ukulele, discretas, só para dar contexto -->
+  <g stroke="#E87A85" stroke-opacity=".22" stroke-width="1" stroke-linecap="round">
+    <line x1="46" y1="12" x2="46" y2="52"/>
+    <line x1="50" y1="12" x2="50" y2="52"/>
+    <line x1="54" y1="12" x2="54" y2="52"/>
+    <line x1="58" y1="12" x2="58" y2="52"/>
+  </g>
+
+  <!-- A nota. A cabeça é coral (o detalhe rosa da marca) e faz as vezes de boca do ukulele. -->
+  <ellipse cx="24" cy="45" rx="11.5" ry="9" transform="rotate(-20 24 45)" fill="#E87A85"/>
+
+  <!-- A haste da nota é o corpo do "1": a primeira música. -->
+  <path d="M33.5 15.5h6.2v29.2h-6.2z" fill="#F5F4F7"/>
+  <path d="M33.5 15.5 24 20.6v6.4l9.5-4.6z" fill="#F5F4F7"/>
+</svg>
