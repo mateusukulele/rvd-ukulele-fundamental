@@ -19,20 +19,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   Base: "LPSG - Página de Obrigado.html" (parsing do comprador via querystring + dataLayer)
 
   O QUE ESTA PÁGINA FAZ
-    1) Confirma a compra do curso de R$ 47 e manda o aluno para a plataforma.
-    2) Oferece o upgrade "Intercâmbio de Vídeos" (+R$ 47), que libera o envio
-       dos vídeos das 5 atividades para o Mateus analisar e responder em vídeo.
+    1) Agradece, confirma a compra e entrega os DADOS DE ACESSO da plataforma.
+       Login = o e-mail que veio do checkout. Senha padrão = "ukulele".
+    2) Só depois disso, oferece o upgrade "Intercâmbio de Vídeos" (+R$ 47), que
+       libera as 5 atividades e a análise em vídeo do Mateus.
+       As 5 atividades NÃO fazem parte do produto de R$ 47. São exclusivas do upgrade.
 
-  TROCAR ANTES DE PUBLICAR (procure por SEU_LINK / [INSERIR):
-    1) SEU_LINK_CHECKOUT_UPGRADE → checkout Hotmart do upgrade de R$ 47.
-    2) SEU_LINK_PLATAFORMA       → onde o aluno acessa o curso.
-                                   Provável: https://aluno.comotocarukulele.com
-    3) [INSERIR PROVA REAL]      → print de uma análise em vídeo real do Mateus.
-    4) VÍDEO DE VENDAS           → bloco #vsl vazio de propósito. Rodamos SEM vídeo primeiro.
+  CHECKOUT DO UPGRADE (já configurado):
+    https://pay.hotmart.com/N106662510K?off=nrjxzjdc
+
+  AINDA FALTA:
+    1) [INSERIR PROVA REAL] → print de uma análise em vídeo real do Mateus.
+    2) VÍDEO DE VENDAS      → bloco #vsl vazio de propósito. Rodamos SEM vídeo primeiro.
 
   COMO O ALUNO CHEGA AQUI
     Redirect do checkout da Hotmart, com os dados do comprador na querystring:
-      https://SEU-DOMINIO/do-zero-a-primeira-musica/inscricao-confirmada-d0a1.html?nome={NOME}&email={EMAIL}&telefone={TELEFONE}&transaction={TRANSACTION}
+      inscricao-confirmada-d0a1?nome={NOME}&email={EMAIL}&telefone={TELEFONE}&transaction={TRANSACTION}
     A página lê esses params (aceita várias grafias), personaliza a saudação e
     dispara o evento `compra_d0a1` no dataLayer. Sem os params ela funciona igual,
     só não personaliza.
@@ -90,20 +92,30 @@ a{color:inherit;text-decoration:none}
 .ghost:hover{background:rgba(146,130,194,.12);color:var(--text)}
 .ghost:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
 
-/* card de acesso */
-.acesso{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;text-align:center;margin-bottom:14px}
-.acesso h2{font-size:21px;margin-bottom:8px}
-.acesso p{color:var(--muted);font-size:15px;margin-bottom:18px}
+/* card de acesso + credenciais */
+.acesso{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;margin-bottom:14px}
+.acesso h2{font-size:21px;margin-bottom:8px;text-align:center}
+.acesso .sub{color:var(--muted);font-size:15px;margin-bottom:20px;text-align:center}
+.cred{display:grid;gap:10px;margin-bottom:16px}
+.cred .row{display:flex;flex-direction:column;align-items:flex-start;gap:4px;background:rgba(16,13,32,.5);border:1px solid var(--line);border-radius:11px;padding:13px 16px}
+.cred .k{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:var(--rose);flex:0 0 auto}
+.cred .v{font-size:16px;font-weight:700;color:#fff;word-break:break-all}
+.acesso .aviso{font-size:13.5px;color:var(--muted);border-left:3px solid var(--rose-deep);padding-left:12px;margin-bottom:20px;line-height:1.5}
+.acesso .btn-wrap{text-align:center}
 
 /* divisor da oferta */
-.divisor{text-align:center;margin:46px 0 30px}
+.divisor{text-align:center;margin:46px 0 26px}
 .divisor .l{height:1px;background:var(--line);margin-bottom:-10px}
-.divisor .t{display:inline-block;background:var(--bg);padding:0 16px;color:var(--rose);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px}
+.divisor .t{display:inline-block;background:var(--bg);padding:0 16px;color:var(--sale);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px}
+.divisor .seta{display:block;margin-top:14px;color:var(--sale);font-size:22px;line-height:1;animation:desce 1.6s ease-in-out infinite}
+@keyframes desce{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(5px);opacity:1}}
+@media(prefers-reduced-motion:reduce){.divisor .seta{animation:none;opacity:1}}
 
-/* oferta */
-.oferta{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--indigo-deep);border-radius:22px;padding:32px;box-shadow:0 30px 70px -30px rgba(146,130,194,.5)}
-.oferta .kicker{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--rose);margin-bottom:12px}
-.oferta h2{font-size:clamp(25px,4.6vw,36px);margin-bottom:14px}
+/* oferta — destacada com a cor de venda, para não passar batido */
+.oferta{position:relative;background:linear-gradient(180deg,var(--card2),var(--card));border:2px solid var(--sale-deep);border-radius:22px;padding:40px 32px 32px;box-shadow:0 0 0 6px rgba(238,107,46,.07),0 30px 70px -30px rgba(238,107,46,.55)}
+.oferta .selo{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#F4855E,#C2410C);color:#fff;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:2px;padding:8px 20px;border-radius:20px;white-space:nowrap;box-shadow:0 8px 20px -6px rgba(238,107,46,.6)}
+.oferta .kicker{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--sale);margin-bottom:12px}
+.oferta h2{font-size:clamp(27px,5.2vw,40px);margin-bottom:14px}
 .oferta .lead{color:#D9D5EC;font-size:16.5px;margin-bottom:24px}
 
 /*
@@ -182,8 +194,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="wrap">
   <div class="acesso">
     <h2>Comece agora</h2>
-    <p>Você pode entrar na plataforma e assistir a primeira aula hoje mesmo.</p>
-    <a class="ghost" href="SEU_LINK_PLATAFORMA">Acessar o curso</a>
+    <p class="sub">Estes são os seus dados de acesso. Você já pode entrar e assistir a primeira aula hoje mesmo.</p>
+    <div class="cred">
+      <div class="row">
+        <span class="k">Seu login</span>
+        <!-- preenchido pelo JS com o e-mail que veio do checkout -->
+        <span class="v" id="cred-login">o e-mail que você usou na compra</span>
+      </div>
+      <div class="row">
+        <span class="k">Sua senha</span>
+        <span class="v">ukulele</span>
+      </div>
+      <div class="row">
+        <span class="k">Plataforma</span>
+        <span class="v">aluno.comotocarukulele.com</span>
+      </div>
+    </div>
+    <p class="aviso">A senha <b>ukulele</b> é a padrão do primeiro acesso. Assim que entrar, recomendamos que você troque por uma senha sua, dentro da plataforma.</p>
+    <div class="btn-wrap">
+      <a class="ghost" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">Acessar a plataforma</a>
+    </div>
   </div>
 </div>
 
@@ -191,21 +221,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="wrap">
   <div class="divisor">
     <div class="l"></div>
-    <span class="t">Espere um instante</span>
+    <span class="t">Antes de você começar</span>
+    <span class="seta" aria-hidden="true">▼</span>
   </div>
 
   <div class="oferta">
-    <span class="kicker">Oferta única, só nesta página</span>
+    <span class="selo">Oferta única, só nesta página</span>
+    <span class="kicker">Intercâmbio de Vídeos</span>
     <h2>Agora deixa <span class="rose">eu ver</span> você tocando</h2>
-    <p class="lead">O curso vem com cinco atividades práticas. Você grava, assiste de novo e confere sozinho se está no caminho. Funciona, mas tem um limite: quando a batida sai torta, é difícil enxergar sozinho onde ela torceu.</p>
+    <p class="lead">Estudar sozinho tem um limite. Quando a batida sai torta, é muito difícil enxergar por conta própria onde foi que ela torceu, e é aí que a maioria empaca e desiste.</p>
 
     <!-- SLOT DO VÍDEO DE VENDAS. Vazio de propósito na primeira volta. -->
     <div class="vsl" id="vsl">
       <div class="vsl-empty">[ Espaço reservado para o vídeo de vendas do upgrade ]</div>
     </div>
 
-    <p class="lead">Com o <b>Intercâmbio de Vídeos</b> você envia o vídeo de cada uma das cinco atividades, e eu respondo com uma análise em vídeo, gravada para você, apontando o que já está bom e o que ajustar. É o mesmo acompanhamento que os alunos do Clube recebem, e é o que mais destrava gente que estava empacada.</p>
+    <p class="lead">O <b>Intercâmbio de Vídeos</b> libera <b>cinco atividades</b> dentro do seu curso. Em cada uma delas você grava um vídeo tocando, e eu respondo com uma análise em vídeo, gravada só para você, mostrando o que já está bom e o que ajustar. É o mesmo acompanhamento que os alunos do Clube recebem, e é o que mais destrava quem estava travado.</p>
 
+    <p class="lead" style="margin-bottom:14px"><b>As cinco atividades que você libera:</b></p>
     <ul class="atvs">
       <li><span class="n">1</span> Seu ukulele está afinado?</li>
       <li><span class="n">2</span> A batida Bate e Desce</li>
@@ -228,12 +261,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="lote">Adicionar ao seu curso</div>
       <div class="val"><small>+</small> R$ 47</div>
       <div class="cond">pagamento único · sem mensalidade · liberado na hora</div>
-      <a class="cta big" href="SEU_LINK_CHECKOUT_UPGRADE">Quero enviar meus vídeos</a>
+      <a class="cta big" href="https://pay.hotmart.com/N106662510K?off=nrjxzjdc">Quero enviar meus vídeos</a>
     </div>
 
     <div class="recusa">
       <p>Se preferir seguir sem o acompanhamento por enquanto, o seu curso continua liberado do mesmo jeito.</p>
-      <a class="ghost" href="SEU_LINK_PLATAFORMA">Seguir sem o Intercâmbio de Vídeos</a>
+      <a class="ghost" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">Seguir sem o Intercâmbio de Vídeos</a>
     </div>
   </div>
 
@@ -288,6 +321,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if(lead.email){
     document.getElementById('linha-email').innerHTML=
       'Os dados de acesso também vão chegar em <span class="mail">'+lead.email+'</span> em alguns minutos.';
+    // O login da plataforma é o próprio e-mail da compra.
+    document.getElementById('cred-login').textContent=lead.email;
   }
 
   // Evento de compra do curso base. O GTM cuida do resto.
@@ -303,7 +338,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   // Evento de clique no upgrade, para medir a taxa de conversão do upsell.
-  var btn=document.querySelector('a[href="SEU_LINK_CHECKOUT_UPGRADE"]');
+  var btn=document.querySelector('.up-price .cta');
   if(btn){
     btn.addEventListener('click',function(){
       window.dataLayer.push({
