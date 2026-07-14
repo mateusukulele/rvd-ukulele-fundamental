@@ -432,13 +432,14 @@
             var fullPhone=ddi==='55'?whatsappLimpo:ddi+whatsappLimpo;
             document.getElementById('phone_hidden').value=fullPhone;
 
+            // Chaves do dataLayer = exatamente os IDs dos campos do formulario
             window.dataLayer=window.dataLayer||[];
             window.dataLayer.push({
                 'event':'lead_capture_submit',
                 'origem':'destrava-ukulele',
-                'lead_nome':nome,
-                'lead_email':emailValue.toLowerCase(),
-                'lead_telefone':fullPhone
+                'lead-nome':nome,
+                'lead-email':emailValue.toLowerCase(),
+                'lead-whatsapp':fullPhone
             });
 
             // Repassa o lead pra pesquisa da página de obrigado (mesma origem, sem PII na URL)

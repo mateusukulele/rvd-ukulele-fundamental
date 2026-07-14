@@ -116,6 +116,14 @@ body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:va
 <body>
 <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+<!-- Formulario do lead vindo da landing. Mesmos IDs do formulario de captura.
+     E preenchido no carregamento e acompanha todos os eventos da pesquisa. -->
+<form id="lead-form" autocomplete="off" aria-hidden="true" style="display:none">
+  <input type="hidden" id="lead-nome" name="lead-nome">
+  <input type="hidden" id="lead-email" name="lead-email">
+  <input type="hidden" id="lead-whatsapp" name="lead-whatsapp">
+</form>
+
 <div class="top"><div class="in"><img src="assets/logo-destrava-ukulele.png" alt="Destrava Ukulele" width="599" height="182" fetchpriority="high"></div></div>
 
 <div class="wrap">
@@ -224,15 +232,22 @@ body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:va
   };
   lead.email = (lead.email||"").toLowerCase();
 
+  // Preenche o formulario de lead desta pagina (mesmos IDs do formulario de captura)
+  function preencher(id, valor){ var el = document.getElementById(id); if (el) el.value = valor || ""; }
+  preencher("lead-nome", lead.nome);
+  preencher("lead-email", lead.email);
+  preencher("lead-whatsapp", lead.telefone);
+
   if (lead.nome){
     var primeiro = lead.nome.split(" ")[0];
     var sub = document.getElementById("confirm-sub");
     if (sub) sub.innerHTML = "Sua vaga está garantida, " + primeiro + "! Falta só <b>1 passo</b>: entrar no grupo.";
   }
 
+  // Chaves do dataLayer = exatamente os IDs dos campos do formulario
   dl.push({
     event: "checkout_lead", origem: ORIGEM,
-    lead_nome: lead.nome, lead_email: lead.email, lead_telefone: lead.telefone, transacao: lead.transacao
+    "lead-nome": lead.nome, "lead-email": lead.email, "lead-whatsapp": lead.telefone, transacao: lead.transacao
   });
 
   var PERGUNTAS = [
@@ -359,14 +374,14 @@ body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:va
 
   elProx.addEventListener("click",function(){
     var p=PERGUNTAS[atual]; if(!respondida(p))return;
-    dl.push({ event:"pesquisa_resposta", origem:ORIGEM, lead_email:lead.email, transacao:lead.transacao,
+    dl.push({ event:"pesquisa_resposta", origem:ORIGEM, "lead-email":lead.email, transacao:lead.transacao,
       pergunta_id:p.id, pergunta:p.titulo, resposta_valor:valDe(p), resposta_texto:txtDe(p), pergunta_indice:atual+1 });
     if(atual<PERGUNTAS.length-1){atual++;render();} else {finalizar();}
   });
   elVolta.addEventListener("click",function(){ if(atual>0){atual--;render();} });
 
   function montarPayload(extra){
-    var out={ origem:ORIGEM, lead_nome:lead.nome, lead_email:lead.email, lead_telefone:lead.telefone, transacao:lead.transacao };
+    var out={ origem:ORIGEM, "lead-nome":lead.nome, "lead-email":lead.email, "lead-whatsapp":lead.telefone, transacao:lead.transacao };
     var respObj={}, respTxt={}, n=0;
     PERGUNTAS.forEach(function(p){ var v=valDe(p); out[p.id]=txtDe(p); if(v){respObj[p.id]=v;respTxt[p.id]=txtDe(p);n++;} });
     out.respostas=respObj; out.respostas_texto=respTxt; out.respondidas=n; out.total=PERGUNTAS.length;
