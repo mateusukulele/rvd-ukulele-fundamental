@@ -84,6 +84,10 @@ window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'do-z
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+/* button, input e select NÃO herdam fonte do body: o navegador impõe o default dele
+   (Arial). Como os CTAs viraram <button> para abrir o popup, sem isto a página inteira
+   cai em Arial nos botões. */
+button,input,select,textarea{font-family:inherit}
 h1,h2,h3,.anton{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px;line-height:1.05;text-transform:uppercase}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
