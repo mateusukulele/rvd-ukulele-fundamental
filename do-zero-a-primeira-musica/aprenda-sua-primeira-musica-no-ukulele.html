@@ -68,7 +68,7 @@ window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'do-z
   ============================================================
 -->
 
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/logo-d0a1.svg?v=3" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -294,8 +294,17 @@ body.modal-open{overflow:hidden}
 /* sticky CTA (mobile) */
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(16,13,32,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform .25s ease}
 .sticky-cta.on{transform:translateY(0)}
-.sticky-cta .p{font-size:13px;color:var(--muted);line-height:1.3}
-.sticky-cta .p b{display:block;font-family:'Anton';font-size:22px;color:var(--text);letter-spacing:.5px}
+/* linha coral no topo + sombra pra cima: destaca a barra do conteúdo sem gritar */
+.sticky-cta{border-top:2px solid var(--rose-deep);box-shadow:0 -12px 34px -12px rgba(0,0,0,.75)}
+.sticky-cta .wrap{max-width:var(--maxw);margin:0 auto;padding:0;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%}
+.sticky-id{display:flex;align-items:center;gap:11px;min-width:0}
+.sticky-id img{width:40px;height:40px;flex:none;display:block}
+.sticky-txt{min-width:0}
+.sticky-nome{font-family:'Anton';font-size:14px;letter-spacing:.6px;text-transform:uppercase;color:#D9D5EC;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky-preco{display:flex;align-items:baseline;gap:7px;line-height:1;margin-top:2px}
+.sticky-preco .de{font-size:12px;color:var(--muted);text-decoration:line-through}
+.sticky-preco .por{font-family:'Anton';font-size:25px;color:var(--rose);letter-spacing:.5px}
+.sticky-preco .selo{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--easy);border:1px solid rgba(63,185,133,.45);border-radius:20px;padding:2px 7px;white-space:nowrap}
 .sticky-cta .cta{flex:0 0 auto}
 
 footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
@@ -322,7 +331,16 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
   .topbar .cta.sm{padding:10px 12px;font-size:12px;flex:0 0 auto}
   .hero h1{font-size:38px}
   .musica .tag{display:none}
-  .sticky-cta .cta{padding:14px 18px;font-size:14px}
+  /* no mobile não cabe tudo. o selo é o item mais dispensável: o preço ancorado
+     e o botão trabalham mais pela conversão do que ele. */
+  .sticky-cta{padding:10px 14px}
+  .sticky-cta .selo{display:none}
+  .sticky-id{gap:9px}
+  .sticky-id img{width:34px;height:34px}
+  .sticky-nome{font-size:12px;letter-spacing:.4px}
+  .sticky-preco .por{font-size:21px}
+  .sticky-preco .de{font-size:11px}
+  .sticky-cta .cta{padding:13px 15px;font-size:13px}
 }
 </style>
 </head>
@@ -331,7 +349,7 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
 <div class="topbar">
   <div class="wrap">
     <div class="brand">
-      <img src="assets/logo-d0a1.svg" alt="Do ZERO à 1ª Música" onerror="this.style.display='none'">
+      <img src="assets/logo-d0a1.svg?v=3" alt="Do ZERO à 1ª Música" onerror="this.style.display='none'">
       Do ZERO à 1ª Música
     </div>
     <button type="button" class="cta sm" onclick="abrirCaptura()">Começar por R$ 47</button>
@@ -623,8 +641,20 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
 
 <!-- ===== Sticky CTA (aparece ao rolar) ===== -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="p">Do ZERO à 1ª Música <b>R$ 47</b></div>
-  <button type="button" class="cta sm" onclick="abrirCaptura()">Começar agora</button>
+  <div class="wrap">
+    <div class="sticky-id">
+      <img src="assets/logo-d0a1.svg?v=3" alt="" aria-hidden="true" onerror="this.style.display='none'">
+      <div class="sticky-txt">
+        <div class="sticky-nome">Do ZERO à 1ª Música</div>
+        <div class="sticky-preco">
+          <span class="de">R$ 97</span>
+          <span class="por">R$ 47</span>
+          <span class="selo">acesso vitalício</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="cta sm" onclick="abrirCaptura()">Começar agora</button>
+  </div>
 </div>
 
 <!-- ===== MODAL DE CAPTURA =====
