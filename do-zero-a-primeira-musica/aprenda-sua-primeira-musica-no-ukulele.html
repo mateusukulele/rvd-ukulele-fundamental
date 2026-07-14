@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
+<!-- End Google Tag Manager -->
+<title>Do ZERO à 1ª Música · Clube do Ukulele</title>
+<meta name="description" content="Uma batida e dois acordes de um dedo só. Cinco músicas inteiras. O curso que tira o ukulele da caixa e coloca música na sua casa.">
+
+<!--
+  ============================================================
+  PÁGINA DE VENDAS · DO ZERO À 1ª MÚSICA (low ticket) · Clube do Ukulele
+  Base: "LPSG - Página de Vendas (Gravado).html" (mesmo sistema visual)
+
+  TROCAR ANTES DE PUBLICAR (procure por SEU_LINK / [INSERIR):
+    1) SEU_LINK_CHECKOUT  → checkout da Hotmart do produto de R$ 47.
+                            Padrão da operação: https://pay.hotmart.com/XXXXXXX?checkoutMode=10
+    2) [INSERIR PROVA REAL] → depoimentos/prints reais de aluno (hoje placeholder).
+    3) VÍDEO DE VENDAS    → bloco #vsl está comentado e vazio de propósito.
+                            Rodamos SEM vídeo primeiro. Para ligar, veja o comentário no bloco.
+
+  DECISÕES JÁ TOMADAS (não mudar sem avisar):
+    - Preço R$ 47, ancorado em R$ 97.
+    - Garantia de 15 dias (padrão do DOCUMENTO-MESTRE, não os 7/14 das páginas antigas).
+    - A copy lidera pela BATIDA, que é a dor nº 1 da pesquisa (26,5%), não pelos acordes.
+    - O envio de vídeo das atividades NÃO está incluído aqui. É o upgrade de +R$ 47
+      oferecido na obrigado.html. Esta página não pode prometer correção em vídeo.
+    - Laranja (#C2410C) só em CTA de venda. Regra do brandbook.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#100d20; --bg2:#15112a; --surface:#1b1633; --card:#221c3c; --card2:#2a2347;
+  --line:#332c52; --text:#ECEAF4; --muted:#A39FBE;
+  --indigo:#9282C2; --indigo-deep:#5b4a92; --rose:#F294A0; --rose-deep:#E87A85;
+  --sale:#EE6B2E; --sale-deep:#C2410C;
+  --easy:#3FB985;
+  --maxw:1080px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.anton{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px;line-height:1.05;text-transform:uppercase}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.rose{color:var(--rose)}
+.indigo{color:var(--indigo)}
+section{padding:72px 0;position:relative}
+.alt{background:var(--bg2)}
+.kicker{font-weight:700;text-transform:uppercase;letter-spacing:3px;font-size:13px;color:var(--rose);margin-bottom:16px;display:inline-block}
+.sec-title{font-size:clamp(28px,4.4vw,46px);margin-bottom:14px}
+.sec-sub{color:var(--muted);font-size:18px;max-width:720px;margin-bottom:36px}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(16,13,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Anton';font-size:18px;letter-spacing:1px}
+.brand img{height:30px;width:auto;display:block;background:#fff;padding:4px 7px;border-radius:6px}
+
+/* Buttons */
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#F4855E,#C2410C);color:#fff;font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.5px;padding:18px 34px;border-radius:14px;box-shadow:0 12px 30px -8px rgba(238,107,46,.5);transition:transform .12s ease,filter .12s ease,box-shadow .12s ease;border:none;cursor:pointer;text-align:center}
+.cta:hover{filter:brightness(1.07);transform:translateY(-2px);box-shadow:0 16px 38px -8px rgba(238,107,46,.6)}
+.cta:active{transform:translateY(0) scale(.99)}
+.cta:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.cta.sm{padding:11px 20px;font-size:14px;border-radius:10px}
+.cta.big{font-size:19px;padding:22px 44px}
+.sub-cta{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* Hero */
+.hero{padding:64px 0 80px;background:radial-gradient(900px 500px at 70% -10%,rgba(146,130,194,.20),transparent 60%),radial-gradient(700px 400px at 0% 20%,rgba(232,122,133,.12),transparent 55%)}
+.hero h1{font-size:clamp(36px,6.4vw,64px);margin:14px 0 18px}
+.hero .lead{font-size:clamp(17px,2.2vw,21px);color:#D9D5EC;max-width:660px;margin-bottom:26px}
+.checks{list-style:none;display:grid;gap:12px;margin:26px 0 30px;max-width:660px}
+.checks li{position:relative;padding-left:38px;font-size:16.5px;color:#E3E0F2;line-height:1.55}
+.checks li b{color:#fff;font-weight:700}
+.checks li::before{content:"✓";position:absolute;left:0;top:1px;width:25px;height:25px;border-radius:50%;background:rgba(242,148,160,.16);color:var(--rose);display:grid;place-items:center;font-weight:800;font-size:13px}
+.trust{margin-top:22px;font-size:14px;color:var(--muted);border-left:3px solid var(--rose-deep);padding-left:14px}
+
+/*
+  ===== SLOT DO VÍDEO DE VENDAS =====
+  Rodamos SEM vídeo na primeira volta. O bloco fica aqui, estilizado e pronto.
+  Para LIGAR: apague o .vsl-empty e cole o iframe do Vimeo dentro de .vsl.
+  Ex.: <iframe src="https://player.vimeo.com/video/ID" allowfullscreen></iframe>
+*/
+.vsl{max-width:760px;margin:0 0 30px;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.vsl iframe{width:100%;height:100%;border:0;display:block}
+.vsl-empty{width:100%;height:100%;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:13px;padding:18px;border:2px dashed var(--indigo-deep);border-radius:18px}
+
+/* grids */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.card h3{font-size:20px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+.icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:rgba(146,130,194,.16);margin-bottom:16px}
+.out{display:flex;gap:14px;align-items:flex-start}
+.out .q{font-family:'Anton';font-size:30px;color:var(--indigo-deep);line-height:1}
+.m3 .icon{background:#fff;box-shadow:0 4px 14px -6px rgba(0,0,0,.5)}
+.m3 .step{font-family:'Anton';font-size:14px;color:var(--rose);letter-spacing:2px;margin-bottom:10px}
+
+/* músicas */
+.musicas{display:grid;gap:10px;max-width:760px}
+.musica{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--rose-deep);border-radius:12px;padding:15px 18px;transition:transform .12s ease,border-color .15s ease}
+.musica:hover{transform:translateX(3px);border-left-color:var(--indigo)}
+.musica .n{font-family:'Anton';font-size:20px;color:var(--indigo-deep);flex:none;width:26px}
+.musica .info{flex:1 1 auto;min-width:0}
+.musica .art{font-size:12.5px;color:var(--rose);font-weight:600}
+.musica .tit{font-size:16px;font-weight:700;color:#fff;line-height:1.3}
+.musica .tag{flex:none;font-size:11px;color:var(--indigo);border:1px solid var(--line);border-radius:20px;padding:3px 10px;white-space:nowrap}
+
+/* módulos */
+.aula{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:12px;transition:border-color .15s ease,transform .15s ease}
+.aula:hover{border-color:var(--indigo-deep);transform:translateX(3px)}
+.aula .day{flex:none;width:110px}
+.aula .day .d{font-family:'Anton';font-size:13px;letter-spacing:1px;color:var(--rose)}
+.aula .day .dt{font-size:12px;color:var(--muted)}
+.aula .info h3{font-size:18px;text-transform:none;font-family:'Montserrat';font-weight:800;letter-spacing:0;margin-bottom:6px}
+.aula .info p{color:var(--muted);font-size:14.5px}
+.aula .info ul{list-style:none;margin-top:10px;display:grid;gap:6px}
+.aula .info ul li{font-size:14px;color:#DEDAF0;padding-left:18px;position:relative}
+.aula .info ul li::before{content:"›";position:absolute;left:0;color:var(--rose);font-weight:700}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fit .col{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.fit h3{font-size:20px;margin-bottom:16px}
+.fit ul{list-style:none;display:grid;gap:11px}
+.fit li{display:flex;gap:10px;font-size:15px;color:#DEDAF0}
+.fit .yes li::before{content:"✓";color:var(--easy);font-weight:800}
+.fit .no li::before{content:"✕";color:var(--rose-deep);font-weight:800}
+
+/* price */
+.price-box{max-width:620px;margin:0 auto;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--indigo-deep);border-radius:22px;padding:34px;box-shadow:0 30px 70px -30px rgba(146,130,194,.5)}
+.price-box .inc{list-style:none;display:grid;gap:12px;margin:6px 0 24px}
+.price-box .inc li{display:flex;justify-content:space-between;gap:14px;font-size:15px;border-bottom:1px dashed var(--line);padding-bottom:11px;color:#E3E0F2}
+.price-box .inc li span:last-child{color:var(--muted);white-space:nowrap}
+.price-now{text-align:center;margin:18px 0 6px}
+.price-now .lote{font-size:13px;color:var(--rose);text-transform:uppercase;letter-spacing:2px;font-weight:700}
+.price-now .from{font-size:15px;color:var(--muted);text-decoration:line-through;margin-top:6px}
+.price-now .val{font-family:'Anton';font-size:64px;line-height:1;margin:2px 0 6px}
+.price-now .cond{font-size:14px;color:var(--muted)}
+.price-box .cta{width:100%;margin-top:18px}
+
+/* guarantee */
+.guar{display:flex;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:780px;margin:0 auto}
+.guar .seal{flex:none;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-size:34px;background:rgba(63,185,133,.14);border:2px solid rgba(63,185,133,.4)}
+.guar h3{font-size:22px;margin-bottom:6px}
+.guar p{color:var(--muted);font-size:15px}
+
+/* instructor */
+.inst{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:center}
+.inst .photo{border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:var(--surface)}
+.inst .photo img{width:100%;height:100%;object-fit:cover;display:block}
+.inst .stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:18px}
+.inst .stats .n{font-family:'Anton';font-size:30px;color:var(--rose)}
+.inst .stats .l{font-size:13px;color:var(--muted)}
+
+/* proof */
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proof-card{background:var(--card);border:1px dashed var(--indigo-deep);border-radius:14px;min-height:200px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:13px;padding:18px}
+
+/* faq */
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq summary{cursor:pointer;padding:18px 22px;font-weight:700;font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:'Anton';color:var(--rose);font-size:22px;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{padding:0 22px 20px;color:var(--muted);font-size:15px}
+
+/* sticky CTA (mobile) */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(16,13,32,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform .25s ease}
+.sticky-cta.on{transform:translateY(0)}
+.sticky-cta .p{font-size:13px;color:var(--muted);line-height:1.3}
+.sticky-cta .p b{display:block;font-family:'Anton';font-size:22px;color:var(--text);letter-spacing:.5px}
+.sticky-cta .cta{flex:0 0 auto}
+
+footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
+
+@media(max-width:860px){
+  .g3{grid-template-columns:1fr 1fr}
+  .inst{grid-template-columns:1fr;text-align:center}
+  .inst .photo{max-width:280px;margin:0 auto;aspect-ratio:4/4}
+  .inst .stats{justify-content:center}
+  .inst .checks{text-align:left}
+  .proof-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  section{padding:54px 0}
+  .g3,.fit{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:1fr}
+  .aula{flex-direction:column;gap:10px}
+  .aula .day{width:auto;display:flex;gap:10px;align-items:center}
+  .topbar .wrap{flex-wrap:nowrap;gap:10px}
+  .brand{font-size:13px;gap:7px;line-height:1.15}
+  .brand img{height:24px;padding:3px 5px}
+  .topbar .cta.sm{padding:10px 12px;font-size:12px;flex:0 0 auto}
+  .hero h1{font-size:38px}
+  .musica .tag{display:none}
+  .sticky-cta .cta{padding:14px 18px;font-size:14px}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDH6QGB2"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ===== Topbar ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <img src="assets/logo-clube.webp" alt="Clube do Ukulele" onerror="this.style.display='none'">
+      Do ZERO à 1ª Música
+    </div>
+    <a class="cta sm" href="SEU_LINK_CHECKOUT">Começar por R$ 47</a>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">Curso online · comece hoje mesmo</span>
+    <h1>Uma batida, dois acordes,<br><span class="rose">cinco músicas</span> inteiras</h1>
+    <p class="lead">A batida é onde quase todo mundo trava, e é por ela que a gente começa. Você aprende uma batida simples e dois acordes que se fazem com um dedo só, e com isso já toca cinco músicas do começo ao fim.</p>
+
+    <!-- SLOT DO VÍDEO DE VENDAS. Vazio de propósito na primeira volta. Veja o comentário no CSS. -->
+    <div class="vsl" id="vsl">
+      <div class="vsl-empty">[ Espaço reservado para o vídeo de vendas ]</div>
+    </div>
+
+    <ul class="checks">
+      <li>Do <b>ukulele ainda na caixa</b> até tocar cinco músicas inteiras, na ordem certa.</li>
+      <li>A <b>batida Bate e Desce</b>, que sustenta as cinco músicas e centenas de outras.</li>
+      <li>Os acordes <b>C e Fadd9</b>, que se fazem com um dedo só. Sem pestana e sem dor no dedo.</li>
+      <li>Um <b>guia de qual ukulele comprar</b>, se você ainda não tem o seu.</li>
+      <li><b>Cinco atividades práticas</b> para você conferir se está no caminho certo.</li>
+      <li>Acesso na plataforma do Clube do Ukulele, no seu ritmo, com <b>1 ano de acesso</b>.</li>
+    </ul>
+    <a class="cta big" href="SEU_LINK_CHECKOUT">Quero tocar minhas primeiras músicas</a>
+    <p class="trust">Com <b>Mateus Augusto</b> · ensina ukulele desde 2017 · +6.000 alunos formados · +300 mil seguidores.</p>
+  </div>
+</header>
+
+<!-- ===== Prova social ===== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Quem já aprende com o Mateus</span>
+    <h2 class="sec-title">Gente comum, de toda idade, tocando</h2>
+    <p class="sec-sub">Boa parte dos alunos passou dos 50 e começou do zero. A idade nunca foi o problema.</p>
+    <div class="proof-grid">
+      <!-- [INSERIR PROVA REAL]: trocar por print/vídeo/depoimento real do aluno -->
+      <div class="proof-card">[ Espaço para depoimento / print real de aluno ]</div>
+      <div class="proof-card">[ Espaço para depoimento / print real de aluno ]</div>
+      <div class="proof-card">[ Espaço para depoimento / print real de aluno ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== A dor ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Talvez você se reconheça aqui</span>
+    <h2 class="sec-title">O seu ukulele está parado há meses</h2>
+    <p class="sec-sub">Isso acontece com quase todo mundo que tenta começar sozinho, e quase sempre pelos mesmos motivos.</p>
+    <div class="grid g3">
+      <div class="card out"><div class="q">1</div><div><h3>A batida não sai</h3><p>Você até monta o acorde, mas a mão direita não obedece e a música não ganha ritmo. Essa é a dificuldade mais citada pelos nossos alunos.</p></div></div>
+      <div class="card out"><div class="q">2</div><div><h3>Você se perdeu no YouTube</h3><p>Um vídeo puxa outro, cada professor ensina de um jeito, e no fim você não sabe o que praticar primeiro.</p></div></div>
+      <div class="card out"><div class="q">3</div><div><h3>Você achou que não levava jeito</h3><p>O problema nunca foi o seu talento. Faltou uma ordem clara, com passos pequenos o bastante para caber no seu dia.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== As 5 músicas ===== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">O repertório que você destrava</span>
+    <h2 class="sec-title">Cinco músicas com os mesmos dois acordes</h2>
+    <p class="sec-sub">Depois que a batida entra na sua mão, ela serve para todas elas. Você aprende uma vez e toca cinco vezes.</p>
+    <div class="musicas">
+      <div class="musica"><div class="n">1</div><div class="info"><div class="art">Skank</div><div class="tit">Garota Nacional</div></div><div class="tag">C · Fadd9</div></div>
+      <div class="musica"><div class="n">2</div><div class="info"><div class="art">Skank</div><div class="tit">Te Ver</div></div><div class="tag">C · Fadd9</div></div>
+      <div class="musica"><div class="n">3</div><div class="info"><div class="art">Jorge Ben Jor</div><div class="tit">W/Brasil</div></div><div class="tag">C · Fadd9</div></div>
+      <div class="musica"><div class="n">4</div><div class="info"><div class="art">Tradicional</div><div class="tit">Parabéns pra Você</div></div><div class="tag">C · Fadd9</div></div>
+      <div class="musica"><div class="n">5</div><div class="info"><div class="art">Bola de Neve</div><div class="tit">Manhã de Sol</div></div><div class="tag">Am · Fadd9</div></div>
+    </div>
+    <p class="sub-cta" style="max-width:760px;margin-top:16px">Todas em versão simplificada, no arranjo que o Mateus preparou para quem está começando. A quinta usa um acorde diferente, também de um dedo só.</p>
+    <div style="margin-top:30px"><a class="cta" href="SEU_LINK_CHECKOUT">Quero tocar essas músicas</a></div>
+  </div>
+</section>
+
+<!-- ===== Método 3D ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Por que dessa vez vai sair</span>
+    <h2 class="sec-title">Método 3D: dividir, destravar, dominar</h2>
+    <p class="sec-sub">Cada aula quebra o que parece difícil em pedaços pequenos, e você só avança quando o pedaço anterior já sai firme.</p>
+    <div class="grid g3 m3">
+      <div class="card"><div class="step">Passo 1</div><div class="icon">🧩</div><h3>Dividir</h3><p>A música vira peças pequenas: a batida de um lado, o acorde do outro, cada uma no tamanho que a sua mão aguenta aprender de uma vez.</p></div>
+      <div class="card"><div class="step">Passo 2</div><div class="icon">🔓</div><h3>Destravar</h3><p>Você treina cada peça separada, com repetição inteligente, até ela sair sem que você precise pensar nela.</p></div>
+      <div class="card"><div class="step">Passo 3</div><div class="icon">🎵</div><h3>Dominar</h3><p>Quando as peças se juntam, a música sai inteira, com ritmo no lugar. É aí que você percebe que está tocando de verdade.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O que tem dentro (2 módulos) ===== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">O que tem dentro</span>
+    <h2 class="sec-title">Dois módulos, do zero à quinta música</h2>
+    <p class="sec-sub">Tudo dentro da plataforma do Clube do Ukulele, no seu ritmo, quantas vezes você quiser rever.</p>
+
+    <div class="aula">
+      <div class="day"><div class="d">Módulo 1</div><div class="dt">Sua primeira música</div></div>
+      <div class="info">
+        <h3>Do ukulele na caixa até a música inteira</h3>
+        <p>A base que sustenta tudo o que vem depois, sem teoria e sem pressa.</p>
+        <ul>
+          <li>Boas-vindas e como estudar aqui dentro</li>
+          <li>Qual ukulele comprar, se você ainda não tem o seu</li>
+          <li>Como afinar o seu ukulele e conferir se está certo</li>
+          <li>A batida Bate e Desce, passo a passo</li>
+          <li>Os acordes C e Fadd9, cada um com um dedo só</li>
+          <li>Juntando as duas mãos e tocando a sua primeira música</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="aula">
+      <div class="day"><div class="d">Módulo 2</div><div class="dt">Próximas músicas e Plano de Estudos</div></div>
+      <div class="info">
+        <h3>O repertório e o caminho para não travar de novo</h3>
+        <p>Aqui você repete o que já sabe em músicas novas e sai com um plano de estudo na mão.</p>
+        <ul>
+          <li>As próximas músicas com os mesmos dois acordes e a mesma batida</li>
+          <li>A música extra, com um acorde diferente e igualmente fácil</li>
+          <li>Como treinar a troca de acorde sem parar a batida</li>
+          <li>O seu Plano de Estudos, para saber o que praticar em cada dia</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:30px"><a class="cta" href="SEU_LINK_CHECKOUT">Quero começar agora</a></div>
+  </div>
+</section>
+
+<!-- ===== Instrutor ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Quem te ensina</span>
+    <h2 class="sec-title">Mateus Augusto</h2>
+    <div class="inst">
+      <div class="photo"><img src="assets/foto-mateus.webp" alt="Mateus Augusto" onerror="this.parentNode.style.display='none'"></div>
+      <div>
+        <ul class="checks" style="margin:0 0 6px;max-width:none">
+          <li>Toca instrumentos desde criança e <b>ensina ukulele desde 2017</b>.</li>
+          <li>Construiu <b>uma das maiores audiências de ukulele do Brasil</b>.</li>
+          <li>Ensina de um jeito leve e direto, conversando de gente pra gente, <b>sem teoria chata e sem promessa mágica</b>.</li>
+          <li>Faz questão de dizer que o resultado vem da <b>constância</b>, e que vinte minutos por dia já bastam.</li>
+        </ul>
+        <div class="stats">
+          <div><div class="n">+6.000</div><div class="l">alunos formados</div></div>
+          <div><div class="n">+300 mil</div><div class="l">seguidores</div></div>
+          <div><div class="n">desde 2017</div><div class="l">ensinando ukulele</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pra quem é / não é ===== -->
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Pra quem foi feito</span>
+    <h2 class="sec-title">Veja se isso combina com você</h2>
+    <div class="fit">
+      <div class="col yes">
+        <h3 class="rose">É pra você se…</h3>
+        <ul>
+          <li>Você nunca encostou num instrumento e quer começar por algo leve.</li>
+          <li>Comprou o ukulele, deixou parado, e quer um recomeço sem culpa.</li>
+          <li>Já tentou por vídeos soltos e se perdeu no meio do caminho.</li>
+          <li>Tem vinte minutos por dia e quer ver uma música sair inteira logo.</li>
+          <li>Quer tocar pra família, numa roda de amigos, ou só pra você no fim do dia.</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h3 class="indigo">Não é pra você se…</h3>
+        <ul>
+          <li>Você já toca com firmeza e procura repertório avançado.</li>
+          <li>Busca teoria musical aprofundada ou formação acadêmica.</li>
+          <li>Espera tocar bem sem praticar nada.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Oferta ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Sua entrada</span>
+    <h2 class="sec-title" style="text-align:center">Comece hoje</h2>
+    <div class="price-box">
+      <ul class="inc">
+        <li><span>Módulo 1 · Sua primeira música</span><span>incluído</span></li>
+        <li><span>Módulo 2 · Próximas músicas e Plano de Estudos</span><span>incluído</span></li>
+        <li><span>As <b>5 músicas</b> em versão simplificada</span><span>incluído</span></li>
+        <li><span>A batida Bate e Desce e os acordes C e Fadd9</span><span>incluído</span></li>
+        <li><span>Guia de qual ukulele comprar</span><span>incluído</span></li>
+        <li><span>5 atividades práticas para conferir a sua evolução</span><span>incluído</span></li>
+        <li><span>Acesso na plataforma do Clube do Ukulele por <b>1 ano</b></span><span>incluído</span></li>
+      </ul>
+      <div class="price-now">
+        <div class="lote">Do ZERO à 1ª Música</div>
+        <div class="from">de R$ 97</div>
+        <div class="val" data-price>R$ 47</div>
+        <div class="cond">à vista ou parcelado no cartão · pagamento 100% seguro pela Hotmart</div>
+      </div>
+      <a class="cta big" href="SEU_LINK_CHECKOUT">Quero começar por R$ 47</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Garantia ===== -->
+<section class="alt">
+  <div class="wrap">
+    <div class="guar">
+      <div class="seal">🛡️</div>
+      <div>
+        <h3>Garantia de 15 dias</h3>
+        <p>Entre, assista tudo, toque as músicas. Se em 15 dias você achar que não era para você, peça o reembolso e eu devolvo o valor inteiro, sem perguntar nada e sem letra miúda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Antes de entrar</span>
+    <h2 class="sec-title">Dúvidas frequentes</h2>
+    <div class="faq">
+      <details><summary>Eu preciso saber alguma coisa de música pra acompanhar?</summary><div class="ans">Não precisa de nada. O curso começa do zero absoluto, sem teoria e sem leitura de partitura. Se você consegue bater palma no ritmo de uma música, você consegue acompanhar.</div></details>
+      <details><summary>Eu ainda não tenho ukulele. Posso comprar mesmo assim?</summary><div class="ans">Pode. A primeira parte do curso é justamente o guia de qual ukulele comprar, com os tamanhos, os tipos e o que faz diferença de verdade na hora de escolher. Você assiste, compra com segurança e depois segue nas aulas.</div></details>
+      <details><summary>Tenho mais de 50 anos. Ainda dá tempo?</summary><div class="ans">Dá, e boa parte dos nossos alunos está exatamente nessa faixa. O ukulele tem corda macia, poucas cordas e acordes que saem com um dedo só, então ele perdoa a mão que está começando agora. O que conta é a constância, não a idade.</div></details>
+      <details><summary>Quanto tempo por dia eu preciso praticar?</summary><div class="ans">Vinte minutos por dia já dão conta. As aulas são curtas de propósito, para caber num intervalo do dia sem que você precise reorganizar a vida inteira.</div></details>
+      <details><summary>Por quanto tempo eu fico com o curso?</summary><div class="ans">Você tem acesso por um ano inteiro, dentro da plataforma do Clube do Ukulele, e pode rever cada aula quantas vezes quiser nesse período.</div></details>
+      <details><summary>O Mateus corrige o que eu tocar?</summary><div class="ans">O curso vem com cinco atividades práticas para você conferir a sua evolução por conta própria. O envio dos seus vídeos para o Mateus analisar e responder em vídeo é um acréscimo opcional, que você pode escolher logo depois da compra.</div></details>
+      <details><summary>E se eu não gostar?</summary><div class="ans">Você tem 15 dias para pedir o reembolso e receber o valor inteiro de volta, sem precisar justificar.</div></details>
+    </div>
+    <div style="text-align:center;margin-top:34px">
+      <a class="cta big" href="SEU_LINK_CHECKOUT">Quero tocar minhas primeiras músicas</a>
+      <div class="sub-cta">R$ 47, com 15 dias de garantia. O risco é todo meu.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Do ZERO à 1ª Música · Clube do Ukulele · Como Tocar Ukulele (Mateus Augusto)<br>
+    Pagamento processado com segurança pela Hotmart.
+  </div>
+</footer>
+
+<!-- ===== Sticky CTA (aparece ao rolar) ===== -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="p">Do ZERO à 1ª Música <b>R$ 47</b></div>
+  <a class="cta sm" href="SEU_LINK_CHECKOUT">Começar agora</a>
+</div>
+
+<script>
+(function(){
+  var bar=document.getElementById('stickyCta');
+  var onScroll=function(){
+    if(window.scrollY>600){bar.classList.add('on');}else{bar.classList.remove('on');}
+  };
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
