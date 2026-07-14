@@ -65,6 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --maxw:820px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
 h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px;line-height:1.08;text-transform:uppercase}
 a{color:inherit;text-decoration:none}
@@ -93,9 +94,9 @@ a{color:inherit;text-decoration:none}
 .ghost:hover{background:rgba(146,130,194,.12);color:var(--text)}
 .ghost:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
 
-/* card de acesso + credenciais — compacto de propósito, para a oferta subir na tela */
-.acesso{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:0}
-.acesso h2{font-size:17px;margin-bottom:14px;text-align:center}
+/* card de acesso + credenciais. Fica DEPOIS da oferta. */
+.acesso{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px;margin-top:26px;scroll-margin-top:20px}
+.acesso h2{font-size:20px;margin-bottom:16px;text-align:center}
 .cred{display:grid;gap:7px;margin-bottom:12px}
 .cred .row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(16,13,32,.5);border:1px solid var(--line);border-radius:10px;padding:11px 14px;min-width:0}
 .cred .k{font-size:10.5px;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;color:var(--rose);flex:0 0 auto}
@@ -103,8 +104,18 @@ a{color:inherit;text-decoration:none}
 /* o domínio é longo demais para caber ao lado do rótulo, então essa linha empilha */
 .cred .row.stack{flex-direction:column;align-items:flex-start;gap:2px}
 .cred .row.stack .v{text-align:left}
-.acesso .aviso{font-size:12.5px;color:var(--muted);line-height:1.45;text-align:center}
+.acesso .aviso{font-size:12.5px;color:var(--muted);line-height:1.45;text-align:center;margin-bottom:18px}
 .acesso .aviso b{color:#D9D5EC}
+/* o domínio é clicável */
+.cred .v.link{color:var(--rose);text-decoration:underline;text-underline-offset:3px;transition:color .15s}
+.cred .v.link:hover{color:#fff}
+.cred .v.link:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:3px}
+/* botão de entrar no curso. Índigo, não laranja: laranja é a cor de venda
+   e ficaria competindo com o CTA do upgrade logo acima. */
+.acesso .btn-wrap{text-align:center}
+.btn-acesso{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#6d5aa8,#4b3a80);color:#fff;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.5px;padding:16px 32px;border-radius:12px;transition:transform .12s ease,filter .12s ease}
+.btn-acesso:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.btn-acesso:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
 
 /* divisor da oferta */
 .divisor{text-align:center;margin:30px 0 26px}
@@ -194,29 +205,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </header>
 
-<div class="wrap">
-  <div class="acesso">
-    <h2>Seus dados de acesso</h2>
-    <div class="cred">
-      <div class="row full">
-        <span class="k">Seu login</span>
-        <!-- preenchido pelo JS com o e-mail que veio do checkout -->
-        <span class="v" id="cred-login">o e-mail que você usou na compra</span>
-      </div>
-      <div class="row">
-        <span class="k">Sua senha</span>
-        <span class="v">ukulele</span>
-      </div>
-      <div class="row stack">
-        <span class="k">Plataforma</span>
-        <span class="v">aluno.comotocarukulele.com</span>
-      </div>
-    </div>
-    <p class="aviso">A senha <b>ukulele</b> é a do primeiro acesso. Depois de entrar, troque por uma senha sua dentro da plataforma. Estes dados também foram para o seu e-mail, então nada se perde.</p>
-  </div>
-</div>
-
-<!-- ===== Oferta de upgrade ===== -->
+<!-- ===== Oferta de upgrade =====
+     Vem ANTES dos dados de acesso de propósito. O aluno já foi agradecido, já viu a
+     confirmação e já sabe que os dados foram para o e-mail dele, então ele não fica
+     inseguro. Os dados de acesso ficam logo abaixo, com o botão de entrar na plataforma. -->
 <div class="wrap">
   <div class="divisor">
     <div class="l"></div>
@@ -265,7 +257,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="recusa">
       <p>Se preferir seguir sem o acompanhamento por enquanto, o seu curso continua liberado do mesmo jeito.</p>
-      <a class="ghost" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">Seguir sem o Intercâmbio de Vídeos</a>
+      <a class="ghost" href="#acesso">Seguir sem o Intercâmbio de Vídeos</a>
+    </div>
+  </div>
+
+  <!-- ===== Dados de acesso ===== -->
+  <div class="acesso" id="acesso">
+    <h2>Comece agora</h2>
+    <div class="cred">
+      <div class="row">
+        <span class="k">Seu login</span>
+        <!-- preenchido pelo JS com o e-mail que veio do checkout -->
+        <span class="v" id="cred-login">o e-mail que você usou na compra</span>
+      </div>
+      <div class="row">
+        <span class="k">Sua senha</span>
+        <span class="v">ukulele</span>
+      </div>
+      <div class="row stack">
+        <span class="k">Plataforma</span>
+        <a class="v link" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">aluno.comotocarukulele.com</a>
+      </div>
+    </div>
+    <p class="aviso">A senha <b>ukulele</b> é a do primeiro acesso. Depois de entrar, troque por uma senha sua dentro da plataforma. Estes dados também foram para o seu e-mail, então nada se perde.</p>
+    <div class="btn-wrap">
+      <a class="btn-acesso" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">Acessar o meu curso</a>
     </div>
   </div>
 
