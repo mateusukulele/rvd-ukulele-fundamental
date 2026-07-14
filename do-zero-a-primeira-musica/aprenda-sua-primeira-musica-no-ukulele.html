@@ -641,7 +641,8 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
     <form onsubmit="handleCapture(event)" class="modal-form">
       <div>
         <label for="lead-nome">Nome Completo *</label>
-        <input required type="text" id="lead-nome" name="name" autocomplete="name" placeholder="Ex: Mateus Augusto">
+        <!-- nome fictício de propósito. dois nomes, porque a validação exige nome e sobrenome -->
+        <input required type="text" id="lead-nome" name="name" autocomplete="name" placeholder="Ex: Maria da Silva">
         <p id="erro-nome" class="erro-msg">Por favor, insira nome e sobrenome.</p>
       </div>
       <div>
