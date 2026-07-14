@@ -175,6 +175,13 @@ section{padding:72px 0;position:relative}
 .fit .yes li::before{content:"✓";color:var(--easy);font-weight:800}
 .fit .no li::before{content:"✕";color:var(--rose-deep);font-weight:800}
 
+/* bônus — encostado na caixa de preço, com o verde de "leva junto" e não o laranja de venda */
+.bonus{position:relative;max-width:620px;margin:0 auto 18px;display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid rgba(63,185,133,.42);border-radius:18px;padding:28px 26px 24px}
+.bonus-sel{position:absolute;top:0;left:26px;transform:translateY(-50%);background:var(--easy);color:#0d2b1f;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;padding:5px 14px;border-radius:20px;white-space:nowrap}
+.bonus-ico{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px;background:rgba(63,185,133,.14);border:1px solid rgba(63,185,133,.3)}
+.bonus-txt h3{font-size:20px;margin-bottom:8px;color:var(--easy)}
+.bonus-txt p{color:#DEDAF0;font-size:15px;line-height:1.6}
+
 /* price */
 .price-box{max-width:620px;margin:0 auto;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--indigo-deep);border-radius:22px;padding:34px;box-shadow:0 30px 70px -30px rgba(146,130,194,.5)}
 .price-box .inc{list-style:none;display:grid;gap:12px;margin:6px 0 24px}
@@ -233,6 +240,8 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
 @media(max-width:560px){
   section{padding:54px 0}
   .g3,.g2,.fit{grid-template-columns:1fr}
+  .bonus{flex-direction:column;gap:14px;padding:30px 20px 22px}
+  .bonus-sel{left:50%;transform:translate(-50%,-50%)}
   .proof-grid{grid-template-columns:1fr}
   .aula{flex-direction:column;gap:10px}
   .aula .day{width:auto;display:flex;gap:10px;align-items:center}
@@ -468,6 +477,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap">
     <span class="kicker">Sua entrada</span>
     <h2 class="sec-title" style="text-align:center">A sua primeira música começa aqui</h2>
+
+    <!-- Card do bônus. Fica COLADO na caixa de preço de propósito, e não numa seção
+         própria: o trabalho dele aqui é matar a objeção de fechamento ("e depois das
+         cinco músicas, eu faço o quê?"), que bate na hora de decidir. -->
+    <div class="bonus">
+      <div class="bonus-sel">Bônus incluso</div>
+      <div class="bonus-ico">🗺️</div>
+      <div class="bonus-txt">
+        <h3>O Mapa do Iniciante</h3>
+        <p>Na última aula do curso você recebe um PDF em formato de mapa, com o caminho exato do que estudar depois desta primeira música. É o seu passo a passo para continuar sozinho, sem voltar a se perder em vídeo solto. Ele é seu, fica no seu computador e não expira junto com o curso.</p>
+      </div>
+    </div>
+
     <div class="price-box">
       <ul class="inc">
         <li><span>Módulo 1 · Comece por aqui</span><span>incluído</span></li>
@@ -515,6 +537,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <details><summary>Quanto tempo por dia eu preciso praticar?</summary><div class="ans">Vinte minutos por dia já dão conta. As aulas são curtas de propósito, para caber num intervalo do dia sem que você precise reorganizar a vida inteira.</div></details>
       <details><summary>Por quanto tempo eu fico com o curso?</summary><div class="ans">Você tem acesso por um ano inteiro, dentro da plataforma do Clube do Ukulele, e pode rever cada aula quantas vezes quiser nesse período.</div></details>
       <details><summary>O Mateus corrige o que eu tocar?</summary><div class="ans">Nas aulas você aprende com o Mateus e segue no seu ritmo. O envio dos seus vídeos para ele analisar e responder em vídeo é um acréscimo opcional, que aparece para você logo depois da compra.</div></details>
+      <details><summary>E depois das cinco músicas, o que eu faço?</summary><div class="ans">Na última aula do curso você recebe O Mapa do Iniciante, um PDF com o caminho exato do que estudar dali em diante. Ele mostra a ordem das próximas batidas, dos próximos acordes e do repertório que vem na sequência, então você sai daqui sabendo o passo seguinte em vez de voltar a procurar vídeo solto por aí. O Mapa fica com você, no seu computador, mesmo depois que o acesso ao curso terminar.</div></details>
       <details><summary>E se eu não gostar?</summary><div class="ans">Você tem 15 dias para pedir o reembolso e receber o valor inteiro de volta, sem precisar justificar.</div></details>
     </div>
     <p class="fecho">Daqui a algumas semanas você pode estar com o ukulele no colo, tocando uma música inteira do começo ao fim, com alguém cantando junto. Tudo o que separa você desse dia é a ordem certa das coisas, e ela está aqui dentro.</p>
