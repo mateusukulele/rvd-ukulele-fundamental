@@ -1,1 +1,284 @@
-Página para a qual o aluno que comprou o upsell será redirecionado.
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
+<!-- End Google Tag Manager -->
+<title>Acompanhamento liberado · Do ZERO à 1ª Música</title>
+
+<!--
+  ============================================================
+  ETAPA 3b DO FUNIL · O ALUNO COMPROU O ACOMPANHAMENTO
+  URL: /do-zero-a-primeira-musica/inscricao-confirmada-com-acompanhamento-d0a1
+
+  Para onde a Hotmart manda quem clicou em "Sim, quero enviar meus vídeos" no widget
+  do Funil de Vendas, lá na inscricao-confirmada-d0a1. Compra com 1 clique.
+
+  REGRA DE TOM: ele acabou de gastar mais. Confirmar, celebrar sem exagero, e explicar
+  o que acontece agora. Nada de vender mais nada aqui.
+
+  ⚠️ O WIDGET DA HOTMART tem que estar em TODAS as etapas do funil, inclusive nesta.
+     Está no fim do body, dentro de um container escondido.
+
+  ⚠️ LIBERAÇÃO DAS ATIVIDADES: quem compra este upgrade precisa receber o produto
+     validador na Cademi, para o Worker cademi-validador soltar o envio de vídeo.
+     Isso é configurado na HOTMART (entrega do produto), não aqui.
+     Ver LEIA-ME, seção "Como o upgrade é liberado".
+
+  ⚠️ LINK DE ACESSO ÚNICO (login automático da Cademi): ainda NÃO existe.
+     Slot marcado como [LINK ÚNICO]. Depende de um Worker novo.
+     A CHAVE DA API NUNCA PODE ENTRAR NESTE ARQUIVO: a página é pública.
+  ============================================================
+-->
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#100d20; --bg2:#15112a; --surface:#1b1633; --card:#221c3c; --card2:#2a2347;
+  --line:#332c52; --text:#ECEAF4; --muted:#A39FBE;
+  --indigo:#9282C2; --indigo-deep:#5b4a92; --rose:#F294A0; --rose-deep:#E87A85;
+  --ok:#3FB985; --wpp:#25D366;
+  --maxw:820px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+button,input,select,textarea{font-family:inherit}
+h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px;line-height:1.08;text-transform:uppercase}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.rose{color:var(--rose)}
+
+.strip{background:rgba(16,13,32,.92);border-bottom:1px solid var(--line);padding:10px 0}
+.strip .wrap{display:flex;align-items:center;gap:10px}
+.strip img{height:34px;width:34px;display:block}
+.strip span{font-family:'Anton';font-size:18px;letter-spacing:1px}
+
+.confirm{text-align:center;padding:52px 0 30px}
+.tick{width:80px;height:80px;border-radius:50%;margin:0 auto 20px;display:grid;place-items:center;font-size:38px;background:rgba(63,185,133,.16);border:2px solid rgba(63,185,133,.5)}
+.confirm h1{font-size:clamp(30px,5.4vw,44px);margin-bottom:14px}
+.confirm p{color:#D9D5EC;font-size:17px;max-width:640px;margin:0 auto 10px}
+.confirm .mail{color:var(--rose);font-weight:700}
+
+/* o que acontece agora */
+.passos{background:var(--card);border:1px solid rgba(63,185,133,.3);border-radius:16px;padding:24px 22px;margin-bottom:16px}
+.passos h2{font-size:19px;margin-bottom:16px;color:var(--ok)}
+.passos ol{list-style:none;counter-reset:p;display:grid;gap:14px}
+.passos li{counter-increment:p;position:relative;padding-left:40px;font-size:15.5px;color:#DEDAF0;line-height:1.6}
+.passos li b{color:#fff}
+.passos li::before{content:counter(p);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:rgba(63,185,133,.16);color:var(--ok);display:grid;place-items:center;font-family:'Anton';font-size:14px}
+.passos .nota{margin-top:16px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+
+/* acesso */
+.acesso{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px}
+.acesso h2{font-size:20px;margin-bottom:16px;text-align:center}
+.cred{display:grid;gap:7px;margin-bottom:12px}
+.cred .row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(16,13,32,.5);border:1px solid var(--line);border-radius:10px;padding:11px 14px;min-width:0}
+.cred .row.stack{flex-direction:column;align-items:flex-start;gap:2px}
+.cred .row.stack .v{text-align:left}
+.cred .k{font-size:10.5px;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;color:var(--rose);flex:0 0 auto}
+.cred .v{font-size:14.5px;font-weight:700;color:#fff;text-align:right;word-break:break-word;min-width:0}
+.cred .v.link{color:var(--rose);text-decoration:underline;text-underline-offset:3px}
+.cred .v.link:hover{color:#fff}
+.aviso{font-size:12.5px;color:var(--muted);line-height:1.45;text-align:center;margin-bottom:18px}
+.aviso b{color:#D9D5EC}
+.btn-wrap{text-align:center}
+.btn-acesso{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#6d5aa8,#4b3a80);color:#fff;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.5px;padding:16px 32px;border-radius:12px;border:0;cursor:pointer;transition:transform .12s ease,filter .12s ease}
+.btn-acesso:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.btn-acesso:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
+
+.magico{display:none;margin-bottom:14px;background:rgba(63,185,133,.08);border:1px solid rgba(63,185,133,.35);border-radius:12px;padding:16px;text-align:center}
+.magico.on{display:block}
+.magico p{font-size:13px;color:var(--muted);margin-bottom:10px}
+
+.suporte{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px;text-align:center}
+.suporte h2{font-size:18px;margin-bottom:6px}
+.suporte p{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+.btn-wpp{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--wpp);color:#08301b;font-weight:800;font-size:15.5px;padding:15px 26px;border-radius:12px;transition:transform .12s ease,filter .12s ease}
+.btn-wpp:hover{filter:brightness(1.06);transform:translateY(-2px)}
+.btn-wpp:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btn-wpp svg{width:19px;height:19px;fill:currentColor}
+
+.proximo{margin-top:26px;text-align:center;color:#D9D5EC;font-size:16px;line-height:1.6}
+footer{padding:36px 0 40px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:560px){
+  .strip img{height:28px;width:28px}
+  .strip span{font-size:15px}
+  .confirm{padding:38px 0 24px}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDH6QGB2"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="strip">
+  <div class="wrap">
+    <img src="assets/logo-d0a1.svg" alt="Do ZERO à 1ª Música" onerror="this.style.display='none'">
+    <span>Do ZERO à 1ª Música</span>
+  </div>
+</div>
+
+<header class="confirm">
+  <div class="wrap">
+    <!-- ✓ e não 🎸: o emoji de violão renderiza como guitarra elétrica na maioria dos
+         sistemas, e não existe emoji de ukulele. -->
+    <div class="tick">✓</div>
+    <h1 id="saudacao">Pronto, agora eu vou te ver tocando</h1>
+    <p>O <b>Intercâmbio de Vídeos</b> está liberado na sua conta, junto com o curso. As cinco atividades já estão esperando você lá dentro.</p>
+    <p id="linha-email">Os dados de acesso também vão chegar no seu e-mail em alguns minutos.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- ===== O que acontece agora ===== -->
+  <div class="passos">
+    <h2>Como funciona daqui pra frente</h2>
+    <ol>
+      <li>Você assiste as aulas no seu ritmo e, quando chegar numa atividade, <b>grava um vídeo tocando</b>. Pode ser pelo celular mesmo, sem instalar nada.</li>
+      <li>Envia o vídeo <b>direto pela plataforma</b>, na própria página da atividade.</li>
+      <li>Eu assisto e <b>respondo com uma análise em vídeo</b>, gravada só para você, mostrando o que já está bom e o que ajustar.</li>
+      <li>Você corrige, toca de novo, e segue para a próxima. São <b>cinco análises</b> no total.</li>
+    </ol>
+    <p class="nota">Você tem <b>1 ano</b> para enviar as suas atividades, então vá no seu tempo. A atividade de apresentação, aquela em que você conta um pouco sobre você, é cortesia e não consome nenhuma das cinco.</p>
+  </div>
+
+  <!-- ===== Acesso ===== -->
+  <div class="acesso">
+    <h2>Comece agora</h2>
+
+    <!-- [LINK ÚNICO] Slot do login automático da Cademi. Escondido até o Worker existir. -->
+    <div class="magico" id="acesso-magico">
+      <p>Clique e entre direto, sem digitar senha:</p>
+      <a class="btn-acesso" id="link-magico" href="#" target="_blank" rel="noopener">Entrar no meu curso</a>
+    </div>
+
+    <div class="cred">
+      <div class="row">
+        <span class="k">Seu login</span>
+        <span class="v" id="cred-login">o e-mail que você usou na compra</span>
+      </div>
+      <div class="row">
+        <span class="k">Sua senha</span>
+        <span class="v">ukulele</span>
+      </div>
+      <div class="row stack">
+        <span class="k">Plataforma</span>
+        <a class="v link" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">aluno.comotocarukulele.com</a>
+      </div>
+    </div>
+    <p class="aviso">A senha <b>ukulele</b> é a do primeiro acesso. Depois de entrar, troque por uma senha sua dentro da plataforma. Estes dados também foram para o seu e-mail, então nada se perde.</p>
+    <div class="btn-wrap">
+      <a class="btn-acesso" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">Acessar o meu curso</a>
+    </div>
+  </div>
+
+  <!-- ===== Suporte ===== -->
+  <div class="suporte">
+    <h2>Precisa de ajuda?</h2>
+    <p>Se as atividades não aparecerem liberadas, se a senha não funcionar, ou se você tiver qualquer dúvida, fale com a nossa equipe. A gente responde de verdade.</p>
+    <a class="btn-wpp" href="https://wa.me/5531998585286?text=Oi!%20Comprei%20o%20Do%20ZERO%20%C3%A0%201%C2%AA%20M%C3%BAsica%20com%20o%20Interc%C3%A2mbio%20de%20V%C3%ADdeos%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.02c0-5.18 4.22-9.4 9.42-9.4a9.36 9.36 0 016.65 2.76 9.32 9.32 0 012.75 6.65c0 5.19-4.22 9.42-9.41 9.42zM19.11 4.9A11.28 11.28 0 0012.05 2C5.85 2 .81 7.04.81 13.24c0 1.98.52 3.92 1.5 5.63L.72 24.2l5.46-1.43a11.2 11.2 0 005.86 1.6h.01c6.2 0 11.24-5.04 11.24-11.24 0-3-1.17-5.82-3.3-7.94z"/></svg>
+      Falar com o suporte no WhatsApp
+    </a>
+  </div>
+
+  <p class="proximo">Agora é com você. Grava sem medo, mesmo que saia torto: é justamente o torto que eu preciso ver para te ajudar.</p>
+</div>
+
+<footer>
+  <div class="wrap">
+    Do ZERO à 1ª Música · Clube do Ukulele · Como Tocar Ukulele (Mateus Augusto)<br>
+    Dúvidas? Fale com a gente em suporte@clubedoukulele.com
+  </div>
+</footer>
+
+<!-- O widget da Hotmart precisa existir em TODAS as etapas do funil, inclusive nesta. -->
+<div id="hotmart-sales-funnel" style="display:none"></div>
+<script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js" async onload="try{checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')}catch(e){}"></script>
+
+<script>
+(function(){
+  var CHAVES={
+    nome:['nome','name','first_name','buyer_name','fullname'],
+    email:['email','buyer_email','e-mail'],
+    telefone:['telefone','phone','whatsapp','celular','buyer_phone'],
+    transacao:['transaction','tid','hottok','transacao']
+  };
+  var q=new URLSearchParams(window.location.search);
+  function pega(lista){
+    for(var i=0;i<lista.length;i++){
+      var v=q.get(lista[i]);
+      if(v&&v.trim())return v.trim();
+    }
+    return '';
+  }
+  var RE_EMAIL=/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
+  function farejaEmail(){
+    var achado='';
+    q.forEach(function(v){ if(!achado&&v&&RE_EMAIL.test(v.trim()))achado=v.trim(); });
+    return achado;
+  }
+  var lead={
+    nome:pega(CHAVES.nome),
+    email:(pega(CHAVES.email)||farejaEmail()).toLowerCase(),
+    telefone:pega(CHAVES.telefone),
+    transacao:pega(CHAVES.transacao)
+  };
+
+  if(q.get('debug')==='1'){
+    var todos=[];q.forEach(function(v,k){todos.push(k+' = '+v)});
+    var box=document.createElement('pre');
+    box.style.cssText='margin:20px;padding:14px;background:#1F1A2B;color:#7CF0C8;font:12px/1.5 ui-monospace,Menlo,monospace;border-radius:10px;white-space:pre-wrap;word-break:break-all';
+    box.textContent='PARAMS RECEBIDOS DA HOTMART\n'+(todos.length?todos.join('\n'):'(nenhum)')+'\n\nINTERPRETADO\n'+JSON.stringify(lead,null,2);
+    document.body.insertBefore(box,document.body.firstChild);
+  }
+
+  if(lead.nome){
+    var p=lead.nome.split(' ')[0];
+    p=p.charAt(0).toUpperCase()+p.slice(1).toLowerCase();
+    document.getElementById('saudacao').textContent='Pronto, '+p+', agora eu vou te ver tocando';
+  }
+  if(lead.email){
+    document.getElementById('cred-login').textContent=lead.email;
+    document.getElementById('linha-email').innerHTML='Os dados de acesso também vão chegar em <span class="mail">'+lead.email+'</span> em alguns minutos.';
+  }
+
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({
+    event:'upsell_aprovado',
+    produto:'intercambio-de-videos-d0a1',
+    valor:47,
+    lead_nome:lead.nome,
+    lead_email:lead.email,
+    transacao:lead.transacao
+  });
+
+  // [LINK ÚNICO] Ver o comentário equivalente na página sem-acompanhamento.
+  // O Worker recebe a TRANSAÇÃO, valida na Hotmart, e só então pede o login_auto
+  // para a Cademi. Nunca receber o e-mail direto da URL: seria sequestro de conta.
+  var ENDPOINT_LOGIN='';   // ex.: 'https://cdu-acesso-d0a1.SEU-SUBDOMINIO.workers.dev/link'
+  if(ENDPOINT_LOGIN && lead.transacao){
+    fetch(ENDPOINT_LOGIN+'?transacao='+encodeURIComponent(lead.transacao))
+      .then(function(r){return r.json()})
+      .then(function(d){
+        if(d && d.ok && d.login_auto){
+          document.getElementById('link-magico').href=d.login_auto;
+          document.getElementById('acesso-magico').classList.add('on');
+        }
+      })
+      .catch(function(){});
+  }
+})();
+</script>
+</body>
+</html>

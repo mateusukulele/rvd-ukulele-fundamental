@@ -167,8 +167,21 @@ a{color:inherit;text-decoration:none}
 .up-price .val small{font-size:22px;color:var(--muted);vertical-align:super}
 .up-price .cond{font-size:13.5px;color:var(--muted);margin-bottom:18px}
 
-.recusa{text-align:center;margin-top:22px}
-.recusa p{color:var(--muted);font-size:13.5px;margin-bottom:12px}
+/* ===== WIDGET DO FUNIL DA HOTMART =====
+   ⚠️ VERIFICADO: a Hotmart renderiza isto num IFRAME cross-origin
+   (https://pay.hotmart.com/funnel). Ou seja:
+     - NÃO existe como estilizar os botões por CSS daqui. Nem cor, nem fonte, nem raio.
+       O ÚNICO controle é o painel da Hotmart (Editar etapa > Aparência do botão).
+     - O iframe traz o próprio fundo e vem com largura fixa (320px), então precisa ser
+       esticado e emoldurado, senão fica uma caixa solta no meio do card.
+   Por isso aqui só tratamos a MOLDURA. Não perca tempo tentando estilizar o conteúdo. */
+#hotmart-sales-funnel{margin-top:18px;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+#hotmart-sales-funnel:empty{display:none}
+#hotmart-sales-funnel iframe{width:100% !important;min-width:100% !important;min-height:300px;border:0;display:block}
+
+#funil-fallback{margin-top:18px}
+.fallback-nota{color:var(--muted);font-size:13.5px;margin:14px 0 12px;text-align:center}
+#funil-fallback .ghost{width:100%}
 
 /* prova */
 .prova{background:var(--card);border:1px dashed var(--indigo-deep);border-radius:14px;min-height:150px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:13px;padding:20px;margin-bottom:24px}
@@ -258,13 +271,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="up-price">
       <div class="lote">Adicionar ao seu curso</div>
       <div class="val"><small>+</small> R$ 47</div>
-      <div class="cond">pagamento único · sem mensalidade · liberado na hora</div>
-      <a class="cta big" href="https://pay.hotmart.com/N106662510K?off=nrjxzjdc">Quero enviar meus vídeos</a>
-    </div>
+      <div class="cond">pagamento único · sem mensalidade · <b>compra com 1 clique, sem digitar o cartão de novo</b></div>
 
-    <div class="recusa">
-      <p>Se preferir seguir sem o acompanhamento por enquanto, o seu curso continua liberado do mesmo jeito.</p>
-      <a class="ghost" href="#acesso">Seguir sem o Intercâmbio de Vídeos</a>
+      <!-- ===== WIDGET DO FUNIL DE VENDAS DA HOTMART =====
+           Renderiza os DOIS botões (comprar e recusar) e faz a compra com 1 clique.
+
+           ⚠️ É um IFRAME cross-origin. Não dá para estilizar os botões daqui, de jeito
+           nenhum. TODO o visual sai do painel da Hotmart (Editar etapa > Aparência do
+           botão). Configuração recomendada:
+
+             Compra → Sólido   · fundo #C2410C · borda 1px #C2410C · texto 16px #FFFFFF
+                      "Sim, quero enviar meus vídeos"
+             Recusa → Contorno · borda 1px #5B4A92 · texto 15px #9282C2
+                      "Seguir sem o acompanhamento"
+
+           A recusa é de contorno, e não vermelha: vermelho lê como perigo, chama atenção
+           para o "não" e deixa o aluno desconfortável logo depois de ele ter pago. -->
+      <div id="hotmart-sales-funnel"></div>
+
+      <!-- Se o script da Hotmart não carregar (adblock, falha de rede), o aluno ficaria
+           sem NENHUM caminho: nem comprar, nem recusar. Este bloco entra nesse caso.
+           ⚠️ Limite conhecido: se o iframe carregar mas mostrar erro por dentro, não temos
+           como saber (é cross-origin), então o fallback não entra. Ele cobre só falha do
+           script e falha do mount. -->
+
+      <div id="funil-fallback" hidden>
+        <a class="cta big" href="https://pay.hotmart.com/N106662510K?off=nrjxzjdc">Quero enviar meus vídeos</a>
+        <p class="fallback-nota">Se preferir seguir sem o acompanhamento, o seu curso continua liberado do mesmo jeito.</p>
+        <a class="ghost" href="#acesso">Seguir sem o acompanhamento</a>
+      </div>
     </div>
   </div>
 
@@ -387,18 +422,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     transacao:lead.transacao
   });
 
-  // Evento de clique no upgrade, para medir a taxa de conversão do upsell.
-  var btn=document.querySelector('.up-price .cta');
-  if(btn){
-    btn.addEventListener('click',function(){
+  // Clique no upgrade. Delegado no container, porque os botões são renderizados pelo
+  // widget da Hotmart e não existem no DOM quando esta função roda.
+  var alvo=document.getElementById('hotmart-sales-funnel');
+  var fallback=document.getElementById('funil-fallback');
+  [alvo,fallback].forEach(function(el){
+    if(!el)return;
+    el.addEventListener('click',function(e){
+      if(!e.target.closest('button, a'))return;
       window.dataLayer.push({
         event:'clique_upgrade_intercambio',
         produto:'intercambio-de-videos-d0a1',
         valor:47,
+        origem:el.id==='funil-fallback'?'fallback':'widget-hotmart',
         lead_email:lead.email
       });
     });
+  });
+})();
+
+// ============================
+// WIDGET DO FUNIL DE VENDAS DA HOTMART
+// ============================
+// Carrega o script, monta o widget e, se ele não renderizar nada, mostra o fallback.
+// Sem esse guarda-chuva, uma falha do script deixaria o aluno sem nenhum caminho:
+// nem comprar o upgrade, nem recusar e seguir para o curso.
+(function(){
+  var container=document.getElementById('hotmart-sales-funnel');
+  var fallback=document.getElementById('funil-fallback');
+  var pronto=false;
+
+  function mostrarFallback(motivo){
+    if(pronto)return;
+    fallback.hidden=false;
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'funil_hotmart_falhou',motivo:motivo});
   }
+
+  var s=document.createElement('script');
+  s.src='https://checkout.hotmart.com/lib/hotmart-checkout-elements.js';
+  s.async=true;
+  s.onload=function(){
+    try{
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
+    }catch(e){
+      mostrarFallback('erro-no-mount');
+      return;
+    }
+    // o mount é assíncrono. damos um tempo e conferimos se algo apareceu.
+    setTimeout(function(){
+      if(container.children.length>0){pronto=true;}
+      else{mostrarFallback('widget-vazio');}
+    },3000);
+  };
+  s.onerror=function(){mostrarFallback('script-nao-carregou')};
+  document.head.appendChild(s);
 })();
 </script>
 </body>
