@@ -92,19 +92,21 @@ a{color:inherit;text-decoration:none}
 .ghost:hover{background:rgba(146,130,194,.12);color:var(--text)}
 .ghost:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
 
-/* card de acesso + credenciais */
-.acesso{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;margin-bottom:14px}
-.acesso h2{font-size:21px;margin-bottom:8px;text-align:center}
-.acesso .sub{color:var(--muted);font-size:15px;margin-bottom:20px;text-align:center}
-.cred{display:grid;gap:10px;margin-bottom:16px}
-.cred .row{display:flex;flex-direction:column;align-items:flex-start;gap:4px;background:rgba(16,13,32,.5);border:1px solid var(--line);border-radius:11px;padding:13px 16px}
-.cred .k{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:var(--rose);flex:0 0 auto}
-.cred .v{font-size:16px;font-weight:700;color:#fff;word-break:break-all}
-.acesso .aviso{font-size:13.5px;color:var(--muted);border-left:3px solid var(--rose-deep);padding-left:12px;margin-bottom:20px;line-height:1.5}
-.acesso .btn-wrap{text-align:center}
+/* card de acesso + credenciais — compacto de propósito, para a oferta subir na tela */
+.acesso{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:0}
+.acesso h2{font-size:17px;margin-bottom:14px;text-align:center}
+.cred{display:grid;gap:7px;margin-bottom:12px}
+.cred .row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(16,13,32,.5);border:1px solid var(--line);border-radius:10px;padding:11px 14px;min-width:0}
+.cred .k{font-size:10.5px;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;color:var(--rose);flex:0 0 auto}
+.cred .v{font-size:14.5px;font-weight:700;color:#fff;text-align:right;word-break:break-word;min-width:0}
+/* o domínio é longo demais para caber ao lado do rótulo, então essa linha empilha */
+.cred .row.stack{flex-direction:column;align-items:flex-start;gap:2px}
+.cred .row.stack .v{text-align:left}
+.acesso .aviso{font-size:12.5px;color:var(--muted);line-height:1.45;text-align:center}
+.acesso .aviso b{color:#D9D5EC}
 
 /* divisor da oferta */
-.divisor{text-align:center;margin:46px 0 26px}
+.divisor{text-align:center;margin:30px 0 26px}
 .divisor .l{height:1px;background:var(--line);margin-bottom:-10px}
 .divisor .t{display:inline-block;background:var(--bg);padding:0 16px;color:var(--sale);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px}
 .divisor .seta{display:block;margin-top:14px;color:var(--sale);font-size:22px;line-height:1;animation:desce 1.6s ease-in-out infinite}
@@ -193,10 +195,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="wrap">
   <div class="acesso">
-    <h2>Comece agora</h2>
-    <p class="sub">Estes são os seus dados de acesso. Você já pode entrar e assistir a primeira aula hoje mesmo.</p>
+    <h2>Seus dados de acesso</h2>
     <div class="cred">
-      <div class="row">
+      <div class="row full">
         <span class="k">Seu login</span>
         <!-- preenchido pelo JS com o e-mail que veio do checkout -->
         <span class="v" id="cred-login">o e-mail que você usou na compra</span>
@@ -205,15 +206,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="k">Sua senha</span>
         <span class="v">ukulele</span>
       </div>
-      <div class="row">
+      <div class="row stack">
         <span class="k">Plataforma</span>
         <span class="v">aluno.comotocarukulele.com</span>
       </div>
     </div>
-    <p class="aviso">A senha <b>ukulele</b> é a padrão do primeiro acesso. Assim que entrar, recomendamos que você troque por uma senha sua, dentro da plataforma.</p>
-    <div class="btn-wrap">
-      <a class="ghost" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">Acessar a plataforma</a>
-    </div>
+    <p class="aviso">A senha <b>ukulele</b> é a do primeiro acesso. Depois de entrar, troque por uma senha sua dentro da plataforma. Estes dados também foram para o seu e-mail, então nada se perde.</p>
   </div>
 </div>
 
@@ -303,12 +301,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     return '';
   }
+
+  // A documentação da Hotmart não diz quais params ela anexa na página de obrigado
+  // externa, e o nome pode mudar. Então, se nenhuma das chaves conhecidas bater,
+  // varremos TODOS os params e pegamos o primeiro valor com cara de e-mail.
+  // Assim a página funciona independente do nome que a Hotmart usar.
+  var RE_EMAIL=/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
+  function farejaEmail(){
+    var achado='';
+    q.forEach(function(v){
+      if(!achado&&v&&RE_EMAIL.test(v.trim())) achado=v.trim();
+    });
+    return achado;
+  }
+
   var lead={
     nome:pega(CHAVES.nome),
-    email:pega(CHAVES.email).toLowerCase(),
+    email:(pega(CHAVES.email)||farejaEmail()).toLowerCase(),
     telefone:pega(CHAVES.telefone),
     transacao:pega(CHAVES.transacao)
   };
+
+  // ?debug=1 lista tudo que chegou na URL. Use numa compra de teste para
+  // descobrir exatamente quais params a Hotmart manda, e remova depois se quiser.
+  if(q.get('debug')==='1'){
+    var todos=[];
+    q.forEach(function(v,k){ todos.push(k+' = '+v); });
+    var box=document.createElement('pre');
+    box.style.cssText='margin:20px;padding:14px;background:#1F1A2B;color:#7CF0C8;'+
+      'font:12px/1.5 ui-monospace,Menlo,monospace;border-radius:10px;white-space:pre-wrap;word-break:break-all';
+    box.textContent='PARAMS RECEBIDOS DA HOTMART\n'+
+      (todos.length?todos.join('\n'):'(nenhum)')+
+      '\n\nINTERPRETADO\n'+JSON.stringify(lead,null,2);
+    document.body.insertBefore(box,document.body.firstChild);
+  }
 
   // Personaliza a saudação com o primeiro nome, quando ele vem no link.
   // A saudação é neutra de propósito: a maior parte do público é de mulheres,
