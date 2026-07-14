@@ -3,12 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
+<!-- Google Tag Manager (server-side, igual ao Ukulele Fundamental v2) -->
+<script>
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'do-zero-a-primeira-musica'});
+(function(){
+  function loadGTM(){
+    (function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');
+  }
+  if(document.readyState==='complete'||document.readyState==='interactive'){setTimeout(loadGTM,1500)}
+  else{window.addEventListener('load',function(){setTimeout(loadGTM,1500)},{once:true})}
+})();
+</script>
 <!-- End Google Tag Manager -->
 <title>Do ZERO à 1ª Música · Clube do Ukulele</title>
 <meta name="description" content="O curso para quem quer tocar ukulele e ainda não começou. Com uma batida e dois acordes de um dedo só, você toca cinco músicas inteiras.">
@@ -220,6 +226,67 @@ section{padding:72px 0;position:relative}
 .faq details[open] summary::after{content:"–"}
 .faq .ans{padding:0 22px 20px;color:var(--muted);font-size:15px}
 
+/* ===== MODAL DE CAPTURA =====
+   Portado do "Ukulele Fundamental RVD 2 v1/index.html" (v2). Os IDs, o nome do evento
+   (lead_capture_uke) e os nomes dos params da Hotmart são EXATAMENTE os mesmos de lá,
+   de propósito: o GTM já tem tag/trigger montados em cima disso. Só muda o visual,
+   que aqui é escuro, e o link do checkout, que é o do D0A1. */
+body.modal-open{overflow:hidden}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(9,7,18,.78);backdrop-filter:blur(4px);opacity:0;transition:opacity .25s ease;padding:20px;overflow-y:auto}
+.modal.open{display:flex;align-items:flex-start;justify-content:center}
+.modal.visible{opacity:1}
+.modal-content{position:relative;width:100%;max-width:440px;margin:auto;background:var(--card);border:1px solid var(--indigo-deep);border-radius:20px;padding:32px 26px 24px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8);transform:translateY(14px) scale(.98);transition:transform .25s ease;overscroll-behavior:contain}
+.modal-content.visible{transform:none}
+.modal-x{position:absolute;top:14px;right:14px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(146,130,194,.14);color:var(--indigo);display:grid;place-items:center;cursor:pointer;transition:background .15s,color .15s}
+.modal-x:hover{background:rgba(146,130,194,.28);color:#fff}
+.modal-x svg{width:17px;height:17px}
+.modal-content h3{font-size:25px;margin-bottom:8px;text-align:center}
+.modal-sub{color:var(--muted);font-size:14.5px;text-align:center;margin-bottom:18px;line-height:1.5}
+.modal-form{display:grid;gap:15px}
+.modal-form label{display:block;font-size:12.5px;font-weight:700;color:#D9D5EC;margin-bottom:6px}
+.modal-form input[type=text],.modal-form input[type=email],.modal-form input[type=tel]{width:100%;background:rgba(16,13,32,.6);border:1px solid var(--line);border-radius:12px;padding:13px 14px;color:var(--text);font-family:inherit;font-size:15.5px;transition:border-color .15s,box-shadow .15s}
+.modal-form input:focus{outline:0;border-color:var(--rose-deep);box-shadow:0 0 0 3px rgba(232,122,133,.16)}
+.modal-form input::placeholder{color:#6d688a}
+.erro-msg,.aviso-msg{display:none;font-size:12.5px;margin-top:5px;line-height:1.4}
+.erro-msg{color:#F294A0}
+.aviso-msg{color:var(--easy)}
+.erro-msg.show,.aviso-msg.show{display:block}
+.phone-wrap{display:flex;align-items:stretch;background:rgba(16,13,32,.6);border:1px solid var(--line);border-radius:12px;transition:border-color .15s,box-shadow .15s}
+.phone-wrap:focus-within{border-color:var(--rose-deep);box-shadow:0 0 0 3px rgba(232,122,133,.16)}
+.phone-wrap input[type=tel]{background:none;border:0;border-radius:0 12px 12px 0}
+.phone-wrap input[type=tel]:focus{box-shadow:none}
+.ddi-container{position:relative;flex-shrink:0}
+.ddi-button{height:100%;display:flex;align-items:center;padding:0 12px;background:rgba(146,130,194,.1);border:0;border-right:1px solid var(--line);border-radius:12px 0 0 12px;cursor:pointer;transition:background .15s}
+.ddi-button:hover{background:rgba(146,130,194,.22)}
+.ddi-button img{width:20px;height:auto;margin-right:6px;border-radius:2px;object-fit:cover}
+.ddi-button span{font-size:12.5px;font-weight:700;color:var(--text)}
+.ddi-button svg{width:12px;height:12px;color:var(--muted);margin-left:6px}
+.ddi-menu{display:none;position:absolute;top:100%;left:0;margin-top:5px;width:15rem;max-height:14rem;overflow-y:auto;overscroll-behavior:contain;background:var(--card2);border:1px solid var(--indigo-deep);border-radius:12px;box-shadow:0 18px 40px -12px rgba(0,0,0,.7);z-index:50}
+.ddi-menu.open{display:block}
+.ddi-option{width:100%;display:flex;align-items:center;gap:8px;padding:9px 12px;text-align:left;background:none;border:0;cursor:pointer;transition:background .12s}
+.ddi-option:hover{background:rgba(146,130,194,.16)}
+.ddi-option.other{border-top:1px solid var(--line)}
+.ddi-option img{width:20px;height:auto;border-radius:2px}
+.ddi-option svg{width:20px;height:20px;color:var(--muted)}
+.ddi-option span{font-size:12.5px;font-weight:600;color:#D9D5EC}
+.uke-options{display:flex;gap:10px}
+.uke-options label{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;margin:0;padding:12px;background:rgba(16,13,32,.6);border:1px solid var(--line);border-radius:12px;font-size:15px;font-weight:700;color:#D9D5EC;cursor:pointer;transition:border-color .15s,background .15s}
+.uke-options label:hover{border-color:var(--indigo-deep)}
+.uke-options label:has(input:checked){border-color:var(--rose-deep);background:rgba(232,122,133,.12);color:#fff}
+.uke-options input{accent-color:var(--rose-deep);width:17px;height:17px;cursor:pointer}
+.modal-submit{width:100%;margin-top:4px;background:linear-gradient(135deg,#F4855E,#C2410C);color:#fff;border:0;border-radius:14px;padding:17px;font-family:inherit;font-weight:800;font-size:16.5px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;box-shadow:0 12px 28px -10px rgba(238,107,46,.6);transition:filter .12s,transform .12s}
+.modal-submit:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.modal-submit:disabled{opacity:.75;cursor:default;transform:none}
+.modal-close{display:block;width:100%;margin-top:12px;background:none;border:0;color:var(--muted);font-family:inherit;font-size:13.5px;cursor:pointer;padding:6px}
+.modal-close:hover{color:var(--text)}
+.modal-secure{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;font-size:12px;color:var(--muted)}
+.modal-secure svg{width:14px;height:14px}
+@media(max-width:560px){
+  .modal{padding:12px}
+  .modal-content{padding:28px 18px 20px}
+  .modal-content h3{font-size:22px}
+}
+
 /* sticky CTA (mobile) */
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(16,13,32,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform .25s ease}
 .sticky-cta.on{transform:translateY(0)}
@@ -256,11 +323,6 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
 </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDH6QGB2"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 <!-- ===== Topbar ===== -->
 <div class="topbar">
   <div class="wrap">
@@ -268,7 +330,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="assets/logo-d0a1.svg" alt="Do ZERO à 1ª Música" onerror="this.style.display='none'">
       Do ZERO à 1ª Música
     </div>
-    <a class="cta sm" href="https://pay.hotmart.com/Q103382714A?off=zba7kbhp">Começar por R$ 47</a>
+    <button type="button" class="cta sm" onclick="abrirCaptura()">Começar por R$ 47</button>
   </div>
 </div>
 
@@ -290,9 +352,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><b>Dois acordes super simples</b>, de um dedo só. Sem pestana e sem dor no dedo.</li>
       <li>Um <b>guia de qual ukulele comprar</b>, para você não errar na escolha se ainda não tem o seu.</li>
       <li>De bônus, <b>O Mapa do Iniciante</b>: o passo a passo em PDF do que estudar depois desta primeira música.</li>
-      <li>Acesso na plataforma do Clube do Ukulele, no seu ritmo, com <b>1 ano de acesso</b>.</li>
+      <li><b>Acesso vitalício.</b> O curso fica com você para sempre, na plataforma do Clube do Ukulele, no seu ritmo.</li>
     </ul>
-    <a class="cta big" href="https://pay.hotmart.com/Q103382714A?off=zba7kbhp">Quero tocar minhas primeiras músicas</a>
+    <button type="button" class="cta big" onclick="abrirCaptura()">Quero tocar minhas primeiras músicas</button>
     <p class="trust">Com <b>Mateus Augusto</b> · ensina ukulele desde 2017 · +6.000 alunos formados · +300 mil seguidores.</p>
   </div>
 </header>
@@ -345,7 +407,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h3>A sua primeira música é a porta de entrada para todas as outras</h3>
       <p>Estas cinco não estão aqui por serem as suas preferidas. Elas estão aqui porque são as que melhor ensinam, e foram escolhidas uma a uma pelo que cada uma treina na sua mão. O que você leva delas não são cinco músicas decoradas, e sim uma batida e dois acordes que continuam funcionando em centenas de outras. Quando a primeira sai inteira, o caminho para as músicas que você realmente sonha em tocar já está aberto.</p>
     </div>
-    <div style="margin-top:30px"><a class="cta" href="https://pay.hotmart.com/Q103382714A?off=zba7kbhp">Quero tocar essas músicas</a></div>
+    <div style="margin-top:30px"><button type="button" class="cta" onclick="abrirCaptura()">Quero tocar essas músicas</button></div>
   </div>
 </section>
 
@@ -415,7 +477,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:30px"><a class="cta" href="https://pay.hotmart.com/Q103382714A?off=zba7kbhp">Quero começar agora</a></div>
+    <div style="text-align:center;margin-top:30px"><button type="button" class="cta" onclick="abrirCaptura()">Quero começar agora</button></div>
   </div>
 </section>
 
@@ -486,7 +548,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="bonus-ico">🗺️</div>
       <div class="bonus-txt">
         <h3>O Mapa do Iniciante</h3>
-        <p>Na última aula do curso você recebe um PDF em formato de mapa, com o caminho exato do que estudar depois desta primeira música. É o seu passo a passo para continuar sozinho, sem voltar a se perder em vídeo solto. Ele é seu, fica no seu computador e não expira junto com o curso.</p>
+        <p>Na última aula do curso você recebe um PDF em formato de mapa, com o caminho exato do que estudar depois desta primeira música. É o seu passo a passo para continuar sozinho, sem voltar a se perder em vídeo solto. Ele é seu, fica salvo no seu computador e você consulta quando quiser, até longe da plataforma.</p>
       </div>
     </div>
 
@@ -499,7 +561,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><span>A batida e os dois acordes que destravam as cinco músicas</span><span>incluído</span></li>
         <li><span>Guia de qual ukulele comprar</span><span>incluído</span></li>
         <li><span>🎁 <b>Bônus:</b> O Mapa do Iniciante (PDF), o caminho do que estudar depois</span><span style="color:var(--easy);font-weight:700">bônus</span></li>
-        <li><span>Acesso na plataforma do Clube do Ukulele por <b>1 ano</b></span><span>incluído</span></li>
+        <li><span><b>Acesso vitalício</b> na plataforma do Clube do Ukulele</span><span>incluído</span></li>
       </ul>
       <div class="price-now">
         <div class="lote">Do ZERO à 1ª Música</div>
@@ -507,7 +569,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="val" data-price>R$ 47</div>
         <div class="cond">à vista ou parcelado no cartão · pagamento 100% seguro pela Hotmart</div>
       </div>
-      <a class="cta big" href="https://pay.hotmart.com/Q103382714A?off=zba7kbhp">Quero começar por R$ 47</a>
+      <button type="button" class="cta big" onclick="abrirCaptura()">Quero começar por R$ 47</button>
     </div>
   </div>
 </section>
@@ -535,14 +597,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <details><summary>Eu ainda não tenho ukulele. Posso comprar mesmo assim?</summary><div class="ans">Pode. A primeira parte do curso é justamente o guia de qual ukulele comprar, com os tamanhos, os tipos e o que faz diferença de verdade na hora de escolher. Você assiste, compra com segurança e depois segue nas aulas.</div></details>
       <details><summary>Tenho mais de 50 anos. Ainda dá tempo?</summary><div class="ans">Dá, e boa parte dos nossos alunos está exatamente nessa faixa. O ukulele tem corda macia, poucas cordas e acordes que saem com um dedo só, então ele perdoa a mão que está começando agora. O que conta é a constância, não a idade.</div></details>
       <details><summary>Quanto tempo por dia eu preciso praticar?</summary><div class="ans">Vinte minutos por dia já dão conta. As aulas são curtas de propósito, para caber num intervalo do dia sem que você precise reorganizar a vida inteira.</div></details>
-      <details><summary>Por quanto tempo eu fico com o curso?</summary><div class="ans">Você tem acesso por um ano inteiro, dentro da plataforma do Clube do Ukulele, e pode rever cada aula quantas vezes quiser nesse período.</div></details>
+      <details><summary>Por quanto tempo eu fico com o curso?</summary><div class="ans">Para sempre. O acesso é vitalício, dentro da plataforma do Clube do Ukulele, e você pode rever cada aula quantas vezes quiser, no ano que vem ou daqui a cinco anos. Não existe mensalidade e não existe prazo para terminar.</div></details>
       <details><summary>O Mateus corrige o que eu tocar?</summary><div class="ans">Nas aulas você aprende com o Mateus e segue no seu ritmo. O envio dos seus vídeos para ele analisar e responder em vídeo é um acréscimo opcional, que aparece para você logo depois da compra.</div></details>
       <details><summary>E depois das cinco músicas, o que eu faço?</summary><div class="ans">Na última aula do curso você recebe O Mapa do Iniciante, um PDF com o caminho exato do que estudar dali em diante. Ele mostra a ordem das próximas batidas, dos próximos acordes e do repertório que vem na sequência, então você sai daqui sabendo o passo seguinte em vez de voltar a procurar vídeo solto por aí. O Mapa fica com você, no seu computador, mesmo depois que o acesso ao curso terminar.</div></details>
       <details><summary>E se eu não gostar?</summary><div class="ans">Você tem 15 dias para pedir o reembolso e receber o valor inteiro de volta, sem precisar justificar.</div></details>
     </div>
     <p class="fecho">Daqui a algumas semanas você pode estar com o ukulele no colo, tocando uma música inteira do começo ao fim, com alguém cantando junto. Tudo o que separa você desse dia é a ordem certa das coisas, e ela está aqui dentro.</p>
     <div style="text-align:center;margin-top:28px">
-      <a class="cta big" href="https://pay.hotmart.com/Q103382714A?off=zba7kbhp">Quero tocar minhas primeiras músicas</a>
+      <button type="button" class="cta big" onclick="abrirCaptura()">Quero tocar minhas primeiras músicas</button>
       <div class="sub-cta">R$ 47 com 15 dias de garantia. O risco é todo meu.</div>
     </div>
   </div>
@@ -558,10 +620,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== Sticky CTA (aparece ao rolar) ===== -->
 <div class="sticky-cta" id="stickyCta">
   <div class="p">Do ZERO à 1ª Música <b>R$ 47</b></div>
-  <a class="cta sm" href="https://pay.hotmart.com/Q103382714A?off=zba7kbhp">Começar agora</a>
+  <button type="button" class="cta sm" onclick="abrirCaptura()">Começar agora</button>
+</div>
+
+<!-- ===== MODAL DE CAPTURA =====
+     Estrutura, IDs e names copiados do Ukulele Fundamental v2. NÃO renomear nada aqui:
+     o GTM já tem tag e trigger montados em cima de #lead-nome, #lead-email,
+     #lead-whatsapp, #lead-ddi, input[name=has_ukulele] e do evento lead_capture_uke. -->
+<div id="capture-modal" class="modal">
+  <div class="modal-content" id="capture-content">
+    <button type="button" class="modal-x" onclick="fecharCaptura()" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3>Falta muito pouco!</h3>
+    <p class="modal-sub">Preencha seus dados para garantir o seu acesso ao Do ZERO à 1ª Música.</p>
+    <form onsubmit="handleCapture(event)" class="modal-form">
+      <div>
+        <label for="lead-nome">Nome Completo *</label>
+        <input required type="text" id="lead-nome" name="name" autocomplete="name" placeholder="Ex: Mateus Augusto">
+        <p id="erro-nome" class="erro-msg">Por favor, insira nome e sobrenome.</p>
+      </div>
+      <div>
+        <label for="lead-email">Melhor E-mail *</label>
+        <input required type="email" id="lead-email" name="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com">
+        <p id="erro-email" class="erro-msg">Verifique se o e-mail está correto.</p>
+        <p id="aviso-email" class="aviso-msg">Corrigimos um possível erro de digitação. Verifique se está certo.</p>
+      </div>
+      <div>
+        <label>WhatsApp *</label>
+        <div class="phone-wrap">
+          <div id="ddi-container" class="ddi-container">
+            <input type="hidden" id="lead-ddi" value="55">
+            <button type="button" id="ddi-button" class="ddi-button" aria-label="Selecionar código do país" aria-haspopup="listbox">
+              <img src="https://flagcdn.com/w20/br.png" width="20" height="15" id="ddi-selected-flag" alt="BR" loading="lazy">
+              <span id="ddi-selected-text">+55</span>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="ddi-menu" class="ddi-menu"></div>
+          </div>
+          <input required type="tel" id="lead-whatsapp" name="tel" autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000">
+        </div>
+        <p id="erro-whatsapp" class="erro-msg"></p>
+      </div>
+      <div>
+        <label>Você já possui um ukulele? *</label>
+        <div class="uke-options">
+          <label><input type="radio" name="has_ukulele" value="Sim"> Sim</label>
+          <label><input type="radio" name="has_ukulele" value="Não"> Não</label>
+        </div>
+        <p id="erro-ukulele" class="erro-msg">Por favor, responda essa pergunta.</p>
+      </div>
+      <button type="submit" id="btn-submit" class="modal-submit">Ir para o pagamento</button>
+    </form>
+    <button type="button" onclick="fecharCaptura()" class="modal-close">Fechar janela</button>
+    <div class="modal-secure">
+      <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+      Ambiente 100% seguro pela Hotmart
+    </div>
+  </div>
 </div>
 
 <script>
+// ============================
+// STICKY CTA
+// ============================
 (function(){
   var bar=document.getElementById('stickyCta');
   var onScroll=function(){
@@ -570,6 +692,199 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
 })();
+
+// ============================
+// PAÍSES (populado sob demanda)
+// ============================
+var paises=[['55','br','Brasil (+55)'],['1','us','EUA / Canadá (+1)'],['351','pt','Portugal (+351)'],['244','ao','Angola (+244)'],['258','mz','Moçambique (+258)'],['238','cv','Cabo Verde (+238)'],['34','es','Espanha (+34)'],['33','fr','França (+33)'],['44','gb','Reino Unido (+44)'],['49','de','Alemanha (+49)'],['39','it','Itália (+39)'],['54','ar','Argentina (+54)'],['56','cl','Chile (+56)'],['57','co','Colômbia (+57)'],['52','mx','México (+52)'],['81','jp','Japão (+81)'],['61','au','Austrália (+61)']];
+
+// Checkout do D0A1. É o único valor que muda em relação ao Fundamental v2.
+var HOTMART_URL='https://pay.hotmart.com/Q103382714A?off=zba7kbhp';
+
+// ============================
+// MODAL
+// ============================
+var modalEl,modalContentEl,menuPopulated=false;
+function abrirCaptura(){
+  modalEl=modalEl||document.getElementById('capture-modal');
+  modalContentEl=modalContentEl||document.getElementById('capture-content');
+  modalEl.classList.add('open');
+  if(!menuPopulated){popularDDI();menuPopulated=true}
+  document.body.classList.add('modal-open');
+  requestAnimationFrame(function(){modalEl.classList.add('visible');modalContentEl.classList.add('visible')});
+}
+function fecharCaptura(){
+  if(!modalEl)modalEl=document.getElementById('capture-modal');
+  if(!modalContentEl)modalContentEl=document.getElementById('capture-content');
+  modalEl.classList.remove('visible');modalContentEl.classList.remove('visible');
+  document.body.classList.remove('modal-open');
+  setTimeout(function(){modalEl.classList.remove('open')},300);
+}
+document.getElementById('capture-modal').addEventListener('click',function(e){
+  if(e.target===this)fecharCaptura();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&modalEl&&modalEl.classList.contains('open'))fecharCaptura();
+});
+
+// ============================
+// POPULA DDI SOB DEMANDA
+// ============================
+function popularDDI(){
+  var menu=document.getElementById('ddi-menu'),html='';
+  for(var i=0;i<paises.length;i++){
+    var p=paises[i];
+    html+='<button type="button" class="ddi-option" data-value="'+p[0]+'" data-code="'+p[1]+'"><img src="https://flagcdn.com/w20/'+p[1]+'.png" width="20" height="15" alt="" loading="lazy"><span>'+p[2]+'</span></button>';
+  }
+  html+='<button type="button" class="ddi-option other" data-value="" data-code="other"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Outro país</span></button>';
+  menu.innerHTML=html;
+  menu.addEventListener('click',function(e){
+    var btn=e.target.closest('.ddi-option');
+    if(!btn)return;
+    selecionarDDI(btn.getAttribute('data-value'),btn.getAttribute('data-code'));
+  });
+}
+
+// ============================
+// DDI DROPDOWN
+// ============================
+var ddiBtn=document.getElementById('ddi-button'),ddiMenu=document.getElementById('ddi-menu'),ddiInput=document.getElementById('lead-ddi'),waInput=document.getElementById('lead-whatsapp');
+ddiBtn.addEventListener('click',function(e){e.stopPropagation();ddiMenu.classList.toggle('open')});
+document.addEventListener('click',function(e){
+  if(!document.getElementById('ddi-container').contains(e.target)){ddiMenu.classList.remove('open')}
+});
+function selecionarDDI(value,code){
+  var textSpan=document.getElementById('ddi-selected-text'),flag=document.getElementById('ddi-selected-flag');
+  ddiInput.value=value;
+  if(code==='other'){
+    flag.outerHTML='<svg id="ddi-selected-flag" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-right:6px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+    textSpan.innerText='';
+  } else {
+    if(flag.tagName.toLowerCase()==='svg'){
+      flag.outerHTML='<img src="https://flagcdn.com/w20/'+code+'.png" width="20" height="15" id="ddi-selected-flag" alt="'+code+'">';
+    } else {
+      flag.src='https://flagcdn.com/w20/'+code+'.png';
+    }
+    textSpan.innerText='+'+value;
+  }
+  ddiMenu.classList.remove('open');
+  var v=waInput.value.replace(/\D/g,'');
+  if(value==='55'){waInput.placeholder='(00) 00000-0000';waInput.value=v;waInput.dispatchEvent(new Event('input'))}
+  else{waInput.placeholder='Número com DDD';waInput.value=v}
+}
+
+// ============================
+// MÁSCARA WHATSAPP
+// ============================
+waInput.addEventListener('input',function(e){
+  var v=e.target.value.replace(/\D/g,'');
+  if(ddiInput.value==='55'){
+    if(v.length>11)v=v.substring(0,11);
+    if(v.length<=10){v=v.replace(/^(\d{2})(\d)/g,'($1) $2');v=v.replace(/(\d{4})(\d)/,'$1-$2')}
+    else{v=v.replace(/^(\d{2})(\d)/g,'($1) $2');v=v.replace(/(\d{5})(\d)/,'$1-$2')}
+    e.target.value=v.substring(0,15);
+  } else {
+    e.target.value=v.substring(0,20);
+  }
+});
+
+// ============================
+// VALIDAÇÃO E CORREÇÃO DE E-MAIL
+// ============================
+var emailInput=document.getElementById('lead-email');
+var provedoresIncorretos={'gmial':'gmail','gamil':'gmail','gmal':'gmail','gmaill':'gmail','gemail':'gmail','gnail':'gmail','hotmial':'hotmail','hotmai':'hotmail','hotmal':'hotmail','hormail':'hotmail','hotmaill':'hotmail','htomail':'hotmail','oulook':'outlook','outlok':'outlook','outloo':'outlook','outllok':'outlook','yaho':'yahoo','yahooo':'yahoo','yhoo':'yahoo','icoud':'icloud','iclod':'icloud'};
+var sufixosIncorretos=[{erro:'.comm',certo:'.com'},{erro:'.cm',certo:'.com'},{erro:'.cmo',certo:'.com'},{erro:'.xom',certo:'.com'},{erro:'.con',certo:'.com'},{erro:'.coom',certo:'.com'},{erro:'.cm.br',certo:'.com.br'},{erro:'.con.br',certo:'.com.br'},{erro:'.com.brr',certo:'.com.br'},{erro:'.com.b',certo:'.com.br'}];
+function corrigirEmail(val){
+  val=val.trim().toLowerCase();
+  var parts=val.split('@'),user=parts[0],fullDomain=parts[1],alterado=false;
+  if(!fullDomain)return{valor:val,alterado:false};
+  var di=fullDomain.indexOf('.');
+  if(di>-1){
+    var dn=fullDomain.substring(0,di),sf=fullDomain.substring(di);
+    if(provedoresIncorretos[dn]){dn=provedoresIncorretos[dn];alterado=true}
+    for(var i=0;i<sufixosIncorretos.length;i++){
+      if(sf===sufixosIncorretos[i].erro){sf=sufixosIncorretos[i].certo;alterado=true;break}
+    }
+    return{valor:user+'@'+dn+sf,alterado:alterado};
+  }
+  return{valor:val,alterado:false};
+}
+function emailValido(val){return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(val)}
+emailInput.addEventListener('blur',function(e){
+  var erroEl=document.getElementById('erro-email'),avisoEl=document.getElementById('aviso-email');
+  erroEl.classList.remove('show');avisoEl.classList.remove('show');
+  if(!e.target.value.trim())return;
+  var r=corrigirEmail(e.target.value);
+  if(r.alterado){e.target.value=r.valor;avisoEl.classList.add('show');setTimeout(function(){avisoEl.classList.remove('show')},5000)}
+});
+
+// ============================
+// SUBMISSÃO COM REDIRECT PARA A HOTMART (PRÉ-PREENCHIDA, COM UTMs)
+// ============================
+function getCookieValue(name){
+  var match=document.cookie.match(new RegExp('(^| )'+name+'=([^;]+)'));
+  return match?decodeURIComponent(match[2]):null;
+}
+function handleCapture(event){
+  event.preventDefault();
+  var btn=document.getElementById('btn-submit'),nomeEl=document.getElementById('lead-nome'),emailEl=document.getElementById('lead-email'),erroNome=document.getElementById('erro-nome'),erroEmail=document.getElementById('erro-email'),erroWhats=document.getElementById('erro-whatsapp'),erroUke=document.getElementById('erro-ukulele');
+  var nome=nomeEl.value.trim(),email=emailEl.value.trim(),phoneRaw=waInput.value.replace(/\D/g,''),ddi=ddiInput.value,isValid=true;
+
+  if(nome.split(' ').filter(function(p){return p.length>0}).length<2){erroNome.classList.add('show');isValid=false}
+  else{erroNome.classList.remove('show')}
+
+  var r=corrigirEmail(email);
+  if(r.alterado){emailEl.value=r.valor;email=r.valor}
+  if(!emailValido(email)){erroEmail.innerText='Insira um e-mail válido.';erroEmail.classList.add('show');isValid=false}
+  else{erroEmail.classList.remove('show')}
+
+  if(ddi==='55'){
+    if(phoneRaw.length!==10&&phoneRaw.length!==11){erroWhats.innerText='Insira um número válido com DDD (10 ou 11 dígitos).';erroWhats.classList.add('show');isValid=false}
+    else{erroWhats.classList.remove('show')}
+  } else {
+    if(phoneRaw.length<6){erroWhats.innerText='Insira um número de telefone válido.';erroWhats.classList.add('show');isValid=false}
+    else{erroWhats.classList.remove('show')}
+  }
+
+  var ukeRadios=document.querySelectorAll('input[name="has_ukulele"]'),hasUke='';
+  for(var i=0;i<ukeRadios.length;i++){if(ukeRadios[i].checked){hasUke=ukeRadios[i].value;break}}
+  if(!hasUke){erroUke.classList.add('show');isValid=false}
+  else{erroUke.classList.remove('show')}
+
+  if(!isValid)return;
+
+  btn.innerHTML='Liberando…';btn.disabled=true;
+  var phoneFinal=(ddi?ddi:'')+phoneRaw;
+
+  // MESMO evento e MESMAS chaves do Ukulele Fundamental v2. Não renomear.
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:phoneFinal,lead_ddi:ddi||'other',lead_has_ukulele:hasUke});
+
+  // Monta a URL do checkout já preenchida, com UTMs e xcod
+  try {
+    var urlFinal=new URL(HOTMART_URL);
+    urlFinal.searchParams.set('name',nome);
+    urlFinal.searchParams.set('email',email);
+    urlFinal.searchParams.set('phonenumber',phoneRaw);
+    if(ddi&&ddi!=='other'){urlFinal.searchParams.set('phoneac',ddi)}
+
+    var urlParams=new URLSearchParams(window.location.search);
+    var utmKeys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+    var utmsEncontradas=[];
+    utmKeys.forEach(function(key){
+      var value=urlParams.get(key);
+      if(value){urlFinal.searchParams.set(key,value);utmsEncontradas.push(value)}
+    });
+    if(utmsEncontradas.length>0){urlFinal.searchParams.set('sck',utmsEncontradas.join('|'))}
+
+    var cookieUserId=getCookieValue('user_id');
+    if(cookieUserId){urlFinal.searchParams.set('xcod',cookieUserId)}
+
+    setTimeout(function(){window.location.href=urlFinal.toString()},500);
+  } catch(e) {
+    setTimeout(function(){window.location.href=HOTMART_URL},500);
+  }
+}
 </script>
 </body>
 </html>
