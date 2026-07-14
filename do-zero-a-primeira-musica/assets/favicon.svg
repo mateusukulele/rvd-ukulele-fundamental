@@ -5,22 +5,34 @@
       <stop offset="0" stop-color="#443468"/>
       <stop offset="1" stop-color="#2D2249"/>
     </linearGradient>
+    <!-- o corpo é a união de dois círculos: bojo de cima menor, bojo de baixo maior.
+         é essa diferença que dá a cintura curta e atarracada do ukulele, e não a
+         silhueta comprida do violão. construção geométrica, para ficar limpa. -->
+    <mask id="d0a1-cordas">
+      <rect width="64" height="64" fill="#fff"/>
+      <g stroke="#000" stroke-width="1" stroke-linecap="round">
+        <line x1="30.2" y1="12" x2="30.2" y2="54"/>
+        <line x1="31.4" y1="12" x2="31.4" y2="54"/>
+        <line x1="32.6" y1="12" x2="32.6" y2="54"/>
+        <line x1="33.8" y1="12" x2="33.8" y2="54"/>
+      </g>
+    </mask>
   </defs>
 
   <rect width="64" height="64" rx="15" fill="url(#d0a1-bg)"/>
 
-  <!-- 4 cordas do ukulele, discretas, só para dar contexto -->
-  <g stroke="#E87A85" stroke-opacity=".22" stroke-width="1" stroke-linecap="round">
-    <line x1="46" y1="12" x2="46" y2="52"/>
-    <line x1="50" y1="12" x2="50" y2="52"/>
-    <line x1="54" y1="12" x2="54" y2="52"/>
-    <line x1="58" y1="12" x2="58" y2="52"/>
+  <g transform="rotate(-13 32 34)">
+    <!-- corpo + braço + headstock, tudo em creme, vazado pelas cordas -->
+    <g fill="#F5F4F7" mask="url(#d0a1-cordas)">
+      <rect x="27.6" y="7" width="8.8" height="9.5" rx="2.6"/>
+      <rect x="29.7" y="14" width="4.6" height="18"/>
+      <circle cx="32" cy="38" r="9"/>
+      <circle cx="32" cy="49.5" r="12"/>
+    </g>
+
+    <!-- boca -->
+    <circle cx="32" cy="44" r="5.2" fill="#E87A85"/>
+    <!-- cavalete -->
+    <rect x="26.4" y="54.5" width="11.2" height="2.8" rx="1.4" fill="#E87A85"/>
   </g>
-
-  <!-- A nota. A cabeça é coral (o detalhe rosa da marca) e faz as vezes de boca do ukulele. -->
-  <ellipse cx="24" cy="45" rx="11.5" ry="9" transform="rotate(-20 24 45)" fill="#E87A85"/>
-
-  <!-- A haste da nota é o corpo do "1": a primeira música. -->
-  <path d="M33.5 15.5h6.2v29.2h-6.2z" fill="#F5F4F7"/>
-  <path d="M33.5 15.5 24 20.6v6.4l9.5-4.6z" fill="#F5F4F7"/>
 </svg>
