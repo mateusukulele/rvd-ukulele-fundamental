@@ -81,12 +81,10 @@ a{color:inherit;text-decoration:none}
 /* acesso */
 .acesso{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px}
 .acesso h2{font-size:20px;margin-bottom:16px;text-align:center}
-.cred{display:grid;gap:7px;margin-bottom:12px}
-.cred .row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(16,13,32,.5);border:1px solid var(--line);border-radius:10px;padding:11px 14px;min-width:0}
-.cred .row.stack{flex-direction:column;align-items:flex-start;gap:2px}
-.cred .row.stack .v{text-align:left}
+.cred{display:grid;gap:8px;margin-bottom:14px}
+.cred .row{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;background:rgba(16,13,32,.5);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0}
 .cred .k{font-size:10.5px;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;color:var(--rose);flex:0 0 auto}
-.cred .v{font-size:14.5px;font-weight:700;color:#fff;text-align:right;word-break:break-word;min-width:0}
+.cred .v{font-size:15px;font-weight:700;color:#fff;text-align:center;word-break:break-word;max-width:100%}
 .cred .v.link{color:var(--rose);text-decoration:underline;text-underline-offset:3px}
 .cred .v.link:hover{color:#fff}
 .aviso{font-size:12.5px;color:var(--muted);line-height:1.45;text-align:center;margin-bottom:18px}
@@ -115,6 +113,14 @@ footer{padding:36px 0 40px;text-align:center;color:var(--muted);font-size:13px}
   .strip span{font-size:15px}
   .confirm{padding:38px 0 24px}
 }
+
+/* botão flutuante de WhatsApp */
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:70;display:inline-flex;align-items:center;gap:9px;background:#25D366;color:#08301b;font-weight:800;font-size:14px;padding:12px 17px;border-radius:30px;box-shadow:0 12px 30px -8px rgba(37,211,102,.55);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s,transform .15s,filter .15s}
+.wa-float.on{opacity:1;visibility:visible}
+.wa-float:hover{filter:brightness(1.06);transform:translateY(-2px)}
+.wa-float:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.wa-float svg{width:22px;height:22px;fill:currentColor;flex:none}
+@media(max-width:560px){.wa-float{padding:14px;border-radius:50%}.wa-float .lbl{display:none}}
 </style>
 </head>
 <body>
@@ -171,7 +177,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="k">Sua senha</span>
         <span class="v">ukulele</span>
       </div>
-      <div class="row stack">
+      <div class="row">
         <span class="k">Plataforma</span>
         <a class="v link" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">aluno.comotocarukulele.com</a>
       </div>
@@ -186,7 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="suporte">
     <h2>Precisa de ajuda?</h2>
     <p>Se as atividades não aparecerem liberadas, se a senha não funcionar, ou se você tiver qualquer dúvida, fale com a nossa equipe. A gente responde de verdade.</p>
-    <a class="btn-wpp" href="https://wa.me/5531998585286?text=Oi!%20Comprei%20o%20Do%20ZERO%20%C3%A0%201%C2%AA%20M%C3%BAsica%20com%20o%20Interc%C3%A2mbio%20de%20V%C3%ADdeos%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener">
+    <a class="btn-wpp" href="https://wa.me/5531998585286?text=Acabei%20de%20fazer%20o%20upgrade%20para%20poder%20enviar%20v%C3%ADdeos%20de%20atividades%20no%20Do%20Zero%20%C3%A0%201%C2%AA%20M%C3%BAsica%20e%20preciso%20falar%20com%20o%20suporte" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.02c0-5.18 4.22-9.4 9.42-9.4a9.36 9.36 0 016.65 2.76 9.32 9.32 0 012.75 6.65c0 5.19-4.22 9.42-9.41 9.42zM19.11 4.9A11.28 11.28 0 0012.05 2C5.85 2 .81 7.04.81 13.24c0 1.98.52 3.92 1.5 5.63L.72 24.2l5.46-1.43a11.2 11.2 0 005.86 1.6h.01c6.2 0 11.24-5.04 11.24-11.24 0-3-1.17-5.82-3.3-7.94z"/></svg>
       Falar com o suporte no WhatsApp
     </a>
@@ -280,5 +286,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 })();
 </script>
+<a class="wa-float on" href="https://wa.me/5531998585286?text=Acabei%20de%20fazer%20o%20upgrade%20para%20poder%20enviar%20v%C3%ADdeos%20de%20atividades%20no%20Do%20Zero%20%C3%A0%201%C2%AA%20M%C3%BAsica%20e%20preciso%20falar%20com%20o%20suporte" target="_blank" rel="noopener" aria-label="Falar com o suporte no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.02c0-5.18 4.22-9.4 9.42-9.4a9.36 9.36 0 016.65 2.76 9.32 9.32 0 012.75 6.65c0 5.19-4.22 9.42-9.41 9.42zM19.11 4.9A11.28 11.28 0 0012.05 2C5.85 2 .81 7.04.81 13.24c0 1.98.52 3.92 1.5 5.63L.72 24.2l5.46-1.43a11.2 11.2 0 005.86 1.6h.01c6.2 0 11.24-5.04 11.24-11.24 0-3-1.17-5.82-3.3-7.94z"/></svg><span class="lbl">Falar no WhatsApp</span></a>
 </body>
 </html>
