@@ -96,6 +96,7 @@ a{color:inherit;text-decoration:none}
 section{padding:72px 0;position:relative}
 .alt{background:var(--bg2)}
 .kicker{font-weight:700;text-transform:uppercase;letter-spacing:3px;font-size:13px;color:var(--rose);margin-bottom:16px;display:inline-block}
+.hero .kicker{margin-bottom:10px}
 .sec-title{font-size:clamp(28px,4.4vw,46px);margin-bottom:14px}
 .sec-sub{color:var(--muted);font-size:18px;max-width:720px;margin-bottom:36px}
 
@@ -114,16 +115,13 @@ section{padding:72px 0;position:relative}
 .cta.sm{padding:11px 20px;font-size:14px;border-radius:10px}
 .cta.big{font-size:19px;padding:22px 44px}
 .sub-cta{font-size:13px;color:var(--muted);margin-top:12px}
-.porta{max-width:760px;margin-top:28px;background:var(--card);border:1px solid var(--indigo-deep);border-radius:16px;padding:24px 26px}
-.porta h3{font-size:19px;margin-bottom:10px;text-transform:none;font-family:'Montserrat';font-weight:800;letter-spacing:0;line-height:1.3;color:var(--rose)}
-.porta p{color:#DEDAF0;font-size:15.5px;line-height:1.65}
 .fecho{max-width:760px;margin:40px auto 0;text-align:center;font-size:clamp(17px,2.1vw,20px);color:#D9D5EC;line-height:1.6}
 
 /* Hero */
-.hero{padding:40px 0 72px;background:radial-gradient(900px 500px at 70% -10%,rgba(146,130,194,.20),transparent 60%),radial-gradient(700px 400px at 0% 20%,rgba(232,122,133,.12),transparent 55%)}
+.hero{padding:24px 0 72px;background:radial-gradient(900px 500px at 70% -10%,rgba(146,130,194,.20),transparent 60%),radial-gradient(700px 400px at 0% 20%,rgba(232,122,133,.12),transparent 55%)}
 /* o Anton tem acento muito colado no topo da caixa. Com line-height 1.05 o "Ú" de
    MÚSICAS encosta na linha de cima, então o hero usa uma entrelinha maior. */
-.hero h1{font-size:clamp(36px,6.4vw,64px);margin:14px 0 18px;line-height:1.16}
+.hero h1{font-size:clamp(36px,6.4vw,64px);margin:6px 0 18px;line-height:1.16}
 /* HERO em duas zonas.
    Mobile: empilha na ordem do DOM (promessa, benefícios+botão, foto por último).
    Desktop: linha 1 = promessa (esq) + foto (dir), alturas parecidas;
@@ -136,14 +134,15 @@ section{padding:72px 0;position:relative}
 @media(min-width:861px){
   .hero-grid{
     grid-template-columns:minmax(0,1fr) clamp(300px,32%,350px);
-    grid-template-areas:"promise photo" "rest rest";
-    column-gap:50px;row-gap:34px;align-items:start;
+    grid-template-areas:"promise photo" "rest photo" "cta cta";
+    column-gap:50px;row-gap:20px;align-items:start;
   }
   .hero-promise{grid-area:promise}
-  .hero-photo{grid-area:photo;margin:0}
+  .hero-photo{grid-area:photo;margin:0;align-self:start}
   .hero-rest{grid-area:rest}
-  .hero-promise .lead{max-width:none}
-  .hero-rest .checks{grid-template-columns:repeat(3,1fr);gap:14px 40px;max-width:none;margin:0 0 26px}
+  .hero-cta{grid-area:cta;margin-top:8px}
+  .hero-promise .lead{max-width:none;margin-bottom:0}
+  .hero-rest .checks{grid-template-columns:repeat(3,1fr);gap:14px 32px;max-width:none;margin:0}
 }
 .hero .lead{font-size:clamp(17px,2.2vw,21px);color:#D9D5EC;max-width:660px;margin-bottom:26px}
 .checks{list-style:none;display:grid;gap:12px;margin:26px 0 30px;max-width:660px}
@@ -176,14 +175,6 @@ section{padding:72px 0;position:relative}
 .out .q{font-family:'Anton';font-size:30px;color:var(--indigo-deep);line-height:1}
 
 /* músicas */
-.musicas{display:grid;gap:10px;max-width:760px}
-.musica{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--rose-deep);border-radius:12px;padding:15px 18px;transition:transform .12s ease,border-color .15s ease}
-.musica:hover{transform:translateX(3px);border-left-color:var(--indigo)}
-.musica .n{font-family:'Anton';font-size:20px;color:var(--indigo-deep);flex:none;width:26px}
-.musica .info{flex:1 1 auto;min-width:0}
-.musica .art{font-size:12.5px;color:var(--rose);font-weight:600}
-.musica .tit{font-size:16px;font-weight:700;color:#fff;line-height:1.3}
-.musica .tag{flex:none;font-size:11px;color:var(--indigo);border:1px solid var(--line);border-radius:20px;padding:3px 10px;white-space:nowrap}
 
 /* módulos */
 .aula{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:12px;transition:border-color .15s ease,transform .15s ease}
@@ -360,7 +351,6 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
   /* evita empilhar margem do lead + gap + margem dos checks (dava 74px) */
   .hero-promise .lead{margin-bottom:4px}
   .hero-rest .checks{margin-top:0}
-  .musica .tag{display:none}
   /* no mobile não cabe tudo. o selo é o item mais dispensável: o preço ancorado
      e o botão trabalham mais pela conversão do que ele. */
   .sticky-cta{padding:10px 14px}
@@ -412,19 +402,20 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
     <!-- Linha 1: a promessa (esquerda) e a foto (direita), alturas parecidas. -->
     <div class="hero-promise">
       <span class="kicker">Curso online · para quem está começando do zero</span>
-      <h1>Uma batida, dois acordes,<br><span class="rose">cinco músicas</span> inteiras</h1>
-      <p class="lead">A primeira música inteira muda tudo. O ukulele sai de cima do móvel e vira um som que as pessoas cantam junto. Esse dia chega bem antes do que você imagina, com uma batida só e dois acordes que se fazem com um dedo.</p>
+      <h1>Toque suas primeiras músicas no ukulele <span class="rose">na primeira semana!</span></h1>
+      <p class="lead">A primeira música inteira muda tudo. Com 20 minutos por dia esse dia chega bem antes do que você imagina. Você vai aprender os fundamentos essenciais até chegar nas suas primeiras 5 músicas no ukulele.</p>
     </div>
-    <!-- Linha 2: benefícios e botão, largura toda no desktop. No DOM vem antes da
-         foto de propósito: no mobile a foto tem que aparecer DEPOIS do botão. -->
+    <!-- Linha 2: benefícios, sob o subtexto (coluna esquerda no desktop). -->
     <div class="hero-rest">
       <ul class="checks">
         <li>Do zero até <b>cinco músicas inteiras</b>, com uma <b>batida só</b> e <b>dois acordes</b> de um dedo.</li>
         <li><b>Guia de qual ukulele comprar</b>, se você ainda não tem o seu.</li>
         <li><b>Acesso vitalício</b>, mais o bônus <b>O Mapa do Iniciante</b> para continuar depois.</li>
       </ul>
-      <div class="hero-cta"><button type="button" class="cta big" onclick="abrirCaptura()">Quero tocar minhas primeiras músicas</button></div>
     </div>
+    <!-- Botão em largura total abaixo. No DOM vem antes da foto de propósito:
+         no mobile a foto tem que aparecer DEPOIS do botão. -->
+    <div class="hero-cta"><button type="button" class="cta big" onclick="abrirCaptura()">Quero tocar minhas primeiras músicas</button></div>
     <div class="hero-photo">
       <img src="assets/foto-mateus.webp" alt="Mateus Augusto, professor do Clube do Ukulele, com o ukulele nas mãos" onerror="this.closest('.hero-photo').style.display='none'">
       <!-- credenciais do Mateus como legenda embaixo do rosto dele -->
@@ -462,30 +453,8 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
   </div>
 </section>
 
-<!-- ===== As 5 músicas ===== -->
-<section class="alt">
-  <div class="wrap">
-    <span class="kicker">O repertório que você destrava</span>
-    <h2 class="sec-title">Cinco músicas com os mesmos dois acordes</h2>
-    <p class="sec-sub">Não são exercícios soltos. São músicas inteiras, que as pessoas reconhecem já no começo e cantam junto com você.</p>
-    <div class="musicas">
-      <div class="musica"><div class="n">1</div><div class="info"><div class="art">Skank</div><div class="tit">Garota Nacional</div></div><div class="tag">2 acordes</div></div>
-      <div class="musica"><div class="n">2</div><div class="info"><div class="art">Skank</div><div class="tit">Te Ver</div></div><div class="tag">2 acordes</div></div>
-      <div class="musica"><div class="n">3</div><div class="info"><div class="art">Jorge Ben Jor</div><div class="tit">W/Brasil</div></div><div class="tag">2 acordes</div></div>
-      <div class="musica"><div class="n">4</div><div class="info"><div class="art">Tradicional</div><div class="tit">Parabéns pra Você</div></div><div class="tag">2 acordes</div></div>
-      <div class="musica"><div class="n">5</div><div class="info"><div class="art">Skank</div><div class="tit">Jackie Tequila</div></div><div class="tag">2 acordes</div></div>
-    </div>
-    <p class="sub-cta" style="max-width:760px;margin-top:16px">Todas em versão simplificada, no arranjo que o Mateus preparou para quem está começando, e todas com os mesmos dois acordes e a mesma batida.</p>
-    <div class="porta">
-      <h3>A sua primeira música é a porta de entrada para todas as outras</h3>
-      <p>Estas cinco não estão aqui por serem as suas preferidas. Elas estão aqui porque são as que melhor ensinam, e foram escolhidas uma a uma pelo que cada uma treina na sua mão. O que você leva delas não são cinco músicas decoradas, e sim uma batida e dois acordes que continuam funcionando em centenas de outras. Quando a primeira sai inteira, o caminho para as músicas que você realmente sonha em tocar já está aberto.</p>
-    </div>
-    <div style="text-align:center;margin-top:30px"><button type="button" class="cta" onclick="abrirCaptura()">Quero tocar essas músicas</button></div>
-  </div>
-</section>
-
 <!-- ===== O que tem dentro (3 módulos) ===== -->
-<section>
+<section class="alt">
   <div class="wrap">
     <span class="kicker">O que tem dentro</span>
     <h2 class="sec-title">Três módulos, do zero à quinta música</h2>
