@@ -124,20 +124,33 @@ section{padding:72px 0;position:relative}
 /* o Anton tem acento muito colado no topo da caixa. Com line-height 1.05 o "Ú" de
    MÚSICAS encosta na linha de cima, então o hero usa uma entrelinha maior. */
 .hero h1{font-size:clamp(36px,6.4vw,64px);margin:14px 0 18px;line-height:1.16}
-/* hero em duas colunas no desktop; no mobile empilha (foto depois do texto e do botão) */
+/* HERO em duas zonas.
+   Mobile: empilha na ordem do DOM (promessa, benefícios+botão, foto por último).
+   Desktop: linha 1 = promessa (esq) + foto (dir), alturas parecidas;
+            linha 2 = benefícios + botão ocupando a largura toda (sem vão). */
 .hero-grid{display:grid;gap:30px}
 .hero-photo{max-width:400px;width:100%;margin:0 auto}
-.hero-photo img{width:100%;display:block;border-radius:20px;border:1px solid var(--line);aspect-ratio:4/5;object-fit:cover;background:var(--surface)}
+.hero-photo img{width:100%;display:block;border-radius:20px;border:1px solid var(--line);aspect-ratio:4/5;object-fit:cover;object-position:center 30%;background:var(--surface)}
 @media(min-width:861px){
-  .hero-grid{grid-template-columns:minmax(0,1fr) clamp(300px,33%,380px);gap:46px;align-items:center}
-  .hero-photo{margin:0}
+  .hero-grid{
+    grid-template-columns:minmax(0,1fr) clamp(300px,32%,350px);
+    grid-template-areas:"promise photo" "rest rest";
+    column-gap:50px;row-gap:34px;align-items:start;
+  }
+  .hero-promise{grid-area:promise}
+  .hero-photo{grid-area:photo;margin:0}
+  .hero-rest{grid-area:rest}
+  .hero-promise .lead{max-width:none}
+  .hero-rest .checks{grid-template-columns:1fr 1fr;gap:14px 44px;max-width:none;margin:0 0 26px}
 }
 .hero .lead{font-size:clamp(17px,2.2vw,21px);color:#D9D5EC;max-width:660px;margin-bottom:26px}
 .checks{list-style:none;display:grid;gap:12px;margin:26px 0 30px;max-width:660px}
 .checks li{position:relative;padding-left:38px;font-size:16.5px;color:#E3E0F2;line-height:1.55}
 .checks li b{color:#fff;font-weight:700}
 .checks li::before{content:"✓";position:absolute;left:0;top:1px;width:25px;height:25px;border-radius:50%;background:rgba(242,148,160,.16);color:var(--rose);display:grid;place-items:center;font-weight:800;font-size:13px}
-.trust{margin-top:22px;font-size:14px;color:var(--muted);border-left:3px solid var(--rose-deep);padding-left:14px}
+/* credenciais do Mateus: legenda sob a foto (centralizada no desktop) */
+.trust{margin-top:14px;font-size:13.5px;color:var(--muted);line-height:1.5;text-align:center}
+.trust b{color:#D9D5EC}
 
 /*
   ===== SLOT DO VÍDEO DE VENDAS =====
@@ -389,10 +402,15 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
      No mobile empilha, e a foto vem DEPOIS do texto e do botão (ordem do DOM). -->
 <header class="hero">
   <div class="wrap hero-grid">
-    <div class="hero-col">
+    <!-- Linha 1: a promessa (esquerda) e a foto (direita), alturas parecidas. -->
+    <div class="hero-promise">
       <span class="kicker">Curso online · para quem está começando do zero</span>
       <h1>Uma batida, dois acordes,<br><span class="rose">cinco músicas</span> inteiras</h1>
       <p class="lead">A primeira música inteira é o momento em que tudo muda. O ukulele deixa de ser um objeto bonito em cima do móvel e vira um som que as pessoas reconhecem, cantam junto e pedem de novo. Esse dia chega bem antes do que você imagina, e chega com uma batida só e dois acordes que se fazem com um dedo.</p>
+    </div>
+    <!-- Linha 2: benefícios e botão, largura toda no desktop. No DOM vem antes da
+         foto de propósito: no mobile a foto tem que aparecer DEPOIS do botão. -->
+    <div class="hero-rest">
       <ul class="checks">
         <li>Do <b>zero absoluto</b> até tocar cinco músicas inteiras, na ordem certa.</li>
         <li>Uma <b>batida só</b>, fácil de pegar, que serve para as cinco músicas e para centenas de outras.</li>
@@ -402,10 +420,11 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
         <li><b>Acesso vitalício.</b> O curso fica com você para sempre, na plataforma do Clube do Ukulele, no seu ritmo.</li>
       </ul>
       <button type="button" class="cta big" onclick="abrirCaptura()">Quero tocar minhas primeiras músicas</button>
-      <p class="trust">Com <b>Mateus Augusto</b> · ensina ukulele desde 2017 · +6.000 alunos formados · +300 mil seguidores.</p>
     </div>
     <div class="hero-photo">
       <img src="assets/foto-mateus.webp" alt="Mateus Augusto, professor do Clube do Ukulele, com o ukulele nas mãos" onerror="this.closest('.hero-photo').style.display='none'">
+      <!-- credenciais do Mateus como legenda embaixo do rosto dele -->
+      <p class="trust">Com <b>Mateus Augusto</b> · ensina ukulele desde 2017 · +6.000 alunos formados · +300 mil seguidores.</p>
     </div>
   </div>
 </header>
