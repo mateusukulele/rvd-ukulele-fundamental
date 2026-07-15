@@ -120,7 +120,7 @@ section{padding:72px 0;position:relative}
 .fecho{max-width:760px;margin:40px auto 0;text-align:center;font-size:clamp(17px,2.1vw,20px);color:#D9D5EC;line-height:1.6}
 
 /* Hero */
-.hero{padding:64px 0 80px;background:radial-gradient(900px 500px at 70% -10%,rgba(146,130,194,.20),transparent 60%),radial-gradient(700px 400px at 0% 20%,rgba(232,122,133,.12),transparent 55%)}
+.hero{padding:40px 0 72px;background:radial-gradient(900px 500px at 70% -10%,rgba(146,130,194,.20),transparent 60%),radial-gradient(700px 400px at 0% 20%,rgba(232,122,133,.12),transparent 55%)}
 /* o Anton tem acento muito colado no topo da caixa. Com line-height 1.05 o "Ú" de
    MÚSICAS encosta na linha de cima, então o hero usa uma entrelinha maior. */
 .hero h1{font-size:clamp(36px,6.4vw,64px);margin:14px 0 18px;line-height:1.16}
@@ -353,6 +353,13 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
   .brand img{height:28px;width:28px}
   .topbar .cta.sm{padding:10px 12px;font-size:12px;flex:0 0 auto}
   .hero h1{font-size:38px}
+  /* menos espaço entre o cabeçalho e o começo do hero no celular */
+  .hero{padding:18px 0 44px}
+  .kicker{margin-bottom:12px}
+  .hero-grid{gap:22px}
+  /* evita empilhar margem do lead + gap + margem dos checks (dava 74px) */
+  .hero-promise .lead{margin-bottom:4px}
+  .hero-rest .checks{margin-top:0}
   .musica .tag{display:none}
   /* no mobile não cabe tudo. o selo é o item mais dispensável: o preço ancorado
      e o botão trabalham mais pela conversão do que ele. */
