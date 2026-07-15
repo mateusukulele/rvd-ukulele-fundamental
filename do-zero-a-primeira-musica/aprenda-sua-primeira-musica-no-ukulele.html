@@ -131,6 +131,8 @@ section{padding:72px 0;position:relative}
 .hero-grid{display:grid;gap:30px}
 .hero-photo{max-width:400px;width:100%;margin:0 auto}
 .hero-photo img{width:100%;display:block;border-radius:20px;border:1px solid var(--line);aspect-ratio:4/5;object-fit:cover;object-position:center 30%;background:var(--surface)}
+/* botão do hero centralizado */
+.hero-cta{text-align:center;margin-top:6px}
 @media(min-width:861px){
   .hero-grid{
     grid-template-columns:minmax(0,1fr) clamp(300px,32%,350px);
@@ -141,7 +143,7 @@ section{padding:72px 0;position:relative}
   .hero-photo{grid-area:photo;margin:0}
   .hero-rest{grid-area:rest}
   .hero-promise .lead{max-width:none}
-  .hero-rest .checks{grid-template-columns:1fr 1fr;gap:14px 44px;max-width:none;margin:0 0 26px}
+  .hero-rest .checks{grid-template-columns:repeat(3,1fr);gap:14px 40px;max-width:none;margin:0 0 26px}
 }
 .hero .lead{font-size:clamp(17px,2.2vw,21px);color:#D9D5EC;max-width:660px;margin-bottom:26px}
 .checks{list-style:none;display:grid;gap:12px;margin:26px 0 30px;max-width:660px}
@@ -413,20 +415,17 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
     <div class="hero-promise">
       <span class="kicker">Curso online · para quem está começando do zero</span>
       <h1>Uma batida, dois acordes,<br><span class="rose">cinco músicas</span> inteiras</h1>
-      <p class="lead">A primeira música inteira é o momento em que tudo muda. O ukulele deixa de ser um objeto bonito em cima do móvel e vira um som que as pessoas reconhecem, cantam junto e pedem de novo. Esse dia chega bem antes do que você imagina, e chega com uma batida só e dois acordes que se fazem com um dedo.</p>
+      <p class="lead">A primeira música inteira muda tudo. O ukulele sai de cima do móvel e vira um som que as pessoas cantam junto. Esse dia chega bem antes do que você imagina, com uma batida só e dois acordes que se fazem com um dedo.</p>
     </div>
     <!-- Linha 2: benefícios e botão, largura toda no desktop. No DOM vem antes da
          foto de propósito: no mobile a foto tem que aparecer DEPOIS do botão. -->
     <div class="hero-rest">
       <ul class="checks">
-        <li>Do <b>zero absoluto</b> até tocar cinco músicas inteiras, na ordem certa.</li>
-        <li>Uma <b>batida só</b>, fácil de pegar, que serve para as cinco músicas e para centenas de outras.</li>
-        <li><b>Dois acordes super simples</b>, de um dedo só. Sem pestana e sem dor no dedo.</li>
-        <li>Um <b>guia de qual ukulele comprar</b>, para você não errar na escolha se ainda não tem o seu.</li>
-        <li>De bônus, <b>O Mapa do Iniciante</b>: o passo a passo em PDF do que estudar depois desta primeira música.</li>
-        <li><b>Acesso vitalício.</b> O curso fica com você para sempre, na plataforma do Clube do Ukulele, no seu ritmo.</li>
+        <li>Do zero até <b>cinco músicas inteiras</b>, com uma <b>batida só</b> e <b>dois acordes</b> de um dedo.</li>
+        <li><b>Guia de qual ukulele comprar</b>, se você ainda não tem o seu.</li>
+        <li><b>Acesso vitalício</b>, mais o bônus <b>O Mapa do Iniciante</b> para continuar depois.</li>
       </ul>
-      <button type="button" class="cta big" onclick="abrirCaptura()">Quero tocar minhas primeiras músicas</button>
+      <div class="hero-cta"><button type="button" class="cta big" onclick="abrirCaptura()">Quero tocar minhas primeiras músicas</button></div>
     </div>
     <div class="hero-photo">
       <img src="assets/foto-mateus.webp" alt="Mateus Augusto, professor do Clube do Ukulele, com o ukulele nas mãos" onerror="this.closest('.hero-photo').style.display='none'">
@@ -483,7 +482,7 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
       <h3>A sua primeira música é a porta de entrada para todas as outras</h3>
       <p>Estas cinco não estão aqui por serem as suas preferidas. Elas estão aqui porque são as que melhor ensinam, e foram escolhidas uma a uma pelo que cada uma treina na sua mão. O que você leva delas não são cinco músicas decoradas, e sim uma batida e dois acordes que continuam funcionando em centenas de outras. Quando a primeira sai inteira, o caminho para as músicas que você realmente sonha em tocar já está aberto.</p>
     </div>
-    <div style="margin-top:30px"><button type="button" class="cta" onclick="abrirCaptura()">Quero tocar essas músicas</button></div>
+    <div style="text-align:center;margin-top:30px"><button type="button" class="cta" onclick="abrirCaptura()">Quero tocar essas músicas</button></div>
   </div>
 </section>
 
