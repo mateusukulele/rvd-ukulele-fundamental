@@ -132,7 +132,9 @@ a{color:inherit;text-decoration:none}
 
 /* oferta — destacada com a cor de venda, para não passar batido */
 .oferta{position:relative;background:linear-gradient(180deg,var(--card2),var(--card));border:2px solid var(--sale-deep);border-radius:22px;padding:40px 32px 32px;box-shadow:0 0 0 6px rgba(238,107,46,.07),0 30px 70px -30px rgba(238,107,46,.55)}
-.oferta .selo{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#F4855E,#C2410C);color:#fff;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:2px;padding:8px 20px;border-radius:20px;white-space:nowrap;box-shadow:0 8px 20px -6px rgba(238,107,46,.6)}
+.oferta .selo{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#F4855E,#C2410C);color:#fff;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:2px;padding:8px 20px;border-radius:20px;white-space:nowrap;box-shadow:0 8px 20px -6px rgba(238,107,46,.6);max-width:92vw}
+/* selo é comprido; em telas pequenas encolhe um pouco para não estourar a largura */
+@media(max-width:560px){.oferta .selo{font-size:10px;letter-spacing:1px;padding:7px 14px}}
 .oferta .kicker{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--sale);margin-bottom:12px}
 .oferta h2{font-size:clamp(27px,5.2vw,40px);margin-bottom:14px}
 .oferta .lead{color:#D9D5EC;font-size:16.5px;margin-bottom:24px}
@@ -254,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="oferta">
     <!-- pílula laranja mantida, mas SEM alegar exclusividade: o upgrade pode ser
          comprado depois também. Mensagem passa a ser de recomendação, não de escassez. -->
-    <span class="selo">Recomendado pelo Mateus</span>
+    <span class="selo">Tenha o Mateus te corrigindo</span>
     <span class="kicker">Intercâmbio de Vídeos</span>
     <h2>Agora deixa <span class="rose">eu ver</span> você tocando</h2>
     <p class="lead">Estudar sozinho tem um limite. Quando a batida sai torta, é muito difícil enxergar por conta própria onde foi que ela torceu, e é aí que a maioria empaca e desiste.</p>
