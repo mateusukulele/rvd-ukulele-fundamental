@@ -219,8 +219,10 @@ section{padding:72px 0;position:relative}
 .inst .stats .l{font-size:13px;color:var(--muted)}
 
 /* proof */
-.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
 .proof-card{background:var(--card);border:1px dashed var(--indigo-deep);border-radius:14px;min-height:200px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:13px;padding:18px}
+/* depoimentos reais (prints de comentário, fundo branco) */
+.proof-shot{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--line);background:#fff}
 
 /* faq */
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
@@ -381,10 +383,8 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
     <h1>Uma batida, dois acordes,<br><span class="rose">cinco músicas</span> inteiras</h1>
     <p class="lead">A primeira música inteira é o momento em que tudo muda. O ukulele deixa de ser um objeto bonito em cima do móvel e vira um som que as pessoas reconhecem, cantam junto e pedem de novo. Esse dia chega bem antes do que você imagina, e chega com uma batida só e dois acordes que se fazem com um dedo.</p>
 
-    <!-- SLOT DO VÍDEO DE VENDAS. Vazio de propósito na primeira volta. Veja o comentário no CSS. -->
-    <div class="vsl" id="vsl">
-      <div class="vsl-empty">[ Espaço reservado para o vídeo de vendas ]</div>
-    </div>
+    <!-- VÍDEO DE VENDAS: ainda não temos, então o slot foi removido da produção.
+         A versão MODELO (em MODELO/inscricao-MODELO.html) mantém o bloco .vsl pronto. -->
 
     <ul class="checks">
       <li>Do <b>zero absoluto</b> até tocar cinco músicas inteiras, na ordem certa.</li>
@@ -406,10 +406,9 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
     <h2 class="sec-title">Gente comum, de toda idade, tocando</h2>
     <p class="sec-sub">Boa parte dos alunos passou dos 50 e começou do zero. A idade nunca foi o problema.</p>
     <div class="proof-grid">
-      <!-- [INSERIR PROVA REAL]: trocar por print/vídeo/depoimento real do aluno -->
-      <div class="proof-card">[ Espaço para depoimento / print real de aluno ]</div>
-      <div class="proof-card">[ Espaço para depoimento / print real de aluno ]</div>
-      <div class="proof-card">[ Espaço para depoimento / print real de aluno ]</div>
+      <img class="proof-shot" src="assets/depoimento-marcelo.webp" alt="Depoimento de Marcelo, aluno do Mateus: sempre quis aprender um instrumento e achava que não levava jeito, e hoje toca várias músicas." loading="lazy" width="1080" height="1080">
+      <img class="proof-shot" src="assets/depoimento-leila.webp" alt="Depoimento de Leila, aluna do Mateus: conseguiu tocar um instrumento pela primeira vez na vida." loading="lazy" width="1080" height="1080">
+      <img class="proof-shot" src="assets/depoimento-aline.webp" alt="Depoimento de Aline, aluna do Mateus: não conhecia o ukulele e viu que era capaz de tocar." loading="lazy" width="1080" height="1080">
     </div>
   </div>
 </section>
