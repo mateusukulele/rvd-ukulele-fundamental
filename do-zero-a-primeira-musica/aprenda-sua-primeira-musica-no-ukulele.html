@@ -124,6 +124,14 @@ section{padding:72px 0;position:relative}
 /* o Anton tem acento muito colado no topo da caixa. Com line-height 1.05 o "Ú" de
    MÚSICAS encosta na linha de cima, então o hero usa uma entrelinha maior. */
 .hero h1{font-size:clamp(36px,6.4vw,64px);margin:14px 0 18px;line-height:1.16}
+/* hero em duas colunas no desktop; no mobile empilha (foto depois do texto e do botão) */
+.hero-grid{display:grid;gap:30px}
+.hero-photo{max-width:400px;width:100%;margin:0 auto}
+.hero-photo img{width:100%;display:block;border-radius:20px;border:1px solid var(--line);aspect-ratio:4/5;object-fit:cover;background:var(--surface)}
+@media(min-width:861px){
+  .hero-grid{grid-template-columns:minmax(0,1fr) clamp(300px,33%,380px);gap:46px;align-items:center}
+  .hero-photo{margin:0}
+}
 .hero .lead{font-size:clamp(17px,2.2vw,21px);color:#D9D5EC;max-width:660px;margin-bottom:26px}
 .checks{list-style:none;display:grid;gap:12px;margin:26px 0 30px;max-width:660px}
 .checks li{position:relative;padding-left:38px;font-size:16.5px;color:#E3E0F2;line-height:1.55}
@@ -376,26 +384,29 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);text-align:center;c
   </div>
 </div>
 
-<!-- ===== Hero ===== -->
+<!-- ===== Hero =====
+     Duas colunas no desktop: texto à esquerda, foto do Mateus à direita.
+     No mobile empilha, e a foto vem DEPOIS do texto e do botão (ordem do DOM). -->
 <header class="hero">
-  <div class="wrap">
-    <span class="kicker">Curso online · para quem está começando do zero</span>
-    <h1>Uma batida, dois acordes,<br><span class="rose">cinco músicas</span> inteiras</h1>
-    <p class="lead">A primeira música inteira é o momento em que tudo muda. O ukulele deixa de ser um objeto bonito em cima do móvel e vira um som que as pessoas reconhecem, cantam junto e pedem de novo. Esse dia chega bem antes do que você imagina, e chega com uma batida só e dois acordes que se fazem com um dedo.</p>
-
-    <!-- VÍDEO DE VENDAS: ainda não temos, então o slot foi removido da produção.
-         A versão MODELO (em MODELO/inscricao-MODELO.html) mantém o bloco .vsl pronto. -->
-
-    <ul class="checks">
-      <li>Do <b>zero absoluto</b> até tocar cinco músicas inteiras, na ordem certa.</li>
-      <li>Uma <b>batida só</b>, fácil de pegar, que serve para as cinco músicas e para centenas de outras.</li>
-      <li><b>Dois acordes super simples</b>, de um dedo só. Sem pestana e sem dor no dedo.</li>
-      <li>Um <b>guia de qual ukulele comprar</b>, para você não errar na escolha se ainda não tem o seu.</li>
-      <li>De bônus, <b>O Mapa do Iniciante</b>: o passo a passo em PDF do que estudar depois desta primeira música.</li>
-      <li><b>Acesso vitalício.</b> O curso fica com você para sempre, na plataforma do Clube do Ukulele, no seu ritmo.</li>
-    </ul>
-    <button type="button" class="cta big" onclick="abrirCaptura()">Quero tocar minhas primeiras músicas</button>
-    <p class="trust">Com <b>Mateus Augusto</b> · ensina ukulele desde 2017 · +6.000 alunos formados · +300 mil seguidores.</p>
+  <div class="wrap hero-grid">
+    <div class="hero-col">
+      <span class="kicker">Curso online · para quem está começando do zero</span>
+      <h1>Uma batida, dois acordes,<br><span class="rose">cinco músicas</span> inteiras</h1>
+      <p class="lead">A primeira música inteira é o momento em que tudo muda. O ukulele deixa de ser um objeto bonito em cima do móvel e vira um som que as pessoas reconhecem, cantam junto e pedem de novo. Esse dia chega bem antes do que você imagina, e chega com uma batida só e dois acordes que se fazem com um dedo.</p>
+      <ul class="checks">
+        <li>Do <b>zero absoluto</b> até tocar cinco músicas inteiras, na ordem certa.</li>
+        <li>Uma <b>batida só</b>, fácil de pegar, que serve para as cinco músicas e para centenas de outras.</li>
+        <li><b>Dois acordes super simples</b>, de um dedo só. Sem pestana e sem dor no dedo.</li>
+        <li>Um <b>guia de qual ukulele comprar</b>, para você não errar na escolha se ainda não tem o seu.</li>
+        <li>De bônus, <b>O Mapa do Iniciante</b>: o passo a passo em PDF do que estudar depois desta primeira música.</li>
+        <li><b>Acesso vitalício.</b> O curso fica com você para sempre, na plataforma do Clube do Ukulele, no seu ritmo.</li>
+      </ul>
+      <button type="button" class="cta big" onclick="abrirCaptura()">Quero tocar minhas primeiras músicas</button>
+      <p class="trust">Com <b>Mateus Augusto</b> · ensina ukulele desde 2017 · +6.000 alunos formados · +300 mil seguidores.</p>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/foto-mateus.webp" alt="Mateus Augusto, professor do Clube do Ukulele, com o ukulele nas mãos" onerror="this.closest('.hero-photo').style.display='none'">
+    </div>
   </div>
 </header>
 
