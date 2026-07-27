@@ -111,14 +111,20 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* .vframe = moldura 9:16 com ALTURA explícita (largura sai da proporção).
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
    A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
-   258px = h1 + gaps + padding + botão de checkout, que é o que precisa caber na dobra
-   (calibrado pro h1 quebrando em 5 linhas, o pior caso em telas de 360px). */
+   --fold-reserve = tudo que precisa caber na dobra junto com o vídeo:
+   padding + h1 + 2 gaps + botão de checkout, medido, com 12px de margem.
+   O h1 quebra em 4 linhas a partir de 370px de tela e em 5 linhas abaixo disso,
+   por isso são dois valores em vez de um só conservador. */
 .video{grid-area:video;width:100%;display:flex;justify-content:center}
-.vframe{position:relative;height:min(calc(100vh - 258px),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - 258px),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
+.hero{--fold-reserve:226px}
+@media (max-width:369px){.hero{--fold-reserve:246px}}
+.vframe{position:relative;height:min(calc(100vh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
 .vframe vturb-smartplayer{display:block;width:100%!important;height:100%!important}
 .cta-block{grid-area:cta;width:100%;max-width:30rem;display:flex;flex-direction:column;gap:.55rem}
-/* Celular: o subtítulo sai pra o vídeo vertical respirar dentro da dobra */
-@media (max-width:899px) and (max-height:899px){.hero-sub{display:none}}
+/* Celular: o subtítulo sai pra o vídeo vertical respirar dentro da dobra.
+   Sem condição de altura: em celular alto o subtítulo voltava e empurrava
+   o botão pra fora da dobra, porque --fold-reserve não conta com ele. */
+@media (max-width:899px){.hero-sub{display:none}}
 /* Desktop: texto à esquerda, vídeo vertical à direita — ainda em uma dobra */
 @media (min-width:900px){
   .hero .container{
