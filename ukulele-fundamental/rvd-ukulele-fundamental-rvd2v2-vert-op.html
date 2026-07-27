@@ -26,11 +26,9 @@
 
 <!-- ===== OTIMIZAÇÃO DE CARREGAMENTO DO PLAYER VTURB (oficial) ===== -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<!-- >>> COLAR AQUI OS PRELOADS DO PLAYER VERTICAL (VTurb). Modelo do player horizontal, só trocar os IDs:
-<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/PLAYER_ID/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a67484648ef5cbbf8c251e0/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/VIDEO_ID/main.m3u8" as="fetch">
-<<< -->
+<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a67411b179af6593f82ee62/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -115,10 +113,6 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .video{grid-area:video;width:100%;display:flex;justify-content:center}
 .vframe{position:relative;height:min(calc(100vh - 258px),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - 258px),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
 .vframe vturb-smartplayer{display:block;width:100%!important;height:100%!important}
-/* Placeholder 9:16 — remover quando entrar o player vertical */
-.vph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:linear-gradient(160deg,#3B2A63,#1B0F36);color:#CFC5E6;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:1rem}
-.vph .pl{width:54px;height:54px;border-radius:999px;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.5);display:grid;place-items:center}
-.vph .pl svg{width:22px;height:22px;fill:#fff;margin-left:3px}
 .cta-block{grid-area:cta;width:100%;max-width:30rem;display:flex;flex-direction:column;gap:.55rem}
 /* Celular: o subtítulo sai pra o vídeo vertical respirar dentro da dobra */
 @media (max-width:899px) and (max-height:899px){.hero-sub{display:none}}
@@ -319,15 +313,12 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 
     <div class="video">
       <div class="vframe">
-        <!-- >>> PLACEHOLDER: apagar a div .vph abaixo e colar aqui o embed do player VERTICAL (VTurb).
-             O player vem no formato:
-             <vturb-smartplayer id="vid-PLAYER_ID" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
-             <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/CONTA_ID/players/PLAYER_ID/v4/player.js";s.async=true;document.head.appendChild(s);</script>
-             Lembrar de atualizar também os preloads no <head>. <<< -->
-        <div class="vph" aria-hidden="true">
-          <span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-          Placeholder do vídeo vertical<br>9:16
-        </div>
+        <vturb-smartplayer id="vid-6a67484648ef5cbbf8c251e0" style="display: block; margin: 0 auto; width: 100%;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+        <script type="text/javascript">
+          var s=document.createElement("script");
+          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a67484648ef5cbbf8c251e0/v4/player.js";
+          s.async=true;document.head.appendChild(s);
+        </script>
       </div>
     </div>
 
