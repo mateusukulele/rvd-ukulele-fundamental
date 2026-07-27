@@ -96,8 +96,8 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
   min-height:calc(100vh - 1px);min-height:calc(100svh - 1px); /* -1px = borda inferior do hero */
   display:grid;
   grid-template-areas:"top" "video" "cta";
-  grid-template-rows:auto minmax(120px,1fr) auto;
-  align-items:center;justify-items:center;
+  grid-template-rows:auto auto auto;
+  align-content:start;justify-items:center;
   gap:clamp(.5rem,1.6vh,1rem);
   max-width:56rem;
   padding-block:clamp(.7rem,2vh,1.5rem);
@@ -107,9 +107,13 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .hero h1{font-size:clamp(1.4rem,4.6vw,2.6rem);font-weight:900}
 .hero h1 span{color:var(--coral)}
 .hero-sub{color:#5C5A70;font-size:clamp(.88rem,2.1vw,1.05rem);max-width:52ch}
-/* .video = trilho flexível; .vframe = moldura 9:16 que se estica na altura disponível */
-.video{grid-area:video;align-self:stretch;min-height:0;width:100%;display:flex;align-items:stretch;justify-content:center}
-.vframe{position:relative;aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
+/* .vframe = moldura 9:16 com ALTURA explícita (largura sai da proporção).
+   Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
+   A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
+   258px = h1 + gaps + padding + botão de checkout, que é o que precisa caber na dobra
+   (calibrado pro h1 quebrando em 5 linhas, o pior caso em telas de 360px). */
+.video{grid-area:video;width:100%;display:flex;justify-content:center}
+.vframe{position:relative;height:min(calc(100vh - 258px),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - 258px),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
 .vframe vturb-smartplayer{display:block;width:100%!important;height:100%!important}
 /* Placeholder 9:16 — remover quando entrar o player vertical */
 .vph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:linear-gradient(160deg,#3B2A63,#1B0F36);color:#CFC5E6;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:1rem}
@@ -129,7 +133,8 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
     gap:clamp(1rem,2.5vh,1.6rem) clamp(2rem,4vw,3.5rem);
   }
   .hero-top{align-items:flex-start;text-align:left}
-  .video{align-self:center;height:min(74svh,620px)}
+  .video{align-self:center}
+  .vframe{height:min(74vh,620px);height:min(74svh,620px)}
   .hero-sub{display:block}
 }
 .price-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem;font-size:clamp(13px,2.6vw,15px)}
