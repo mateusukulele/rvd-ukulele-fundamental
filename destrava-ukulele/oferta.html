@@ -128,14 +128,30 @@ section{padding:52px 0}
 .stack .row svg{width:20px;height:20px;color:var(--amber);flex:none;margin-top:3px}
 .stack .row b{display:block;font-size:1rem;color:#fff}
 .stack .row span{font-size:.9rem;color:#cfc9e0;display:block;margin-top:2px}
-.bonus-tit{text-align:center;margin:36px 0 16px}
-.bonus-tit .eyebrow{background:rgba(232,122,133,.18);color:var(--coral);border:1px solid rgba(232,122,133,.4)}
-.bonus-tit p{color:#cfc9e0;font-size:.95rem;margin-top:12px;max-width:48ch;margin-left:auto;margin-right:auto}
-.bonus-list{max-width:640px;margin:0 auto;display:grid;gap:12px}
-.bonus-item{background:rgba(232,122,133,.1);border:1px solid rgba(232,122,133,.32);border-radius:16px;padding:18px 20px}
-.bonus-item b{display:block;color:var(--coral);font-size:1.04rem;margin-bottom:4px}
-.bonus-item p{color:#e7e3f2;font-size:.94rem}
-.bonus-item .prazo{display:inline-block;margin-top:10px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo-deep);background:var(--amber);padding:5px 11px;border-radius:999px}
+/* ===== Bônus com prazo próprio ===== */
+.bonus-sec{background:var(--bg)}
+.bonus-wrap{max-width:660px;margin:0 auto}
+.bonus-head{text-align:center;margin-bottom:20px}
+.bonus-head .eyebrow{background:rgba(232,122,133,.16);color:#c04a58;border:1px solid rgba(232,122,133,.4);margin-bottom:12px}
+.bonus-head h2{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:1.5rem;color:var(--indigo-deep);line-height:1.1}
+.bonus-head p{color:var(--muted);font-size:.96rem;margin-top:10px}
+.bonus-list{list-style:none;display:grid;gap:12px}
+.bonus-item{background:var(--card);border:1px solid rgba(232,122,133,.45);border-radius:16px;padding:16px 18px;transition:opacity .3s,background .3s}
+.bi-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.bi-num{font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#c04a58}
+.bi-timer{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--indigo-deep);background:var(--amber);padding:5px 11px;border-radius:999px;white-space:nowrap}
+.bonus-item b{display:block;color:var(--indigo-deep);font-size:1.04rem;line-height:1.3}
+.bonus-item p{color:var(--muted);font-size:.92rem;margin-top:4px}
+.bonus-item.expirado{border-color:var(--line);background:#f3f1f6;opacity:.62}
+.bonus-item.expirado b{text-decoration:line-through;color:#8b849e}
+.bonus-item.expirado p{color:#9a94ab}
+.bonus-item.expirado .bi-num{color:#9a94ab}
+.bonus-item.expirado .bi-timer{background:#ddd9e6;color:#736c88}
+.bonus-aviso{margin-top:14px;display:flex;gap:11px;align-items:flex-start;background:#fdf3dd;border:1px solid rgba(217,151,28,.35);border-radius:14px;padding:14px 16px}
+.bonus-aviso svg{width:20px;height:20px;color:var(--amber-deep);flex:none;margin-top:2px}
+.bonus-aviso p{font-size:.9rem;color:#6b5720;font-weight:600}
+.prox-bonus{max-width:560px;margin:22px auto 0;text-align:center;font-size:.92rem;font-weight:700;color:#c04a58}
+.prox-bonus b{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.02em}
 
 /* ===== Preço ===== */
 .preco{background:var(--bg)}
@@ -438,46 +454,55 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Cursos extras</b><span>Canto com Ukulele, Destrava Dedos e Dicionário de Acordes</span></div></div>
     </div>
 
-    <div class="bonus-tit" id="bonus-tit">
-      <span class="eyebrow">Bônus desta turma</span>
-      <p>Cada bônus tem o seu prazo. Quanto antes você entrar, mais coisa leva junto.</p>
-    </div>
-    <div class="bonus-list" id="bonus-list">
+  </div>
+</section>
 
-      <!-- ============ BONUS-3 · dois encontros exclusivos ============
-           Vale para quem entrar até SEXTA 23h59. Some sozinho na virada.
-           Para tirar antes, apague daqui até o /BONUS-3.
-      -->
-      <div class="bonus-item" data-expira="2026-07-31T23:59:59-03:00">
-        <b>Dois encontros exclusivos só da turma nova</b>
-        <p>Dois encontros ao vivo comigo, fechados, só com quem está entrando agora. Não é o plantão semanal aberto a todos os alunos: é um grupo menor, pra eu conhecer cada um e entender onde você está.</p>
-        <span class="prazo">Só até hoje, sexta, 23h59</span>
+<!-- ===================== BÔNUS COM PRAZO PRÓPRIO =====================
+     Cada <li> tem data-expira no formato 2026-08-01T23:59:00-03:00.
+     Quando o relógio passa da data, o item vira "Encerrado" sozinho e
+     fica riscado, sem ninguém mexer no arquivo. Para tirar um bônus da
+     página de vez, apague o <li> inteiro.
+     O bônus 5 não tem prazo: é por vaga, então usa data-vagas. -->
+<section class="bonus-sec">
+  <div class="wrap">
+    <div class="bonus-wrap">
+      <div class="bonus-head">
+        <span class="eyebrow">Bônus de aceleração</span>
+        <h2>Cada bônus tem o seu próprio relógio</h2>
+        <p>Quanto antes você entrar, mais coisa leva junto. O que fecha, fecha de verdade.</p>
       </div>
-      <!-- ============ /BONUS-3 ============ -->
-
-      <!-- ============ BONUS-4 · grupo de aceleração no WhatsApp ============
-           Vale para quem entrar até DOMINGO 23h59, junto com o desconto.
-      -->
-      <div class="bonus-item" data-expira="2026-08-02T23:59:59-03:00">
-        <b>Grupo de aceleração no WhatsApp, por 2 meses</b>
-        <p>Um grupo com eu, você e a turma que entrar agora. Papo mais rápido e mais próximo: você manda o que está travando e eu respondo por lá. Nunca fiz isso em nenhuma turma anterior. Dura dois meses.</p>
-        <span class="prazo">Só até domingo, 23h59</span>
+      <ul class="bonus-list" id="bonus-list">
+        <li class="bonus-item" data-expira="2026-07-30T22:00:00-03:00">
+          <div class="bi-top"><span class="bi-num">Bônus 1</span><span class="bi-timer" data-bonus-timer>…</span></div>
+          <b>Sessão individual de nivelamento comigo</b>
+          <p>Uma conversa no Zoom, só eu e você, pra descobrir o seu nível e definir por onde começar. Era exclusivo de quem se inscreveu durante a aula 3, ao vivo.</p>
+        </li>
+        <li class="bonus-item" data-expira="2026-07-30T23:59:00-03:00">
+          <div class="bi-top"><span class="bi-num">Bônus 2</span><span class="bi-timer" data-bonus-timer>…</span></div>
+          <b>Dicionário de Acordes impresso, na sua casa</b>
+          <p>A revistinha física que eu escrevi, com todos os acordes do ukulele, enviada pelo correio com o frete por minha conta. Valeu até a meia-noite de quinta.</p>
+        </li>
+        <li class="bonus-item" data-expira="2026-07-31T23:59:00-03:00">
+          <div class="bi-top"><span class="bi-num">Bônus 3</span><span class="bi-timer" data-bonus-timer>…</span></div>
+          <b>Encontros exclusivos para essa turma</b>
+          <p>Além do encontro semanal que todo aluno tem, dois encontros fechados só com quem está entrando agora, nas próximas semanas.</p>
+        </li>
+        <li class="bonus-item" data-expira="2026-08-02T23:59:00-03:00">
+          <div class="bi-top"><span class="bi-num">Bônus 4</span><span class="bi-timer" data-bonus-timer>…</span></div>
+          <b>Grupo de aceleração no WhatsApp</b>
+          <p>Um grupo com você, a turma nova e eu dentro, por dois meses. Você manda o que estiver travando e eu respondo por lá. Nunca fiz isso antes.</p>
+        </li>
+        <li class="bonus-item" data-vagas="5">
+          <div class="bi-top"><span class="bi-num">Bônus 5</span><span class="bi-timer bi-vagas">Só os 5 primeiros</span></div>
+          <b>Pedido de música</b>
+          <p>Os cinco primeiros inscritos podem pedir uma música pra eu gravar e colocar na biblioteca do Clube. Cada um pede a sua.</p>
+        </li>
+      </ul>
+      <div class="bonus-aviso">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 3h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+        <p>Os prazos são de verdade. O que já fechou não volta nesta turma, e os que ainda estão de pé vão fechar do mesmo jeito quando o relógio zerar.</p>
       </div>
-      <!-- ============ /BONUS-4 ============ -->
-
-      <!-- ============ BONUS-5 · pedido de música (DESATIVADO) ============
-           Na live foi anunciado para os 5 primeiros inscritos. Se ainda
-           sobrar vaga, apague as duas linhas de comentário abaixo para o
-           bloco voltar a aparecer.
-
-      <div class="bonus-item" data-expira="2026-08-02T23:59:59-03:00">
-        <b>Peça uma música pra biblioteca</b>
-        <p>Os 5 primeiros inscritos escolhem uma música pra eu gravar e colocar na biblioteca do Clube. Não é pra eu tocar: é pra eu te ensinar.</p>
-        <span class="prazo">Só os 5 primeiros</span>
-      </div>
-
-           ============ /BONUS-5 ============ -->
-
+      <p class="prox-bonus" id="prox-bonus" hidden></p>
     </div>
   </div>
 </section>
@@ -643,14 +668,40 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
   tick(); setInterval(tick,1000);
 })();
 
-/* ===== Bônus com prazo: some sozinho quando a data passa ===== */
+/* ===== Bônus: cada um com o seu relógio =====
+   Passou da data em data-expira, o item vira "Encerrado" e fica riscado
+   sozinho. A linha de baixo anuncia qual é o próximo a fechar. */
 (function(){
-  document.querySelectorAll('.bonus-item[data-expira]').forEach(function(el){
-    var t=new Date(el.getAttribute('data-expira')).getTime();
-    if(!isNaN(t) && Date.now()>t) el.remove();
+  var proxBonus=document.getElementById('prox-bonus');
+  var bonus=[].slice.call(document.querySelectorAll('.bonus-item[data-expira]')).map(function(el){
+    return {el:el, alvo:new Date(el.getAttribute('data-expira')).getTime(), timer:el.querySelector('[data-bonus-timer]')};
   });
-  var lista=document.getElementById('bonus-list'), tit=document.getElementById('bonus-tit');
-  if(lista && !lista.querySelector('.bonus-item')){ lista.hidden=true; if(tit) tit.hidden=true; }
+  if(!bonus.length) return;
+  function pad(n){return (n<10?'0':'')+n;}
+  function relogio(ms){
+    var d=Math.floor(ms/864e5); ms-=d*864e5;
+    var h=Math.floor(ms/36e5); ms-=h*36e5;
+    var m=Math.floor(ms/6e4); ms-=m*6e4;
+    var s=Math.floor(ms/1e3);
+    return (d>0?d+'d ':'')+pad(h)+':'+pad(m)+':'+pad(s);
+  }
+  function tick(){
+    var agora=Date.now(), proximo=null;
+    bonus.forEach(function(b){
+      var falta=b.alvo-agora;
+      if(falta<=0){ b.el.classList.add('expirado'); b.timer.textContent='Encerrado'; return; }
+      b.el.classList.remove('expirado');
+      b.timer.textContent='Some em '+relogio(falta);
+      if(!proximo || b.alvo<proximo.alvo) proximo={alvo:b.alvo,falta:falta,nome:b.el.querySelector('b').textContent};
+    });
+    if(proxBonus){
+      if(proximo){
+        proxBonus.hidden=false;
+        proxBonus.innerHTML='O próximo bônus a fechar é "'+proximo.nome+'", em <b>'+relogio(proximo.falta)+'</b>';
+      } else { proxBonus.hidden=true; }
+    }
+  }
+  tick(); setInterval(tick,1000);
 })();
 
 /* ===== Modal de captura ===== */
