@@ -82,6 +82,10 @@ section{padding:52px 0}
 .ident li{display:flex;gap:13px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
 .ident li svg{width:22px;height:22px;color:var(--coral);flex:none;margin-top:2px}
 .ident li span{font-size:1rem;color:#3d3556;font-weight:500}
+.perfis{max-width:720px;margin:0 auto 26px;display:grid;gap:12px}
+.perfis div{background:#efe9fb;border-radius:16px;padding:16px 18px}
+.perfis b{display:block;color:var(--indigo);font-size:1rem;margin-bottom:3px}
+.perfis p{color:#4a4363;font-size:.94rem}
 
 /* ===== Mecanismo ===== */
 .mec{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff}
@@ -95,6 +99,8 @@ section{padding:52px 0}
 .dma div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:18px 20px}
 .dma b{font-family:'Anton',sans-serif;color:var(--amber);font-size:1.15rem;display:block;margin-bottom:5px;letter-spacing:.02em}
 .dma p{color:#e7e3f2;font-size:.98rem}
+.pilares{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:640px;margin:26px auto 14px}
+.pilares span{background:rgba(245,185,59,.14);border:1px solid rgba(245,185,59,.4);color:var(--amber);font-weight:800;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:999px}
 
 /* ===== Entregáveis ===== */
 .entregas{display:grid;gap:14px}
@@ -289,8 +295,13 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 <section class="ident">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Se isso é você, continua lendo</span>
+      <span class="eyebrow">Pra quem é o Clube</span>
       <h2>O ukulele não é o problema. Aprender sozinho é.</h2>
+    </div>
+    <div class="perfis">
+      <div><b>1 · Iniciante do zero absoluto</b><p>Nem tem ukulele ainda? Sem problemas. A gente começa antes disso, ensinando você a escolher o instrumento.</p></div>
+      <div><b>2 · Iniciante já iniciado</b><p>Já começou, mas não consegue sair do lugar? Tamo junto. É o perfil mais comum aqui dentro.</p></div>
+      <div><b>3 · Intermediário</b><p>Consegue tocar várias músicas, mas sai tudo igual e você não sabe qual é o próximo passo? Vem.</p></div>
     </div>
     <ul>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg><span>Você toca sempre a mesma batida e sente que não sai do lugar.</span></li>
@@ -321,6 +332,12 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       <div><b>Motivação</b><p>Comunidade, desafios do mês e uma biblioteca de músicas pra quando você cansar de seguir a linha do curso e quiser só tocar.</p></div>
       <div><b>Acompanhamento</b><p>Alguém olhando a sua mão e te dando um retorno. É a parte que nenhum vídeo gravado consegue fazer sozinho.</p></div>
     </div>
+    <div class="pilares">
+      <span>Método</span><span>Prática</span><span>Mentor</span><span>Comunidade</span>
+    </div>
+    <div class="mec-txt">
+      <p style="text-align:center;font-size:.98rem;color:#cfc9e0">Os quatro pilares de qualquer aprendizado. E tudo isso rodando na <strong>Filosofia da Tartaruga</strong>: um passo por vez, devagar e sempre, sem pressa e sem culpa.</p>
+    </div>
     <div class="mec-txt" style="margin-top:28px">
       <p>Meu YouTube tem dez anos de conteúdo e eu adoro ele. Só que lá não tem ordem: tem a música difícil do lado da fácil, a dica solta, o vídeo de dedilhado sem o vídeo de como segurar o instrumento. Você fica perdido e pula justamente o que era base.</p>
       <p><strong>Um catálogo de vídeos não sabe o que a sua mão está fazendo de errado.</strong> Só quem vê você tocar sabe. É por isso que o Clube não é mais um curso online.</p>
@@ -333,8 +350,8 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">O que você recebe</span>
-      <h2>Clube do Ukulele Academy</h2>
-      <p>A minha escola online de ukulele. Como uma academia: você entra e tem acesso ilimitado a tudo por um ano.</p>
+      <h2>A sua Netflix do ukulele</h2>
+      <p>A minha escola online. Funciona como uma academia: você entra e tem acesso ilimitado a tudo por um ano inteiro.</p>
     </div>
     <img class="mockup" src="assets/mockup-plataforma.webp" alt="Plataforma do Clube do Ukulele com as aulas" width="520" height="330" loading="lazy">
     <div class="entregas">
@@ -355,8 +372,8 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       </div>
       <div class="ent">
         <span class="tag">04</span>
-        <h3>Academia do Ukulele: as lives ficam guardadas</h3>
-        <p>Toda quinta eu faço uma live com exercício temático. No YouTube ela sai do ar em sete dias. Lá dentro, a gravação fica pra sempre, com material junto.</p>
+        <h3>Academia do Ukulele: uma aula nova toda semana</h3>
+        <p>Toda semana entra uma aula com exercício ou tema prático, pra você ir além da trilha quando bater vontade de fazer algo diferente. No YouTube a live sai do ar em sete dias. Aqui a gravação fica, com material junto.</p>
       </div>
       <div class="ent">
         <span class="tag">05</span>
@@ -477,7 +494,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       <p class="ancora">Um ano de acesso custa <s>R$ 1.200</s></p>
       <p class="parcela">12x R$ 59,99<small>no cartão</small></p>
       <p class="avista">ou R$ 580 à vista</p>
-      <div class="trava">Este desconto não vale só pro primeiro ano. Enquanto você continuar no Clube, ele continua com você na renovação.</div>
+      <div class="trava">Este desconto não vale só pro primeiro ano. Enquanto você fizer parte do Clube, ele vale para todos os anos com a gente, e não aumenta.</div>
       <button class="btn btn-cta btn-block" type="button" onclick="abrirCheckout('preco')">Garantir minha vaga agora</button>
       <p class="cta-note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Acesso liberado na hora, direto no seu e-mail</p>
     </div>
