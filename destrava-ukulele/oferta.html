@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clube do Ukulele Academy | Turma nova aberta até domingo</title>
+<meta name="description" content="A escola online do Mateus Augusto. Trilha do zero ao intermediário, 154 músicas na biblioteca e análise em vídeo do seu jeito de tocar. 50% de desconto até domingo.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap">
+
+<style>
+:root{
+  --indigo:#443468; --indigo-deep:#2D2249; --amber:#F5B93B; --amber-deep:#D9971C;
+  --coral:#E87A85; --bg:#F5F4F7; --card:#fff; --ink:#2D2249; --muted:#6b6480;
+  --line:#e6e3ee; --cta:#C2410C; --ok:#1B8A5A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 20px}
+.disp{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.01em;line-height:1.06;text-transform:uppercase}
+.eyebrow{display:inline-block;font-weight:700;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.hl{color:var(--amber)}
+section{padding:52px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 34px}
+.sec-head .eyebrow{background:#efe9fb;color:var(--indigo);margin-bottom:14px}
+.sec-head h2{font-size:1.62rem;color:var(--indigo-deep);line-height:1.2}
+.sec-head p{color:var(--muted);font-size:1.02rem;margin-top:12px}
+
+/* ===== Botões ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.02rem;text-transform:uppercase;letter-spacing:.02em;padding:18px 28px;border-radius:16px;border:none;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;line-height:1.15;text-align:center}
+.btn-amber{background:var(--amber);color:var(--indigo-deep);box-shadow:0 12px 24px -8px rgba(245,185,59,.6)}
+.btn-amber:hover{background:var(--amber-deep);transform:translateY(-2px)}
+.btn-cta{background:var(--cta);color:#fff;box-shadow:0 12px 24px -8px rgba(194,65,12,.55)}
+.btn-cta:hover{background:#9a330a;transform:translateY(-2px)}
+.btn-block{width:100%}
+.cta-inline{text-align:center;margin-top:30px}
+.cta-note{font-size:.84rem;color:var(--muted);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px}
+.cta-note svg{width:15px;height:15px;color:var(--ok);flex:none}
+
+/* ===== Topo ===== */
+.topbar{background:var(--indigo-deep);padding:14px 0;text-align:center}
+.topbar img{height:38px;width:auto;margin:0 auto}
+
+/* ===== Hero ===== */
+.hero{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff;padding:30px 0 42px;text-align:center}
+.hero .eyebrow{background:rgba(245,185,59,.16);color:var(--amber);border:1px solid rgba(245,185,59,.35);margin-bottom:18px}
+.hero h1{font-size:1.72rem;margin-bottom:14px}
+.hero .sub{font-size:1.04rem;color:#e7e3f2;font-weight:500;max-width:48ch;margin:0 auto 24px}
+
+/* ===== Player ===== */
+.player{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:3px solid rgba(245,185,59,.45);box-shadow:0 26px 60px -22px rgba(0,0,0,.7);cursor:pointer}
+.player iframe{width:100%;height:100%;border:0;display:block}
+.player img{width:100%;height:100%;object-fit:cover}
+.player .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(45,34,73,.32);transition:background .2s}
+.player:hover .play{background:rgba(45,34,73,.15)}
+.player .play span{width:74px;height:74px;border-radius:999px;background:var(--amber);display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(0,0,0,.5)}
+.player .play svg{width:30px;height:30px;color:var(--indigo-deep);margin-left:4px}
+.hero-cta{margin-top:26px}
+.trust{margin-top:16px;font-size:.85rem;color:#cfc9e0;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center}
+.trust span{display:inline-flex;align-items:center;gap:7px}
+.trust svg{width:15px;height:15px;color:var(--amber);flex:none}
+
+/* ===== Countdown ===== */
+.cd{margin:22px auto 0;max-width:420px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:14px 16px}
+.cd .lbl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.cd .clock{display:flex;gap:8px}
+.cd .unit{background:var(--indigo-deep);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:9px 0;flex:1;text-align:center}
+.cd .unit b{font-family:'Anton',sans-serif;font-size:1.55rem;display:block;line-height:1;color:#fff}
+.cd .unit small{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:#b7b0cc}
+
+/* ===== Identificação ===== */
+.ident{background:var(--card)}
+.ident ul{max-width:720px;margin:0 auto;display:grid;gap:14px;list-style:none}
+.ident li{display:flex;gap:13px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.ident li svg{width:22px;height:22px;color:var(--coral);flex:none;margin-top:2px}
+.ident li span{font-size:1rem;color:#3d3556;font-weight:500}
+
+/* ===== Mecanismo ===== */
+.mec{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff}
+.mec .sec-head h2{color:#fff}
+.mec .sec-head .eyebrow{background:rgba(245,185,59,.16);color:var(--amber);border:1px solid rgba(245,185,59,.35)}
+.mec .sec-head p{color:#cfc9e0}
+.mec-txt{max-width:640px;margin:0 auto;color:#e7e3f2;font-size:1.04rem}
+.mec-txt p{margin-bottom:14px}
+.mec-txt strong{color:#fff}
+.dma{display:grid;gap:14px;max-width:640px;margin:28px auto 0}
+.dma div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:18px 20px}
+.dma b{font-family:'Anton',sans-serif;color:var(--amber);font-size:1.15rem;display:block;margin-bottom:5px;letter-spacing:.02em}
+.dma p{color:#e7e3f2;font-size:.98rem}
+
+/* ===== Entregáveis ===== */
+.entregas{display:grid;gap:14px}
+.ent{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;position:relative;overflow:hidden}
+.ent::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--amber)}
+.ent .tag{display:inline-block;font-family:'Anton',sans-serif;font-size:.82rem;color:var(--amber-deep);letter-spacing:.05em;margin-bottom:6px}
+.ent h3{font-size:1.14rem;color:var(--indigo-deep);line-height:1.28;margin-bottom:6px}
+.ent p{color:var(--muted);font-size:.97rem}
+.mockup{width:100%;max-width:520px;margin:0 auto 30px;border-radius:18px;box-shadow:0 22px 50px -22px rgba(45,34,73,.5)}
+
+/* ===== Provas ===== */
+.provas{background:var(--card)}
+.provas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px;margin:0 auto}
+.provas-grid button{border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:6px;cursor:pointer;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.provas-grid button:hover{transform:translateY(-3px);box-shadow:0 14px 28px -14px rgba(45,34,73,.45)}
+.provas-grid img{border-radius:10px}
+
+/* ===== Oferta ===== */
+.oferta{background:var(--indigo-deep);color:#fff}
+.oferta .sec-head h2{color:#fff}
+.oferta .sec-head .eyebrow{background:rgba(245,185,59,.16);color:var(--amber);border:1px solid rgba(245,185,59,.35)}
+.stack{max-width:640px;margin:0 auto;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:8px}
+.stack .row{display:flex;gap:12px;align-items:flex-start;padding:14px}
+.stack .row + .row{border-top:1px solid rgba(255,255,255,.09)}
+.stack .row svg{width:20px;height:20px;color:var(--amber);flex:none;margin-top:3px}
+.stack .row b{display:block;font-size:1rem;color:#fff}
+.stack .row span{font-size:.9rem;color:#cfc9e0;display:block;margin-top:2px}
+.bonus-tit{text-align:center;margin:36px 0 16px}
+.bonus-tit .eyebrow{background:rgba(232,122,133,.18);color:var(--coral);border:1px solid rgba(232,122,133,.4)}
+.bonus-tit p{color:#cfc9e0;font-size:.95rem;margin-top:12px;max-width:48ch;margin-left:auto;margin-right:auto}
+.bonus-list{max-width:640px;margin:0 auto;display:grid;gap:12px}
+.bonus-item{background:rgba(232,122,133,.1);border:1px solid rgba(232,122,133,.32);border-radius:16px;padding:18px 20px}
+.bonus-item b{display:block;color:var(--coral);font-size:1.04rem;margin-bottom:4px}
+.bonus-item p{color:#e7e3f2;font-size:.94rem}
+.bonus-item .prazo{display:inline-block;margin-top:10px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo-deep);background:var(--amber);padding:5px 11px;border-radius:999px}
+
+/* ===== Preço ===== */
+.preco{background:var(--bg)}
+.box-preco{max-width:520px;margin:0 auto;background:var(--card);border:2px solid var(--amber);border-radius:24px;padding:30px 24px;text-align:center;box-shadow:0 24px 50px -24px rgba(45,34,73,.4)}
+.box-preco .selo{display:inline-block;background:var(--coral);color:#fff;font-weight:800;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+.box-preco .ancora{color:var(--muted);font-size:.95rem}
+.box-preco .ancora s{opacity:.8}
+.box-preco .parcela{font-family:'Anton',sans-serif;font-size:2.7rem;color:var(--indigo-deep);line-height:1.05;margin:8px 0 2px}
+.box-preco .parcela small{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:var(--muted);display:block;margin-top:4px}
+.box-preco .avista{color:var(--indigo);font-weight:700;font-size:1rem;margin-bottom:18px}
+.box-preco .trava{background:#efe9fb;border-radius:14px;padding:14px 16px;font-size:.92rem;color:var(--indigo);font-weight:600;margin-bottom:20px}
+.garantia{max-width:520px;margin:20px auto 0;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;gap:14px;align-items:flex-start}
+.garantia svg{width:34px;height:34px;color:var(--ok);flex:none}
+.garantia b{display:block;color:var(--indigo-deep);font-size:1.02rem;margin-bottom:4px}
+.garantia p{color:var(--muted);font-size:.93rem}
+
+/* ===== Sobre ===== */
+.sobre{background:var(--card)}
+.sobre .in{max-width:760px;margin:0 auto;display:grid;gap:22px;align-items:center;text-align:center}
+.sobre img{max-width:190px;border-radius:20px;justify-self:center;border:3px solid var(--amber)}
+.sobre h2{font-size:1.5rem;color:var(--indigo-deep);margin-bottom:4px}
+.sobre .role{color:var(--amber-deep);font-weight:700;margin-bottom:14px}
+.sobre p{color:#4a4363;margin-bottom:12px;text-align:left}
+
+/* ===== FAQ ===== */
+.faq{max-width:720px;margin:0 auto;display:grid;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.faq summary{font-weight:700;color:var(--indigo-deep);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:'Anton',sans-serif;color:var(--amber-deep);font-size:1.4rem;line-height:1;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--muted);margin-top:10px;font-size:.96rem}
+
+/* ===== CTA final ===== */
+.final{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff;text-align:center}
+.final h2{font-size:1.6rem;margin-bottom:14px;max-width:22ch;margin-left:auto;margin-right:auto}
+.final p{color:#cfc9e0;font-size:1.02rem;margin-bottom:26px;max-width:48ch;margin-left:auto;margin-right:auto}
+
+/* ===== Footer ===== */
+footer{background:var(--indigo-deep);border-top:3px solid var(--amber);color:#fff;text-align:center;padding:30px 20px}
+footer img{height:38px;width:auto;margin:0 auto 12px}
+footer .cp{opacity:.7;font-size:.76rem;margin-top:6px}
+
+/* ===== Sticky ===== */
+.sticky{position:fixed;left:0;right:0;bottom:0;background:rgba(45,34,73,.97);backdrop-filter:blur(8px);border-top:1px solid rgba(245,185,59,.35);padding:12px 16px;transform:translateY(110%);transition:transform .25s;z-index:40}
+.sticky.show{transform:translateY(0)}
+.sticky .in{max-width:560px;margin:0 auto}
+.sticky .btn{padding:15px 20px;font-size:.95rem;width:100%}
+body.sticky-on{padding-bottom:78px}
+
+/* ===== Modal ===== */
+dialog.modal{width:min(30rem,92vw);max-height:92vh;overflow-y:auto;border:0;border-radius:24px;padding:0;background:#fff;color:var(--ink);box-shadow:0 30px 70px -20px rgba(0,0,0,.5)}
+dialog.modal::backdrop{background:rgba(45,34,73,.6);backdrop-filter:blur(4px)}
+.modal-bd{padding:clamp(1.4rem,4vw,2rem);position:relative}
+.modal-x{position:absolute;top:.8rem;right:.8rem;width:2.1rem;height:2.1rem;border:0;border-radius:999px;background:var(--bg);color:var(--muted);display:grid;place-items:center;cursor:pointer}
+.modal-x:hover{background:var(--line);color:var(--ink)}
+.modal h3{text-align:center;font-size:1.28rem;color:var(--indigo-deep)}
+.modal .sub{text-align:center;color:var(--muted);font-size:.88rem;margin:.4rem 0 1.2rem}
+.modal-coupon{display:flex;align-items:center;justify-content:center;gap:.4rem;width:fit-content;margin:.7rem auto 0;background:linear-gradient(90deg,var(--coral),#d95f6c);color:#fff;font-weight:800;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;padding:.45rem .9rem;border-radius:999px;box-shadow:0 6px 16px -6px rgba(232,122,133,.6)}
+.modal-coupon svg{width:.9rem;height:.9rem;flex-shrink:0}
+.field{margin-bottom:.9rem}
+.field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0 0 .35rem .3rem}
+.field input{width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);font:inherit;font-size:15px;color:var(--ink)}
+.field input:focus{outline:0;border-color:var(--indigo);background:#fff}
+.phone{display:flex;gap:.5rem}
+.phone select{flex-shrink:0;max-width:42%;border:1px solid var(--line);border-radius:12px;background:var(--bg);font:inherit;font-size:13.5px;color:var(--ink);padding:.85rem .5rem}
+.phone select:focus{outline:0;border-color:var(--indigo)}
+.phone input{flex:1;min-width:0}
+.hint{font-size:11px;color:#B26B00;font-weight:600;margin:.35rem 0 0 .3rem;display:none}
+.hint.on{display:block}
+.err{color:#D93A3A;font-size:11px;font-weight:600;margin:.3rem 0 0 .3rem;display:none}
+.err.on{display:block}
+.secure{text-align:center;font-size:11px;color:var(--muted);margin-top:.8rem;display:flex;gap:.35rem;justify-content:center;align-items:center}
+.secure svg{width:14px;height:14px;color:var(--ok)}
+
+/* ===== Lightbox ===== */
+dialog.lightbox{border:0;background:transparent;padding:0;max-width:min(94vw,560px);max-height:94vh;overflow:visible}
+dialog.lightbox::backdrop{background:rgba(45,34,73,.82);backdrop-filter:blur(4px)}
+dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);display:block}
+.lb-x{position:absolute;top:-14px;right:-14px;width:2.4rem;height:2.4rem;border:0;border-radius:999px;background:#fff;color:var(--indigo-deep);display:grid;place-items:center;cursor:pointer;z-index:2;box-shadow:0 6px 16px -4px rgba(0,0,0,.5)}
+.lb-x svg{width:1.1rem;height:1.1rem}
+
+@media(min-width:800px){
+  .hero{padding:42px 0 56px}
+  .hero h1{font-size:2.5rem}
+  .hero .sub{font-size:1.14rem}
+  .sec-head h2{font-size:2.05rem}
+  section{padding:68px 0}
+  .dma{grid-template-columns:repeat(3,1fr)}
+  .entregas{grid-template-columns:repeat(2,1fr)}
+  .provas-grid{grid-template-columns:repeat(3,1fr)}
+  .sobre .in{grid-template-columns:230px 1fr;text-align:left}
+  .sobre img{justify-self:start}
+  .final h2{font-size:2.05rem}
+  .box-preco .parcela{font-size:3.2rem}
+}
+</style>
+</head>
+<body>
+
+<script>
+/* =========================================================================
+   CONFIGURAÇÃO DA PÁGINA — mexa só aqui
+   =========================================================================
+   VIDEO_ID     → id do vídeo do YouTube que aparece no topo
+   CHECKOUT_URL → checkout da Hotmart (domínio próprio)
+   FIM_OFERTA   → quando o contador zera (fim da promoção, domingo 23h59)
+
+   BÔNUS COM PRAZO: cada bloco de bônus no HTML tem um atributo data-expira.
+   Passada a data, o bloco some sozinho da página, sem você editar nada.
+   Para tirar um bônus na mão antes disso, apague o bloco inteiro entre os
+   comentários BONUS-N. Se todos sumirem, a seção inteira de bônus some junto.
+   ========================================================================= */
+var VIDEO_ID     = 'qIBBKZwuY_s';
+var CHECKOUT_URL = 'https://link.clubedoukulele.com/matricula-clube-do-ukulele-ch';
+var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
+</script>
+
+<header class="topbar">
+  <div class="wrap"><img src="assets/logo-clube.webp" alt="Clube do Ukulele" width="140" height="38"></div>
+</header>
+
+<!-- ===================== HERO + VÍDEO ===================== -->
+<section class="hero" id="topo">
+  <div class="wrap">
+    <span class="eyebrow">Turma nova · só até domingo</span>
+    <h1 class="disp">Chega de virar o <span class="hl">mestre do próprio erro</span></h1>
+    <p class="sub">Nas três aulas do Destrava Ukulele você viu o que fazer. Agora assista abaixo a proposta da turma nova do Clube do Ukulele Academy, onde eu vejo você tocar e digo exatamente o que corrigir.</p>
+
+    <div class="player" id="player">
+      <img src="https://i.ytimg.com/vi/qIBBKZwuY_s/maxresdefault.jpg" alt="Assista à proposta da turma nova do Clube do Ukulele Academy" width="1280" height="720">
+      <div class="play"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+    </div>
+
+    <div class="hero-cta">
+      <button class="btn btn-amber" type="button" onclick="abrirCheckout('hero')">Quero entrar no Clube do Ukulele</button>
+      <p class="trust">
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 50% de desconto até domingo</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 30 dias de garantia</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Acesso imediato</span>
+      </p>
+    </div>
+
+    <div class="cd" id="cd" hidden>
+      <div class="lbl">A promoção acaba em</div>
+      <div class="clock">
+        <div class="unit"><b id="cd-d">00</b><small>dias</small></div>
+        <div class="unit"><b id="cd-h">00</b><small>horas</small></div>
+        <div class="unit"><b id="cd-m">00</b><small>min</small></div>
+        <div class="unit"><b id="cd-s">00</b><small>seg</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== IDENTIFICAÇÃO ===================== -->
+<section class="ident">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Se isso é você, continua lendo</span>
+      <h2>O ukulele não é o problema. Aprender sozinho é.</h2>
+    </div>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg><span>Você toca sempre a mesma batida e sente que não sai do lugar.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg><span>Você tem dez anos de vídeo à disposição no YouTube e mesmo assim não sabe o que estudar amanhã.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg><span>Ninguém nunca te viu tocar pra dizer se está certo. Aí você repete o erro achando que está treinando.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg><span>Você já pulou etapa sem perceber, porque no vídeo solto ninguém avisa que faltou uma base lá atrás.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg><span>Você nem tem ukulele ainda, e fica em dúvida se compra ou se desiste antes de começar.</span></li>
+    </ul>
+    <div class="cta-inline">
+      <button class="btn btn-cta" type="button" onclick="abrirCheckout('ident')">Quero aprender com acompanhamento</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MECANISMO (DMA) ===================== -->
+<section class="mec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Como funciona lá dentro</span>
+      <h2>Direção, motivação e acompanhamento</h2>
+      <p>Os três pés que faltam quando a gente estuda sozinho.</p>
+    </div>
+    <div class="mec-txt">
+      <p>Aprender sozinho tem um problema que quase ninguém enxerga no começo: você acaba levando os erros pra frente e vira <strong>o mestre do seu próprio erro</strong>. Não é falta de esforço. É que ninguém está olhando.</p>
+    </div>
+    <div class="dma">
+      <div><b>Direção</b><p>Saber exatamente o que estudar hoje e o que vem depois. É a trilha, do Iniciante 0 ao Intermediário 2, na ordem certa e sem pular base.</p></div>
+      <div><b>Motivação</b><p>Comunidade, desafios do mês e uma biblioteca de músicas pra quando você cansar de seguir a linha do curso e quiser só tocar.</p></div>
+      <div><b>Acompanhamento</b><p>Alguém olhando a sua mão e te dando um retorno. É a parte que nenhum vídeo gravado consegue fazer sozinho.</p></div>
+    </div>
+    <div class="mec-txt" style="margin-top:28px">
+      <p>Meu YouTube tem dez anos de conteúdo e eu adoro ele. Só que lá não tem ordem: tem a música difícil do lado da fácil, a dica solta, o vídeo de dedilhado sem o vídeo de como segurar o instrumento. Você fica perdido e pula justamente o que era base.</p>
+      <p><strong>Um catálogo de vídeos não sabe o que a sua mão está fazendo de errado.</strong> Só quem vê você tocar sabe. É por isso que o Clube não é mais um curso online.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== O QUE É ===================== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">O que você recebe</span>
+      <h2>Clube do Ukulele Academy</h2>
+      <p>A minha escola online de ukulele. Como uma academia: você entra e tem acesso ilimitado a tudo por um ano.</p>
+    </div>
+    <img class="mockup" src="assets/mockup-plataforma.webp" alt="Plataforma do Clube do Ukulele com as aulas" width="520" height="330" loading="lazy">
+    <div class="entregas">
+      <div class="ent">
+        <span class="tag">01</span>
+        <h3>Trilha completa, do zero ao intermediário</h3>
+        <p>Iniciante 0, 1 e 2, Intermediário 1 e 2. Começa em escolher o instrumento e vai até beirar o avançado, tudo organizado em módulos. Você entra no seu nível e faz no seu tempo.</p>
+      </div>
+      <div class="ent">
+        <span class="tag">02</span>
+        <h3>Intercâmbio de Vídeos: eu vejo você tocar</h3>
+        <p>Mais de 50 atividades posicionadas ao longo da trilha. Você grava com o celular, envia por dentro da plataforma e eu respondo em vídeo, no estilo react, abrindo a sua imagem e mostrando o que ajustar. Prazo de até 72 horas úteis, e quase sempre chega antes.</p>
+      </div>
+      <div class="ent">
+        <span class="tag">03</span>
+        <h3>Biblioteca com 154 músicas</h3>
+        <p>Cada música tem aula, destrinchamento e o Toque Comigo, que é o play along com a cifra na tela. Todas com PDF pra baixar. A lista cresce todo mês.</p>
+      </div>
+      <div class="ent">
+        <span class="tag">04</span>
+        <h3>Academia do Ukulele: as lives ficam guardadas</h3>
+        <p>Toda quinta eu faço uma live com exercício temático. No YouTube ela sai do ar em sete dias. Lá dentro, a gravação fica pra sempre, com material junto.</p>
+      </div>
+      <div class="ent">
+        <span class="tag">05</span>
+        <h3>Plantão ao vivo toda semana</h3>
+        <p>Depois da live, encontro no Meet ou no Zoom pra tirar dúvida cara a cara comigo. Toda semana.</p>
+      </div>
+      <div class="ent">
+        <span class="tag">06</span>
+        <h3>Workshops ao vivo</h3>
+        <p>Novidade da turma: workshops temáticos ao vivo, com o tema escolhido junto com os alunos. O primeiro será de manutenção e cuidados com o ukulele. Você participa e fica com a gravação.</p>
+      </div>
+      <div class="ent">
+        <span class="tag">07</span>
+        <h3>Comunidade e desafios do mês</h3>
+        <p>Gente no mesmo momento que você, trocando vídeo e dando força. Você pode só ficar de olho no começo, se for mais tímido.</p>
+      </div>
+      <div class="ent">
+        <span class="tag">08</span>
+        <h3>Cursos extras inclusos</h3>
+        <p>Workshop de Canto com Ukulele, com professora de canto convidada. Destrava Dedos, com 21 exercícios. E o Dicionário de Acordes em PDF.</p>
+      </div>
+    </div>
+    <div class="cta-inline">
+      <button class="btn btn-cta" type="button" onclick="abrirCheckout('entregas')">Quero minha vaga na turma nova</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROVAS ===================== -->
+<section class="provas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Quem já está dentro</span>
+      <h2>Gente adulta, começando do zero, tocando de verdade</h2>
+      <p>Toque para ampliar.</p>
+    </div>
+    <div class="provas-grid">
+      <button type="button" data-src="assets/dep-aline.webp"><img src="assets/dep-aline.webp" alt="Depoimento da aluna Aline" loading="lazy"></button>
+      <button type="button" data-src="assets/dep-leila.webp"><img src="assets/dep-leila.webp" alt="Depoimento da aluna Leila" loading="lazy"></button>
+      <button type="button" data-src="assets/dep-marcelo.webp"><img src="assets/dep-marcelo.webp" alt="Depoimento do aluno Marcelo" loading="lazy"></button>
+      <button type="button" data-src="assets/dep-maria.webp"><img src="assets/dep-maria.webp" alt="Depoimento da aluna Maria" loading="lazy"></button>
+      <button type="button" data-src="assets/dep-wellen.webp"><img src="assets/dep-wellen.webp" alt="Depoimento da aluna Wellen" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OFERTA EMPILHADA ===================== -->
+<section class="oferta">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Resumindo</span>
+      <h2>Tudo o que entra na sua matrícula</h2>
+    </div>
+    <div class="stack">
+      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Trilha de aprendizado completa</b><span>Iniciante 0 até Intermediário 2</span></div></div>
+      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Intercâmbio de Vídeos</b><span>Mais de 50 atividades com resposta minha em vídeo</span></div></div>
+      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Biblioteca com 154 músicas</b><span>Com aula, play along e cifra em PDF</span></div></div>
+      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Academia do Ukulele</b><span>Gravação das lives semanais, com material</span></div></div>
+      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Plantão ao vivo toda semana</b><span>Cara a cara comigo, no Meet ou no Zoom</span></div></div>
+      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Workshops ao vivo</b><span>Você participa e fica com a gravação</span></div></div>
+      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Comunidade e desafios mensais</b><span>Você não estuda sozinho</span></div></div>
+      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Cursos extras</b><span>Canto com Ukulele, Destrava Dedos e Dicionário de Acordes</span></div></div>
+    </div>
+
+    <div class="bonus-tit" id="bonus-tit">
+      <span class="eyebrow">Bônus desta turma</span>
+      <p>Cada bônus tem o seu prazo. Quanto antes você entrar, mais coisa leva junto.</p>
+    </div>
+    <div class="bonus-list" id="bonus-list">
+
+      <!-- ============ BONUS-3 · dois encontros exclusivos ============
+           Vale para quem entrar até SEXTA 23h59. Some sozinho na virada.
+           Para tirar antes, apague daqui até o /BONUS-3.
+      -->
+      <div class="bonus-item" data-expira="2026-07-31T23:59:59-03:00">
+        <b>Dois encontros exclusivos só da turma nova</b>
+        <p>Dois encontros ao vivo comigo, fechados, só com quem está entrando agora. Não é o plantão semanal aberto a todos os alunos: é um grupo menor, pra eu conhecer cada um e entender onde você está.</p>
+        <span class="prazo">Só até hoje, sexta, 23h59</span>
+      </div>
+      <!-- ============ /BONUS-3 ============ -->
+
+      <!-- ============ BONUS-4 · grupo de aceleração no WhatsApp ============
+           Vale para quem entrar até DOMINGO 23h59, junto com o desconto.
+      -->
+      <div class="bonus-item" data-expira="2026-08-02T23:59:59-03:00">
+        <b>Grupo de aceleração no WhatsApp, por 2 meses</b>
+        <p>Um grupo com eu, você e a turma que entrar agora. Papo mais rápido e mais próximo: você manda o que está travando e eu respondo por lá. Nunca fiz isso em nenhuma turma anterior. Dura dois meses.</p>
+        <span class="prazo">Só até domingo, 23h59</span>
+      </div>
+      <!-- ============ /BONUS-4 ============ -->
+
+      <!-- ============ BONUS-5 · pedido de música (DESATIVADO) ============
+           Na live foi anunciado para os 5 primeiros inscritos. Se ainda
+           sobrar vaga, apague as duas linhas de comentário abaixo para o
+           bloco voltar a aparecer.
+
+      <div class="bonus-item" data-expira="2026-08-02T23:59:59-03:00">
+        <b>Peça uma música pra biblioteca</b>
+        <p>Os 5 primeiros inscritos escolhem uma música pra eu gravar e colocar na biblioteca do Clube. Não é pra eu tocar: é pra eu te ensinar.</p>
+        <span class="prazo">Só os 5 primeiros</span>
+      </div>
+
+           ============ /BONUS-5 ============ -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PREÇO ===================== -->
+<section class="preco" id="preco">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">A condição desta turma</span>
+      <h2>Quanto custa entrar</h2>
+    </div>
+    <div class="box-preco">
+      <span class="selo">50% de desconto</span>
+      <p class="ancora">Um ano de acesso custa <s>R$ 1.200</s></p>
+      <p class="parcela">12x R$ 59,99<small>no cartão</small></p>
+      <p class="avista">ou R$ 580 à vista</p>
+      <div class="trava">Este desconto não vale só pro primeiro ano. Enquanto você continuar no Clube, ele continua com você na renovação.</div>
+      <button class="btn btn-cta btn-block" type="button" onclick="abrirCheckout('preco')">Garantir minha vaga agora</button>
+      <p class="cta-note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Acesso liberado na hora, direto no seu e-mail</p>
+    </div>
+    <div class="garantia">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+      <div>
+        <b>30 dias de garantia incondicional</b>
+        <p>Entra e usa tudo. Não fecho nada pra você: assiste as aulas da trilha, manda atividade, participa do plantão. Se em 30 dias achar que não é pra você, é só falar com a gente que devolvo o valor inteiro, sem justificativa.</p>
+      </div>
+    </div>
+    <div class="garantia">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 15l-4-4 1.41-1.41L11 13.17l4.59-4.58L17 10l-6 6z"/></svg>
+      <div>
+        <b>E mais: garantia de aprendizado de 1 ano</b>
+        <p>Se você usar as ferramentas do Clube durante o ano, principalmente o intercâmbio de vídeos comigo, eu garanto que você vai aprender. Faço questão de que você me encha de vídeo pra analisar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+<section class="sobre">
+  <div class="wrap">
+    <div class="in">
+      <img src="assets/mateus.webp" alt="Mateus Augusto" width="190" height="190" loading="lazy">
+      <div>
+        <h2>Quem vai te acompanhar</h2>
+        <p class="role">Mateus Augusto</p>
+        <p>Toco desde criança e dou aula de ukulele há quase dez anos. Nesse tempo já fiz muito evento gratuito por aqui, e continuo fazendo. Eles existem porque eu tenho uma escola, e a escola é o meu trabalho.</p>
+        <p>O Clube nasceu de uma coisa simples: vídeo solto não resolve o problema de quem trava, porque ninguém está olhando você tocar. Aqui eu olho. Você manda o vídeo, eu respondo, e você segue com um caminho na frente em vez de um monte de aula desconexa.</p>
+        <p>A gente reabriu o Clube agora, e esta é a segunda turma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Antes de decidir</span>
+      <h2>Dúvidas que sempre aparecem</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Eu ainda nem tenho ukulele. Posso entrar?</summary><p>Pode. A trilha começa antes disso: eu ensino a escolher o instrumento, e se você me procurar pelo suporte eu te ajudo pessoalmente nessa escolha. Não ter o ukulele ainda não é motivo pra ficar de fora.</p></details>
+      <details><summary>É mais um curso online gravado?</summary><p>Não. Tem as aulas gravadas, sim, mas o que muda é o resto: as atividades com resposta minha em vídeo, o plantão ao vivo toda semana, os workshops, a comunidade e a biblioteca. O suporte individual é a melhor parte disso tudo.</p></details>
+      <details><summary>Como funciona o envio de vídeo?</summary><p>Ao longo da trilha existem atividades com uma proposta pra você treinar. Você grava com o celular, envia por dentro da própria plataforma, sem senha em lugar nenhum, e eu respondo em vídeo mostrando o que está certo e o que dá pra melhorar. O prazo é de até 72 horas úteis, e quase sempre chega antes.</p></details>
+      <details><summary>Já sei tocar um pouco. Serve pra mim?</summary><p>Serve. Boa parte dos alunos chega tocando algumas músicas e travada na mesma batida, sem saber qual é o próximo passo. A trilha te dá o caminho e as atividades mostram os errinhos que ficaram pra trás.</p></details>
+      <details><summary>Por quanto tempo eu tenho acesso?</summary><p>É como uma academia: um ano de acesso ilimitado a tudo. Ao fim do período a assinatura renova, e o desconto que você pegou agora continua valendo na renovação.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>São 30 dias de garantia incondicional. Você usa tudo nesse período e, se achar que não é pra você, pede o reembolso e devolvo o valor integral, sem justificativa.</p></details>
+      <details><summary>Tenho pouco tempo pra estudar.</summary><p>A trilha é feita pra você ir no seu ritmo, acelerando quando dá e freando quando precisa. O problema de quem tem pouco tempo raramente é o tempo: é gastar o pouco que tem estudando a coisa errada, sem saber se está no caminho.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="final" data-final>
+  <div class="wrap">
+    <h2 class="disp">A promoção vai <span class="hl">até domingo</span></h2>
+    <p>Depois de domingo o desconto acaba e a turma fecha. Se você chegou até aqui, já sabe o que está travando. Falta resolver.</p>
+    <button class="btn btn-amber" type="button" onclick="abrirCheckout('final')">Entrar no Clube do Ukulele</button>
+    <p class="cta-note" style="color:#cfc9e0;margin-top:16px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 30 dias de garantia incondicional</p>
+  </div>
+</section>
+
+<footer>
+  <img src="assets/logo-clube.webp" alt="Clube do Ukulele" width="140" height="38" loading="lazy">
+  <p class="cp">Clube do Ukulele · Mateus Augusto · Todos os direitos reservados</p>
+</footer>
+
+<!-- ===================== STICKY ===================== -->
+<div class="sticky" id="sticky" aria-hidden="true">
+  <div class="in"><button class="btn btn-amber" type="button" onclick="abrirCheckout('sticky')">Quero minha vaga no Clube</button></div>
+</div>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<dialog class="lightbox" id="lightbox" aria-label="Depoimento ampliado">
+  <button class="lb-x" type="button" onclick="document.getElementById('lightbox').close()" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <img id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Depoimento ampliado">
+</dialog>
+
+<!-- ===================== MODAL DE CAPTURA ===================== -->
+<dialog class="modal" id="checkout" aria-labelledby="ckt">
+  <div class="modal-bd">
+    <button class="modal-x" type="button" onclick="document.getElementById('checkout').close()" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 id="ckt">Falta muito pouco!</h3>
+    <div class="modal-coupon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> 50% de desconto já aplicado</div>
+    <p class="sub">Preencha para garantir sua vaga na turma nova do Clube do Ukulele Academy.</p>
+    <form id="lead" novalidate>
+      <div class="field"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Ex: Mateus Augusto" required><p class="err" id="e-nome">Insira nome e sobrenome.</p></div>
+      <div class="field"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="hint" id="h-email">Corrigimos um possível erro de digitação. Confira se está certo.</p><p class="err" id="e-email">Verifique o e-mail.</p></div>
+      <div class="field"><label for="wa">WhatsApp</label>
+        <div class="phone">
+          <select id="ddi" aria-label="Código do país">
+            <option value="55" selected>Brasil +55</option>
+            <option value="351">Portugal +351</option>
+            <option value="1">EUA/Canadá +1</option>
+            <option value="244">Angola +244</option>
+            <option value="258">Moçambique +258</option>
+            <option value="34">Espanha +34</option>
+            <option value="44">Reino Unido +44</option>
+            <option value="">Outro país</option>
+          </select>
+          <input id="wa" name="tel" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000" required>
+        </div>
+        <p class="err" id="e-wa">Número com DDD (10 ou 11 dígitos).</p>
+      </div>
+      <button class="btn btn-cta btn-block" type="submit" id="go">Ir para o pagamento</button>
+      <p class="secure"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Ambiente 100% seguro pela Hotmart</p>
+    </form>
+  </div>
+</dialog>
+
+<script>
+/* ===== Player (facade: só carrega o iframe no clique) ===== */
+(function(){
+  var p=document.getElementById('player');
+  if(!p) return;
+  p.querySelector('img').src='https://i.ytimg.com/vi/'+VIDEO_ID+'/maxresdefault.jpg';
+  function go(){
+    p.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+VIDEO_ID+'?autoplay=1&rel=0&modestbranding=1" title="Clube do Ukulele Academy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    p.style.cursor='default';
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'vsl_play',video_id:VIDEO_ID});
+  }
+  p.addEventListener('click',go);
+  p.setAttribute('tabindex','0');
+  p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+})();
+
+/* ===== Contador ===== */
+(function(){
+  var fim=new Date(FIM_OFERTA).getTime(), box=document.getElementById('cd');
+  if(!box||isNaN(fim)) return;
+  var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
+  function z(n){return n<10?'0'+n:''+n;}
+  function tick(){
+    var t=fim-Date.now();
+    if(t<=0){box.hidden=true;return;}
+    box.hidden=false;
+    d.textContent=z(Math.floor(t/864e5));
+    h.textContent=z(Math.floor(t/36e5)%24);
+    m.textContent=z(Math.floor(t/6e4)%60);
+    s.textContent=z(Math.floor(t/1e3)%60);
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+/* ===== Bônus com prazo: some sozinho quando a data passa ===== */
+(function(){
+  document.querySelectorAll('.bonus-item[data-expira]').forEach(function(el){
+    var t=new Date(el.getAttribute('data-expira')).getTime();
+    if(!isNaN(t) && Date.now()>t) el.remove();
+  });
+  var lista=document.getElementById('bonus-list'), tit=document.getElementById('bonus-tit');
+  if(lista && !lista.querySelector('.bonus-item')){ lista.hidden=true; if(tit) tit.hidden=true; }
+})();
+
+/* ===== Modal de captura ===== */
+var dlg=document.getElementById('checkout');
+function abrirCheckout(origem){
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute('open','');
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'checkout_open',cta_origem:origem||'na'});
+}
+dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+
+var ddi=document.getElementById('ddi'), waIn=document.getElementById('wa');
+function maskWa(){
+  var v=waIn.value.replace(/\D/g,'');
+  if(ddi.value==='55'){
+    v=v.slice(0,11);
+    if(v.length>10) v=v.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3');
+    else if(v.length>6) v=v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3');
+    else if(v.length>2) v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+    waIn.value=v;
+  } else { waIn.value=v.slice(0,15); }
+}
+waIn.addEventListener('input',maskWa);
+ddi.addEventListener('change',function(){
+  waIn.value='';
+  waIn.placeholder = ddi.value==='55' ? '(00) 00000-0000' : 'Número com DDD';
+});
+
+/* Autocorreção de e-mail (evita login errado no checkout pré-preenchido) */
+var provFix={gmial:'gmail',gamil:'gmail',gmal:'gmail',gmaill:'gmail',gemail:'gmail',gnail:'gmail',hotmial:'hotmail',hotmai:'hotmail',hotmal:'hotmail',hormail:'hotmail',hotmaill:'hotmail',htomail:'hotmail',oulook:'outlook',outlok:'outlook',outloo:'outlook',outllok:'outlook',yaho:'yahoo',yahooo:'yahoo',yhoo:'yahoo',icoud:'icloud',iclod:'icloud'};
+var sufFix=[['.comm','.com'],['.cm','.com'],['.cmo','.com'],['.xom','.com'],['.con','.com'],['.coom','.com'],['.cm.br','.com.br'],['.con.br','.com.br'],['.com.brr','.com.br'],['.com.b','.com.br']];
+function fixEmail(val){
+  val=val.toLowerCase().trim(); if(val.indexOf('@')<0) return {v:val,c:false};
+  var p=val.split('@'),u=p[0],d=p[1],ch=false; if(!d) return {v:val,c:false};
+  var i=d.indexOf('.'); if(i<0) return {v:val,c:false};
+  var dn=d.slice(0,i),sf=d.slice(i);
+  if(provFix[dn]){dn=provFix[dn];ch=true;}
+  for(var k=0;k<sufFix.length;k++){ if(sf===sufFix[k][0]){sf=sufFix[k][1];ch=true;break;} }
+  return {v:u+'@'+dn+sf,c:ch};
+}
+function emailOk(v){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);}
+var emailIn=document.getElementById('email');
+emailIn.addEventListener('blur',function(){
+  var h=document.getElementById('h-email'); h.classList.remove('on');
+  if(!emailIn.value.trim()) return;
+  var r=fixEmail(emailIn.value);
+  if(r.c){ emailIn.value=r.v; h.classList.add('on'); setTimeout(function(){h.classList.remove('on');},6000); }
+});
+
+function cookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
+
+document.getElementById('lead').addEventListener('submit',function(e){
+  e.preventDefault();
+  var nome=document.getElementById('nome').value.trim();
+  var r=fixEmail(emailIn.value); if(r.c) emailIn.value=r.v;
+  var email=emailIn.value.trim();
+  var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
+  var ok=true;
+  function mark(id,cond){document.getElementById(id).classList.toggle('on',!cond);if(!cond)ok=false;}
+  mark('e-nome', nome.split(' ').filter(Boolean).length>=2);
+  mark('e-email', emailOk(email));
+  mark('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
+  if(!ok) return;
+  var btn=document.getElementById('go'); btn.textContent='Liberando…'; btn.disabled=true;
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',page_name:'destrava-oferta-academy'});
+  var url;
+  try{
+    url=new URL(CHECKOUT_URL);
+    url.searchParams.set('name',nome); url.searchParams.set('email',email);
+    url.searchParams.set('phonenumber',tel);
+    if(ddi.value) url.searchParams.set('phoneac',ddi.value);
+    var qp=new URLSearchParams(location.search), utms=[];
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
+    if(utms.length) url.searchParams.set('sck',utms.join('|'));
+    var uid=cookie('user_id'); if(uid) url.searchParams.set('xcod',uid);
+    url=url.toString();
+  }catch(_){ url=CHECKOUT_URL; }
+  setTimeout(function(){location.href=url;},400);
+});
+
+/* ===== Lightbox de depoimentos ===== */
+var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lb-img');
+document.querySelectorAll('.provas-grid button').forEach(function(b){
+  b.addEventListener('click',function(){
+    lbImg.src=b.dataset.src; lbImg.alt=b.querySelector('img').alt;
+    lb.showModal ? lb.showModal() : lb.setAttribute('open','');
+  });
+});
+lb.addEventListener('click',function(e){ if(e.target===lb || e.target===lbImg) lb.close(); });
+
+/* ===== Sticky CTA ===== */
+(function(){
+  var bar=document.getElementById('sticky'), hero=document.querySelector('.hero'), last=document.querySelector('[data-final]');
+  if(!bar||!hero) return; var t=false;
+  function upd(){ t=false;
+    var past=window.scrollY>hero.offsetHeight-80;
+    var fin=last&&last.getBoundingClientRect().top<window.innerHeight-40;
+    var on=past&&!fin;
+    if(on!==bar.classList.contains('show')){bar.classList.toggle('show',on);document.body.classList.toggle('sticky-on',on);bar.setAttribute('aria-hidden',on?'false':'true');}
+  }
+  addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(upd);}},{passive:true}); upd();
+})();
+
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'destrava-oferta-academy'});
+</script>
+</body>
+</html>
