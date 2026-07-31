@@ -51,19 +51,23 @@
         section{padding:56px 0}
 
         /* ===== Hero ===== */
-        .hero{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff;padding:14px 0 18px;text-align:center}
-        .hero-logo{height:38px;width:auto;display:block;margin:0 auto 9px}
+        .hero{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff;padding:12px 0 14px;text-align:center}
+        .hero-logo{height:34px;width:auto;display:block;margin:0 auto 8px}
         .hero .eyebrow{background:rgba(245,185,59,.16);color:var(--amber);border:1px solid rgba(245,185,59,.35);margin-bottom:9px;font-size:.66rem;padding:5px 11px}
-        .hero h1{font-size:1.34rem;margin-bottom:7px}
+        .hero h1{font-size:1.24rem;margin-bottom:6px}
         .hero h1 .hl{color:var(--amber)}
         .hero .sub{font-size:.92rem;color:#e0dced;font-weight:500;max-width:34ch;margin:0 auto}
+        .hero-dois{list-style:none;max-width:400px;margin:8px auto 0;display:grid;gap:5px;text-align:left}
+        .hero-dois li{display:flex;gap:8px;align-items:flex-start;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:7px 11px;font-size:.8rem;line-height:1.32;color:#e7e3f2;font-weight:600}
+        .hero-dois svg{width:15px;height:15px;color:var(--amber);flex:none;margin-top:2px}
+        .hero-dois b{color:var(--amber);font-weight:800}
 
         /* ===== Countdown ===== */
-        .cd{margin:12px auto 0;max-width:400px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:9px 11px}
+        .cd{margin:10px auto 0;max-width:400px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:8px 11px}
         .cd .lbl{font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
         .cd .clock{display:flex;gap:7px}
-        .cd .unit{background:var(--indigo-deep);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:5px 0;flex:1;text-align:center}
-        .cd .unit b{font-family:'Anton',sans-serif;font-size:1.2rem;display:block;line-height:1;color:#fff;font-weight:400}
+        .cd .unit{background:var(--indigo-deep);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:4px 0;flex:1;text-align:center}
+        .cd .unit b{font-family:'Anton',sans-serif;font-size:1.1rem;display:block;line-height:1;color:#fff;font-weight:400}
         .cd .unit small{font-size:.56rem;text-transform:uppercase;letter-spacing:.06em;color:#b7b0cc}
         .cd .deadline{margin-top:6px;font-size:.72rem;color:#cfc9e0;font-weight:600}
         
@@ -268,9 +272,12 @@
                 <img class="hero-logo" src="assets/logo-destrava-ukulele.png" alt="Destrava Ukulele" width="599" height="182" fetchpriority="high">
                 <span class="eyebrow">Só até domingo</span>
                 <h1 class="disp">As 3 aulas estão <span class="hl">no ar até domingo</span></h1>
-                <p class="sub">Assista de novo e baixe o PDF de cada aula.</p>
+                <ul class="hero-dois">
+                    <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg><span>As <b>3 aulas</b> para rever e os <b>3 materiais em PDF</b> para baixar</span></li>
+                    <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg><span>A <b>nova turma do Clube do Ukulele</b>, com a condição especial e os bônus do evento</span></li>
+                </ul>
                 <div class="cd" id="cd-hero" aria-live="polite">
-                    <div class="lbl" data-cd-label>Reprises e condição especial fecham em</div>
+                    <div class="lbl" data-cd-label>Tudo isso fecha em</div>
                     <div class="clock">
                         <div class="unit"><b data-cd="d">00</b><small>dias</small></div>
                         <div class="unit"><b data-cd="h">00</b><small>horas</small></div>
