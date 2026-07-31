@@ -778,26 +778,6 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
   tick(); setInterval(tick,1000);
 })();
 
-/* ===== Variante de vídeo (teste A/B do VTurb) =====
-   O player expõe em config.video.id QUAL vídeo foi servido — não o que está
-   escrito no HTML. Com o teste A/B desligado é sempre o mesmo; com o teste
-   ligado muda por visitante. Guardamos isso pra carimbar o GTM e o checkout,
-   senão não dá pra saber qual vídeo gerou a venda. */
-var VIDEO_VARIANT=null;
-(function(){
-  function ler(){
-    var el=document.querySelector('vturb-smartplayer'), c=el&&el.config;
-    if(!c||!c.video||!c.video.id) return false;
-    VIDEO_VARIANT={id:c.video.id,curto:c.video.id.slice(-6),nome:c.name||'',player:c.id||''};
-    window.dataLayer=window.dataLayer||[];
-    window.dataLayer.push({event:'video_variant',video_id:VIDEO_VARIANT.id,video_variant:VIDEO_VARIANT.curto,video_name:VIDEO_VARIANT.nome,video_player_id:VIDEO_VARIANT.player});
-    return true;
-  }
-  if(ler()) return;
-  var t=setInterval(function(){ if(ler()) clearInterval(t); },300);
-  setTimeout(function(){ clearInterval(t); },15000);
-})();
-
 var dlg=document.getElementById('checkout');
 function openCheckout(){ dlg.showModal ? dlg.showModal() : dlg.setAttribute('open',''); }
 dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
@@ -858,7 +838,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
   if(!ok) return;
   var btn=document.getElementById('go'); btn.textContent='Liberando…'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:uke,video_variant:VIDEO_VARIANT?VIDEO_VARIANT.curto:'na',video_id:VIDEO_VARIANT?VIDEO_VARIANT.id:''});
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:uke});
   var url;
   try{
     url=new URL(CHECKOUT_URL);
@@ -867,9 +847,6 @@ document.getElementById('lead').addEventListener('submit',function(e){
     if(ddi.value) url.searchParams.set('phoneac',ddi.value);
     var qp=new URLSearchParams(location.search), utms=[];
     ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
-    /* Carimba a variante de vídeo no sck. É o que faz a venda na Hotmart
-       voltar identificada por vídeo — sem isso, A, B e C viram um número só. */
-    if(VIDEO_VARIANT) utms.push('v'+VIDEO_VARIANT.curto);
     if(utms.length) url.searchParams.set('sck',utms.join('|'));
     var uid=cookie('user_id'); if(uid) url.searchParams.set('xcod',uid);
     url=url.toString();
