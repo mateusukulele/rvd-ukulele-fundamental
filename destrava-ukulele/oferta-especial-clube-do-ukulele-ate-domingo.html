@@ -59,9 +59,18 @@ section{padding:52px 0}
 .cta-note{font-size:.84rem;color:var(--muted);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px}
 .cta-note svg{width:15px;height:15px;color:var(--ok);flex:none}
 
-/* ===== Topo ===== */
-.topbar{background:var(--indigo-deep);padding:14px 0;text-align:center}
-.topbar img{height:38px;width:auto;margin:0 auto}
+/* ===== Topo fixo, com a contagem sempre à vista ===== */
+.topbar{background:var(--indigo-deep);padding:9px 0;position:sticky;top:0;z-index:50;box-shadow:0 4px 18px -6px rgba(0,0,0,.5)}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.topbar img{height:36px;width:auto;flex:none}
+.topbar-cd{display:flex;align-items:center;gap:8px;min-width:0}
+.topbar-cd .tb-lbl{font-size:.6rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#b7b0cc;line-height:1.15;text-align:right;max-width:8ch}
+.topbar-cd b{font-family:'Anton',sans-serif;font-weight:400;font-size:1.12rem;color:var(--amber);letter-spacing:.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(min-width:560px){
+  .topbar img{height:42px}
+  .topbar-cd .tb-lbl{font-size:.66rem;max-width:none}
+  .topbar-cd b{font-size:1.28rem}
+}
 
 /* ===== Hero ===== */
 .hero{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff;padding:30px 0 42px;text-align:center}
@@ -76,14 +85,6 @@ section{padding:52px 0}
 .trust{margin-top:16px;font-size:.85rem;color:#cfc9e0;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center}
 .trust span{display:inline-flex;align-items:center;gap:7px}
 .trust svg{width:15px;height:15px;color:var(--amber);flex:none}
-
-/* ===== Countdown ===== */
-.cd{margin:22px auto 0;max-width:420px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:14px 16px}
-.cd .lbl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-.cd .clock{display:flex;gap:8px}
-.cd .unit{background:var(--indigo-deep);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:9px 0;flex:1;text-align:center}
-.cd .unit b{font-family:'Anton',sans-serif;font-size:1.55rem;display:block;line-height:1;color:#fff}
-.cd .unit small{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:#b7b0cc}
 
 /* ===== Identificação ===== */
 .ident{background:var(--card)}
@@ -283,7 +284,13 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 </script>
 
 <header class="topbar">
-  <div class="wrap"><img src="assets/logo-clube.webp" alt="Clube do Ukulele" width="140" height="38"></div>
+  <div class="wrap topbar-in">
+    <img src="assets/logo-clube.webp" alt="Clube do Ukulele" width="600" height="600">
+    <div class="topbar-cd" id="topbar-cd" hidden>
+      <span class="tb-lbl">Promoção acaba em</span>
+      <b id="cd-clock">…</b>
+    </div>
+  </div>
 </header>
 
 <!-- ===================== HERO + VÍDEO ===================== -->
@@ -307,15 +314,6 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       </p>
     </div>
 
-    <div class="cd" id="cd" hidden>
-      <div class="lbl">A promoção acaba em</div>
-      <div class="clock">
-        <div class="unit"><b id="cd-d">00</b><small>dias</small></div>
-        <div class="unit"><b id="cd-h">00</b><small>horas</small></div>
-        <div class="unit"><b id="cd-m">00</b><small>min</small></div>
-        <div class="unit"><b id="cd-s">00</b><small>seg</small></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -604,7 +602,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 </section>
 
 <footer>
-  <img src="assets/logo-clube.webp" alt="Clube do Ukulele" width="140" height="38" loading="lazy">
+  <img src="assets/logo-clube.webp" alt="Clube do Ukulele" width="600" height="600" loading="lazy">
   <p class="cp">Clube do Ukulele · Mateus Augusto · Todos os direitos reservados</p>
 </footer>
 
@@ -682,25 +680,24 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 </div>
 
 <script>
-/* ===== Contador ===== */
+/* ===== Contador da promoção =====
+   Vive no cabeçalho fixo, então acompanha a pessoa a página inteira.
+   O mesmo relógio aparece dentro da caixa de preço. */
 (function(){
-  var fim=new Date(FIM_OFERTA).getTime(), box=document.getElementById('cd');
-  if(!box||isNaN(fim)) return;
-  var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
-  var precoCd=document.getElementById('price-cd');
+  var fim=new Date(FIM_OFERTA).getTime();
+  if(isNaN(fim)) return;
+  var caixa=document.getElementById('topbar-cd'),
+      topo=document.getElementById('cd-clock'),
+      preco=document.getElementById('price-cd');
   function z(n){return n<10?'0'+n:''+n;}
+  function relogio(t){
+    return (t>=864e5 ? Math.floor(t/864e5)+'d ' : '')+z(Math.floor(t/36e5)%24)+':'+z(Math.floor(t/6e4)%60)+':'+z(Math.floor(t/1e3)%60);
+  }
   function tick(){
-    var t=fim-Date.now();
-    if(precoCd){
-      precoCd.textContent = t<=0 ? 'Encerrado'
-        : (t>=864e5 ? Math.floor(t/864e5)+'d ' : '')+z(Math.floor(t/36e5)%24)+':'+z(Math.floor(t/6e4)%60)+':'+z(Math.floor(t/1e3)%60);
-    }
-    if(t<=0){box.hidden=true;return;}
-    box.hidden=false;
-    d.textContent=z(Math.floor(t/864e5));
-    h.textContent=z(Math.floor(t/36e5)%24);
-    m.textContent=z(Math.floor(t/6e4)%60);
-    s.textContent=z(Math.floor(t/1e3)%60);
+    var t=fim-Date.now(), txt = t<=0 ? 'Encerrado' : relogio(t);
+    if(topo) topo.textContent=txt;
+    if(preco) preco.textContent=txt;
+    if(caixa) caixa.hidden=false;
   }
   tick(); setInterval(tick,1000);
 })();
