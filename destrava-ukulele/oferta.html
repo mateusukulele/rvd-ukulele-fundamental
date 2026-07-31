@@ -142,6 +142,8 @@ section{padding:52px 0}
 .bi-timer{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--indigo-deep);background:var(--amber);padding:5px 11px;border-radius:999px;white-space:nowrap}
 .bonus-item b{display:block;color:var(--indigo-deep);font-size:1.04rem;line-height:1.3}
 .bonus-item p{color:var(--muted);font-size:.92rem;margin-top:4px}
+.bonus-item.desconto{border-color:var(--amber);background:#fdf6e6}
+.bonus-item.desconto .bi-num{color:var(--amber-deep)}
 .bonus-item.expirado{border-color:var(--line);background:#f3f1f6;opacity:.62}
 .bonus-item.expirado b{text-decoration:line-through;color:#8b849e}
 .bonus-item.expirado p{color:#9a94ab}
@@ -157,6 +159,8 @@ section{padding:52px 0}
 .preco{background:var(--bg)}
 .box-preco{max-width:520px;margin:0 auto;background:var(--card);border:2px solid var(--amber);border-radius:24px;padding:30px 24px;text-align:center;box-shadow:0 24px 50px -24px rgba(45,34,73,.4)}
 .box-preco .selo{display:inline-block;background:var(--coral);color:#fff;font-weight:800;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+.price-cd{margin:0 0 14px;font-size:.84rem;font-weight:700;color:var(--muted)}
+.price-cd b{display:block;font-family:'Anton',sans-serif;font-weight:400;font-size:1.5rem;color:var(--cta);letter-spacing:.02em;margin-top:2px}
 .box-preco .ancora{color:var(--muted);font-size:.95rem}
 .box-preco .ancora s{opacity:.8}
 .box-preco .parcela{font-family:'Anton',sans-serif;font-size:2.7rem;color:var(--indigo-deep);line-height:1.05;margin:8px 0 2px}
@@ -497,6 +501,11 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
           <b>Pedido de música</b>
           <p>Os cinco primeiros inscritos podem pedir uma música pra eu gravar e colocar na biblioteca do Clube. Cada um pede a sua.</p>
         </li>
+        <li class="bonus-item desconto" data-expira="2026-08-02T23:59:00-03:00">
+          <div class="bi-top"><span class="bi-num">E no domingo</span><span class="bi-timer" data-bonus-timer>…</span></div>
+          <b>O desconto de 50% também acaba</b>
+          <p>Domingo às 23h59 não fecha só o último bônus: fecha a promoção inteira. Depois disso o Clube volta a R$ 1.200 por um ano de acesso.</p>
+        </li>
       </ul>
       <div class="bonus-aviso">
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 3h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
@@ -516,6 +525,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
     </div>
     <div class="box-preco">
       <span class="selo">50% de desconto</span>
+      <p class="price-cd">Este preço acaba domingo, 23h59. Faltam <b id="price-cd">…</b></p>
       <p class="ancora">Um ano de acesso custa <s>R$ 1.200</s></p>
       <p class="parcela">12x R$ 59,99<small>no cartão</small></p>
       <p class="avista">ou R$ 580 à vista</p>
@@ -655,9 +665,14 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
   var fim=new Date(FIM_OFERTA).getTime(), box=document.getElementById('cd');
   if(!box||isNaN(fim)) return;
   var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
+  var precoCd=document.getElementById('price-cd');
   function z(n){return n<10?'0'+n:''+n;}
   function tick(){
     var t=fim-Date.now();
+    if(precoCd){
+      precoCd.textContent = t<=0 ? 'Encerrado'
+        : (t>=864e5 ? Math.floor(t/864e5)+'d ' : '')+z(Math.floor(t/36e5)%24)+':'+z(Math.floor(t/6e4)%60)+':'+z(Math.floor(t/1e3)%60);
+    }
     if(t<=0){box.hidden=true;return;}
     box.hidden=false;
     d.textContent=z(Math.floor(t/864e5));
@@ -697,7 +712,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
     if(proxBonus){
       if(proximo){
         proxBonus.hidden=false;
-        proxBonus.innerHTML='O próximo bônus a fechar é "'+proximo.nome+'", em <b>'+relogio(proximo.falta)+'</b>';
+        proxBonus.innerHTML='O próximo a fechar é "'+proximo.nome+'", em <b>'+relogio(proximo.falta)+'</b>';
       } else { proxBonus.hidden=true; }
     }
   }
