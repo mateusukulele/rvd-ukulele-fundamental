@@ -28,7 +28,11 @@
 :root{
   --indigo:#443468; --indigo-deep:#2D2249; --amber:#F5B93B; --amber-deep:#D9971C;
   --coral:#E87A85; --bg:#F5F4F7; --card:#fff; --ink:#2D2249; --muted:#6b6480;
-  --line:#e6e3ee; --cta:#C2410C; --ok:#1B8A5A;
+  --line:#e6e3ee; --ok:#0B7A6E;
+  /* Verde teal dos botões de venda. Duas variantes por contraste:
+     a escura leva texto branco e vive sobre fundo claro (4,9:1);
+     a clara leva texto índigo e vive sobre o fundo índigo (6,3:1). */
+  --cta:#0B7A6E; --cta-h:#095F56; --cta-lt:#14B8A6; --cta-lt-h:#0FA192;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -46,10 +50,10 @@ section{padding:52px 0}
 
 /* ===== Botões ===== */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.02rem;text-transform:uppercase;letter-spacing:.02em;padding:18px 28px;border-radius:16px;border:none;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;line-height:1.15;text-align:center}
-.btn-amber{background:var(--amber);color:var(--indigo-deep);box-shadow:0 12px 24px -8px rgba(245,185,59,.6)}
-.btn-amber:hover{background:var(--amber-deep);transform:translateY(-2px)}
-.btn-cta{background:var(--cta);color:#fff;box-shadow:0 12px 24px -8px rgba(194,65,12,.55)}
-.btn-cta:hover{background:#9a330a;transform:translateY(-2px)}
+.btn-teal{background:var(--cta-lt);color:var(--indigo-deep);box-shadow:0 12px 24px -8px rgba(20,184,166,.5)}
+.btn-teal:hover{background:var(--cta-lt-h);transform:translateY(-2px)}
+.btn-cta{background:var(--cta);color:#fff;box-shadow:0 12px 24px -8px rgba(11,122,110,.5)}
+.btn-cta:hover{background:var(--cta-h);transform:translateY(-2px)}
 .btn-block{width:100%}
 .cta-inline{text-align:center;margin-top:30px}
 .cta-note{font-size:.84rem;color:var(--muted);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px}
@@ -79,7 +83,7 @@ section{padding:52px 0}
 .cd .clock{display:flex;gap:8px}
 .cd .unit{background:var(--indigo-deep);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:9px 0;flex:1;text-align:center}
 .cd .unit b{font-family:'Anton',sans-serif;font-size:1.55rem;display:block;line-height:1;color:#fff}
-.cd .unit small{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:#b7b0cc}
+.cd .unit small{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:#b7b0cc}
 
 /* ===== Identificação ===== */
 .ident{background:var(--card)}
@@ -121,7 +125,7 @@ section{padding:52px 0}
 .provas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px;margin:0 auto}
 .provas-grid button{border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:6px;cursor:pointer;overflow:hidden;transition:transform .15s,box-shadow .15s}
 .provas-grid button:hover{transform:translateY(-3px);box-shadow:0 14px 28px -14px rgba(45,34,73,.45)}
-.provas-grid img{border-radius:10px}
+.provas-grid img{border-radius:10px;width:100%;aspect-ratio:1;object-fit:cover}
 
 /* ===== Oferta ===== */
 .oferta{background:var(--indigo-deep);color:#fff}
@@ -187,8 +191,8 @@ section{padding:52px 0}
 
 /* ===== FAQ ===== */
 .faq{max-width:720px;margin:0 auto;display:grid;gap:10px}
-.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-.faq summary{font-weight:700;color:var(--indigo-deep);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:1rem}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 18px}
+.faq summary{font-weight:700;color:var(--indigo-deep);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:1rem;min-height:52px;padding:8px 0}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";font-family:'Anton',sans-serif;color:var(--amber-deep);font-size:1.4rem;line-height:1;flex:none}
 .faq details[open] summary::after{content:"–"}
@@ -211,33 +215,30 @@ footer .cp{opacity:.7;font-size:.76rem;margin-top:6px}
 .sticky .btn{padding:15px 20px;font-size:.95rem;width:100%}
 body.sticky-on{padding-bottom:78px}
 
-/* ===== Modal ===== */
-dialog.modal{width:min(30rem,92vw);max-height:92vh;overflow-y:auto;border:0;border-radius:24px;padding:0;background:#fff;color:var(--ink);box-shadow:0 30px 70px -20px rgba(0,0,0,.5)}
-dialog.modal::backdrop{background:rgba(45,34,73,.6);backdrop-filter:blur(4px)}
-.modal-bd{padding:clamp(1.4rem,4vw,2rem);position:relative}
-.modal-x{position:absolute;top:.8rem;right:.8rem;width:2.1rem;height:2.1rem;border:0;border-radius:999px;background:var(--bg);color:var(--muted);display:grid;place-items:center;cursor:pointer}
-.modal-x:hover{background:var(--line);color:var(--ink)}
-.modal h3{text-align:center;font-size:1.28rem;color:var(--indigo-deep)}
-.modal .sub{text-align:center;color:var(--muted);font-size:.88rem;margin:.4rem 0 1.2rem}
-.modal-coupon{display:flex;align-items:center;justify-content:center;gap:.4rem;width:fit-content;margin:.7rem auto 0;background:linear-gradient(90deg,var(--coral),#d95f6c);color:#fff;font-weight:800;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;padding:.45rem .9rem;border-radius:999px;box-shadow:0 6px 16px -6px rgba(232,122,133,.6)}
-.modal-coupon svg{width:.9rem;height:.9rem;flex-shrink:0}
-.field{margin-bottom:.9rem}
-.field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0 0 .35rem .3rem}
-.field input{width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);font:inherit;font-size:15px;color:var(--ink)}
-.field input:focus{outline:0;border-color:var(--indigo);background:#fff}
-.phone{display:flex;gap:.5rem}
-.phone select{flex-shrink:0;max-width:42%;border:1px solid var(--line);border-radius:12px;background:var(--bg);font:inherit;font-size:13.5px;color:var(--ink);padding:.85rem .5rem}
-.phone select:focus{outline:0;border-color:var(--indigo)}
-.phone input{flex:1;min-width:0}
-.hint{font-size:11px;color:#B26B00;font-weight:600;margin:.35rem 0 0 .3rem;display:none}
-.hint.on{display:block}
-.err{color:#D93A3A;font-size:11px;font-weight:600;margin:.3rem 0 0 .3rem;display:none}
-.err.on{display:block}
-.secure{text-align:center;font-size:11px;color:var(--muted);margin-top:.8rem;display:flex;gap:.35rem;justify-content:center;align-items:center}
-.secure svg{width:14px;height:14px;color:var(--ok)}
+/* ===== Popup de captura (mesmos IDs do sistema existente) ===== */
+#capture-modal{position:fixed;inset:0;z-index:99999;background:rgba(45,34,73,.85);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:1rem;opacity:0;transition:opacity .3s ease;overflow-y:auto}
+#capture-modal.modal-active{display:flex}
+#capture-modal.modal-visible{opacity:1}
+#modal-content{width:100%;max-width:450px;background:#fff;border-radius:1.5rem;padding:clamp(1.3rem,5vw,2rem);box-shadow:0 25px 50px -12px rgba(0,0,0,.35);transform:scale(.95);transition:transform .3s ease;position:relative;margin:auto}
+#capture-modal.modal-visible #modal-content{transform:scale(1)}
+#ddi-menu{position:absolute;top:100%;left:0;margin-top:.25rem;width:14rem;background:#fff;border:1px solid #e2e8f0;border-radius:.75rem;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);z-index:50;max-height:15rem;overflow-y:auto;display:none;list-style:none}
+#ddi-menu.show-ddi{display:block}
+.custom-scrollbar::-webkit-scrollbar{width:6px}
+.custom-scrollbar::-webkit-scrollbar-thumb{background:#c1c1c1;border-radius:8px}
+.error-msg{display:none;color:#B45309;font-size:.75rem;font-weight:600;margin-top:.25rem}
+.mdl-title{font-family:'Anton',sans-serif;font-weight:400;font-size:1.5rem;color:var(--indigo-deep);text-transform:uppercase;letter-spacing:.01em;line-height:1.1}
+.mdl-sub{margin:.5rem 0 1.3rem;font-size:.88rem;color:#5b5470;font-weight:500}
+.mdl-selo{display:inline-flex;align-items:center;gap:.4rem;background:var(--coral);color:#fff;font-weight:800;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:.4rem .8rem;border-radius:999px;margin-bottom:.9rem}
+.fld{margin-bottom:1rem}
+.fld label{display:block;font-size:.8rem;font-weight:700;color:var(--indigo);margin-bottom:.35rem}
+.fld input{width:100%;border-radius:.75rem;border:1px solid #e2e8f0;background:#f8fafc;padding:.85rem 1rem;color:#0f172a;outline:none;font-family:inherit;font-size:16px}
+.fld input:focus{border-color:var(--amber)}
+.mdl-submit{width:100%;border-radius:1rem;padding:1rem;font-family:'Montserrat',sans-serif;font-size:1.02rem;letter-spacing:.02em;color:#fff;font-weight:800;border:none;cursor:pointer;text-transform:uppercase;background:var(--cta);transition:background .2s;min-height:56px}
+.mdl-submit:hover{background:var(--cta-h)}
+#ddi-button,#ddi-menu,.ddi-option{font-family:'Montserrat',sans-serif}
 
 /* ===== Lightbox ===== */
-dialog.lightbox{border:0;background:transparent;padding:0;max-width:min(94vw,560px);max-height:94vh;overflow:visible}
+dialog.lightbox{border:0;background:transparent;padding:0;margin:auto;max-width:min(94vw,560px);max-height:94vh;overflow:visible}
 dialog.lightbox::backdrop{background:rgba(45,34,73,.82);backdrop-filter:blur(4px)}
 dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);display:block}
 .lb-x{position:absolute;top:-14px;right:-14px;width:2.4rem;height:2.4rem;border:0;border-radius:999px;background:#fff;color:var(--indigo-deep);display:grid;place-items:center;cursor:pointer;z-index:2;box-shadow:0 6px 16px -4px rgba(0,0,0,.5)}
@@ -298,7 +299,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
     <script>var s=document.createElement("script");s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a6cad93c23364c140db5b59/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 
     <div class="hero-cta">
-      <button class="btn btn-amber" type="button" onclick="abrirCheckout('hero')">Quero entrar no Clube do Ukulele</button>
+      <button class="btn btn-teal" type="button" onclick="abrirPopupForm(event)" data-cta="hero">Quero entrar no Clube do Ukulele</button>
       <p class="trust">
         <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 50% de desconto até domingo</span>
         <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 30 dias de garantia</span>
@@ -338,7 +339,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg><span>Você nem tem ukulele ainda, e fica em dúvida se compra ou se desiste antes de começar.</span></li>
     </ul>
     <div class="cta-inline">
-      <button class="btn btn-cta" type="button" onclick="abrirCheckout('ident')">Quero aprender com acompanhamento</button>
+      <button class="btn btn-cta" type="button" onclick="abrirPopupForm(event)" data-cta="ident">Quero aprender com acompanhamento</button>
     </div>
   </div>
 </section>
@@ -380,7 +381,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       <h2>A sua Netflix do ukulele</h2>
       <p>A minha escola online. Funciona como uma academia: você entra e tem acesso ilimitado a tudo por um ano inteiro.</p>
     </div>
-    <img class="mockup" src="assets/mockup-plataforma.webp" alt="Plataforma do Clube do Ukulele com as aulas" width="520" height="330" loading="lazy">
+    <img class="mockup" src="assets/mockup-plataforma.webp" alt="Plataforma do Clube do Ukulele com as aulas" width="609" height="335" loading="lazy">
     <div class="entregas">
       <div class="ent">
         <span class="tag">01</span>
@@ -424,7 +425,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       </div>
     </div>
     <div class="cta-inline">
-      <button class="btn btn-cta" type="button" onclick="abrirCheckout('entregas')">Quero minha vaga na turma nova</button>
+      <button class="btn btn-cta" type="button" onclick="abrirPopupForm(event)" data-cta="entregas">Quero minha vaga na turma nova</button>
     </div>
   </div>
 </section>
@@ -438,11 +439,11 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       <p>Toque para ampliar.</p>
     </div>
     <div class="provas-grid">
-      <button type="button" data-src="assets/dep-aline.webp"><img src="assets/dep-aline.webp" alt="Depoimento da aluna Aline" loading="lazy"></button>
-      <button type="button" data-src="assets/dep-leila.webp"><img src="assets/dep-leila.webp" alt="Depoimento da aluna Leila" loading="lazy"></button>
-      <button type="button" data-src="assets/dep-marcelo.webp"><img src="assets/dep-marcelo.webp" alt="Depoimento do aluno Marcelo" loading="lazy"></button>
-      <button type="button" data-src="assets/dep-maria.webp"><img src="assets/dep-maria.webp" alt="Depoimento da aluna Maria" loading="lazy"></button>
-      <button type="button" data-src="assets/dep-wellen.webp"><img src="assets/dep-wellen.webp" alt="Depoimento da aluna Wellen" loading="lazy"></button>
+      <button type="button" data-src="assets/dep-aline.webp"><img src="assets/dep-aline.webp" alt="Depoimento da aluna Aline" width="1080" height="1080" loading="lazy"></button>
+      <button type="button" data-src="assets/dep-leila.webp"><img src="assets/dep-leila.webp" alt="Depoimento da aluna Leila" width="1080" height="1080" loading="lazy"></button>
+      <button type="button" data-src="assets/dep-marcelo.webp"><img src="assets/dep-marcelo.webp" alt="Depoimento do aluno Marcelo" width="1080" height="1080" loading="lazy"></button>
+      <button type="button" data-src="assets/dep-maria.webp"><img src="assets/dep-maria.webp" alt="Depoimento da aluna Maria" width="1080" height="1080" loading="lazy"></button>
+      <button type="button" data-src="assets/dep-wellen.webp"><img src="assets/dep-wellen.webp" alt="Depoimento da aluna Wellen" width="1080" height="1080" loading="lazy"></button>
     </div>
   </div>
 </section>
@@ -537,7 +538,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       <p class="parcela">12x R$ 59,99<small>no cartão</small></p>
       <p class="avista">ou R$ 580 à vista</p>
       <div class="trava">Este desconto não vale só pro primeiro ano. Enquanto você fizer parte do Clube, ele vale para todos os anos com a gente, e não aumenta.</div>
-      <button class="btn btn-cta btn-block" type="button" onclick="abrirCheckout('preco')">Garantir minha vaga agora</button>
+      <button class="btn btn-cta btn-block" type="button" onclick="abrirPopupForm(event)" data-cta="preco">Garantir minha vaga agora</button>
       <p class="cta-note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Acesso liberado na hora, direto no seu e-mail</p>
     </div>
     <div class="garantia">
@@ -561,7 +562,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 <section class="sobre">
   <div class="wrap">
     <div class="in">
-      <img src="assets/mateus.webp" alt="Mateus Augusto" width="190" height="190" loading="lazy">
+      <img src="assets/mateus.webp" alt="Mateus Augusto" width="1000" height="1250" loading="lazy">
       <div>
         <h2>Quem vai te acompanhar</h2>
         <p class="role">Mateus Augusto</p>
@@ -597,7 +598,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
   <div class="wrap">
     <h2 class="disp">A promoção vai <span class="hl">até domingo</span></h2>
     <p>Depois de domingo o desconto acaba e a turma fecha. Se você chegou até aqui, já sabe o que está travando. Falta resolver.</p>
-    <button class="btn btn-amber" type="button" onclick="abrirCheckout('final')">Entrar no Clube do Ukulele</button>
+    <button class="btn btn-teal" type="button" onclick="abrirPopupForm(event)" data-cta="final">Entrar no Clube do Ukulele</button>
     <p class="cta-note" style="color:#cfc9e0;margin-top:16px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 30 dias de garantia incondicional</p>
   </div>
 </section>
@@ -609,7 +610,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 
 <!-- ===================== STICKY ===================== -->
 <div class="sticky" id="sticky" aria-hidden="true">
-  <div class="in"><button class="btn btn-amber" type="button" onclick="abrirCheckout('sticky')">Quero minha vaga no Clube</button></div>
+  <div class="in"><button class="btn btn-teal" type="button" onclick="abrirPopupForm(event)" data-cta="sticky">Quero minha vaga no Clube</button></div>
 </div>
 
 <!-- ===================== LIGHTBOX ===================== -->
@@ -618,37 +619,67 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
   <img id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Depoimento ampliado">
 </dialog>
 
-<!-- ===================== MODAL DE CAPTURA ===================== -->
-<dialog class="modal" id="checkout" aria-labelledby="ckt">
-  <div class="modal-bd">
-    <button class="modal-x" type="button" onclick="document.getElementById('checkout').close()" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    <h3 id="ckt">Falta muito pouco!</h3>
-    <div class="modal-coupon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> 50% de desconto já aplicado</div>
-    <p class="sub">Preencha para garantir sua vaga na turma nova do Clube do Ukulele Academy.</p>
-    <form id="lead" novalidate>
-      <div class="field"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Ex: Mateus Augusto" required><p class="err" id="e-nome">Insira nome e sobrenome.</p></div>
-      <div class="field"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="hint" id="h-email">Corrigimos um possível erro de digitação. Confira se está certo.</p><p class="err" id="e-email">Verifique o e-mail.</p></div>
-      <div class="field"><label for="wa">WhatsApp</label>
-        <div class="phone">
-          <select id="ddi" aria-label="Código do país">
-            <option value="55" selected>Brasil +55</option>
-            <option value="351">Portugal +351</option>
-            <option value="1">EUA/Canadá +1</option>
-            <option value="244">Angola +244</option>
-            <option value="258">Moçambique +258</option>
-            <option value="34">Espanha +34</option>
-            <option value="44">Reino Unido +44</option>
-            <option value="">Outro país</option>
-          </select>
-          <input id="wa" name="tel" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000" required>
-        </div>
-        <p class="err" id="e-wa">Número com DDD (10 ou 11 dígitos).</p>
+<!-- ===================== POPUP DE CAPTURA =====================
+     Mesma marcação e mesmos IDs das outras páginas do Clube
+     (ev-inscricao, reprises, ve-matricula), pra não quebrar as tags
+     do GTM que escutam #lead-form e os campos lead-nome/email/whatsapp. -->
+<div id="capture-modal">
+  <div id="modal-content">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.4rem">
+      <h3 class="mdl-title" style="margin:0">Falta pouco!</h3>
+      <button onclick="fecharPopupForm()" aria-label="Fechar" style="cursor:pointer;border:none;background:#f1f5f9;padding:.5rem;border-radius:9999px;flex:none;line-height:0">
+        <svg style="width:1.25rem;height:1.25rem;color:#64748b" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <span class="mdl-selo">50% de desconto já aplicado</span>
+    <p class="mdl-sub">Preencha os campos abaixo e a gente te leva direto para o pagamento com os dados já preenchidos.</p>
+
+    <form id="lead-form" autocomplete="off" onsubmit="enviarLeadGTM(event)">
+      <div class="fld">
+        <label for="lead-nome">Nome *</label>
+        <input required type="text" id="lead-nome" name="lead-nome" autocomplete="name" placeholder="Seu nome completo">
+        <p id="erro-nome" class="error-msg">Por favor, insira pelo menos nome e sobrenome.</p>
       </div>
-      <button class="btn btn-cta btn-block" type="submit" id="go">Ir para o pagamento</button>
-      <p class="secure"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Ambiente 100% seguro pela Hotmart</p>
+      <div class="fld">
+        <label for="lead-email">E-mail *</label>
+        <input required type="email" id="lead-email" name="lead-email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@melhoremail.com">
+        <p id="erro-email" class="error-msg" style="color:#B45309">Corrigimos um pequeno erro de digitação no seu e-mail!</p>
+      </div>
+      <div class="fld">
+        <label for="lead-whatsapp">WhatsApp *</label>
+        <div style="display:flex;border-radius:.75rem;border:1px solid #e2e8f0;background:#f8fafc">
+          <div style="position:relative;display:flex;align-items:center;border-right:1px solid #e2e8f0;user-select:none" id="ddi-container">
+            <input type="hidden" id="lead-ddi" value="55">
+            <button type="button" id="ddi-button" style="display:flex;align-items:center;padding:.75rem;font-size:.875rem;color:#334155;background:transparent;border:none;cursor:pointer">
+              <img loading="lazy" src="https://flagcdn.com/w20/br.png" alt="BR" id="ddi-selected-flag" style="width:1.25rem;margin-right:.375rem;border-radius:2px">
+              <span id="ddi-selected-text" style="font-weight:600">+55</span>
+              <svg style="height:1rem;width:1rem;margin-left:.25rem;color:#94a3b8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <ul id="ddi-menu" class="custom-scrollbar">
+              <li class="ddi-option" data-value="55" data-code="br" style="padding:.6rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img loading="lazy" src="https://flagcdn.com/w20/br.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Brasil (+55)</span></li>
+              <li class="ddi-option" data-value="1" data-code="us" style="padding:.6rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img loading="lazy" src="https://flagcdn.com/w20/us.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Estados Unidos (+1)</span></li>
+              <li class="ddi-option" data-value="351" data-code="pt" style="padding:.6rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img loading="lazy" src="https://flagcdn.com/w20/pt.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Portugal (+351)</span></li>
+              <li class="ddi-option" data-value="244" data-code="ao" style="padding:.6rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img loading="lazy" src="https://flagcdn.com/w20/ao.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Angola (+244)</span></li>
+              <li class="ddi-option" data-value="258" data-code="mz" style="padding:.6rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><img loading="lazy" src="https://flagcdn.com/w20/mz.png" style="width:1.25rem;margin-right:.75rem"><span style="color:#334155;font-weight:500">Moçambique (+258)</span></li>
+              <li class="ddi-option" data-value="other" data-code="other" style="padding:.6rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><svg style="width:1.25rem;height:1.25rem;color:#94a3b8;margin-right:.75rem" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span style="color:#334155;font-weight:500">Outro...</span></li>
+            </ul>
+          </div>
+          <input required type="tel" id="lead-whatsapp" name="lead-whatsapp" style="width:100%;background:transparent;padding:.85rem 1rem;color:#0f172a;outline:none;border:none;font-family:inherit;font-size:16px" placeholder="(00) 00000-0000" maxlength="20">
+        </div>
+        <p id="erro-whatsapp" class="error-msg">Insira um número válido com DDD.</p>
+      </div>
+
+      <input type="hidden" id="phone_hidden">
+
+      <button type="submit" class="mdl-submit">Ir para o pagamento</button>
     </form>
+
+    <div style="margin-top:1.1rem;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:#94a3b8">
+      <svg style="margin-right:.375rem;height:1rem;width:1rem" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      Suas informações estão 100% seguras.
+    </div>
   </div>
-</dialog>
+</div>
 
 <script>
 /* ===== Contador ===== */
@@ -710,84 +741,161 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
   tick(); setInterval(tick,1000);
 })();
 
-/* ===== Modal de captura ===== */
-var dlg=document.getElementById('checkout');
-function abrirCheckout(origem){
-  dlg.showModal ? dlg.showModal() : dlg.setAttribute('open','');
-  window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'checkout_open',cta_origem:origem||'na'});
-}
-dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+/* ===== Popup de captura =====
+   Mesma mecânica das outras páginas do Clube: abre por classe (não é
+   <dialog>), fecha no clique fora e no Esc, e manda pro dataLayer as
+   chaves com o nome exato dos campos. */
+var ORIGEM='oferta-especial-clube-do-ukulele-ate-domingo';
+var ctaOrigem='nao-informado';
 
-var ddi=document.getElementById('ddi'), waIn=document.getElementById('wa');
-function maskWa(){
-  var v=waIn.value.replace(/\D/g,'');
-  if(ddi.value==='55'){
-    v=v.slice(0,11);
-    if(v.length>10) v=v.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3');
-    else if(v.length>6) v=v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3');
-    else if(v.length>2) v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
-    waIn.value=v;
-  } else { waIn.value=v.slice(0,15); }
+function abrirPopupForm(event){
+  if(event){
+    event.preventDefault();
+    var src=event.currentTarget && event.currentTarget.getAttribute('data-cta');
+    if(src) ctaOrigem=src;
+  }
+  document.getElementById('erro-nome').style.display='none';
+  document.getElementById('erro-email').style.display='none';
+  document.getElementById('erro-whatsapp').style.display='none';
+  var modal=document.getElementById('capture-modal');
+  modal.classList.add('modal-active');
+  document.body.style.overflow='hidden';
+  setTimeout(function(){modal.classList.add('modal-visible');},10);
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'checkout_popup_open',origem:ORIGEM,cta_origem:ctaOrigem});
 }
-waIn.addEventListener('input',maskWa);
-ddi.addEventListener('change',function(){
-  waIn.value='';
-  waIn.placeholder = ddi.value==='55' ? '(00) 00000-0000' : 'Número com DDD';
+function fecharPopupForm(){
+  var modal=document.getElementById('capture-modal');
+  modal.classList.remove('modal-visible');
+  document.body.style.overflow='';
+  setTimeout(function(){modal.classList.remove('modal-active');},300);
+}
+document.getElementById('capture-modal').addEventListener('click',function(e){
+  if(e.target===this) fecharPopupForm();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape' && document.getElementById('capture-modal').classList.contains('modal-active')) fecharPopupForm();
 });
 
-/* Autocorreção de e-mail (evita login errado no checkout pré-preenchido) */
-var provFix={gmial:'gmail',gamil:'gmail',gmal:'gmail',gmaill:'gmail',gemail:'gmail',gnail:'gmail',hotmial:'hotmail',hotmai:'hotmail',hotmal:'hotmail',hormail:'hotmail',hotmaill:'hotmail',htomail:'hotmail',oulook:'outlook',outlok:'outlook',outloo:'outlook',outllok:'outlook',yaho:'yahoo',yahooo:'yahoo',yhoo:'yahoo',icoud:'icloud',iclod:'icloud'};
-var sufFix=[['.comm','.com'],['.cm','.com'],['.cmo','.com'],['.xom','.com'],['.con','.com'],['.coom','.com'],['.cm.br','.com.br'],['.con.br','.com.br'],['.com.brr','.com.br'],['.com.b','.com.br']];
-function fixEmail(val){
-  val=val.toLowerCase().trim(); if(val.indexOf('@')<0) return {v:val,c:false};
-  var p=val.split('@'),u=p[0],d=p[1],ch=false; if(!d) return {v:val,c:false};
-  var i=d.indexOf('.'); if(i<0) return {v:val,c:false};
-  var dn=d.slice(0,i),sf=d.slice(i);
-  if(provFix[dn]){dn=provFix[dn];ch=true;}
-  for(var k=0;k<sufFix.length;k++){ if(sf===sufFix[k][0]){sf=sufFix[k][1];ch=true;break;} }
-  return {v:u+'@'+dn+sf,c:ch};
-}
-function emailOk(v){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);}
-var emailIn=document.getElementById('email');
-emailIn.addEventListener('blur',function(){
-  var h=document.getElementById('h-email'); h.classList.remove('on');
-  if(!emailIn.value.trim()) return;
-  var r=fixEmail(emailIn.value);
-  if(r.c){ emailIn.value=r.v; h.classList.add('on'); setTimeout(function(){h.classList.remove('on');},6000); }
+var ddiButton=document.getElementById('ddi-button');
+var ddiMenu=document.getElementById('ddi-menu');
+var ddiInput=document.getElementById('lead-ddi');
+var phoneInput=document.getElementById('lead-whatsapp');
+
+ddiButton.addEventListener('click',function(e){e.preventDefault();ddiMenu.classList.toggle('show-ddi');});
+document.addEventListener('click',function(e){if(!document.getElementById('ddi-container').contains(e.target)){ddiMenu.classList.remove('show-ddi');}});
+
+document.querySelectorAll('.ddi-option').forEach(function(option){
+  option.addEventListener('click',function(){
+    var value=this.getAttribute('data-value');
+    var code=this.getAttribute('data-code');
+    var textSpan=document.getElementById('ddi-selected-text');
+    var flagElement=document.getElementById('ddi-selected-flag');
+    ddiInput.value=value;
+    if(code==='other'){
+      flagElement.outerHTML='<svg id="ddi-selected-flag" style="width:1.25rem;height:1.25rem;color:#94a3b8;margin-right:.375rem" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+      textSpan.innerText='';
+    }else{
+      if(flagElement.tagName.toLowerCase()==='svg'){
+        flagElement.outerHTML='<img loading="lazy" src="https://flagcdn.com/w20/'+code+'.png" id="ddi-selected-flag" style="width:1.25rem;margin-right:.375rem;border-radius:2px">';
+      }else{
+        flagElement.src='https://flagcdn.com/w20/'+code+'.png';
+      }
+      textSpan.innerText='+'+value;
+    }
+    ddiMenu.classList.remove('show-ddi');
+    var v=phoneInput.value.replace(/\D/g,'');
+    if(value==='55'){phoneInput.placeholder="(00) 00000-0000";phoneInput.dispatchEvent(new Event('input'));}
+    else{phoneInput.placeholder="Seu número";phoneInput.value=v;}
+  });
+});
+
+phoneInput.addEventListener('input',function(e){
+  var v=e.target.value.replace(/\D/g,'');
+  if(ddiInput.value==='55'){
+    if(v.length<=10){v=v.replace(/^(\d{2})(\d)/g,'($1) $2');v=v.replace(/(\d{4})(\d)/,'$1-$2');}
+    else{v=v.replace(/^(\d{2})(\d)/g,'($1) $2');v=v.replace(/(\d{5})(\d)/,'$1-$2');}
+    e.target.value=v.substring(0,15);
+  }else{e.target.value=v.substring(0,20);}
+});
+
+var emailInput=document.getElementById('lead-email');
+emailInput.addEventListener('blur',function(e){
+  var val=e.target.value.toLowerCase().trim();
+  var prov={'gmial':'gmail','gamil':'gmail','gmal':'gmail','gmaill':'gmail','gemail':'gmail','gnail':'gmail','hotmial':'hotmail','hotmai':'hotmail','hotmal':'hotmail','hormail':'hotmail','oulook':'outlook','outlok':'outlook','outloo':'outlook','yaho':'yahoo','icoud':'icloud','iclod':'icloud'};
+  var sufs=[{erro:'.comm',certo:'.com'},{erro:'.cm',certo:'.com'},{erro:'.cmo',certo:'.com'},{erro:'.xom',certo:'.com'},{erro:'.con',certo:'.com'},{erro:'.cm.br',certo:'.com.br'},{erro:'.con.br',certo:'.com.br'},{erro:'.com.brr',certo:'.com.br'}];
+  if(val.includes('@')){
+    var parts=val.split('@'),user=parts[0],fullDomain=parts[1],alterado=false;
+    if(!fullDomain) return;
+    var di=fullDomain.indexOf('.');
+    if(di>-1){
+      var dn=fullDomain.substring(0,di),sf=fullDomain.substring(di);
+      if(prov[dn]){dn=prov[dn];alterado=true;}
+      for(var i=0;i<sufs.length;i++){if(sf===sufs[i].erro){sf=sufs[i].certo;alterado=true;break;}}
+      if(alterado){e.target.value=user+'@'+dn+sf;document.getElementById('erro-email').style.display='block';setTimeout(function(){document.getElementById('erro-email').style.display='none';},4000);}
+    }
+  }
 });
 
 function cookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
 
-document.getElementById('lead').addEventListener('submit',function(e){
-  e.preventDefault();
-  var nome=document.getElementById('nome').value.trim();
-  var r=fixEmail(emailIn.value); if(r.c) emailIn.value=r.v;
-  var email=emailIn.value.trim();
-  var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
-  var ok=true;
-  function mark(id,cond){document.getElementById(id).classList.toggle('on',!cond);if(!cond)ok=false;}
-  mark('e-nome', nome.split(' ').filter(Boolean).length>=2);
-  mark('e-email', emailOk(email));
-  mark('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
-  if(!ok) return;
-  var btn=document.getElementById('go'); btn.textContent='Liberando…'; btn.disabled=true;
+function enviarLeadGTM(event){
+  event.preventDefault();
+  var isValid=true;
+  var nome=document.getElementById('lead-nome').value.trim();
+  var ddi=document.getElementById('lead-ddi').value;
+  var emailValue=document.getElementById('lead-email').value.trim();
+  var whatsappLimpo=document.getElementById('lead-whatsapp').value.replace(/\D/g,'');
+
+  if(nome.split(' ').filter(Boolean).length<2){document.getElementById('erro-nome').style.display='block';isValid=false;}
+  else{document.getElementById('erro-nome').style.display='none';}
+
+  var erroW=document.getElementById('erro-whatsapp');
+  if(ddi==='55'){
+    if(whatsappLimpo.length!==10&&whatsappLimpo.length!==11){erroW.style.display='block';isValid=false;}else{erroW.style.display='none';}
+  }else{
+    if(whatsappLimpo.length<5){erroW.style.display='block';isValid=false;}else{erroW.style.display='none';}
+  }
+  if(!isValid) return false;
+
+  var fullPhone=ddi==='55'?whatsappLimpo:ddi+whatsappLimpo;
+  document.getElementById('phone_hidden').value=fullPhone;
+
+  /* Chaves do dataLayer = exatamente os IDs dos campos do formulario */
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',page_name:'oferta-especial-clube-do-ukulele-ate-domingo'});
+  window.dataLayer.push({
+    'event':'lead_capture_submit',
+    'origem':ORIGEM,
+    'cta_origem':ctaOrigem,
+    'lead-nome':nome,
+    'lead-email':emailValue.toLowerCase(),
+    'lead-whatsapp':fullPhone
+  });
+
+  try{sessionStorage.setItem('cdu_lead',JSON.stringify({nome:nome,email:emailValue.toLowerCase(),telefone:fullPhone}));}catch(e){}
+
+  var btn=document.querySelector('#lead-form button[type="submit"]');
+  btn.innerHTML='LEVANDO VOCÊ AO PAGAMENTO...';
+  btn.style.opacity='0.7';btn.disabled=true;
+
   var url;
   try{
     url=new URL(CHECKOUT_URL);
-    url.searchParams.set('name',nome); url.searchParams.set('email',email);
-    url.searchParams.set('phonenumber',tel);
-    if(ddi.value) url.searchParams.set('phoneac',ddi.value);
-    var qp=new URLSearchParams(location.search), utms=[];
-    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
-    if(utms.length) url.searchParams.set('sck',utms.join('|'));
+    url.searchParams.set('name',nome);
+    url.searchParams.set('email',emailValue.toLowerCase());
+    url.searchParams.set('phonenumber',whatsappLimpo);
+    if(ddi&&ddi!=='other') url.searchParams.set('phoneac',ddi);
+    var qp=new URLSearchParams(location.search),utms=[];
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
+      var val=qp.get(k); if(val){url.searchParams.set(k,val);utms.push(val);}
+    });
+    url.searchParams.set('sck',utms.length?utms.join('|'):ORIGEM);
     var uid=cookie('user_id'); if(uid) url.searchParams.set('xcod',uid);
     url=url.toString();
   }catch(_){ url=CHECKOUT_URL; }
-  setTimeout(function(){location.href=url;},400);
-});
+
+  setTimeout(function(){window.location.href=url;},400);
+}
 
 /* ===== Lightbox de depoimentos ===== */
 var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lb-img');
