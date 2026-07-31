@@ -28,11 +28,11 @@
 :root{
   --indigo:#443468; --indigo-deep:#2D2249; --amber:#F5B93B; --amber-deep:#D9971C;
   --coral:#E87A85; --bg:#F5F4F7; --card:#fff; --ink:#2D2249; --muted:#6b6480;
-  --line:#e6e3ee; --ok:#0B7A6E;
-  /* Verde teal dos botões de venda. Duas variantes por contraste:
-     a escura leva texto branco e vive sobre fundo claro (4,9:1);
-     a clara leva texto índigo e vive sobre o fundo índigo (6,3:1). */
-  --cta:#0B7A6E; --cta-h:#095F56; --cta-lt:#14B8A6; --cta-lt-h:#0FA192;
+  --line:#e6e3ee; --ok:#0E7C4A;
+  /* Verde dos botões de venda. Duas variantes por contraste:
+     a escura leva texto branco e vive sobre fundo claro (5,3:1);
+     a clara leva texto índigo e vive sobre o fundo índigo (6,2:1). */
+  --cta:#0E7C4A; --cta-h:#0A5F39; --cta-lt:#22C07A; --cta-lt-h:#1BA968;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -50,9 +50,9 @@ section{padding:52px 0}
 
 /* ===== Botões ===== */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.02rem;text-transform:uppercase;letter-spacing:.02em;padding:18px 28px;border-radius:16px;border:none;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;line-height:1.15;text-align:center}
-.btn-teal{background:var(--cta-lt);color:var(--indigo-deep);box-shadow:0 12px 24px -8px rgba(20,184,166,.5)}
+.btn-teal{background:var(--cta-lt);color:var(--indigo-deep);box-shadow:0 12px 24px -8px rgba(34,192,122,.5)}
 .btn-teal:hover{background:var(--cta-lt-h);transform:translateY(-2px)}
-.btn-cta{background:var(--cta);color:#fff;box-shadow:0 12px 24px -8px rgba(11,122,110,.5)}
+.btn-cta{background:var(--cta);color:#fff;box-shadow:0 12px 24px -8px rgba(14,124,74,.5)}
 .btn-cta:hover{background:var(--cta-h);transform:translateY(-2px)}
 .btn-block{width:100%}
 .cta-inline{text-align:center;margin-top:30px}
