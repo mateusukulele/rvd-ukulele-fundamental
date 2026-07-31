@@ -14,6 +14,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap">
 
+<!-- Player VTurb: marca o tempo de início e adianta o download do player e do vídeo -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a6cad93c23364c140db5b59/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a6ca56893ba15d23c9746bf/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+
 <style>
 :root{
   --indigo:#443468; --indigo-deep:#2D2249; --amber:#F5B93B; --amber-deep:#D9971C;
@@ -56,13 +66,8 @@ section{padding:52px 0}
 .hero .sub{font-size:1.04rem;color:#e7e3f2;font-weight:500;max-width:48ch;margin:0 auto 24px}
 
 /* ===== Player ===== */
-.player{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:3px solid rgba(245,185,59,.45);box-shadow:0 26px 60px -22px rgba(0,0,0,.7);cursor:pointer}
-.player iframe{width:100%;height:100%;border:0;display:block}
-.player img{width:100%;height:100%;object-fit:cover}
-.player .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(45,34,73,.32);transition:background .2s}
-.player:hover .play{background:rgba(45,34,73,.15)}
-.player .play span{width:74px;height:74px;border-radius:999px;background:var(--amber);display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(0,0,0,.5)}
-.player .play svg{width:30px;height:30px;color:var(--indigo-deep);margin-left:4px}
+.player{position:relative;width:100%;border-radius:18px;overflow:hidden;background:#000;border:3px solid rgba(245,185,59,.45);box-shadow:0 26px 60px -22px rgba(0,0,0,.7);line-height:0}
+.player vturb-smartplayer{display:block;width:100%}
 .hero-cta{margin-top:26px}
 .trust{margin-top:16px;font-size:.85rem;color:#cfc9e0;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center}
 .trust span{display:inline-flex;align-items:center;gap:7px}
@@ -260,7 +265,10 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 /* =========================================================================
    CONFIGURAÇÃO DA PÁGINA — mexa só aqui
    =========================================================================
-   VIDEO_ID     → id do vídeo do YouTube que aparece no topo
+   O vídeo do topo é o player da VTurb, embutido direto no HTML mais
+   acima. Para trocar de vídeo, troque o bloco <vturb-smartplayer> e os
+   <link rel="preload"> do <head> pelo código novo que a VTurb gera.
+
    CHECKOUT_URL → checkout da Hotmart (domínio próprio)
    FIM_OFERTA   → quando o contador zera (fim da promoção, domingo 23h59)
 
@@ -269,7 +277,6 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
    Para tirar um bônus na mão antes disso, apague o bloco inteiro entre os
    comentários BONUS-N. Se todos sumirem, a seção inteira de bônus some junto.
    ========================================================================= */
-var VIDEO_ID     = 'qIBBKZwuY_s';
 var CHECKOUT_URL = 'https://link.clubedoukulele.com/matricula-clube-do-ukulele-ch';
 var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 </script>
@@ -285,10 +292,10 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
     <h1 class="disp">Chega de virar o <span class="hl">mestre do próprio erro</span></h1>
     <p class="sub">Nas três aulas do Destrava Ukulele você viu o que fazer. Agora assista abaixo a proposta da turma nova do Clube do Ukulele Academy, onde eu vejo você tocar e digo exatamente o que corrigir.</p>
 
-    <div class="player" id="player">
-      <img src="https://i.ytimg.com/vi/qIBBKZwuY_s/maxresdefault.jpg" alt="Assista à proposta da turma nova do Clube do Ukulele Academy" width="1280" height="720">
-      <div class="play"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+    <div class="player">
+      <vturb-smartplayer id="vid-6a6cad93c23364c140db5b59" style="display:block;margin:0 auto;width:100%"><div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background-color:black"></div></vturb-smartplayer>
     </div>
+    <script>var s=document.createElement("script");s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a6cad93c23364c140db5b59/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 
     <div class="hero-cta">
       <button class="btn btn-amber" type="button" onclick="abrirCheckout('hero')">Quero entrar no Clube do Ukulele</button>
@@ -644,22 +651,6 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 </dialog>
 
 <script>
-/* ===== Player (facade: só carrega o iframe no clique) ===== */
-(function(){
-  var p=document.getElementById('player');
-  if(!p) return;
-  p.querySelector('img').src='https://i.ytimg.com/vi/'+VIDEO_ID+'/maxresdefault.jpg';
-  function go(){
-    p.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+VIDEO_ID+'?autoplay=1&rel=0&modestbranding=1" title="Clube do Ukulele Academy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-    p.style.cursor='default';
-    window.dataLayer=window.dataLayer||[];
-    window.dataLayer.push({event:'vsl_play',video_id:VIDEO_ID});
-  }
-  p.addEventListener('click',go);
-  p.setAttribute('tabindex','0');
-  p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
-})();
-
 /* ===== Contador ===== */
 (function(){
   var fim=new Date(FIM_OFERTA).getTime(), box=document.getElementById('cd');
@@ -782,7 +773,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
   if(!ok) return;
   var btn=document.getElementById('go'); btn.textContent='Liberando…'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',page_name:'destrava-oferta-academy'});
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',page_name:'oferta-especial-clube-do-ukulele-ate-domingo'});
   var url;
   try{
     url=new URL(CHECKOUT_URL);
@@ -822,7 +813,7 @@ lb.addEventListener('click',function(e){ if(e.target===lb || e.target===lbImg) l
 })();
 
 window.dataLayer=window.dataLayer||[];
-window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'destrava-oferta-academy'});
+window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'oferta-especial-clube-do-ukulele-ate-domingo'});
 </script>
 </body>
 </html>
