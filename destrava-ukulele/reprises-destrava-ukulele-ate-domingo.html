@@ -193,8 +193,8 @@
             <div class="wrap">
                 <img class="hero-logo" src="assets/logo-destrava-ukulele.png" alt="Destrava Ukulele" width="599" height="182" fetchpriority="high">
                 <span class="eyebrow">Evento encerrado</span>
-                <h1 class="disp">O Destrava Ukulele <span class="hl">chegou ao fim</span></h1>
-                <p class="sub">Obrigado a todo mundo que esteve nas três aulas. As reprises saíram do ar no domingo, 02 de agosto, às 23h59.</p>
+                <h1 class="disp">Muito obrigado por <span class="hl">ter participado!</span></h1>
+                <p class="sub">O evento foi incrível. As aulas e os materiais saíram do ar no domingo, 02 de agosto, às 23h59.</p>
             </div>
         </section>
 
@@ -387,12 +387,13 @@
     <dialog id="lightbox" aria-label="Depoimento ampliado"><img id="lb-img" alt="Depoimento ampliado"></dialog>
 
     <!-- ===== POPUP DA LISTA DE ESPERA =====
-         Os ids dos campos e o evento do dataLayer são os mesmos da
-         oferta-especial-clube-do-ukulele-ate-domingo.html, para os dois
-         formulários caírem no mesmo lugar do GTM: #lead, #nome, #email,
-         #ddi, #wa, #go, os erros e-nome/e-email/e-wa e o hint h-email.
-         O envio é waitlist_capture, e não lead_capture_uke, porque lead
-         de espera não pode se misturar com lead de compra. -->
+         Contrato de GTM NÃO se inventa. Os ids e o evento aqui são os
+         mesmos da ev-inscricao.html deste evento, que é o que já está
+         configurado no GTM-PDH6QGB2: campos lead-nome, lead-email,
+         lead-whatsapp e lead-ddi, e o evento lead_capture_submit com
+         essas mesmas chaves mais 'origem'. O que muda em relação à
+         captura do evento é só o destino: agora vai pro formulário de
+         lista de espera em vez do checkout. -->
     <div id="capture-modal">
         <div id="modal-content">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.4rem">
@@ -403,23 +404,22 @@
             </div>
             <p class="mdl-sub">Comece por aqui. Na próxima tela tem mais algumas perguntas rápidas, e estes três campos já vão preenchidos.</p>
 
-            <form id="lead" autocomplete="off" novalidate>
+            <form id="lead-form" autocomplete="off" novalidate>
                 <div class="fld">
-                    <label for="nome">Nome completo</label>
-                    <input required type="text" id="nome" name="name" autocomplete="name" placeholder="Seu nome completo">
-                    <p id="e-nome" class="error-msg">Insira nome e sobrenome.</p>
+                    <label for="lead-nome">Nome completo</label>
+                    <input required type="text" id="lead-nome" name="lead-nome" autocomplete="name" placeholder="Seu nome completo">
+                    <p id="erro-nome" class="error-msg">Por favor, insira pelo menos nome e sobrenome.</p>
                 </div>
                 <div class="fld">
-                    <label for="email">Melhor e-mail</label>
-                    <input required type="email" id="email" name="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@melhoremail.com">
-                    <p id="h-email" class="error-msg" style="color:#f97316">Corrigimos um possível erro de digitação. Confira se está certo.</p>
-                    <p id="e-email" class="error-msg">Verifique o e-mail.</p>
+                    <label for="lead-email">Melhor e-mail</label>
+                    <input required type="email" id="lead-email" name="lead-email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@melhoremail.com">
+                    <p id="erro-email" class="error-msg" style="color:#f97316">Corrigimos um pequeno erro de digitação no seu e-mail!</p>
                 </div>
                 <div class="fld">
-                    <label for="wa">WhatsApp</label>
+                    <label for="lead-whatsapp">WhatsApp</label>
                     <div style="display:flex;border-radius:.75rem;border:1px solid #e2e8f0;background:#f8fafc">
                         <div style="position:relative;display:flex;align-items:center;border-right:1px solid #e2e8f0;user-select:none" id="ddi-container">
-                            <input type="hidden" id="ddi" value="55">
+                            <input type="hidden" id="lead-ddi" value="55">
                             <button type="button" id="ddi-button" style="display:flex;align-items:center;padding:.75rem;font-size:.875rem;color:#334155;background:transparent;border:none;cursor:pointer">
                                 <img loading="lazy" src="https://flagcdn.com/w20/br.png" alt="BR" id="ddi-selected-flag" style="width:1.25rem;margin-right:.375rem;border-radius:2px">
                                 <span id="ddi-selected-text" style="font-weight:600">+55</span>
@@ -434,12 +434,14 @@
                                 <li class="ddi-option" data-value="other" data-code="other" style="padding:.5rem 1rem;cursor:pointer;display:flex;align-items:center;font-size:.875rem"><svg style="width:1.25rem;height:1.25rem;color:#94a3b8;margin-right:.75rem" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span style="color:#334155;font-weight:500">Outro...</span></li>
                             </ul>
                         </div>
-                        <input required type="tel" id="wa" name="tel" inputmode="numeric" style="width:100%;background:transparent;padding:.75rem 1rem;color:#0f172a;outline:none;border:none;font-family:inherit;font-size:1rem" placeholder="(00) 00000-0000" maxlength="20">
+                        <input required type="tel" id="lead-whatsapp" name="lead-whatsapp" inputmode="numeric" style="width:100%;background:transparent;padding:.75rem 1rem;color:#0f172a;outline:none;border:none;font-family:inherit;font-size:1rem" placeholder="(00) 00000-0000" maxlength="20">
                     </div>
-                    <p id="e-wa" class="error-msg">Número com DDD (10 ou 11 dígitos).</p>
+                    <p id="erro-whatsapp" class="error-msg">Insira um número válido com DDD.</p>
                 </div>
 
-                <button type="submit" class="mdl-submit" id="go">Continuar</button>
+                <input type="hidden" id="phone_hidden">
+
+                <button type="submit" class="mdl-submit">Continuar</button>
             </form>
 
             <div style="margin-top:1.1rem;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:#94a3b8">
@@ -457,16 +459,19 @@
        As aulas e os PDFs saíram do ar em 02/08/2026 às 23h59, junto com as
        matrículas com condição especial.
 
-       O formulário é o mesmo da oferta-especial-clube-do-ukulele-ate-domingo:
-       mesmos ids de campo, mesmo evento de dataLayer e o mesmo Google Form,
-       pré-preenchido pelos entry.* do FORM_CAMPOS.
+       O formulário manda pro mesmo Google Form da
+       oferta-especial-clube-do-ukulele-ate-domingo, pré-preenchido pelos
+       entry.* do FORM_CAMPOS. Os ids e o evento seguem a ev-inscricao.html
+       deste evento, que é o contrato que já existe no GTM-PDH6QGB2:
+       lead_capture_submit com lead-nome, lead-email, lead-whatsapp e origem.
+       NÃO criar evento novo sem o gestor do GTM configurar antes.
 
        --- PARA REABRIR AS VENDAS ---------------------------------------------
        O que a versão de venda desta página usava:
          var CHECKOUT_URL = 'https://link.clubedoukulele.com/matricula-clube-do-ukulele-ch';
          Checkout da Hotmart aceita por query string:
            name, email, phonenumber, phoneac, sck (utms), xcod (cookie user_id)
-         Evento de venda desta conta:
+         Evento de venda desta conta (usado nas páginas rvd):
            dataLayer.push({event:'lead_capture_uke', lead_name, lead_email,
                            lead_phone, lead_ddi})
        ------------------------------------------------------------------------ */
@@ -478,10 +483,10 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({event:'sales_page_view',page_type:'waitlist',page_name:'reprises-destrava-ukulele'});
 
-    var ddiInput=document.getElementById('ddi');
-    var phoneInput=document.getElementById('wa');
-    var emailInput=document.getElementById('email');
-    var nomeInput=document.getElementById('nome');
+    var ddiInput=document.getElementById('lead-ddi');
+    var phoneInput=document.getElementById('lead-whatsapp');
+    var emailInput=document.getElementById('lead-email');
+    var nomeInput=document.getElementById('lead-nome');
 
     /* ===== Popup ===== */
     function abrirPopupForm(event){
@@ -490,12 +495,11 @@
             var src = event.currentTarget && event.currentTarget.getAttribute('data-cta');
             if(src) ctaOrigem = src;
         }
-        ['e-nome','h-email','e-email','e-wa'].forEach(function(id){document.getElementById(id).style.display='none';});
+        ['erro-nome','erro-email','erro-whatsapp'].forEach(function(id){document.getElementById(id).style.display='none';});
         preencherSeJaConhecido();
         var modal=document.getElementById('capture-modal');
         modal.classList.add('modal-active');
         setTimeout(function(){modal.classList.add('modal-visible');},10);
-        window.dataLayer.push({event:'waitlist_popup_open',origem:ORIGEM,cta_origem:ctaOrigem});
     }
     function fecharPopupForm(){
         var modal=document.getElementById('capture-modal');
@@ -582,16 +586,14 @@
     }
     function emailOk(v){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);}
     emailInput.addEventListener('blur',function(){
-        var h=document.getElementById('h-email'); h.style.display='none';
+        var h=document.getElementById('erro-email'); h.style.display='none';
         if(!emailInput.value.trim()) return;
         var r=fixEmail(emailInput.value);
-        if(r.c){ emailInput.value=r.v; h.style.display='block'; setTimeout(function(){h.style.display='none';},6000); }
+        if(r.c){ emailInput.value=r.v; h.style.display='block'; setTimeout(function(){h.style.display='none';},4000); }
     });
 
-    /* ===== Envio =====
-       Mesmo evento e mesmas chaves da página de oferta, para os dois
-       formulários caírem no mesmo relatório do GTM. */
-    document.getElementById('lead').addEventListener('submit',function(e){
+    /* ===== Envio ===== */
+    document.getElementById('lead-form').addEventListener('submit',function(e){
         e.preventDefault();
         var nome=nomeInput.value.trim();
         var r=fixEmail(emailInput.value); if(r.c) emailInput.value=r.v;
@@ -599,16 +601,26 @@
         var tel=phoneInput.value.replace(/\D/g,''), br=ddiInput.value==='55';
         var ok=true;
         function mark(id,cond){document.getElementById(id).style.display=cond?'none':'block';if(!cond)ok=false;}
-        mark('e-nome', nome.split(' ').filter(Boolean).length>=2);
-        mark('e-email', emailOk(email));
-        mark('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
+        mark('erro-nome', nome.split(' ').filter(Boolean).length>=2 && emailOk(email));
+        mark('erro-whatsapp', br ? (tel.length===10||tel.length===11) : tel.length>=6);
         if(!ok) return;
 
-        var btn=document.getElementById('go');
-        btn.textContent='Abrindo o formulário…'; btn.disabled=true;
+        var btn=document.querySelector('#lead-form button[type="submit"]');
+        btn.textContent='ABRINDO O FORMULÁRIO...'; btn.style.opacity='0.7'; btn.disabled=true;
 
-        window.dataLayer.push({event:'waitlist_capture',lead_name:nome,lead_email:email,lead_phone:(ddiInput.value||'')+tel,lead_ddi:ddiInput.value||'other',origem:ORIGEM,cta_origem:ctaOrigem});
-        try{sessionStorage.setItem('cdu_lead',JSON.stringify({nome:nome,email:email,telefone:tel}));}catch(_){}
+        /* Mesmo evento e mesmas chaves da ev-inscricao.html deste evento.
+           Não criar evento novo: o GTM desta conta só tem os que o gestor
+           configurou. */
+        var fullPhone = br ? tel : (ddiInput.value||'')+tel;
+        document.getElementById('phone_hidden').value=fullPhone;
+        window.dataLayer.push({
+            'event':'lead_capture_submit',
+            'origem':ORIGEM,
+            'lead-nome':nome,
+            'lead-email':email,
+            'lead-whatsapp':fullPhone
+        });
+        try{sessionStorage.setItem('cdu_lead',JSON.stringify({nome:nome,email:email,telefone:fullPhone}));}catch(_){}
 
         var url;
         try{
