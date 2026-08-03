@@ -5,8 +5,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clube do Ukulele Academy | Turma nova aberta até domingo</title>
-<meta name="description" content="A escola online do Mateus Augusto. Trilha do zero ao intermediário, 154 músicas na biblioteca e análise em vídeo do seu jeito de tocar. 50% de desconto até domingo.">
+<title>Clube do Ukulele Academy | Lista de espera da próxima turma</title>
+<meta name="description" content="As vagas desta turma acabaram. Entre na lista de espera do Clube do Ukulele Academy e seja avisado antes de todo mundo quando a próxima abrir.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
@@ -189,8 +189,7 @@ section{padding:52px 0}
 .preco{background:var(--bg)}
 .box-preco{max-width:520px;margin:0 auto;background:var(--card);border:2px solid var(--amber);border-radius:24px;padding:30px 24px;text-align:center;box-shadow:0 24px 50px -24px rgba(45,34,73,.4)}
 .box-preco .selo{display:inline-block;background:var(--coral);color:#fff;font-weight:800;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:16px}
-.price-cd{margin:0 0 14px;font-size:.84rem;font-weight:700;color:var(--muted)}
-.price-cd b{display:block;font-family:'Anton',sans-serif;font-weight:400;font-size:1.5rem;color:var(--cta);letter-spacing:.02em;margin-top:2px}
+.espera-txt{color:var(--muted);font-size:.98rem;margin:4px 0 22px}
 .box-preco .ancora{color:var(--muted);font-size:.95rem}
 .box-preco .ancora s{opacity:.8}
 .box-preco .parcela{font-family:'Anton',sans-serif;font-size:2.7rem;color:var(--indigo-deep);line-height:1.05;margin:8px 0 2px}
@@ -298,24 +297,44 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
    acima. Para trocar de vídeo, troque o bloco <vturb-smartplayer> e os
    <link rel="preload"> do <head> pelo código novo que a VTurb gera.
 
-   CHECKOUT_URL → checkout da Hotmart (domínio próprio)
-   FIM_OFERTA   → quando o contador zera (fim da promoção, domingo 23h59)
+   MODO ATUAL: LISTA DE ESPERA. As matrículas fecharam em 02/08/2026 e a
+   página virou captação para a próxima turma.
 
-   BÔNUS COM PRAZO: cada bloco de bônus no HTML tem um atributo data-expira.
-   Passada a data, o bloco some sozinho da página, sem você editar nada.
-   Para tirar um bônus na mão antes disso, apague o bloco inteiro entre os
-   comentários BONUS-N. Se todos sumirem, a seção inteira de bônus some junto.
+   FORM_URL → formulário de lista de espera. O popup pede nome, e-mail e
+   WhatsApp e leva a pessoa pra lá com esses três já preenchidos, pelos
+   entry.* do FORM_CAMPOS. As outras quatro perguntas ela responde lá.
+
+   BÔNUS COM PRAZO: cada bloco tem data-expira, e todos já venceram, então
+   aparecem riscados como "Encerrado". É a prova de que os prazos da turma
+   anterior valeram de verdade.
+
+   --- PARA REABRIR AS VENDAS ---------------------------------------------
+   Tudo que a versão de venda usava está guardado aqui:
+
+     var CHECKOUT_URL = 'https://link.clubedoukulele.com/matricula-clube-do-ukulele-ch';
+     var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';   // contador do cabeçalho
+
+   O checkout da Hotmart aceita por query string:
+     name, email, phonenumber, phoneac, sck (utms), xcod (cookie user_id)
+
+   O evento que o GTM desta conta escuta numa venda é:
+     dataLayer.push({event:'lead_capture_uke', lead_name, lead_email,
+                     lead_phone, lead_ddi, lead_has_ukulele})
+
+   Está desligado agora. Em lista de espera a página manda
+   'waitlist_capture', para não misturar lead de espera com lead de compra.
+   ------------------------------------------------------------------------
    ========================================================================= */
-var CHECKOUT_URL = 'https://link.clubedoukulele.com/matricula-clube-do-ukulele-ch';
-var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
+var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf70ZeWm4AurkkQ126Hg5tSb9OmtOtcQ10DDM4k7RSPD1Fs1g/viewform';
+var FORM_CAMPOS = { nome:'entry.123730121', email:'entry.1042220266', whats:'entry.120098763' };
 </script>
 
 <header class="topbar">
   <div class="wrap topbar-in">
     <img src="assets/logo-clube.webp" alt="Clube do Ukulele" width="600" height="600">
-    <div class="topbar-cd" id="topbar-cd" hidden>
-      <span class="tb-lbl">Promoção acaba em</span>
-      <b id="cd-clock">…</b>
+    <div class="topbar-cd">
+      <span class="tb-lbl">Turma de agosto</span>
+      <b>Encerrada</b>
     </div>
   </div>
 </header>
@@ -323,9 +342,9 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 <!-- ===================== HERO + VÍDEO ===================== -->
 <section class="hero" id="topo">
   <div class="wrap">
-    <span class="eyebrow">Turma nova · só até domingo</span>
-    <h1 class="disp">Chega de virar o <span class="hl">mestre do próprio erro</span></h1>
-    <p class="sub">Nas três aulas do Destrava Ukulele você viu o que fazer. Agora assista abaixo a proposta da turma nova do Clube do Ukulele Academy, onde eu vejo você tocar e digo exatamente o que corrigir.</p>
+    <span class="eyebrow">Inscrições encerradas</span>
+    <h1 class="disp">As vagas desta turma <span class="hl">acabaram</span></h1>
+    <p class="sub">A promoção fechou no domingo e a turma de agosto está completa. Se você chegou agora, ou pensou demais e perdeu, entre na lista de espera: é de lá que eu chamo primeiro quando abrir a próxima.</p>
 
     <div class="player">
       <vturb-smartplayer id="vid-6a6cad93c23364c140db5b59" style="display:block;margin:0 auto;width:100%"><div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background-color:black"></div></vturb-smartplayer>
@@ -333,11 +352,11 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
     <script>var s=document.createElement("script");s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a6cad93c23364c140db5b59/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 
     <div class="hero-cta">
-      <button class="btn btn-teal" type="button" onclick="openCheckout()">Quero entrar no Clube do Ukulele</button>
+      <button class="btn btn-teal" type="button" onclick="openCheckout()">Entrar na lista de espera</button>
       <p class="trust">
-        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 50% de desconto até domingo</span>
-        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 30 dias de garantia</span>
-        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> A lista é chamada primeiro</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Sem compromisso</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Leva menos de 2 minutos</span>
       </p>
     </div>
 
@@ -364,7 +383,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg><span>Você nem tem ukulele ainda, e fica em dúvida se compra ou se desiste antes de começar.</span></li>
     </ul>
     <div class="cta-inline">
-      <button class="btn btn-cta" type="button" onclick="openCheckout()">Quero aprender com acompanhamento</button>
+      <button class="btn btn-cta" type="button" onclick="openCheckout()">Quero ser avisado da próxima turma</button>
     </div>
   </div>
 </section>
@@ -466,7 +485,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       </div>
     </div>
     <div class="cta-inline">
-      <button class="btn btn-cta" type="button" onclick="openCheckout()">Quero minha vaga na turma nova</button>
+      <button class="btn btn-cta" type="button" onclick="openCheckout()">Entrar na lista de espera</button>
     </div>
   </div>
 </section>
@@ -494,7 +513,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Resumindo</span>
-      <h2>Tudo o que entra na sua matrícula</h2>
+      <h2>O que entra numa matrícula do Clube</h2>
     </div>
     <div class="stack">
       <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Trilha de aprendizado completa</b><span>Iniciante 0 até Intermediário 2</span></div></div>
@@ -520,9 +539,9 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
   <div class="wrap">
     <div class="bonus-wrap">
       <div class="bonus-head">
-        <span class="eyebrow">Bônus de aceleração</span>
-        <h2>Cada bônus tem o seu próprio relógio</h2>
-        <p>Quanto antes você entrar, mais coisa leva junto. O que fecha, fecha de verdade.</p>
+        <span class="eyebrow">O que a turma de agosto levou</span>
+        <h2>Cada bônus teve o seu próprio relógio</h2>
+        <p>Ficam aqui como registro. Quando eu digo que um prazo acaba, ele acaba mesmo, e é por isso que vale estar na lista antes da próxima abertura.</p>
       </div>
       <ul class="bonus-list" id="bonus-list">
         <li class="bonus-item" data-expira="2026-07-30T22:00:00-03:00">
@@ -545,8 +564,8 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
           <b>Grupo de aceleração no WhatsApp</b>
           <p>Um grupo com você, a turma nova e eu dentro, por dois meses. Você manda o que estiver travando e eu respondo por lá. Nunca fiz isso antes.</p>
         </li>
-        <li class="bonus-item" data-vagas="5">
-          <div class="bi-top"><span class="bi-num">Bônus 5</span><span class="bi-timer bi-vagas">Só os 5 primeiros</span></div>
+        <li class="bonus-item" data-expira="2026-08-02T23:59:00-03:00">
+          <div class="bi-top"><span class="bi-num">Bônus 5</span><span class="bi-timer" data-bonus-timer>…</span></div>
           <b>Pedido de música</b>
           <p>Os cinco primeiros inscritos podem pedir uma música pra eu gravar e colocar na biblioteca do Clube. Cada um pede a sua.</p>
         </li>
@@ -558,7 +577,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       </ul>
       <div class="bonus-aviso">
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 3h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-        <p>Os prazos são de verdade. O que já fechou não volta nesta turma, e os que ainda estão de pé vão fechar do mesmo jeito quando o relógio zerar.</p>
+        <p>Todos esses prazos já venceram e não voltam. A próxima turma vai ter os seus, e quem está na lista fica sabendo primeiro.</p>
       </div>
       <p class="prox-bonus" id="prox-bonus" hidden></p>
     </div>
@@ -569,18 +588,15 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 <section class="preco" id="preco">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">A condição desta turma</span>
-      <h2>Quanto custa entrar</h2>
+      <span class="eyebrow">O que acontece agora</span>
+      <h2>A próxima turma passa pela lista</h2>
+      <p>Não abro o Clube o tempo todo. Quando abrir de novo, quem está na lista é avisado antes de qualquer anúncio.</p>
     </div>
     <div class="box-preco">
-      <span class="selo">50% de desconto</span>
-      <p class="price-cd">Este preço acaba domingo, 23h59. Faltam <b id="price-cd">…</b></p>
-      <p class="ancora">Um ano de acesso custa <s>R$ 1.200</s></p>
-      <p class="parcela">12x R$ 59,99<small>no cartão</small></p>
-      <p class="avista">ou R$ 580 à vista</p>
-      <div class="trava">Este desconto não vale só pro primeiro ano. Enquanto você fizer parte do Clube, ele vale para todos os anos com a gente, e não aumenta.</div>
-      <button class="btn btn-cta btn-block" type="button" onclick="openCheckout()">Garantir minha vaga agora</button>
-      <p class="cta-note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Acesso liberado na hora, direto no seu e-mail</p>
+      <span class="selo">Lista de espera aberta</span>
+      <p class="espera-txt">Você responde umas perguntas rápidas pra eu entender o seu momento com o instrumento. É por isso que a lista anda antes de todo mundo: quando abre vaga, eu já sei quem está esperando e por quê.</p>
+      <button class="btn btn-cta btn-block" type="button" onclick="openCheckout()">Entrar na lista de espera</button>
+      <p class="cta-note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Sem compromisso e sem pagamento agora</p>
     </div>
     <div class="garantia">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
@@ -613,7 +629,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
         <div class="play"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
       <div class="cta-inline">
-        <button class="btn btn-cta" type="button" onclick="openCheckout()">Quero minha vaga no Clube</button>
+        <button class="btn btn-cta" type="button" onclick="openCheckout()">Entrar na lista de espera</button>
       </div>
     </div>
   </div>
@@ -648,7 +664,9 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
       <details><summary>Como funciona o envio de vídeo?</summary><p>Ao longo da trilha existem atividades com uma proposta pra você treinar. Você grava com o celular, envia por dentro da própria plataforma, sem senha em lugar nenhum, e eu respondo em vídeo mostrando o que está certo e o que dá pra melhorar. O prazo é de até 72 horas úteis, e quase sempre chega antes.</p></details>
       <details><summary>Já sei tocar um pouco. Serve pra mim?</summary><p>Serve. Boa parte dos alunos chega tocando algumas músicas e travada na mesma batida, sem saber qual é o próximo passo. A trilha te dá o caminho e as atividades mostram os errinhos que ficaram pra trás.</p></details>
       <details><summary>Por quanto tempo eu tenho acesso?</summary><p>É como uma academia: um ano de acesso ilimitado a tudo. Ao fim do período a assinatura renova, e o desconto que você pegou agora continua valendo na renovação.</p></details>
-      <details><summary>E se eu não gostar?</summary><p>São 30 dias de garantia incondicional. Você usa tudo nesse período e, se achar que não é pra você, pede o reembolso e devolvo o valor integral, sem justificativa.</p></details>
+      <details><summary>Entrar na lista me obriga a alguma coisa?</summary><p>Nada. Não tem pagamento, não tem reserva. Você responde algumas perguntas pra eu entender o seu momento e, quando abrir vaga, eu te chamo. Se naquele momento não der, é só dizer.</p></details>
+      <details><summary>Quando abre a próxima turma?</summary><p>Ainda não tem data. O Clube não fica aberto o tempo todo, e eu abro por turmas pra conseguir acompanhar todo mundo de perto. Quem está na lista é avisado primeiro, antes de qualquer anúncio.</p></details>
+      <details><summary>E se eu não gostar depois de entrar?</summary><p>São 30 dias de garantia incondicional. Você usa tudo nesse período e, se achar que não é pra você, pede o reembolso e devolvo o valor integral, sem justificativa.</p></details>
       <details><summary>Tenho pouco tempo pra estudar.</summary><p>A trilha é feita pra você ir no seu ritmo, acelerando quando dá e freando quando precisa. O problema de quem tem pouco tempo raramente é o tempo: é gastar o pouco que tem estudando a coisa errada, sem saber se está no caminho.</p></details>
     </div>
   </div>
@@ -657,10 +675,10 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 <!-- ===================== CTA FINAL ===================== -->
 <section class="final" data-final>
   <div class="wrap">
-    <h2 class="disp">A promoção vai <span class="hl">até domingo</span></h2>
-    <p>Depois de domingo o desconto acaba e a turma fecha. Se você chegou até aqui, já sabe o que está travando. Falta resolver.</p>
-    <button class="btn btn-teal" type="button" onclick="openCheckout()">Entrar no Clube do Ukulele</button>
-    <p class="cta-note" style="color:#cfc9e0;margin-top:16px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 30 dias de garantia incondicional</p>
+    <h2 class="disp">Não perca a <span class="hl">próxima</span></h2>
+    <p>Se você chegou até aqui, já sabe o que está travando. A turma fechou, mas a próxima abre, e quem está na lista é chamado antes.</p>
+    <button class="btn btn-teal" type="button" onclick="openCheckout()">Entrar na lista de espera</button>
+    <p class="cta-note" style="color:#cfc9e0;margin-top:16px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Sem compromisso e sem pagamento agora</p>
   </div>
 </section>
 
@@ -671,7 +689,7 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 
 <!-- ===================== STICKY ===================== -->
 <div class="sticky" id="sticky" aria-hidden="true">
-  <div class="in"><button class="btn btn-teal" type="button" onclick="openCheckout()">Quero minha vaga no Clube</button></div>
+  <div class="in"><button class="btn btn-teal" type="button" onclick="openCheckout()">Entrar na lista de espera</button></div>
 </div>
 
 <!-- ===================== LIGHTBOX ===================== -->
@@ -688,9 +706,9 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
 <dialog class="modal" id="checkout" aria-labelledby="ckt">
   <div class="modal-bd">
     <button class="modal-x" type="button" onclick="document.getElementById('checkout').close()" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    <h3 id="ckt">Falta muito pouco!</h3>
-    <div class="modal-coupon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> 50% de desconto já aplicado</div>
-    <p class="sub">Preencha para garantir sua vaga na turma nova do Clube do Ukulele Academy.</p>
+    <h3 id="ckt">Lista de espera</h3>
+    <div class="modal-coupon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg> Você é avisado primeiro</div>
+    <p class="sub">Comece por aqui. Na próxima tela tem mais algumas perguntas rápidas, e estes três campos já vão preenchidos.</p>
     <form id="lead" novalidate>
       <div class="field"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Ex: Mateus Augusto" required><p class="err" id="e-nome">Insira nome e sobrenome.</p></div>
       <div class="field"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="hint" id="h-email">Corrigimos um possível erro de digitação. Confira se está certo.</p><p class="err" id="e-email">Verifique o e-mail.</p></div>
@@ -710,38 +728,17 @@ var FIM_OFERTA   = '2026-08-02T23:59:00-03:00';
         </div>
         <p class="err" id="e-wa">Número com DDD (10 ou 11 dígitos).</p>
       </div>
-      <button class="btn btn-cta btn-block" type="submit" id="go">Ir para o pagamento</button>
-      <p class="secure"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Ambiente 100% seguro pela Hotmart</p>
+      <button class="btn btn-cta btn-block" type="submit" id="go">Continuar</button>
+      <p class="secure"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Seus dados ficam só com a gente</p>
     </form>
   </div>
 </dialog>
 
 <script>
-/* ===== Contador da promoção =====
-   Vive no cabeçalho fixo, então acompanha a pessoa a página inteira.
-   O mesmo relógio aparece dentro da caixa de preço. */
-(function(){
-  var fim=new Date(FIM_OFERTA).getTime();
-  if(isNaN(fim)) return;
-  var caixa=document.getElementById('topbar-cd'),
-      topo=document.getElementById('cd-clock'),
-      preco=document.getElementById('price-cd');
-  function z(n){return n<10?'0'+n:''+n;}
-  function relogio(t){
-    return (t>=864e5 ? Math.floor(t/864e5)+'d ' : '')+z(Math.floor(t/36e5)%24)+':'+z(Math.floor(t/6e4)%60)+':'+z(Math.floor(t/1e3)%60);
-  }
-  function tick(){
-    var t=fim-Date.now(), txt = t<=0 ? 'Encerrado' : relogio(t);
-    if(topo) topo.textContent=txt;
-    if(preco) preco.textContent=txt;
-    if(caixa) caixa.hidden=false;
-  }
-  tick(); setInterval(tick,1000);
-})();
-
 /* ===== Bônus: cada um com o seu relógio =====
    Passou da data em data-expira, o item vira "Encerrado" e fica riscado
-   sozinho. A linha de baixo anuncia qual é o próximo a fechar. */
+   sozinho. Como todas já venceram, hoje a lista inteira aparece riscada,
+   e a linha do "próximo a fechar" some sozinha. */
 (function(){
   var proxBonus=document.getElementById('prox-bonus');
   var bonus=[].slice.call(document.querySelectorAll('.bonus-item[data-expira]')).map(function(el){
@@ -817,7 +814,6 @@ emailIn.addEventListener('blur',function(){
   if(r.c){ emailIn.value=r.v; h.classList.add('on'); setTimeout(function(){h.classList.remove('on');},6000); }
 });
 
-function cookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
 
 document.getElementById('lead').addEventListener('submit',function(e){
   e.preventDefault();
@@ -831,24 +827,24 @@ document.getElementById('lead').addEventListener('submit',function(e){
   mark('e-email', emailOk(email));
   mark('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
   if(!ok) return;
-  var btn=document.getElementById('go'); btn.textContent='Liberando…'; btn.disabled=true;
+  var btn=document.getElementById('go'); btn.textContent='Abrindo o formulário…'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
-  /* A pergunta "já possui um ukulele?" saiu do formulário, mas a chave
-     continua sendo enviada em branco: se ela sumisse, a variável do GTM
-     que a lê passaria a chegar como undefined. */
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:''});
+  /* Evento próprio da lista de espera. Não reaproveita o lead_capture_uke
+     de propósito: lead de espera e lead de compra não podem cair no mesmo
+     relatório. As chaves seguem o mesmo formato, então na reabertura basta
+     trocar o nome do evento (ver o bloco de configuração no topo). */
+  window.dataLayer.push({event:'waitlist_capture',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other'});
   var url;
   try{
-    url=new URL(CHECKOUT_URL);
-    url.searchParams.set('name',nome); url.searchParams.set('email',email);
-    url.searchParams.set('phonenumber',tel);
-    if(ddi.value) url.searchParams.set('phoneac',ddi.value);
-    var qp=new URLSearchParams(location.search), utms=[];
-    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
-    if(utms.length) url.searchParams.set('sck',utms.join('|'));
-    var uid=cookie('user_id'); if(uid) url.searchParams.set('xcod',uid);
+    url=new URL(FORM_URL);
+    url.searchParams.set('usp','pp_url');
+    url.searchParams.set(FORM_CAMPOS.nome,nome);
+    url.searchParams.set(FORM_CAMPOS.email,email);
+    /* O formulário pede o número no formato (99) 99999-9999, então vai o
+       campo já mascarado. Fora do Brasil, manda o DDI na frente. */
+    url.searchParams.set(FORM_CAMPOS.whats, ddi.value==='55' ? waIn.value : '+'+(ddi.value||'')+' '+tel);
     url=url.toString();
-  }catch(_){ url=CHECKOUT_URL; }
+  }catch(_){ url=FORM_URL; }
   setTimeout(function(){location.href=url;},400);
 });
 
@@ -891,7 +887,7 @@ lb.addEventListener('click',function(e){ if(e.target===lb || e.target===lbImg) l
 })();
 
 window.dataLayer=window.dataLayer||[];
-window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'oferta-especial-clube-do-ukulele-ate-domingo'});
+window.dataLayer.push({event:'sales_page_view',page_type:'waitlist',page_name:'oferta-especial-clube-do-ukulele-ate-domingo'});
 </script>
 </body>
 </html>
