@@ -317,12 +317,14 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
    O checkout da Hotmart aceita por query string:
      name, email, phonenumber, phoneac, sck (utms), xcod (cookie user_id)
 
-   O evento que o GTM desta conta escuta numa venda é:
+   O evento continua sendo o mesmo, em venda ou em lista de espera:
      dataLayer.push({event:'lead_capture_uke', lead_name, lead_email,
                      lead_phone, lead_ddi, lead_has_ukulele})
 
-   Está desligado agora. Em lista de espera a página manda
-   'waitlist_capture', para não misturar lead de espera com lead de compra.
+   NÃO renomeie esse evento. O GTM desta conta dispara por nome, então
+   qualquer outro nome não aciona trigger nenhum e o lead se perde. Para
+   separar lead de espera de lead de compra, use o page_name que já vai
+   no sales_page_view, ou crie a distinção do lado do GTM.
    ------------------------------------------------------------------------
    ========================================================================= */
 var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf70ZeWm4AurkkQ126Hg5tSb9OmtOtcQ10DDM4k7RSPD1Fs1g/viewform';
@@ -829,11 +831,12 @@ document.getElementById('lead').addEventListener('submit',function(e){
   if(!ok) return;
   var btn=document.getElementById('go'); btn.textContent='Abrindo o formulário…'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
-  /* Evento próprio da lista de espera. Não reaproveita o lead_capture_uke
-     de propósito: lead de espera e lead de compra não podem cair no mesmo
-     relatório. As chaves seguem o mesmo formato, então na reabertura basta
-     trocar o nome do evento (ver o bloco de configuração no topo). */
-  window.dataLayer.push({event:'waitlist_capture',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other'});
+  /* Mesmo evento e mesmas chaves da página de venda. O GTM desta conta
+     dispara por nome de evento, então qualquer nome diferente daqui não
+     acionaria trigger nenhum e o lead não chegaria. lead_has_ukulele vai
+     em branco porque a pergunta saiu do formulário, mas a chave fica pra
+     variável do GTM não chegar como undefined. */
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:''});
   var url;
   try{
     url=new URL(FORM_URL);
