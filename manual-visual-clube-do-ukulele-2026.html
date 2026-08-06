@@ -30,12 +30,17 @@
   --verde:#25845A;           /* estado: concluído */
   --verde-suave:#E4F1EA;
   --verde-texto:#1F6B4A;
-  --ambar-suave:#FBEFD0;
+  --ambar-suave:#F5F0E4;
   --ambar-texto:#8A5A00;
   /* neutros */
   --ink:#1F1A2B; --muted:#5C5A70; --page:#F5F4F7; --surface:#ECEAF1;
   --card:#FFFFFF; --line:#E1DEE8; --line-forte:#C9C4D6;
+  --muted-2:#8E8AA3;         /* neutro médio: ícone, borda, desabilitado. Nunca texto */
   --sobre-escuro:#DCD6E6;
+  /* estados */
+  --indigo-hover:#3F3060; --acao-hover:#25A993; --teal-hover:#157062;
+  --verde-hover:#227953; --coral-forte-hover:#A63B49;
+  --desab-fundo:#E1DEE8; --desab-texto:#5C5A70;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -131,15 +136,22 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 /* ===== botões ===== */
 .btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:20px 0;padding:26px;background:var(--surface);border-radius:16px}
 .btn{border:none;border-radius:10px;font-family:'Montserrat';font-weight:700;font-size:14px;padding:13px 22px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:filter .15s,transform .05s;min-height:44px}
-.btn:hover{filter:brightness(.92)}
 .btn:active{transform:scale(.98)}
 .btn:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
 .b-primario{background:var(--indigo);color:#fff}
+.b-primario:hover{background:var(--indigo-hover)}
 .b-secundario{background:transparent;border:2px solid var(--indigo);color:var(--indigo);padding:11px 20px}
+.b-secundario:hover{background:var(--indigo-suave)}
 .b-terciario{background:transparent;color:var(--coral-forte);text-decoration:underline;text-underline-offset:4px;padding-left:6px;padding-right:6px}
+.b-terciario:hover{color:var(--coral-forte-hover)}
 .b-util{background:var(--teal);color:#fff}
+.b-util:hover{background:var(--teal-hover)}
 .b-feito{background:var(--verde);color:#fff}
+.b-feito:hover{background:var(--verde-hover)}
 .b-venda{background:var(--acao);color:var(--acao-texto)}
+.b-venda:hover{background:var(--acao-hover)}
+.btn[disabled]{background:var(--desab-fundo);color:var(--desab-texto);cursor:not-allowed;border:none}
+.btn[disabled]:hover{background:var(--desab-fundo)}
 .btn-defs{display:flex;flex-direction:column;gap:11px;margin-top:6px}
 .btn-def{display:flex;gap:14px;align-items:baseline;max-width:720px;flex-wrap:wrap}
 .btn-def .n{font-weight:800;color:var(--indigo);white-space:nowrap;min-width:160px}
@@ -386,16 +398,18 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <div class="sw"><div class="chip" style="background:#177A6A;color:#fff">#177A6A</div><div class="meta"><div class="nm">Teal</div><div class="hx">--teal</div><div class="use">Utilitário: baixar cifra, material, Biblioteca de Músicas, "disponível".</div><div class="ratio">5,21:1 com texto branco</div></div></div>
       <div class="sw"><div class="chip" style="background:#E7F3F0;color:#146054">#E7F3F0</div><div class="meta"><div class="nm">Teal suave</div><div class="hx">--teal-suave</div><div class="use">Fundo de tag de biblioteca, selo de garantia.</div><div class="ratio">6,53:1 com o texto teal</div></div></div>
       <div class="sw"><div class="chip" style="background:#25845A;color:#fff">#25845A</div><div class="meta"><div class="nm">Verde</div><div class="hx">--verde</div><div class="use">Estado concluído: aula assistida, barra de progresso cheia, confirmação.</div><div class="ratio">4,64:1 com texto branco</div></div></div>
-      <div class="sw"><div class="chip" style="background:#8A5A00;color:#FBEFD0">#8A5A00</div><div class="meta"><div class="nm">Âmbar texto</div><div class="hx">--ambar-texto</div><div class="use">Dificuldade média. Sempre texto escuro sobre <code>#FBEFD0</code>, nunca amarelo cheio.</div><div class="ratio">5,18:1 no âmbar suave</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8A5A00;color:#FBEFD0">#8A5A00</div><div class="meta"><div class="nm">Âmbar texto</div><div class="hx">--ambar-texto</div><div class="use">Dificuldade média. Sempre texto escuro sobre o âmbar suave <code>#F5F0E4</code>, nunca amarelo cheio.</div><div class="ratio">5,21:1 no âmbar suave</div></div></div>
     </div>
 
     <div class="grupo">Neutros</div>
+    <p class="cap">Todos os neutros são tingidos para o matiz da marca (H 289 a 303), nenhum cinza morto. O neutro médio existe para tapar o vão entre a linha forte e o texto suave, onde antes não havia nada e cada tela inventava o seu.</p>
     <div class="pal">
       <div class="sw"><div class="chip" style="background:#1F1A2B;color:#fff">#1F1A2B</div><div class="meta"><div class="nm">Texto</div><div class="hx">--ink</div><div class="use">Corpo de texto. É um preto arroxeado, combina com o índigo.</div><div class="ratio">15,45:1 no fundo claro</div></div></div>
       <div class="sw"><div class="chip" style="background:#5C5A70;color:#fff">#5C5A70</div><div class="meta"><div class="nm">Texto suave</div><div class="hx">--muted</div><div class="use">Legendas, subtítulos, metadados. É o cinza mais claro permitido em texto.</div><div class="ratio">6,08:1 no fundo claro</div></div></div>
       <div class="sw"><div class="chip" style="background:#F5F4F7;color:#1F1A2B;border-bottom:1px solid #E1DEE8">#F5F4F7</div><div class="meta"><div class="nm">Fundo</div><div class="hx">--page</div><div class="use">Fundo da página. Um lilás levíssimo, nunca branco puro.</div><div class="ratio">base do sistema</div></div></div>
       <div class="sw"><div class="chip" style="background:#ECEAF1;color:#1F1A2B">#ECEAF1</div><div class="meta"><div class="nm">Superfície</div><div class="hx">--surface</div><div class="use">Blocos internos, barras, áreas de apoio.</div><div class="ratio">5,59:1 com o texto suave</div></div></div>
       <div class="sw"><div class="chip" style="background:#FFFFFF;color:#1F1A2B;border-bottom:1px solid #E1DEE8">#FFFFFF</div><div class="meta"><div class="nm">Card</div><div class="hx">--card</div><div class="use">Cartão que sobe sobre o fundo. Só o card é branco puro.</div><div class="ratio">16,92:1 com o texto</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8E8AA3;color:#fff">#8E8AA3</div><div class="meta"><div class="nm">Neutro médio</div><div class="hx">--muted-2</div><div class="use">Ícone secundário, borda de campo, botão desabilitado. Nunca texto: 3,33:1 é o mínimo de componente, não de leitura.</div><div class="ratio">3,33:1 no card</div></div></div>
       <div class="sw"><div class="chip" style="background:#DCD6E6;color:#2D124E">#DCD6E6</div><div class="meta"><div class="nm">Sobre escuro</div><div class="hx">--sobre-escuro</div><div class="use">Texto secundário em fundo índigo. Substitui o uso de opacidade, que derruba o contraste sem avisar.</div><div class="ratio">11,32:1 sobre índigo profundo</div></div></div>
     </div>
   </section>
@@ -445,6 +459,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
           <tr><td>Etiqueta Avançada</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#443468"></i>#443468</span></td><td class="mono">10,84:1</td><td class="ok">passa</td></tr>
           <tr><td>Aula concluída</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#25845A"></i>#25845A</span></td><td class="mono">4,64:1</td><td class="ok">passa</td></tr>
           <tr><td>Tag dificuldade média</td><td class="mono"><span class="par"><i style="background:#8A5A00"></i>#8A5A00 / <i style="background:#FBEFD0"></i>#FBEFD0</span></td><td class="mono">5,18:1</td><td class="ok">passa</td></tr>
+          <tr><td>Botão desabilitado</td><td class="mono"><span class="par"><i style="background:#5C5A70"></i>#5C5A70 / <i style="background:#E1DEE8"></i>#E1DEE8</span></td><td class="mono">5,02:1</td><td class="ok">passa</td></tr>
           <tr><td>Texto secundário no escuro</td><td class="mono"><span class="par"><i style="background:#DCD6E6"></i>#DCD6E6 / <i style="background:#2D124E"></i>#2D124E</span></td><td class="mono">11,32:1</td><td class="ok">passa</td></tr>
         </tbody>
       </table>
@@ -472,11 +487,27 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <div class="btn-def"><span class="n">6 · Decisão de compra</span><span class="d">Teal de ação com texto índigo. Só em página de oferta e checkout, e sempre sobre um bloco índigo, que é onde ele salta mais (4,96:1 contra o fundo).</span></div>
     </div>
     <div class="note"><p><strong>Por que o botão de compra não é laranja:</strong> laranja e vermelho são a família do alerta dentro de qualquer interface, e alerta contradiz uma oferta que promete garantia e calma. Sobre o hero índigo o laranja rende 3,17:1 contra o fundo e o teal de ação rende 4,96:1, então a troca ganha nos dois critérios, no significado e no destaque.</p></div>
-    <h3>Estados</h3>
+    <h3>Estados, com hex</h3>
+    <p>Hover descrito em prosa não sobrevive a um bloco copiado seis meses depois. Os valores são estes, e todos já vêm medidos.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Botão</th><th>Base</th><th>Hover</th><th>Contraste no hover</th></tr></thead>
+        <tbody>
+          <tr><td>Primário</td><td class="mono"><span class="par"><i style="background:#443468"></i>#443468</span></td><td class="mono"><span class="par"><i style="background:#3F3060"></i>#3F3060</span></td><td class="mono">11,65:1</td></tr>
+          <tr><td>Utilitário</td><td class="mono"><span class="par"><i style="background:#177A6A"></i>#177A6A</span></td><td class="mono"><span class="par"><i style="background:#157062"></i>#157062</span></td><td class="mono">5,96:1</td></tr>
+          <tr><td>Estado</td><td class="mono"><span class="par"><i style="background:#25845A"></i>#25845A</span></td><td class="mono"><span class="par"><i style="background:#227953"></i>#227953</span></td><td class="mono">5,35:1</td></tr>
+          <tr><td>Terciário</td><td class="mono"><span class="par"><i style="background:#B4404F"></i>#B4404F</span></td><td class="mono"><span class="par"><i style="background:#A63B49"></i>#A63B49</span></td><td class="mono">6,28:1</td></tr>
+          <tr><td>Decisão de compra</td><td class="mono"><span class="par"><i style="background:#12A18A"></i>#12A18A</span></td><td class="mono"><span class="par"><i style="background:#25A993"></i>#25A993</span></td><td class="mono">5,49:1</td></tr>
+          <tr><td>Desabilitado</td><td class="mono"><span class="par"><i style="background:#E1DEE8"></i>#E1DEE8</span></td><td class="mono">texto <span class="par"><i style="background:#5C5A70"></i>#5C5A70</span></td><td class="mono">5,02:1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="btns"><button class="btn b-primario">Hover aqui</button><button class="btn b-venda">E aqui</button><button class="btn b-primario" disabled>Desabilitado</button></div>
     <ul class="bul">
-      <li><strong>Hover:</strong> a mesma cor, 8% mais escura. Nunca troca de cor.</li>
-      <li><strong>Foco por teclado:</strong> anel índigo de 3px com 3px de afastamento. Obrigatório, não é enfeite.</li>
+      <li><strong>O botão de compra clareia em vez de escurecer.</strong> Ele tem texto escuro, então escurecer o fundo derrubava o contraste para 4,26:1 e reprovava. Clarear 8% leva para 5,49:1 e ainda dá a sensação de levantar.</li>
+      <li><strong>Foco por teclado:</strong> anel índigo <code>#443468</code> de 3px com 3px de afastamento. Obrigatório, não é enfeite.</li>
       <li><strong>Pressionado:</strong> escala 98%.</li>
+      <li><strong>Desabilitado</strong> mantém o texto legível em 5,02:1. A norma não exige, o público acima dos 45 exige.</li>
       <li><strong>Altura mínima de 44px</strong> em qualquer botão, para funcionar no dedo e no celular.</li>
     </ul>
   </section>
