@@ -32,6 +32,7 @@
   --verde-texto:#1F6B4A;
   --ambar-suave:#F5F0E4;
   --ambar-texto:#8A5A00;
+  --erro:#B83A2E; --erro-suave:#FBE9E6;   /* só falha de sistema */
   /* neutros */
   --ink:#1F1A2B; --muted:#5C5A70; --page:#F5F4F7; --surface:#ECEAF1;
   --card:#FFFFFF; --line:#E1DEE8; --line-forte:#C9C4D6;
@@ -398,7 +399,9 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <div class="sw"><div class="chip" style="background:#177A6A;color:#fff">#177A6A</div><div class="meta"><div class="nm">Teal</div><div class="hx">--teal</div><div class="use">Utilitário: baixar cifra, material, Biblioteca de Músicas, "disponível".</div><div class="ratio">5,21:1 com texto branco</div></div></div>
       <div class="sw"><div class="chip" style="background:#E7F3F0;color:#146054">#E7F3F0</div><div class="meta"><div class="nm">Teal suave</div><div class="hx">--teal-suave</div><div class="use">Fundo de tag de biblioteca, selo de garantia.</div><div class="ratio">6,53:1 com o texto teal</div></div></div>
       <div class="sw"><div class="chip" style="background:#25845A;color:#fff">#25845A</div><div class="meta"><div class="nm">Verde</div><div class="hx">--verde</div><div class="use">Estado concluído: aula assistida, barra de progresso cheia, confirmação.</div><div class="ratio">4,64:1 com texto branco</div></div></div>
-      <div class="sw"><div class="chip" style="background:#8A5A00;color:#FBEFD0">#8A5A00</div><div class="meta"><div class="nm">Âmbar texto</div><div class="hx">--ambar-texto</div><div class="use">Dificuldade média. Sempre texto escuro sobre o âmbar suave <code>#F5F0E4</code>, nunca amarelo cheio.</div><div class="ratio">5,21:1 no âmbar suave</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B83A2E;color:#fff">#B83A2E</div><div class="meta"><div class="nm">Erro</div><div class="hx">--erro</div><div class="use">Só falha de sistema: envio que não completou, formulário que não passou. Nunca dificuldade, nunca oferta.</div><div class="ratio">5,70:1 no branco</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FBE9E6;color:#B83A2E">#FBE9E6</div><div class="meta"><div class="nm">Erro suave</div><div class="hx">--erro-suave</div><div class="use">Fundo do aviso de falha, com o texto de erro por cima.</div><div class="ratio">4,86:1 com o texto de erro</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8A5A00;color:#F5F0E4">#8A5A00</div><div class="meta"><div class="nm">Âmbar texto</div><div class="hx">--ambar-texto</div><div class="use">Dificuldade média. Sempre texto escuro sobre o âmbar suave <code>#F5F0E4</code>, nunca amarelo cheio.</div><div class="ratio">5,21:1 no âmbar suave</div></div></div>
     </div>
 
     <div class="grupo">Neutros</div>
@@ -431,11 +434,11 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
         <p>Teal escuro para baixar e acessar, laranja para o que anuncia a oferta. O teal de ação e o teal utilitário são a mesma promessa em pesos diferentes: pegar o que é seu.</p>
       </div>
       <div class="papel">
-        <div class="top"><span class="dot" style="background:var(--verde)"></span><span class="dot" style="background:var(--ambar-texto)"></span><h3>Estado</h3></div>
-        <p>Verde e âmbar. Falam do conteúdo, não da marca: concluído, básica, média. Sempre em versão tinta clara com texto escuro.</p>
+        <div class="top"><span class="dot" style="background:var(--verde)"></span><span class="dot" style="background:var(--ambar-texto)"></span><span class="dot" style="background:var(--erro)"></span><h3>Estado</h3></div>
+        <p>Verde, âmbar e o vermelho de erro. Falam do que está acontecendo, não da marca: concluído, básica, média, falhou. Tinta clara com texto escuro, fora o vermelho, que também existe sólido porque precisa parar o aluno.</p>
       </div>
     </div>
-    <div class="note alerta"><p><strong>O erro mais comum:</strong> usar coral, laranja e vermelho na mesma tela. São três quentes que o olho lê como a mesma cor e a mensagem se embaralha. Medido em distância perceptual, o vermelho tijolo fica a 0,047 do laranja da logo, praticamente a mesma cor. Se precisa de destaque na área logada, use coral. Se é compra, teal de ação. Vermelho puro não existe nesta marca.</p></div>
+    <div class="note alerta"><p><strong>O erro mais comum:</strong> usar coral, laranja e vermelho na mesma tela. São três quentes que o olho lê como a mesma cor e a mensagem se embaralha. Medido em distância perceptual, o vermelho tijolo fica a 0,047 do laranja da logo, praticamente a mesma cor. Se precisa de destaque na área logada, use coral. Se é compra, teal de ação. Vermelho tem uma função só: falha de sistema. Ele também fica a 0,047 do laranja, e o que torna isso seguro é que os dois nunca dividem tela, porque erro só aparece na área logada e laranja só na página de venda.</p></div>
   </section>
 
   <section id="contraste">
@@ -459,6 +462,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
           <tr><td>Etiqueta Avançada</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#443468"></i>#443468</span></td><td class="mono">10,84:1</td><td class="ok">passa</td></tr>
           <tr><td>Aula concluída</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#25845A"></i>#25845A</span></td><td class="mono">4,64:1</td><td class="ok">passa</td></tr>
           <tr><td>Tag dificuldade média</td><td class="mono"><span class="par"><i style="background:#8A5A00"></i>#8A5A00 / <i style="background:#FBEFD0"></i>#FBEFD0</span></td><td class="mono">5,18:1</td><td class="ok">passa</td></tr>
+          <tr><td>Aviso de erro</td><td class="mono"><span class="par"><i style="background:#B83A2E"></i>#B83A2E / <i style="background:#FBE9E6"></i>#FBE9E6</span></td><td class="mono">4,86:1</td><td class="ok">passa</td></tr>
           <tr><td>Botão desabilitado</td><td class="mono"><span class="par"><i style="background:#5C5A70"></i>#5C5A70 / <i style="background:#E1DEE8"></i>#E1DEE8</span></td><td class="mono">5,02:1</td><td class="ok">passa</td></tr>
           <tr><td>Texto secundário no escuro</td><td class="mono"><span class="par"><i style="background:#DCD6E6"></i>#DCD6E6 / <i style="background:#2D124E"></i>#2D124E</span></td><td class="mono">11,32:1</td><td class="ok">passa</td></tr>
         </tbody>
@@ -706,7 +710,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <span class="chip-min c-nivel">Intermediário 1</span>
       <span class="chip-min c-nivel">Intermediário 2</span>
     </div>
-    <div class="note"><p><strong>Por que Avançada não é vermelha:</strong> medindo a distância perceptual, o vermelho tijolo fica a 0,047 do laranja da logo e a 0,039 do coral forte. Na tela, os três viram a mesma cor e a etiqueta deixa de informar. Além disso vermelho em interface significa erro, e avançada não é erro, é conquista. O índigo cheio fica a 0,297 do laranja, é cor da marca e rende 10,84:1 com texto branco.</p></div>
+    <div class="note"><p><strong>Por que Avançada não é vermelha:</strong> medindo a distância perceptual, o vermelho tijolo fica a 0,047 do laranja da logo e a 0,039 do coral forte. Na tela, os três viram a mesma cor e a etiqueta deixa de informar. Além disso vermelho nesta marca é o token <code>--erro</code>, reservado para falha de sistema, e avançada não é falha, é conquista. O índigo cheio fica a 0,297 do laranja, é cor da marca e rende 10,84:1 com texto branco.</p></div>
   </section>
 
   <section id="venda">
@@ -741,17 +745,24 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
 
   <section id="migracao">
     <h2>14 · O que ainda falta trocar</h2>
-    <p>A paleta acima é o alvo. Parte já está no ar, parte não. A troca é gradual e cada item é independente, ninguém precisa parar nada para o próximo funcionar.</p>
+    <p>Estado da paleta nas superfícies que existem hoje. Última varredura em 06/08/2026.</p>
+
+    <h3>Já alinhado</h3>
+    <ul class="bul">
+      <li><strong>Aula comum</strong> (<code>GERAR_AULA.gs</code>): coral forte no texto, teal <code>#177A6A</code> no download com hover <code>#157062</code>, degradê terminando em <code>#2D124E</code>.</li>
+      <li><strong>Aula da biblioteca</strong>: dificuldade em verde, âmbar e índigo cheio, todas acima de 4,6:1. As etiquetas de nível viraram tinta índigo única, porque nível é escala e não semáforo.</li>
+      <li><strong>Atividades</strong>: o botão de envio saiu do coral (2,78:1) para índigo cheio (10,84:1), o desabilitado ganhou contraste e o aviso de sucesso foi para o verde.</li>
+      <li><strong>Este manual</strong>: logo oficial, teal documentado, notação de batida e os tokens de estado.</li>
+    </ul>
+
+    <h3>Falta</h3>
     <ol class="plano">
-      <li><b>Logo oficial em todo lugar</b> <span class="st st-feito">feito aqui</span><br>As asas são laranja. Qualquer arte com asas coral é versão antiga e sai de circulação.</li>
-      <li><b>Teal documentado</b> <span class="st st-feito">feito aqui</span><br>Já estava nos botões de download e na Biblioteca sem constar em manual nenhum. Agora é cor oficial de utilitário, no tom <code>#177A6A</code>, que passa no contraste com texto branco.</li>
-      <li><b>Coral forte nas aulas</b> <span class="st st-falta">falta</span><br>No gerador de aulas, o texto em <code>#E87A85</code> (tempos do índice, chevron) troca para <code>#B4404F</code>. O coral claro continua nos preenchimentos e no eyebrow sobre o degradê.</li>
-      <li><b>Botão de download no tom novo</b> <span class="st st-falta">falta</span><br><code>--download:#1F8C7A</code> vira <code>#177A6A</code> no <code>GERAR_AULA.gs</code> e nos blocos da Cademí.</li>
-      <li><b>Fim do degradê no roxo da logo</b> <span class="st st-falta">falta</span><br><code>linear-gradient(135deg,#443468,#2D2249)</code> passa a terminar em <code>#2D124E</code>, o roxo que a logo usa de verdade.</li>
-      <li><b>Botão de compra vira teal de ação</b> <span class="st st-falta">falta</span><br>Nas páginas de venda, o botão troca de <code>#C2410C</code> para <code>#12A18A</code> com texto <code>#2D124E</code>, e o bloco do preço passa a ser índigo. O laranja fica no selo de oferta e no preço antigo riscado, unificado em <code>#CD3701</code>.</li>
-      <li><b>X da notação de batida</b> <span class="st st-falta">falta</span><br>No <code>motor.js</code> do gerador, <code>CORES_GESTO.x</code> sai de <code>#C2545F</code> (4,44:1) para <code>#B4404F</code> (5,55:1). Mesma família, mesmo token do resto da marca. No slide escuro, o halo <code>#2D2249</code> acompanha o roxo da logo e vira <code>#2D124E</code>.</li>
-      <li><b>Teal do gerador de acordes</b> <span class="st st-falta">falta</span><br>O <code>casca.css</code> ainda carrega <code>--teal:#1F8C7A</code>, que reprova com texto branco (4,13:1). Vai para <code>#177A6A</code>.</li>
+      <li><b>Botão de compra nas páginas de venda</b> <span class="st st-falta">falta</span><br>O botão troca de <code>#C2410C</code> para <code>#12A18A</code> com texto <code>#2D124E</code>, e o bloco do preço passa a ser índigo, que é onde o teal salta mais. O laranja fica no selo de oferta e no preço antigo riscado, unificado em <code>#CD3701</code>. É a única mudança desta lista que mexe em página que fatura, então vale trocar em uma página primeiro e comparar.</li>
+      <li><b>Oficina e gerador de acordes</b> <span class="st st-falta">falta</span><br>No <code>motor.js</code>, <code>CORES_GESTO.x</code> sai de <code>#C2545F</code> (4,44:1) para <code>#B4404F</code> (5,55:1). No <code>slides.js</code>, o halo do X sobre o card escuro vai de <code>#2D2249</code> para <code>#2D124E</code>. No <code>casca.css</code>, <code>--teal</code> sai de <code>#1F8C7A</code> (4,13:1 com texto branco) para <code>#177A6A</code>. E o <code>CACHE</code> do service worker precisa subir de versão, senão nada disso chega em quem já abriu a oficina.</li>
+      <li><b>Blocos colados na Cademí</b> <span class="st st-falta">falta</span><br>Os blocos de CSS que vivem em Configurações &gt; Códigos ainda carregam o teal antigo e o roxo <code>#2D2249</code>. Não têm gerador: cada um é colado à mão.</li>
     </ol>
+
+    <div class="note"><p><strong>Aulas já publicadas não mudam sozinhas.</strong> Os geradores cospem HTML estático que já está colado na Cademí. Só o conteúdo gerado a partir de agora nasce com a paleta nova, e regerar o antigo é opcional.</p></div>
   </section>
 
   <section id="resumo">
