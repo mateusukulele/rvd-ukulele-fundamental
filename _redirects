@@ -1,0 +1,8 @@
+# Redirects do Cloudflare Pages. Uma regra por linha: origem destino código.
+# 302 é temporário de propósito: o navegador não guarda para sempre e dá para
+# voltar atrás só apagando a linha. Trocar para 301 quando não houver mais dúvida.
+
+# Manual de identidade visual: a edição antiga passa a levar para a de 2026.
+# O conteúdo antigo continua acessível em /manual-visual-cdu.html, que não é
+# afetado por esta regra.
+/manual-visual-cdu  /manual-visual-clube-do-ukulele-2026  302
