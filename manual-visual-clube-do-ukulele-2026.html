@@ -20,7 +20,9 @@
   --coral-forte:#B4404F;     /* a mesma assinatura, versão texto em fundo claro */
   --coral-suave:#FBEAEC;
   --coral-texto:#4D1A20;
-  --laranja:#CD3701;         /* laranja da logo = conversão */
+  --laranja:#CD3701;         /* laranja da logo = selo de oferta */
+  --acao:#12A18A;            /* teal vivo = decisão de compra */
+  --acao-texto:#2D124E;
   /* apoio */
   --teal:#177A6A;            /* utilitário: download, biblioteca, acesso */
   --teal-suave:#E7F3F0;
@@ -137,7 +139,7 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 .b-terciario{background:transparent;color:var(--coral-forte);text-decoration:underline;text-underline-offset:4px;padding-left:6px;padding-right:6px}
 .b-util{background:var(--teal);color:#fff}
 .b-feito{background:var(--verde);color:#fff}
-.b-venda{background:var(--laranja);color:#fff}
+.b-venda{background:var(--acao);color:var(--acao-texto)}
 .btn-defs{display:flex;flex-direction:column;gap:11px;margin-top:6px}
 .btn-def{display:flex;gap:14px;align-items:baseline;max-width:720px;flex-wrap:wrap}
 .btn-def .n{font-weight:800;color:var(--indigo);white-space:nowrap;min-width:160px}
@@ -159,6 +161,20 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 .layer{flex:1;padding:28px 16px;text-align:center;font-size:13px;font-weight:600}
 .layer span{font-family:'JetBrains Mono';font-size:11px;font-weight:400;display:block;margin-top:4px;color:var(--muted)}
 .l1{background:var(--page)}.l2{background:var(--surface)}.l3{background:var(--card)}
+
+.tira-batida{display:flex;gap:2px;flex-wrap:wrap;padding:14px 6px;background:var(--page);border-radius:12px;justify-content:center}
+.tira-batida .bt{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:38px}
+.tira-batida .bt b{font-family:'JetBrains Mono';font-size:11px;color:var(--muted);font-weight:400}
+
+/* ===== notação de batida ===== */
+.gestos{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));align-items:end;gap:10px;margin:16px 0;padding:22px 18px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+.gestos.escuro{background:var(--indigo-deep);border-color:var(--indigo)}
+.gesto{display:flex;flex-direction:column;align-items:center;gap:10px}
+.gesto svg{display:block}
+.gesto figcaption{font-size:11px;color:var(--muted);text-align:center;line-height:1.3}
+.gestos.escuro figcaption{color:var(--sobre-escuro)}
+.forcas{display:flex;gap:26px;align-items:flex-end;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin:16px 0}
+.forcas .cx{display:flex;align-items:flex-end;height:64px}
 
 /* ===== mockups ===== */
 .mock{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:18px 0;box-shadow:0 20px 44px -30px rgba(31,26,43,.55);background:var(--card)}
@@ -191,6 +207,10 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 .c-basica{background:var(--verde-suave);color:var(--verde-texto)}
 .c-media{background:var(--ambar-suave);color:var(--ambar-texto)}
 .c-nivel{background:var(--indigo-suave);color:var(--indigo)}
+.c-avancada{background:var(--indigo);color:#fff}
+.dots{display:inline-flex;gap:3px;margin-left:6px;vertical-align:middle}
+.dots i{width:6px;height:6px;border-radius:50%;border:1.5px solid currentColor;display:block}
+.dots i.on{background:currentColor}
 .material{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
 .download{display:flex;align-items:center;gap:11px;background:var(--teal);color:#fff;border-radius:12px;padding:13px 15px;text-decoration:none;font-weight:700;font-size:14px;min-height:44px}
 .download .ic{width:26px;height:26px;border-radius:7px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex:none;font-size:13px}
@@ -221,7 +241,7 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 
 /* venda */
 .venda-hero{background:var(--indigo-deep);padding:48px 34px;text-align:center;color:#fff}
-.venda-hero .badge{display:inline-block;background:var(--coral);color:var(--coral-texto);font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 15px;border-radius:20px;margin-bottom:18px}
+.venda-hero .badge{display:inline-block;background:var(--laranja);color:#fff;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 15px;border-radius:20px;margin-bottom:18px}
 .venda-hero h4{font-family:'Anton';text-transform:uppercase;font-size:clamp(25px,4.4vw,40px);line-height:1.02;margin-bottom:14px}
 .venda-hero h4 .hl{color:var(--coral)}
 .venda-hero p{color:var(--sobre-escuro);max-width:520px;margin:0 auto 26px;font-size:15px}
@@ -233,11 +253,11 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 .m-card.destaque .num{background:var(--coral);color:var(--coral-texto)}
 .m-card h5{color:var(--indigo-deep);font-size:15px;margin-bottom:5px}
 .m-card p{font-size:12.5px;color:var(--muted);margin:0}
-.preco{background:var(--card);margin:0 34px 34px;border:2px solid var(--indigo);border-radius:18px;padding:28px;text-align:center}
-.preco .de{color:var(--muted);text-decoration:line-through;font-size:14.5px}
-.preco .now{font-family:'Anton';font-size:44px;color:var(--indigo);line-height:1;margin:4px 0}
-.preco .now small{font-size:17px;color:var(--muted);font-family:'Montserrat'}
-.preco .avista{font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.preco{background:var(--indigo-deep);margin:0 34px 34px;border:1px solid var(--indigo);border-radius:18px;padding:28px;text-align:center;color:#fff}
+.preco .de{color:var(--laranja);text-decoration:line-through;text-decoration-color:var(--laranja);font-size:14.5px;font-weight:700}
+.preco .now{font-family:'Anton';font-size:44px;color:#fff;line-height:1;margin:4px 0}
+.preco .now small{font-size:17px;color:var(--sobre-escuro);font-family:'Montserrat'}
+.preco .avista{font-size:13.5px;color:var(--sobre-escuro);margin-bottom:16px}
 .preco .gar{font-size:12.5px;color:var(--teal-texto);background:var(--teal-suave);display:inline-block;padding:7px 14px;border-radius:20px;margin-top:14px;font-weight:600}
 
 /* plano */
@@ -255,6 +275,8 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
   .toc ol{columns:1}
   .logo-uses,.papeis,.trilha,.metodo .grid{grid-template-columns:1fr}
   .errado{grid-template-columns:repeat(2,1fr)}
+  .gestos{grid-template-columns:repeat(4,1fr);row-gap:20px}
+  .forcas{gap:18px;justify-content:center}
   .venda-hero,.metodo{padding-left:20px;padding-right:20px}
   .preco{margin-left:20px;margin-right:20px}
 }
@@ -267,7 +289,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
   <img src="img/logo-clube-oficial.webp" alt="Logo do Clube do Ukulele: escudo com asas, sobre fundo índigo">
   <div class="eyebrow">Clube do Ukulele</div>
   <h1>Manual de<br>Identidade Visual</h1>
-  <div class="sub">Edição 2026 · Índigo, coral, laranja e teal</div>
+  <div class="sub">Edição 2026 · Índigo, coral, teal e laranja</div>
   <div class="rule"></div>
 </div>
 
@@ -285,6 +307,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <li><a href="#tipografia">Tipografia</a></li>
       <li><a href="#camadas">Fundos e profundidade</a></li>
       <li><a href="#aula">Componentes de aula</a></li>
+      <li><a href="#notacao">Notação de batida</a></li>
       <li><a href="#membros">Área de membros</a></li>
       <li><a href="#dificuldade">Dificuldade e nível</a></li>
       <li><a href="#venda">Página de venda</a></li>
@@ -296,8 +319,8 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
   <section id="essencia">
     <h2>1 · A essência da marca</h2>
     <p class="lead">O Clube do Ukulele leva o aluno do zero à autonomia, com método sério e caminho leve. A identidade visual carrega isso: a confiança de quem sabe ensinar, com a alegria de quem toca por prazer.</p>
-    <p>A base é o <span class="tag">índigo</span>, que dá estrutura, calma e a sensação de curso bem-feito. O <span class="tag">coral</span> é o detalhe humano, aparece em doses pequenas e é o que faz alguém reconhecer a marca de longe. O <span class="tag">laranja da logo</span> tem uma função só, convidar para a decisão. O <span class="tag">teal</span> é o utilitário, cuida do que o aluno baixa e acessa.</p>
-    <div class="note"><p><strong>Regra de ouro:</strong> base índigo, detalhe coral, laranja só na hora de decidir, teal no que é ferramenta. Quatro cores com quatro empregos fixos. Cor que muda de emprego vira ruído.</p></div>
+    <p>A base é o <span class="tag">índigo</span>, que dá estrutura, calma e a sensação de curso bem-feito. O <span class="tag">coral</span> é o detalhe humano, aparece em doses pequenas e é o que faz alguém reconhecer a marca de longe. O <span class="tag">teal</span> é a cor de pegar o que é seu: baixar a cifra, abrir a biblioteca, entrar no curso. O <span class="tag">laranja da logo</span> marca a oferta, o selo e o preço antigo, sem virar botão.</p>
+    <div class="note"><p><strong>Regra de ouro:</strong> base índigo, detalhe coral, teal em tudo que o aluno vai buscar, laranja só no que anuncia a oferta. Quatro cores com quatro empregos fixos. Cor que muda de emprego vira ruído.</p></div>
   </section>
 
   <section id="logo">
@@ -352,9 +375,10 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <div class="sw"><div class="chip" style="background:#4D1A20;color:#FBEAEC">#4D1A20</div><div class="meta"><div class="nm">Coral texto</div><div class="hx">--coral-texto</div><div class="use">Texto por cima de coral cheio ou coral suave.</div><div class="ratio">5,09:1 sobre o coral</div></div></div>
     </div>
 
-    <div class="grupo">Conversão</div>
+    <div class="grupo">Ação e oferta</div>
     <div class="pal">
-      <div class="sw"><div class="chip" style="background:#CD3701;color:#fff">#CD3701</div><div class="meta"><div class="nm">Laranja</div><div class="hx">--laranja</div><div class="use">A cor das asas da logo. Só botão de compra e selo de oferta. Nunca dentro da área logada comum.</div><div class="ratio">5,07:1 com texto branco</div></div></div>
+      <div class="sw"><div class="chip" style="background:#12A18A;color:#2D124E">#12A18A</div><div class="meta"><div class="nm">Teal de ação</div><div class="hx">--acao</div><div class="use">O botão que leva à compra. Sempre com texto índigo profundo, nunca branco.</div><div class="ratio">4,96:1 sobre o hero índigo</div></div></div>
+      <div class="sw"><div class="chip" style="background:#CD3701;color:#fff">#CD3701</div><div class="meta"><div class="nm">Laranja</div><div class="hx">--laranja</div><div class="use">A cor das asas da logo. Selo de oferta, preço antigo riscado, contador. Não vira botão.</div><div class="ratio">5,07:1 com texto branco</div></div></div>
     </div>
 
     <div class="grupo">Apoio e estado</div>
@@ -385,19 +409,19 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
         <p>Índigo e coral. Dizem quem somos. Aparecem em tudo: cabeçalhos, botão primário, detalhes, ícones.</p>
       </div>
       <div class="papel">
-        <div class="top"><span class="dot" style="background:var(--laranja)"></span><h3>Conversão</h3></div>
-        <p>Laranja da logo. Só onde existe decisão de compra. Se aparece na área logada, perde o efeito quando importa.</p>
+        <div class="top"><span class="dot" style="background:var(--acao)"></span><h3>Decisão</h3></div>
+        <p>Teal de ação. O botão que compra. Verde-azulado é a família do prosseguir; laranja e vermelho são a família do alerta, e alerta trabalha contra quem promete segurança.</p>
       </div>
       <div class="papel">
-        <div class="top"><span class="dot" style="background:var(--teal)"></span><h3>Utilitário</h3></div>
-        <p>Teal. Ferramenta: baixar, acessar, abrir a biblioteca. Nunca comunica emoção nem urgência.</p>
+        <div class="top"><span class="dot" style="background:var(--teal)"></span><span class="dot" style="background:var(--laranja)"></span><h3>Utilitário e oferta</h3></div>
+        <p>Teal escuro para baixar e acessar, laranja para o que anuncia a oferta. O teal de ação e o teal utilitário são a mesma promessa em pesos diferentes: pegar o que é seu.</p>
       </div>
       <div class="papel">
         <div class="top"><span class="dot" style="background:var(--verde)"></span><span class="dot" style="background:var(--ambar-texto)"></span><h3>Estado</h3></div>
         <p>Verde e âmbar. Falam do conteúdo, não da marca: concluído, básica, média. Sempre em versão tinta clara com texto escuro.</p>
       </div>
     </div>
-    <div class="note alerta"><p><strong>O erro mais comum:</strong> usar coral, laranja e vermelho na mesma tela. São três quentes que o olho lê como a mesma cor e a mensagem se embaralha. Se precisa de destaque dentro da área logada, use coral. Se é compra, laranja. Vermelho puro não existe nesta marca.</p></div>
+    <div class="note alerta"><p><strong>O erro mais comum:</strong> usar coral, laranja e vermelho na mesma tela. São três quentes que o olho lê como a mesma cor e a mensagem se embaralha. Medido em distância perceptual, o vermelho tijolo fica a 0,047 do laranja da logo, praticamente a mesma cor. Se precisa de destaque na área logada, use coral. Se é compra, teal de ação. Vermelho puro não existe nesta marca.</p></div>
   </section>
 
   <section id="contraste">
@@ -415,7 +439,10 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
           <tr><td>Coral sobre fundo escuro</td><td class="mono"><span class="par"><i style="background:#E87A85"></i>#E87A85 / <i style="background:#2D124E"></i>#2D124E</span></td><td class="mono">5,77:1</td><td class="ok">passa</td></tr>
           <tr><td>Cabeçalho de seção da aula</td><td class="mono"><span class="par"><i style="background:#4D1A20"></i>#4D1A20 / <i style="background:#FBEAEC"></i>#FBEAEC</span></td><td class="mono">12,18:1</td><td class="ok">passa</td></tr>
           <tr><td>Botão de download</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#177A6A"></i>#177A6A</span></td><td class="mono">5,21:1</td><td class="ok">passa</td></tr>
-          <tr><td>Botão de compra</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#CD3701"></i>#CD3701</span></td><td class="mono">5,07:1</td><td class="ok">passa</td></tr>
+          <tr><td>Botão de compra</td><td class="mono"><span class="par"><i style="background:#2D124E"></i>#2D124E / <i style="background:#12A18A"></i>#12A18A</span></td><td class="mono">4,96:1</td><td class="ok">passa</td></tr>
+          <tr><td>Selo de oferta</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#CD3701"></i>#CD3701</span></td><td class="mono">5,07:1</td><td class="ok">passa</td></tr>
+          <tr><td>X do chunk na batida</td><td class="mono"><span class="par"><i style="background:#B4404F"></i>#B4404F / <i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF</span></td><td class="mono">5,55:1</td><td class="ok">passa</td></tr>
+          <tr><td>Etiqueta Avançada</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#443468"></i>#443468</span></td><td class="mono">10,84:1</td><td class="ok">passa</td></tr>
           <tr><td>Aula concluída</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#25845A"></i>#25845A</span></td><td class="mono">4,64:1</td><td class="ok">passa</td></tr>
           <tr><td>Tag dificuldade média</td><td class="mono"><span class="par"><i style="background:#8A5A00"></i>#8A5A00 / <i style="background:#FBEFD0"></i>#FBEFD0</span></td><td class="mono">5,18:1</td><td class="ok">passa</td></tr>
           <tr><td>Texto secundário no escuro</td><td class="mono"><span class="par"><i style="background:#DCD6E6"></i>#DCD6E6 / <i style="background:#2D124E"></i>#2D124E</span></td><td class="mono">11,32:1</td><td class="ok">passa</td></tr>
@@ -442,8 +469,9 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <div class="btn-def"><span class="n">3 · Terciário</span><span class="d">Texto em coral forte, sublinhado. Baixa importância: pular, ver mais.</span></div>
       <div class="btn-def"><span class="n">4 · Utilitário</span><span class="d">Teal com texto branco. Baixar cifra, material de apoio, abrir a biblioteca.</span></div>
       <div class="btn-def"><span class="n">5 · Estado</span><span class="d">Verde. Concluir e confirmar. Depois de clicado vira o estado "concluída".</span></div>
-      <div class="btn-def"><span class="n">6 · Venda</span><span class="d">Laranja da logo. Só em página de oferta e checkout.</span></div>
+      <div class="btn-def"><span class="n">6 · Decisão de compra</span><span class="d">Teal de ação com texto índigo. Só em página de oferta e checkout, e sempre sobre um bloco índigo, que é onde ele salta mais (4,96:1 contra o fundo).</span></div>
     </div>
+    <div class="note"><p><strong>Por que o botão de compra não é laranja:</strong> laranja e vermelho são a família do alerta dentro de qualquer interface, e alerta contradiz uma oferta que promete garantia e calma. Sobre o hero índigo o laranja rende 3,17:1 contra o fundo e o teal de ação rende 4,96:1, então a troca ganha nos dois critérios, no significado e no destaque.</p></div>
     <h3>Estados</h3>
     <ul class="bul">
       <li><strong>Hover:</strong> a mesma cor, 8% mais escura. Nunca troca de cor.</li>
@@ -510,6 +538,10 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
           </ul>
         </div>
         <div class="aula-card">
+          <div class="secao-h">A batida</div>
+          <div class="tira-batida"><span class="bt"><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><b>1</b></span><span class="bt"><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:0.12;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><b>e</b></span><span class="bt"><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 6 L18.5 20 M18.5 6 L5.5 20" fill="none" stroke="#FFFFFF" stroke-width="10.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 6 L18.5 20 M18.5 6 L5.5 20" fill="none" stroke="#B4404F" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><b>2</b></span><span class="bt"><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 37 L12 6 M4 15 L12 5.5 L20 15" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><b>e</b></span><span class="bt"><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><b>3</b></span><span class="bt"><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 37 L12 6 M4 15 L12 5.5 L20 15" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><b>e</b></span><span class="bt"><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 6 L18.5 20 M18.5 6 L5.5 20" fill="none" stroke="#FFFFFF" stroke-width="10.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 6 L18.5 20 M18.5 6 L5.5 20" fill="none" stroke="#B4404F" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><b>4</b></span><span class="bt"><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 37 L12 6 M4 15 L12 5.5 L20 15" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><b>e</b></span></div>
+        </div>
+        <div class="aula-card">
           <div class="secao-h">Continue pela biblioteca</div>
           <ul class="biblio">
             <li>
@@ -538,11 +570,55 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
         </div>
       </div>
     </div>
-    <p class="cap">Cabeçalho no degradê <code>135deg, #443468 → #2D124E</code>, eyebrow coral, tempos do índice em coral forte, botões de material em teal. Músicas e dificuldades vindas da planilha real da Biblioteca de Músicas.</p>
+    <p class="cap">Cabeçalho no degradê <code>135deg, #443468 → #2D124E</code>, eyebrow coral, tempos do índice em coral forte, botões de material em teal. A tira de batida usa os mesmos símbolos da seção 10; a sequência aqui é ilustrativa, a batida real de cada música vem do banco de batidas. Músicas e dificuldades vindas da planilha real da Biblioteca de Músicas.</p>
+  </section>
+
+  <section id="notacao">
+    <h2>10 · Notação de batida</h2>
+    <p>Os símbolos usados nos slides da oficina e no gerador de batidas. Eles são desenhados por código (<code>svgGesto</code> no <code>motor.js</code>), então a regra de cor vale para qualquer lugar onde a batida apareça: slide, PDF, aula ou tela do aluno.</p>
+
+    <h3>Três papéis, não uma cor por gesto</h3>
+    <ul class="bul">
+      <li><strong>A seta e a onda saem sempre no índigo.</strong> Direção é direção. Pintar o rasgueado de outra cor fazia ele parecer outro gesto em vez de outro movimento.</li>
+      <li><strong>O X é o único colorido</strong>, em coral forte, porque ele é a informação nova por cima da seta.</li>
+      <li><strong>O halo em volta do X</strong> tem a cor do fundo e não pinta nada: abre um vão para o X ler como algo por cima, e não como parte da seta.</li>
+    </ul>
+
+    <div class="gestos">
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Para baixo</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 37 L12 6 M4 15 L12 5.5 L20 15" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Para cima</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 Q8 5 12 7 Q16 9 12 11 Q8 13 12 15 Q16 17 12 19 Q8 21 12 23 Q16 25 12 27 M5 26 L12 35 L19 26" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Rasgueado</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 6 L18.5 20 M18.5 6 L5.5 20" fill="none" stroke="#FFFFFF" stroke-width="10.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 6 L18.5 20 M18.5 6 L5.5 20" fill="none" stroke="#B4404F" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Chunk</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 37 L12 6 M4 15 L12 5.5 L20 15" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 20 L18.5 34 M18.5 20 L5.5 34" fill="none" stroke="#FFFFFF" stroke-width="10.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 20 L18.5 34 M18.5 20 L5.5 34" fill="none" stroke="#B4404F" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Chunk p/ cima</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M2.5 10 L21.5 30 M21.5 10 L2.5 30" fill="none" stroke="#FFFFFF" stroke-width="11.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 10 L21.5 30 M21.5 10 L2.5 30" fill="none" stroke="#B4404F" stroke-width="3.70" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Abafamento</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:0.12;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>A mão passa</figcaption></figure>
+    </div>
+    <p class="cap">Fundo claro: traço <code>#443468</code> (10,84:1), X <code>#B4404F</code> (5,55:1), halo branco.</p>
+
+    <div class="gestos escuro">
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#FFFFFF" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Para baixo</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 37 L12 6 M4 15 L12 5.5 L20 15" fill="none" stroke="#FFFFFF" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Para cima</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 Q8 5 12 7 Q16 9 12 11 Q8 13 12 15 Q16 17 12 19 Q8 21 12 23 Q16 25 12 27 M5 26 L12 35 L19 26" fill="none" stroke="#FFFFFF" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Rasgueado</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#FFFFFF" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 6 L18.5 20 M18.5 6 L5.5 20" fill="none" stroke="#2D124E" stroke-width="10.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 6 L18.5 20 M18.5 6 L5.5 20" fill="none" stroke="#E87A85" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Chunk</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 37 L12 6 M4 15 L12 5.5 L20 15" fill="none" stroke="#FFFFFF" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 20 L18.5 34 M18.5 20 L5.5 34" fill="none" stroke="#2D124E" stroke-width="10.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 20 L18.5 34 M18.5 20 L5.5 34" fill="none" stroke="#E87A85" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Chunk p/ cima</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M2.5 10 L21.5 30 M21.5 10 L2.5 30" fill="none" stroke="#2D124E" stroke-width="11.00" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 10 L21.5 30 M21.5 10 L2.5 30" fill="none" stroke="#E87A85" stroke-width="3.70" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Abafamento</figcaption></figure>
+        <figure class="gesto "><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:0.12;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#FFFFFF" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>A mão passa</figcaption></figure>
+    </div>
+    <p class="cap">Sobre o card índigo do slide a paleta inverte: traço branco (16,05:1), X no coral da marca <code>#E87A85</code> (5,77:1), halo <code>#2D124E</code>. É a regra de coral de dois tons aplicada: coral claro brilha no escuro, coral forte escreve no claro.</p>
+
+    <h3>Força do golpe</h3>
+    <p>Três níveis, e cada um muda tamanho <strong>e</strong> espessura. Só o tamanho não basta: de longe, duas setas de tamanhos próximos se confundem, e a espessura é o segundo sinal que separa as duas na hora.</p>
+    <div class="forcas">
+        <figure class="gesto"><div class="cx"><svg viewBox="0 0 24 40" width="21.5" height="35.9" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="2.40" stroke-linecap="round" stroke-linejoin="round"/></svg></div><figcaption>Fraca</figcaption></figure>
+        <figure class="gesto"><div class="cx"><svg viewBox="0 0 24 40" width="27.6" height="46.0" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="3.00" stroke-linecap="round" stroke-linejoin="round"/></svg></div><figcaption>Média</figcaption></figure>
+        <figure class="gesto"><div class="cx"><svg viewBox="0 0 24 40" width="35.9" height="59.8" aria-hidden="true" style="opacity:1;overflow:visible"><path d="M12 3 L12 34 M4 25 L12 34.5 L20 25" fill="none" stroke="#443468" stroke-width="4.20" stroke-linecap="round" stroke-linejoin="round"/></svg></div><figcaption>Forte</figcaption></figure>
+    </div>
+
+    <div class="note"><p><strong>Duas exceções que são decisão, não descuido.</strong> A mão que passa fica em 12% de opacidade, bem abaixo de qualquer mínimo de contraste: ela precisa existir para mostrar que o pêndulo não para, mas em 22% o aluno mais velho lia como golpe e batia nela. E o X do chunk fica na metade da haste oposta à ponta da seta, nunca centralizado, porque encostado na ponta virava um borrão sem direção para quem enxerga menos.</p></div>
   </section>
 
   <section id="membros">
-    <h2>10 · Área de membros</h2>
+    <h2>11 · Área de membros</h2>
     <p>O ambiente logado. Aqui não existe laranja: quem já entrou não precisa ser convidado a comprar. O índigo conduz a navegação, o coral marca o progresso e o teal cuida do material.</p>
     <div class="mock">
       <div class="bar"><i></i><i></i><i></i><span class="url">aluno.comotocarukulele.com/area</span></div>
@@ -580,14 +656,16 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
   </section>
 
   <section id="dificuldade">
-    <h2>11 · Dificuldade e nível</h2>
+    <h2>12 · Dificuldade e nível</h2>
     <p>São dois eixos diferentes e não podem virar a mesma coisa visualmente.</p>
     <h3>Dificuldade: o esforço da música</h3>
-    <p>Só dois valores existem no acervo: <strong>Básica</strong> e <strong>Média</strong>. Tinta clara com texto escuro, sempre.</p>
+    <p>Três degraus, e a progressão não se faz só pela cor: Básica e Média são tinta clara com texto escuro, Avançada é índigo sólido com texto branco. Claro, claro, sólido escuro. Funciona impresso em cinza e funciona para quem não distingue verde de vermelho.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px">
-      <span class="chip-min c-basica">Básica</span>
-      <span class="chip-min c-media">Média</span>
+      <span class="chip-min c-basica">Básica <span class="dots"><i class="on"></i><i></i><i></i></span></span>
+      <span class="chip-min c-media">Média <span class="dots"><i class="on"></i><i class="on"></i><i></i></span></span>
+      <span class="chip-min c-avancada">Avançada <span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></span></span>
     </div>
+    <p class="cap">O acervo de hoje só usa Básica (132 músicas) e Média (24). Avançada já existe no sistema para quando as primeiras músicas desse grau entrarem.</p>
     <h3>Nível: onde o aluno está na jornada</h3>
     <p>Cinco degraus, do Iniciante 0 ao Intermediário 2. O nível é escala, não semáforo: usa um índigo só e se diferencia pelo texto. Colorir cada degrau faria o aluno achar que "vermelho" é perigo.</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -597,12 +675,12 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <span class="chip-min c-nivel">Intermediário 1</span>
       <span class="chip-min c-nivel">Intermediário 2</span>
     </div>
-    <div class="note"><p><strong>Por que não existe "avançado" em vermelho:</strong> o acervo não tem esse valor, e um vermelho ao lado do coral e do laranja cria três quentes competindo. Se um dia aparecer um terceiro grau de dificuldade, ele entra em índigo cheio, não em vermelho.</p></div>
+    <div class="note"><p><strong>Por que Avançada não é vermelha:</strong> medindo a distância perceptual, o vermelho tijolo fica a 0,047 do laranja da logo e a 0,039 do coral forte. Na tela, os três viram a mesma cor e a etiqueta deixa de informar. Além disso vermelho em interface significa erro, e avançada não é erro, é conquista. O índigo cheio fica a 0,297 do laranja, é cor da marca e rende 10,84:1 com texto branco.</p></div>
   </section>
 
   <section id="venda">
-    <h2>12 · Página de venda</h2>
-    <p>Aqui o laranja trabalha no habitat dele: fundo índigo profundo, coral no destaque da promessa, laranja só nos botões que levam ao checkout.</p>
+    <h2>13 · Página de venda</h2>
+    <p>O botão de compra é o teal de ação sobre índigo, que é onde ele mais salta. O coral marca a promessa dentro do título. O laranja da logo fica no selo e no preço antigo, anunciando a oferta sem imitar um alerta.</p>
     <div class="mock">
       <div class="bar"><i></i><i></i><i></i><span class="url">cursos.comotocarukulele.com</span></div>
       <div class="venda-hero">
@@ -627,11 +705,11 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
         <div class="gar">Garantia incondicional de 14 dias</div>
       </div>
     </div>
-    <p class="cap">Headline, método, preço e garantia são os da página no ar. O laranja aparece duas vezes na página inteira, sempre para o mesmo destino.</p>
+    <p class="cap">Headline, método, preço e garantia são os da página no ar. Uma cor de botão só na página inteira, sempre para o mesmo destino, sempre sobre fundo índigo.</p>
   </section>
 
   <section id="migracao">
-    <h2>13 · O que ainda falta trocar</h2>
+    <h2>14 · O que ainda falta trocar</h2>
     <p>A paleta acima é o alvo. Parte já está no ar, parte não. A troca é gradual e cada item é independente, ninguém precisa parar nada para o próximo funcionar.</p>
     <ol class="plano">
       <li><b>Logo oficial em todo lugar</b> <span class="st st-feito">feito aqui</span><br>As asas são laranja. Qualquer arte com asas coral é versão antiga e sai de circulação.</li>
@@ -639,16 +717,18 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <li><b>Coral forte nas aulas</b> <span class="st st-falta">falta</span><br>No gerador de aulas, o texto em <code>#E87A85</code> (tempos do índice, chevron) troca para <code>#B4404F</code>. O coral claro continua nos preenchimentos e no eyebrow sobre o degradê.</li>
       <li><b>Botão de download no tom novo</b> <span class="st st-falta">falta</span><br><code>--download:#1F8C7A</code> vira <code>#177A6A</code> no <code>GERAR_AULA.gs</code> e nos blocos da Cademí.</li>
       <li><b>Fim do degradê no roxo da logo</b> <span class="st st-falta">falta</span><br><code>linear-gradient(135deg,#443468,#2D2249)</code> passa a terminar em <code>#2D124E</code>, o roxo que a logo usa de verdade.</li>
-      <li><b>Laranja único</b> <span class="st st-falta">falta</span><br>As páginas de venda usam <code>#C2410C</code>, praticamente o mesmo laranja da logo. Unificar em <code>#CD3701</code> tira uma cor do sistema sem mudar nada aos olhos.</li>
+      <li><b>Botão de compra vira teal de ação</b> <span class="st st-falta">falta</span><br>Nas páginas de venda, o botão troca de <code>#C2410C</code> para <code>#12A18A</code> com texto <code>#2D124E</code>, e o bloco do preço passa a ser índigo. O laranja fica no selo de oferta e no preço antigo riscado, unificado em <code>#CD3701</code>.</li>
+      <li><b>X da notação de batida</b> <span class="st st-falta">falta</span><br>No <code>motor.js</code> do gerador, <code>CORES_GESTO.x</code> sai de <code>#C2545F</code> (4,44:1) para <code>#B4404F</code> (5,55:1). Mesma família, mesmo token do resto da marca. No slide escuro, o halo <code>#2D2249</code> acompanha o roxo da logo e vira <code>#2D124E</code>.</li>
+      <li><b>Teal do gerador de acordes</b> <span class="st st-falta">falta</span><br>O <code>casca.css</code> ainda carrega <code>--teal:#1F8C7A</code>, que reprova com texto branco (4,13:1). Vai para <code>#177A6A</code>.</li>
     </ol>
   </section>
 
   <section id="resumo">
-    <h2>14 · Em resumo</h2>
+    <h2>15 · Em resumo</h2>
     <ul class="bul">
       <li>Base índigo, detalhe coral. O coral aparece pouco e é justamente por isso que ele marca.</li>
       <li>Coral cheio preenche e brilha no escuro. Coral forte escreve no claro. É a mesma cor com dois trabalhos.</li>
-      <li>Laranja só vende, teal só serve, verde só confirma. Nenhum deles fala pela marca.</li>
+      <li>Teal decide e serve, laranja anuncia a oferta, verde confirma. Nenhum deles fala pela marca.</li>
       <li>Fundo nunca é branco puro. Card branco sobe por cima do lilás claro.</li>
       <li>Todo par de cor novo passa pelo teste de contraste antes de ir para uma tela.</li>
     </ul>
@@ -656,7 +736,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
 
   <footer>
     Clube do Ukulele · Manual de Identidade Visual · Edição 2026<br>
-    Índigo #443468 · Coral #E87A85 · Laranja #CD3701 · Teal #177A6A
+    Índigo #443468 · Coral #E87A85 · Teal de ação #12A18A · Teal utilitário #177A6A · Laranja #CD3701
   </footer>
 
 </div>
