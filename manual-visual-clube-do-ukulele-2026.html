@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Identidade Visual 2026 · Clube do Ukulele</title>
+<meta name="description" content="Manual de identidade visual do Clube do Ukulele: logo oficial, paleta com contraste medido, tipografia e componentes reais da área de membros.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* marca */
+  --indigo:#443468;          /* âncora de interface */
+  --indigo-deep:#2D124E;     /* roxo da logo, fim do degradê, fundos escuros */
+  --indigo-suave:#EAE6F2;
+  --coral:#E87A85;           /* assinatura: preenchimento e fundo escuro */
+  --coral-forte:#B4404F;     /* a mesma assinatura, versão texto em fundo claro */
+  --coral-suave:#FBEAEC;
+  --coral-texto:#4D1A20;
+  --laranja:#CD3701;         /* laranja da logo = conversão */
+  /* apoio */
+  --teal:#177A6A;            /* utilitário: download, biblioteca, acesso */
+  --teal-suave:#E7F3F0;
+  --teal-texto:#146054;
+  --verde:#25845A;           /* estado: concluído */
+  --verde-suave:#E4F1EA;
+  --verde-texto:#1F6B4A;
+  --ambar-suave:#FBEFD0;
+  --ambar-texto:#8A5A00;
+  /* neutros */
+  --ink:#1F1A2B; --muted:#5C5A70; --page:#F5F4F7; --surface:#ECEAF1;
+  --card:#FFFFFF; --line:#E1DEE8; --line-forte:#C9C4D6;
+  --sobre-escuro:#DCD6E6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--page);color:var(--ink);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px 96px}
+img{max-width:100%;display:block}
+
+/* ===== capa ===== */
+.cover{background:var(--indigo-deep);color:#fff;padding:72px 24px 64px;text-align:center}
+.cover img{width:190px;margin:0 auto 26px}
+.cover .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--coral)}
+.cover h1{font-family:'Anton';font-size:clamp(38px,7vw,66px);text-transform:uppercase;line-height:.95;letter-spacing:.01em;margin:12px 0 0}
+.cover .sub{color:var(--sobre-escuro);margin-top:14px;font-size:17px}
+.cover .rule{width:76px;height:4px;background:var(--coral);border-radius:4px;margin:28px auto 0}
+
+/* ===== índice ===== */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 26px;margin:-38px 0 0;position:relative;box-shadow:0 20px 40px -30px rgba(31,26,43,.5)}
+.toc h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:'Montserrat';font-weight:700;border:0;padding:0;margin:0 0 12px}
+.toc ol{list-style:none;counter-reset:t;columns:2;column-gap:34px}
+.toc li{counter-increment:t;margin-bottom:7px;font-size:14px;break-inside:avoid}
+.toc li::before{content:counter(t) " · ";color:var(--coral-forte);font-weight:700}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a:hover{color:var(--coral-forte);text-decoration:underline;text-underline-offset:3px}
+
+/* ===== seções ===== */
+section{margin-top:64px;scroll-margin-top:20px}
+h2{font-family:'Anton';font-size:clamp(26px,4vw,32px);text-transform:uppercase;color:var(--indigo);padding-bottom:12px;border-bottom:2px solid var(--coral);margin-bottom:22px;letter-spacing:.01em}
+h3{font-weight:800;font-size:17px;color:var(--indigo-deep);margin:28px 0 10px}
+p{margin-bottom:14px;max-width:700px}
+.lead{font-size:17.5px}
+.tag{color:var(--coral-forte);font-weight:700}
+ul.bul{list-style:none;margin:0 0 16px}
+ul.bul li{position:relative;padding-left:22px;margin-bottom:9px;max-width:700px}
+ul.bul li::before{content:"";position:absolute;left:2px;top:10px;width:7px;height:7px;border-radius:50%;background:var(--coral)}
+.note{background:var(--surface);border:1px solid var(--line-forte);border-radius:12px;padding:17px 20px;margin:18px 0;max-width:700px}
+.note p{margin:0}
+.note.alerta{background:var(--coral-suave);border-color:#EFCBD1}
+.cap{font-size:13px;color:var(--muted);margin:10px 2px 30px;max-width:700px}
+code{font-family:'JetBrains Mono';font-size:.88em;background:var(--surface);padding:2px 6px;border-radius:5px}
+
+/* ===== logo ===== */
+.logo-uses{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+.logo-use{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.logo-use .demo{height:210px;display:flex;align-items:center;justify-content:center;padding:26px}
+.demo.escuro{background:var(--indigo-deep)}
+.demo.claro{background:var(--page)}
+.demo.claro .selo{background:var(--indigo-deep);border-radius:22px;padding:20px;display:flex}
+.logo-use .demo img{max-height:150px;width:auto}
+.logo-use .lbl{padding:13px 16px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+.logo-use .lbl b{color:var(--ink);display:block;font-size:14px;margin-bottom:2px}
+.lockup{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:34px;display:flex;justify-content:center}
+.lockup img{width:100%;max-width:420px;height:auto}
+.errado{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.errado figure{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.errado .box{height:104px;display:flex;align-items:center;justify-content:center;background:var(--surface);overflow:hidden}
+.errado .box img{max-height:76px;width:auto}
+.errado .e1 img{transform:scaleX(1.5)}
+.errado .e2 img{transform:rotate(-14deg)}
+.errado .e3{background:#7B5EA7}
+.errado .e4 img{filter:drop-shadow(0 6px 4px rgba(0,0,0,.55))}
+.errado figcaption{font-size:12px;color:var(--coral-forte);font-weight:700;padding:9px 12px;border-top:1px solid var(--line)}
+
+/* ===== paleta ===== */
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:14px;margin:22px 0}
+.sw{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column}
+.sw .chip{height:88px;display:flex;align-items:flex-end;padding:9px 11px;font-size:12px;font-weight:700;font-family:'JetBrains Mono'}
+.sw .meta{padding:11px 13px;flex:1;display:flex;flex-direction:column}
+.sw .nm{font-size:13.5px;font-weight:700}
+.sw .hx{font-family:'JetBrains Mono';font-size:12px;color:var(--muted);margin-top:2px}
+.sw .use{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.4}
+.sw .ratio{font-family:'JetBrains Mono';font-size:11px;margin-top:8px;color:var(--verde-texto);font-weight:700}
+.grupo{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted);margin:26px 0 10px}
+
+/* ===== papéis da cor ===== */
+.papeis{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0}
+.papel{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--card)}
+.papel .top{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.papel .dot{width:15px;height:15px;border-radius:50%;flex:none}
+.papel h3{margin:0;font-size:15.5px}
+.papel p{margin:0;font-size:13.5px;color:var(--muted)}
+
+/* ===== tabela ===== */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+th{text-align:left;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:13px 16px;border-bottom:1px solid var(--line-forte);white-space:nowrap}
+td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.mono{font-family:'JetBrains Mono';font-size:12.5px}
+.ok{color:var(--verde-texto);font-weight:700}
+.par{display:inline-flex;align-items:center;gap:8px}
+.par i{width:18px;height:18px;border-radius:4px;display:inline-block;border:1px solid rgba(31,26,43,.14)}
+
+/* ===== botões ===== */
+.btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:20px 0;padding:26px;background:var(--surface);border-radius:16px}
+.btn{border:none;border-radius:10px;font-family:'Montserrat';font-weight:700;font-size:14px;padding:13px 22px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:filter .15s,transform .05s;min-height:44px}
+.btn:hover{filter:brightness(.92)}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
+.b-primario{background:var(--indigo);color:#fff}
+.b-secundario{background:transparent;border:2px solid var(--indigo);color:var(--indigo);padding:11px 20px}
+.b-terciario{background:transparent;color:var(--coral-forte);text-decoration:underline;text-underline-offset:4px;padding-left:6px;padding-right:6px}
+.b-util{background:var(--teal);color:#fff}
+.b-feito{background:var(--verde);color:#fff}
+.b-venda{background:var(--laranja);color:#fff}
+.btn-defs{display:flex;flex-direction:column;gap:11px;margin-top:6px}
+.btn-def{display:flex;gap:14px;align-items:baseline;max-width:720px;flex-wrap:wrap}
+.btn-def .n{font-weight:800;color:var(--indigo);white-space:nowrap;min-width:160px}
+.btn-def .d{font-size:13.5px;flex:1;min-width:240px}
+
+/* ===== tipografia ===== */
+.spec{border:1px solid var(--line);border-radius:14px;padding:22px;margin:14px 0;background:var(--card)}
+.spec .role{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:12px}
+.spec .role b{color:var(--indigo-deep);font-weight:800}
+.s-anton{font-family:'Anton';font-size:clamp(28px,5vw,40px);text-transform:uppercase;line-height:1}
+.s-mont{font-size:20px}
+.s-mono{font-family:'JetBrains Mono';font-size:16px;background:var(--surface);padding:16px;border-radius:9px;white-space:pre;overflow-x:auto;line-height:1.9}
+.s-mono b{color:var(--coral-forte)}
+.escala{display:flex;flex-wrap:wrap;gap:22px;align-items:baseline;margin-top:6px}
+.escala span{font-family:'JetBrains Mono';font-size:12px;color:var(--muted)}
+
+/* ===== camadas ===== */
+.layers{display:flex;margin:18px 0;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.layer{flex:1;padding:28px 16px;text-align:center;font-size:13px;font-weight:600}
+.layer span{font-family:'JetBrains Mono';font-size:11px;font-weight:400;display:block;margin-top:4px;color:var(--muted)}
+.l1{background:var(--page)}.l2{background:var(--surface)}.l3{background:var(--card)}
+
+/* ===== mockups ===== */
+.mock{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:18px 0;box-shadow:0 20px 44px -30px rgba(31,26,43,.55);background:var(--card)}
+.bar{background:var(--surface);padding:10px 16px;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--line)}
+.bar i{width:11px;height:11px;border-radius:50%;background:var(--line-forte)}
+.bar .url{margin-left:12px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono'}
+
+/* aula real */
+.aula{background:var(--page);padding:20px}
+.aula-head{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));border-radius:18px;padding:22px 24px;color:#fff}
+.aula-head .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--coral)}
+.aula-head h4{font-family:'Montserrat';font-weight:800;font-size:clamp(19px,4.6vw,26px);line-height:1.25;margin-top:5px}
+.aula-card{background:var(--card);border:1px solid var(--surface);border-radius:18px;padding:20px;margin-top:16px;box-shadow:0 2px 10px -6px rgba(31,26,43,.3)}
+.aula-video{aspect-ratio:16/9;border-radius:12px;background:var(--indigo-deep);display:flex;align-items:center;justify-content:center}
+.aula-video .play{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid var(--sobre-escuro);display:flex;align-items:center;justify-content:center}
+.aula-video .play::after{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px}
+.secao-h{background:var(--coral-suave);border-left:4px solid var(--coral);border-radius:0 8px 8px 0;padding:9px 14px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--coral-texto);display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.secao-h::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--coral-forte);flex:none}
+.indice{list-style:none}
+.indice li{display:flex;gap:12px;padding:9px 10px;border-radius:8px;font-size:14px}
+.indice li:nth-child(odd){background:var(--page)}
+.indice .t{font-family:'JetBrains Mono';font-size:13px;color:var(--coral-forte);font-weight:700;font-variant-numeric:tabular-nums}
+.biblio{list-style:none}
+.biblio li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px;border-left:3px solid var(--coral);border-radius:0 8px 8px 0;background:var(--page);margin-bottom:8px}
+.biblio .artista{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.biblio .musica{font-weight:700;font-size:14.5px;color:var(--indigo)}
+.biblio .chev{color:var(--coral-forte);font-weight:700}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:5px}
+.chip-min{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.c-basica{background:var(--verde-suave);color:var(--verde-texto)}
+.c-media{background:var(--ambar-suave);color:var(--ambar-texto)}
+.c-nivel{background:var(--indigo-suave);color:var(--indigo)}
+.material{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.download{display:flex;align-items:center;gap:11px;background:var(--teal);color:#fff;border-radius:12px;padding:13px 15px;text-decoration:none;font-weight:700;font-size:14px;min-height:44px}
+.download .ic{width:26px;height:26px;border-radius:7px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex:none;font-size:13px}
+
+/* área de membros */
+.mem-top{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line);gap:14px;flex-wrap:wrap}
+.m-logo{display:flex;align-items:center;gap:10px;font-family:'Anton';text-transform:uppercase;color:var(--indigo);font-size:17px;letter-spacing:.02em}
+.m-logo img{width:34px}
+.mem-links{display:flex;gap:16px;font-size:13px;color:var(--muted);align-items:center}
+.mem-av{width:34px;height:34px;border-radius:50%;background:var(--coral);color:var(--coral-texto);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.mem-body{padding:24px 22px;background:var(--page)}
+.vitrine-h{display:flex;align-items:baseline;justify-content:space-between;margin:22px 0 12px;gap:12px;flex-wrap:wrap}
+.vitrine-h h4{font-family:'Anton';text-transform:uppercase;color:var(--indigo);font-size:19px;letter-spacing:.01em}
+.vitrine-h a{font-size:12.5px;color:var(--coral-forte);font-weight:700;text-decoration:none}
+.trilha{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mod{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.mod .capa{height:74px;background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));display:flex;align-items:flex-end;padding:11px 12px;color:var(--sobre-escuro);font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.mod .txt{padding:10px 12px}
+.mod h5{font-size:12.5px;line-height:1.35;margin-bottom:8px}
+.prog{height:6px;background:var(--surface);border-radius:5px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--verde)}
+.prog-card{background:var(--indigo-deep);border-radius:14px;padding:20px 22px;color:#fff}
+.prog-card .t{font-family:'Anton';text-transform:uppercase;font-size:18px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.prog-card .pct{color:var(--coral);font-family:'JetBrains Mono';font-size:14px}
+.prog-card .sub{font-size:12.5px;color:var(--sobre-escuro);margin:4px 0 14px}
+.prog-card .bar{height:9px;background:rgba(255,255,255,.2);border-radius:6px;overflow:hidden}
+.prog-card .bar i{display:block;height:100%;width:42%;background:var(--coral);border-radius:6px}
+
+/* venda */
+.venda-hero{background:var(--indigo-deep);padding:48px 34px;text-align:center;color:#fff}
+.venda-hero .badge{display:inline-block;background:var(--coral);color:var(--coral-texto);font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 15px;border-radius:20px;margin-bottom:18px}
+.venda-hero h4{font-family:'Anton';text-transform:uppercase;font-size:clamp(25px,4.4vw,40px);line-height:1.02;margin-bottom:14px}
+.venda-hero h4 .hl{color:var(--coral)}
+.venda-hero p{color:var(--sobre-escuro);max-width:520px;margin:0 auto 26px;font-size:15px}
+.metodo{background:var(--page);padding:32px 34px}
+.metodo .mt{text-align:center;font-family:'Anton';text-transform:uppercase;color:var(--indigo);font-size:21px;margin-bottom:22px}
+.metodo .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.m-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center}
+.m-card .num{width:42px;height:42px;border-radius:50%;background:var(--indigo-suave);color:var(--indigo);font-family:'Anton';font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 11px}
+.m-card.destaque .num{background:var(--coral);color:var(--coral-texto)}
+.m-card h5{color:var(--indigo-deep);font-size:15px;margin-bottom:5px}
+.m-card p{font-size:12.5px;color:var(--muted);margin:0}
+.preco{background:var(--card);margin:0 34px 34px;border:2px solid var(--indigo);border-radius:18px;padding:28px;text-align:center}
+.preco .de{color:var(--muted);text-decoration:line-through;font-size:14.5px}
+.preco .now{font-family:'Anton';font-size:44px;color:var(--indigo);line-height:1;margin:4px 0}
+.preco .now small{font-size:17px;color:var(--muted);font-family:'Montserrat'}
+.preco .avista{font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.preco .gar{font-size:12.5px;color:var(--teal-texto);background:var(--teal-suave);display:inline-block;padding:7px 14px;border-radius:20px;margin-top:14px;font-weight:600}
+
+/* plano */
+.plano{counter-reset:p;list-style:none}
+.plano li{counter-increment:p;position:relative;padding-left:44px;margin-bottom:16px;max-width:720px}
+.plano li::before{content:counter(p);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:8px;background:var(--indigo-suave);color:var(--indigo);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.plano b{color:var(--indigo-deep)}
+.plano .st{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:5px;margin-left:6px;white-space:nowrap}
+.st-feito{background:var(--verde-suave);color:var(--verde-texto)}
+.st-falta{background:var(--ambar-suave);color:var(--ambar-texto)}
+
+footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
+
+@media (max-width:760px){
+  .toc ol{columns:1}
+  .logo-uses,.papeis,.trilha,.metodo .grid{grid-template-columns:1fr}
+  .errado{grid-template-columns:repeat(2,1fr)}
+  .venda-hero,.metodo{padding-left:20px;padding-right:20px}
+  .preco{margin-left:20px;margin-right:20px}
+}
+@media print{body{background:#fff}.mock,.note,section,.sw,.papel{break-inside:avoid}.toc{display:none}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <img src="img/logo-clube-oficial.webp" alt="Logo do Clube do Ukulele: escudo com asas, sobre fundo índigo">
+  <div class="eyebrow">Clube do Ukulele</div>
+  <h1>Manual de<br>Identidade Visual</h1>
+  <div class="sub">Edição 2026 · Índigo, coral, laranja e teal</div>
+  <div class="rule"></div>
+</div>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <h2>Neste manual</h2>
+    <ol>
+      <li><a href="#essencia">A essência da marca</a></li>
+      <li><a href="#logo">A logo</a></li>
+      <li><a href="#paleta">A paleta</a></li>
+      <li><a href="#papeis">Os quatro papéis da cor</a></li>
+      <li><a href="#contraste">Contraste: a régua</a></li>
+      <li><a href="#botoes">Hierarquia de botões</a></li>
+      <li><a href="#tipografia">Tipografia</a></li>
+      <li><a href="#camadas">Fundos e profundidade</a></li>
+      <li><a href="#aula">Componentes de aula</a></li>
+      <li><a href="#membros">Área de membros</a></li>
+      <li><a href="#dificuldade">Dificuldade e nível</a></li>
+      <li><a href="#venda">Página de venda</a></li>
+      <li><a href="#migracao">O que ainda falta trocar</a></li>
+      <li><a href="#resumo">Em resumo</a></li>
+    </ol>
+  </nav>
+
+  <section id="essencia">
+    <h2>1 · A essência da marca</h2>
+    <p class="lead">O Clube do Ukulele leva o aluno do zero à autonomia, com método sério e caminho leve. A identidade visual carrega isso: a confiança de quem sabe ensinar, com a alegria de quem toca por prazer.</p>
+    <p>A base é o <span class="tag">índigo</span>, que dá estrutura, calma e a sensação de curso bem-feito. O <span class="tag">coral</span> é o detalhe humano, aparece em doses pequenas e é o que faz alguém reconhecer a marca de longe. O <span class="tag">laranja da logo</span> tem uma função só, convidar para a decisão. O <span class="tag">teal</span> é o utilitário, cuida do que o aluno baixa e acessa.</p>
+    <div class="note"><p><strong>Regra de ouro:</strong> base índigo, detalhe coral, laranja só na hora de decidir, teal no que é ferramenta. Quatro cores com quatro empregos fixos. Cor que muda de emprego vira ruído.</p></div>
+  </section>
+
+  <section id="logo">
+    <h2>2 · A logo</h2>
+    <p>A logo é um escudo com asas: painel branco com o nome, contorno em <strong>índigo profundo</strong>, asas em <strong>laranja</strong> e um ukulele com raios no rodapé do escudo. As asas são laranja, nunca coral e nunca roxas.</p>
+
+    <div class="logo-uses">
+      <div class="logo-use">
+        <div class="demo escuro"><img src="img/logo-clube-oficial.webp" alt="Logo aplicada sobre fundo índigo profundo"></div>
+        <div class="lbl"><b>Sobre fundo escuro</b>Aplicação direta. É onde a logo fica melhor: o painel branco e as asas laranja saltam do índigo.</div>
+      </div>
+      <div class="logo-use">
+        <div class="demo claro"><span class="selo"><img src="img/logo-clube-oficial.webp" alt="Logo dentro de um selo índigo, para uso sobre fundo claro"></span></div>
+        <div class="lbl"><b>Sobre fundo claro</b>Use dentro de um selo índigo com cantos de 22px. O selo devolve o contraste que o fundo claro tira.</div>
+      </div>
+    </div>
+
+    <h3>Versão horizontal</h3>
+    <p>Para cabeçalhos, assinaturas de e-mail e qualquer espaço mais largo do que alto.</p>
+    <div class="lockup"><img src="img/logo-clube-horizontal.webp" alt="Versão horizontal da logo do Clube do Ukulele"></div>
+    <p class="cap">Arquivos no repositório: <code>img/logo-clube-oficial.webp</code> (1:1) e <code>img/logo-clube-horizontal.webp</code>.</p>
+
+    <h3>O que não fazer</h3>
+    <div class="errado">
+      <figure class="e1"><div class="box"><img src="img/logo-clube-oficial.webp" alt="Logo esticada na horizontal"></div><figcaption>Não esticar</figcaption></figure>
+      <figure class="e2"><div class="box"><img src="img/logo-clube-oficial.webp" alt="Logo girada"></div><figcaption>Não girar</figcaption></figure>
+      <figure class="e3"><div class="box"><img src="img/logo-clube-oficial.webp" alt="Logo sobre roxo claro, sem contraste"></div><figcaption>Não usar sobre roxo claro</figcaption></figure>
+      <figure class="e4"><div class="box"><img src="img/logo-clube-oficial.webp" alt="Logo com sombra dura"></div><figcaption>Não aplicar sombra</figcaption></figure>
+    </div>
+
+    <h3>Regras de proteção</h3>
+    <ul class="bul">
+      <li>Espaço livre em volta equivalente à altura do escudo. Nada entra nessa área.</li>
+      <li>Não trocar as cores internas, não recolorir as asas, não inverter para versão monocromática improvisada.</li>
+      <li>Tamanho mínimo: a palavra UKULELE precisa continuar legível, cerca de 2,5 cm em impresso e 96px de largura em tela.</li>
+      <li>Sobre foto, sempre dentro do selo índigo. Logo solta sobre imagem some.</li>
+    </ul>
+    <div class="note"><p><strong>Pendência de arquivo:</strong> hoje a logo existe em PNG e WebP. Vale produzir o SVG em três versões (colorida, uma cor só e selo montado) para uso em impresso grande e bordado.</p></div>
+  </section>
+
+  <section id="paleta">
+    <h2>3 · A paleta</h2>
+    <p>Cada amostra traz o contraste real medido no par em que ela é usada. Todos os pares desta página passam no WCAG AA (4,5:1 para texto normal). Isso não é detalhe: boa parte dos alunos tem mais de 45 anos.</p>
+
+    <div class="grupo">Marca</div>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#443468;color:#fff">#443468</div><div class="meta"><div class="nm">Índigo</div><div class="hx">--indigo</div><div class="use">Âncora da interface: títulos, botão primário, ícones, links de navegação.</div><div class="ratio">9,90:1 no fundo claro</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2D124E;color:#fff">#2D124E</div><div class="meta"><div class="nm">Índigo profundo</div><div class="hx">--indigo-deep</div><div class="use">O roxo da logo. Fundos escuros, fim do degradê, cabeçalho de aula.</div><div class="ratio">16,05:1 com texto branco</div></div></div>
+      <div class="sw"><div class="chip" style="background:#E87A85;color:#4D1A20">#E87A85</div><div class="meta"><div class="nm">Coral</div><div class="hx">--coral</div><div class="use">A assinatura. Preenchimento, barras, bolinhas e texto sobre fundo escuro. Nunca texto em fundo claro.</div><div class="ratio">5,77:1 sobre índigo profundo</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B4404F;color:#fff">#B4404F</div><div class="meta"><div class="nm">Coral forte</div><div class="hx">--coral-forte</div><div class="use">O mesmo coral, versão legível: tempos do índice, links de destaque, chevrons.</div><div class="ratio">5,06:1 no fundo claro</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FBEAEC;color:#4D1A20">#FBEAEC</div><div class="meta"><div class="nm">Coral suave</div><div class="hx">--coral-suave</div><div class="use">Fundo de cabeçalho de seção e hover de linha.</div><div class="ratio">12,18:1 com o texto coral</div></div></div>
+      <div class="sw"><div class="chip" style="background:#4D1A20;color:#FBEAEC">#4D1A20</div><div class="meta"><div class="nm">Coral texto</div><div class="hx">--coral-texto</div><div class="use">Texto por cima de coral cheio ou coral suave.</div><div class="ratio">5,09:1 sobre o coral</div></div></div>
+    </div>
+
+    <div class="grupo">Conversão</div>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#CD3701;color:#fff">#CD3701</div><div class="meta"><div class="nm">Laranja</div><div class="hx">--laranja</div><div class="use">A cor das asas da logo. Só botão de compra e selo de oferta. Nunca dentro da área logada comum.</div><div class="ratio">5,07:1 com texto branco</div></div></div>
+    </div>
+
+    <div class="grupo">Apoio e estado</div>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#177A6A;color:#fff">#177A6A</div><div class="meta"><div class="nm">Teal</div><div class="hx">--teal</div><div class="use">Utilitário: baixar cifra, material, Biblioteca de Músicas, "disponível".</div><div class="ratio">5,21:1 com texto branco</div></div></div>
+      <div class="sw"><div class="chip" style="background:#E7F3F0;color:#146054">#E7F3F0</div><div class="meta"><div class="nm">Teal suave</div><div class="hx">--teal-suave</div><div class="use">Fundo de tag de biblioteca, selo de garantia.</div><div class="ratio">6,53:1 com o texto teal</div></div></div>
+      <div class="sw"><div class="chip" style="background:#25845A;color:#fff">#25845A</div><div class="meta"><div class="nm">Verde</div><div class="hx">--verde</div><div class="use">Estado concluído: aula assistida, barra de progresso cheia, confirmação.</div><div class="ratio">4,64:1 com texto branco</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8A5A00;color:#FBEFD0">#8A5A00</div><div class="meta"><div class="nm">Âmbar texto</div><div class="hx">--ambar-texto</div><div class="use">Dificuldade média. Sempre texto escuro sobre <code>#FBEFD0</code>, nunca amarelo cheio.</div><div class="ratio">5,18:1 no âmbar suave</div></div></div>
+    </div>
+
+    <div class="grupo">Neutros</div>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#1F1A2B;color:#fff">#1F1A2B</div><div class="meta"><div class="nm">Texto</div><div class="hx">--ink</div><div class="use">Corpo de texto. É um preto arroxeado, combina com o índigo.</div><div class="ratio">15,45:1 no fundo claro</div></div></div>
+      <div class="sw"><div class="chip" style="background:#5C5A70;color:#fff">#5C5A70</div><div class="meta"><div class="nm">Texto suave</div><div class="hx">--muted</div><div class="use">Legendas, subtítulos, metadados. É o cinza mais claro permitido em texto.</div><div class="ratio">6,08:1 no fundo claro</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F5F4F7;color:#1F1A2B;border-bottom:1px solid #E1DEE8">#F5F4F7</div><div class="meta"><div class="nm">Fundo</div><div class="hx">--page</div><div class="use">Fundo da página. Um lilás levíssimo, nunca branco puro.</div><div class="ratio">base do sistema</div></div></div>
+      <div class="sw"><div class="chip" style="background:#ECEAF1;color:#1F1A2B">#ECEAF1</div><div class="meta"><div class="nm">Superfície</div><div class="hx">--surface</div><div class="use">Blocos internos, barras, áreas de apoio.</div><div class="ratio">5,59:1 com o texto suave</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF;color:#1F1A2B;border-bottom:1px solid #E1DEE8">#FFFFFF</div><div class="meta"><div class="nm">Card</div><div class="hx">--card</div><div class="use">Cartão que sobe sobre o fundo. Só o card é branco puro.</div><div class="ratio">16,92:1 com o texto</div></div></div>
+      <div class="sw"><div class="chip" style="background:#DCD6E6;color:#2D124E">#DCD6E6</div><div class="meta"><div class="nm">Sobre escuro</div><div class="hx">--sobre-escuro</div><div class="use">Texto secundário em fundo índigo. Substitui o uso de opacidade, que derruba o contraste sem avisar.</div><div class="ratio">11,32:1 sobre índigo profundo</div></div></div>
+    </div>
+  </section>
+
+  <section id="papeis">
+    <h2>4 · Os quatro papéis da cor</h2>
+    <p>Cada cor tem um emprego e não faz o do vizinho. É isso que impede o aluno de olhar para um vermelho e não saber se é marca, alerta ou promoção.</p>
+    <div class="papeis">
+      <div class="papel">
+        <div class="top"><span class="dot" style="background:var(--indigo)"></span><span class="dot" style="background:var(--coral)"></span><h3>Marca</h3></div>
+        <p>Índigo e coral. Dizem quem somos. Aparecem em tudo: cabeçalhos, botão primário, detalhes, ícones.</p>
+      </div>
+      <div class="papel">
+        <div class="top"><span class="dot" style="background:var(--laranja)"></span><h3>Conversão</h3></div>
+        <p>Laranja da logo. Só onde existe decisão de compra. Se aparece na área logada, perde o efeito quando importa.</p>
+      </div>
+      <div class="papel">
+        <div class="top"><span class="dot" style="background:var(--teal)"></span><h3>Utilitário</h3></div>
+        <p>Teal. Ferramenta: baixar, acessar, abrir a biblioteca. Nunca comunica emoção nem urgência.</p>
+      </div>
+      <div class="papel">
+        <div class="top"><span class="dot" style="background:var(--verde)"></span><span class="dot" style="background:var(--ambar-texto)"></span><h3>Estado</h3></div>
+        <p>Verde e âmbar. Falam do conteúdo, não da marca: concluído, básica, média. Sempre em versão tinta clara com texto escuro.</p>
+      </div>
+    </div>
+    <div class="note alerta"><p><strong>O erro mais comum:</strong> usar coral, laranja e vermelho na mesma tela. São três quentes que o olho lê como a mesma cor e a mensagem se embaralha. Se precisa de destaque dentro da área logada, use coral. Se é compra, laranja. Vermelho puro não existe nesta marca.</p></div>
+  </section>
+
+  <section id="contraste">
+    <h2>5 · Contraste: a régua</h2>
+    <p>Os pares abaixo são os que aparecem de verdade nas telas. Todos medidos, todos aprovados no WCAG AA. Antes de criar um par novo, confira no <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener" style="color:var(--coral-forte);font-weight:700">WebAIM Contrast Checker</a>.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Onde</th><th>Par</th><th>Contraste</th><th>AA</th></tr></thead>
+        <tbody>
+          <tr><td>Corpo de texto</td><td class="mono"><span class="par"><i style="background:#1F1A2B"></i>#1F1A2B / <i style="background:#F5F4F7"></i>#F5F4F7</span></td><td class="mono">15,45:1</td><td class="ok">passa</td></tr>
+          <tr><td>Legenda, metadado</td><td class="mono"><span class="par"><i style="background:#5C5A70"></i>#5C5A70 / <i style="background:#F5F4F7"></i>#F5F4F7</span></td><td class="mono">6,08:1</td><td class="ok">passa</td></tr>
+          <tr><td>Título e link</td><td class="mono"><span class="par"><i style="background:#443468"></i>#443468 / <i style="background:#F5F4F7"></i>#F5F4F7</span></td><td class="mono">9,90:1</td><td class="ok">passa</td></tr>
+          <tr><td>Botão primário</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#443468"></i>#443468</span></td><td class="mono">10,84:1</td><td class="ok">passa</td></tr>
+          <tr><td>Tempo do índice, chevron</td><td class="mono"><span class="par"><i style="background:#B4404F"></i>#B4404F / <i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF</span></td><td class="mono">5,55:1</td><td class="ok">passa</td></tr>
+          <tr><td>Coral sobre fundo escuro</td><td class="mono"><span class="par"><i style="background:#E87A85"></i>#E87A85 / <i style="background:#2D124E"></i>#2D124E</span></td><td class="mono">5,77:1</td><td class="ok">passa</td></tr>
+          <tr><td>Cabeçalho de seção da aula</td><td class="mono"><span class="par"><i style="background:#4D1A20"></i>#4D1A20 / <i style="background:#FBEAEC"></i>#FBEAEC</span></td><td class="mono">12,18:1</td><td class="ok">passa</td></tr>
+          <tr><td>Botão de download</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#177A6A"></i>#177A6A</span></td><td class="mono">5,21:1</td><td class="ok">passa</td></tr>
+          <tr><td>Botão de compra</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#CD3701"></i>#CD3701</span></td><td class="mono">5,07:1</td><td class="ok">passa</td></tr>
+          <tr><td>Aula concluída</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#25845A"></i>#25845A</span></td><td class="mono">4,64:1</td><td class="ok">passa</td></tr>
+          <tr><td>Tag dificuldade média</td><td class="mono"><span class="par"><i style="background:#8A5A00"></i>#8A5A00 / <i style="background:#FBEFD0"></i>#FBEFD0</span></td><td class="mono">5,18:1</td><td class="ok">passa</td></tr>
+          <tr><td>Texto secundário no escuro</td><td class="mono"><span class="par"><i style="background:#DCD6E6"></i>#DCD6E6 / <i style="background:#2D124E"></i>#2D124E</span></td><td class="mono">11,32:1</td><td class="ok">passa</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><p><strong>Três regras que resolvem 90% dos casos:</strong> coral cheio nunca vira texto em fundo claro, use o coral forte. Texto sobre fundo escuro usa cor sólida, não <code>opacity</code>. Amarelo e verde claro só existem como tinta de fundo com texto escuro por cima.</p></div>
+  </section>
+
+  <section id="botoes">
+    <h2>6 · Hierarquia de botões</h2>
+    <p>Seis tipos, seis funções. Os três primeiros são a mesma cor de marca em pesos diferentes, os três últimos têm função própria.</p>
+    <div class="btns">
+      <button class="btn b-primario">Próxima aula ›</button>
+      <button class="btn b-secundario">Aula anterior</button>
+      <button class="btn b-terciario">Pular introdução</button>
+      <button class="btn b-util"><span aria-hidden="true">↓</span> Baixar cifra</button>
+      <button class="btn b-feito"><span aria-hidden="true">✓</span> Marcar como assistida</button>
+      <button class="btn b-venda">Quero entrar no Clube</button>
+    </div>
+    <div class="btn-defs">
+      <div class="btn-def"><span class="n">1 · Primário</span><span class="d">Índigo cheio. A ação principal da tela. Um por tela.</span></div>
+      <div class="btn-def"><span class="n">2 · Secundário</span><span class="d">Índigo em contorno. Convive com o primário sem competir: voltar, cancelar, ver detalhes.</span></div>
+      <div class="btn-def"><span class="n">3 · Terciário</span><span class="d">Texto em coral forte, sublinhado. Baixa importância: pular, ver mais.</span></div>
+      <div class="btn-def"><span class="n">4 · Utilitário</span><span class="d">Teal com texto branco. Baixar cifra, material de apoio, abrir a biblioteca.</span></div>
+      <div class="btn-def"><span class="n">5 · Estado</span><span class="d">Verde. Concluir e confirmar. Depois de clicado vira o estado "concluída".</span></div>
+      <div class="btn-def"><span class="n">6 · Venda</span><span class="d">Laranja da logo. Só em página de oferta e checkout.</span></div>
+    </div>
+    <h3>Estados</h3>
+    <ul class="bul">
+      <li><strong>Hover:</strong> a mesma cor, 8% mais escura. Nunca troca de cor.</li>
+      <li><strong>Foco por teclado:</strong> anel índigo de 3px com 3px de afastamento. Obrigatório, não é enfeite.</li>
+      <li><strong>Pressionado:</strong> escala 98%.</li>
+      <li><strong>Altura mínima de 44px</strong> em qualquer botão, para funcionar no dedo e no celular.</li>
+    </ul>
+  </section>
+
+  <section id="tipografia">
+    <h2>7 · Tipografia</h2>
+    <p>Três famílias, três papéis. Nenhuma outra fonte entra sem virar exceção documentada.</p>
+    <div class="spec">
+      <div class="role">Títulos · <b>Anton</b> · alternativa: Montserrat 800</div>
+      <div class="s-anton">Toque centenas de músicas que você ama</div>
+    </div>
+    <div class="spec">
+      <div class="role">Texto · <b>Montserrat</b> 400 / 500 / 700 / 800</div>
+      <div class="s-mont"><span style="font-weight:400">Regular no corpo. </span><span style="font-weight:500">Médio para destaque leve. </span><span style="font-weight:700">Negrito para ênfase.</span></div>
+      <div class="escala">
+        <span>corpo 16px</span><span>legenda 13px</span><span>título de aula clamp(19–26px)</span><span>entrelinha 1.65</span>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="role">Cifras e acordes · <b>Iosevka Mono</b> · aqui exibida em JetBrains Mono</div>
+      <div class="s-mono"><b>Intro</b>    C     G     Am    F
+<b>Verso</b>   C     G     Am    F
+<b>Refrão</b>  F     C     G     Am</div>
+    </div>
+    <div class="note"><p><strong>Regra de acessibilidade:</strong> corpo nunca abaixo de 16px, entrelinha 1.6 ou mais, e largura máxima de 700px por parágrafo. Grande parte dos alunos passa dos 45 anos e lê no celular.</p></div>
+  </section>
+
+  <section id="camadas">
+    <h2>8 · Fundos e profundidade</h2>
+    <p>Profundidade se faz com três camadas empilhadas, não com sombra pesada.</p>
+    <div class="layers">
+      <div class="layer l1">Fundo da página<span>#F5F4F7</span></div>
+      <div class="layer l2">Superfície<span>#ECEAF1</span></div>
+      <div class="layer l3">Card<span>#FFFFFF</span></div>
+    </div>
+    <p>O fundo lilás claro aquece a tela e amarra tudo à marca. Sobre ele entram blocos de superfície e, por cima, os cards brancos. Sombra só como véu longo e discreto, do tipo <code>0 20px 44px -30px</code>. O fundo da página nunca é branco puro.</p>
+  </section>
+
+  <section id="aula">
+    <h2>9 · Componentes de aula</h2>
+    <p>Este é o padrão real das aulas na Cademí, gerado pelo Apps Script. As classes vivem sob a raiz <code>.aula-comum</code> e as cores são travadas com <code>!important</code>, porque a plataforma injeta CSS global por cima.</p>
+    <div class="mock">
+      <div class="bar"><i></i><i></i><i></i><span class="url">aluno.comotocarukulele.com</span></div>
+      <div class="aula">
+        <div class="aula-head">
+          <div class="eyebrow">Aula</div>
+          <h4>Ana Vilela | Trem Bala (versão simplificada)</h4>
+        </div>
+        <div class="aula-card">
+          <div class="aula-video"><span class="play" aria-hidden="true"></span></div>
+        </div>
+        <div class="aula-card">
+          <div class="secao-h">O que você vai ver</div>
+          <ul class="indice">
+            <li><span class="t">00:00</span><span>Apresentação da música e da batida</span></li>
+            <li><span class="t">02:14</span><span>Os acordes na prática, um de cada vez</span></li>
+            <li><span class="t">06:38</span><span>Trocas lentas e depois no tempo</span></li>
+            <li><span class="t">11:05</span><span>Tocando comigo do começo ao fim</span></li>
+          </ul>
+        </div>
+        <div class="aula-card">
+          <div class="secao-h">Continue pela biblioteca</div>
+          <ul class="biblio">
+            <li>
+              <div><div class="artista">Almir Sater</div><div class="musica">Tocando em Frente</div>
+                <div class="chips"><span class="chip-min c-basica">Básica</span><span class="chip-min c-nivel">Iniciante 1</span></div></div>
+              <span class="chev" aria-hidden="true">›</span>
+            </li>
+            <li>
+              <div><div class="artista">Armandinho</div><div class="musica">Desenho de Deus</div>
+                <div class="chips"><span class="chip-min c-basica">Básica</span><span class="chip-min c-nivel">Iniciante 1</span></div></div>
+              <span class="chev" aria-hidden="true">›</span>
+            </li>
+            <li>
+              <div><div class="artista">Anavitória</div><div class="musica">Trevo</div>
+                <div class="chips"><span class="chip-min c-media">Média</span><span class="chip-min c-nivel">Intermediário 1</span></div></div>
+              <span class="chev" aria-hidden="true">›</span>
+            </li>
+          </ul>
+        </div>
+        <div class="aula-card">
+          <div class="secao-h">Material de apoio</div>
+          <div class="material">
+            <a class="download" href="#" onclick="return false"><span class="ic" aria-hidden="true">↓</span>Ana Vilela - Trem Bala</a>
+            <a class="download" href="#" onclick="return false"><span class="ic" aria-hidden="true">↓</span>Batida Pop 2</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="cap">Cabeçalho no degradê <code>135deg, #443468 → #2D124E</code>, eyebrow coral, tempos do índice em coral forte, botões de material em teal. Músicas e dificuldades vindas da planilha real da Biblioteca de Músicas.</p>
+  </section>
+
+  <section id="membros">
+    <h2>10 · Área de membros</h2>
+    <p>O ambiente logado. Aqui não existe laranja: quem já entrou não precisa ser convidado a comprar. O índigo conduz a navegação, o coral marca o progresso e o teal cuida do material.</p>
+    <div class="mock">
+      <div class="bar"><i></i><i></i><i></i><span class="url">aluno.comotocarukulele.com/area</span></div>
+      <div class="mem-top">
+        <div class="m-logo"><img src="img/logo-clube-oficial.webp" alt="">Clube do Ukulele</div>
+        <div class="mem-links">Central do Aluno · Biblioteca · Suporte <span class="mem-av">B</span></div>
+      </div>
+      <div class="mem-body">
+        <div class="prog-card">
+          <div class="t">Trilha Principal <span class="pct">42%</span></div>
+          <div class="sub">Você parou em Soltando as Mãos, aula 3</div>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="vitrine-h"><h4>Trilha Principal</h4><a href="#membros">Ver tudo</a></div>
+        <div class="trilha">
+          <div class="mod"><div class="capa">Módulo 1</div><div class="txt"><h5>Do Zero à Primeira Música</h5><div class="prog"><i style="width:100%"></i></div></div></div>
+          <div class="mod"><div class="capa">Módulo 2</div><div class="txt"><h5>Da Primeira pra Várias</h5><div class="prog"><i style="width:100%"></i></div></div></div>
+          <div class="mod"><div class="capa">Módulo 3</div><div class="txt"><h5>Soltando as Mãos</h5><div class="prog"><i style="width:38%"></i></div></div></div>
+          <div class="mod"><div class="capa">Módulo 4</div><div class="txt"><h5>Os 4 Acordes Mágicos</h5><div class="prog"><i style="width:0"></i></div></div></div>
+        </div>
+        <div class="vitrine-h"><h4>Biblioteca de Músicas</h4><a href="#membros">Ver tudo</a></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <span class="chip-min c-basica">Básica · 132 músicas</span>
+          <span class="chip-min c-media">Média · 24 músicas</span>
+          <span class="chip-min c-nivel">Iniciante 1 · 87 músicas</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+          <button class="btn b-primario">Retomar aula ›</button>
+          <button class="btn b-util"><span aria-hidden="true">↓</span> Baixar cifra</button>
+          <button class="btn b-feito"><span aria-hidden="true">✓</span> Marcar como assistida</button>
+        </div>
+      </div>
+    </div>
+    <p class="cap">Vitrines reais da Cademí: Central do Aluno, Trilha Principal, Biblioteca de Músicas, Missão Ukulele e Cursos e Materiais Extras. Contagens vindas da planilha da biblioteca.</p>
+  </section>
+
+  <section id="dificuldade">
+    <h2>11 · Dificuldade e nível</h2>
+    <p>São dois eixos diferentes e não podem virar a mesma coisa visualmente.</p>
+    <h3>Dificuldade: o esforço da música</h3>
+    <p>Só dois valores existem no acervo: <strong>Básica</strong> e <strong>Média</strong>. Tinta clara com texto escuro, sempre.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+      <span class="chip-min c-basica">Básica</span>
+      <span class="chip-min c-media">Média</span>
+    </div>
+    <h3>Nível: onde o aluno está na jornada</h3>
+    <p>Cinco degraus, do Iniciante 0 ao Intermediário 2. O nível é escala, não semáforo: usa um índigo só e se diferencia pelo texto. Colorir cada degrau faria o aluno achar que "vermelho" é perigo.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <span class="chip-min c-nivel">Iniciante 0</span>
+      <span class="chip-min c-nivel">Iniciante 1</span>
+      <span class="chip-min c-nivel">Iniciante 2</span>
+      <span class="chip-min c-nivel">Intermediário 1</span>
+      <span class="chip-min c-nivel">Intermediário 2</span>
+    </div>
+    <div class="note"><p><strong>Por que não existe "avançado" em vermelho:</strong> o acervo não tem esse valor, e um vermelho ao lado do coral e do laranja cria três quentes competindo. Se um dia aparecer um terceiro grau de dificuldade, ele entra em índigo cheio, não em vermelho.</p></div>
+  </section>
+
+  <section id="venda">
+    <h2>12 · Página de venda</h2>
+    <p>Aqui o laranja trabalha no habitat dele: fundo índigo profundo, coral no destaque da promessa, laranja só nos botões que levam ao checkout.</p>
+    <div class="mock">
+      <div class="bar"><i></i><i></i><i></i><span class="url">cursos.comotocarukulele.com</span></div>
+      <div class="venda-hero">
+        <span class="badge">Método 3D · validado por +6.000 alunos</span>
+        <h4>Toque centenas de músicas que você ama com apenas <span class="hl">4 acordes mágicos e 5 batidas coringas</span></h4>
+        <p>Mesmo que você nunca tenha pegado num ukulele antes. O método te guia do zero, no seu ritmo, com correção do professor.</p>
+        <button class="btn b-venda" style="font-size:16px;padding:15px 32px">Quero começar agora</button>
+      </div>
+      <div class="metodo">
+        <div class="mt">O Método 3D</div>
+        <div class="grid">
+          <div class="m-card"><div class="num">1</div><h5>Dividir</h5><p>Cada música em pedaços pequenos e possíveis.</p></div>
+          <div class="m-card"><div class="num">2</div><h5>Destravar</h5><p>Repetição inteligente até a mão soltar.</p></div>
+          <div class="m-card destaque"><div class="num">3</div><h5>Dominar</h5><p>A música flui e o som sai limpo.</p></div>
+        </div>
+      </div>
+      <div class="preco">
+        <div class="de">De R$ 597</div>
+        <div class="now">12x R$ 20<small>,37</small></div>
+        <div class="avista">ou R$ 197 à vista · acesso vitalício</div>
+        <button class="btn b-venda" style="font-size:16px;padding:14px 30px">Entrar no Clube agora</button>
+        <div class="gar">Garantia incondicional de 14 dias</div>
+      </div>
+    </div>
+    <p class="cap">Headline, método, preço e garantia são os da página no ar. O laranja aparece duas vezes na página inteira, sempre para o mesmo destino.</p>
+  </section>
+
+  <section id="migracao">
+    <h2>13 · O que ainda falta trocar</h2>
+    <p>A paleta acima é o alvo. Parte já está no ar, parte não. A troca é gradual e cada item é independente, ninguém precisa parar nada para o próximo funcionar.</p>
+    <ol class="plano">
+      <li><b>Logo oficial em todo lugar</b> <span class="st st-feito">feito aqui</span><br>As asas são laranja. Qualquer arte com asas coral é versão antiga e sai de circulação.</li>
+      <li><b>Teal documentado</b> <span class="st st-feito">feito aqui</span><br>Já estava nos botões de download e na Biblioteca sem constar em manual nenhum. Agora é cor oficial de utilitário, no tom <code>#177A6A</code>, que passa no contraste com texto branco.</li>
+      <li><b>Coral forte nas aulas</b> <span class="st st-falta">falta</span><br>No gerador de aulas, o texto em <code>#E87A85</code> (tempos do índice, chevron) troca para <code>#B4404F</code>. O coral claro continua nos preenchimentos e no eyebrow sobre o degradê.</li>
+      <li><b>Botão de download no tom novo</b> <span class="st st-falta">falta</span><br><code>--download:#1F8C7A</code> vira <code>#177A6A</code> no <code>GERAR_AULA.gs</code> e nos blocos da Cademí.</li>
+      <li><b>Fim do degradê no roxo da logo</b> <span class="st st-falta">falta</span><br><code>linear-gradient(135deg,#443468,#2D2249)</code> passa a terminar em <code>#2D124E</code>, o roxo que a logo usa de verdade.</li>
+      <li><b>Laranja único</b> <span class="st st-falta">falta</span><br>As páginas de venda usam <code>#C2410C</code>, praticamente o mesmo laranja da logo. Unificar em <code>#CD3701</code> tira uma cor do sistema sem mudar nada aos olhos.</li>
+    </ol>
+  </section>
+
+  <section id="resumo">
+    <h2>14 · Em resumo</h2>
+    <ul class="bul">
+      <li>Base índigo, detalhe coral. O coral aparece pouco e é justamente por isso que ele marca.</li>
+      <li>Coral cheio preenche e brilha no escuro. Coral forte escreve no claro. É a mesma cor com dois trabalhos.</li>
+      <li>Laranja só vende, teal só serve, verde só confirma. Nenhum deles fala pela marca.</li>
+      <li>Fundo nunca é branco puro. Card branco sobe por cima do lilás claro.</li>
+      <li>Todo par de cor novo passa pelo teste de contraste antes de ir para uma tela.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Clube do Ukulele · Manual de Identidade Visual · Edição 2026<br>
+    Índigo #443468 · Coral #E87A85 · Laranja #CD3701 · Teal #177A6A
+  </footer>
+
+</div>
+</body>
+</html>
