@@ -53,7 +53,7 @@ img{max-width:100%;display:block}
 .cover{background:var(--indigo-deep);color:#fff;padding:72px 24px 64px;text-align:center}
 .cover img{width:190px;margin:0 auto 26px}
 .cover .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--coral)}
-.cover h1{font-family:'Anton';font-size:clamp(38px,7vw,66px);text-transform:uppercase;line-height:.95;letter-spacing:.01em;margin:12px 0 0}
+.cover h1{font-family:'Anton';font-size:clamp(38px,7vw,66px);text-transform:uppercase;line-height:1.12;letter-spacing:.01em;margin:12px 0 0}
 .cover .sub{color:var(--sobre-escuro);margin-top:14px;font-size:17px}
 .cover .rule{width:76px;height:4px;background:var(--coral);border-radius:4px;margin:28px auto 0}
 
@@ -162,7 +162,7 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 .spec{border:1px solid var(--line);border-radius:14px;padding:22px;margin:14px 0;background:var(--card)}
 .spec .role{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:12px}
 .spec .role b{color:var(--indigo-deep);font-weight:800}
-.s-anton{font-family:'Anton';font-size:clamp(28px,5vw,40px);text-transform:uppercase;line-height:1}
+.s-anton{font-family:'Anton';font-size:clamp(28px,5vw,40px);text-transform:uppercase;line-height:1.12}
 .s-mont{font-size:20px}
 .s-mono{font-family:'JetBrains Mono';font-size:16px;background:var(--surface);padding:16px;border-radius:9px;white-space:pre;overflow-x:auto;line-height:1.9}
 .s-mono b{color:var(--coral-forte)}
@@ -255,7 +255,7 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 /* venda */
 .venda-hero{background:var(--indigo-deep);padding:48px 34px;text-align:center;color:#fff}
 .venda-hero .badge{display:inline-block;background:var(--laranja);color:#fff;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 15px;border-radius:20px;margin-bottom:18px}
-.venda-hero h4{font-family:'Anton';text-transform:uppercase;font-size:clamp(25px,4.4vw,40px);line-height:1.02;margin-bottom:14px}
+.venda-hero h4{font-family:'Anton';text-transform:uppercase;font-size:clamp(25px,4.4vw,40px);line-height:1.12;margin-bottom:14px}
 .venda-hero h4 .hl{color:var(--coral)}
 .venda-hero p{color:var(--sobre-escuro);max-width:520px;margin:0 auto 26px;font-size:15px}
 .metodo{background:var(--page);padding:32px 34px}
@@ -281,6 +281,7 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 .plano .st{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:5px;margin-left:6px;white-space:nowrap}
 .st-feito{background:var(--verde-suave);color:var(--verde-texto)}
 .st-falta{background:var(--ambar-suave);color:var(--ambar-texto)}
+.st-espera{background:var(--indigo-suave);color:var(--indigo)}
 
 footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
 
@@ -536,6 +537,26 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
 <b>Verso</b>   C     G     Am    F
 <b>Refrão</b>  F     C     G     Am</div>
     </div>
+    <h3>Anton e os acentos: entrelinha mínima 1.12</h3>
+    <p>O Anton foi desenhado para caixa alta sem acento e as métricas dele mostram isso. Medido no próprio arquivo da fonte, com o corpo valendo 1em:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Palavra</th><th>Sobe acima da linha de base</th><th>Desce abaixo</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">MAGICOS</td><td class="mono">0,867em</td><td class="mono">0,008em</td></tr>
+          <tr><td class="mono">MÁGICOS</td><td class="mono">1,101em</td><td class="mono">0,008em</td></tr>
+          <tr><td class="mono">VOCÊ</td><td class="mono">1,101em</td><td class="mono">0,008em</td></tr>
+          <tr><td class="mono">AÇÃO</td><td class="mono">1,072em</td><td class="mono">0,308em</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>O acento agudo e o circunflexo somam <strong>0,234em</strong> acima da altura das maiúsculas, e a cedilha desce 0,308em. Como a distância entre duas linhas de base é exatamente a entrelinha, o cálculo é direto:</p>
+    <ul class="bul">
+      <li><strong>Entrelinha 1.12:</strong> o piso. Cobre acento na linha de baixo com uma folga fina, que é o encoste elegante.</li>
+      <li><strong>Abaixo de 1.11 o acento invade a linha de cima.</strong> Em 1.02, que era o valor antigo do título da página de venda, a sobreposição chegava a 0,089em e ficava visível em MÚSICAS sobre MÁGICOS.</li>
+      <li><strong>Entrelinha 1.42</strong> se a linha de cima puder ter Ç ou Q e a de baixo puder ter acento. É o único caso em que nada encosta nunca.</li>
+      <li><strong>Só números</strong> (preço, porcentagem) pode ficar em 1.0: dígito não tem acento nem descida.</li>
+    </ul>
     <div class="note"><p><strong>Regra de acessibilidade:</strong> corpo nunca abaixo de 16px, entrelinha 1.6 ou mais, e largura máxima de 700px por parágrafo. Grande parte dos alunos passa dos 45 anos e lê no celular.</p></div>
   </section>
 
@@ -752,14 +773,15 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <li><strong>Aula comum</strong> (<code>GERAR_AULA.gs</code>): coral forte no texto, teal <code>#177A6A</code> no download com hover <code>#157062</code>, degradê terminando em <code>#2D124E</code>.</li>
       <li><strong>Aula da biblioteca</strong>: dificuldade em verde, âmbar e índigo cheio, todas acima de 4,6:1. As etiquetas de nível viraram tinta índigo única, porque nível é escala e não semáforo.</li>
       <li><strong>Atividades</strong>: o botão de envio saiu do coral (2,78:1) para índigo cheio (10,84:1), o desabilitado ganhou contraste e o aviso de sucesso foi para o verde.</li>
-      <li><strong>Este manual</strong>: logo oficial, teal documentado, notação de batida e os tokens de estado.</li>
+      <li><strong>Este manual</strong>: logo oficial, teal documentado, notação de batida, tokens de estado e a entrelinha do Anton.</li>
+      <li><strong>Outros geradores</strong>: os moldes de slide do OBS, o gerador de materiais da oficina e os estilos de vídeo do estúdio já saem no roxo da logo e no teal novo.</li>
     </ul>
 
     <h3>Falta</h3>
     <ol class="plano">
       <li><b>Botão de compra nas páginas de venda</b> <span class="st st-falta">falta</span><br>O botão troca de <code>#C2410C</code> para <code>#12A18A</code> com texto <code>#2D124E</code>, e o bloco do preço passa a ser índigo, que é onde o teal salta mais. O laranja fica no selo de oferta e no preço antigo riscado, unificado em <code>#CD3701</code>. É a única mudança desta lista que mexe em página que fatura, então vale trocar em uma página primeiro e comparar.</li>
       <li><b>Oficina e gerador de acordes</b> <span class="st st-falta">falta</span><br>No <code>motor.js</code>, <code>CORES_GESTO.x</code> sai de <code>#C2545F</code> (4,44:1) para <code>#B4404F</code> (5,55:1). No <code>slides.js</code>, o halo do X sobre o card escuro vai de <code>#2D2249</code> para <code>#2D124E</code>. No <code>casca.css</code>, <code>--teal</code> sai de <code>#1F8C7A</code> (4,13:1 com texto branco) para <code>#177A6A</code>. E o <code>CACHE</code> do service worker precisa subir de versão, senão nada disso chega em quem já abriu a oficina.</li>
-      <li><b>Blocos colados na Cademí</b> <span class="st st-falta">falta</span><br>Os blocos de CSS que vivem em Configurações &gt; Códigos ainda carregam o teal antigo e o roxo <code>#2D2249</code>. Não têm gerador: cada um é colado à mão.</li>
+      <li><b>Blocos colados na Cademí</b> <span class="st st-espera">decisão tomada: fica</span><br>Os blocos de CSS que vivem em Configurações &gt; Códigos ainda carregam o teal antigo e o roxo <code>#2D2249</code>. Não têm gerador, cada um é colado à mão, e mexer neles agora não paga o risco. Ficam como estão até existir outro motivo para abrir a tela de Códigos. O que entra de agora em diante já nasce certo, então a diferença some sozinha com o tempo.</li>
     </ol>
 
     <div class="note"><p><strong>Aulas já publicadas não mudam sozinhas.</strong> Os geradores cospem HTML estático que já está colado na Cademí. Só o conteúdo gerado a partir de agora nasce com a paleta nova, e regerar o antigo é opcional.</p></div>
