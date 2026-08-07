@@ -10,382 +10,563 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --roxo:#443468; --roxo-hover:#3F3060; --roxo-fundo:#2D124E;
-  --coral:#E87A85; --coral-forte:#B4404F; --coral-txt:#4D1A20; --coral-suave:#FBEAEC;
-  --bg:#F5F4F7; --teal:#177A6A; --teal-txt:#146054; --teal-suave:#E7F3F0;
-  --laranja:#CD3701; --verde:#25845A; --neutro:#8E8AA3;
-  --branco:#fff; --borda:#E2E0E9;
-  --sombra:0 2px 10px rgba(45,18,78,.07);
-  --sombra-alta:0 8px 24px rgba(45,18,78,.13);
-  --raio:14px;
+  /* marca */
+  --roxo:#443468; --roxo-hover:#3F3060;
+  --coral:#E87A85; --coral-forte:#B4404F; --coral-txt:#4D1A20;
+  --teal:#177A6A; --teal-txt:#146054; --teal-suave:#E7F3F0;
+
+  /* superficies e texto */
+  --bg:#F5F4F7; --superficie:#fff; --painel:#FAF9FC;
+  --tinta:#2D124E; --tinta-2:#514B66; --tinta-3:#6B6580;
+  --borda:#E2E0E9; --borda-forte:#CFCBDB; --trilho:#D9D6E2;
+
+  /* escala de espaco, base 4 */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+
+  --raio:12px; --raio-g:16px;
+  --sombra:0 1px 2px rgba(45,18,78,.05), 0 4px 16px rgba(45,18,78,.06);
+  --sombra-alta:0 8px 32px rgba(45,18,78,.18);
+  --saida:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{
   font-family:'Montserrat',system-ui,-apple-system,sans-serif;
-  background:var(--bg); color:var(--roxo-fundo);
+  background:var(--bg); color:var(--tinta);
   line-height:1.5; font-size:16px;
+  -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--s4)}
 
-/* ---------- cabeçalho ---------- */
-header{
+/* ============ cabecalho ============ */
+.topo{
   background:linear-gradient(135deg,#443468,#2D124E);
   border-bottom:3px solid var(--coral);
-  color:#fff; padding:26px 0 24px; text-align:center;
+  color:#fff; padding:var(--s5) 0;
 }
-header h1{font-size:1.45rem;font-weight:800;letter-spacing:-.01em;line-height:1.25}
-header p{font-size:.9rem;opacity:.85;margin-top:6px}
+.topo h1{font-size:1.35rem;font-weight:800;letter-spacing:-.015em;line-height:1.2;text-wrap:balance}
+.topo p{font-size:.875rem;color:rgba(255,255,255,.82);margin-top:var(--s1);max-width:52ch}
 
-/* ---------- cartões ---------- */
-main{padding:22px 0 60px}
-.card{
-  background:var(--branco); border:1px solid var(--borda);
-  border-radius:var(--raio); box-shadow:var(--sombra);
-  padding:20px; margin-bottom:18px;
-}
-.card h2{
-  font-size:.78rem; font-weight:800; text-transform:uppercase;
-  letter-spacing:.09em; color:var(--roxo); margin-bottom:16px;
-}
-.campo{margin-bottom:18px}
-.campo:last-child{margin-bottom:0}
-label{display:block;font-size:.82rem;font-weight:600;color:var(--roxo);margin-bottom:7px}
-.dica{font-size:.74rem;color:var(--neutro);font-weight:500;margin-top:6px;line-height:1.45}
+/* ============ estrutura ============ */
+.layout{padding:var(--s6) 0 var(--s7);display:flex;flex-direction:column;gap:var(--s6)}
 
-/* ---------- input de preço ---------- */
+.painel-titulo{
+  font-size:1.0625rem;font-weight:800;letter-spacing:-.01em;
+  margin-bottom:var(--s4);
+}
+.painel-titulo .conta{
+  display:block;font-size:.8125rem;font-weight:500;color:var(--tinta-2);
+  letter-spacing:0;margin-top:2px;
+}
+
+.bloco-superficie{
+  background:var(--superficie);border:1px solid var(--borda);
+  border-radius:var(--raio-g);box-shadow:var(--sombra);
+}
+
+/* ============ produto ============ */
+.grupo{padding:var(--s5)}
+.grupo + .grupo{border-top:1px solid var(--borda)}
+
+.rotulo{
+  display:block;font-size:.8125rem;font-weight:700;color:var(--tinta);
+  margin-bottom:var(--s2);
+}
+.campo + .campo{margin-top:var(--s5)}
+
 .preco-box{position:relative;display:flex;align-items:center}
 .preco-box .rs{
-  position:absolute;left:16px;font-weight:700;font-size:1.15rem;color:var(--neutro);
+  position:absolute;left:var(--s4);font-weight:700;font-size:1.0625rem;color:var(--tinta-2);
   pointer-events:none;
 }
 #preco{
-  width:100%;font-family:inherit;font-size:1.6rem;font-weight:800;color:var(--roxo-fundo);
-  padding:14px 16px 14px 48px;border:2px solid var(--borda);border-radius:12px;
-  background:var(--bg);transition:border-color .15s,box-shadow .15s;
+  width:100%;font-family:inherit;font-size:1.75rem;font-weight:800;color:var(--tinta);
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums;
+  padding:var(--s3) var(--s4) var(--s3) 46px;
+  border:2px solid var(--borda);border-radius:var(--raio);background:var(--painel);
+  transition:border-color .16s var(--saida), box-shadow .16s var(--saida), background .16s;
 }
-#preco:focus{outline:0;border-color:var(--roxo);box-shadow:0 0 0 4px rgba(68,52,104,.12);background:#fff}
+#preco:hover{border-color:var(--borda-forte)}
+#preco:focus{outline:0;border-color:var(--roxo);box-shadow:0 0 0 4px rgba(68,52,104,.13);background:var(--superficie)}
 
-/* ---------- botões de parcela ---------- */
-.parcelas{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
+.parcelas{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--s2)}
 .parcelas button{
-  font-family:inherit;font-size:.92rem;font-weight:700;color:var(--roxo);
-  background:var(--branco);border:2px solid var(--borda);border-radius:10px;
-  padding:11px 0;cursor:pointer;transition:all .13s;
+  font-family:inherit;font-size:.875rem;font-weight:700;color:var(--roxo);
+  background:var(--superficie);border:2px solid var(--borda);border-radius:10px;
+  padding:var(--s3) 0;cursor:pointer;font-variant-numeric:tabular-nums;
+  transition:background .16s var(--saida), border-color .16s var(--saida), color .16s var(--saida);
 }
-.parcelas button:hover{border-color:var(--coral);color:var(--coral-forte)}
-.parcelas button[aria-pressed="true"]{
-  background:var(--roxo);border-color:var(--roxo);color:#fff;
-}
+.parcelas button:hover{border-color:var(--borda-forte);background:var(--painel)}
+.parcelas button:focus-visible{outline:2px solid var(--roxo);outline-offset:2px}
+.parcelas button[aria-pressed="true"]{background:var(--roxo);border-color:var(--roxo);color:#fff}
 
-/* ---------- radio cards ---------- */
-.modos{display:grid;gap:9px}
+.modos{display:grid;gap:var(--s2)}
 .modo{
-  display:flex;gap:11px;align-items:flex-start;
-  border:2px solid var(--borda);border-radius:12px;padding:13px 14px;
-  cursor:pointer;transition:all .13s;background:var(--branco);
+  display:flex;gap:var(--s3);align-items:flex-start;
+  border:2px solid var(--borda);border-radius:var(--raio);padding:var(--s3) var(--s4);
+  cursor:pointer;background:var(--superficie);
+  transition:border-color .16s var(--saida), background .16s var(--saida);
 }
-.modo:hover{border-color:var(--coral)}
+.modo:hover{border-color:var(--borda-forte);background:var(--painel)}
+.modo:focus-within{border-color:var(--roxo);box-shadow:0 0 0 4px rgba(68,52,104,.13)}
 .modo input{margin-top:3px;accent-color:var(--roxo);width:17px;height:17px;flex-shrink:0;cursor:pointer}
-.modo strong{display:block;font-size:.9rem;font-weight:700;color:var(--roxo-fundo)}
-.modo span{display:block;font-size:.76rem;color:var(--neutro);font-weight:500;margin-top:2px;line-height:1.4}
-.modo.sel{border-color:var(--roxo);background:#FAF9FC;box-shadow:0 0 0 3px rgba(68,52,104,.08)}
+.modo strong{display:block;font-size:.875rem;font-weight:700}
+.modo span{display:block;font-size:.75rem;color:var(--tinta-2);font-weight:500;margin-top:2px;line-height:1.45}
+.modo.sel{border-color:var(--roxo);background:var(--painel)}
 
-/* ---------- avançado ---------- */
-details.avancado{border-top:1px solid var(--borda);margin-top:18px;padding-top:14px}
-details.avancado summary{
-  cursor:pointer;font-size:.8rem;font-weight:700;color:var(--teal-txt);
-  list-style:none;display:flex;align-items:center;gap:7px;
-}
-details.avancado summary::-webkit-details-marker{display:none}
-details.avancado summary::before{content:"+";font-size:1.05rem;font-weight:800;line-height:1}
-details.avancado[open] summary::before{content:"–"}
-.grade{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
-.grade input[type=number],.grade select{
-  width:100%;font-family:inherit;font-size:.95rem;font-weight:600;color:var(--roxo-fundo);
-  padding:9px 11px;border:2px solid var(--borda);border-radius:9px;background:var(--bg);
-}
-.grade select{cursor:pointer;height:41px}
-.grade input[type=number]:focus,.grade select:focus{outline:0;border-color:var(--roxo);background:#fff}
-.check{display:flex;align-items:flex-start;gap:9px;margin-top:14px;cursor:pointer}
-.check input{margin-top:2px;accent-color:var(--teal);width:16px;height:16px;flex-shrink:0;cursor:pointer}
-.check span{font-size:.8rem;font-weight:600;color:var(--roxo-fundo)}
-.reset{
-  margin-top:14px;font-family:inherit;font-size:.76rem;font-weight:700;color:var(--coral-forte);
-  background:none;border:0;cursor:pointer;padding:0;text-decoration:underline;
-}
+/* ============ custos ============ */
+.custos{display:flex;flex-direction:column}
+.custo{padding:var(--s4) var(--s5)}
+.custo + .custo{border-top:1px solid var(--borda)}
 
-/* ---------- resultado ---------- */
+.custo-cab{display:flex;align-items:center;gap:var(--s3)}
+.custo-nome{
+  flex:1;font-size:.875rem;font-weight:700;cursor:pointer;user-select:none;
+  transition:color .16s;
+}
+.custo-valor{
+  font-size:.875rem;font-weight:700;font-variant-numeric:tabular-nums;
+  color:var(--coral-forte);white-space:nowrap;
+}
+.custo[data-on="false"] .custo-nome{color:var(--tinta-3)}
+.custo[data-on="false"] .custo-valor{color:var(--tinta-3)}
+
+/* interruptor */
+.sw{
+  appearance:none;-webkit-appearance:none;flex:0 0 auto;
+  width:38px;height:22px;border-radius:999px;background:var(--trilho);
+  position:relative;cursor:pointer;transition:background .18s var(--saida);
+}
+.sw::after{
+  content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;
+  background:#fff;box-shadow:0 1px 3px rgba(45,18,78,.3);
+  transition:transform .18s var(--saida);
+}
+/* alvo de toque de 44px sem engordar o desenho do interruptor */
+.sw::before{content:"";position:absolute;inset:-11px -4px}
+.sw:hover{background:var(--borda-forte)}
+.sw:checked{background:var(--roxo)}
+.sw:checked:hover{background:var(--roxo-hover)}
+.sw:checked::after{transform:translateX(16px)}
+.sw:focus-visible{outline:2px solid var(--roxo);outline-offset:2px}
+
+.custo-campos{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:var(--s3);margin-top:var(--s3);padding-left:50px;
+}
+.custo[data-on="false"] .custo-campos{opacity:.4;pointer-events:none}
+.custo-campos label{
+  display:block;font-size:.6875rem;font-weight:700;color:var(--tinta-2);
+  margin-bottom:var(--s1);
+}
+.custo-campos input,.custo-campos select{
+  width:100%;font-family:inherit;font-size:.875rem;font-weight:600;color:var(--tinta);
+  font-variant-numeric:tabular-nums;
+  padding:var(--s2) var(--s3);border:1px solid var(--borda-forte);border-radius:9px;
+  background:var(--superficie);height:38px;
+  transition:border-color .16s var(--saida), box-shadow .16s var(--saida);
+}
+.custo-campos select{cursor:pointer}
+.custo-campos input:hover,.custo-campos select:hover{border-color:var(--roxo)}
+.custo-campos input:focus,.custo-campos select:focus{
+  outline:0;border-color:var(--roxo);box-shadow:0 0 0 3px rgba(68,52,104,.13);
+}
+.custo-nota{
+  grid-column:1/-1;font-size:.75rem;color:var(--tinta-2);font-weight:500;line-height:1.5;
+}
+.custo-nota button{
+  font-family:inherit;font-size:inherit;font-weight:700;color:var(--teal-txt);
+  background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;
+  text-underline-offset:2px;
+}
+.custo-nota button:hover{color:var(--teal)}
+.custo-nota button:focus-visible{outline:2px solid var(--roxo);outline-offset:2px;border-radius:2px}
+
+/* ============ resultado ============ */
 .resultado{
-  background:linear-gradient(135deg,#443468,#2D124E);color:#fff;border:0;
-  box-shadow:var(--sombra-alta);
+  background:linear-gradient(150deg,#443468,#2D124E);
+  border-radius:var(--raio-g);box-shadow:var(--sombra-alta);
+  color:#fff;padding:var(--s5);
 }
-.resultado h2{color:var(--coral)}
-.duplo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
-.bloco{background:rgba(255,255,255,.09);border-radius:12px;padding:15px}
-.bloco .rot{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;opacity:.75}
-.bloco .val{font-size:1.55rem;font-weight:800;line-height:1.15;margin-top:5px;letter-spacing:-.02em}
-.bloco .sub{font-size:.76rem;opacity:.8;font-weight:500;margin-top:4px;line-height:1.4}
-.bloco.destaque{background:var(--coral);color:var(--coral-txt)}
-.bloco.destaque .rot{opacity:.85}
-.bloco.destaque .sub{opacity:.9}
+.res-rot{
+  font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:rgba(255,255,255,.7);
+}
+.res-cliente{margin-bottom:var(--s5)}
+.res-cliente .valor{
+  font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin-top:var(--s1);
+  font-variant-numeric:tabular-nums;
+}
+.res-cliente .obs{font-size:.8125rem;color:rgba(255,255,255,.78);margin-top:2px;font-variant-numeric:tabular-nums}
 
-.extrato{border-top:1px solid rgba(255,255,255,.18);padding-top:14px}
-.linha{display:flex;justify-content:space-between;gap:12px;font-size:.85rem;padding:5px 0}
-.linha span:first-child{opacity:.85;font-weight:500}
-.linha span:last-child{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
-.linha.neg span:last-child{color:var(--coral)}
+.res-sobra{
+  background:var(--coral);color:var(--coral-txt);
+  border-radius:var(--raio);padding:var(--s4);margin-bottom:var(--s5);
+}
+/* cor cheia, nao transparencia: sobre o coral so o #4D1A20 do manual passa em AA */
+.res-sobra .res-rot{color:var(--coral-txt)}
+.res-sobra .valor{
+  font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1.05;
+  margin-top:var(--s1);font-variant-numeric:tabular-nums;
+}
+.res-sobra .obs{font-size:.8125rem;font-weight:600;color:var(--coral-txt);margin-top:var(--s1)}
+
+.extrato{display:flex;flex-direction:column;gap:var(--s1)}
+.linha{display:flex;justify-content:space-between;gap:var(--s3);font-size:.8125rem;line-height:1.5}
+.linha .rot{color:rgba(255,255,255,.8);font-weight:500}
+.linha .num{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.linha.saida .num{color:var(--coral)}
 .linha.total{
-  border-top:1px solid rgba(255,255,255,.18);margin-top:8px;padding-top:11px;
-  font-size:.98rem;font-weight:800;
+  border-top:1px solid rgba(255,255,255,.2);margin-top:var(--s2);padding-top:var(--s3);
+  font-size:.9375rem;
 }
-.linha.total span:first-child{opacity:1;font-weight:800}
+.linha.total .rot{color:#fff;font-weight:800}
+.linha.total .num{font-weight:800}
 
-/* ---------- tabela ---------- */
-.rolagem{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
-table{border-collapse:collapse;width:100%;min-width:640px;font-variant-numeric:tabular-nums}
-th,td{padding:9px 10px;text-align:right;font-size:.82rem;white-space:nowrap}
-th{
-  font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-  color:var(--roxo);border-bottom:2px solid var(--borda);
+/* ============ tabela ============ */
+.rolagem{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-inline:calc(var(--s5) * -1);padding-inline:var(--s5)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-variant-numeric:tabular-nums}
+caption{
+  text-align:left;font-size:.75rem;color:var(--tinta-2);font-weight:500;
+  padding-bottom:var(--s3);
 }
-thead tr.grupo th{padding-bottom:4px;font-size:.66rem;border-bottom:0}
-thead tr.grupo th.g1{color:var(--teal-txt);background:var(--teal-suave);border-radius:8px 8px 0 0}
-thead tr.grupo th.g2{color:var(--coral-forte);background:var(--coral-suave);border-radius:8px 8px 0 0}
+th,td{padding:var(--s2) var(--s3);text-align:right;font-size:.8125rem}
+thead th{
+  font-size:.6875rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--tinta-2);border-bottom:2px solid var(--borda-forte);padding-bottom:var(--s2);
+}
+thead tr.faixa th{border-bottom:0;padding-bottom:var(--s1);font-size:.6875rem}
+thead tr.faixa th.g1{color:var(--teal-txt)}
+thead tr.faixa th.g2{color:var(--coral-forte)}
 th:first-child,td:first-child{text-align:left;font-weight:700}
-tbody tr{border-bottom:1px solid var(--borda)}
-tbody tr:last-child{border-bottom:0}
-tbody tr.ativa{background:#FAF9FC;box-shadow:inset 3px 0 0 var(--coral)}
+tbody tr + tr{border-top:1px solid var(--borda)}
+tbody tr.ativa{background:var(--painel)}
 tbody tr.ativa td{font-weight:700}
-td.liq{color:var(--teal-txt);font-weight:700}
-td.sep{border-left:1px solid var(--borda)}
-td.pct{color:var(--neutro);font-size:.76rem;font-weight:600}
+td.sobra{color:var(--teal-txt);font-weight:700}
+td.divisa{border-left:1px solid var(--borda)}
+.margem{color:var(--tinta-2);font-size:.6875rem;font-weight:600}
 
-/* ---------- notas ---------- */
-.notas{font-size:.78rem;color:#5B5570;line-height:1.6}
-.notas p{margin-bottom:9px}
+/* ============ notas ============ */
+.notas{max-width:72ch}
+.notas h2{font-size:1.0625rem;font-weight:800;letter-spacing:-.01em;margin-bottom:var(--s3)}
+.notas p{font-size:.8125rem;color:var(--tinta-2);line-height:1.65;margin-bottom:var(--s3)}
 .notas p:last-child{margin-bottom:0}
-.notas a{color:var(--coral-forte);font-weight:600}
-.notas strong{color:var(--roxo)}
-.aviso{
-  background:var(--coral-suave);border:1px solid #F2D3D7;
-  border-radius:10px;padding:12px 14px;font-size:.78rem;color:var(--coral-txt);
-  line-height:1.55;margin-bottom:14px;
+.notas strong{color:var(--tinta);font-weight:700}
+.notas a{color:var(--coral-forte);font-weight:600;text-underline-offset:2px}
+.notas a:hover{color:var(--coral-txt)}
+.chamada{
+  background:var(--teal-suave);border:1px solid #C9E3DC;border-radius:var(--raio);
+  padding:var(--s4);font-size:.8125rem;color:var(--teal-txt);line-height:1.6;
+  margin-bottom:var(--s5);
 }
-footer{
+.chamada strong{color:var(--teal-txt)}
+
+.rodape{
   background:linear-gradient(135deg,#443468,#2D124E);border-top:3px solid var(--coral);
-  color:#fff;text-align:center;padding:16px;font-size:.76rem;opacity:.95;
+  color:rgba(255,255,255,.92);text-align:center;padding:var(--s4);font-size:.75rem;
 }
 
+/* ============ desktop ============ */
+@media (min-width:900px){
+  .layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 348px;
+    gap:var(--s6) var(--s6);
+    align-items:start;
+  }
+  .col-controles{display:flex;flex-direction:column;gap:var(--s5)}
+  .col-resultado{position:sticky;top:var(--s5)}
+  .larga{grid-column:1 / -1}
+  .topo h1{font-size:1.5rem}
+}
 @media (max-width:560px){
-  header h1{font-size:1.2rem}
-  .duplo{grid-template-columns:1fr;gap:10px}
-  .grade{grid-template-columns:1fr}
   .parcelas{grid-template-columns:repeat(4,1fr)}
-  .bloco .val{font-size:1.4rem}
-  .card{padding:16px}
-  .rolagem{margin:0 -16px;padding:0 16px}
+  .grupo,.custo{padding-inline:var(--s4)}
+  .custo-campos{padding-left:0}
+  .rolagem{margin-inline:calc(var(--s4) * -1);padding-inline:var(--s4)}
+  .res-sobra .valor{font-size:1.75rem}
+  #preco{font-size:1.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
 }
 </style>
 </head>
 <body>
 
-<header>
+<header class="topo">
   <div class="wrap">
     <h1>Calculadora de taxas e parcelamento da Hotmart</h1>
-    <p>Quanto o cliente paga, quanto entra na sua conta, em cada parcela.</p>
+    <p>Ligue e desligue cada custo para ver o que sobra de verdade em cada parcela.</p>
   </div>
 </header>
 
-<main class="wrap">
+<div class="wrap">
+<main class="layout">
 
-  <!-- ENTRADA -->
-  <section class="card">
-    <h2>Seu produto</h2>
+  <!-- ================= CONTROLES ================= -->
+  <div class="col-controles">
 
-    <div class="campo">
-      <label for="preco">Preço do produto</label>
-      <div class="preco-box">
-        <span class="rs">R$</span>
-        <input id="preco" type="text" inputmode="decimal" value="997,00" autocomplete="off">
-      </div>
-      <p class="dica">O valor que você cadastrou na oferta da Hotmart, sem juros.</p>
-    </div>
+    <section class="bloco-superficie">
+      <div class="grupo">
+        <h2 class="painel-titulo">Seu produto</h2>
 
-    <div class="campo">
-      <label>Parcelas do cliente</label>
-      <div class="parcelas" id="parcelas"></div>
-    </div>
-
-    <div class="campo">
-      <label>Quem paga os juros do parcelamento</label>
-      <div class="modos">
-        <label class="modo sel" id="modo-cliente">
-          <input type="radio" name="modo" value="cliente" checked>
-          <div>
-            <strong>O cliente paga (oferta com repasse)</strong>
-            <span>As parcelas ficam maiores no checkout. Você recebe o mesmo em 1x ou em 12x.</span>
+        <div class="campo">
+          <label class="rotulo" for="preco">Preço cadastrado na oferta</label>
+          <div class="preco-box">
+            <span class="rs">R$</span>
+            <input id="preco" type="text" inputmode="decimal" value="197,00" autocomplete="off">
           </div>
-        </label>
-        <label class="modo" id="modo-produtor">
-          <input type="radio" name="modo" value="produtor">
-          <div>
-            <strong>Eu pago (oferta sem repasse)</strong>
-            <span>O cliente divide o preço cheio sem acréscimo. O juro sai da sua comissão.</span>
+        </div>
+
+        <div class="campo">
+          <span class="rotulo" id="lbl-parcelas">Parcelas do cliente</span>
+          <div class="parcelas" id="parcelas" role="group" aria-labelledby="lbl-parcelas"></div>
+        </div>
+
+        <div class="campo">
+          <span class="rotulo" id="lbl-modo">Quem paga os juros do parcelamento</span>
+          <div class="modos" role="radiogroup" aria-labelledby="lbl-modo">
+            <label class="modo sel" id="modo-cliente">
+              <input type="radio" name="modo" value="cliente" checked>
+              <span>
+                <strong>O cliente paga</strong>
+                <span>As parcelas ficam maiores no checkout. Você recebe o mesmo em 1x ou em 12x.</span>
+              </span>
+            </label>
+            <label class="modo" id="modo-produtor">
+              <input type="radio" name="modo" value="produtor">
+              <span>
+                <strong>Você paga</strong>
+                <span>O cliente divide o preço cheio. O juro sai da sua margem.</span>
+              </span>
+            </label>
           </div>
-        </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco-superficie">
+      <div class="grupo" style="padding-bottom:0">
+        <h2 class="painel-titulo">
+          O que desconta
+          <span class="conta">Desligue qualquer linha para ver o efeito na sobra.</span>
+        </h2>
+      </div>
+
+      <div class="custos">
+
+        <!-- taxa hotmart -->
+        <div class="custo" data-on="true" id="c-hotmart">
+          <div class="custo-cab">
+            <input type="checkbox" class="sw" id="on-hotmart" checked>
+            <label class="custo-nome" for="on-hotmart">Taxa da Hotmart</label>
+            <span class="custo-valor" id="v-hotmart"></span>
+          </div>
+          <div class="custo-campos">
+            <div>
+              <label for="tx-com">Comissão (%)</label>
+              <input id="tx-com" type="number" step="0.01" min="0" max="30" value="9.9">
+            </div>
+            <div>
+              <label for="tx-fixa">Fixo por venda (R$)</label>
+              <input id="tx-fixa" type="number" step="0.01" min="0" value="1.00">
+            </div>
+            <p class="custo-nota">
+              9,9% + R$ 1,00 é a tabela pública. A conta real do Clube do Ukulele é 7,7%.
+              <button type="button" id="btn-minha-taxa">Usar 7,7%</button>
+            </p>
+          </div>
+        </div>
+
+        <!-- juro de parcelamento -->
+        <div class="custo" data-on="true" id="c-parc">
+          <div class="custo-cab">
+            <input type="checkbox" class="sw" id="on-parc" checked>
+            <label class="custo-nome" for="on-parc">Juro de parcelamento</label>
+            <span class="custo-valor" id="v-parc"></span>
+          </div>
+          <div class="custo-campos">
+            <div>
+              <label for="tx-parc">Taxa ao mês (%)</label>
+              <input id="tx-parc" type="number" step="0.01" min="0" max="15" value="3.49">
+            </div>
+            <p class="custo-nota">Quando o cliente paga, o juro não sai da sua margem, ele encarece as parcelas dele.</p>
+          </div>
+        </div>
+
+        <!-- antecipacao -->
+        <div class="custo" data-on="false" id="c-antec">
+          <div class="custo-cab">
+            <input type="checkbox" class="sw" id="on-antec">
+            <label class="custo-nome" for="on-antec">Antecipação de recebíveis</label>
+            <span class="custo-valor" id="v-antec"></span>
+          </div>
+          <div class="custo-campos">
+            <div>
+              <label for="prazo">Prazo de recebimento</label>
+              <select id="prazo">
+                <option value="2.19">D14, 2,19%</option>
+                <option value="3.59">D2, 3,59%</option>
+                <option value="4.79">Flexível, 4,79%</option>
+              </select>
+            </div>
+            <p class="custo-nota">Desligado significa D30, que é o padrão e não custa nada.</p>
+          </div>
+        </div>
+
+        <!-- player -->
+        <div class="custo" data-on="false" id="c-player">
+          <div class="custo-cab">
+            <input type="checkbox" class="sw" id="on-player">
+            <label class="custo-nome" for="on-player">Player de vídeo da Hotmart</label>
+            <span class="custo-valor" id="v-player"></span>
+          </div>
+          <div class="custo-campos">
+            <p class="custo-nota">R$ 2,49 por venda. Só se aplica se o vídeo estiver hospedado na Hotmart.</p>
+          </div>
+        </div>
+
+        <!-- imposto -->
+        <div class="custo" data-on="true" id="c-imp">
+          <div class="custo-cab">
+            <input type="checkbox" class="sw" id="on-imp" checked>
+            <label class="custo-nome" for="on-imp">Imposto</label>
+            <span class="custo-valor" id="v-imp"></span>
+          </div>
+          <div class="custo-campos">
+            <div>
+              <label for="tx-imp">Alíquota (%)</label>
+              <input id="tx-imp" type="number" step="0.01" min="0" max="40" value="6.1">
+            </div>
+            <div>
+              <label for="base-imp">Incide sobre</label>
+              <select id="base-imp">
+                <option value="preco">O preço do produto</option>
+                <option value="liquido">O que a Hotmart repassa</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- trafego -->
+        <div class="custo" data-on="false" id="c-cac">
+          <div class="custo-cab">
+            <input type="checkbox" class="sw" id="on-cac">
+            <label class="custo-nome" for="on-cac">Tráfego pago</label>
+            <span class="custo-valor" id="v-cac"></span>
+          </div>
+          <div class="custo-campos">
+            <div>
+              <label for="invest">Investido (R$)</label>
+              <input id="invest" type="number" step="1" min="0" value="1000">
+            </div>
+            <div>
+              <label for="vendas">Vendas geradas</label>
+              <input id="vendas" type="number" step="1" min="1" value="10">
+            </div>
+            <p class="custo-nota" id="nota-cac">Custo por venda: R$ 100,00.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= RESULTADO ================= -->
+  <aside class="col-resultado">
+    <div class="resultado">
+      <div class="res-cliente">
+        <div class="res-rot">O cliente paga</div>
+        <div class="valor" id="r-cliente"></div>
+        <div class="obs" id="r-cliente-obs"></div>
+      </div>
+
+      <div class="res-sobra">
+        <div class="res-rot">Sobra para você</div>
+        <div class="valor" id="r-sobra"></div>
+        <div class="obs" id="r-sobra-obs"></div>
+      </div>
+
+      <div class="extrato" id="extrato"></div>
+    </div>
+  </aside>
+
+  <!-- ================= TABELA ================= -->
+  <section class="larga">
+    <h2 class="painel-titulo">
+      Todas as parcelas, lado a lado
+      <span class="conta">Mesmos custos ligados acima, aplicados de 1x a 12x nos dois cenários.</span>
+    </h2>
+    <div class="bloco-superficie" style="padding:var(--s5)">
+      <div class="rolagem">
+        <table>
+          <caption>A linha destacada é a parcela selecionada. No celular, deslize a tabela para o lado.</caption>
+          <thead>
+            <tr class="faixa">
+              <th></th>
+              <th class="g1" colspan="2" scope="colgroup">Cliente paga o juro</th>
+              <th class="g2" colspan="2" scope="colgroup">Você paga o juro</th>
+            </tr>
+            <tr>
+              <th scope="col">Parcelas</th>
+              <th scope="col">Parcela</th>
+              <th scope="col">Sobra</th>
+              <th scope="col">Parcela</th>
+              <th scope="col">Sobra</th>
+            </tr>
+          </thead>
+          <tbody id="corpo"></tbody>
+        </table>
       </div>
     </div>
-
-    <details class="avancado">
-      <summary>Taxas e custos extras</summary>
-      <div class="grade">
-        <div>
-          <label for="tx-com">Comissão Hotmart (%)</label>
-          <input id="tx-com" type="number" step="0.01" min="0" max="30" value="7.7">
-        </div>
-        <div>
-          <label for="tx-fixa">Taxa fixa por venda (R$)</label>
-          <input id="tx-fixa" type="number" step="0.01" min="0" value="1.00">
-        </div>
-        <div>
-          <label for="tx-parc">Juro de parcelamento (% ao mês)</label>
-          <input id="tx-parc" type="number" step="0.01" min="0" max="15" value="3.49">
-        </div>
-        <div>
-          <label for="tx-imp">Imposto (%)</label>
-          <input id="tx-imp" type="number" step="0.01" min="0" max="40" value="6.1">
-        </div>
-        <div>
-          <label for="base-imp">Imposto incide sobre</label>
-          <select id="base-imp">
-            <option value="preco">O preço do produto</option>
-            <option value="liquido">O que você recebe</option>
-          </select>
-        </div>
-        <div>
-          <label for="prazo">Prazo de recebimento</label>
-          <select id="prazo">
-            <option value="0">D30, sem taxa</option>
-            <option value="2.19">D14, 2,19%</option>
-            <option value="3.59">D2, 3,59%</option>
-          </select>
-        </div>
-      </div>
-      <label class="check">
-        <input id="player" type="checkbox">
-        <span>Somar o player de vídeo da Hotmart (R$ 2,49 por venda)</span>
-      </label>
-      <p class="dica">A comissão vem preenchida com 7,7%, que é a taxa real da conta do Clube do Ukulele, não a de tabela. A tabela pública da Hotmart começa em 9,9% + R$ 1,00 e cai conforme o faturamento anual. Vendas de até R$ 10,00 usam outra regra (20%, sem taxa fixa).</p>
-      <button class="reset" id="reset" type="button">Voltar aos valores padrão</button>
-    </details>
   </section>
 
-  <!-- RESULTADO -->
-  <section class="card resultado">
-    <h2>Resultado</h2>
-    <div class="duplo">
-      <div class="bloco">
-        <div class="rot">O cliente paga</div>
-        <div class="val" id="r-cliente">12x de R$ 0,00</div>
-        <div class="sub" id="r-cliente-sub">Total: R$ 0,00</div>
-      </div>
-      <div class="bloco destaque">
-        <div class="rot">Sobra para você</div>
-        <div class="val" id="r-liquido">R$ 0,00</div>
-        <div class="sub" id="r-liquido-sub">0% do preço do produto</div>
-      </div>
-    </div>
-    <div class="extrato" id="extrato"></div>
-  </section>
-
-  <!-- TABELA -->
-  <section class="card">
-    <h2>Todas as parcelas, os dois cenários</h2>
-    <div class="rolagem">
-      <table>
-        <thead>
-          <tr class="grupo">
-            <th></th>
-            <th class="g1" colspan="2">Cliente paga os juros</th>
-            <th class="g2" colspan="2">Você paga os juros</th>
-          </tr>
-          <tr>
-            <th>Parcelas</th>
-            <th>Parcela</th>
-            <th>Sobra p/ você</th>
-            <th>Parcela</th>
-            <th>Sobra p/ você</th>
-          </tr>
-        </thead>
-        <tbody id="corpo"></tbody>
-      </table>
-    </div>
-    <p class="dica" style="margin-top:12px">Deslize a tabela para o lado no celular. A linha destacada é a parcela selecionada acima.</p>
-  </section>
-
-  <!-- NOTAS -->
-  <section class="card">
+  <!-- ================= NOTAS ================= -->
+  <section class="larga notas">
     <h2>Como a conta é feita</h2>
-    <div class="aviso">
-      A comissão da Hotmart incide sobre o <strong>preço do produto</strong>, não sobre o total com juros. Por isso, na oferta com repasse, você recebe exatamente o mesmo em 1x ou em 12x.
+    <div class="chamada">
+      A comissão da Hotmart incide sobre o <strong>preço do produto</strong>, não sobre o total com juros. Por isso, quando o cliente paga o juro, você recebe exatamente o mesmo em 1x e em 12x.
     </div>
-    <div class="notas">
-      <p><strong>Comissão de 7,7% + R$ 1,00:</strong> é a taxa real da conta, calibrada com uma venda conferida no extrato. Um produto de R$ 197,00 rende R$ 180,84, porque a Hotmart corta os centavos para baixo: 7,7% de R$ 197,00 dá R$ 15,169 e vira R$ 15,16, mais o R$ 1,00 fixo. Se a sua faixa mudar, é só editar o campo no painel de taxas.</p>
-      <p><strong>Juro de parcelamento:</strong> 3,49% ao mês, cobrado em juros compostos sobre o preço do produto (tabela Price). Em 1x não há cobrança. O parcelamento vai até 12x e a quantidade de parcelas disponível depende do valor do produto.</p>
-      <p><strong>Oferta com repasse:</strong> o acréscimo aparece nas parcelas do checkout e o cliente paga mais que o preço cheio. <strong>Oferta sem repasse:</strong> o cliente divide o preço cheio e o mesmo acréscimo é descontado da sua comissão.</p>
-      <p><strong>Prazo de recebimento:</strong> D30 é o padrão e não custa nada. D14 cobra 2,19% e D2 cobra 3,59% sobre o valor antecipado, e em ambos 10% do saldo fica retido por 30 dias para cobrir estornos. A antecipação flexível avulsa custa 4,79%. Como a Hotmart aplica a taxa proporcional ao prazo real de cada parcela, o valor aqui é a estimativa do caso cheio, não o centavo exato.</p>
-      <p><strong>Imposto:</strong> a base padrão é o preço do produto, que é a receita bruta no Simples Nacional. Se o seu contador apura sobre o valor que a Hotmart repassa, troque a base no painel de taxas. A alíquota vem editável porque ela sobe conforme o seu faturamento dos últimos 12 meses.</p>
-      <p><strong>Conferência:</strong> um produto de R$ 100,00 em 2x sem repasse tem R$ 5,26 descontados da comissão do produtor, exatamente o número que a Hotmart usa no material oficial.</p>
-      <p><strong>O que ficou de fora:</strong> a taxa de saque. A Hotmart só diz que ela cobre encargos bancários e varia com o valor sacado, sem publicar tabela, então qualquer número aqui seria chute.</p>
-      <p>Fontes: <a href="https://help.hotmart.com/pt-br/article/208298448/quais-sao-as-taxas-cobradas-pela-hotmart-" target="_blank" rel="noopener">taxas cobradas pela Hotmart</a>, <a href="https://help.hotmart.com/pt-br/article/216440337/quais-tipos-e-formas-de-pagamento-eu-posso-escolher-para-meu-produto-" target="_blank" rel="noopener">formas de pagamento e parcelamento</a> e <a href="https://help.hotmart.com/pt-br/article/4409154605837/como-funciona-o-prazo-de-recebimento-e-antecipacao-de-vendas-feitas-por-cartao-de-credito-" target="_blank" rel="noopener">prazo de recebimento e antecipação</a>. Verificado em agosto de 2026.</p>
-    </div>
+    <p><strong>Comissão:</strong> a tabela pública começa em 9,9% + R$ 1,00 e cai conforme o faturamento anual. A conta do Clube do Ukulele está em 7,7%, conferido com uma venda real: um produto de R$ 197,00 rende R$ 180,84, porque a Hotmart corta os centavos para baixo, então 7,7% de R$ 197,00 vira R$ 15,16 e não R$ 15,17.</p>
+    <p><strong>Juro de parcelamento:</strong> 3,49% ao mês em juros compostos sobre o preço do produto, no formato da tabela Price. Em 1x não há cobrança, e o limite é 12x. A quantidade de parcelas que aparece no checkout depende do valor do produto.</p>
+    <p><strong>Antecipação:</strong> D30 é o padrão e sai de graça. D14 custa 2,19%, D2 custa 3,59% e a antecipação flexível avulsa custa 4,79%, sempre sobre o valor antecipado. Nos prazos curtos, 10% do saldo fica retido por 30 dias para cobrir estornos. Como a Hotmart aplica a taxa proporcional ao prazo real de cada parcela, o número aqui é a estimativa do caso cheio.</p>
+    <p><strong>Imposto:</strong> a base padrão é o preço do produto, que é a receita bruta no Simples Nacional. Se o seu contador apura sobre o valor repassado pela Hotmart, troque a base no seletor. A alíquota fica editável porque ela sobe conforme o faturamento dos últimos 12 meses.</p>
+    <p><strong>Tráfego pago:</strong> o investimento é dividido pelas vendas geradas, e o custo por venda é descontado como qualquer outro custo. Serve para responder se o anúncio se paga naquele preço e naquele parcelamento.</p>
+    <p><strong>O que ficou de fora:</strong> a taxa de saque. A Hotmart só diz que ela cobre encargos bancários e varia com o valor sacado, sem publicar tabela, então qualquer número aqui seria chute.</p>
+    <p>Fontes: <a href="https://help.hotmart.com/pt-br/article/208298448/quais-sao-as-taxas-cobradas-pela-hotmart-" target="_blank" rel="noopener">taxas cobradas pela Hotmart</a>, <a href="https://help.hotmart.com/pt-br/article/216440337/quais-tipos-e-formas-de-pagamento-eu-posso-escolher-para-meu-produto-" target="_blank" rel="noopener">formas de pagamento e parcelamento</a> e <a href="https://help.hotmart.com/pt-br/article/4409154605837/como-funciona-o-prazo-de-recebimento-e-antecipacao-de-vendas-feitas-por-cartao-de-credito-" target="_blank" rel="noopener">prazo de recebimento e antecipação</a>. Verificado em agosto de 2026.</p>
   </section>
 
 </main>
+</div>
 
-<footer>Feito com carinho pelo Clube do Ukulele</footer>
+<footer class="rodape">Feito com carinho pelo Clube do Ukulele</footer>
 
 <script>
 (function(){
   'use strict';
 
-  var PADRAO = { com:7.7, fixa:1.00, parc:3.49, imp:6.1, baseImp:'preco', prazo:'0', player:false };
   var MAX_PARCELAS = 12;
+  var TAXA_PADRAO = 9.9;
+  var MINHA_TAXA  = 7.7;
 
-  var el = {
-    preco:    document.getElementById('preco'),
-    parcelas: document.getElementById('parcelas'),
-    com:      document.getElementById('tx-com'),
-    fixa:     document.getElementById('tx-fixa'),
-    parc:     document.getElementById('tx-parc'),
-    imp:      document.getElementById('tx-imp'),
-    baseImp:  document.getElementById('base-imp'),
-    prazo:    document.getElementById('prazo'),
-    player:   document.getElementById('player'),
-    reset:    document.getElementById('reset'),
-    rCliente: document.getElementById('r-cliente'),
-    rClienteS:document.getElementById('r-cliente-sub'),
-    rLiquido: document.getElementById('r-liquido'),
-    rLiquidoS:document.getElementById('r-liquido-sub'),
-    extrato:  document.getElementById('extrato'),
-    corpo:    document.getElementById('corpo')
-  };
+  var el = {};
+  ['preco','parcelas','tx-com','tx-fixa','tx-parc','prazo','tx-imp','base-imp','invest','vendas',
+   'on-hotmart','on-parc','on-antec','on-player','on-imp','on-cac',
+   'c-hotmart','c-parc','c-antec','c-player','c-imp','c-cac',
+   'v-hotmart','v-parc','v-antec','v-player','v-imp','v-cac',
+   'r-cliente','r-cliente-obs','r-sobra','r-sobra-obs','extrato','corpo',
+   'nota-cac','btn-minha-taxa'].forEach(function(id){
+    el[id] = document.getElementById(id);
+  });
 
-  var n = 12; // parcelas selecionadas
+  var n = 12;
   var modo = 'cliente';
 
-  /* ---------- utilidades ---------- */
-  function brl(v){
-    return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-  }
-  function pct(v){
-    return v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1}) + '%';
-  }
-  // taxas precisam de 2 casas: 3,49% nao pode virar 3,5%
-  function pctTaxa(v){
-    return v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:2}) + '%';
-  }
+  /* ---------- formatacao ---------- */
+  function brl(v){ return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); }
+  function pct1(v){ return v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1}) + '%'; }
+  function pct2(v){ return v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:2}) + '%'; }
   function num(txt){
     var s = String(txt).replace(/[^\d,.-]/g,'').replace(/\./g,'').replace(',','.');
     var v = parseFloat(s);
@@ -400,72 +581,77 @@ footer{
   // e o que faz R$ 197,00 fechar em R$ 180,84 e nao em R$ 180,83.
   function corta(v){ return Math.floor(v * 100 + 1e-9) / 100; }
 
-  /* Parcela pela tabela Price, arredondada aos centavos.
-     n = 1 nao tem juro. */
+  /* Parcela pela tabela Price, arredondada aos centavos. 1x nao tem juro. */
   function parcelaPrice(preco, n, iMes){
     if (n <= 1 || iMes <= 0) return arred(preco / Math.max(n,1));
     var i = iMes / 100;
     return arred(preco * i / (1 - Math.pow(1 + i, -n)));
   }
 
-  /* ---------- nucleo do calculo ---------- */
+  /* ---------- leitura dos controles ---------- */
+  function taxas(){
+    var vendas = Math.max(1, Math.round(campo(el.vendas, 1)));
+    return {
+      hotmartOn: el['on-hotmart'].checked,
+      com:  campo(el['tx-com'], TAXA_PADRAO),
+      fixa: campo(el['tx-fixa'], 1),
+
+      parcOn: el['on-parc'].checked,
+      parc:   campo(el['tx-parc'], 3.49),
+
+      antecOn: el['on-antec'].checked,
+      antec:   parseFloat(el.prazo.value) || 0,
+
+      playerOn: el['on-player'].checked,
+
+      impOn:   el['on-imp'].checked,
+      imp:     campo(el['tx-imp'], 6.1),
+      baseImp: el['base-imp'].value,
+
+      cacOn:  el['on-cac'].checked,
+      cac:    arred(campo(el.invest, 0) / vendas),
+      vendas: vendas
+    };
+  }
+
+  /* ---------- nucleo ---------- */
   function calcular(preco, n, modo, t){
-    var parcelaComJuro = parcelaPrice(preco, n, t.parc);
+    var jm = t.parcOn ? t.parc : 0;
+    var parcelaComJuro = parcelaPrice(preco, n, jm);
     var totalComJuro   = arred(parcelaComJuro * n);
     var acrescimo      = arred(totalComJuro - preco);
 
-    var comissao = corta(preco * t.com / 100);
-    var fixa     = t.fixa;
-    var player   = t.player ? 2.49 : 0;
-
-    var custoParcelamento = (modo === 'produtor') ? acrescimo : 0;
+    var comissao = t.hotmartOn ? corta(preco * t.com / 100) : 0;
+    var fixa     = t.hotmartOn ? t.fixa : 0;
+    var player   = t.playerOn ? 2.49 : 0;
+    var juro     = (modo === 'produtor') ? acrescimo : 0;
 
     var parcelaCliente = (modo === 'produtor') ? arred(preco / n) : parcelaComJuro;
-    // sem repasse o cliente paga o preco cheio; a Hotmart acerta a sobra de centavos
-    // na primeira parcela, entao o total exibido e o proprio preco.
+    // sem repasse o cliente paga o preco cheio; a Hotmart acerta a sobra de
+    // centavos na primeira parcela, entao o total exibido e o proprio preco.
     var totalCliente   = (modo === 'produtor') ? preco : totalComJuro;
 
-    // o que sobra na Hotmart antes de antecipar e de pagar imposto
-    var aposHotmart = arred(preco - comissao - fixa - player - custoParcelamento);
+    var aposHotmart = arred(preco - comissao - fixa - player - juro);
+    var antecipacao = t.antecOn ? corta(aposHotmart * t.antec / 100) : 0;
 
-    // antecipacao incide sobre o valor que voce tem a receber
-    var antecipacao = corta(aposHotmart * t.prazo / 100);
+    var baseImposto = 0, imposto = 0;
+    if (t.impOn){
+      baseImposto = (t.baseImp === 'liquido') ? arred(aposHotmart - antecipacao) : preco;
+      imposto = arred(baseImposto * t.imp / 100);
+    }
 
-    // imposto sobre a receita bruta (preco) ou sobre o que sobrou, conforme o contador
-    var baseImposto = (t.baseImp === 'liquido') ? arred(aposHotmart - antecipacao) : preco;
-    var imposto = arred(baseImposto * t.imp / 100);
-
-    var liquido = arred(aposHotmart - antecipacao - imposto);
+    var cac = t.cacOn ? t.cac : 0;
+    var sobra = arred(aposHotmart - antecipacao - imposto - cac);
 
     return {
-      parcelaCliente: parcelaCliente,
-      totalCliente: totalCliente,
-      acrescimo: acrescimo,
-      comissao: comissao,
-      fixa: fixa,
-      player: player,
-      custoParcelamento: custoParcelamento,
-      antecipacao: antecipacao,
-      imposto: imposto,
-      baseImposto: baseImposto,
-      liquido: liquido,
-      margem: preco > 0 ? (liquido / preco) * 100 : 0
+      parcelaCliente:parcelaCliente, totalCliente:totalCliente, acrescimo:acrescimo,
+      comissao:comissao, fixa:fixa, player:player, juro:juro,
+      antecipacao:antecipacao, imposto:imposto, baseImposto:baseImposto, cac:cac,
+      sobra:sobra, margem: preco > 0 ? (sobra / preco) * 100 : 0
     };
   }
 
-  function taxas(){
-    return {
-      com:    campo(el.com,  PADRAO.com),
-      fixa:   campo(el.fixa, PADRAO.fixa),
-      parc:   campo(el.parc, PADRAO.parc),
-      imp:    campo(el.imp,  PADRAO.imp),
-      baseImp: el.baseImp.value,
-      prazo:  parseFloat(el.prazo.value) || 0,
-      player: el.player.checked
-    };
-  }
-
-  /* ---------- interface ---------- */
+  /* ---------- render ---------- */
   function montarBotoes(){
     var html = '';
     for (var k = 1; k <= MAX_PARCELAS; k++){
@@ -474,10 +660,16 @@ footer{
     el.parcelas.innerHTML = html;
   }
 
-  function linhaExtrato(rotulo, valor, negativo, total){
-    var cls = 'linha' + (negativo ? ' neg' : '') + (total ? ' total' : '');
-    var sinal = negativo ? '− ' : '';
-    return '<div class="' + cls + '"><span>' + rotulo + '</span><span>' + sinal + brl(Math.abs(valor)) + '</span></div>';
+  function linha(rot, valor, tipo){
+    return '<div class="linha ' + (tipo || '') + '">' +
+      '<span class="rot">' + rot + '</span>' +
+      '<span class="num">' + (tipo === 'saida' ? '− ' : '') + brl(Math.abs(valor)) + '</span>' +
+    '</div>';
+  }
+
+  function marcarCusto(id, ligado, valor){
+    el['c-' + id].dataset.on = ligado ? 'true' : 'false';
+    el['v-' + id].textContent = ligado && valor > 0 ? '− ' + brl(valor) : (ligado ? brl(0) : 'desligado');
   }
 
   function render(){
@@ -485,45 +677,56 @@ footer{
     var t = taxas();
     var r = calcular(preco, n, modo, t);
 
-    // painel de resultado
-    el.rCliente.textContent = (n === 1)
-      ? brl(r.totalCliente) + ' à vista'
+    /* topo do resultado */
+    el['r-cliente'].textContent = (n === 1)
+      ? brl(r.totalCliente)
       : n + 'x de ' + brl(r.parcelaCliente);
-    el.rClienteS.textContent = (n === 1)
-      ? 'Sem juro de parcelamento'
-      : 'Total: ' + brl(r.totalCliente) +
-        (r.acrescimo > 0 && modo === 'cliente' ? '  (+ ' + brl(r.acrescimo) + ' de juros)' : '');
+    el['r-cliente-obs'].textContent = (n === 1)
+      ? 'À vista, sem juro'
+      : 'Total de ' + brl(r.totalCliente) +
+        (modo === 'cliente' && r.acrescimo > 0 ? ', com ' + brl(r.acrescimo) + ' de juro' : ', sem acréscimo');
 
-    el.rLiquido.textContent = brl(r.liquido);
-    el.rLiquidoS.textContent = pct(r.margem) + ' do preço do produto';
+    el['r-sobra'].textContent = brl(r.sobra);
+    var obs = pct1(r.margem) + ' do preço';
+    if (t.cacOn && t.cac > 0) obs += '  ·  ROAS ' + (preco / t.cac).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1}) + 'x';
+    el['r-sobra-obs'].textContent = obs;
 
-    // extrato
-    var h = '';
-    h += linhaExtrato('Preço do produto', preco, false, false);
-    h += linhaExtrato('Comissão Hotmart (' + pctTaxa(t.com) + ')', r.comissao, true, false);
-    h += linhaExtrato('Taxa fixa por venda', r.fixa, true, false);
-    if (r.custoParcelamento > 0){
-      h += linhaExtrato('Juro do parcelamento (' + n + 'x a ' + pctTaxa(t.parc) + ' ao mês)', r.custoParcelamento, true, false);
-    }
-    if (r.player > 0)      h += linhaExtrato('Player de vídeo Hotmart', r.player, true, false);
-    if (r.antecipacao > 0) h += linhaExtrato('Antecipação ' + el.prazo.options[el.prazo.selectedIndex].text, r.antecipacao, true, false);
-    if (r.imposto > 0){
-      h += linhaExtrato('Imposto (' + pctTaxa(t.imp) + ' sobre ' + brl(r.baseImposto) + ')', r.imposto, true, false);
-    }
-    h += linhaExtrato('Sobra para você', r.liquido, false, true);
+    /* extrato */
+    var h = linha('Preço do produto', preco, '');
+    if (r.comissao > 0 || r.fixa > 0) h += linha('Hotmart, ' + pct2(t.com) + ' + fixo', r.comissao + r.fixa, 'saida');
+    if (r.juro > 0)        h += linha('Juro de ' + n + 'x a ' + pct2(t.parc) + ' a.m.', r.juro, 'saida');
+    if (r.player > 0)      h += linha('Player de vídeo', r.player, 'saida');
+    if (r.antecipacao > 0) h += linha('Antecipação ' + el.prazo.options[el.prazo.selectedIndex].text, r.antecipacao, 'saida');
+    if (r.imposto > 0)     h += linha('Imposto de ' + pct2(t.imp), r.imposto, 'saida');
+    if (r.cac > 0)         h += linha('Tráfego, ' + brl(t.cac) + ' por venda', r.cac, 'saida');
+    h += linha('Sobra para você', r.sobra, 'total');
     el.extrato.innerHTML = h;
 
-    // tabela
+    /* etiquetas de cada custo */
+    marcarCusto('hotmart', t.hotmartOn, r.comissao + r.fixa);
+    marcarCusto('parc', t.parcOn, r.juro);
+    marcarCusto('antec', t.antecOn, r.antecipacao);
+    marcarCusto('player', t.playerOn, r.player);
+    marcarCusto('imp', t.impOn, r.imposto);
+    marcarCusto('cac', t.cacOn, r.cac);
+    el['nota-cac'].textContent = 'Custo por venda: ' + brl(t.cac) + '.';
+
+    /* o juro so pesa na margem quando voce assume */
+    if (t.parcOn && modo === 'cliente'){
+      el['v-parc'].textContent = 'quem paga é o cliente';
+    }
+
+    /* tabela */
     var linhas = '';
     for (var k = 1; k <= MAX_PARCELAS; k++){
       var a = calcular(preco, k, 'cliente', t);
       var b = calcular(preco, k, 'produtor', t);
       linhas += '<tr' + (k === n ? ' class="ativa"' : '') + '>' +
-        '<td>' + k + 'x</td>' +
+        '<th scope="row">' + k + 'x</th>' +
         '<td>' + brl(a.parcelaCliente) + '</td>' +
-        '<td class="liq">' + brl(a.liquido) + '</td>' +
-        '<td class="sep">' + brl(b.parcelaCliente) + '</td>' +
-        '<td class="liq">' + brl(b.liquido) + ' <span class="pct">' + pct(b.margem) + '</span></td>' +
+        '<td class="sobra">' + brl(a.sobra) + '</td>' +
+        '<td class="divisa">' + brl(b.parcelaCliente) + '</td>' +
+        '<td class="sobra">' + brl(b.sobra) + ' <span class="margem">' + pct1(b.margem) + '</span></td>' +
       '</tr>';
     }
     el.corpo.innerHTML = linhas;
@@ -549,28 +752,23 @@ footer{
     });
   });
 
-  ['input','change'].forEach(function(ev){
-    [el.preco, el.com, el.fixa, el.parc, el.imp, el.baseImp, el.prazo, el.player].forEach(function(x){
-      x.addEventListener(ev, render);
-    });
+  ['tx-com','tx-fixa','tx-parc','prazo','tx-imp','base-imp','invest','vendas',
+   'on-hotmart','on-parc','on-antec','on-player','on-imp','on-cac'].forEach(function(id){
+    el[id].addEventListener('input', render);
+    el[id].addEventListener('change', render);
   });
 
-  // formata o preco ao sair do campo
+  el.preco.addEventListener('input', render);
+  el.preco.addEventListener('focus', function(){ el.preco.select(); });
   el.preco.addEventListener('blur', function(){
-    var v = num(el.preco.value);
-    el.preco.value = v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+    el.preco.value = num(el.preco.value).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
     render();
   });
-  el.preco.addEventListener('focus', function(){ el.preco.select(); });
 
-  el.reset.addEventListener('click', function(){
-    el.com.value = PADRAO.com;
-    el.fixa.value = PADRAO.fixa.toFixed(2);
-    el.parc.value = PADRAO.parc;
-    el.imp.value = PADRAO.imp;
-    el.baseImp.value = PADRAO.baseImp;
-    el.prazo.value = PADRAO.prazo;
-    el.player.checked = PADRAO.player;
+  el['btn-minha-taxa'].addEventListener('click', function(){
+    var alvo = parseFloat(el['tx-com'].value) === MINHA_TAXA ? TAXA_PADRAO : MINHA_TAXA;
+    el['tx-com'].value = alvo;
+    this.textContent = alvo === MINHA_TAXA ? 'Voltar para 9,9%' : 'Usar 7,7%';
     render();
   });
 
@@ -579,6 +777,7 @@ footer{
 
   // exposto para conferencia rapida no console
   window.__calc = calcular;
+  window.__taxas = taxas;
 })();
 </script>
 </body>
