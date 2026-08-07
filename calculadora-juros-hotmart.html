@@ -21,11 +21,11 @@
   --borda:#E2E0E9; --borda-forte:#CFCBDB; --trilho:#D9D6E2;
 
   /* escala de espaco, base 4 */
-  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
 
-  --raio:12px; --raio-g:16px;
-  --sombra:0 1px 2px rgba(45,18,78,.05), 0 4px 16px rgba(45,18,78,.06);
-  --sombra-alta:0 8px 32px rgba(45,18,78,.18);
+  --raio:10px; --raio-g:14px;
+  --sombra:0 1px 2px rgba(45,18,78,.05), 0 3px 12px rgba(45,18,78,.055);
+  --sombra-alta:0 6px 24px rgba(45,18,78,.17);
   --saida:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -33,209 +33,186 @@ html{-webkit-text-size-adjust:100%}
 body{
   font-family:'Montserrat',system-ui,-apple-system,sans-serif;
   background:var(--bg); color:var(--tinta);
-  line-height:1.5; font-size:16px;
+  line-height:1.45; font-size:16px;
   -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:1120px;margin:0 auto;padding:0 var(--s4)}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--s4)}
 
 /* ============ cabecalho ============ */
 .topo{
   background:linear-gradient(135deg,#443468,#2D124E);
-  border-bottom:3px solid var(--coral);
-  color:#fff; padding:var(--s5) 0;
+  border-bottom:2px solid var(--coral);
+  color:#fff;padding:10px 0;
 }
-.topo h1{font-size:1.35rem;font-weight:800;letter-spacing:-.015em;line-height:1.2;text-wrap:balance}
-.topo p{font-size:.875rem;color:rgba(255,255,255,.82);margin-top:var(--s1);max-width:52ch}
+.topo .wrap{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap}
+.topo h1{font-size:1rem;font-weight:800;letter-spacing:-.01em}
+.topo p{font-size:.75rem;color:rgba(255,255,255,.8)}
 
 /* ============ estrutura ============ */
-.layout{padding:var(--s6) 0 var(--s7);display:flex;flex-direction:column;gap:var(--s6)}
+.layout{padding:var(--s3) 0 var(--s2);display:flex;flex-direction:column;gap:var(--s3)}
 
-.painel-titulo{
-  font-size:1.0625rem;font-weight:800;letter-spacing:-.01em;
-  margin-bottom:var(--s4);
-}
-.painel-titulo .conta{
-  display:block;font-size:.8125rem;font-weight:500;color:var(--tinta-2);
-  letter-spacing:0;margin-top:2px;
-}
-
-.bloco-superficie{
+.cartao{
   background:var(--superficie);border:1px solid var(--borda);
   border-radius:var(--raio-g);box-shadow:var(--sombra);
 }
+.cartao-cab{padding:10px var(--s4);border-bottom:1px solid var(--borda)}
+.cartao-cab h2{font-size:.8125rem;font-weight:800;letter-spacing:-.005em}
+.cartao-cab p{font-size:.6875rem;color:var(--tinta-2);font-weight:500;margin-top:1px}
+.cartao-corpo{padding:var(--s4)}
+
+.rotulo{display:block;font-size:.6875rem;font-weight:700;color:var(--tinta-2);margin-bottom:var(--s1)}
+.campo + .campo{margin-top:var(--s3)}
 
 /* ============ produto ============ */
-.grupo{padding:var(--s5)}
-.grupo + .grupo{border-top:1px solid var(--borda)}
-
-.rotulo{
-  display:block;font-size:.8125rem;font-weight:700;color:var(--tinta);
-  margin-bottom:var(--s2);
-}
-.campo + .campo{margin-top:var(--s5)}
-
 .preco-box{position:relative;display:flex;align-items:center}
 .preco-box .rs{
-  position:absolute;left:var(--s4);font-weight:700;font-size:1.0625rem;color:var(--tinta-2);
+  position:absolute;left:var(--s3);font-weight:700;font-size:.875rem;color:var(--tinta-2);
   pointer-events:none;
 }
 #preco{
-  width:100%;font-family:inherit;font-size:1.75rem;font-weight:800;color:var(--tinta);
+  width:100%;font-family:inherit;font-size:1.375rem;font-weight:800;color:var(--tinta);
   letter-spacing:-.02em;font-variant-numeric:tabular-nums;
-  padding:var(--s3) var(--s4) var(--s3) 46px;
+  padding:var(--s2) var(--s3) var(--s2) 38px;
   border:2px solid var(--borda);border-radius:var(--raio);background:var(--painel);
   transition:border-color .16s var(--saida), box-shadow .16s var(--saida), background .16s;
 }
 #preco:hover{border-color:var(--borda-forte)}
-#preco:focus{outline:0;border-color:var(--roxo);box-shadow:0 0 0 4px rgba(68,52,104,.13);background:var(--superficie)}
+#preco:focus{outline:0;border-color:var(--roxo);box-shadow:0 0 0 3px rgba(68,52,104,.13);background:var(--superficie)}
 
-.parcelas{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--s2)}
+.parcelas{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
 .parcelas button{
-  font-family:inherit;font-size:.875rem;font-weight:700;color:var(--roxo);
-  background:var(--superficie);border:2px solid var(--borda);border-radius:10px;
-  padding:var(--s3) 0;cursor:pointer;font-variant-numeric:tabular-nums;
+  font-family:inherit;font-size:.75rem;font-weight:700;color:var(--roxo);
+  background:var(--superficie);border:1px solid var(--borda-forte);border-radius:7px;
+  padding:7px 0;cursor:pointer;font-variant-numeric:tabular-nums;
   transition:background .16s var(--saida), border-color .16s var(--saida), color .16s var(--saida);
 }
-.parcelas button:hover{border-color:var(--borda-forte);background:var(--painel)}
+.parcelas button:hover{border-color:var(--roxo);background:var(--painel)}
 .parcelas button:focus-visible{outline:2px solid var(--roxo);outline-offset:2px}
 .parcelas button[aria-pressed="true"]{background:var(--roxo);border-color:var(--roxo);color:#fff}
 
-.modos{display:grid;gap:var(--s2)}
+.modos{display:grid;grid-template-columns:1fr 1fr;gap:5px}
 .modo{
-  display:flex;gap:var(--s3);align-items:flex-start;
-  border:2px solid var(--borda);border-radius:var(--raio);padding:var(--s3) var(--s4);
-  cursor:pointer;background:var(--superficie);
-  transition:border-color .16s var(--saida), background .16s var(--saida);
+  font-family:inherit;text-align:left;
+  border:1px solid var(--borda-forte);border-radius:7px;padding:6px var(--s2);
+  cursor:pointer;background:var(--superficie);color:var(--tinta);
+  transition:border-color .16s var(--saida), background .16s var(--saida), color .16s var(--saida);
 }
-.modo:hover{border-color:var(--borda-forte);background:var(--painel)}
-.modo:focus-within{border-color:var(--roxo);box-shadow:0 0 0 4px rgba(68,52,104,.13)}
-.modo input{margin-top:3px;accent-color:var(--roxo);width:17px;height:17px;flex-shrink:0;cursor:pointer}
-.modo strong{display:block;font-size:.875rem;font-weight:700}
-.modo span{display:block;font-size:.75rem;color:var(--tinta-2);font-weight:500;margin-top:2px;line-height:1.45}
-.modo.sel{border-color:var(--roxo);background:var(--painel)}
+.modo:hover{border-color:var(--roxo);background:var(--painel)}
+.modo:focus-visible{outline:2px solid var(--roxo);outline-offset:2px}
+.modo strong{display:block;font-size:.8125rem;font-weight:700;line-height:1.25}
+.modo small{display:block;font-size:.625rem;color:var(--tinta-2);font-weight:500;line-height:1.2}
+.modo[aria-checked="true"]{background:var(--roxo);border-color:var(--roxo);color:#fff}
+.modo[aria-checked="true"] small{color:rgba(255,255,255,.82)}
 
 /* ============ custos ============ */
-.custos{display:flex;flex-direction:column}
-.custo{padding:var(--s4) var(--s5)}
-.custo + .custo{border-top:1px solid var(--borda)}
-
-.custo-cab{display:flex;align-items:center;gap:var(--s3)}
-.custo-nome{
-  flex:1;font-size:.875rem;font-weight:700;cursor:pointer;user-select:none;
-  transition:color .16s;
+.custo{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto auto;
+  align-items:center;gap:var(--s2) var(--s3);
+  padding:5px var(--s4);
 }
+.custo + .custo{border-top:1px solid var(--borda)}
+.custo-nome{font-size:.8125rem;font-weight:700;cursor:pointer;user-select:none;line-height:1.25}
+.custo-nome small{display:block;font-size:.625rem;font-weight:500;color:var(--tinta-2)}
+.custo-campos{display:flex;align-items:center;gap:5px}
 .custo-valor{
-  font-size:.875rem;font-weight:700;font-variant-numeric:tabular-nums;
-  color:var(--coral-forte);white-space:nowrap;
+  font-size:.8125rem;font-weight:700;font-variant-numeric:tabular-nums;
+  color:var(--coral-forte);white-space:nowrap;min-width:76px;text-align:right;
 }
 .custo[data-on="false"] .custo-nome{color:var(--tinta-3)}
-.custo[data-on="false"] .custo-valor{color:var(--tinta-3)}
+.custo[data-on="false"] .custo-nome small{color:var(--tinta-3)}
+.custo[data-on="false"] .custo-valor{color:var(--tinta-3);font-weight:600}
+.custo[data-on="false"] .custo-campos{opacity:.4;pointer-events:none}
 
 /* interruptor */
 .sw{
   appearance:none;-webkit-appearance:none;flex:0 0 auto;
-  width:38px;height:22px;border-radius:999px;background:var(--trilho);
+  width:34px;height:20px;border-radius:999px;background:var(--trilho);
   position:relative;cursor:pointer;transition:background .18s var(--saida);
 }
 .sw::after{
-  content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;
+  content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;
   background:#fff;box-shadow:0 1px 3px rgba(45,18,78,.3);
   transition:transform .18s var(--saida);
 }
-/* alvo de toque de 44px sem engordar o desenho do interruptor */
-.sw::before{content:"";position:absolute;inset:-11px -4px}
+/* area de clique ate a borda da linha, sem invadir a linha vizinha */
+.sw::before{content:"";position:absolute;inset:-9px -5px}
 .sw:hover{background:var(--borda-forte)}
 .sw:checked{background:var(--roxo)}
 .sw:checked:hover{background:var(--roxo-hover)}
-.sw:checked::after{transform:translateX(16px)}
+.sw:checked::after{transform:translateX(14px)}
 .sw:focus-visible{outline:2px solid var(--roxo);outline-offset:2px}
 
-.custo-campos{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:var(--s3);margin-top:var(--s3);padding-left:50px;
-}
-.custo[data-on="false"] .custo-campos{opacity:.4;pointer-events:none}
-.custo-campos label{
-  display:block;font-size:.6875rem;font-weight:700;color:var(--tinta-2);
-  margin-bottom:var(--s1);
-}
-.custo-campos input,.custo-campos select{
-  width:100%;font-family:inherit;font-size:.875rem;font-weight:600;color:var(--tinta);
-  font-variant-numeric:tabular-nums;
-  padding:var(--s2) var(--s3);border:1px solid var(--borda-forte);border-radius:9px;
-  background:var(--superficie);height:38px;
+.mini{
+  width:64px;font-family:inherit;font-size:.75rem;font-weight:600;color:var(--tinta);
+  font-variant-numeric:tabular-nums;text-align:right;
+  padding:4px var(--s2);border:1px solid var(--borda-forte);border-radius:7px;
+  background:var(--superficie);height:28px;
   transition:border-color .16s var(--saida), box-shadow .16s var(--saida);
 }
-.custo-campos select{cursor:pointer}
-.custo-campos input:hover,.custo-campos select:hover{border-color:var(--roxo)}
-.custo-campos input:focus,.custo-campos select:focus{
-  outline:0;border-color:var(--roxo);box-shadow:0 0 0 3px rgba(68,52,104,.13);
+select.mini{width:auto;max-width:132px;text-align:left;cursor:pointer;padding-right:var(--s1)}
+.mini:hover{border-color:var(--roxo)}
+.mini:focus{outline:0;border-color:var(--roxo);box-shadow:0 0 0 3px rgba(68,52,104,.13)}
+.sufixo{font-size:.6875rem;font-weight:700;color:var(--tinta-2)}
+.atalho{
+  font-family:inherit;font-size:.6875rem;font-weight:700;color:var(--teal-txt);
+  background:var(--teal-suave);border:1px solid #C9E3DC;border-radius:7px;
+  padding:4px var(--s2);height:28px;cursor:pointer;white-space:nowrap;
+  transition:background .16s var(--saida);
 }
-.custo-nota{
-  grid-column:1/-1;font-size:.75rem;color:var(--tinta-2);font-weight:500;line-height:1.5;
-}
-.custo-nota button{
-  font-family:inherit;font-size:inherit;font-weight:700;color:var(--teal-txt);
-  background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;
-  text-underline-offset:2px;
-}
-.custo-nota button:hover{color:var(--teal)}
-.custo-nota button:focus-visible{outline:2px solid var(--roxo);outline-offset:2px;border-radius:2px}
+.atalho:hover{background:#D6EBE5}
+.atalho:focus-visible{outline:2px solid var(--roxo);outline-offset:2px}
 
 /* ============ resultado ============ */
 .resultado{
   background:linear-gradient(150deg,#443468,#2D124E);
   border-radius:var(--raio-g);box-shadow:var(--sombra-alta);
-  color:#fff;padding:var(--s5);
+  color:#fff;padding:var(--s4);
 }
 .res-rot{
-  font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
-  color:rgba(255,255,255,.7);
+  font-size:.625rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+  color:rgba(255,255,255,.72);
 }
-.res-cliente{margin-bottom:var(--s5)}
 .res-cliente .valor{
-  font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin-top:var(--s1);
+  font-size:1.125rem;font-weight:800;letter-spacing:-.02em;margin-top:1px;
   font-variant-numeric:tabular-nums;
 }
-.res-cliente .obs{font-size:.8125rem;color:rgba(255,255,255,.78);margin-top:2px;font-variant-numeric:tabular-nums}
+.res-cliente .obs{font-size:.6875rem;color:rgba(255,255,255,.78);font-variant-numeric:tabular-nums}
 
 .res-sobra{
   background:var(--coral);color:var(--coral-txt);
-  border-radius:var(--raio);padding:var(--s4);margin-bottom:var(--s5);
+  border-radius:var(--raio);padding:var(--s3);margin:var(--s3) 0;
 }
 /* cor cheia, nao transparencia: sobre o coral so o #4D1A20 do manual passa em AA */
 .res-sobra .res-rot{color:var(--coral-txt)}
 .res-sobra .valor{
-  font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1.05;
-  margin-top:var(--s1);font-variant-numeric:tabular-nums;
+  font-size:1.75rem;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-top:1px;
+  font-variant-numeric:tabular-nums;
 }
-.res-sobra .obs{font-size:.8125rem;font-weight:600;color:var(--coral-txt);margin-top:var(--s1)}
+.res-sobra .obs{font-size:.6875rem;font-weight:600;color:var(--coral-txt);margin-top:1px}
 
-.extrato{display:flex;flex-direction:column;gap:var(--s1)}
-.linha{display:flex;justify-content:space-between;gap:var(--s3);font-size:.8125rem;line-height:1.5}
+.extrato{display:flex;flex-direction:column;gap:2px}
+.linha{display:flex;justify-content:space-between;gap:var(--s2);font-size:.75rem;line-height:1.5}
 .linha .rot{color:rgba(255,255,255,.8);font-weight:500}
 .linha .num{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .linha.saida .num{color:var(--coral)}
 .linha.total{
-  border-top:1px solid rgba(255,255,255,.2);margin-top:var(--s2);padding-top:var(--s3);
-  font-size:.9375rem;
+  border-top:1px solid rgba(255,255,255,.2);margin-top:5px;padding-top:var(--s2);font-size:.8125rem;
 }
 .linha.total .rot{color:#fff;font-weight:800}
 .linha.total .num{font-weight:800}
 
 /* ============ tabela ============ */
-.rolagem{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-inline:calc(var(--s5) * -1);padding-inline:var(--s5)}
-table{border-collapse:collapse;width:100%;min-width:620px;font-variant-numeric:tabular-nums}
-caption{
-  text-align:left;font-size:.75rem;color:var(--tinta-2);font-weight:500;
-  padding-bottom:var(--s3);
-}
-th,td{padding:var(--s2) var(--s3);text-align:right;font-size:.8125rem}
+/* o min() impede que a coluna de 430px estoure uma tela mais estreita que isso */
+.metades{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(430px,100%),1fr));gap:var(--s3) var(--s5)}
+.rolagem{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:410px;font-variant-numeric:tabular-nums}
+th,td{padding:4px var(--s2);text-align:right;font-size:.75rem}
 thead th{
-  font-size:.6875rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-  color:var(--tinta-2);border-bottom:2px solid var(--borda-forte);padding-bottom:var(--s2);
+  font-size:.625rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--tinta-2);border-bottom:2px solid var(--borda-forte);
 }
-thead tr.faixa th{border-bottom:0;padding-bottom:var(--s1);font-size:.6875rem}
+thead tr.faixa th{border-bottom:0;padding-bottom:2px}
 thead tr.faixa th.g1{color:var(--teal-txt)}
 thead tr.faixa th.g2{color:var(--coral-forte)}
 th:first-child,td:first-child{text-align:left;font-weight:700}
@@ -244,48 +221,56 @@ tbody tr.ativa{background:var(--painel)}
 tbody tr.ativa td{font-weight:700}
 td.sobra{color:var(--teal-txt);font-weight:700}
 td.divisa{border-left:1px solid var(--borda)}
-.margem{color:var(--tinta-2);font-size:.6875rem;font-weight:600}
+.margem{color:var(--tinta-2);font-size:.625rem;font-weight:600}
 
 /* ============ notas ============ */
-.notas{max-width:72ch}
-.notas h2{font-size:1.0625rem;font-weight:800;letter-spacing:-.01em;margin-bottom:var(--s3)}
-.notas p{font-size:.8125rem;color:var(--tinta-2);line-height:1.65;margin-bottom:var(--s3)}
-.notas p:last-child{margin-bottom:0}
-.notas strong{color:var(--tinta);font-weight:700}
-.notas a{color:var(--coral-forte);font-weight:600;text-underline-offset:2px}
-.notas a:hover{color:var(--coral-txt)}
+.notas summary{
+  cursor:pointer;list-style:none;font-size:.8125rem;font-weight:800;
+  padding:var(--s3) var(--s4);display:flex;align-items:center;gap:var(--s2);
+}
+.notas summary::-webkit-details-marker{display:none}
+.notas summary::before{content:"+";font-size:.9375rem;font-weight:800;color:var(--roxo);line-height:1}
+.notas[open] summary::before{content:"–"}
+.notas summary:focus-visible{outline:2px solid var(--roxo);outline-offset:-2px;border-radius:var(--raio-g)}
+.notas-corpo{padding:0 var(--s4) var(--s4);max-width:74ch;border-top:1px solid var(--borda);padding-top:var(--s3)}
+.notas-corpo p{font-size:.75rem;color:var(--tinta-2);line-height:1.6;margin-bottom:var(--s2)}
+.notas-corpo p:last-child{margin-bottom:0}
+.notas-corpo strong{color:var(--tinta);font-weight:700}
+.notas-corpo a{color:var(--coral-forte);font-weight:600;text-underline-offset:2px}
+.notas-corpo a:hover{color:var(--coral-txt)}
 .chamada{
   background:var(--teal-suave);border:1px solid #C9E3DC;border-radius:var(--raio);
-  padding:var(--s4);font-size:.8125rem;color:var(--teal-txt);line-height:1.6;
-  margin-bottom:var(--s5);
+  padding:var(--s3);font-size:.75rem;color:var(--teal-txt);line-height:1.55;margin-bottom:var(--s3);
 }
-.chamada strong{color:var(--teal-txt)}
 
 .rodape{
-  background:linear-gradient(135deg,#443468,#2D124E);border-top:3px solid var(--coral);
-  color:rgba(255,255,255,.92);text-align:center;padding:var(--s4);font-size:.75rem;
+  background:linear-gradient(135deg,#443468,#2D124E);border-top:2px solid var(--coral);
+  color:rgba(255,255,255,.92);text-align:center;padding:var(--s2);font-size:.6875rem;
 }
 
-/* ============ desktop ============ */
-@media (min-width:900px){
+/* ============ tres colunas: cabe numa tela de notebook ============ */
+@media (min-width:1180px){
   .layout{
     display:grid;
-    grid-template-columns:minmax(0,1fr) 348px;
-    gap:var(--s6) var(--s6);
+    grid-template-columns:268px minmax(0,1fr) 316px;
+    gap:var(--s3);
     align-items:start;
   }
-  .col-controles{display:flex;flex-direction:column;gap:var(--s5)}
-  .col-resultado{position:sticky;top:var(--s5)}
   .larga{grid-column:1 / -1}
-  .topo h1{font-size:1.5rem}
+  .col-resultado{position:sticky;top:var(--s3)}
+}
+/* faixa intermediaria: produto e custos lado a lado, resultado embaixo */
+@media (min-width:760px) and (max-width:1179px){
+  .layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:var(--s4);align-items:start}
+  .col-resultado,.larga{grid-column:1 / -1}
 }
 @media (max-width:560px){
   .parcelas{grid-template-columns:repeat(4,1fr)}
-  .grupo,.custo{padding-inline:var(--s4)}
-  .custo-campos{padding-left:0}
-  .rolagem{margin-inline:calc(var(--s4) * -1);padding-inline:var(--s4)}
-  .res-sobra .valor{font-size:1.75rem}
-  #preco{font-size:1.5rem}
+  .custo{grid-template-columns:auto minmax(0,1fr) auto;padding:var(--s3) var(--s4)}
+  /* no toque a linha e mais alta, entao o alvo volta aos 44px */
+  .sw::before{inset:-12px -5px}
+  .custo-campos{grid-column:2 / -1;flex-wrap:wrap}
+  .modos{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
@@ -296,182 +281,128 @@ td.divisa{border-left:1px solid var(--borda)}
 
 <header class="topo">
   <div class="wrap">
-    <h1>Calculadora de taxas e parcelamento da Hotmart</h1>
-    <p>Ligue e desligue cada custo para ver o que sobra de verdade em cada parcela.</p>
+    <h1>Calculadora de taxas da Hotmart</h1>
+    <p>Ligue e desligue cada custo para ver o que sobra de verdade.</p>
   </div>
 </header>
 
 <div class="wrap">
 <main class="layout">
 
-  <!-- ================= CONTROLES ================= -->
-  <div class="col-controles">
-
-    <section class="bloco-superficie">
-      <div class="grupo">
-        <h2 class="painel-titulo">Seu produto</h2>
-
-        <div class="campo">
-          <label class="rotulo" for="preco">Preço cadastrado na oferta</label>
-          <div class="preco-box">
-            <span class="rs">R$</span>
-            <input id="preco" type="text" inputmode="decimal" value="197,00" autocomplete="off">
-          </div>
-        </div>
-
-        <div class="campo">
-          <span class="rotulo" id="lbl-parcelas">Parcelas do cliente</span>
-          <div class="parcelas" id="parcelas" role="group" aria-labelledby="lbl-parcelas"></div>
-        </div>
-
-        <div class="campo">
-          <span class="rotulo" id="lbl-modo">Quem paga os juros do parcelamento</span>
-          <div class="modos" role="radiogroup" aria-labelledby="lbl-modo">
-            <label class="modo sel" id="modo-cliente">
-              <input type="radio" name="modo" value="cliente" checked>
-              <span>
-                <strong>O cliente paga</strong>
-                <span>As parcelas ficam maiores no checkout. Você recebe o mesmo em 1x ou em 12x.</span>
-              </span>
-            </label>
-            <label class="modo" id="modo-produtor">
-              <input type="radio" name="modo" value="produtor">
-              <span>
-                <strong>Você paga</strong>
-                <span>O cliente divide o preço cheio. O juro sai da sua margem.</span>
-              </span>
-            </label>
-          </div>
+  <!-- ================= PRODUTO ================= -->
+  <section class="cartao">
+    <div class="cartao-cab"><h2>Seu produto</h2></div>
+    <div class="cartao-corpo">
+      <div class="campo">
+        <label class="rotulo" for="preco">Preço da oferta</label>
+        <div class="preco-box">
+          <span class="rs">R$</span>
+          <input id="preco" type="text" inputmode="decimal" value="197,00" autocomplete="off">
         </div>
       </div>
-    </section>
 
-    <section class="bloco-superficie">
-      <div class="grupo" style="padding-bottom:0">
-        <h2 class="painel-titulo">
-          O que desconta
-          <span class="conta">Desligue qualquer linha para ver o efeito na sobra.</span>
-        </h2>
+      <div class="campo">
+        <span class="rotulo" id="lbl-parcelas">Parcelas do cliente</span>
+        <div class="parcelas" id="parcelas" role="group" aria-labelledby="lbl-parcelas"></div>
       </div>
 
-      <div class="custos">
-
-        <!-- taxa hotmart -->
-        <div class="custo" data-on="true" id="c-hotmart">
-          <div class="custo-cab">
-            <input type="checkbox" class="sw" id="on-hotmart" checked>
-            <label class="custo-nome" for="on-hotmart">Taxa da Hotmart</label>
-            <span class="custo-valor" id="v-hotmart"></span>
-          </div>
-          <div class="custo-campos">
-            <div>
-              <label for="tx-com">Comissão (%)</label>
-              <input id="tx-com" type="number" step="0.01" min="0" max="30" value="9.9">
-            </div>
-            <div>
-              <label for="tx-fixa">Fixo por venda (R$)</label>
-              <input id="tx-fixa" type="number" step="0.01" min="0" value="1.00">
-            </div>
-            <p class="custo-nota">
-              9,9% + R$ 1,00 é a tabela pública. A conta real do Clube do Ukulele é 7,7%.
-              <button type="button" id="btn-minha-taxa">Usar 7,7%</button>
-            </p>
-          </div>
+      <div class="campo">
+        <span class="rotulo" id="lbl-modo">Quem paga o juro</span>
+        <div class="modos" role="radiogroup" aria-labelledby="lbl-modo">
+          <button type="button" class="modo" role="radio" aria-checked="true" data-modo="cliente">
+            <strong>O cliente</strong><small>parcela maior</small>
+          </button>
+          <button type="button" class="modo" role="radio" aria-checked="false" data-modo="produtor">
+            <strong>Você</strong><small>sai da margem</small>
+          </button>
         </div>
-
-        <!-- juro de parcelamento -->
-        <div class="custo" data-on="true" id="c-parc">
-          <div class="custo-cab">
-            <input type="checkbox" class="sw" id="on-parc" checked>
-            <label class="custo-nome" for="on-parc">Juro de parcelamento</label>
-            <span class="custo-valor" id="v-parc"></span>
-          </div>
-          <div class="custo-campos">
-            <div>
-              <label for="tx-parc">Taxa ao mês (%)</label>
-              <input id="tx-parc" type="number" step="0.01" min="0" max="15" value="3.49">
-            </div>
-            <p class="custo-nota">Quando o cliente paga, o juro não sai da sua margem, ele encarece as parcelas dele.</p>
-          </div>
-        </div>
-
-        <!-- antecipacao -->
-        <div class="custo" data-on="false" id="c-antec">
-          <div class="custo-cab">
-            <input type="checkbox" class="sw" id="on-antec">
-            <label class="custo-nome" for="on-antec">Antecipação de recebíveis</label>
-            <span class="custo-valor" id="v-antec"></span>
-          </div>
-          <div class="custo-campos">
-            <div>
-              <label for="prazo">Prazo de recebimento</label>
-              <select id="prazo">
-                <option value="2.19">D14, 2,19%</option>
-                <option value="3.59">D2, 3,59%</option>
-                <option value="4.79">Flexível, 4,79%</option>
-              </select>
-            </div>
-            <p class="custo-nota">Desligado significa D30, que é o padrão e não custa nada.</p>
-          </div>
-        </div>
-
-        <!-- player -->
-        <div class="custo" data-on="false" id="c-player">
-          <div class="custo-cab">
-            <input type="checkbox" class="sw" id="on-player">
-            <label class="custo-nome" for="on-player">Player de vídeo da Hotmart</label>
-            <span class="custo-valor" id="v-player"></span>
-          </div>
-          <div class="custo-campos">
-            <p class="custo-nota">R$ 2,49 por venda. Só se aplica se o vídeo estiver hospedado na Hotmart.</p>
-          </div>
-        </div>
-
-        <!-- imposto -->
-        <div class="custo" data-on="true" id="c-imp">
-          <div class="custo-cab">
-            <input type="checkbox" class="sw" id="on-imp" checked>
-            <label class="custo-nome" for="on-imp">Imposto</label>
-            <span class="custo-valor" id="v-imp"></span>
-          </div>
-          <div class="custo-campos">
-            <div>
-              <label for="tx-imp">Alíquota (%)</label>
-              <input id="tx-imp" type="number" step="0.01" min="0" max="40" value="6.1">
-            </div>
-            <div>
-              <label for="base-imp">Incide sobre</label>
-              <select id="base-imp">
-                <option value="preco">O preço do produto</option>
-                <option value="liquido">O que a Hotmart repassa</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- trafego -->
-        <div class="custo" data-on="false" id="c-cac">
-          <div class="custo-cab">
-            <input type="checkbox" class="sw" id="on-cac">
-            <label class="custo-nome" for="on-cac">Tráfego pago</label>
-            <span class="custo-valor" id="v-cac"></span>
-          </div>
-          <div class="custo-campos">
-            <div>
-              <label for="invest">Investido (R$)</label>
-              <input id="invest" type="number" step="1" min="0" value="1000">
-            </div>
-            <div>
-              <label for="vendas">Vendas geradas</label>
-              <input id="vendas" type="number" step="1" min="1" value="10">
-            </div>
-            <p class="custo-nota" id="nota-cac">Custo por venda: R$ 100,00.</p>
-          </div>
-        </div>
-
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
+  <!-- ================= CUSTOS ================= -->
+  <section class="cartao">
+    <div class="cartao-cab">
+      <h2>O que desconta</h2>
+      <p>Desligue qualquer linha para ver o efeito na sobra.</p>
+    </div>
+
+    <div class="custo" data-on="true" id="c-hotmart">
+      <input type="checkbox" class="sw" id="on-hotmart" checked>
+      <label class="custo-nome" for="on-hotmart">Taxa da Hotmart</label>
+      <div class="custo-campos">
+        <input class="mini" id="tx-com" type="number" step="0.01" min="0" max="30" value="9.9" aria-label="Comissão em porcentagem">
+        <span class="sufixo">%</span>
+        <span class="sufixo">+</span>
+        <input class="mini" id="tx-fixa" type="number" step="0.01" min="0" value="1.00" aria-label="Valor fixo por venda em reais">
+        <button type="button" class="atalho" id="btn-minha-taxa" aria-label="Usar a taxa real da conta, 7,7 por cento">7,7%</button>
+      </div>
+      <span class="custo-valor" id="v-hotmart"></span>
+    </div>
+
+    <div class="custo" data-on="true" id="c-parc">
+      <input type="checkbox" class="sw" id="on-parc" checked>
+      <label class="custo-nome" for="on-parc">Juro de parcelamento</label>
+      <div class="custo-campos">
+        <input class="mini" id="tx-parc" type="number" step="0.01" min="0" max="15" value="3.49" aria-label="Juro de parcelamento em porcentagem ao mês">
+        <span class="sufixo">% a.m.</span>
+      </div>
+      <span class="custo-valor" id="v-parc"></span>
+    </div>
+
+    <div class="custo" data-on="false" id="c-antec">
+      <input type="checkbox" class="sw" id="on-antec">
+      <label class="custo-nome" for="on-antec">Antecipação
+        <small>desligado é D30, o padrão sem custo</small>
+      </label>
+      <div class="custo-campos">
+        <select class="mini" id="prazo" aria-label="Prazo de recebimento">
+          <option value="2.19">D14, 2,19%</option>
+          <option value="3.59">D2, 3,59%</option>
+          <option value="4.79">Flexível, 4,79%</option>
+        </select>
+      </div>
+      <span class="custo-valor" id="v-antec"></span>
+    </div>
+
+    <div class="custo" data-on="false" id="c-player">
+      <input type="checkbox" class="sw" id="on-player">
+      <label class="custo-nome" for="on-player">Player de vídeo
+        <small>só se o vídeo estiver na Hotmart</small>
+      </label>
+      <div class="custo-campos"><span class="sufixo">R$ 2,49 por venda</span></div>
+      <span class="custo-valor" id="v-player"></span>
+    </div>
+
+    <div class="custo" data-on="true" id="c-imp">
+      <input type="checkbox" class="sw" id="on-imp" checked>
+      <label class="custo-nome" for="on-imp">Imposto</label>
+      <div class="custo-campos">
+        <input class="mini" id="tx-imp" type="number" step="0.01" min="0" max="40" value="6.1" aria-label="Alíquota de imposto em porcentagem">
+        <span class="sufixo">% sobre</span>
+        <select class="mini" id="base-imp" aria-label="Base de cálculo do imposto">
+          <option value="preco">o preço</option>
+          <option value="liquido">o repasse</option>
+        </select>
+      </div>
+      <span class="custo-valor" id="v-imp"></span>
+    </div>
+
+    <div class="custo" data-on="false" id="c-cac">
+      <input type="checkbox" class="sw" id="on-cac">
+      <label class="custo-nome" for="on-cac">Tráfego pago
+        <small id="nota-cac">investimento dividido pelas vendas</small>
+      </label>
+      <div class="custo-campos">
+        <span class="sufixo">R$</span>
+        <input class="mini" id="invest" type="number" step="1" min="0" value="1000" aria-label="Investimento em tráfego em reais">
+        <span class="sufixo">em</span>
+        <input class="mini" id="vendas" type="number" step="1" min="1" value="10" aria-label="Vendas geradas">
+        <span class="sufixo">vendas</span>
+      </div>
+      <span class="custo-valor" id="v-cac"></span>
+    </div>
+  </section>
 
   <!-- ================= RESULTADO ================= -->
   <aside class="col-resultado">
@@ -493,49 +424,71 @@ td.divisa{border-left:1px solid var(--borda)}
   </aside>
 
   <!-- ================= TABELA ================= -->
-  <section class="larga">
-    <h2 class="painel-titulo">
-      Todas as parcelas, lado a lado
-      <span class="conta">Mesmos custos ligados acima, aplicados de 1x a 12x nos dois cenários.</span>
-    </h2>
-    <div class="bloco-superficie" style="padding:var(--s5)">
-      <div class="rolagem">
-        <table>
-          <caption>A linha destacada é a parcela selecionada. No celular, deslize a tabela para o lado.</caption>
-          <thead>
-            <tr class="faixa">
-              <th></th>
-              <th class="g1" colspan="2" scope="colgroup">Cliente paga o juro</th>
-              <th class="g2" colspan="2" scope="colgroup">Você paga o juro</th>
-            </tr>
-            <tr>
-              <th scope="col">Parcelas</th>
-              <th scope="col">Parcela</th>
-              <th scope="col">Sobra</th>
-              <th scope="col">Parcela</th>
-              <th scope="col">Sobra</th>
-            </tr>
-          </thead>
-          <tbody id="corpo"></tbody>
-        </table>
+  <section class="cartao larga">
+    <div class="cartao-cab">
+      <h2>Todas as parcelas, lado a lado</h2>
+      <p>Mesmos custos ligados acima, de 1x a 12x. A linha destacada é a parcela selecionada.</p>
+    </div>
+    <div class="cartao-corpo">
+      <div class="metades">
+        <div class="rolagem">
+          <table>
+            <thead>
+              <tr class="faixa">
+                <th></th>
+                <th class="g1" colspan="2" scope="colgroup">Cliente paga o juro</th>
+                <th class="g2" colspan="2" scope="colgroup">Você paga o juro</th>
+              </tr>
+              <tr>
+                <th scope="col">Parcelas</th>
+                <th scope="col">Parcela</th>
+                <th scope="col">Sobra</th>
+                <th scope="col">Parcela</th>
+                <th scope="col">Sobra</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-a"></tbody>
+          </table>
+        </div>
+        <div class="rolagem">
+          <table>
+            <thead>
+              <tr class="faixa">
+                <th></th>
+                <th class="g1" colspan="2" scope="colgroup">Cliente paga o juro</th>
+                <th class="g2" colspan="2" scope="colgroup">Você paga o juro</th>
+              </tr>
+              <tr>
+                <th scope="col">Parcelas</th>
+                <th scope="col">Parcela</th>
+                <th scope="col">Sobra</th>
+                <th scope="col">Parcela</th>
+                <th scope="col">Sobra</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-b"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ================= NOTAS ================= -->
-  <section class="larga notas">
-    <h2>Como a conta é feita</h2>
-    <div class="chamada">
-      A comissão da Hotmart incide sobre o <strong>preço do produto</strong>, não sobre o total com juros. Por isso, quando o cliente paga o juro, você recebe exatamente o mesmo em 1x e em 12x.
+  <details class="cartao larga notas">
+    <summary>Como a conta é feita, e de onde vêm as taxas</summary>
+    <div class="notas-corpo">
+      <div class="chamada">
+        A comissão da Hotmart incide sobre o <strong>preço do produto</strong>, não sobre o total com juros. Por isso, quando o cliente paga o juro, você recebe exatamente o mesmo em 1x e em 12x.
+      </div>
+      <p><strong>Comissão:</strong> a tabela pública começa em 9,9% + R$ 1,00 e cai conforme o faturamento anual. A conta do Clube do Ukulele está em 7,7%, conferido com uma venda real: um produto de R$ 197,00 rende R$ 180,84, porque a Hotmart corta os centavos para baixo, então 7,7% de R$ 197,00 vira R$ 15,16 e não R$ 15,17.</p>
+      <p><strong>Juro de parcelamento:</strong> 3,49% ao mês em juros compostos sobre o preço do produto, no formato da tabela Price. Em 1x não há cobrança, e o limite é 12x. A quantidade de parcelas que aparece no checkout depende do valor do produto.</p>
+      <p><strong>Antecipação:</strong> D30 é o padrão e sai de graça. D14 custa 2,19%, D2 custa 3,59% e a antecipação flexível avulsa custa 4,79%, sempre sobre o valor antecipado. Nos prazos curtos, 10% do saldo fica retido por 30 dias para cobrir estornos. Como a Hotmart aplica a taxa proporcional ao prazo real de cada parcela, o número aqui é a estimativa do caso cheio.</p>
+      <p><strong>Imposto:</strong> a base padrão é o preço do produto, que é a receita bruta no Simples Nacional. Se o seu contador apura sobre o valor repassado pela Hotmart, troque a base no seletor. A alíquota fica editável porque ela sobe conforme o faturamento dos últimos 12 meses.</p>
+      <p><strong>Tráfego pago:</strong> o investimento é dividido pelas vendas geradas, e o custo por venda é descontado como qualquer outro custo. Serve para responder se o anúncio se paga naquele preço e naquele parcelamento.</p>
+      <p><strong>O que ficou de fora:</strong> a taxa de saque. A Hotmart só diz que ela cobre encargos bancários e varia com o valor sacado, sem publicar tabela, então qualquer número aqui seria chute.</p>
+      <p>Fontes: <a href="https://help.hotmart.com/pt-br/article/208298448/quais-sao-as-taxas-cobradas-pela-hotmart-" target="_blank" rel="noopener">taxas cobradas pela Hotmart</a>, <a href="https://help.hotmart.com/pt-br/article/216440337/quais-tipos-e-formas-de-pagamento-eu-posso-escolher-para-meu-produto-" target="_blank" rel="noopener">formas de pagamento e parcelamento</a> e <a href="https://help.hotmart.com/pt-br/article/4409154605837/como-funciona-o-prazo-de-recebimento-e-antecipacao-de-vendas-feitas-por-cartao-de-credito-" target="_blank" rel="noopener">prazo de recebimento e antecipação</a>. Verificado em agosto de 2026.</p>
     </div>
-    <p><strong>Comissão:</strong> a tabela pública começa em 9,9% + R$ 1,00 e cai conforme o faturamento anual. A conta do Clube do Ukulele está em 7,7%, conferido com uma venda real: um produto de R$ 197,00 rende R$ 180,84, porque a Hotmart corta os centavos para baixo, então 7,7% de R$ 197,00 vira R$ 15,16 e não R$ 15,17.</p>
-    <p><strong>Juro de parcelamento:</strong> 3,49% ao mês em juros compostos sobre o preço do produto, no formato da tabela Price. Em 1x não há cobrança, e o limite é 12x. A quantidade de parcelas que aparece no checkout depende do valor do produto.</p>
-    <p><strong>Antecipação:</strong> D30 é o padrão e sai de graça. D14 custa 2,19%, D2 custa 3,59% e a antecipação flexível avulsa custa 4,79%, sempre sobre o valor antecipado. Nos prazos curtos, 10% do saldo fica retido por 30 dias para cobrir estornos. Como a Hotmart aplica a taxa proporcional ao prazo real de cada parcela, o número aqui é a estimativa do caso cheio.</p>
-    <p><strong>Imposto:</strong> a base padrão é o preço do produto, que é a receita bruta no Simples Nacional. Se o seu contador apura sobre o valor repassado pela Hotmart, troque a base no seletor. A alíquota fica editável porque ela sobe conforme o faturamento dos últimos 12 meses.</p>
-    <p><strong>Tráfego pago:</strong> o investimento é dividido pelas vendas geradas, e o custo por venda é descontado como qualquer outro custo. Serve para responder se o anúncio se paga naquele preço e naquele parcelamento.</p>
-    <p><strong>O que ficou de fora:</strong> a taxa de saque. A Hotmart só diz que ela cobre encargos bancários e varia com o valor sacado, sem publicar tabela, então qualquer número aqui seria chute.</p>
-    <p>Fontes: <a href="https://help.hotmart.com/pt-br/article/208298448/quais-sao-as-taxas-cobradas-pela-hotmart-" target="_blank" rel="noopener">taxas cobradas pela Hotmart</a>, <a href="https://help.hotmart.com/pt-br/article/216440337/quais-tipos-e-formas-de-pagamento-eu-posso-escolher-para-meu-produto-" target="_blank" rel="noopener">formas de pagamento e parcelamento</a> e <a href="https://help.hotmart.com/pt-br/article/4409154605837/como-funciona-o-prazo-de-recebimento-e-antecipacao-de-vendas-feitas-por-cartao-de-credito-" target="_blank" rel="noopener">prazo de recebimento e antecipação</a>. Verificado em agosto de 2026.</p>
-  </section>
+  </details>
 
 </main>
 </div>
@@ -555,7 +508,7 @@ td.divisa{border-left:1px solid var(--borda)}
    'on-hotmart','on-parc','on-antec','on-player','on-imp','on-cac',
    'c-hotmart','c-parc','c-antec','c-player','c-imp','c-cac',
    'v-hotmart','v-parc','v-antec','v-player','v-imp','v-cac',
-   'r-cliente','r-cliente-obs','r-sobra','r-sobra-obs','extrato','corpo',
+   'r-cliente','r-cliente-obs','r-sobra','r-sobra-obs','extrato','corpo-a','corpo-b',
    'nota-cac','btn-minha-taxa'].forEach(function(id){
     el[id] = document.getElementById(id);
   });
@@ -669,7 +622,7 @@ td.divisa{border-left:1px solid var(--borda)}
 
   function marcarCusto(id, ligado, valor){
     el['c-' + id].dataset.on = ligado ? 'true' : 'false';
-    el['v-' + id].textContent = ligado && valor > 0 ? '− ' + brl(valor) : (ligado ? brl(0) : 'desligado');
+    el['v-' + id].textContent = ligado ? (valor > 0 ? '− ' + brl(valor) : brl(0)) : 'off';
   }
 
   function render(){
@@ -709,19 +662,17 @@ td.divisa{border-left:1px solid var(--borda)}
     marcarCusto('player', t.playerOn, r.player);
     marcarCusto('imp', t.impOn, r.imposto);
     marcarCusto('cac', t.cacOn, r.cac);
-    el['nota-cac'].textContent = 'Custo por venda: ' + brl(t.cac) + '.';
+    el['nota-cac'].textContent = t.cacOn ? brl(t.cac) + ' por venda' : 'investimento dividido pelas vendas';
 
     /* o juro so pesa na margem quando voce assume */
-    if (t.parcOn && modo === 'cliente'){
-      el['v-parc'].textContent = 'quem paga é o cliente';
-    }
+    if (t.parcOn && modo === 'cliente') el['v-parc'].textContent = 'do cliente';
 
-    /* tabela */
-    var linhas = '';
+    /* tabela em duas metades, para caber na altura de um notebook */
+    var meio = MAX_PARCELAS / 2, linhas = ['',''];
     for (var k = 1; k <= MAX_PARCELAS; k++){
       var a = calcular(preco, k, 'cliente', t);
       var b = calcular(preco, k, 'produtor', t);
-      linhas += '<tr' + (k === n ? ' class="ativa"' : '') + '>' +
+      linhas[k <= meio ? 0 : 1] += '<tr' + (k === n ? ' class="ativa"' : '') + '>' +
         '<th scope="row">' + k + 'x</th>' +
         '<td>' + brl(a.parcelaCliente) + '</td>' +
         '<td class="sobra">' + brl(a.sobra) + '</td>' +
@@ -729,7 +680,8 @@ td.divisa{border-left:1px solid var(--borda)}
         '<td class="sobra">' + brl(b.sobra) + ' <span class="margem">' + pct1(b.margem) + '</span></td>' +
       '</tr>';
     }
-    el.corpo.innerHTML = linhas;
+    el['corpo-a'].innerHTML = linhas[0];
+    el['corpo-b'].innerHTML = linhas[1];
   }
 
   /* ---------- eventos ---------- */
@@ -743,11 +695,12 @@ td.divisa{border-left:1px solid var(--borda)}
     render();
   });
 
-  document.querySelectorAll('input[name="modo"]').forEach(function(r){
-    r.addEventListener('change', function(){
-      modo = this.value;
-      document.getElementById('modo-cliente').classList.toggle('sel', modo === 'cliente');
-      document.getElementById('modo-produtor').classList.toggle('sel', modo === 'produtor');
+  document.querySelectorAll('.modo').forEach(function(b){
+    b.addEventListener('click', function(){
+      modo = this.dataset.modo;
+      document.querySelectorAll('.modo').forEach(function(x){
+        x.setAttribute('aria-checked', x === b);
+      });
       render();
     });
   });
@@ -768,7 +721,8 @@ td.divisa{border-left:1px solid var(--borda)}
   el['btn-minha-taxa'].addEventListener('click', function(){
     var alvo = parseFloat(el['tx-com'].value) === MINHA_TAXA ? TAXA_PADRAO : MINHA_TAXA;
     el['tx-com'].value = alvo;
-    this.textContent = alvo === MINHA_TAXA ? 'Voltar para 9,9%' : 'Usar 7,7%';
+    this.textContent = alvo === MINHA_TAXA ? '9,9%' : '7,7%';
+    this.setAttribute('aria-label', 'Usar a taxa de ' + this.textContent);
     render();
   });
 
