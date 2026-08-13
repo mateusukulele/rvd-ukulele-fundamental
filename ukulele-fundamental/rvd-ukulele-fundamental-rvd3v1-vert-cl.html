@@ -148,54 +148,80 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 @media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:346px}}
 @media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:376px}}
 .vframe{position:relative;height:min(calc(100vh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
-.vframe vturb-smartplayer{display:block;width:100%!important;height:100%!important}
+/* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
+   próprio elemento, e max-width ganha de width. Enquanto o vídeo era menor que
+   400px isso não aparecia; quando a moldura passou de 400 no desktop, o player
+   travava em 400 dentro de uma .vframe de 416 e o fundo preto dela virava uma
+   borda de 8px de cada lado. */
+.vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
 .cta-block{grid-area:cta;width:100%;max-width:30rem;display:flex;flex-direction:column;gap:.55rem}
 /* No celular o subtítulo também aparece, então --fold-reserve conta com ele. */
-/* Desktop: texto à esquerda, vídeo vertical à direita — ainda em uma dobra */
+/* Desktop: vídeo vertical à esquerda, texto à direita — ainda em uma dobra */
 @media (min-width:900px){
   .hero .container{
-    grid-template-areas:"top video" "cta video";
-    /* 1.4fr: com 1.08fr a coluna de texto ficava em 543px e o h1 quebrava em
-       6 linhas soltas (71 a 82% da caixa). Larga assim, quem manda na quebra é o
-       max-width de 13.5em do h1, e o resultado é o mesmo em qualquer desktop.
-       O vídeo não perde nada: a largura dele sai da altura, não da coluna. */
-    grid-template-columns:minmax(0,1.4fr) minmax(0,.92fr);
+    grid-template-areas:"video top" "video cta";
+    /* A coluna do vídeo é `auto`: ela mede exatamente a largura da .vframe, que
+       sai da altura pela proporção 9:16. Antes era uma fração fixa (.92fr) e isso
+       limitava o quanto o vídeo podia crescer, porque a partir de certa altura a
+       largura não cabia mais na coluna. Com `auto` quem manda é o vídeo e o texto
+       fica com o resto, então dá para subir a altura sem apertar nada. */
+    grid-template-columns:auto auto;
     grid-template-rows:auto auto;
-    align-content:center;justify-items:center;text-align:center;
-    max-width:var(--maxw);
-    gap:clamp(1rem,2.5vh,1.6rem) clamp(2rem,4vw,3.5rem);
+    /* justify-content:center junto com as duas colunas em `auto`: o par vídeo +
+       texto vira um bloco só, centrado no container. Com a coluna de texto em
+       1fr ela engolia toda a sobra do container e o texto, centrado dentro dela,
+       ficava jogado para a direita, longe do vídeo. */
+    align-content:center;justify-content:center;justify-items:center;text-align:center;
+    /* 80rem só no hero, contra os 70rem (--maxw) do resto da página. O hero agora
+       divide a largura entre vídeo e texto, e em 70rem não cabiam os dois: com
+       1120px o container tem 1056 úteis, o vídeo leva 439 e o gap 56, sobram 561
+       para uma promessa que mede 605 — e ela quebrava em 5 linhas num 1920x1080.
+       Com 1280 sobram 721. As outras seções continuam em 70rem. */
+    max-width:80rem;
+    gap:clamp(1rem,2.5vh,1.6rem) clamp(1.5rem,2.6vw,2.5rem);
   }
-  /* Coluna de texto centrada, igual ao celular. Alinhada à esquerda, a promessa
-     media 562px numa coluna de 594 e a subpromessa 480: sobrava um vazio de até
-     114px encostado no vídeo, e era ele que quebrava a composição.
+  /* Coluna de texto centrada, igual ao celular. Alinhada à esquerda sobrava um
+     vazio de até 114px de um lado só, encostado no vídeo, e era ele que quebrava
+     a composição.
      align-self:end porque o vídeo é mais alto que a pilha de texto e a sobra ia
-     toda para o fim do hero-top: dava 112px de vão entre a subpromessa e o botão.
+     toda para o fim do hero-top, abrindo um vão entre a subpromessa e o botão.
      Encostando o texto no fim da própria linha, promessa, subpromessa e checkout
-     viram um bloco só, com 22px entre eles, e a sobra se reparte igual em cima e
-     embaixo: 91px acima da promessa contra 90px abaixo da nota de garantia. */
+     viram um bloco só e a sobra se reparte igual em cima e embaixo: 140px de cada
+     lado num 1512x860, 157 num 1920x1080. */
   .hero-top{align-items:center;text-align:center;padding-inline:0;align-self:end}
-  /* Teto de 2.6rem no desktop: em 2.9rem o h1 volta para 5 linhas mesmo na coluna
-     larga. Aqui ele fecha em 4 linhas cheias, alinhado com a subpromessa abaixo.
-     Piso de 2rem porque em 900px de tela o 2.1rem ainda dava 5 linhas.
+  /* Teto de 2.8rem no desktop. Acima disso a medida do h1 (13.5em) passa da coluna
+     de texto e ele quebra em 5 linhas. Piso de 2rem porque em 900px de tela o
+     2.1rem já dava 5 linhas.
      Nada de text-align:justify aqui. Medido em 1280: o espaço entre palavras vai
      de 12,5px para 33,3px nas linhas de 4 palavras, quase o triplo, e abre rio no
      meio da promessa. Quem fecha a borda direita é o max-width de 13.5em do h1:
-     com ele o preenchimento fica em 96/91/92/95, que a 5% de variação já lê como
-     justificado, e é o mesmo resultado em 900, 1100, 1280 e 1440px de tela. */
-  .hero h1{font-size:clamp(2rem,3.3vw,2.6rem)}
+     com ele o preenchimento fica em 98/96/96/97, que a 2% de variação já lê como
+     justificado, e é o mesmo de 900 a 1920px de tela. */
+  .hero h1{font-size:clamp(2rem,3.6vw,2.8rem)}
   /* A subpromessa cresce junto no desktop. A medida é 20em, presa à fonte, então
-     o bloco engorda de 384 para 480px sem mudar uma quebra: o preenchimento
-     continua 92/97/90 e a distância para a borda do h1 cai de 178 para 82px.
-     Proporção h1/sub fica em ~1,7 de 900 a 1440px. */
-  .hero-sub{font-size:clamp(1.2rem,1.9vw,1.5rem)}
+     o bloco engorda sem mudar uma quebra: continua em 3 linhas a 96/99/95 de
+     preenchimento em qualquer largura. Proporção h1/sub fica em ~1,75. */
+  .hero-sub{font-size:clamp(1.2rem,2vw,1.6rem)}
   /* O bloco de checkout não pode passar da promessa. A medida da promessa é
      13.5em de uma fonte que vai de 2rem a 2.6rem, ou seja clamp(27rem,44.55vw,
      35.1rem): em 900px de tela isso dá 432px e o botão, que ia até 480px,
      estourava 48px para fora da headline. De 1150px para cima os 30rem voltam
      a mandar e o botão fica do tamanho exato da subpromessa. */
   .cta-block{max-width:min(30rem,clamp(27rem,44.55vw,35.1rem))}
-  .video{align-self:center}
-  .vframe{height:min(74vh,620px);height:min(74svh,620px)}
+  /* width:auto para o .video encolher até a largura da .vframe. Com width:100%
+     ele esticava na coluna `auto` e a coluna deixava de medir o vídeo. */
+  .video{align-self:center;width:auto}
+  /* Três limites, o menor vence:
+     90svh  = quanto da tela vertical o vídeo pode tomar. Era 74svh e sobrava
+              muito ar em cima e embaixo. 90 deixa ~5% de respiro de cada lado.
+     880px  = teto absoluto. Não é estético, é conta: o container do hero para de
+              crescer em 80rem (1216 úteis), então em monitor grande o que o vídeo
+              toma em largura sai da coluna de texto. 880 de altura = 495 de
+              largura, e num 1920x1080 ainda sobram 681 para uma promessa que
+              mede 605.
+     36vw   = trava de largura para desktop estreito, onde o container ainda é
+              menor que 80rem. Escrito como altura equivalente: 36vw × 16/9. */
+  .vframe{height:min(90vh,880px,calc(36vw * 16 / 9));height:min(90svh,880px,calc(36vw * 16 / 9))}
   .hero-sub{display:block}
 }
 .price-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem;font-size:clamp(13px,2.6vw,15px)}
@@ -403,7 +429,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
    de um vídeo de 607px. Uma linha só + center deixa o texto centrado no vídeo,
    159px acima e 159 abaixo. Liberado, volta ao layout da -op sozinho. */
 @media (min-width:900px){
-  body.locked .hero .container{grid-template-areas:"top video";grid-template-rows:auto}
+  body.locked .hero .container{grid-template-areas:"video top";grid-template-rows:auto}
   body.locked .hero-top{align-self:center}
 }
 
