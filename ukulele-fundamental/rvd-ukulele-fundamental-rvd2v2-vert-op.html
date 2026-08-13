@@ -110,24 +110,40 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 }
 .hero-top{grid-area:top;display:flex;flex-direction:column;align-items:center;gap:clamp(.35rem,1.1vh,.7rem);
   /* respiro lateral so do texto. No .container isso quebraria a conta de altura
-     do video, que assume 2rem de padding em `100vw - 2rem`. */
-  padding-inline:clamp(.25rem,2vw,1rem)}
+     do video, que assume 2rem de padding em `100vw - 2rem`.
+     A conta garante caixa de texto >= 328px ate 360px de tela: com 2vw a caixa caia
+     para 314px num Android de 360 e o h1 virava 5 linhas a 71% de preenchimento.
+     Em 375px o valor bate exatamente com o 2vw antigo (7,5px). */
+  padding-inline:clamp(0px,calc((100vw - 360px) / 2),1rem)}
 /* 1.55rem e o teto: em 1.6rem a headline vira 5 linhas num iPhone de 375px e come
    32px de altura de uma vez. Medido, nao chutado. */
-.hero h1{font-size:clamp(1.55rem,5.4vw,2.9rem);font-weight:900;line-height:1.1;text-wrap:balance}
+/* 13.5em = medida da promessa, presa ao proprio font-size. No celular nao pega
+   (a tela e mais estreita), no tablet segura o h1 em 4 linhas cheias no lugar de
+   4 linhas soltas a 76% da caixa. 12.5em vira 5 linhas: nao descer daqui. */
+.hero h1{font-size:clamp(1.55rem,5.4vw,2.9rem);font-weight:900;line-height:1.1;max-width:13.5em;margin-inline:auto;text-wrap:balance}
 .hero h1 span{color:var(--coral)}
-.hero-sub{color:#5C5A70;font-size:clamp(1rem,2.9vw,1.2rem);line-height:1.35;max-width:46ch;text-wrap:pretty}
+/* 20em = medida da subpromessa. Presa ao proprio font-size, entao acompanha o
+   clamp e o bloco quebra igual em qualquer largura de tela acima de ~352px.
+   Com 46ch a ultima linha caia para 40% da caixa e o bloco desalinhava do h1. */
+.hero-sub{color:#5C5A70;font-size:clamp(1rem,2.9vw,1.2rem);line-height:1.35;max-width:20em;margin-inline:auto;text-wrap:pretty}
 /* .vframe = moldura 9:16 com ALTURA explícita (largura sai da proporção).
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
    A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
    --fold-reserve = tudo que precisa caber na dobra junto com o vídeo:
-   padding + h1 + 2 gaps + botão de checkout, medido, com 12px de margem.
-   Com a headline atual o h1 fica em 5 linhas de 320px até ~487px de tela
-   (o clamp trava no mínimo de 1.4rem nessa faixa), então um valor só serve. */
+   padding + h1 + subtítulo + 2 gaps + botão de checkout. Só o botão precisa
+   caber: preço e nota de garantia ficam abaixo da dobra de propósito, e a fatia
+   deles aparecendo pela metade é o que sinaliza que a página continua.
+   De 360px a ~537px de tela o h1 fica em 4 linhas e o subtítulo em 3, então um
+   valor só serve para toda a faixa de celular. Os 318px deixam ~40px de folga,
+   que é a margem para uma quinta linha de h1 num aparelho real. */
 .video{grid-area:video;width:100%;display:flex;justify-content:center}
-.hero{--fold-reserve:340px}
+.hero{--fold-reserve:318px}
 /* Tablet ainda no layout de 1 coluna: a fonte do h1 e do subtítulo crescem com
-   o vw e o texto ocupa bem mais altura, então a reserva sobe junto. */
+   o vw e o texto ocupa bem mais altura, então a reserva sobe junto.
+   A faixa de 520 a 619 existe porque a partir de ~459px o clamp do h1 sai do piso
+   de 1.55rem e passa a seguir o 5.4vw: com 318px a sobra caía de 48px em 480 para
+   7px em 619, e o botão encostava no fim da tela. */
+@media (min-width:520px) and (max-width:619px){.hero{--fold-reserve:340px}}
 @media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:368px}}
 @media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:396px}}
 .vframe{position:relative;height:min(calc(100vh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
@@ -138,13 +154,31 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 @media (min-width:900px){
   .hero .container{
     grid-template-areas:"top video" "cta video";
-    grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    /* 1.4fr: com 1.08fr a coluna de texto ficava em 543px e o h1 quebrava em
+       6 linhas soltas (71 a 82% da caixa). Larga assim, quem manda na quebra é o
+       max-width de 13.5em do h1, e o resultado é o mesmo em qualquer desktop.
+       O vídeo não perde nada: a largura dele sai da altura, não da coluna. */
+    grid-template-columns:minmax(0,1.4fr) minmax(0,.92fr);
     grid-template-rows:auto auto;
     align-content:center;justify-items:start;text-align:left;
     max-width:var(--maxw);
     gap:clamp(1rem,2.5vh,1.6rem) clamp(2rem,4vw,3.5rem);
   }
   .hero-top{align-items:flex-start;text-align:left}
+  /* Teto de 2.6rem no desktop: em 2.9rem o h1 volta para 5 linhas mesmo na coluna
+     larga. Aqui ele fecha em 4 linhas cheias, alinhado com a subpromessa abaixo.
+     Piso de 2rem porque em 900px de tela o 2.1rem ainda dava 5 linhas.
+     Nada de text-align:justify aqui. Medido em 1280: o espaço entre palavras vai
+     de 12,5px para 33,3px nas linhas de 4 palavras, quase o triplo, e abre rio no
+     meio da promessa. Quem fecha a borda direita é o max-width de 13.5em do h1:
+     com ele o preenchimento fica em 96/91/92/95, que a 5% de variação já lê como
+     justificado, e é o mesmo resultado em 900, 1100, 1280 e 1440px de tela. */
+  .hero h1{font-size:clamp(2rem,3.3vw,2.6rem);margin-inline:0}
+  /* A subpromessa cresce junto no desktop. A medida é 20em, presa à fonte, então
+     o bloco engorda de 384 para 480px sem mudar uma quebra: o preenchimento
+     continua 92/97/90 e a distância para a borda do h1 cai de 178 para 82px.
+     Proporção h1/sub fica em ~1,7 de 900 a 1440px. */
+  .hero-sub{margin-inline:0;font-size:clamp(1.2rem,1.9vw,1.5rem)}
   .video{align-self:center}
   .vframe{height:min(74vh,620px);height:min(74svh,620px)}
   .hero-sub{display:block}
@@ -329,7 +363,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
   <div class="container">
     <div class="hero-top">
       <h1>Os 3 passos para sair do ZERO e tocar <span>centenas de músicas no ukulele</span>, com 20 minutos por dia</h1>
-      <p class="hero-sub">Até quem não leva jeito nenhum pra música já está se divertindo e tocando ukulele com o mecanismo revelado abaixo.</p>
+      <p class="hero-sub">Até quem não leva jeito nenhum pra música já está tocando e se divertindo com o mecanismo revelado abaixo.</p>
     </div>
 
     <div class="video">
