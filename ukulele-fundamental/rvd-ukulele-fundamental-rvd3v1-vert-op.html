@@ -148,7 +148,12 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 @media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:346px}}
 @media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:376px}}
 .vframe{position:relative;height:min(calc(100vh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
-.vframe vturb-smartplayer{display:block;width:100%!important;height:100%!important}
+/* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
+   próprio elemento, e max-width ganha de width. Enquanto o vídeo era menor que
+   400px isso não aparecia; quando a moldura passou de 400 no desktop, o player
+   travava em 400 dentro de uma .vframe de 416 e o fundo preto dela virava uma
+   borda de 8px de cada lado. */
+.vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
 .cta-block{grid-area:cta;width:100%;max-width:30rem;display:flex;flex-direction:column;gap:.55rem}
 /* No celular o subtítulo também aparece, então --fold-reserve conta com ele. */
 /* Desktop: vídeo vertical à esquerda, texto à direita — ainda em uma dobra */
@@ -160,16 +165,20 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
        limitava o quanto o vídeo podia crescer, porque a partir de certa altura a
        largura não cabia mais na coluna. Com `auto` quem manda é o vídeo e o texto
        fica com o resto, então dá para subir a altura sem apertar nada. */
-    grid-template-columns:auto minmax(0,1fr);
+    grid-template-columns:auto auto;
     grid-template-rows:auto auto;
-    align-content:center;justify-items:center;text-align:center;
+    /* justify-content:center junto com as duas colunas em `auto`: o par vídeo +
+       texto vira um bloco só, centrado no container. Com a coluna de texto em
+       1fr ela engolia toda a sobra do container e o texto, centrado dentro dela,
+       ficava jogado para a direita, longe do vídeo. */
+    align-content:center;justify-content:center;justify-items:center;text-align:center;
     /* 80rem só no hero, contra os 70rem (--maxw) do resto da página. O hero agora
        divide a largura entre vídeo e texto, e em 70rem não cabiam os dois: com
        1120px o container tem 1056 úteis, o vídeo leva 439 e o gap 56, sobram 561
        para uma promessa que mede 605 — e ela quebrava em 5 linhas num 1920x1080.
        Com 1280 sobram 721. As outras seções continuam em 70rem. */
     max-width:80rem;
-    gap:clamp(1rem,2.5vh,1.6rem) clamp(2rem,4vw,3.5rem);
+    gap:clamp(1rem,2.5vh,1.6rem) clamp(1.5rem,2.6vw,2.5rem);
   }
   /* Coluna de texto centrada, igual ao celular. Alinhada à esquerda sobrava um
      vazio de até 114px de um lado só, encostado no vídeo, e era ele que quebrava
@@ -203,15 +212,16 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      ele esticava na coluna `auto` e a coluna deixava de medir o vídeo. */
   .video{align-self:center;width:auto}
   /* Três limites, o menor vence:
-     86svh  = quanto da tela vertical o vídeo pode tomar. Era 74svh e sobrava
-              muito ar em cima e embaixo. 86 deixa ~7% de respiro de cada lado.
-     780px  = teto absoluto. Não é estético, é conta: o container do hero para de
-              crescer em 80rem, então em monitor grande o que o vídeo toma em
-              largura sai da coluna de texto. 780 de altura = 439 de largura, e
-              num 1920x1080 sobram 721 para o texto, com a promessa medindo 605.
+     90svh  = quanto da tela vertical o vídeo pode tomar. Era 74svh e sobrava
+              muito ar em cima e embaixo. 90 deixa ~5% de respiro de cada lado.
+     880px  = teto absoluto. Não é estético, é conta: o container do hero para de
+              crescer em 80rem (1216 úteis), então em monitor grande o que o vídeo
+              toma em largura sai da coluna de texto. 880 de altura = 495 de
+              largura, e num 1920x1080 ainda sobram 681 para uma promessa que
+              mede 605.
      36vw   = trava de largura para desktop estreito, onde o container ainda é
-              menor que 1120. Escrito como altura equivalente: 36vw × 16/9. */
-  .vframe{height:min(86vh,780px,calc(36vw * 16 / 9));height:min(86svh,780px,calc(36vw * 16 / 9))}
+              menor que 80rem. Escrito como altura equivalente: 36vw × 16/9. */
+  .vframe{height:min(90vh,880px,calc(36vw * 16 / 9));height:min(90svh,880px,calc(36vw * 16 / 9))}
   .hero-sub{display:block}
 }
 .price-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem;font-size:clamp(13px,2.6vw,15px)}
