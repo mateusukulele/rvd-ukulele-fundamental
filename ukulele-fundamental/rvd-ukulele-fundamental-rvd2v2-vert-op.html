@@ -130,22 +130,23 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
    A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
    --fold-reserve = tudo que precisa caber na dobra junto com o vídeo:
-   padding + h1 + subtítulo + 2 gaps + botão de checkout. Só o botão precisa
-   caber: preço e nota de garantia ficam abaixo da dobra de propósito, e a fatia
-   deles aparecendo pela metade é o que sinaliza que a página continua.
-   De 360px a ~537px de tela o h1 fica em 4 linhas e o subtítulo em 3, então um
-   valor só serve para toda a faixa de celular. Os 318px deixam ~40px de folga,
-   que é a margem para uma quinta linha de h1 num aparelho real. */
+   padding + h1 + subtítulo + 2 gaps + botão de checkout. A dobra termina no fim
+   do botão: preço e nota de garantia ficam abaixo dela de propósito.
+   ATENÇÃO: abaixo de 900px quem manda nestes valores é o script logo depois do
+   hero, que MEDE o texto e o botão e sobrescreve a variável. Os números aqui são
+   só o primeiro quadro e o fallback de JS desligado, por isso ficam alguns pixels
+   acima do medido (292 contra 274 a 287 num celular atual). Mexer neles não muda
+   a página com JS ligado; para mudar a dobra, mexer no script. */
 .video{grid-area:video;width:100%;display:flex;justify-content:center}
-.hero{--fold-reserve:318px}
+.hero{--fold-reserve:292px}
 /* Tablet ainda no layout de 1 coluna: a fonte do h1 e do subtítulo crescem com
    o vw e o texto ocupa bem mais altura, então a reserva sobe junto.
    A faixa de 520 a 619 existe porque a partir de ~459px o clamp do h1 sai do piso
-   de 1.55rem e passa a seguir o 5.4vw: com 318px a sobra caía de 48px em 480 para
-   7px em 619, e o botão encostava no fim da tela. */
-@media (min-width:520px) and (max-width:619px){.hero{--fold-reserve:340px}}
-@media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:368px}}
-@media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:396px}}
+   de 1.55rem e passa a seguir o 5.4vw. Valores medidos nessas faixas: 299 a 313,
+   343 e 373; aqui ficam alguns pixels acima, pelo mesmo motivo do bloco acima. */
+@media (min-width:520px) and (max-width:619px){.hero{--fold-reserve:316px}}
+@media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:346px}}
+@media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:376px}}
 .vframe{position:relative;height:min(calc(100vh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
 .vframe vturb-smartplayer{display:block;width:100%!important;height:100%!important}
 .cta-block{grid-area:cta;width:100%;max-width:30rem;display:flex;flex-direction:column;gap:.55rem}
@@ -395,9 +396,49 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <button class="btn btn--block btn--pulse" onclick="openCheckout()">Quero acesso imediato e vitalício</button>
       <div class="price-line"><span class="from">De</span> <span class="strike">R$ 497,00</span> <span class="price-now">Com cupom: <b>12x R$ 30,72</b> ou R$ 297 à vista</span></div>
       <p class="note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cupom de R$ 200 OFF já aplicado · 14 dias de garantia</p>
+      <!-- O preço e a nota de garantia ficam FORA da dobra de propósito: a dobra
+           termina no fim do botão. Ver o script logo abaixo do hero. -->
     </div>
   </div>
 </header>
+
+<script>
+/* DOBRA MEDIDA — celular e tablet (abaixo de 900px).
+   O --fold-reserve do CSS é o orçamento de tudo que não é vídeo. Até aqui ele era
+   uma escada de valores fixos, e valor fixo erra: o aparelho quebra a headline numa
+   linha a mais, a reserva não acompanha e sobra um vão onde o "De R$ 497,00"
+   aparece. Aqui a reserva é MEDIDA: padding do topo + bloco de texto + 2 gaps +
+   botão. O vídeo fica com exatamente o resto, então a dobra termina no fim do botão
+   em qualquer tela, e preço e garantia caem abaixo dela.
+   Fail-safe: se este script não rodar, o valor do CSS continua valendo e a página
+   funciona igual a antes. Roda logo depois do hero para não esperar o resto da
+   página, e remede quando a fonte carrega, na rotação e a cada resize. */
+(function(){
+  var hero=document.querySelector('.hero');
+  var cont=hero&&hero.querySelector('.container');
+  var top=hero&&hero.querySelector('.hero-top');
+  var btn=hero&&hero.querySelector('.cta-block .btn');
+  if(!hero||!cont||!top||!btn){ return; }
+  var ultimo=null;
+  function medir(){
+    if(window.innerWidth>=900){ hero.style.removeProperty('--fold-reserve'); ultimo=null; return; }
+    var cs=getComputedStyle(cont);
+    var gap=parseFloat(cs.rowGap)||0;
+    /* +2px cobre arredondamento de subpixel, senão o botão encosta e pode cortar */
+    var r=Math.ceil(parseFloat(cs.paddingTop)+top.offsetHeight+gap*2+btn.offsetHeight+2);
+    if(r!==ultimo){ ultimo=r; hero.style.setProperty('--fold-reserve',r+'px'); }
+  }
+  medir();
+  /* Observa só o texto e o botão. A altura do vídeo depende da reserva, então
+     observar o vídeo aqui criaria laço. */
+  if(window.ResizeObserver){
+    var ro=new ResizeObserver(medir); ro.observe(top); ro.observe(btn);
+  }
+  window.addEventListener('resize',medir);
+  window.addEventListener('orientationchange',medir);
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(medir); }
+})();
+</script>
 
 <main id="gated">
 
