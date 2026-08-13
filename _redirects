@@ -7,3 +7,11 @@
 # /manual-visual-cdu.html para /manual-visual-cdu com um 308, e daí esta regra
 # assume. O arquivo continua no repo e no histórico do git.
 /manual-visual-cdu  /manual-visual-clube-do-ukulele-2026  302
+
+# VSL vertical: as páginas passaram de rvd2v2 para rvd3v1 em 13/08/2026. Os
+# arquivos foram renomeados, então o caminho antigo morreria em 404. Qualquer
+# anúncio, e-mail ou link já publicado apontando para o nome velho continua
+# chegando na página certa por aqui. A query string é preservada pelo Pages,
+# então ?unlock=1 e as UTMs sobrevivem ao redirect.
+/ukulele-fundamental/rvd-ukulele-fundamental-rvd2v2-vert-op  /ukulele-fundamental/rvd-ukulele-fundamental-rvd3v1-vert-op  302
+/ukulele-fundamental/rvd-ukulele-fundamental-rvd2v2-vert-cl  /ukulele-fundamental/rvd-ukulele-fundamental-rvd3v1-vert-cl  302
