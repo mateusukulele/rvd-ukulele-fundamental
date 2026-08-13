@@ -103,13 +103,20 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
   align-content:start;justify-items:center;
   gap:clamp(.5rem,1.6vh,1rem);
   max-width:56rem;
-  padding-block:clamp(.7rem,2vh,1.5rem);
+  /* topo curto de proposito: o que se ganha aqui vira tamanho de fonte na promessa,
+     sem tirar altura do video. Embaixo continua folgado. */
+  padding-block:clamp(.25rem,.8vh,.6rem) clamp(.7rem,2vh,1.5rem);
   text-align:center;
 }
-.hero-top{grid-area:top;display:flex;flex-direction:column;align-items:center;gap:clamp(.4rem,1.4vh,.85rem)}
-.hero h1{font-size:clamp(1.4rem,4.6vw,2.6rem);font-weight:900}
+.hero-top{grid-area:top;display:flex;flex-direction:column;align-items:center;gap:clamp(.35rem,1.1vh,.7rem);
+  /* respiro lateral so do texto. No .container isso quebraria a conta de altura
+     do video, que assume 2rem de padding em `100vw - 2rem`. */
+  padding-inline:clamp(.25rem,2vw,1rem)}
+/* 1.55rem e o teto: em 1.6rem a headline vira 5 linhas num iPhone de 375px e come
+   32px de altura de uma vez. Medido, nao chutado. */
+.hero h1{font-size:clamp(1.55rem,5.4vw,2.9rem);font-weight:900;line-height:1.1;text-wrap:balance}
 .hero h1 span{color:var(--coral)}
-.hero-sub{color:#5C5A70;font-size:clamp(.88rem,2.1vw,1.05rem);max-width:52ch}
+.hero-sub{color:#5C5A70;font-size:clamp(1rem,2.9vw,1.2rem);line-height:1.35;max-width:46ch;text-wrap:pretty}
 /* .vframe = moldura 9:16 com ALTURA explícita (largura sai da proporção).
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
    A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
@@ -118,11 +125,11 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    Com a headline atual o h1 fica em 5 linhas de 320px até ~487px de tela
    (o clamp trava no mínimo de 1.4rem nessa faixa), então um valor só serve. */
 .video{grid-area:video;width:100%;display:flex;justify-content:center}
-.hero{--fold-reserve:310px}
+.hero{--fold-reserve:340px}
 /* Tablet ainda no layout de 1 coluna: a fonte do h1 e do subtítulo crescem com
    o vw e o texto ocupa bem mais altura, então a reserva sobe junto. */
-@media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:335px}}
-@media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:360px}}
+@media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:368px}}
+@media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:396px}}
 .vframe{position:relative;height:min(calc(100vh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
 .vframe vturb-smartplayer{display:block;width:100%!important;height:100%!important}
 .cta-block{grid-area:cta;width:100%;max-width:30rem;display:flex;flex-direction:column;gap:.55rem}
@@ -322,7 +329,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
   <div class="container">
     <div class="hero-top">
       <h1>Os 3 passos para sair do ZERO e tocar <span>centenas de músicas no ukulele</span>, com 20 minutos por dia</h1>
-      <p class="hero-sub">Até mesmo quem não leva jeito nenhum já está se divertindo e tocando ukulele com o mecanismo revelado abaixo.</p>
+      <p class="hero-sub">Até quem não leva jeito nenhum pra música já está se divertindo e tocando ukulele com o mecanismo revelado abaixo.</p>
     </div>
 
     <div class="video">
@@ -353,6 +360,29 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Acesso vitalício</div>
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> 14 dias de garantia</div>
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg> 5 correções em vídeo</div>
+  </div>
+</section>
+
+<!-- Depoimentos em vídeo. Ficam colados na trust bar de propósito: é a primeira dobra
+     depois do vídeo de vendas, e prova de aluno vale mais aqui do que meia página
+     abaixo. Os depoimentos em texto (os prints) continuam mais adiante. -->
+<section class="section surface-white cv">
+  <div class="container">
+    <div class="sec-head"><span class="eyebrow">Provas reais</span><h2 class="h2">Veja como é <span>na prática</span></h2></div>
+    <div class="grid g-3">
+      <div class="card" style="padding:1rem">
+        <div class="vid" data-v="Wey4EfhXWtc" role="button" tabindex="0" aria-label="Assistir depoimento em vídeo"><img src="https://i.ytimg.com/vi/Wey4EfhXWtc/hqdefault.jpg" alt="Depoimento em vídeo de aluna" loading="lazy" decoding="async"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+        <p class="quote">"Eu não acreditava que poderia tocar as músicas que gosto. É o que faço agora, uma diversão aqui em casa. É uma terapia pra mim."</p>
+      </div>
+      <div class="card" style="padding:1rem">
+        <div class="vid" data-v="gMjxSJMxPSc" role="button" tabindex="0" aria-label="Assistir depoimento em vídeo"><img src="https://i.ytimg.com/vi/gMjxSJMxPSc/hqdefault.jpg" alt="Depoimento em vídeo de aluno" loading="lazy" decoding="async"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+        <p class="quote">"Já aprendi a tocar algumas músicas que gosto e posso tocar com meus amigos."</p>
+      </div>
+      <div class="card" style="padding:1rem">
+        <div class="vid" data-v="_Uo3NvXyH4A" role="button" tabindex="0" aria-label="Assistir depoimento em vídeo"><img src="https://i.ytimg.com/vi/_Uo3NvXyH4A/hqdefault.jpg" alt="Depoimento em vídeo de aluna" loading="lazy" decoding="async"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+        <p class="quote">"A música tem me ajudado bastante a ser mais paciente comigo mesma."</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -398,24 +428,12 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
   </div>
 </section>
 
-<!-- Depoimentos -->
+<!-- Depoimentos em texto. Os em vídeo saíram daqui e subiram para logo abaixo da
+     trust bar, para a prova social aparecer antes de o visitante ter que rolar meia
+     página. -->
 <section class="section surface-white hairline cv">
   <div class="container">
-    <div class="sec-head"><span class="eyebrow">Provas reais</span><h2 class="h2">Veja como é <span>na prática</span></h2></div>
-    <div class="grid g-3">
-      <div class="card" style="padding:1rem">
-        <div class="vid" data-v="Wey4EfhXWtc" role="button" tabindex="0" aria-label="Assistir depoimento em vídeo"><img src="https://i.ytimg.com/vi/Wey4EfhXWtc/hqdefault.jpg" alt="Depoimento em vídeo de aluna" loading="lazy" decoding="async"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
-        <p class="quote">"Eu não acreditava que poderia tocar as músicas que gosto. É o que faço agora, uma diversão aqui em casa. É uma terapia pra mim."</p>
-      </div>
-      <div class="card" style="padding:1rem">
-        <div class="vid" data-v="gMjxSJMxPSc" role="button" tabindex="0" aria-label="Assistir depoimento em vídeo"><img src="https://i.ytimg.com/vi/gMjxSJMxPSc/hqdefault.jpg" alt="Depoimento em vídeo de aluno" loading="lazy" decoding="async"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
-        <p class="quote">"Já aprendi a tocar algumas músicas que gosto e posso tocar com meus amigos."</p>
-      </div>
-      <div class="card" style="padding:1rem">
-        <div class="vid" data-v="_Uo3NvXyH4A" role="button" tabindex="0" aria-label="Assistir depoimento em vídeo"><img src="https://i.ytimg.com/vi/_Uo3NvXyH4A/hqdefault.jpg" alt="Depoimento em vídeo de aluna" loading="lazy" decoding="async"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
-        <p class="quote">"A música tem me ajudado bastante a ser mais paciente comigo mesma."</p>
-      </div>
-    </div>
+    <div class="sec-head"><span class="eyebrow">Nas palavras deles</span><h2 class="h2">O que os alunos <span>me mandam</span></h2></div>
     <div class="proofs">
       <button type="button" data-src="/img/Depoimento Aline (b).webp" aria-label="Ampliar depoimento da aluna Aline"><img src="/img/Depoimento Aline (b).webp" alt="Depoimento da aluna Aline sobre o curso Ukulele Fundamental" width="1080" height="1080" loading="lazy" decoding="async"></button>
       <button type="button" data-src="/img/Depoimento Leila.webp" aria-label="Ampliar depoimento da aluna Leila"><img src="/img/Depoimento Leila.webp" alt="Depoimento da aluna Leila sobre o curso Ukulele Fundamental" width="1080" height="1080" loading="lazy" decoding="async"></button>
