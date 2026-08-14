@@ -214,31 +214,31 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      meio da promessa. Quem fecha a borda direita é o max-width de 13.5em do h1:
      com ele o preenchimento fica em 98/96/96/97, que a 2% de variação já lê como
      justificado, e é o mesmo de 900 a 1920px de tela. */
-  /* Medida do texto no desktop: 11.5em da propria fonte do h1, contra os 13.5em
-     do celular. Estreitar de proposito. Em 13.5em a promessa fechava em 4 linhas
-     (605px de bloco) e a coluna de texto ficava baixa e larga ao lado de um video
-     de 774px de altura; o par inteiro empurrava o video para o terco da direita.
-     Em 11.5em ela vira 5 linhas cheias (515px, preenchimento 89/98/99/88/94), a
-     coluna cresce em altura, e como o par e centrado o video anda para o centro.
-     12.5em tambem da 5 linhas, mas a 86/94/95/85/91. 11em ja vira 6 linhas. */
-  .hero h1{font-size:clamp(2rem,3.6vw,2.8rem);max-width:11.5em}
+  /* A medida do texto e a mesma do celular, 13.5em da propria fonte do h1: 605px
+     de bloco num 1512x860, com a promessa em 4 linhas a 98/96/96/97. Ja tentei
+     11.5em aqui, que dava 5 linhas e uma coluna mais alta, mas ficou estreita
+     demais. A altura que faltava veio dos espacos internos, nao de espremer. */
+  .hero h1{font-size:clamp(2rem,3.6vw,2.8rem)}
   /* A subpromessa cresce junto no desktop. A medida é 20em, presa à fonte, então
      o bloco engorda sem mudar uma quebra: continua em 3 linhas a 96/99/95 de
      preenchimento em qualquer largura. Proporção h1/sub fica em ~1,75. */
-  /* 16em contra os 20em do celular, acompanhando a promessa. Em 20em a
-     subpromessa media 512px, quase o mesmo que a promessa, e a piramide sumia.
-     Em 16em sao 410px em 4 linhas a 87/93/98/97, e a proporcao com a promessa
-     fica em 0,80. Em 17em a ultima linha cai para 76%. */
-  .hero-sub{font-size:clamp(1.2rem,2vw,1.6rem);max-width:16em}
+  .hero-sub{font-size:clamp(1.2rem,2vw,1.6rem)}
   .so-cel{display:none}
   .so-desk{display:inline}
   /* Texto em Montserrat 800 para ler como etiqueta, não como parágrafo, e a seta
      em coral: puxa o olho para o vídeo sem competir com o verde, que nesta página
      significa comprar. Sem pílula nem caixa alta de propósito. */
-  .hero-nudge{display:inline-flex;align-items:center;gap:.55rem;margin:0;
+  /* Respiro entre promessa e subpromessa. No celular sao ~9px, aqui a coluna e
+     mais larga e aguenta mais ar sem soltar as duas. */
+  .hero-top{gap:clamp(.85rem,1.7vh,1.2rem)}
+  /* O convite ganha um espaco bem maior que o do resto da pilha: ele nao e
+     continuacao da subpromessa, e um segundo assunto. O margin-top vem alem do
+     gap do .hero-top, entao o total ate a subpromessa e ~3x o espaco de cima. */
+  .hero-nudge{display:inline-flex;align-items:center;gap:.7rem;
+    margin:clamp(1.5rem,3.2vh,2.4rem) 0 0;
     font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
-    font-size:clamp(.88rem,1.02vw,1rem);color:var(--purple)}
-  .hero-nudge svg{width:2.6rem;height:auto;color:var(--coral);flex-shrink:0;
+    font-size:clamp(1rem,1.22vw,1.2rem);color:var(--purple)}
+  .hero-nudge svg{width:3.2rem;height:auto;color:var(--coral);flex-shrink:0;
     animation:nudge 2.4s cubic-bezier(.16,1,.3,1) infinite}
   /* O @media prefers-reduced-motion lá embaixo já desliga esta animação. */
   @keyframes nudge{0%,55%,100%{transform:translateX(0)}25%{transform:translateX(7px)}}
@@ -248,9 +248,9 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      estourava 48px para fora da headline. De 1150px para cima os 30rem voltam
      a mandar e o botão fica do tamanho exato da subpromessa. */
   /* Mesma medida da promessa, escrita sem em porque aqui o em seria o da fonte do
-     bloco, nao a do h1: 11.5 x clamp(2rem,3.6vw,2.8rem) = clamp(23rem,41.4vw,
-     32.2rem). O botao nunca passa da promessa nem dos 30rem originais. */
-  .cta-block{max-width:min(30rem,clamp(23rem,41.4vw,32.2rem))}
+     bloco, nao a do h1: 13.5 x clamp(2rem,3.6vw,2.8rem) = clamp(27rem,48.6vw,
+     37.8rem). O botao nunca passa da promessa nem dos 30rem originais. */
+  .cta-block{max-width:min(30rem,clamp(27rem,48.6vw,37.8rem))}
   .video{align-self:center;width:100%}
   /* Três limites na ALTURA, o menor vence. A largura da coluna lá em cima é esta
      mesma conta × 9/16, então os dois têm que andar juntos.
