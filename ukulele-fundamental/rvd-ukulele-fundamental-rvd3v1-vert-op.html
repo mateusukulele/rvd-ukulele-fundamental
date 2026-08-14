@@ -156,16 +156,24 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
 .cta-block{grid-area:cta;width:100%;max-width:30rem;display:flex;flex-direction:column;gap:.55rem}
 /* No celular o subtítulo também aparece, então --fold-reserve conta com ele. */
-/* Desktop: vídeo vertical à esquerda, texto à direita — ainda em uma dobra */
+/* Desktop: texto à esquerda, vídeo vertical à direita — ainda em uma dobra */
 @media (min-width:900px){
   .hero .container{
-    grid-template-areas:"video top" "video cta";
-    /* A coluna do vídeo é `auto`: ela mede exatamente a largura da .vframe, que
-       sai da altura pela proporção 9:16. Antes era uma fração fixa (.92fr) e isso
-       limitava o quanto o vídeo podia crescer, porque a partir de certa altura a
-       largura não cabia mais na coluna. Com `auto` quem manda é o vídeo e o texto
-       fica com o resto, então dá para subir a altura sem apertar nada. */
-    grid-template-columns:auto auto;
+    grid-template-areas:"top video" "cta video";
+    /* A COLUNA DO VÍDEO TEM LARGURA EXPLÍCITA, e isso não é preciosismo: com ela
+       em `auto` o vídeo SOME no Safari do desktop. O Safari não deriva a largura
+       de `aspect-ratio` + altura quando o container está fazendo medição
+       intrínseca, que é o caso de uma coluna `auto`, então ele mede zero e a
+       coluna colapsa. O Chrome deriva e por isso passava batido aqui.
+       A conta é a mesma altura do vídeo convertida em largura (× 9/16):
+         90svh × 9/16 = 50.625svh | 880 × 9/16 = 495 | 36vw × 16/9 × 9/16 = 36vw
+       Mexeu na altura do vídeo lá embaixo, mexe aqui na mesma proporção.
+       A linha com vh vem antes da com svh de propósito: é o fallback para
+       navegador sem svh, e a segunda sobrescreve quando há suporte.
+       A coluna do texto continua `auto` porque ela mede texto, não caixa com
+       proporção, e aí o Safari não tem problema nenhum. */
+    grid-template-columns:auto min(50.625vh,495px,36vw);
+    grid-template-columns:auto min(50.625svh,495px,36vw);
     grid-template-rows:auto auto;
     /* justify-content:center junto com as duas colunas em `auto`: o par vídeo +
        texto vira um bloco só, centrado no container. Com a coluna de texto em
@@ -208,10 +216,9 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      estourava 48px para fora da headline. De 1150px para cima os 30rem voltam
      a mandar e o botão fica do tamanho exato da subpromessa. */
   .cta-block{max-width:min(30rem,clamp(27rem,44.55vw,35.1rem))}
-  /* width:auto para o .video encolher até a largura da .vframe. Com width:100%
-     ele esticava na coluna `auto` e a coluna deixava de medir o vídeo. */
-  .video{align-self:center;width:auto}
-  /* Três limites, o menor vence:
+  .video{align-self:center;width:100%}
+  /* Três limites na ALTURA, o menor vence. A largura da coluna lá em cima é esta
+     mesma conta × 9/16, então os dois têm que andar juntos.
      90svh  = quanto da tela vertical o vídeo pode tomar. Era 74svh e sobrava
               muito ar em cima e embaixo. 90 deixa ~5% de respiro de cada lado.
      880px  = teto absoluto. Não é estético, é conta: o container do hero para de
@@ -220,8 +227,12 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
               largura, e num 1920x1080 ainda sobram 681 para uma promessa que
               mede 605.
      36vw   = trava de largura para desktop estreito, onde o container ainda é
-              menor que 80rem. Escrito como altura equivalente: 36vw × 16/9. */
-  .vframe{height:min(90vh,880px,calc(36vw * 16 / 9));height:min(90svh,880px,calc(36vw * 16 / 9))}
+              menor que 80rem. Escrito como altura equivalente: 36vw × 16/9.
+     width:100% junto com a altura explícita deixa a moldura com as duas medidas
+     definidas, sem depender do aspect-ratio. É o que faz o vídeo aparecer no
+     Safari: como a coluna já tem a largura certa, o 100% dá exatamente o mesmo
+     resultado do aspect-ratio, só que sem exigir que o navegador o derive. */
+  .vframe{height:min(90vh,880px,calc(36vw * 16 / 9));height:min(90svh,880px,calc(36vw * 16 / 9));width:100%;max-width:none}
   .hero-sub{display:block}
 }
 .price-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem;font-size:clamp(13px,2.6vw,15px)}
@@ -350,7 +361,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .final{max-width:640px;margin-inline:auto;text-align:center;display:flex;flex-direction:column;gap:1.1rem;align-items:center}
 
 /* Sticky CTA */
-.sticky{position:fixed;left:0;right:0;bottom:0;z-index:80;padding:.6rem clamp(.8rem,3vw,1.5rem) calc(.6rem + env(safe-area-inset-bottom));background:rgba(42,24,84,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12);box-shadow:0 -8px 24px rgba(0,0,0,.28);transform:translateY(120%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:80;padding:.6rem clamp(.8rem,3vw,1.5rem) calc(.6rem + env(safe-area-inset-bottom));background:rgba(42,24,84,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12);box-shadow:0 -8px 24px rgba(0,0,0,.28);transform:translateY(120%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
 .sticky.show{transform:translateY(0)}
 .sticky-in{max-width:var(--maxw);margin-inline:auto;display:flex;align-items:center;gap:1rem}
 .sticky-tx{display:none;flex-direction:column;line-height:1.25}
@@ -361,7 +372,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 
 /* Modal */
 dialog.modal{width:min(30rem,92vw);max-height:92vh;overflow-y:auto;border:0;border-radius:24px;padding:0;background:#fff;color:var(--text);box-shadow:0 30px 70px -20px rgba(0,0,0,.5)}
-dialog.modal::backdrop{background:rgba(42,24,84,.6);backdrop-filter:blur(4px)}
+dialog.modal::backdrop{background:rgba(42,24,84,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .modal-bd{padding:clamp(1.4rem,4vw,2rem);position:relative}
 .modal-x{position:absolute;top:.8rem;right:.8rem;width:2.1rem;height:2.1rem;border:0;border-radius:999px;background:var(--cream);color:var(--muted);display:grid;place-items:center;cursor:pointer}
 .modal-x:hover{background:var(--line);color:var(--ink)}
@@ -389,7 +400,7 @@ dialog.modal::backdrop{background:rgba(42,24,84,.6);backdrop-filter:blur(4px)}
 
 /* Lightbox depoimentos */
 dialog.lightbox{border:0;background:transparent;padding:0;max-width:min(94vw,560px);max-height:94vh;overflow:visible}
-dialog.lightbox::backdrop{background:rgba(42,24,84,.82);backdrop-filter:blur(4px)}
+dialog.lightbox::backdrop{background:rgba(42,24,84,.82);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);display:block}
 .lb-x{position:absolute;top:.5rem;right:.5rem;width:2.3rem;height:2.3rem;border:0;border-radius:999px;background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .lb-x svg{width:1.1rem;height:1.1rem}
