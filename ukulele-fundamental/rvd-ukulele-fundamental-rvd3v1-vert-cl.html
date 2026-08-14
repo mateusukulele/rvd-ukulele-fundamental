@@ -155,6 +155,14 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    borda de 8px de cada lado. */
 .vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
 .cta-block{grid-area:cta;width:100%;max-width:30rem;display:flex;flex-direction:column;gap:.55rem}
+/* "abaixo" no celular, "ao lado" no desktop: a mesma frase, a posição do vídeo é
+   que muda. Dois spans em vez de JS, então não tem troca de texto depois da
+   pintura nem pulo de layout. */
+.so-desk{display:none}
+/* O convite da seta é só do desktop. Fica fora do .gate de propósito: na página
+   fechada ele continua visível enquanto a oferta está trancada, que é justamente
+   quando a pessoa só tem o vídeo para assistir. */
+.hero-nudge{display:none}
 /* No celular o subtítulo também aparece, então --fold-reserve conta com ele. */
 /* Desktop: texto à esquerda, vídeo vertical à direita — ainda em uma dobra */
 @media (min-width:900px){
@@ -186,7 +194,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
        para uma promessa que mede 605 — e ela quebrava em 5 linhas num 1920x1080.
        Com 1280 sobram 721. As outras seções continuam em 70rem. */
     max-width:80rem;
-    gap:clamp(1rem,2.5vh,1.6rem) clamp(1.5rem,2.6vw,2.5rem);
+    gap:clamp(1rem,2.5vh,1.6rem) clamp(2rem,3.2vw,3.25rem);
   }
   /* Coluna de texto centrada, igual ao celular. Alinhada à esquerda sobrava um
      vazio de até 114px de um lado só, encostado no vídeo, e era ele que quebrava
@@ -205,17 +213,43 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      meio da promessa. Quem fecha a borda direita é o max-width de 13.5em do h1:
      com ele o preenchimento fica em 98/96/96/97, que a 2% de variação já lê como
      justificado, e é o mesmo de 900 a 1920px de tela. */
-  .hero h1{font-size:clamp(2rem,3.6vw,2.8rem)}
+  /* Medida do texto no desktop: 11.5em da propria fonte do h1, contra os 13.5em
+     do celular. Estreitar de proposito. Em 13.5em a promessa fechava em 4 linhas
+     (605px de bloco) e a coluna de texto ficava baixa e larga ao lado de um video
+     de 774px de altura; o par inteiro empurrava o video para o terco da direita.
+     Em 11.5em ela vira 5 linhas cheias (515px, preenchimento 89/98/99/88/94), a
+     coluna cresce em altura, e como o par e centrado o video anda para o centro.
+     12.5em tambem da 5 linhas, mas a 86/94/95/85/91. 11em ja vira 6 linhas. */
+  .hero h1{font-size:clamp(2rem,3.6vw,2.8rem);max-width:11.5em}
   /* A subpromessa cresce junto no desktop. A medida é 20em, presa à fonte, então
      o bloco engorda sem mudar uma quebra: continua em 3 linhas a 96/99/95 de
      preenchimento em qualquer largura. Proporção h1/sub fica em ~1,75. */
-  .hero-sub{font-size:clamp(1.2rem,2vw,1.6rem)}
+  /* 16em contra os 20em do celular, acompanhando a promessa. Em 20em a
+     subpromessa media 512px, quase o mesmo que a promessa, e a piramide sumia.
+     Em 16em sao 410px em 4 linhas a 87/93/98/97, e a proporcao com a promessa
+     fica em 0,80. Em 17em a ultima linha cai para 76%. */
+  .hero-sub{font-size:clamp(1.2rem,2vw,1.6rem);max-width:16em}
+  .so-cel{display:none}
+  .so-desk{display:inline}
+  /* Texto em Montserrat 800 para ler como etiqueta, não como parágrafo, e a seta
+     em coral: puxa o olho para o vídeo sem competir com o verde, que nesta página
+     significa comprar. Sem pílula nem caixa alta de propósito. */
+  .hero-nudge{display:inline-flex;align-items:center;gap:.55rem;margin:0;
+    font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
+    font-size:clamp(.88rem,1.02vw,1rem);color:var(--purple)}
+  .hero-nudge svg{width:2.6rem;height:auto;color:var(--coral);flex-shrink:0;
+    animation:nudge 2.4s cubic-bezier(.16,1,.3,1) infinite}
+  /* O @media prefers-reduced-motion lá embaixo já desliga esta animação. */
+  @keyframes nudge{0%,55%,100%{transform:translateX(0)}25%{transform:translateX(7px)}}
   /* O bloco de checkout não pode passar da promessa. A medida da promessa é
      13.5em de uma fonte que vai de 2rem a 2.6rem, ou seja clamp(27rem,44.55vw,
      35.1rem): em 900px de tela isso dá 432px e o botão, que ia até 480px,
      estourava 48px para fora da headline. De 1150px para cima os 30rem voltam
      a mandar e o botão fica do tamanho exato da subpromessa. */
-  .cta-block{max-width:min(30rem,clamp(27rem,44.55vw,35.1rem))}
+  /* Mesma medida da promessa, escrita sem em porque aqui o em seria o da fonte do
+     bloco, nao a do h1: 11.5 x clamp(2rem,3.6vw,2.8rem) = clamp(23rem,41.4vw,
+     32.2rem). O botao nunca passa da promessa nem dos 30rem originais. */
+  .cta-block{max-width:min(30rem,clamp(23rem,41.4vw,32.2rem))}
   .video{align-self:center;width:100%}
   /* Três limites na ALTURA, o menor vence. A largura da coluna lá em cima é esta
      mesma conta × 9/16, então os dois têm que andar juntos.
@@ -493,7 +527,12 @@ body.unlocked .gate{animation:gateIn .6s ease both}
   <div class="container">
     <div class="hero-top">
       <h1>Os 3 passos para sair do ZERO e tocar <span>centenas de músicas no ukulele</span>, com 20 minutos por dia</h1>
-      <p class="hero-sub">Até quem não leva jeito nenhum pra música já está tocando e se divertindo com o mecanismo revelado abaixo.</p>
+      <p class="hero-sub">Até quem não leva jeito nenhum pra música já está tocando e se divertindo com o mecanismo revelado <span class="so-cel">abaixo</span><span class="so-desk">ao lado</span>.</p>
+      <!-- Convite para o vídeo. Só aparece no desktop, onde o vídeo está AO LADO;
+           no celular ele está logo abaixo e a seta não faria sentido. -->
+      <p class="hero-nudge">Aperte o play e veja na prática
+        <svg viewBox="0 0 44 14" fill="none" aria-hidden="true"><path d="M1 7h35M30 1.5 36.5 7 30 12.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </p>
     </div>
 
     <div class="video">
