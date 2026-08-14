@@ -234,11 +234,15 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
   /* O convite ganha um espaco bem maior que o do resto da pilha: ele nao e
      continuacao da subpromessa, e um segundo assunto. O margin-top vem alem do
      gap do .hero-top, entao o total ate a subpromessa e ~3x o espaco de cima. */
-  .hero-nudge{display:inline-flex;align-items:center;gap:.84rem;
-    margin:clamp(2.2rem,4.6vh,3.4rem) 0 0;
+  .hero-nudge{display:inline-flex;align-items:center;gap:1.03rem;
+    margin:clamp(3rem,6.4vh,4.6rem) 0 0;
     font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
-    font-size:clamp(1.2rem,1.46vw,1.44rem);color:var(--purple)}
-  .hero-nudge svg{width:3.84rem;height:auto;color:var(--coral);flex-shrink:0;
+    font-size:clamp(1.47rem,1.79vw,1.76rem);color:var(--purple)}
+  /* A seta encolhe so na ponta estreita do desktop. Em 900px de tela a coluna de
+     texto tem 468px e o convite chegava a 465: 3px de folga, e qualquer diferenca
+     de renderizacao o quebraria em duas linhas. Com o clamp ele cai para ~444 la e
+     fica igual de 1500px para cima, que e onde o tamanho importa. */
+  .hero-nudge svg{width:clamp(3.4rem,4.9vw,4.7rem);height:auto;color:var(--coral);flex-shrink:0;
     animation:nudge 2.4s cubic-bezier(.16,1,.3,1) infinite}
   /* O @media prefers-reduced-motion lá embaixo já desliga esta animação. */
   @keyframes nudge{0%,55%,100%{transform:translateX(0)}25%{transform:translateX(7px)}}
