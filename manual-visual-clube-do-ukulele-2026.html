@@ -32,6 +32,7 @@
   --verde-texto:#1F6B4A;
   --ambar-suave:#F5F0E4;
   --ambar-texto:#8A5A00;
+  --vinho:#7A1F3D;           /* dificuldade avançada, e nada mais */
   --erro:#B83A2E; --erro-suave:#FBE9E6;   /* só falha de sistema */
   /* neutros */
   --ink:#1F1A2B; --muted:#5C5A70; --page:#F5F4F7; --surface:#ECEAF1;
@@ -220,7 +221,7 @@ td.mono{font-family:'JetBrains Mono';font-size:12.5px}
 .c-basica{background:var(--verde-suave);color:var(--verde-texto)}
 .c-media{background:var(--ambar-suave);color:var(--ambar-texto)}
 .c-nivel{background:var(--indigo-suave);color:var(--indigo)}
-.c-avancada{background:var(--indigo);color:#fff}
+.c-avancada{background:var(--vinho);color:#fff}
 .dots{display:inline-flex;gap:3px;margin-left:6px;vertical-align:middle}
 .dots i{width:6px;height:6px;border-radius:50%;border:1.5px solid currentColor;display:block}
 .dots i.on{background:currentColor}
@@ -403,6 +404,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <div class="sw"><div class="chip" style="background:#B83A2E;color:#fff">#B83A2E</div><div class="meta"><div class="nm">Erro</div><div class="hx">--erro</div><div class="use">Só falha de sistema: envio que não completou, formulário que não passou. Nunca dificuldade, nunca oferta.</div><div class="ratio">5,70:1 no branco</div></div></div>
       <div class="sw"><div class="chip" style="background:#FBE9E6;color:#B83A2E">#FBE9E6</div><div class="meta"><div class="nm">Erro suave</div><div class="hx">--erro-suave</div><div class="use">Fundo do aviso de falha, com o texto de erro por cima.</div><div class="ratio">4,86:1 com o texto de erro</div></div></div>
       <div class="sw"><div class="chip" style="background:#8A5A00;color:#F5F0E4">#8A5A00</div><div class="meta"><div class="nm">Âmbar texto</div><div class="hx">--ambar-texto</div><div class="use">Dificuldade média. Sempre texto escuro sobre o âmbar suave <code>#F5F0E4</code>, nunca amarelo cheio.</div><div class="ratio">5,21:1 no âmbar suave</div></div></div>
+      <div class="sw"><div class="chip" style="background:#7A1F3D;color:#fff">#7A1F3D</div><div class="meta"><div class="nm">Vinho</div><div class="hx">--vinho</div><div class="use">Dificuldade avançada, e nada mais. Nunca botão, nunca fundo de seção, nunca alerta.</div><div class="ratio">10,04:1 com texto branco</div></div></div>
     </div>
 
     <div class="grupo">Neutros</div>
@@ -460,7 +462,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
           <tr><td>Botão de compra</td><td class="mono"><span class="par"><i style="background:#2D124E"></i>#2D124E / <i style="background:#12A18A"></i>#12A18A</span></td><td class="mono">4,96:1</td><td class="ok">passa</td></tr>
           <tr><td>Selo de oferta</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#CD3701"></i>#CD3701</span></td><td class="mono">5,07:1</td><td class="ok">passa</td></tr>
           <tr><td>X do chunk na batida</td><td class="mono"><span class="par"><i style="background:#B4404F"></i>#B4404F / <i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF</span></td><td class="mono">5,55:1</td><td class="ok">passa</td></tr>
-          <tr><td>Etiqueta Avançada</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#443468"></i>#443468</span></td><td class="mono">10,84:1</td><td class="ok">passa</td></tr>
+          <tr><td>Etiqueta Avançada</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#7A1F3D"></i>#7A1F3D</span></td><td class="mono">10,04:1</td><td class="ok">passa</td></tr>
           <tr><td>Aula concluída</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#25845A"></i>#25845A</span></td><td class="mono">4,64:1</td><td class="ok">passa</td></tr>
           <tr><td>Tag dificuldade média</td><td class="mono"><span class="par"><i style="background:#8A5A00"></i>#8A5A00 / <i style="background:#FBEFD0"></i>#FBEFD0</span></td><td class="mono">5,18:1</td><td class="ok">passa</td></tr>
           <tr><td>Aviso de erro</td><td class="mono"><span class="par"><i style="background:#B83A2E"></i>#B83A2E / <i style="background:#FBE9E6"></i>#FBE9E6</span></td><td class="mono">4,86:1</td><td class="ok">passa</td></tr>
@@ -715,7 +717,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
     <h2>12 · Dificuldade e nível</h2>
     <p>São dois eixos diferentes e não podem virar a mesma coisa visualmente.</p>
     <h3>Dificuldade: o esforço da música</h3>
-    <p>Três degraus, e a progressão não se faz só pela cor: Básica e Média são tinta clara com texto escuro, Avançada é índigo sólido com texto branco. Claro, claro, sólido escuro. Funciona impresso em cinza e funciona para quem não distingue verde de vermelho.</p>
+    <p>Três degraus, e a progressão não se faz só pela cor: Básica e Média são tinta clara com texto escuro, Avançada é vinho sólido com texto branco. Claro, claro, sólido escuro. Funciona impresso em cinza e funciona para quem não distingue verde de vermelho.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px">
       <span class="chip-min c-basica">Básica <span class="dots"><i class="on"></i><i></i><i></i></span></span>
       <span class="chip-min c-media">Média <span class="dots"><i class="on"></i><i class="on"></i><i></i></span></span>
@@ -731,7 +733,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       <span class="chip-min c-nivel">Intermediário 1</span>
       <span class="chip-min c-nivel">Intermediário 2</span>
     </div>
-    <div class="note"><p><strong>Por que Avançada não é vermelha:</strong> medindo a distância perceptual, o vermelho tijolo fica a 0,047 do laranja da logo e a 0,039 do coral forte. Na tela, os três viram a mesma cor e a etiqueta deixa de informar. Além disso vermelho nesta marca é o token <code>--erro</code>, reservado para falha de sistema, e avançada não é falha, é conquista. O índigo cheio fica a 0,297 do laranja, é cor da marca e rende 10,84:1 com texto branco.</p></div>
+    <div class="note"><p><strong>Por que Avançada é vinho e não vermelha:</strong> medindo a distância perceptual, o vermelho tijolo fica a 0,047 do laranja da logo e a 0,039 do coral forte. Na tela os três viram a mesma cor e a etiqueta deixa de informar. Além disso vermelho nesta marca é o token <code>--erro</code>, reservado para falha de sistema, e avançada não é falha, é conquista. O vinho <code>#7A1F3D</code> resolve os dois lados: fica a 0,157 do vermelho de erro e a 0,238 do laranja, mais de três vezes a distância que reprovou o tijolo. É escuro e denso o bastante para ler como "difícil", continua na família quente do coral e rende 10,04:1 com texto branco. O índigo saiu daqui porque ele é a âncora de interface: quando tudo em volta já é índigo, uma etiqueta índigo não marca degrau nenhum.</p></div>
   </section>
 
   <section id="venda">
@@ -771,7 +773,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
     <h3>Já alinhado</h3>
     <ul class="bul">
       <li><strong>Aula comum</strong> (<code>GERAR_AULA.gs</code>): coral forte no texto, teal <code>#177A6A</code> no download com hover <code>#157062</code>, degradê terminando em <code>#2D124E</code>.</li>
-      <li><strong>Aula da biblioteca</strong>: dificuldade em verde, âmbar e índigo cheio, todas acima de 4,6:1. As etiquetas de nível viraram tinta índigo única, porque nível é escala e não semáforo.</li>
+      <li><strong>Aula da biblioteca</strong>: dificuldade em verde, âmbar e vinho, todas acima de 4,6:1. As etiquetas de nível viraram tinta índigo única, porque nível é escala e não semáforo.</li>
       <li><strong>Atividades</strong>: o botão de envio saiu do coral (2,78:1) para índigo cheio (10,84:1), o desabilitado ganhou contraste e o aviso de sucesso foi para o verde.</li>
       <li><strong>Este manual</strong>: logo oficial, teal documentado, notação de batida, tokens de estado e a entrelinha do Anton.</li>
       <li><strong>Outros geradores</strong>: os moldes de slide do OBS, o gerador de materiais da oficina e os estilos de vídeo do estúdio já saem no roxo da logo e no teal novo.</li>
