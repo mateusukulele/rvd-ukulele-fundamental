@@ -174,14 +174,14 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
        intrínseca, que é o caso de uma coluna `auto`, então ele mede zero e a
        coluna colapsa. O Chrome deriva e por isso passava batido aqui.
        A conta é a mesma altura do vídeo convertida em largura (× 9/16):
-         90svh × 9/16 = 50.625svh | 880 × 9/16 = 495 | 36vw × 16/9 × 9/16 = 36vw
+         80svh × 9/16 = 45svh | 760 × 9/16 = 427 | 36vw × 16/9 × 9/16 = 36vw
        Mexeu na altura do vídeo lá embaixo, mexe aqui na mesma proporção.
        A linha com vh vem antes da com svh de propósito: é o fallback para
        navegador sem svh, e a segunda sobrescreve quando há suporte.
        A coluna do texto continua `auto` porque ela mede texto, não caixa com
        proporção, e aí o Safari não tem problema nenhum. */
-    grid-template-columns:auto min(50.625vh,495px,36vw);
-    grid-template-columns:auto min(50.625svh,495px,36vw);
+    grid-template-columns:auto min(45vh,427px,36vw);
+    grid-template-columns:auto min(45svh,427px,36vw);
     grid-template-rows:auto auto;
     /* justify-content:center junto com as duas colunas em `auto`: o par vídeo +
        texto vira um bloco só, centrado no container. Com a coluna de texto em
@@ -199,12 +199,13 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
   /* Coluna de texto centrada, igual ao celular. Alinhada à esquerda sobrava um
      vazio de até 114px de um lado só, encostado no vídeo, e era ele que quebrava
      a composição.
-     align-self:end porque o vídeo é mais alto que a pilha de texto e a sobra ia
-     toda para o fim do hero-top, abrindo um vão entre a subpromessa e o botão.
-     Encostando o texto no fim da própria linha, promessa, subpromessa e checkout
-     viram um bloco só e a sobra se reparte igual em cima e embaixo: 140px de cada
-     lado num 1512x860, 157 num 1920x1080. */
-  .hero-top{align-items:center;text-align:center;padding-inline:0;align-self:end}
+     align-self:center: o vídeo ainda é um pouco mais alto que a pilha de texto e
+     essa sobra o grid joga inteira na linha do hero-top, nunca embaixo, porque o
+     vídeo atravessa as duas linhas. Com `end` a sobra ia toda para cima e o texto
+     começava 72px abaixo do topo do vídeo; com `center` ela se divide e cai para
+     28px. Em `start` as duas colunas começam juntas, mas aí abre um vão de 94px
+     entre o convite e o botão. */
+  .hero-top{align-items:center;text-align:center;padding-inline:0;align-self:center}
   /* Teto de 2.8rem no desktop. Acima disso a medida do h1 (13.5em) passa da coluna
      de texto e ele quebra em 5 linhas. Piso de 2rem porque em 900px de tela o
      2.1rem já dava 5 linhas.
@@ -253,20 +254,23 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
   .video{align-self:center;width:100%}
   /* Três limites na ALTURA, o menor vence. A largura da coluna lá em cima é esta
      mesma conta × 9/16, então os dois têm que andar juntos.
-     90svh  = quanto da tela vertical o vídeo pode tomar. Era 74svh e sobrava
-              muito ar em cima e embaixo. 90 deixa ~5% de respiro de cada lado.
-     880px  = teto absoluto. Não é estético, é conta: o container do hero para de
+     80svh  = quanto da tela vertical o vídeo pode tomar. Foi de 74 para 90 e daí
+              para 80. O que manda aqui é a altura do texto, que hoje é 650px num
+              1512x860: em 90svh o vídeo tinha 774 e sobravam 124px que o grid
+              jogava todos acima do texto. Em 80svh ele tem 688 e a sobra cai para
+              38px, 19 acima e 19 abaixo com o align-self:center. Descer mais que
+              isso faz o texto ficar mais alto que o vídeo.
+     760px  = teto absoluto. Não é estético, é conta: o container do hero para de
               crescer em 80rem (1216 úteis), então em monitor grande o que o vídeo
-              toma em largura sai da coluna de texto. 880 de altura = 495 de
-              largura, e num 1920x1080 ainda sobram 681 para uma promessa que
-              mede 605.
+              toma em largura sai da coluna de texto. 760 de altura = 427 de
+              largura, e num 1920x1080 sobram 737 para uma promessa que mede 515.
      36vw   = trava de largura para desktop estreito, onde o container ainda é
               menor que 80rem. Escrito como altura equivalente: 36vw × 16/9.
      width:100% junto com a altura explícita deixa a moldura com as duas medidas
      definidas, sem depender do aspect-ratio. É o que faz o vídeo aparecer no
      Safari: como a coluna já tem a largura certa, o 100% dá exatamente o mesmo
      resultado do aspect-ratio, só que sem exigir que o navegador o derive. */
-  .vframe{height:min(90vh,880px,calc(36vw * 16 / 9));height:min(90svh,880px,calc(36vw * 16 / 9));width:100%;max-width:none}
+  .vframe{height:min(80vh,760px,calc(36vw * 16 / 9));height:min(80svh,760px,calc(36vw * 16 / 9));width:100%;max-width:none}
   .hero-sub{display:block}
 }
 .price-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem;font-size:clamp(13px,2.6vw,15px)}
