@@ -270,32 +270,39 @@ footer a{color:#C9C2DC}
    se um mudar o outro muda junto. */
 @media(min-width:900px){
   .topo{padding:0;min-height:calc(100svh - var(--banner,52px));display:grid;align-items:center}
+  /* O botão fica na MESMA coluna do vídeo, logo abaixo dele: é onde a mão já
+     está depois de assistir, e é a ordem do modelo do método. A coluna de texto
+     atravessa as duas linhas.
+     A largura da coluna do vídeo NÃO é escolhida aqui: ela vem de --video-w, que
+     o script calcula a partir do que sobra da tela depois do botão. Com a coluna
+     em `auto` o vídeo sumiria no Safari, que não deriva largura de aspect-ratio
+     quando o container está medindo intrínseco. */
   .hero-grid{max-width:1120px;
-    grid-template-areas:"top video" "oferta video";
-    /* Mesma conta da altura do vídeo × 9/16. Mexeu numa, mexe na outra. */
-    grid-template-columns:auto min(45svh,405px,34vw);
+    grid-template-areas:"top video" "top oferta";
+    grid-template-columns:auto var(--video-w,338px);
     grid-template-rows:auto auto;
     align-content:center;justify-content:center;
-    gap:clamp(1rem,2.4vh,1.6rem) clamp(2rem,3.4vw,3.2rem);
+    gap:clamp(.7rem,1.6vh,1.1rem) clamp(2rem,3.4vw,3.2rem);
     padding-block:clamp(12px,2.2vh,26px)}
-  .hero-top{align-self:end;max-width:34rem}
+  /* Texto alinhado pelo TOPO do vídeo, não centrado: a pilha da direita é bem
+     mais alta que o bloco de texto, e com `center` sobrava um vazio de ~230px
+     acima da barra, com o olho começando a leitura no meio da tela. */
+  .hero-top{align-self:start;max-width:34rem}
   .barra{height:14px;margin-bottom:16px}
   .aviso{margin-bottom:6px}
   .headline{font-size:clamp(22px,2.3vw,30px);margin-bottom:12px}
-  .oferta-box{align-self:start;max-width:34rem;margin-top:0}
-  .video{align-self:center}
-  /* Três limites na altura, o menor vence: 80% da tela, teto absoluto de 720px
-     (acima disso o vídeo rouba largura da coluna de texto num monitor grande) e
-     34vw para desktop estreito, escrito como altura equivalente.
-     Medido num 1440x900: vídeo de 405x720 terminando em 840, com a coluna de
-     texto e o botão fechando em 727. A faixa seguinte começa depois dos 900. */
-  .vframe{height:min(80svh,720px,calc(34vw * 16 / 9));width:100%;max-width:none}
-  /* O mock é um bloco de demonstração e fica alto demais para a coluna. Com o
-     widget real da Hotmart (iframe de ~300px) esta regra não pega em nada. */
-  .mock{padding:16px 18px}
-  .mock p{font-size:14px;margin-bottom:12px}
+  .oferta-box{align-self:start;width:100%;margin-top:0}
+  .video{align-self:end}
+  /* Altura e largura vêm do script (proporção 9:16 preservada nas duas). Os
+     valores aqui são o primeiro quadro e o fallback de JS desligado. */
+  .vframe{height:var(--video-h,600px);width:var(--video-w,338px);max-width:none}
+  /* O mock é bloco de demonstração e rouba altura do vídeo. Com o widget real da
+     Hotmart no lugar, estas regras não pegam em nada. */
+  .mock{padding:14px 16px}
+  .mock p{display:none}
   .mock .ph-label{margin-bottom:10px}
   .mock .nota{display:none}
+  .recusa{margin-top:12px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -382,14 +389,37 @@ footer a{color:#C9C2DC}
       vf=topo&&topo.querySelector('.vframe'),
       ban=document.querySelector('.retencao');
   if(!topo||!grid||!top||!vf||!ban) return;
-  var ultimo=null;
+  var oferta=topo.querySelector('.oferta-box');
+  var ultimo=null, ultimoV=null;
   function medir(){
     topo.style.setProperty('--banner',Math.ceil(ban.offsetHeight)+'px');
     if(window.innerWidth>=900){
       topo.style.removeProperty('--fold-reserve');
       topo.style.removeProperty('--fold-extra');
-      ultimo=null; return;
+      ultimo=null;
+      /* DESKTOP: vídeo e botão dividem a coluna da direita. O que sobra da tela
+         depois do banner, dos espaços e da altura do botão é a altura do vídeo,
+         e a largura sai dela pela proporção 9:16.
+         Piso de 380px de altura para o player não virar um selo num monitor
+         baixo; teto de 720 para não roubar largura da coluna de texto num
+         monitor grande. Estourando o piso, o que passa da dobra é o fim do
+         botão, nunca o vídeo. */
+      var g=getComputedStyle(grid);
+      var disp=window.innerHeight-ban.offsetHeight
+               -parseFloat(g.paddingTop)-parseFloat(g.paddingBottom)
+               -(parseFloat(g.rowGap)||0)-oferta.offsetHeight-2;
+      var h=Math.max(380,Math.min(disp,720,Math.round(window.innerWidth*.34*16/9)));
+      h=Math.round(h);
+      if(ultimoV===null||Math.abs(h-ultimoV)>2){
+        ultimoV=h;
+        topo.style.setProperty('--video-h',h+'px');
+        topo.style.setProperty('--video-w',Math.round(h*9/16)+'px');
+      }
+      return;
     }
+    ultimoV=null;
+    topo.style.removeProperty('--video-h');
+    topo.style.removeProperty('--video-w');
     var cs=getComputedStyle(grid), cst=getComputedStyle(topo);
     /* +2px cobre arredondamento de subpixel, senão o vídeo encosta e a página
        ganha 1px de rolagem já na dobra. */
@@ -400,9 +430,11 @@ footer a{color:#C9C2DC}
     topo.style.setProperty('--fold-extra',(folga>2?folga:0)+'px');
   }
   medir();
-  /* Observa o texto e o banner. Observar o vídeo aqui criaria laço: a altura
-     dele vem da reserva. */
-  if(window.ResizeObserver){ var ro=new ResizeObserver(medir); ro.observe(top); ro.observe(ban); }
+  /* Observa texto, banner e o bloco do botão (no desktop a altura dele define a
+     do vídeo). Observar o vídeo criaria laço: a altura dele sai daqui.
+     A guarda de 2px no --video-h fecha o outro laço possível: mudar a largura da
+     coluna muda a quebra do texto do botão, que muda a altura dele. */
+  if(window.ResizeObserver){ var ro=new ResizeObserver(medir); ro.observe(top); ro.observe(ban); ro.observe(oferta); }
   window.addEventListener('resize',medir);
   window.addEventListener('orientationchange',medir);
   if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(medir); }
