@@ -87,38 +87,76 @@ strong{color:var(--ink);font-weight:600}
 .lead{font-size:clamp(15px,3.4vw,17px)}
 .center{text-align:center}
 
+/* ============================================================
+   A PRIMEIRA DOBRA
+   Duas geometrias diferentes, uma por dispositivo:
+
+   CELULAR   pilha vertical. Banner + barra + aviso + headline + selo formam a
+             RESERVA, e o vídeo come toda a sobra da tela. O widget de compra
+             fica logo abaixo da dobra de propósito: pelo método, o botão vem
+             depois de o preço ser dito no vídeo, e disputar altura com ele aqui
+             só encolheria o player.
+   DESKTOP   duas colunas dentro de uma dobra: texto e botão à esquerda, vídeo
+             vertical à direita. Aí cabe tudo, botão incluído.
+
+   A reserva do celular é MEDIDA por JS (script logo depois do hero), porque
+   valor fixo erra: o aparelho quebra a headline numa linha a mais e o vídeo
+   estoura a dobra. Os números aqui são só o primeiro quadro e o fallback de
+   JS desligado.
+   ============================================================ */
+
 /* ---------- 1. banner de retenção ---------- */
-/* O topo inteiro (banner + barra + headline + selo) é orçamento de dobra: cada
-   pixel aqui é pixel a menos de vídeo visível antes de rolar. Medido num 375x812:
-   com os valores atuais o topo fica em ~300px e sobram ~510px de player na
-   primeira dobra, com o botão de play do VTurb dentro dela. */
-.retencao{background:var(--alert);color:#fff;text-align:center;padding:11px 18px}
+.retencao{background:var(--alert);color:#fff;text-align:center;padding:9px 16px}
 .retencao b{display:block;font-family:'Montserrat',sans-serif;font-weight:900;
-  font-size:clamp(14px,3.4vw,17px);letter-spacing:.2px;text-transform:uppercase}
-.retencao span{display:block;font-size:clamp(12px,3vw,13.5px);opacity:.92;margin-top:3px}
+  font-size:clamp(12.5px,3.2vw,16px);line-height:1.25;letter-spacing:.2px;text-transform:uppercase}
+.retencao span{display:block;font-size:clamp(11px,2.8vw,13px);opacity:.92;margin-top:2px}
 
 /* ---------- 2. barra + aviso + headline ---------- */
-.topo{padding:16px 0 8px}
-.barra{height:14px;border-radius:999px;background:#E6E1EE;overflow:hidden;margin-bottom:14px}
+.topo{padding:10px 0 0}
+.hero-grid{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px;
+  display:grid;grid-template-areas:"top" "video" "oferta";gap:10px;justify-items:center}
+.hero-top{grid-area:top;width:100%}
+.video{grid-area:video;width:100%;display:flex;justify-content:center}
+.oferta-box{grid-area:oferta;width:100%}
+.barra{height:12px;border-radius:999px;background:#E6E1EE;overflow:hidden;margin-bottom:10px}
 .barra i{display:block;height:100%;width:82%;border-radius:999px;
   background:repeating-linear-gradient(45deg,var(--cta) 0 12px,var(--cta-deep) 12px 24px);
   background-size:34px 34px;animation:anda 1s linear infinite}
 @keyframes anda{from{background-position:0 0}to{background-position:34px 0}}
 .aviso{font-family:'Montserrat',sans-serif;font-weight:900;color:var(--coral-deep);
-  font-size:clamp(15px,3.6vw,18px);text-align:center;margin-bottom:8px}
-.headline{font-size:clamp(20px,4.8vw,28px);font-weight:800;text-align:center;margin-bottom:12px;text-wrap:balance}
-.selo{display:block;width:fit-content;margin:0 auto 20px;background:#FFF0C2;color:#6B4E00;
-  border:1px solid #F2D98A;border-radius:999px;padding:8px 18px;
-  font-size:clamp(12.5px,3vw,14px);font-weight:600;text-align:center}
+  font-size:clamp(13px,3.2vw,16px);text-align:center;margin-bottom:4px;letter-spacing:.02em}
+/* 18em de medida presa à própria fonte: segura a headline em 3 linhas cheias no
+   celular e em 3 no desktop, sem linha órfã de duas palavras. */
+.headline{font-size:clamp(17.5px,4.4vw,27px);font-weight:800;text-align:center;line-height:1.22;
+  max-width:18em;margin:0 auto 8px;text-wrap:balance}
+.selo{display:block;width:fit-content;margin:0 auto;background:#FFF0C2;color:#6B4E00;
+  border:1px solid #F2D98A;border-radius:999px;padding:6px 15px;
+  font-size:clamp(11.5px,2.9vw,13.5px);font-weight:600;text-align:center}
 
 /* ---------- 3. vídeo vertical 9:16 ----------
-   Altura explícita, largura vinda da proporção: é o mesmo truque da página de
-   vendas vertical, e é o que faz o player aparecer no Safari.
-   O menor entre "74% da tela" e "o que a largura permite" manda. */
-.vframe{height:min(74svh, calc(min(400px, 100vw - 40px) * 16 / 9));
+   Altura explícita, largura derivada da proporção: é o mesmo truque da página de
+   vendas vertical, e é o que faz o player aparecer no Safari, que não deriva a
+   largura de aspect-ratio quando o container está medindo intrínseco.
+   Vence o menor entre "a sobra da dobra" e "o que a largura da tela permite". */
+.topo{--fold-reserve:236px}
+/* Duas travas de largura, e é o que evita os dois extremos:
+   --w-min  o player nunca fica mais estreito que isto, mesmo numa tela baixa.
+            Num aparelho de 640px de altura, respeitar a dobra à risca deixaria
+            o vídeo com 223px de largura, um selo. Aqui ele fica com 300 e sobra
+            uns 25% dele abaixo da dobra, ainda bem acima dos 2/3 pedidos.
+   --w-max  teto, para o player não virar um paredão em celular largo e tablet.
+   A altura é a sobra da dobra, presa entre essas duas larguras convertidas em
+   altura pela proporção 9:16. */
+.vframe{--w-min:min(calc(100vw - 40px),300px); --w-max:min(calc(100vw - 40px),420px);
+  height:min(max(calc(100svh - var(--fold-reserve)), calc(var(--w-min) * 16 / 9)), calc(var(--w-max) * 16 / 9));
   aspect-ratio:9/16;width:auto;max-width:100%;margin-inline:auto;
   border-radius:16px;overflow:hidden;background:#000;
   box-shadow:0 26px 55px -24px rgba(66,48,102,.45)}
+/* Celular largo (430px): a LARGURA passa a limitar o vídeo antes da dobra, ele
+   para de crescer e sobra espaço embaixo. O script devolve essa sobra como
+   margem, metade em cima e metade embaixo, para o vídeo ficar centrado na dobra
+   em vez de deixar um vão só de um lado. */
+@media(max-width:899px){.video{margin-block:calc(var(--fold-extra,0px) / 2)}}
 /* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
    próprio elemento, e max-width ganha de width. */
 .vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
@@ -152,17 +190,6 @@ strong{color:var(--ink);font-weight:600}
 .yt .play span{width:66px;height:46px;background:#EA3C3C;border-radius:12px;display:grid;place-items:center}
 .yt .play svg{width:24px;height:24px;fill:#fff;margin-left:3px}
 .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.provas-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
-@media(min-width:600px){.provas-grid{grid-template-columns:1fr 1fr}}
-.provas-grid button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;
-  border-radius:14px;overflow:hidden;box-shadow:0 12px 30px -22px rgba(66,48,102,.5)}
-.provas-grid img{width:100%;height:auto;display:block}
-dialog.lightbox{border:0;background:transparent;padding:0;max-width:min(94vw,560px);max-height:94vh}
-dialog.lightbox::backdrop{background:rgba(42,24,84,.82)}
-dialog.lightbox img{width:100%;height:auto;border-radius:16px;display:block}
-.lb-x{position:absolute;top:.5rem;right:.5rem;width:2.3rem;height:2.3rem;border:0;border-radius:999px;
-  background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer}
-.lb-x svg{width:1.1rem;height:1.1rem}
 
 /* ---------- 6b. direção / motivação / acompanhamento ---------- */
 .dma{display:grid;gap:12px;margin-top:18px}
@@ -233,6 +260,43 @@ footer{background:var(--ink);color:#A79EC2;padding:32px 0 40px;font-size:12.5px;
 footer a{color:#C9C2DC}
 
 @media(min-width:720px){.section{padding:56px 0}}
+
+/* ---------- DESKTOP: a dobra inteira em duas colunas ----------
+   O hero passa a ocupar a tela menos o banner de retenção (--banner, medido por
+   JS), e divide essa altura entre a coluna de texto e o vídeo vertical.
+   A COLUNA DO VÍDEO TEM LARGURA EXPLÍCITA e isso não é preciosismo: com ela em
+   `auto` o vídeo some no Safari, que não deriva a largura de aspect-ratio + altura
+   quando a coluna está medindo intrínseco. A conta é a altura do vídeo × 9/16, e
+   se um mudar o outro muda junto. */
+@media(min-width:900px){
+  .topo{padding:0;min-height:calc(100svh - var(--banner,52px));display:grid;align-items:center}
+  .hero-grid{max-width:1120px;
+    grid-template-areas:"top video" "oferta video";
+    /* Mesma conta da altura do vídeo × 9/16. Mexeu numa, mexe na outra. */
+    grid-template-columns:auto min(45svh,405px,34vw);
+    grid-template-rows:auto auto;
+    align-content:center;justify-content:center;
+    gap:clamp(1rem,2.4vh,1.6rem) clamp(2rem,3.4vw,3.2rem);
+    padding-block:clamp(12px,2.2vh,26px)}
+  .hero-top{align-self:end;max-width:34rem}
+  .barra{height:14px;margin-bottom:16px}
+  .aviso{margin-bottom:6px}
+  .headline{font-size:clamp(22px,2.3vw,30px);margin-bottom:12px}
+  .oferta-box{align-self:start;max-width:34rem;margin-top:0}
+  .video{align-self:center}
+  /* Três limites na altura, o menor vence: 80% da tela, teto absoluto de 720px
+     (acima disso o vídeo rouba largura da coluna de texto num monitor grande) e
+     34vw para desktop estreito, escrito como altura equivalente.
+     Medido num 1440x900: vídeo de 405x720 terminando em 840, com a coluna de
+     texto e o botão fechando em 727. A faixa seguinte começa depois dos 900. */
+  .vframe{height:min(80svh,720px,calc(34vw * 16 / 9));width:100%;max-width:none}
+  /* O mock é um bloco de demonstração e fica alto demais para a coluna. Com o
+     widget real da Hotmart (iframe de ~300px) esta regra não pega em nada. */
+  .mock{padding:16px 18px}
+  .mock p{font-size:14px;margin-bottom:12px}
+  .mock .ph-label{margin-bottom:10px}
+  .mock .nota{display:none}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -257,20 +321,24 @@ footer a{color:#C9C2DC}
      A headline aqui só vende o play, não o produto: o aluno já viu o anúncio,
      a página e o vídeo de vendas, e sabe onde está. -->
 <section class="surface-white topo">
-  <div class="wrap">
-    <div class="barra"><i></i></div>
-    <p class="aviso">⚠️ AVISO IMPORTANTE</p>
-    <h1 class="headline">Tem uma condição reservada pra você no fim deste vídeo, e ela vai embora junto com esta página</h1>
-    <p class="selo">7 minutos · só pra quem entrou hoje</p>
+  <div class="hero-grid">
+    <div class="hero-top">
+      <div class="barra"><i></i></div>
+      <p class="aviso">⚠️ AVISO IMPORTANTE</p>
+      <h1 class="headline">Tem uma condição reservada pra você no fim deste vídeo, e ela vai embora junto com esta página</h1>
+      <p class="selo">7 minutos · só pra quem entrou hoje</p>
+    </div>
 
     <!-- ============ 3. VÍDEO (VTurb vertical) ============ -->
-    <div class="vframe">
-      <vturb-smartplayer id="vid-6a81901415ea6298be42de17" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
-      <script type="text/javascript">
-        var s=document.createElement("script");
-        s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a81901415ea6298be42de17/v4/player.js";
-        s.async=true;document.head.appendChild(s);
-      </script>
+    <div class="video">
+      <div class="vframe">
+        <vturb-smartplayer id="vid-6a81901415ea6298be42de17" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
+        <script type="text/javascript">
+          var s=document.createElement("script");
+          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a81901415ea6298be42de17/v4/player.js";
+          s.async=true;document.head.appendChild(s);
+        </script>
+      </div>
     </div>
 
     <!-- ============ OFERTA: WIDGET DA HOTMART (one-click buy) ============ -->
@@ -300,6 +368,47 @@ footer a{color:#C9C2DC}
   </div>
 </section>
 
+<script>
+/* DOBRA MEDIDA.
+   Celular e tablet (<900px): a reserva é tudo que não é vídeo — banner + o bloco
+   de texto + gap + padding. O vídeo come o resto da tela.
+   Desktop (>=900px): mede só a altura do banner, que é o que o hero desconta de
+   100svh para caber numa dobra.
+   Fail-safe: se este script não rodar, os valores do CSS continuam valendo. */
+(function(){
+  var topo=document.querySelector('.topo'),
+      grid=topo&&topo.querySelector('.hero-grid'),
+      top=topo&&topo.querySelector('.hero-top'),
+      vf=topo&&topo.querySelector('.vframe'),
+      ban=document.querySelector('.retencao');
+  if(!topo||!grid||!top||!vf||!ban) return;
+  var ultimo=null;
+  function medir(){
+    topo.style.setProperty('--banner',Math.ceil(ban.offsetHeight)+'px');
+    if(window.innerWidth>=900){
+      topo.style.removeProperty('--fold-reserve');
+      topo.style.removeProperty('--fold-extra');
+      ultimo=null; return;
+    }
+    var cs=getComputedStyle(grid), cst=getComputedStyle(topo);
+    /* +2px cobre arredondamento de subpixel, senão o vídeo encosta e a página
+       ganha 1px de rolagem já na dobra. */
+    var r=Math.ceil(ban.offsetHeight+parseFloat(cst.paddingTop)+top.offsetHeight+
+          (parseFloat(cs.rowGap)||0)+2);
+    if(r!==ultimo){ ultimo=r; topo.style.setProperty('--fold-reserve',r+'px'); }
+    var folga=Math.round((window.innerHeight-r)-vf.offsetHeight);
+    topo.style.setProperty('--fold-extra',(folga>2?folga:0)+'px');
+  }
+  medir();
+  /* Observa o texto e o banner. Observar o vídeo aqui criaria laço: a altura
+     dele vem da reserva. */
+  if(window.ResizeObserver){ var ro=new ResizeObserver(medir); ro.observe(top); ro.observe(ban); }
+  window.addEventListener('resize',medir);
+  window.addEventListener('orientationchange',medir);
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(medir); }
+})();
+</script>
+
 <!-- ============ 4. FAIXA DE ATENÇÃO ============ -->
 <div class="faixa">Esta condição não existe em nenhum outro lugar</div>
 
@@ -316,13 +425,10 @@ footer a{color:#C9C2DC}
            alt="Depoimentos de alunos do Clube do Ukulele" width="480" height="270" loading="lazy">
       <div class="play"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
     </div>
-    <div class="provas-grid">
-      <button type="button" data-src="/destrava-ukulele/assets/dep-aline.webp"><img src="/destrava-ukulele/assets/dep-aline.webp" alt="Depoimento da aluna Aline" width="1080" height="1080" loading="lazy"></button>
-      <button type="button" data-src="/destrava-ukulele/assets/dep-leila.webp"><img src="/destrava-ukulele/assets/dep-leila.webp" alt="Depoimento da aluna Leila" width="1080" height="1080" loading="lazy"></button>
-      <button type="button" data-src="/destrava-ukulele/assets/dep-marcelo.webp"><img src="/destrava-ukulele/assets/dep-marcelo.webp" alt="Depoimento do aluno Marcelo" width="1080" height="1080" loading="lazy"></button>
-      <button type="button" data-src="/destrava-ukulele/assets/dep-maria.webp"><img src="/destrava-ukulele/assets/dep-maria.webp" alt="Depoimento da aluna Maria" width="1080" height="1080" loading="lazy"></button>
-      <button type="button" data-src="/destrava-ukulele/assets/dep-wellen.webp"><img src="/destrava-ukulele/assets/dep-wellen.webp" alt="Depoimento da aluna Wellen" width="1080" height="1080" loading="lazy"></button>
-    </div>
+    <!-- Os depoimentos em print (Aline, Leila, Marcelo, Maria) saíram daqui: são
+         os mesmos da página de vendas que o aluno acabou de ver. Repetir prova
+         que ele já leu gasta rolagem sem acrescentar nada. Fica só o vídeo, que
+         é de aluno DO CLUBE e ele nunca viu. -->
   </div>
 </section>
 
@@ -426,9 +532,10 @@ footer a{color:#C9C2DC}
       E enquanto você quiser continuar, a renovação fica nesse mesmo valor, sem reajuste. Saindo
       desta página, essa condição não volta.</div>
       <a class="btn" href="#oferta-hotmart">QUERO INCLUIR O CLUBE NO MEU PEDIDO</a>
-      <p class="nota" style="font-size:12px;color:var(--muted);margin-top:12px">
-      Este botão leva você de volta ao botão de compra lá em cima, porque o widget da Hotmart
-      só pode existir uma vez na página.</p>
+      <!-- Motivo técnico (widget da Hotmart só monta uma vez por página) fica no
+           comentário, não na tela: o aluno não precisa saber disso. -->
+      <p class="nota" style="font-size:12.5px;color:var(--muted);margin-top:12px">
+      Ao clicar, a página volta para o botão de compra, logo abaixo do vídeo.</p>
     </div>
   </div>
 </section>
@@ -453,35 +560,35 @@ footer a{color:#C9C2DC}
     <h2 class="h2 center">Perguntas frequentes</h2>
 
     <details>
-      <summary>Eu perco o Ukulele Fundamental se entrar no Clube</summary>
+      <summary>Eu perco o Ukulele Fundamental se entrar no Clube?</summary>
       <p>Não. O Fundamental continua todo seu, com o acesso vitalício que você acabou de garantir,
       aconteça o que acontecer com o Clube. O Clube entra na mesma área de alunos, somando, com o
       mesmo login.</p>
     </details>
 
     <details>
-      <summary>Como eu acesso o Clube depois de incluir</summary>
+      <summary>Como eu acesso o Clube depois de incluir?</summary>
       <p>Ele aparece na mesma área de alunos onde já está o seu Fundamental, na plataforma oficial
       do Clube do Ukulele. Mesmo login, sem criar conta nova e sem baixar nada. A trilha completa,
       a biblioteca de músicas, os encontros ao vivo e a comunidade abrem na hora.</p>
     </details>
 
     <details>
-      <summary>Como funciona esse desconto de R$ 600</summary>
+      <summary>Como funciona esse desconto de R$ 600?</summary>
       <p>São duas partes. O valor cheio do Ukulele Fundamental, R$ 497, volta pra você usar aqui,
       e não o que você pagou com cupom. Mais R$ 100 por decidir no mesmo dia. Isso só é possível
       nesta página, porque é a compra que você acabou de fazer que vira o seu crédito.</p>
     </details>
 
     <details>
-      <summary>O Clube é uma assinatura</summary>
+      <summary>O Clube é uma assinatura?</summary>
       <p>É, e eu prefiro te dizer com todas as letras: é anual e renova. Enquanto você quiser
       continuar, renova por esse mesmo valor, sem reajuste. Esse é o preço de quem entrou junto
       com o curso, e ele fica com você.</p>
     </details>
 
     <details>
-      <summary>Como funciona o envio de vídeo</summary>
+      <summary>Como funciona o envio de vídeo?</summary>
       <p>Ao longo da trilha existem atividades com uma proposta pra você treinar. Você grava com o
       celular, envia por dentro da própria plataforma, sem senha em lugar nenhum, e eu respondo em
       vídeo mostrando o que está certo e o que dá pra melhorar. O prazo é de até 3 dias úteis, e
@@ -489,21 +596,21 @@ footer a{color:#C9C2DC}
     </details>
 
     <details>
-      <summary>Eu acabei de começar. Não é cedo demais pro Clube</summary>
+      <summary>Eu acabei de começar. Não é cedo demais pro Clube?</summary>
       <p>Não. É justamente no começo que um errinho vira hábito, e é aí que ter alguém olhando
       economiza mais tempo. A trilha começa antes do primeiro acorde, em escolher o instrumento, e
       você entra no seu nível.</p>
     </details>
 
     <details>
-      <summary>E se eu não tiver tempo essa semana</summary>
+      <summary>E se eu não tiver tempo essa semana?</summary>
       <p>Vinte minutos por dia dão o ritmo, e não existe prova nem cobrança. Se a vida apertar e
       você sumir um tempo, você é recebido de volta do mesmo jeito. Os encontros ficam gravados e
       as atividades esperam por você.</p>
     </details>
 
     <details>
-      <summary>E se eu não gostar</summary>
+      <summary>E se eu não gostar?</summary>
       <p>Você tem 30 dias para usar tudo sem nenhuma restrição. Se sentir que não é pra você, é só
       pedir que eu devolvo o seu dinheiro.</p>
     </details>
@@ -519,25 +626,10 @@ footer a{color:#C9C2DC}
   </div>
 </footer>
 
-<!-- Lightbox dos depoimentos em print -->
-<dialog class="lightbox" id="lightbox" aria-label="Depoimento ampliado">
-  <button class="lb-x" type="button" onclick="document.getElementById('lightbox').close()" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <img id="lb-img" src="" alt="Depoimento ampliado">
-</dialog>
-
 <script>
-/* Depoimentos: lightbox dos prints + facade do YouTube (o iframe só entra no
-   clique, para o vídeo do upsell não disputar banda com o do depoimento). */
+/* Facade do YouTube: o iframe só entra no clique, para o depoimento não disputar
+   banda com o vídeo do upsell. */
 (function(){
-  var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lb-img');
-  document.querySelectorAll('.provas-grid button').forEach(function(b){
-    b.addEventListener('click',function(){
-      lbImg.src=b.dataset.src; lbImg.alt=b.querySelector('img').alt;
-      lb.showModal ? lb.showModal() : lb.setAttribute('open','');
-    });
-  });
-  lb.addEventListener('click',function(e){ if(e.target===lb||e.target===lbImg) lb.close(); });
-
   document.querySelectorAll('.yt').forEach(function(el){
     function go(){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.yt+'?autoplay=1&rel=0" title="Depoimentos de alunos do Clube" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
     el.addEventListener('click',go);
