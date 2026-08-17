@@ -53,9 +53,9 @@
 
 <!-- ===== Player VTurb (vídeo VERTICAL do upsell) ===== -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a81901415ea6298be42de17/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a830ea4a6d613acd8978dd0/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a818f946860e0fe3f206031/main.m3u8" as="fetch">
+<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a830e5291e55d001aabcff9/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -88,21 +88,19 @@ strong{color:var(--ink);font-weight:600}
 .center{text-align:center}
 
 /* ============================================================
-   A PRIMEIRA DOBRA
-   Duas geometrias diferentes, uma por dispositivo:
+   A PRIMEIRA DOBRA — uma coluna só, em qualquer tela.
+   Banner, pílula de aviso e headline formam a RESERVA; o vídeo come toda a
+   sobra da altura. O bloco de compra abre a segunda dobra: pelo método o botão
+   vem depois de o preço ser dito no vídeo, e no desktop disputar altura com ele
+   espremia os dois.
+   O que muda do celular para o desktop é só a escala (tipografia, espaços e o
+   teto de largura do player), nunca a geometria. Uma pilha centrada é o que o
+   vídeo vertical pede: em duas colunas sobra um vazio ao lado do texto que só
+   se resolve inventando conteúdo para preencher.
 
-   CELULAR   pilha vertical. Banner + barra + aviso + headline + selo formam a
-             RESERVA, e o vídeo come toda a sobra da tela. O widget de compra
-             fica logo abaixo da dobra de propósito: pelo método, o botão vem
-             depois de o preço ser dito no vídeo, e disputar altura com ele aqui
-             só encolheria o player.
-   DESKTOP   duas colunas dentro de uma dobra: texto e botão à esquerda, vídeo
-             vertical à direita. Aí cabe tudo, botão incluído.
-
-   A reserva do celular é MEDIDA por JS (script logo depois do hero), porque
-   valor fixo erra: o aparelho quebra a headline numa linha a mais e o vídeo
-   estoura a dobra. Os números aqui são só o primeiro quadro e o fallback de
-   JS desligado.
+   A reserva é MEDIDA por JS (script logo depois do hero), porque valor fixo
+   erra: o aparelho quebra a headline numa linha a mais e o vídeo estoura a
+   dobra. Os números do CSS são o primeiro quadro e o fallback de JS desligado.
    ============================================================ */
 
 /* ---------- 1. banner de retenção ---------- */
@@ -125,15 +123,23 @@ strong{color:var(--ink);font-weight:600}
   background:repeating-linear-gradient(45deg,var(--cta) 0 12px,var(--cta-deep) 12px 24px);
   background-size:34px 34px;animation:anda 1s linear infinite}
 @keyframes anda{from{background-position:0 0}to{background-position:34px 0}}
-.aviso{font-family:'Montserrat',sans-serif;font-weight:900;color:var(--coral-deep);
-  font-size:clamp(13px,3.2vw,16px);text-align:center;margin-bottom:4px;letter-spacing:.02em}
-/* 18em de medida presa à própria fonte: segura a headline em 3 linhas cheias no
-   celular e em 3 no desktop, sem linha órfã de duas palavras. */
-.headline{font-size:clamp(17.5px,4.4vw,27px);font-weight:800;text-align:center;line-height:1.3;
-  max-width:18em;margin:0 auto 8px;text-wrap:balance}
-.selo{display:block;width:fit-content;margin:0 auto;background:#FFF0C2;color:#6B4E00;
-  border:1px solid #F2D98A;border-radius:999px;padding:6px 15px;
-  font-size:clamp(11.5px,2.9vw,13.5px);font-weight:600;text-align:center}
+/* O aviso é o único elemento com movimento na dobra além da barra, e ele pulsa
+   de leve: 2% de escala num ciclo longo chama o olho sem virar pisca-pisca.
+   Fundo rosa claro da mesma família do coral, para ler como etiqueta de alerta
+   sem competir com o vermelho do banner. */
+.aviso-wrap{display:flex;justify-content:center;margin-bottom:12px}
+.aviso{display:inline-flex;align-items:center;gap:.45em;
+  font-family:'Montserrat',sans-serif;font-weight:900;color:#B02D45;
+  background:#FDE8EC;border:1px solid #F6C3CD;border-radius:999px;
+  padding:.5em 1.15em;letter-spacing:.06em;text-transform:uppercase;
+  font-size:clamp(13px,3.4vw,16px);line-height:1.15;
+  box-shadow:0 6px 18px -12px rgba(176,45,69,.55);
+  animation:avisoPulse 2.6s ease-in-out infinite}
+@keyframes avisoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+/* 18em de medida presa à própria fonte: segura a headline em 3 linhas cheias,
+   sem linha órfã de duas palavras. */
+.headline{font-size:clamp(18.5px,4.6vw,28px);font-weight:800;text-align:center;line-height:1.3;
+  max-width:18em;margin:0 auto;text-wrap:balance}
 
 /* ---------- 3. vídeo vertical 9:16 ----------
    Altura explícita, largura derivada da proporção: é o mesmo truque da página de
@@ -158,7 +164,7 @@ strong{color:var(--ink);font-weight:600}
    para de crescer e sobra espaço embaixo. O script devolve essa sobra como
    margem, metade em cima e metade embaixo, para o vídeo ficar centrado na dobra
    em vez de deixar um vão só de um lado. */
-@media(max-width:899px){.video{margin-block:calc(var(--fold-extra,0px) / 2)}}
+.video{margin-block:calc(var(--fold-extra,0px) / 2)}
 /* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
    próprio elemento, e max-width ganha de width. */
 .vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
@@ -270,35 +276,42 @@ footer a{color:#C9C2DC}
    `auto` o vídeo some no Safari, que não deriva a largura de aspect-ratio + altura
    quando a coluna está medindo intrínseco. A conta é a altura do vídeo × 9/16, e
    se um mudar o outro muda junto. */
+/* ---------- ESCALA DO DESKTOP ----------
+   Mesma pilha do celular, só que respirando: nada de troca de layout. O teto de
+   largura do player sobe (o vídeo é o assunto da página) e a barra, a pílula e a
+   headline crescem junto para o bloco de texto não virar uma tampinha em cima de
+   um vídeo grande. */
 @media(min-width:900px){
-  /* PRIMEIRA DOBRA: uma linha, duas colunas. Texto à esquerda, vídeo vertical à
-     direita, os dois centrados na altura da tela menos o banner (--banner, medido
-     por JS). O botão não entra aqui: ele abre a segunda dobra.
-     A COLUNA DO VÍDEO TEM LARGURA EXPLÍCITA e isso não é preciosismo: com ela em
-     `auto` o vídeo some no Safari, que não deriva largura de aspect-ratio quando
-     o container está medindo intrínseco. A conta é a altura × 9/16, então os dois
-     valores andam juntos. */
-  .topo{padding:0;min-height:calc(100svh - var(--banner,52px));display:grid;align-items:center}
-  .hero-grid{max-width:1120px;
-    grid-template-areas:"top video";
-    grid-template-columns:auto min(44svh,394px,34vw);
-    align-content:center;justify-content:center;align-items:center;
-    gap:clamp(2rem,3.4vw,3.4rem);
-    padding-block:clamp(14px,2.4vh,28px)}
-  .hero-top{max-width:40rem}
-  .barra{height:14px;margin-bottom:18px}
-  .aviso{margin-bottom:6px}
-  /* 21em contra os 18em do celular: com a medida do celular a headline quebrava
-     em 4 linhas estreitas dentro de uma coluna de 528px, com um vão dos dois
-     lados. Em 21em ela fecha em 3 linhas cheias. */
-  .headline{font-size:clamp(23px,2.4vw,32px);max-width:21em;margin-bottom:14px}
-  /* Três limites na altura, o menor vence: 78% da tela, teto de 700px (acima
-     disso o vídeo rouba largura da coluna de texto num monitor grande) e 34vw
-     para desktop estreito, escrito como altura equivalente. */
-  .vframe{height:min(78svh,700px,calc(34vw * 16 / 9));width:100%;max-width:none}
-  .oferta-sec{padding:40px 0 48px}
-  .mock{padding:20px 18px}
-  .mock .nota{display:none}
+  .topo{padding:14px 0 0}
+  /* Container mais largo que o do celular só para a headline caber em 2 linhas:
+     cada linha a mais aqui são ~44px que saem da altura do vídeo. */
+  .hero-grid{max-width:900px;gap:12px}
+  /* A barra acompanha a largura do player, não a do container: esticada nos 860px
+     do hero ela virava uma faixa solta acima de um vídeo estreito. */
+  .barra{height:15px;margin:0 auto 14px;max-width:520px}
+  .aviso-wrap{margin-bottom:14px}
+  .aviso{font-size:17px;padding:.6em 1.4em}
+  /* 26em e fonte um pouco menor: fecha a headline em 2 linhas na maioria dos
+     monitores. Num 1366x768 a terceira linha custava 44px de altura que faltavam
+     para o vídeo caber inteiro na dobra. */
+  .headline{font-size:clamp(22px,1.9vw,29px);max-width:26em}
+  /* O player pode ir a 460px de largura aqui. Quem manda continua sendo a
+     altura da dobra: só em telas altas ele chega nesse teto. */
+  .vframe{--w-max:min(calc(100vw - 40px),460px)}
+  .oferta-sec{padding:44px 0 52px}
+  .oferta-box{max-width:560px}
+  .mock{padding:22px 20px}
+}
+/* Monitor baixo (laptop de 768px e afins): o mesmo layout, com o bloco de texto
+   apertado para o vídeo continuar inteiro na dobra. Sem isto a headline de 3
+   linhas mais o piso de largura do player estouravam a tela em ~40px. */
+@media(min-width:900px) and (max-height:820px){
+  .topo{padding:10px 0 0}
+  .barra{height:12px;margin-bottom:10px}
+  .aviso-wrap{margin-bottom:10px}
+  .aviso{font-size:15px;padding:.5em 1.2em}
+  .headline{font-size:23px;max-width:30em}
+  .vframe{--w-min:min(calc(100vw - 40px),270px)}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -327,18 +340,17 @@ footer a{color:#C9C2DC}
   <div class="hero-grid">
     <div class="hero-top">
       <div class="barra"><i></i></div>
-      <p class="aviso">⚠️ AVISO IMPORTANTE</p>
+      <p class="aviso-wrap"><span class="aviso">⚠️ Aviso importante</span></p>
       <h1 class="headline">Tem uma condição reservada pra você no fim deste vídeo, e ela vai embora junto com esta página</h1>
-      <p class="selo">7 minutos · só pra quem entrou hoje</p>
     </div>
 
     <!-- ============ 3. VÍDEO (VTurb vertical) ============ -->
     <div class="video">
       <div class="vframe">
-        <vturb-smartplayer id="vid-6a81901415ea6298be42de17" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
+        <vturb-smartplayer id="vid-6a830ea4a6d613acd8978dd0" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
         <script type="text/javascript">
           var s=document.createElement("script");
-          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a81901415ea6298be42de17/v4/player.js";
+          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a830ea4a6d613acd8978dd0/v4/player.js";
           s.async=true;document.head.appendChild(s);
         </script>
       </div>
@@ -381,11 +393,9 @@ footer a{color:#C9C2DC}
 </section>
 
 <script>
-/* DOBRA MEDIDA.
-   Celular e tablet (<900px): a reserva é tudo que não é vídeo — banner + o bloco
-   de texto + gap + padding. O vídeo come o resto da tela.
-   Desktop (>=900px): mede só a altura do banner, que é o que o hero desconta de
-   100svh para caber numa dobra.
+/* DOBRA MEDIDA, em qualquer largura de tela.
+   A reserva é tudo que não é vídeo: banner + o bloco de texto + gap + padding.
+   O vídeo come o resto da altura da tela.
    Fail-safe: se este script não rodar, os valores do CSS continuam valendo. */
 (function(){
   var topo=document.querySelector('.topo'),
@@ -396,14 +406,6 @@ footer a{color:#C9C2DC}
   if(!topo||!grid||!top||!vf||!ban) return;
   var ultimo=null;
   function medir(){
-    topo.style.setProperty('--banner',Math.ceil(ban.offsetHeight)+'px');
-    if(window.innerWidth>=900){
-      /* No desktop a dobra é resolvida em CSS: o hero tem 100svh menos o banner,
-         e o vídeo tem altura em svh. Aqui só se limpa o que é do celular. */
-      topo.style.removeProperty('--fold-reserve');
-      topo.style.removeProperty('--fold-extra');
-      ultimo=null; return;
-    }
     var cs=getComputedStyle(grid), cst=getComputedStyle(topo);
     /* +2px cobre arredondamento de subpixel, senão o vídeo encosta e a página
        ganha 1px de rolagem já na dobra. */
