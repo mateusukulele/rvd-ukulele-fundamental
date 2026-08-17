@@ -51,6 +51,36 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
+<!-- ===== A PÁGINA SEMPRE ABRE NO TOPO =====
+     Dois motivos faziam ela abrir no meio, principalmente no celular:
+     1) o navegador restaura a posição de rolagem ao voltar ou recarregar, e faz
+        isso antes de o player e o widget montarem;
+     2) o iframe do checkout da Hotmart, ao montar, puxa o foco para si e o
+        navegador rola até ele.
+     Daí o reset acontecer também depois do load e mais duas vezes em seguida:
+     é quando o iframe termina de montar. Qualquer toque, rolagem ou tecla do
+     visitante cancela os resets seguintes, para nunca sequestrar a rolagem de
+     quem já está lendo. Com âncora na URL (#oferta-hotmart) não faz nada. -->
+<script>
+if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
+(function(){
+  if(location.hash) return;
+  var interagiu=false;
+  ['wheel','touchstart','keydown','pointerdown'].forEach(function(ev){
+    window.addEventListener(ev,function(){ interagiu=true; },{once:true,passive:true});
+  });
+  function topo(){
+    if(interagiu) return;
+    /* behavior:'instant' porque o CSS tem scroll-behavior:smooth, e sem isso o
+       reset vira uma animação de rolagem na cara do visitante. */
+    try{ window.scrollTo({top:0,left:0,behavior:'instant'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  topo();
+  window.addEventListener('load',topo,{once:true});
+  setTimeout(topo,400); setTimeout(topo,1200);
+})();
+</script>
+
 <!-- ===== Player VTurb (vídeo VERTICAL do upsell) ===== -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
 <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a830ea4a6d613acd8978dd0/v4/player.js" as="script">
