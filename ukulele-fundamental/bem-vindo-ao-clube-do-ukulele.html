@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Tudo certo, o Clube já é seu | Clube do Ukulele</title>
+<title>Parabéns! O Clube do Ukulele já é seu</title>
 
 <!--
   ============================================================
@@ -57,8 +57,7 @@ strong{color:var(--ink);font-weight:600}
 .hero{background:var(--ink);color:#EDE9F5;padding:52px 0 46px;text-align:center}
 .hero .check{width:66px;height:66px;border-radius:50%;margin:0 auto 18px;display:grid;
   place-items:center;font-size:32px;background:rgba(15,169,104,.18);border:2px solid rgba(15,169,104,.5)}
-.hero h1{color:#fff;font-size:clamp(24px,5.4vw,34px);font-weight:900;margin-bottom:12px}
-.hero p{font-size:clamp(15px,3.4vw,17px);color:#C9C2DC;max-width:560px;margin:0 auto}
+.hero h1{color:#fff;font-size:clamp(24px,5.4vw,34px);font-weight:900}
 
 /* passos */
 .passos{counter-reset:p;display:grid;gap:14px;margin-top:20px}
@@ -70,10 +69,6 @@ strong{color:var(--ink);font-weight:600}
 .passo p{font-size:14.5px;color:var(--muted)}
 
 /* presentes */
-.itens{display:grid;gap:12px;margin-top:18px}
-.item{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
-.item h3{font-size:16px;font-weight:800;margin-bottom:5px}
-.item p{font-size:14.5px;color:var(--muted)}
 
 /* botões */
 .btn{display:block;width:100%;background:var(--cta);color:#fff;text-decoration:none;border-radius:12px;
@@ -117,9 +112,7 @@ footer a{color:#C9C2DC}
 <section class="hero">
   <div class="wrap">
     <div class="check">✓</div>
-    <h1>Pronto, o Clube já é seu</h1>
-    <p id="saudacao">Sua matrícula no Ukulele Fundamental está confirmada e o Clube do Ukulele
-    entrou junto, com os R$ 600 de desconto já aplicados no seu primeiro ano.</p>
+    <h1 id="saudacao">Parabéns! O Clube do Ukulele já é seu!</h1>
   </div>
 </section>
 
@@ -165,26 +158,6 @@ footer a{color:#C9C2DC}
       alguns minutos, e a nossa equipe reenvia por WhatsApp em horário comercial. Nada se perde.</p>
       <a class="btn" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener"
          style="margin-top:18px">ENTRAR NA MINHA ÁREA DE ALUNOS</a>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <h2 class="h2">Os três presentes já estão lá dentro</h2>
-    <div class="itens">
-      <div class="item">
-        <h3>Rotina de 20 Minutos</h3>
-        <p>Como dividir esse tempinho do dia entre aprender, praticar e tocar.</p>
-      </div>
-      <div class="item">
-        <h3>Destrava Pestana</h3>
-        <p>Um dos maiores pesadelos de quem toca ukulele, atacado de frente.</p>
-      </div>
-      <div class="item">
-        <h3>Manutenção e Cuidados com o Ukulele</h3>
-        <p>Trocar corda, limpar e guardar do jeito certo, pra ele durar muitos anos.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -242,6 +215,7 @@ if(document.readyState!=='loading'){setTimeout(g,1500);}else{document.addEventLi
 
 <script>
 /* Personaliza a saudação com o nome, se a Hotmart mandar na querystring.
+   Escreve na própria headline, porque o parágrafo que ficava abaixo dela saiu.
    Sem os params a página funciona igual, só não personaliza.
    Mesmas chaves aceitas nas páginas do D0A1. */
 (function(){
@@ -256,8 +230,7 @@ if(document.readyState!=='loading'){setTimeout(g,1500);}else{document.addEventLi
   var primeiro=nome.split(' ')[0];
   primeiro=primeiro.charAt(0).toUpperCase()+primeiro.slice(1).toLowerCase();
   var el=document.getElementById('saudacao');
-  if(el) el.innerHTML=primeiro+', sua matrícula no Ukulele Fundamental está confirmada e o Clube '+
-    'do Ukulele entrou junto, com os R$ 600 de desconto já aplicados no seu primeiro ano.';
+  if(el) el.textContent='Parabéns, '+primeiro+'! O Clube do Ukulele já é seu!';
 })();
 </script>
 
