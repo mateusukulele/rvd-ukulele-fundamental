@@ -19,10 +19,12 @@
   animada, headline que só vende o play, vídeo, botão, prova, oferta, garantia,
   FAQ). TEMA: mesmos tokens da página de vendas rvd3v1-vert-cl.
 
-  A COPY DESTA PÁGINA SEGUE A v5 (7 minutos), que é a versão gravada.
-  Números travados: crédito de R$ 497 (valor CHEIO do curso, não o que o aluno
-  pagou) + R$ 100 de incentivo = R$ 600 de desconto sobre a referência de
-  R$ 1.200/ano → R$ 600 no primeiro ano, e a renovação trava nesse valor.
+  A COPY DESTA PÁGINA SEGUE A GRAVAÇÃO DE 22/08/2026 (oferta nova).
+  Números travados: referência do Clube R$ 997/ano; crédito de R$ 300 (o valor
+  que o aluno ACABOU DE PAGAR no Ukulele Fundamental) + R$ 300 de bônus exclusivo
+  desta página = R$ 600 de desconto → R$ 397 no PRIMEIRO ano (ou 12x R$ 41).
+  A renovação trava em R$ 697, sem reajuste: o segundo crédito de R$ 300 vale só
+  para o primeiro ano. Âncora externa: R$ 600/mês de escola de música (~R$ 7.000/ano).
 
   ⚠️ WIDGET DA HOTMART (ligado, etapa "Upsell FUKE -> Clube"):
      - renderiza num IFRAME cross-origin, então cor/fonte/tamanho do botão e o
@@ -80,9 +82,9 @@ if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
 
 <!-- ===== Player VTurb (vídeo VERTICAL do upsell) ===== -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a830ea4a6d613acd8978dd0/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a89915d736076db67b224d3/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a830e5291e55d001aabcff9/main.m3u8" as="fetch">
+<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a898fbe92506d5973bafc79/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -245,7 +247,10 @@ strong{color:var(--ink);font-weight:600}
 /* ---------- 8. preço ---------- */
 .preco{background:var(--card);border:2px solid var(--cta);border-radius:var(--r);padding:28px 22px;text-align:center}
 .preco .cham{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--ink);
-  font-size:clamp(16px,3.8vw,20px);line-height:1.35;margin-bottom:16px}
+  font-size:clamp(16px,3.8vw,20px);line-height:1.35;margin-bottom:10px}
+/* Âncora de valor: fica logo abaixo da chamada e antes da conta, em corpo menor,
+   porque é referência externa e não pode competir com o preço. */
+.preco .ancora{font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:16px}
 .conta{display:grid;gap:8px;margin-bottom:18px;text-align:left}
 .conta div{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;
   border-bottom:1px dashed var(--line);padding-top:2px;padding-bottom:11px}
@@ -362,10 +367,10 @@ footer a{color:#C9C2DC}
     <!-- ============ 3. VÍDEO (VTurb vertical) ============ -->
     <div class="video">
       <div class="vframe">
-        <vturb-smartplayer id="vid-6a830ea4a6d613acd8978dd0" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
+        <vturb-smartplayer id="vid-6a89915d736076db67b224d3" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
         <script type="text/javascript">
           var s=document.createElement("script");
-          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a830ea4a6d613acd8978dd0/v4/player.js";
+          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a89915d736076db67b224d3/v4/player.js";
           s.async=true;document.head.appendChild(s);
         </script>
       </div>
@@ -490,7 +495,7 @@ footer a{color:#C9C2DC}
         <p>No Fundamental são 5 envios, logo no começo, pra você começar do jeito certo. No Clube
         são 49 atividades ao longo de toda a trilha, do primeiro acorde até o intermediário, e esse
         número só cresce. Você grava, envia, e recebe um vídeo meu em até 3 dias úteis. A resposta
-        fica salva na sua conta e daqui a seis meses ainda vai estar lá.</p>
+        fica salva na sua conta e daqui a um ano ainda vai estar lá, com todo o histórico do que você enviou.</p>
       </div>
       <div class="item">
         <span class="tag-heroi">Você e eu, ao vivo</span>
@@ -511,7 +516,7 @@ footer a{color:#C9C2DC}
       </div>
       <div class="item">
         <span class="tag-extra">Vai junto</span>
-        <h3>Acervo completo de aulas e 153 músicas</h3>
+        <h3>Acervo completo de aulas e 154 músicas</h3>
         <p>Do iniciante zero até o intermediário, com dezenas de batidas, tablaturas, escalas e
         campo harmônico, que é onde você ganha autonomia pra tirar sozinho qualquer música que ama.
         Cada música tem aula, destrinchamento e o Toque Comigo, que é o play along com a cifra na
@@ -526,7 +531,7 @@ footer a{color:#C9C2DC}
     <div class="stack">
       <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Trilha de aprendizado completa</b><span>Iniciante 0 até Intermediário 2</span></div></div>
       <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Intercâmbio de Vídeos</b><span>49 atividades com resposta minha em vídeo, no estilo react</span></div></div>
-      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Biblioteca com 153 músicas</b><span>Com aula, play along e cifra em PDF</span></div></div>
+      <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Biblioteca com 154 músicas</b><span>Com aula, play along e cifra em PDF</span></div></div>
       <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Academia do Ukulele</b><span>Uma aula nova toda semana, gravada e com material</span></div></div>
       <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Encontro ao vivo toda semana</b><span>Cara a cara comigo, e fica gravado se você não puder</span></div></div>
       <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div><b>Workshops ao vivo</b><span>Você participa e fica com a gravação</span></div></div>
@@ -543,17 +548,20 @@ footer a{color:#C9C2DC}
 <section class="section surface-cream">
   <div class="wrap">
     <div class="preco">
-      <p class="cham">Só aqui o valor cheio do Ukulele Fundamental volta pra você usar no Clube</p>
+      <p class="cham">Só aqui os R$ 300 que você acabou de pagar voltam pra você, e eu ainda dobro esse crédito</p>
+      <p class="ancora">Uma aula por semana numa escola de música custa por volta de R$ 600 por mês,
+      quase R$ 7.000 no ano.</p>
       <div class="conta">
-        <div><span>Clube do Ukulele, 1 ano (valor de referência)</span><b>R$ 1.200</b></div>
-        <div class="menos"><span>Valor cheio do Ukulele Fundamental, de volta pra você</span><b>− R$ 497</b></div>
-        <div class="menos"><span>Por decidir hoje, aqui, junto com o curso</span><b>− R$ 100</b></div>
+        <div><span>Clube do Ukulele, 1 ano (valor de referência)</span><b>R$ 997</b></div>
+        <div class="menos"><span>Crédito do que você pagou agora no Ukulele Fundamental</span><b>− R$ 300</b></div>
+        <div class="menos"><span>Crédito extra, só nesta página</span><b>− R$ 300</b></div>
       </div>
-      <p class="val"><small>R$</small> 600</p>
-      <p class="avista">no ano, à vista · ou em até 12x no cartão</p>
-      <div class="abate">É o valor de um único mês de escola de música, por um ano inteiro de Clube.
-      E enquanto você quiser continuar, a renovação fica nesse mesmo valor, sem reajuste. Saindo
-      desta página, essa condição não volta.</div>
+      <p class="val"><small>R$</small> 397</p>
+      <p class="avista">no primeiro ano, à vista · ou 12x de R$ 41 no cartão</p>
+      <div class="abate">É menos do que um único mês de escola de música, por um ano inteiro de Clube.
+      O crédito extra de R$ 300 vale para o seu primeiro ano; a partir do segundo a renovação fica
+      em R$ 697, sem reajuste enquanto você quiser continuar. Saindo desta página, essa condição
+      não volta.</div>
       <a class="btn" href="#oferta-hotmart">QUERO INCLUIR O CLUBE NO MEU PEDIDO</a>
       <!-- Motivo técnico (widget da Hotmart só monta uma vez por página) fica no
            comentário, não na tela: o aluno não precisa saber disso. -->
@@ -598,16 +606,17 @@ footer a{color:#C9C2DC}
 
     <details>
       <summary>Como funciona esse desconto de R$ 600?</summary>
-      <p>São duas partes. O valor cheio do Ukulele Fundamental, R$ 497, volta pra você usar aqui,
-      e não o que você pagou com cupom. Mais R$ 100 por decidir no mesmo dia. Isso só é possível
-      nesta página, porque é a compra que você acabou de fazer que vira o seu crédito.</p>
+      <p>São duas partes. Os R$ 300 que você acabou de pagar no Ukulele Fundamental voltam como
+      crédito, o que já deixaria o Clube em R$ 697. E só nesta página eu dobro esse crédito, com
+      mais R$ 300 para o seu primeiro ano, o que fecha em R$ 397. Isso só é possível aqui, porque
+      é a compra que você acabou de fazer que vira o seu crédito.</p>
     </details>
 
     <details>
       <summary>O Clube é uma assinatura?</summary>
-      <p>É, e eu prefiro te dizer com todas as letras: é anual e renova. Enquanto você quiser
-      continuar, renova por esse mesmo valor, sem reajuste. Esse é o preço de quem entrou junto
-      com o curso, e ele fica com você.</p>
+      <p>É, e eu prefiro te dizer com todas as letras: é anual e renova. O primeiro ano sai por
+      R$ 397 com o crédito dobrado desta página. Da renovação em diante fica em R$ 697, que é o
+      valor de quem entrou junto com o curso, e ele fica travado com você, sem reajuste.</p>
     </details>
 
     <details>
