@@ -273,6 +273,19 @@ strong{color:var(--ink);font-weight:600}
 .ajuda p{font-size:14.5px;color:var(--muted)}
 .btn.wa{background:var(--wa)}
 
+/* ---------- 10b. acesso ao Fundamental (mesmo card da página de boas-vindas) ---------- */
+.acesso{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;margin-top:20px}
+.acesso h3{font-size:17px;font-weight:800;margin-bottom:14px}
+.dados{display:grid;gap:10px;margin-bottom:14px}
+.dado{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  border-bottom:1px dashed var(--line);padding-top:2px;padding-bottom:11px}
+.dado:last-child{border-bottom:0;padding-bottom:0}
+.dado .rot{flex:none;min-width:96px;font-size:13px;color:var(--muted);font-weight:600;
+  text-transform:uppercase;letter-spacing:.3px}
+.dado .val{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--ink);font-size:15.5px;word-break:break-word}
+.acesso .obs{font-size:13.5px;color:var(--muted);line-height:1.6}
+.acesso-intro{font-size:15px;color:var(--muted);max-width:600px}
+
 /* ---------- botão flutuante do WhatsApp ----------
    Só entra depois que o vídeo sai da tela. Enquanto o player está visível a
    primeira dobra tem uma única função, que é vender o play; um segundo botão
@@ -668,6 +681,31 @@ footer a{color:#C9C2DC}
       <p>Você tem 30 dias para usar tudo sem nenhuma restrição. Se sentir que não é pra você, é só
       pedir que eu devolvo o seu dinheiro.</p>
     </details>
+  </div>
+</section>
+
+<!-- ============ 10b. ACESSO AO UKULELE FUNDAMENTAL ============
+     Fecha o caminho de quem recusa o Clube: os dados de acesso são os mesmos da
+     página /bem-vindo-ao-ukulele-fundamental. Se a senha de primeiro acesso ou o
+     domínio da plataforma mudarem, os dois lugares mudam junto. -->
+<section class="section surface-white hairline">
+  <div class="wrap">
+    <h2 class="h2">Prefere continuar sem o Clube do Ukulele?</h2>
+    <p class="acesso-intro">Sem problemas. Seu acesso vitalício ao Ukulele Fundamental já está
+    liberado, e você entra seguindo os passos abaixo.</p>
+
+    <div class="acesso">
+      <h3>Seus dados de acesso</h3>
+      <div class="dados">
+        <div class="dado"><span class="rot">Plataforma</span><span class="val">aluno.comotocarukulele.com</span></div>
+        <div class="dado"><span class="rot">Seu login</span><span class="val">o e-mail que você usou na compra</span></div>
+        <div class="dado"><span class="rot">Sua senha</span><span class="val">ukulele</span></div>
+      </div>
+      <p class="obs">A senha <strong>ukulele</strong> é a do primeiro acesso. Depois de entrar,
+      troque por uma senha sua dentro da plataforma. Estes dados também vão para o seu e-mail em
+      alguns minutos, e a nossa equipe reenvia por WhatsApp em horário comercial. Nada se perde.</p>
+      <a class="btn" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">ENTRAR NA MINHA ÁREA DE ALUNOS</a>
+    </div>
   </div>
 </section>
 
