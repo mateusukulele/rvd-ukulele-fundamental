@@ -92,8 +92,8 @@ h1,h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;l
 .cta-btn{
   background:var(--acao);color:var(--acao-texto);
   padding:1.1rem 1.75rem;border-radius:14px;
-  font-weight:800;font-size:18px;line-height:1.2;
-  text-transform:uppercase;letter-spacing:-.01em;
+  font-weight:800;font-size:18px;line-height:1.25;
+  letter-spacing:-.005em;
   width:100%;max-width:30rem;
   box-shadow:0 14px 26px -14px rgba(0,0,0,.7);
 }
@@ -164,9 +164,10 @@ header.hero-section{
 .metodo-card p{font-size:14px;color:var(--sobre-escuro);line-height:1.6}
 .metodo-content .prose{display:flex;flex-direction:column;gap:1.15rem;font-size:15.5px;margin-top:1.25rem}
 .metodo-content .prose b{color:#fff}
-.destaque{background:var(--indigo);border-left:4px solid var(--coral);padding:1.25rem 1.35rem;border-radius:0 16px 16px 0;color:#fff;font-weight:600}
+.destaque{background:var(--indigo);padding:1.4rem 1.55rem;border-radius:18px;color:#fff;font-weight:600;font-size:17px}
 @media (min-width:1024px){
   .metodo-grid{grid-template-columns:5fr 7fr;gap:3.5rem}
+  .metodo-cards{order:-1}
   .metodo-content .prose{font-size:16.5px}
 }
 
@@ -205,7 +206,6 @@ header.hero-section{
 /* === BÔNUS === */
 .bonus-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2.5rem}
 .bonus-card{background:var(--indigo-deep);border:1px solid rgba(232,122,133,.4);border-radius:24px;padding:1.75rem;display:flex;flex-direction:column;gap:.7rem}
-.bonus-card .selo{align-self:flex-start;margin-bottom:.3rem}
 .bonus-card h3{color:#fff;font-size:20px;font-weight:800;line-height:1.25}
 .bonus-card p{font-size:15px}
 @media (min-width:768px){.bonus-grid{grid-template-columns:1fr 1fr}}
@@ -234,7 +234,7 @@ header.hero-section{
 .guarantee{max-width:900px;margin:0 auto;background:var(--indigo);border:1px solid var(--linha);border-radius:28px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
 .guarantee-badge{width:96px;height:96px;border-radius:50%;background:var(--teal);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;line-height:1.05}
 .guarantee-badge b{font-family:'Anton',Impact,sans-serif;font-size:30px;font-weight:400}
-.guarantee-badge span{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.guarantee-badge span{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 .guarantee h2{font-size:clamp(22px,4.4vw,30px);margin-bottom:.75rem}
 .guarantee p{font-size:15px}
 .guarantee p+p{margin-top:.9rem}
@@ -276,7 +276,7 @@ header.hero-section{
 .modal h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:1.4rem;color:var(--indigo);margin-bottom:.4rem;text-align:center}
 .modal-sub{color:#5C5A70;font-size:13px;margin-bottom:1.5rem;text-align:center;line-height:1.4}
 .modal-form{display:flex;flex-direction:column;gap:1rem}
-.modal-form label{display:block;font-size:10.5px;font-weight:700;color:#5C5A70;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;margin-left:.5rem}
+.modal-form label{display:block;font-size:11.5px;font-weight:700;color:#5C5A70;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;margin-left:.5rem}
 .modal-form input[type=text],.modal-form input[type=email]{width:100%;padding:.8rem 1rem;border-radius:12px;background:#F5F4F7;border:1px solid #C9C4D6;font-size:14px;font-family:inherit;color:#1F1A2B;transition:border-color .2s,background-color .2s}
 .modal-form input[type=text]:focus,.modal-form input[type=email]:focus{border-color:var(--indigo);background:#fff;outline:none}
 .erro-msg{margin-top:.35rem;font-size:11px;font-weight:700;color:#B83A2E;margin-left:.5rem;display:none}
@@ -300,10 +300,10 @@ header.hero-section{
 .ddi-option svg{width:20px;height:20px;color:#5C5A70}
 .ddi-option span{font-size:12.5px;font-weight:500;color:#1F1A2B}
 .phone-wrap input[type=tel]{width:100%;padding:.8rem 1rem;background:transparent;outline:none;font-weight:500;font-size:14px;border:0;color:#1F1A2B;font-family:inherit}
-.modal-submit{width:100%;background:var(--acao);color:var(--acao-texto);padding:1rem;border-radius:12px;font-weight:800;font-size:17px;text-transform:uppercase;margin-top:.5rem;transition:background-color .2s,transform .2s}
+.modal-submit{width:100%;background:var(--acao);color:var(--acao-texto);padding:1rem;border-radius:12px;font-weight:800;font-size:17px;margin-top:.5rem;transition:background-color .2s,transform .2s}
 .modal-submit:hover:not(:disabled){background:var(--acao-hover);transform:translateY(-2px)}
 .modal-submit:disabled{opacity:.7;cursor:not-allowed}
-.modal-close{margin-top:1rem;width:100%;text-align:center;color:#5C5A70;font-size:10.5px;text-transform:uppercase;font-weight:700;letter-spacing:.1em;padding:.5rem}
+.modal-close{margin-top:1rem;width:100%;text-align:center;color:#5C5A70;font-size:11.5px;text-transform:uppercase;font-weight:700;letter-spacing:.1em;padding:.5rem}
 .modal-close:hover{color:#1F1A2B}
 @media (min-width:768px){
   .modal-content{padding:2.25rem}
@@ -332,7 +332,7 @@ header.hero-section{
 
     <div class="hero-text">
       <img src="../../img/logo-clube-horizontal.webp" alt="Clube do Ukulele" width="900" height="471" class="hero-logo" fetchpriority="high" decoding="async">
-      <span class="selo">Abertura em 03/09 · só no grupo VIP</span>
+      <span class="selo">Abertura 03/09 · grupo VIP</span>
       <h1 class="hero-title">Aprender ukulele com <span>direção</span>, em vez de juntar vídeo solto</h1>
       <p class="hero-sub">O Clube do Ukulele abre no dia 03/09 com uma condição que só vai existir dentro do grupo VIP. Entre no grupo e receba a oferta antes de qualquer anúncio.</p>
       <div class="hero-cta-wrap">
@@ -367,6 +367,20 @@ header.hero-section{
 
 <section class="cascade-section sec sec-surface-soft">
   <div class="container metodo-grid">
+    <div class="metodo-content">
+      <span class="eyebrow">O mecanismo por trás do Clube</span>
+      <h2 class="h2">Tocar parece uma coisa só. São camadas acontecendo ao mesmo tempo.</h2>
+      <div class="prose">
+        <p>A mão que monta o acorde, a mão que faz a batida, a troca no tempo certo e, se você quiser, a voz por cima. Enquanto pelo menos uma dessas camadas ainda exige a sua atenção consciente, elas competem entre si e tudo se embaralha. Daí vem a frase que todo iniciante fala: <b>"eu não tenho ritmo, a minha mão da batida não acompanha o acorde"</b>.</p>
+        <p>E repetir a música inteira nesse estado, cheia de erros, só treina o erro por mais tempo.</p>
+        <p class="destaque">O Mecanismo 3D isola uma camada por vez, treina até ela rodar sozinha e só então acrescenta a próxima por cima. Dividir, Destravar, Dominar.</p>
+        <p>Você não precisa de mais horas no dia. <b>Os 20 minutos que você já tem resolvem</b>, desde que a prática seja a certa. E funciona como bola de neve: os mesmos acordes e as mesmas batidas coringas voltam nas próximas músicas, então a décima música sai muito mais rápido que a primeira.</p>
+        <p>É o mesmo mecanismo que mais de <b>6.000 alunos</b> usaram para sair do zero ou destravar.</p>
+      </div>
+      <div class="cta-wrap" style="justify-content:flex-start">
+        <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero receber a oferta no dia 03/09</button>
+      </div>
+    </div>
     <div class="metodo-cards">
       <div class="metodo-card">
         <div class="metodo-num">1</div>
@@ -388,20 +402,6 @@ header.hero-section{
           <h3>Dominar</h3>
           <p>Aí você empilha as camadas e toca junto com a música: entrar na hora certa, virar a parte na hora certa e voltar sozinho quando errar, sem parar no meio.</p>
         </div>
-      </div>
-    </div>
-    <div class="metodo-content">
-      <span class="eyebrow">O mecanismo por trás do Clube</span>
-      <h2 class="h2">Tocar parece uma coisa só. São camadas acontecendo ao mesmo tempo.</h2>
-      <div class="prose">
-        <p>A mão que monta o acorde, a mão que faz a batida, a troca no tempo certo e, se você quiser, a voz por cima. Enquanto pelo menos uma dessas camadas ainda exige a sua atenção consciente, elas competem entre si e tudo se embaralha. Daí vem a frase que todo iniciante fala: <b>"eu não tenho ritmo, a minha mão da batida não acompanha o acorde"</b>.</p>
-        <p>E repetir a música inteira nesse estado, cheia de erros, só treina o erro por mais tempo.</p>
-        <p class="destaque">O Mecanismo 3D isola uma camada por vez, treina até ela rodar sozinha e só então acrescenta a próxima por cima. Dividir, Destravar, Dominar.</p>
-        <p>Você não precisa de mais horas no dia. <b>Os 20 minutos que você já tem resolvem</b>, desde que a prática seja a certa. E funciona como bola de neve: os mesmos acordes e as mesmas batidas coringas voltam nas próximas músicas, então a décima música sai muito mais rápido que a primeira.</p>
-        <p>É o mesmo mecanismo que mais de <b>6.000 alunos</b> usaram para sair do zero ou destravar.</p>
-      </div>
-      <div class="cta-wrap" style="justify-content:flex-start">
-        <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero receber a oferta no dia 03/09</button>
       </div>
     </div>
   </div>
@@ -525,13 +525,11 @@ header.hero-section{
     <p class="lead" style="margin-top:1rem">São esses dois, e mais nenhum. Prefiro prometer pouco e entregar inteiro.</p>
     <div class="bonus-grid" style="text-align:left">
       <div class="bonus-card">
-        <span class="selo">Bônus 01</span>
-        <h3>5 atividades com correção minha em vídeo</h3>
+        <h3>Bônus 1 · 5 atividades com correção minha em vídeo</h3>
         <p>Cinco atividades posicionadas no primeiro módulo, para você começar com alguém olhando. Você grava com o celular, envia por dentro da plataforma e eu respondo em vídeo, mostrando o que está certo e o que dá para ajustar.</p>
       </div>
       <div class="bonus-card">
-        <span class="selo">Bônus 02</span>
-        <h3>Aula quinzenal com espaço para dúvidas</h3>
+        <h3>Bônus 2 · Aula quinzenal com espaço para dúvidas</h3>
         <p>A cada quinze dias tem uma aula com um momento aberto para você perguntar o que estiver travando. É exclusiva para os alunos que entrarem por esta condição.</p>
       </div>
     </div>
