@@ -151,13 +151,13 @@ header.hero-section{
   padding:.9rem 1.15rem 1.25rem;overflow:hidden;
 }
 .hero-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem}
-.hero-logo{width:clamp(104px,24vw,150px);height:auto;margin:0 auto;flex-shrink:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.hero-logo{width:clamp(96px,22vw,128px);height:auto;margin:0 auto;flex-shrink:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
 .hero-img-mobile{width:100%;flex:1 1 auto;min-height:0;display:flex;justify-content:center}
 .hero-img-mobile .hero-image-wrap{height:100%}
 .hero-img-desktop{display:none}
 .hero-image-wrap{position:relative;width:100%;min-height:0;display:flex;align-items:center;justify-content:center}
 .hero-image-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(232,122,133,.22) 0%,transparent 66%);border-radius:24px;z-index:0}
-.hero-image-wrap img{position:relative;z-index:1;width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:20px;border:1px solid rgba(220,214,230,.18);filter:drop-shadow(0 25px 30px rgba(0,0,0,.5))}
+.hero-image-wrap img{position:relative;z-index:1;width:auto;height:auto;max-width:100%;max-height:100%;border-radius:20px;border:1px solid rgba(220,214,230,.18);filter:drop-shadow(0 25px 30px rgba(0,0,0,.5))}
 .hero-text{width:100%;flex-shrink:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.55rem}
 /* A headline do hero é Montserrat, não Anton: é a headline da campanha, na
    mesma escala e no mesmo tom de frase da versão anterior. */
@@ -172,7 +172,7 @@ header.hero-section{
 .hero-price-new{color:#fff;background:transparent;border:1px solid rgba(232,122,133,.6);font-weight:800;padding:.35rem .7rem;border-radius:10px}
 
 @media (max-height:700px){
-  .hero-logo{width:clamp(92px,19vw,112px)}
+  .hero-logo{width:clamp(96px,20vw,110px)}
   .hero-inner{gap:.5rem}
   .hero-text{gap:.4rem}
   .hero-sub{font-size:12.5px}
@@ -188,17 +188,19 @@ header.hero-section{
   .hero-img-desktop{display:flex;width:47%;height:100%;align-items:center;justify-content:center}
   .hero-img-desktop .hero-image-wrap{height:100%;max-height:100%}
   .hero-text{width:53%;align-items:flex-start;text-align:left;gap:1rem;justify-content:center}
-  .hero-logo{margin:0;width:clamp(140px,13vw,190px)}
+  .hero-logo{margin:0;width:clamp(119px,11vw,162px)}
   .hero-title{font-size:clamp(34px,3.4vw,48px)}
   .hero-sub{font-size:18px}
+  .hero-cta-wrap{align-items:flex-start}
   .hero-cta-wrap .cta-btn{padding:1.15rem 2.25rem;font-size:19px;width:auto}
+  .hero-price{justify-content:flex-start}
   .hero-price{font-size:13.5px}
   .hero-price-old{font-size:20px}
 }
 @media (min-width:1024px) and (max-height:800px){
   header.hero-section{padding:.9rem 1.15rem 1.1rem}
   .hero-text{gap:.7rem}
-  .hero-logo{width:clamp(120px,10vw,150px)}
+  .hero-logo{width:clamp(102px,8.5vw,128px)}
   .hero-title{font-size:clamp(28px,2.8vw,40px)}
   .hero-sub{font-size:15.5px}
   .hero-cta-wrap .cta-btn{padding:1rem 2rem;font-size:17.5px}
