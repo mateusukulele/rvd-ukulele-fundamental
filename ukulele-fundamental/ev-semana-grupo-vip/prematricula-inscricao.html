@@ -39,9 +39,9 @@ ul{padding:0;list-style:none}
   --indigo-deep:#2D124E;
   --coral:#E87A85;
   --laranja:#CD3701;
-  --acao:#12A18A;
-  --acao-hover:#25A993;
-  --acao-texto:#2D124E;
+  --acao:#CD3701;
+  --acao-hover:#A82D01;
+  --acao-texto:#FFFFFF;
   --teal:#177A6A;
   --sobre-escuro:#DCD6E6;
   --linha:rgba(220,214,230,.16);
@@ -73,17 +73,16 @@ body{
 body::selection,body *::selection{background:var(--coral);color:var(--indigo-deep)}
 
 /* === ANIMAÇÕES === */
-.cascade-section{display:none;opacity:0}
-.cascade-section.animate-reveal{display:block;animation:cascadeIn .8s cubic-bezier(.16,1,.3,1) forwards}
-.cascade-section.hero-section{display:flex;opacity:1}
-@keyframes cascadeIn{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+/* Nada de revelar seção por JS: a página inteira precisa existir mesmo se o
+   script falhar. Antes tudo nascia display:none e só o script mostrava, então
+   um erro de JS no celular deixava a página com o hero e mais nada. */
+.hero-section{display:flex}
 
 .btn-pulsar{animation:pulse-cta 2.4s infinite;transition:transform .3s,background-color .3s,box-shadow .3s}
 @keyframes pulse-cta{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
 .btn-pulsar:hover{transform:translateY(-3px);box-shadow:0 14px 24px -12px rgba(0,0,0,.55)}
 @media (prefers-reduced-motion:reduce){
   .btn-pulsar{animation:none}
-  .cascade-section.animate-reveal{animation:none}
 }
 
 /* === LAYOUT === */
@@ -120,45 +119,72 @@ h1,h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;l
 @media (min-width:640px){.cta-btn{width:auto;padding:1.2rem 2.5rem;font-size:20px}}
 
 /* === SELO DE OFERTA (laranja, só aqui) === */
-.selo{display:inline-block;background:var(--laranja);color:#fff;font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.12em;padding:.4rem .85rem;border-radius:999px}
-.price-old{text-decoration:line-through;text-decoration-color:var(--laranja);text-decoration-thickness:3px;color:#fff}
+.selo{display:inline-block;background:transparent;border:1px solid var(--coral);color:var(--coral);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.12em;padding:.4rem .85rem;border-radius:999px}
+.price-old{text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:3px;color:#fff}
 
-/* === HERO === */
+/* === HERO ===
+   O hero tem que caber numa dobra só, no celular e no notebook. A regra é:
+   o texto nunca encolhe (flex-shrink:0) e a imagem absorve toda a sobra
+   (flex:1 + min-height:0). Em tela baixa a imagem some antes do texto. */
 header.hero-section{
   background:linear-gradient(160deg,var(--indigo) 0%,var(--indigo-deep) 62%);
-  min-height:100dvh;width:100%;
+  height:100dvh;min-height:520px;width:100%;
   border-radius:0 0 36px 36px;
-  position:relative;align-items:center;justify-content:center;
-  padding:1.25rem 1.15rem 2rem;overflow:hidden;
+  position:relative;align-items:stretch;justify-content:center;
+  padding:.9rem 1.15rem 1.25rem;overflow:hidden;
 }
-.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;gap:1rem}
-.hero-logo{width:170px;height:auto;margin:0 auto;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
-.hero-img-mobile{width:100%;display:flex;justify-content:center}
-.hero-img-mobile .hero-image-wrap{height:30vh}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem}
+.hero-logo{width:clamp(112px,26vw,160px);height:auto;margin:0 auto;flex-shrink:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.hero-img-mobile{width:100%;flex:1 1 auto;min-height:0;display:flex;justify-content:center}
+.hero-img-mobile .hero-image-wrap{height:100%}
 .hero-img-desktop{display:none}
-.hero-image-wrap{position:relative;width:100%;display:flex;align-items:center;justify-content:center}
+.hero-image-wrap{position:relative;width:100%;min-height:0;display:flex;align-items:center;justify-content:center}
 .hero-image-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(232,122,133,.22) 0%,transparent 66%);border-radius:24px;z-index:0}
 .hero-image-wrap img{position:relative;z-index:1;width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:20px;border:1px solid rgba(220,214,230,.18);filter:drop-shadow(0 25px 30px rgba(0,0,0,.5))}
-.hero-text{width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.85rem}
-.hero-title{font-size:clamp(24px,6.4vw,30px)}
+.hero-text{width:100%;flex-shrink:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.55rem}
+.hero-title{font-size:clamp(21px,5.9vw,28px)}
 .hero-title span{color:var(--coral)}
-.hero-sub{font-size:14px;color:var(--sobre-escuro);max-width:34rem}
-.hero-cta-wrap{width:100%;max-width:30rem;display:flex;flex-direction:column;align-items:center}
-.hero-price{margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem;font-size:13px}
+.hero-sub{font-size:13.5px;color:var(--sobre-escuro);max-width:34rem}
+.hero-cta-wrap{width:100%;max-width:30rem;display:flex;flex-direction:column;align-items:center;margin-top:.15rem}
+.hero-cta-wrap .cta-btn{padding:.95rem 1.25rem;font-size:16.5px}
+.hero-price{margin-top:.7rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.4rem;font-size:12.5px}
 .hero-price-label{color:var(--sobre-escuro);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.hero-price-old{font-weight:800;font-size:17px}
-.hero-price-new{color:#fff;background:rgba(205,55,1,.22);border:1px solid rgba(205,55,1,.75);font-weight:800;padding:.4rem .8rem;border-radius:10px}
+.hero-price-old{font-weight:800;font-size:16px}
+.hero-price-new{color:#fff;background:rgba(232,122,133,.18);border:1px solid rgba(232,122,133,.55);font-weight:800;padding:.35rem .7rem;border-radius:10px}
+
+/* Celular baixo (iPhone SE e afins): aperta o texto e deixa a imagem sumir */
+@media (max-height:700px){
+  .hero-logo{width:clamp(96px,20vw,120px)}
+  .hero-inner{gap:.5rem}
+  .hero-text{gap:.4rem}
+  .hero-sub{font-size:12.5px}
+  .selo{font-size:10.5px;padding:.3rem .7rem}
+}
+@media (max-height:600px){
+  .hero-img-mobile{display:none}
+}
+
 @media (min-width:1024px){
   .hero-inner{flex-direction:row;gap:3rem;align-items:center}
   .hero-img-mobile{display:none}
-  .hero-img-desktop{display:flex;width:47%;align-items:center;justify-content:center}
-  .hero-img-desktop .hero-image-wrap{height:76vh;max-height:720px}
-  .hero-text{width:53%;align-items:flex-start;text-align:left;gap:1.25rem}
-  .hero-logo{margin:0;width:230px}
-  .hero-title{font-size:clamp(36px,3.6vw,52px)}
-  .hero-sub{font-size:17px}
-  .hero-price{font-size:14px}
-  .hero-price-old{font-size:22px}
+  .hero-img-desktop{display:flex;width:47%;height:100%;align-items:center;justify-content:center}
+  .hero-img-desktop .hero-image-wrap{height:100%;max-height:100%}
+  .hero-text{width:53%;align-items:flex-start;text-align:left;gap:1rem;justify-content:center}
+  .hero-logo{margin:0;width:clamp(150px,14vw,210px)}
+  .hero-title{font-size:clamp(30px,3.1vw,46px)}
+  .hero-sub{font-size:16px}
+  .hero-cta-wrap .cta-btn{padding:1.15rem 2.25rem;font-size:19px;width:auto}
+  .hero-price{font-size:13.5px}
+  .hero-price-old{font-size:20px}
+}
+/* Notebook de 768px de altura: mesma lógica, texto manda, imagem cede */
+@media (min-width:1024px) and (max-height:800px){
+  header.hero-section{padding:.9rem 1.15rem 1.1rem}
+  .hero-text{gap:.75rem}
+  .hero-logo{width:clamp(130px,11vw,165px)}
+  .hero-title{font-size:clamp(27px,2.6vw,36px)}
+  .hero-sub{font-size:14.5px}
+  .hero-cta-wrap .cta-btn{padding:1rem 2rem;font-size:17.5px}
 }
 
 /* === BARRA DE PROVA === */
@@ -175,7 +201,7 @@ header.hero-section{
 .metodo-card{background:var(--indigo);padding:1.4rem;border-radius:20px;display:flex;align-items:flex-start;gap:1.1rem;border:1px solid var(--linha)}
 .metodo-num{width:44px;height:44px;border-radius:12px;background:var(--coral);color:var(--indigo-deep);font-family:'Anton',Impact,sans-serif;font-size:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .metodo-card:nth-child(2) .metodo-num{background:#fff}
-.metodo-card:nth-child(3) .metodo-num{background:var(--acao)}
+.metodo-card:nth-child(3) .metodo-num{background:var(--acao);color:#fff}
 .metodo-card h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;color:#fff;font-size:19px;margin-bottom:.25rem}
 .metodo-card p{font-size:14px;color:var(--sobre-escuro);line-height:1.6}
 .metodo-content .prose{display:flex;flex-direction:column;gap:1.15rem;font-size:15.5px;margin-top:1.25rem}
@@ -221,7 +247,7 @@ header.hero-section{
 .yt .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(45,18,78,.32);transition:background .2s}
 .yt:hover .play{background:rgba(45,18,78,.12)}
 .yt .play span{width:66px;height:66px;border-radius:999px;background:var(--acao);display:grid;place-items:center;box-shadow:0 10px 22px -8px rgba(0,0,0,.6)}
-.yt .play svg{width:26px;height:26px;color:var(--acao-texto);margin-left:4px}
+.yt .play svg{width:26px;height:26px;color:#fff;margin-left:4px}
 .yt:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
 /* === DEPOIMENTOS === */
@@ -248,12 +274,12 @@ header.hero-section{
 .price-box{max-width:900px;margin:2.5rem auto 0;background:var(--indigo);border:1px solid var(--linha);border-radius:28px;padding:1.75rem}
 .price-list{display:flex;flex-direction:column;gap:.9rem;padding-bottom:1.75rem;border-bottom:1px solid var(--linha)}
 .price-list li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px}
-.price-list .ck{color:var(--acao);font-weight:800;flex-shrink:0}
+.price-list .ck{color:var(--coral);font-weight:800;flex-shrink:0}
 .price-list b{color:#fff}
 .price-final{text-align:center;padding-top:1.75rem}
 .price-de{font-size:16px;font-weight:700;color:var(--sobre-escuro);display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:center}
 .price-de .price-old{font-size:30px;font-family:'Anton',Impact,sans-serif;letter-spacing:.02em}
-.price-por{margin:1.25rem auto 0;display:inline-block;background:rgba(205,55,1,.2);border:1px solid rgba(205,55,1,.8);color:#fff;padding:.9rem 1.35rem;border-radius:14px;font-weight:800;font-size:17px;line-height:1.35;max-width:34rem}
+.price-por{margin:1.25rem auto 0;display:inline-block;background:rgba(232,122,133,.18);border:1px solid rgba(232,122,133,.55);color:#fff;padding:.9rem 1.35rem;border-radius:14px;font-weight:800;font-size:17px;line-height:1.35;max-width:34rem}
 @media (min-width:768px){.price-box{padding:3rem}.price-list li{font-size:16px}}
 
 /* === GARANTIA === */
@@ -344,7 +370,7 @@ header.hero-section{
 <body>
 <main class="main-wrap">
 
-<header class="cascade-section hero-section">
+<header class="hero-section">
   <div class="hero-inner">
 
     <div class="hero-img-mobile">
@@ -383,7 +409,7 @@ header.hero-section{
   </div>
 </header>
 
-<section class="cascade-section proof-bar">
+<section class="proof-bar">
   <div class="container proof-inner">
     <div class="proof-item"><span class="proof-num">+6.000</span> <span class="proof-text">alunos formados</span></div>
     <div class="proof-item"><span class="proof-num">154</span> <span class="proof-text">músicas na biblioteca</span></div>
@@ -391,7 +417,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec sec-surface-soft">
+<section class="sec sec-surface-soft">
   <div class="container metodo-grid">
     <div class="metodo-content">
       <span class="eyebrow">O mecanismo por trás do Clube</span>
@@ -433,7 +459,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec sec-surface">
+<section class="sec sec-surface">
   <div class="container container-5xl">
     <span class="eyebrow">Pra quem é o Clube</span>
     <h2 class="h2">O ukulele não é o problema. Aprender sozinho é.</h2>
@@ -463,7 +489,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec">
+<section class="sec">
   <div class="container container-5xl">
     <span class="eyebrow">O que você recebe</span>
     <h2 class="h2">A sua escola de ukulele online, aberta o ano inteiro</h2>
@@ -530,7 +556,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec sec-surface">
+<section class="sec sec-surface">
   <div class="container center">
     <span class="eyebrow">Não é só a minha palavra</span>
     <h2 class="h2">Quem já está no Clube contando como foi</h2>
@@ -548,7 +574,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec">
+<section class="sec">
   <div class="container container-5xl center">
     <span class="eyebrow">Só nesta abertura</span>
     <h2 class="h2">Dois bônus para quem entrar por essa condição</h2>
@@ -569,7 +595,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec sec-surface">
+<section class="sec sec-surface">
   <div class="container center">
     <span class="eyebrow">Resumindo</span>
     <h2 class="h2">Como você sai do outro lado</h2>
@@ -584,7 +610,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec">
+<section class="sec">
   <div class="container container-4xl center">
     <span class="eyebrow">A condição da abertura</span>
     <h2 class="h2">Certo, quanto custa entrar?</h2>
@@ -609,7 +635,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec sec-surface">
+<section class="sec sec-surface">
   <div class="container">
     <div class="guarantee">
       <div class="guarantee-badge"><b>30</b><span>dias</span></div>
@@ -621,7 +647,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec center">
+<section class="sec center">
   <div class="container container-4xl">
     <span class="eyebrow">Ainda em dúvida?</span>
     <h2 class="h2">Escuta quem já estava na sua situação</h2>
@@ -636,7 +662,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec sec-surface">
+<section class="sec sec-surface">
   <div class="container mentor-grid">
     <div class="mentor-img">
       <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto, professor do Clube do Ukulele" width="800" height="1000" loading="lazy" decoding="async">
@@ -654,7 +680,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec sec-surface">
+<section class="sec sec-surface">
   <div class="container container-4xl">
     <span class="eyebrow">Antes de decidir</span>
     <h2 class="h2">Dúvidas que sempre aparecem</h2>
@@ -707,7 +733,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec">
+<section class="sec">
   <div class="final">
     <h2>A abertura é dia 03/09, e o grupo VIP recebe primeiro</h2>
     <p class="lead center">Quem está no grupo vê a condição antes de qualquer anúncio, e tem mais tempo para decidir.</p>
@@ -765,22 +791,6 @@ header.hero-section{
 // PAÍSES (populado sob demanda para reduzir DOM inicial)
 // ============================
 var paises=[['55','br','Brasil (+55)'],['1','us','EUA / Canadá (+1)'],['351','pt','Portugal (+351)'],['34','es','Espanha (+34)'],['33','fr','França (+33)'],['44','gb','Reino Unido (+44)'],['49','de','Alemanha (+49)'],['39','it','Itália (+39)'],['54','ar','Argentina (+54)'],['56','cl','Chile (+56)'],['57','co','Colômbia (+57)'],['52','mx','México (+52)'],['81','jp','Japão (+81)'],['61','au','Austrália (+61)']];
-
-// ============================
-// CASCATA (defer com requestIdleCallback)
-// ============================
-function iniciarCascata(){
-  var s=document.querySelectorAll('.cascade-section:not(.hero-section)');
-  for(var i=0;i<s.length;i++){
-    (function(el,idx){setTimeout(function(){el.classList.add('animate-reveal')},idx*100)})(s[i],i);
-  }
-}
-function bootCascata(){
-  if('requestIdleCallback' in window){requestIdleCallback(iniciarCascata,{timeout:1000})}
-  else{setTimeout(iniciarCascata,200)}
-}
-if(document.readyState==='complete'){bootCascata()}
-else{window.addEventListener('load',bootCascata,{once:true})}
 
 // ============================
 // MODAL
