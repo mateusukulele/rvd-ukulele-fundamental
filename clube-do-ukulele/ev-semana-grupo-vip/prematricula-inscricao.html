@@ -122,7 +122,7 @@ h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;lett
 .cta-btn{
   background:var(--acao);color:var(--acao-texto);
   padding:1.1rem 1.75rem;border-radius:14px;
-  font-weight:800;font-size:18px;line-height:1.25;
+  font-weight:800;font-size:18px;line-height:1.35;
   letter-spacing:-.005em;
   width:100%;max-width:30rem;
   box-shadow:0 14px 26px -14px rgba(0,0,0,.45);
@@ -334,6 +334,9 @@ header.hero-section{
 /* === CTA FINAL === */
 .final{max-width:768px;margin:0 auto;text-align:center}
 .final h2{font-size:clamp(24px,5vw,36px);margin-bottom:1.25rem}
+/* O rótulo desta dobra é longo de propósito (repete a data). Solto do teto
+   de 30rem, ele cabe numa linha só a partir do desktop. */
+@media (min-width:640px){.final .cta-btn{max-width:46rem}}
 
 /* === RODAPÉ === */
 .rodape{padding:2.5rem 1.15rem 3rem;text-align:center;background:var(--indigo-deep);color:var(--sobre-escuro);font-size:12.5px}
@@ -755,12 +758,10 @@ header.hero-section{
 
 <section class="sec sec-branca">
   <div class="final">
-    <h2>A abertura é dia 03/09, e o grupo VIP recebe primeiro</h2>
-    <p class="lead center">Quem está no grupo vê a condição antes de qualquer anúncio, e tem mais tempo para decidir.</p>
+    <h2>Sua chance de destravar no ukulele começa agora</h2>
     <div class="cta-wrap">
-      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero Entrar no Grupo VIP e receber a oferta dia 03/09</button>
     </div>
-    <span class="cta-nota">Sem compromisso e sem pagamento agora.</span>
   </div>
 </section>
 
