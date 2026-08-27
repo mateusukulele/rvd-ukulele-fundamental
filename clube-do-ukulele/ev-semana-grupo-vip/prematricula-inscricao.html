@@ -29,77 +29,92 @@ h1,h2,h3,h4{margin:0;line-height:1.15}
 p,ul{margin:0}
 ul{padding:0;list-style:none}
 
-/* === PALETA CLUBE DO UKULELE 2026 (tema escuro) ===
-   Regra de ouro do manual: base índigo, detalhe coral, teal em tudo que o
-   aluno vai buscar, laranja só no que anuncia a oferta.
-   Coral cheio nunca vira texto sobre o índigo médio (#443468): lá só entra
-   branco ou --sobre-escuro. Coral como texto só sobre o índigo profundo. */
+/* === PALETA CLUBE DO UKULELE 2026 ===
+   Regra de ouro do manual: base índigo, detalhe coral, laranja só no que
+   anuncia a oferta (aqui, por decisão do Mateus, o laranja também é o botão).
+   A página alterna claro e escuro. O que muda entre os dois é a família do
+   coral: coral cheio (#E87A85) só sobre fundo escuro, coral forte (#B4404F)
+   sobre fundo claro. Trocar isso derruba o contraste sem avisar. */
 :root{
   --indigo:#443468;
   --indigo-deep:#2D124E;
   --coral:#E87A85;
+  --coral-forte:#B4404F;
   --laranja:#CD3701;
   --acao:#CD3701;
   --acao-hover:#A82D01;
   --acao-texto:#FFFFFF;
   --teal:#177A6A;
+  --teal-suave:#E7F3F0;
+  --teal-texto:#146054;
   --sobre-escuro:#DCD6E6;
   --linha:rgba(220,214,230,.16);
-  /* tema claro, usado só dentro do modal de captura */
   --ink:#1F1A2B;
   --muted:#5C5A70;
   --page:#F5F4F7;
   --surface:#ECEAF1;
   --card:#FFFFFF;
+  --line:#E1DEE8;
   --line-forte:#C9C4D6;
 }
 
 /* Anel de foco por teclado: obrigatório no manual, não é enfeite. */
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
-  outline:3px solid var(--coral);
+  outline:3px solid var(--indigo);
   outline-offset:3px;
 }
-.modal :where(a,button,input,select,textarea):focus-visible{outline-color:var(--indigo)}
+.sec-escura :where(a,button,summary,[tabindex]):focus-visible,
+.hero-section :where(a,button,[tabindex]):focus-visible{outline-color:#fff}
 
 body{
   margin:0;
   font-family:'Montserrat',system-ui,-apple-system,sans-serif;
-  background:var(--indigo-deep);
-  color:var(--sobre-escuro);
+  background:var(--page);
+  color:var(--ink);
   -webkit-font-smoothing:antialiased;
   line-height:1.65;
   font-size:16px;
 }
 body::selection,body *::selection{background:var(--coral);color:var(--indigo-deep)}
 
-/* === ANIMAÇÕES === */
-/* Nada de revelar seção por JS: a página inteira precisa existir mesmo se o
-   script falhar. Antes tudo nascia display:none e só o script mostrava, então
-   um erro de JS no celular deixava a página com o hero e mais nada. */
+/* === ANIMAÇÕES ===
+   Nada de revelar seção por JS: a página inteira precisa existir mesmo se o
+   script falhar. */
 .hero-section{display:flex}
-
 .btn-pulsar{animation:pulse-cta 2.4s infinite;transition:transform .3s,background-color .3s,box-shadow .3s}
 @keyframes pulse-cta{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
-.btn-pulsar:hover{transform:translateY(-3px);box-shadow:0 14px 24px -12px rgba(0,0,0,.55)}
+.btn-pulsar:hover{transform:translateY(-3px);box-shadow:0 14px 24px -12px rgba(0,0,0,.35)}
 @media (prefers-reduced-motion:reduce){
   .btn-pulsar{animation:none}
 }
 
-/* === LAYOUT === */
+/* === LAYOUT E ALTERNÂNCIA DE FUNDO ===
+   Claro e escuro se revezam do começo ao fim, e o escuro é sempre o roxo da
+   marca. Os blocos escuros do miolo flutuam com canto arredondado, para o
+   olho ler "aqui muda de assunto" antes de ler a primeira palavra. */
 .main-wrap{width:100%;overflow-x:hidden}
 .container{width:100%;max-width:1200px;margin:0 auto;padding:0 1.15rem}
 .container-5xl{max-width:1024px}
 .container-4xl{max-width:900px}
 .sec{padding:4.5rem 1.15rem}
-.sec-surface{background:var(--indigo)}
-.sec-surface-soft{background:linear-gradient(180deg,rgba(68,52,104,.55),rgba(68,52,104,0))}
+.sec-clara{background:var(--page)}
+.sec-branca{background:var(--card)}
+.sec-escura{
+  background-color:var(--indigo-deep);
+  background-image:linear-gradient(165deg,var(--indigo) 0%,var(--indigo-deep) 70%);
+  color:var(--sobre-escuro);
+  padding:4.5rem 1.15rem;
+}
+@media (min-width:768px){.sec-escura{padding:5.5rem 1.15rem}}
 
 /* === TIPOGRAFIA === */
-h1,h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.01em;font-weight:400;color:#fff}
-.eyebrow{display:block;color:var(--coral);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:.75rem}
-.sec-surface .eyebrow{color:#fff}
+h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.01em;font-weight:400;color:var(--indigo)}
+.sec-escura h2,.hero-section h2{color:#fff}
 .h2{font-size:clamp(26px,5.2vw,40px)}
-.lead{max-width:44rem;font-size:16px}
+.eyebrow{display:block;color:var(--coral-forte);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:.75rem}
+.sec-escura .eyebrow{color:var(--coral)}
+.lead{max-width:44rem;font-size:16px;color:var(--muted)}
+.sec-escura .lead{color:var(--sobre-escuro)}
 .center{text-align:center}
 .center .lead{margin-left:auto;margin-right:auto}
 
@@ -110,31 +125,33 @@ h1,h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;l
   font-weight:800;font-size:18px;line-height:1.25;
   letter-spacing:-.005em;
   width:100%;max-width:30rem;
-  box-shadow:0 14px 26px -14px rgba(0,0,0,.7);
+  box-shadow:0 14px 26px -14px rgba(0,0,0,.45);
 }
 .cta-btn:hover{background:var(--acao-hover)}
-.cta-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .cta-wrap{display:flex;justify-content:center;margin-top:2.5rem}
-.cta-nota{display:block;text-align:center;font-size:12.5px;color:var(--sobre-escuro);margin-top:.9rem}
+.cta-nota{display:block;text-align:center;font-size:12.5px;color:var(--muted);margin-top:.9rem}
+.sec-escura .cta-nota{color:var(--sobre-escuro)}
 @media (min-width:640px){.cta-btn{width:auto;padding:1.2rem 2.5rem;font-size:20px}}
 
-/* === SELO DE OFERTA (laranja, só aqui) === */
-.selo{display:inline-block;background:transparent;border:1px solid var(--coral);color:var(--coral);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.12em;padding:.4rem .85rem;border-radius:999px}
+/* === SELO DE OFERTA === */
+.selo{display:inline-block;background:transparent;border:1px solid rgba(232,122,133,.6);color:var(--coral);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;padding:.4rem .9rem;border-radius:999px}
+.sec-clara .selo,.sec-branca .selo{background:rgba(180,64,79,.1);border-color:rgba(180,64,79,.35);color:var(--coral-forte)}
 .price-old{text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:3px;color:#fff}
 
 /* === HERO ===
-   O hero tem que caber numa dobra só, no celular e no notebook. A regra é:
-   o texto nunca encolhe (flex-shrink:0) e a imagem absorve toda a sobra
-   (flex:1 + min-height:0). Em tela baixa a imagem some antes do texto. */
+   Cabe numa dobra só, no celular e no notebook: o texto nunca encolhe
+   (flex-shrink:0) e a imagem absorve toda a sobra (flex:1 + min-height:0). */
 header.hero-section{
-  background:linear-gradient(160deg,var(--indigo) 0%,var(--indigo-deep) 62%);
+  background-color:var(--indigo-deep);
+  background-image:linear-gradient(160deg,var(--indigo) 0%,var(--indigo-deep) 62%);
   height:100dvh;min-height:520px;width:100%;
   border-radius:0 0 36px 36px;
+  color:var(--sobre-escuro);
   position:relative;align-items:stretch;justify-content:center;
   padding:.9rem 1.15rem 1.25rem;overflow:hidden;
 }
 .hero-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem}
-.hero-logo{width:clamp(112px,26vw,160px);height:auto;margin:0 auto;flex-shrink:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.hero-logo{width:clamp(104px,24vw,150px);height:auto;margin:0 auto;flex-shrink:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
 .hero-img-mobile{width:100%;flex:1 1 auto;min-height:0;display:flex;justify-content:center}
 .hero-img-mobile .hero-image-wrap{height:100%}
 .hero-img-desktop{display:none}
@@ -142,7 +159,9 @@ header.hero-section{
 .hero-image-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(232,122,133,.22) 0%,transparent 66%);border-radius:24px;z-index:0}
 .hero-image-wrap img{position:relative;z-index:1;width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:20px;border:1px solid rgba(220,214,230,.18);filter:drop-shadow(0 25px 30px rgba(0,0,0,.5))}
 .hero-text{width:100%;flex-shrink:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.55rem}
-.hero-title{font-size:clamp(21px,5.9vw,28px)}
+/* A headline do hero é Montserrat, não Anton: é a headline da campanha, na
+   mesma escala e no mesmo tom de frase da versão anterior. */
+.hero-title{font-family:'Montserrat',system-ui,sans-serif;font-weight:800;color:#fff;font-size:clamp(22px,6vw,30px);line-height:1.12;letter-spacing:-.01em}
 .hero-title span{color:var(--coral)}
 .hero-sub{font-size:13.5px;color:var(--sobre-escuro);max-width:34rem}
 .hero-cta-wrap{width:100%;max-width:30rem;display:flex;flex-direction:column;align-items:center;margin-top:.15rem}
@@ -150,11 +169,10 @@ header.hero-section{
 .hero-price{margin-top:.7rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.4rem;font-size:12.5px}
 .hero-price-label{color:var(--sobre-escuro);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
 .hero-price-old{font-weight:800;font-size:16px}
-.hero-price-new{color:#fff;background:rgba(232,122,133,.18);border:1px solid rgba(232,122,133,.55);font-weight:800;padding:.35rem .7rem;border-radius:10px}
+.hero-price-new{color:#fff;background:transparent;border:1px solid rgba(232,122,133,.6);font-weight:800;padding:.35rem .7rem;border-radius:10px}
 
-/* Celular baixo (iPhone SE e afins): aperta o texto e deixa a imagem sumir */
 @media (max-height:700px){
-  .hero-logo{width:clamp(96px,20vw,120px)}
+  .hero-logo{width:clamp(92px,19vw,112px)}
   .hero-inner{gap:.5rem}
   .hero-text{gap:.4rem}
   .hero-sub{font-size:12.5px}
@@ -170,43 +188,43 @@ header.hero-section{
   .hero-img-desktop{display:flex;width:47%;height:100%;align-items:center;justify-content:center}
   .hero-img-desktop .hero-image-wrap{height:100%;max-height:100%}
   .hero-text{width:53%;align-items:flex-start;text-align:left;gap:1rem;justify-content:center}
-  .hero-logo{margin:0;width:clamp(150px,14vw,210px)}
-  .hero-title{font-size:clamp(30px,3.1vw,46px)}
-  .hero-sub{font-size:16px}
+  .hero-logo{margin:0;width:clamp(140px,13vw,190px)}
+  .hero-title{font-size:clamp(34px,3.4vw,48px)}
+  .hero-sub{font-size:18px}
   .hero-cta-wrap .cta-btn{padding:1.15rem 2.25rem;font-size:19px;width:auto}
   .hero-price{font-size:13.5px}
   .hero-price-old{font-size:20px}
 }
-/* Notebook de 768px de altura: mesma lógica, texto manda, imagem cede */
 @media (min-width:1024px) and (max-height:800px){
   header.hero-section{padding:.9rem 1.15rem 1.1rem}
-  .hero-text{gap:.75rem}
-  .hero-logo{width:clamp(130px,11vw,165px)}
-  .hero-title{font-size:clamp(27px,2.6vw,36px)}
-  .hero-sub{font-size:14.5px}
+  .hero-text{gap:.7rem}
+  .hero-logo{width:clamp(120px,10vw,150px)}
+  .hero-title{font-size:clamp(28px,2.8vw,40px)}
+  .hero-sub{font-size:15.5px}
   .hero-cta-wrap .cta-btn{padding:1rem 2rem;font-size:17.5px}
 }
 
 /* === BARRA DE PROVA === */
-.proof-bar{padding:1.75rem 1.15rem;background:var(--indigo);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.proof-bar{padding:1.75rem 1.15rem;background:var(--card);border-bottom:1px solid var(--line)}
 .proof-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.5rem}
 .proof-item{display:flex;align-items:baseline;gap:.55rem}
-.proof-num{color:#fff;font-family:'Anton',Impact,sans-serif;font-size:1.5rem;letter-spacing:.02em}
-.proof-text{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--sobre-escuro)}
+.proof-num{color:var(--indigo);font-family:'Anton',Impact,sans-serif;font-size:1.5rem;letter-spacing:.02em}
+.proof-text{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 @media (min-width:768px){.proof-inner{gap:3.5rem}}
 
 /* === MECANISMO 3D === */
 .metodo-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:start}
 .metodo-cards{display:flex;flex-direction:column;gap:1rem}
-.metodo-card{background:var(--indigo);padding:1.4rem;border-radius:20px;display:flex;align-items:flex-start;gap:1.1rem;border:1px solid var(--linha)}
-.metodo-num{width:44px;height:44px;border-radius:12px;background:var(--coral);color:var(--indigo-deep);font-family:'Anton',Impact,sans-serif;font-size:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.metodo-card:nth-child(2) .metodo-num{background:#fff}
-.metodo-card:nth-child(3) .metodo-num{background:var(--acao);color:#fff}
-.metodo-card h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;color:#fff;font-size:19px;margin-bottom:.25rem}
-.metodo-card p{font-size:14px;color:var(--sobre-escuro);line-height:1.6}
-.metodo-content .prose{display:flex;flex-direction:column;gap:1.15rem;font-size:15.5px;margin-top:1.25rem}
-.metodo-content .prose b{color:#fff}
-.destaque{background:var(--indigo);padding:1.4rem 1.55rem;border-radius:18px;color:#fff;font-weight:600;font-size:17px}
+.metodo-card{background:var(--card);padding:1.4rem;border-radius:20px;display:flex;align-items:flex-start;gap:1.1rem;border:1px solid var(--line)}
+.metodo-num{width:44px;height:44px;border-radius:12px;background:var(--indigo);color:#fff;font-family:'Anton',Impact,sans-serif;font-size:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.metodo-card:nth-child(2) .metodo-num{background:var(--coral-forte)}
+.metodo-card:nth-child(3) .metodo-num{background:var(--acao)}
+.metodo-card h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;color:var(--indigo);font-size:19px;margin-bottom:.25rem}
+.metodo-card p{font-size:14px;color:var(--muted);line-height:1.6}
+.metodo-content .prose{display:flex;flex-direction:column;gap:1.15rem;font-size:15.5px;margin-top:1.25rem;color:var(--muted)}
+.metodo-content .prose b{color:var(--ink)}
+.destaque{background:var(--indigo);color:#fff;padding:1.4rem 1.55rem;border-radius:18px;font-weight:600;font-size:17px}
+.destaque b{color:#fff}
 @media (min-width:1024px){
   .metodo-grid{grid-template-columns:5fr 7fr;gap:3.5rem}
   .metodo-cards{order:-1}
@@ -215,106 +233,107 @@ header.hero-section{
 
 /* === PRA QUEM É === */
 .perfil-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.25rem}
-.perfil-card{background:var(--indigo-deep);border:1px solid var(--linha);border-radius:18px;padding:1.4rem}
-.perfil-card .n{display:block;color:var(--coral);font-weight:800;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
-.perfil-card h3{color:#fff;font-size:17px;font-weight:800;margin-bottom:.4rem}
-.perfil-card p{font-size:14px}
+.perfil-card{background:var(--page);border:1px solid var(--line);border-radius:18px;padding:1.4rem}
+.perfil-card .n{display:block;color:var(--coral-forte);font-weight:800;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
+.perfil-card h3{color:var(--indigo);font-size:17px;font-weight:800;margin-bottom:.4rem}
+.perfil-card p{font-size:14px;color:var(--muted)}
 .dores{margin-top:2.25rem;display:flex;flex-direction:column;gap:.85rem}
-.dores li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px}
-.dores .mk{color:var(--coral);font-weight:800;flex-shrink:0;line-height:1.6}
+.dores li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px;color:var(--ink)}
+.dores .mk{color:var(--coral-forte);font-weight:800;flex-shrink:0;line-height:1.6}
 @media (min-width:768px){.perfil-grid{grid-template-columns:repeat(3,1fr)}}
 
 /* === O QUE VOCÊ RECEBE === */
 .recebe-grid{display:grid;grid-template-columns:1fr;gap:1.15rem;margin-top:2.5rem}
-.recebe-card{background:var(--indigo);border:1px solid var(--linha);border-radius:20px;padding:1.5rem;display:flex;flex-direction:column;gap:.55rem}
-.recebe-card .num{font-family:'Anton',Impact,sans-serif;font-size:15px;color:#fff;background:rgba(255,255,255,.12);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.35rem}
-.recebe-card h3{color:#fff;font-size:18px;font-weight:800;line-height:1.3}
-.recebe-card p{font-size:14.5px}
+.recebe-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.5rem;display:flex;flex-direction:column;gap:.55rem}
+.recebe-card .num{font-family:'Anton',Impact,sans-serif;font-size:15px;color:#fff;background:var(--indigo);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.35rem}
+.recebe-card h3{color:var(--indigo);font-size:18px;font-weight:800;line-height:1.3}
+.recebe-card p{font-size:14.5px;color:var(--muted)}
 @media (min-width:768px){.recebe-grid{grid-template-columns:1fr 1fr}}
 
 /* === TRILHA === */
 .trilha{display:grid;grid-template-columns:1fr;gap:.75rem;margin-top:2.25rem}
-.trilha-item{display:flex;align-items:center;gap:1rem;background:var(--indigo);border:1px solid var(--linha);border-radius:16px;padding:1rem 1.15rem}
-.trilha-bolha{width:40px;height:40px;border-radius:50%;background:var(--indigo-deep);border:2px solid var(--coral);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trilha-item{display:flex;align-items:center;gap:1rem;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem 1.15rem}
+.trilha-bolha{width:40px;height:40px;border-radius:50%;background:var(--page);border:2px solid var(--coral-forte);color:var(--indigo);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .trilha-item:nth-child(4) .trilha-bolha,.trilha-item:nth-child(5) .trilha-bolha{border-color:var(--acao)}
-.trilha-item h3{color:#fff;font-size:15.5px;font-weight:800}
-.trilha-item p{font-size:13.5px;line-height:1.5}
+.trilha-item h3{color:var(--indigo);font-size:15.5px;font-weight:800}
+.trilha-item p{font-size:13.5px;line-height:1.5;color:var(--muted)}
 
 /* === DEPOIMENTO EM VÍDEO (facade: o iframe só entra no clique) === */
-.yt{position:relative;width:100%;max-width:720px;margin:2.5rem auto 0;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:3px solid rgba(232,122,133,.45);box-shadow:0 22px 44px -24px rgba(0,0,0,.75);cursor:pointer}
+.yt{position:relative;width:100%;max-width:720px;margin:2.5rem auto 0;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:3px solid var(--indigo);box-shadow:0 22px 44px -24px rgba(0,0,0,.45);cursor:pointer}
+.sec-escura .yt{border-color:rgba(232,122,133,.45)}
 .yt img{width:100%;height:100%;object-fit:cover}
 .yt iframe{width:100%;height:100%;border:0;display:block}
 .yt .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(45,18,78,.32);transition:background .2s}
 .yt:hover .play{background:rgba(45,18,78,.12)}
-.yt .play span{width:66px;height:66px;border-radius:999px;background:var(--acao);display:grid;place-items:center;box-shadow:0 10px 22px -8px rgba(0,0,0,.6)}
+.yt .play span{width:66px;height:66px;border-radius:999px;background:var(--acao);display:grid;place-items:center;box-shadow:0 10px 22px -8px rgba(0,0,0,.45)}
 .yt .play svg{width:26px;height:26px;color:#fff;margin-left:4px}
-.yt:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
 /* === DEPOIMENTOS === */
 .depo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;margin-top:2.5rem}
 .depo-item{width:100%;max-width:340px}
-.depo-item img{width:100%;border-radius:16px;border:1px solid var(--linha)}
+.depo-item img{width:100%;border-radius:16px;border:1px solid var(--line)}
 
-/* === BÔNUS === */
+/* === BÔNUS (bloco escuro) === */
 .bonus-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2.5rem}
-.bonus-card{background:var(--indigo-deep);border:1px solid rgba(232,122,133,.4);border-radius:24px;padding:1.75rem;display:flex;flex-direction:column;gap:.7rem}
+.bonus-card{background:var(--indigo);border:1px solid rgba(232,122,133,.4);border-radius:24px;padding:1.75rem;display:flex;flex-direction:column;gap:.7rem}
 .bonus-card h3{color:#fff;font-size:20px;font-weight:800;line-height:1.25}
-.bonus-card p{font-size:15px}
+.bonus-card p{font-size:15px;color:var(--sobre-escuro)}
 @media (min-width:768px){.bonus-grid{grid-template-columns:1fr 1fr}}
 
 /* === RESUMINDO === */
 .outcome-grid{display:grid;grid-template-columns:1fr;gap:.85rem;margin-top:2.5rem}
-.outcome-card{background:var(--indigo);border:1px solid var(--linha);border-radius:16px;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:.9rem}
-.outcome-card svg{width:22px;height:22px;color:var(--coral);flex-shrink:0}
-.outcome-card p{font-size:14.5px;font-weight:600;color:#fff;text-align:left}
+.outcome-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:.9rem}
+.outcome-card svg{width:22px;height:22px;color:var(--coral-forte);flex-shrink:0}
+.outcome-card p{font-size:14.5px;font-weight:600;color:var(--ink);text-align:left}
 @media (min-width:768px){.outcome-grid{grid-template-columns:1fr 1fr}}
 @media (min-width:1024px){.outcome-grid{grid-template-columns:repeat(3,1fr)}}
 
-/* === PREÇO === */
+/* === PREÇO (bloco escuro) === */
 .price-box{max-width:900px;margin:2.5rem auto 0;background:var(--indigo);border:1px solid var(--linha);border-radius:28px;padding:1.75rem}
 .price-list{display:flex;flex-direction:column;gap:.9rem;padding-bottom:1.75rem;border-bottom:1px solid var(--linha)}
-.price-list li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px}
-.price-list .ck{color:var(--coral);font-weight:800;flex-shrink:0}
+.price-list li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px;color:var(--sobre-escuro)}
+/* Coral rende 3,9:1 sobre o indigo medio do card: aqui o check vai de branco. */
+.price-list .ck{color:#fff;font-weight:800;flex-shrink:0}
 .price-list b{color:#fff}
 .price-final{text-align:center;padding-top:1.75rem}
 .price-de{font-size:16px;font-weight:700;color:var(--sobre-escuro);display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:center}
 .price-de .price-old{font-size:30px;font-family:'Anton',Impact,sans-serif;letter-spacing:.02em}
-.price-por{margin:1.25rem auto 0;display:inline-block;background:rgba(232,122,133,.18);border:1px solid rgba(232,122,133,.55);color:#fff;padding:.9rem 1.35rem;border-radius:14px;font-weight:800;font-size:17px;line-height:1.35;max-width:34rem}
+.price-por{margin:1.25rem auto 0;display:inline-block;background:transparent;border:1px solid rgba(232,122,133,.6);color:#fff;padding:.9rem 1.35rem;border-radius:14px;font-weight:800;font-size:17px;line-height:1.35;max-width:34rem}
 @media (min-width:768px){.price-box{padding:3rem}.price-list li{font-size:16px}}
 
 /* === GARANTIA === */
-.guarantee{max-width:900px;margin:0 auto;background:var(--indigo);border:1px solid var(--linha);border-radius:28px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
+.guarantee{max-width:900px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
 .guarantee-badge{width:96px;height:96px;border-radius:50%;background:var(--teal);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;line-height:1.05}
 .guarantee-badge b{font-family:'Anton',Impact,sans-serif;font-size:30px;font-weight:400}
 .guarantee-badge span{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 .guarantee h2{font-size:clamp(22px,4.4vw,30px);margin-bottom:.75rem}
-.guarantee p{font-size:15px}
+.guarantee p{font-size:15px;color:var(--muted)}
 .guarantee p+p{margin-top:.9rem}
 @media (min-width:768px){.guarantee{flex-direction:row;text-align:left;padding:2.75rem;gap:2.25rem}}
 
 /* === MENTOR === */
 .mentor-grid{max-width:1024px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2.25rem;align-items:center}
-.mentor-img{border-radius:28px;overflow:hidden;border:1px solid var(--linha);aspect-ratio:4/5}
+.mentor-img{border-radius:28px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5}
 .mentor-img img{width:100%;height:100%;object-fit:cover}
-.mentor-content p{font-size:15px}
+.mentor-content p{font-size:15px;color:var(--muted)}
 .mentor-content p+p{margin-top:1rem}
 @media (min-width:768px){.mentor-grid{grid-template-columns:5fr 7fr;gap:3rem}}
 
 /* === FAQ === */
 .faq-wrap{max-width:900px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:.75rem}
-.faq-item{background:var(--indigo);border:1px solid var(--linha);border-radius:14px;overflow:hidden}
-.faq-summary{list-style:none;padding:1.15rem 1.25rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:700;color:#fff;font-size:15px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.faq-summary{list-style:none;padding:1.15rem 1.25rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:700;color:var(--indigo);font-size:15px}
 .faq-summary::-webkit-details-marker{display:none}
-.faq-arrow{width:.7rem;height:.7rem;border-right:2px solid var(--coral);border-bottom:2px solid var(--coral);transform:rotate(45deg);transition:transform .2s;flex-shrink:0;margin-top:-4px}
+.faq-arrow{width:.7rem;height:.7rem;border-right:2px solid var(--coral-forte);border-bottom:2px solid var(--coral-forte);transform:rotate(45deg);transition:transform .2s;flex-shrink:0;margin-top:-4px}
 .faq-item[open] .faq-arrow{transform:rotate(-135deg);margin-top:4px}
-.faq-content{padding:0 1.25rem 1.35rem;font-size:14.5px}
+.faq-content{padding:0 1.25rem 1.35rem;font-size:14.5px;color:var(--muted)}
 
 /* === CTA FINAL === */
 .final{max-width:768px;margin:0 auto;text-align:center}
 .final h2{font-size:clamp(24px,5vw,36px);margin-bottom:1.25rem}
 
 /* === RODAPÉ === */
-.rodape{padding:2.5rem 1.15rem 3rem;text-align:center;border-top:1px solid var(--linha);font-size:12.5px;color:var(--sobre-escuro)}
+.rodape{padding:2.5rem 1.15rem 3rem;text-align:center;background:var(--indigo-deep);color:var(--sobre-escuro);font-size:12.5px}
 
 /* === MODAL === */
 .custom-scrollbar::-webkit-scrollbar{width:5px}
@@ -384,9 +403,9 @@ header.hero-section{
 
     <div class="hero-text">
       <img src="../../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" class="hero-logo" fetchpriority="high" decoding="async">
-      <span class="selo">Abertura 03/09 · grupo VIP</span>
-      <h1 class="hero-title">Aprender ukulele com <span>direção</span>, em vez de juntar vídeo solto</h1>
-      <p class="hero-sub">O Clube do Ukulele abre no dia 03/09 com uma condição que só vai existir dentro do grupo VIP. Entre no grupo e receba a oferta antes de qualquer anúncio.</p>
+      <span class="selo">🔥 Condição exclusiva no Grupo VIP 🔥</span>
+      <h1 class="hero-title">Tire o ukulele do canto da sala e toque suas músicas favoritas com <span>20 minutos por dia</span></h1>
+      <p class="hero-sub">Mesmo que você já tenha tentado antes e travado no caminho, e mesmo que ache que não tenha talento.</p>
       <div class="hero-cta-wrap">
         <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
         <div class="hero-price">
@@ -417,7 +436,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec sec-surface-soft">
+<section class="sec sec-clara">
   <div class="container metodo-grid">
     <div class="metodo-content">
       <span class="eyebrow">O mecanismo por trás do Clube</span>
@@ -459,7 +478,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec sec-surface">
+<section class="sec sec-branca">
   <div class="container container-5xl">
     <span class="eyebrow">Pra quem é o Clube</span>
     <h2 class="h2">O ukulele não é o problema. Aprender sozinho é.</h2>
@@ -489,7 +508,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec">
+<section class="sec sec-clara">
   <div class="container container-5xl">
     <span class="eyebrow">O que você recebe</span>
     <h2 class="h2">A sua escola de ukulele online, aberta o ano inteiro</h2>
@@ -556,7 +575,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec sec-surface">
+<section class="sec sec-branca">
   <div class="container center">
     <span class="eyebrow">Não é só a minha palavra</span>
     <h2 class="h2">Quem já está no Clube contando como foi</h2>
@@ -574,7 +593,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec">
+<section class="sec sec-escura">
   <div class="container container-5xl center">
     <span class="eyebrow">Só nesta abertura</span>
     <h2 class="h2">Dois bônus para quem entrar por essa condição</h2>
@@ -595,7 +614,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec sec-surface">
+<section class="sec sec-clara">
   <div class="container center">
     <span class="eyebrow">Resumindo</span>
     <h2 class="h2">Como você sai do outro lado</h2>
@@ -610,7 +629,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec">
+<section class="sec sec-escura">
   <div class="container container-4xl center">
     <span class="eyebrow">A condição da abertura</span>
     <h2 class="h2">Certo, quanto custa entrar?</h2>
@@ -635,7 +654,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec sec-surface">
+<section class="sec sec-branca">
   <div class="container">
     <div class="guarantee">
       <div class="guarantee-badge"><b>30</b><span>dias</span></div>
@@ -647,7 +666,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec center">
+<section class="sec sec-clara center">
   <div class="container container-4xl">
     <span class="eyebrow">Ainda em dúvida?</span>
     <h2 class="h2">Escuta quem já estava na sua situação</h2>
@@ -662,7 +681,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec sec-surface">
+<section class="sec sec-branca">
   <div class="container mentor-grid">
     <div class="mentor-img">
       <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto, professor do Clube do Ukulele" width="800" height="1000" loading="lazy" decoding="async">
@@ -680,7 +699,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec sec-surface">
+<section class="sec sec-clara">
   <div class="container container-4xl">
     <span class="eyebrow">Antes de decidir</span>
     <h2 class="h2">Dúvidas que sempre aparecem</h2>
@@ -733,7 +752,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec">
+<section class="sec sec-branca">
   <div class="final">
     <h2>A abertura é dia 03/09, e o grupo VIP recebe primeiro</h2>
     <p class="lead center">Quem está no grupo vê a condição antes de qualquer anúncio, e tem mais tempo para decidir.</p>
