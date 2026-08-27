@@ -15,3 +15,10 @@
 # então ?unlock=1 e as UTMs sobrevivem ao redirect.
 /ukulele-fundamental/rvd-ukulele-fundamental-rvd2v2-vert-op  /ukulele-fundamental/rvd-ukulele-fundamental-rvd3v1-vert-op  302
 /ukulele-fundamental/rvd-ukulele-fundamental-rvd2v2-vert-cl  /ukulele-fundamental/rvd-ukulele-fundamental-rvd3v1-vert-cl  302
+
+# Pré-matrícula do Grupo VIP, separada em duas ofertas em 27/08/2026:
+#   /ukulele-fundamental/... = a página original do Ukulele Fundamental
+#   /clube-do-ukulele/...    = a oferta do Clube do Ukulele, abertura 03/09
+# O apelido s10k-marco aponta para a original em vez de duplicar o arquivo:
+# uma cópia a mais seria mais um lugar para esquecer de atualizar.
+/ukulele-fundamental/ev-semana-grupo-vip/prematricula-inscricao-s10k-marco  /ukulele-fundamental/ev-semana-grupo-vip/prematricula-inscricao  302

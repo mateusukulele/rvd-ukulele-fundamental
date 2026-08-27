@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clube do Ukulele - Grupo VIP da abertura de 03/09</title>
+<link rel="icon" type="image/svg+xml" href="../../img/favicon-mini-ukulele.svg">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://serversidegtm.comotocarukulele.com">
+<link rel="dns-prefetch" href="https://connect.facebook.net">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://flagcdn.com">
+<link rel="dns-prefetch" href="https://i.ytimg.com">
+<link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
+
+<link rel="preload" as="image" href="../../img/Hero.webp" fetchpriority="high">
+
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap"></noscript>
+
+<style>
+/* === RESET & BASE === */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+img{max-width:100%;height:auto;display:block}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,h4{margin:0;line-height:1.15}
+p,ul{margin:0}
+ul{padding:0;list-style:none}
+
+/* === PALETA CLUBE DO UKULELE 2026 (tema escuro) ===
+   Regra de ouro do manual: base índigo, detalhe coral, teal em tudo que o
+   aluno vai buscar, laranja só no que anuncia a oferta.
+   Coral cheio nunca vira texto sobre o índigo médio (#443468): lá só entra
+   branco ou --sobre-escuro. Coral como texto só sobre o índigo profundo. */
+:root{
+  --indigo:#443468;
+  --indigo-deep:#2D124E;
+  --coral:#E87A85;
+  --laranja:#CD3701;
+  --acao:#CD3701;
+  --acao-hover:#A82D01;
+  --acao-texto:#FFFFFF;
+  --teal:#177A6A;
+  --sobre-escuro:#DCD6E6;
+  --linha:rgba(220,214,230,.16);
+  /* tema claro, usado só dentro do modal de captura */
+  --ink:#1F1A2B;
+  --muted:#5C5A70;
+  --page:#F5F4F7;
+  --surface:#ECEAF1;
+  --card:#FFFFFF;
+  --line-forte:#C9C4D6;
+}
+
+/* Anel de foco por teclado: obrigatório no manual, não é enfeite. */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
+  outline:3px solid var(--coral);
+  outline-offset:3px;
+}
+.modal :where(a,button,input,select,textarea):focus-visible{outline-color:var(--indigo)}
+
+body{
+  margin:0;
+  font-family:'Montserrat',system-ui,-apple-system,sans-serif;
+  background:var(--indigo-deep);
+  color:var(--sobre-escuro);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.65;
+  font-size:16px;
+}
+body::selection,body *::selection{background:var(--coral);color:var(--indigo-deep)}
+
+/* === ANIMAÇÕES === */
+/* Nada de revelar seção por JS: a página inteira precisa existir mesmo se o
+   script falhar. Antes tudo nascia display:none e só o script mostrava, então
+   um erro de JS no celular deixava a página com o hero e mais nada. */
+.hero-section{display:flex}
+
+.btn-pulsar{animation:pulse-cta 2.4s infinite;transition:transform .3s,background-color .3s,box-shadow .3s}
+@keyframes pulse-cta{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.btn-pulsar:hover{transform:translateY(-3px);box-shadow:0 14px 24px -12px rgba(0,0,0,.55)}
+@media (prefers-reduced-motion:reduce){
+  .btn-pulsar{animation:none}
+}
+
+/* === LAYOUT === */
+.main-wrap{width:100%;overflow-x:hidden}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 1.15rem}
+.container-5xl{max-width:1024px}
+.container-4xl{max-width:900px}
+.sec{padding:4.5rem 1.15rem}
+.sec-surface{background:var(--indigo)}
+.sec-surface-soft{background:linear-gradient(180deg,rgba(68,52,104,.55),rgba(68,52,104,0))}
+
+/* === TIPOGRAFIA === */
+h1,h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.01em;font-weight:400;color:#fff}
+.eyebrow{display:block;color:var(--coral);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:.75rem}
+.sec-surface .eyebrow{color:#fff}
+.h2{font-size:clamp(26px,5.2vw,40px)}
+.lead{max-width:44rem;font-size:16px}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
+
+/* === BOTÕES === */
+.cta-btn{
+  background:var(--acao);color:var(--acao-texto);
+  padding:1.1rem 1.75rem;border-radius:14px;
+  font-weight:800;font-size:18px;line-height:1.25;
+  letter-spacing:-.005em;
+  width:100%;max-width:30rem;
+  box-shadow:0 14px 26px -14px rgba(0,0,0,.7);
+}
+.cta-btn:hover{background:var(--acao-hover)}
+.cta-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.cta-wrap{display:flex;justify-content:center;margin-top:2.5rem}
+.cta-nota{display:block;text-align:center;font-size:12.5px;color:var(--sobre-escuro);margin-top:.9rem}
+@media (min-width:640px){.cta-btn{width:auto;padding:1.2rem 2.5rem;font-size:20px}}
+
+/* === SELO DE OFERTA (laranja, só aqui) === */
+.selo{display:inline-block;background:transparent;border:1px solid var(--coral);color:var(--coral);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.12em;padding:.4rem .85rem;border-radius:999px}
+.price-old{text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:3px;color:#fff}
+
+/* === HERO ===
+   O hero tem que caber numa dobra só, no celular e no notebook. A regra é:
+   o texto nunca encolhe (flex-shrink:0) e a imagem absorve toda a sobra
+   (flex:1 + min-height:0). Em tela baixa a imagem some antes do texto. */
+header.hero-section{
+  background:linear-gradient(160deg,var(--indigo) 0%,var(--indigo-deep) 62%);
+  height:100dvh;min-height:520px;width:100%;
+  border-radius:0 0 36px 36px;
+  position:relative;align-items:stretch;justify-content:center;
+  padding:.9rem 1.15rem 1.25rem;overflow:hidden;
+}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem}
+.hero-logo{width:clamp(112px,26vw,160px);height:auto;margin:0 auto;flex-shrink:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.hero-img-mobile{width:100%;flex:1 1 auto;min-height:0;display:flex;justify-content:center}
+.hero-img-mobile .hero-image-wrap{height:100%}
+.hero-img-desktop{display:none}
+.hero-image-wrap{position:relative;width:100%;min-height:0;display:flex;align-items:center;justify-content:center}
+.hero-image-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(232,122,133,.22) 0%,transparent 66%);border-radius:24px;z-index:0}
+.hero-image-wrap img{position:relative;z-index:1;width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:20px;border:1px solid rgba(220,214,230,.18);filter:drop-shadow(0 25px 30px rgba(0,0,0,.5))}
+.hero-text{width:100%;flex-shrink:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.55rem}
+.hero-title{font-size:clamp(21px,5.9vw,28px)}
+.hero-title span{color:var(--coral)}
+.hero-sub{font-size:13.5px;color:var(--sobre-escuro);max-width:34rem}
+.hero-cta-wrap{width:100%;max-width:30rem;display:flex;flex-direction:column;align-items:center;margin-top:.15rem}
+.hero-cta-wrap .cta-btn{padding:.95rem 1.25rem;font-size:16.5px}
+.hero-price{margin-top:.7rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.4rem;font-size:12.5px}
+.hero-price-label{color:var(--sobre-escuro);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.hero-price-old{font-weight:800;font-size:16px}
+.hero-price-new{color:#fff;background:rgba(232,122,133,.18);border:1px solid rgba(232,122,133,.55);font-weight:800;padding:.35rem .7rem;border-radius:10px}
+
+/* Celular baixo (iPhone SE e afins): aperta o texto e deixa a imagem sumir */
+@media (max-height:700px){
+  .hero-logo{width:clamp(96px,20vw,120px)}
+  .hero-inner{gap:.5rem}
+  .hero-text{gap:.4rem}
+  .hero-sub{font-size:12.5px}
+  .selo{font-size:10.5px;padding:.3rem .7rem}
+}
+@media (max-height:600px){
+  .hero-img-mobile{display:none}
+}
+
+@media (min-width:1024px){
+  .hero-inner{flex-direction:row;gap:3rem;align-items:center}
+  .hero-img-mobile{display:none}
+  .hero-img-desktop{display:flex;width:47%;height:100%;align-items:center;justify-content:center}
+  .hero-img-desktop .hero-image-wrap{height:100%;max-height:100%}
+  .hero-text{width:53%;align-items:flex-start;text-align:left;gap:1rem;justify-content:center}
+  .hero-logo{margin:0;width:clamp(150px,14vw,210px)}
+  .hero-title{font-size:clamp(30px,3.1vw,46px)}
+  .hero-sub{font-size:16px}
+  .hero-cta-wrap .cta-btn{padding:1.15rem 2.25rem;font-size:19px;width:auto}
+  .hero-price{font-size:13.5px}
+  .hero-price-old{font-size:20px}
+}
+/* Notebook de 768px de altura: mesma lógica, texto manda, imagem cede */
+@media (min-width:1024px) and (max-height:800px){
+  header.hero-section{padding:.9rem 1.15rem 1.1rem}
+  .hero-text{gap:.75rem}
+  .hero-logo{width:clamp(130px,11vw,165px)}
+  .hero-title{font-size:clamp(27px,2.6vw,36px)}
+  .hero-sub{font-size:14.5px}
+  .hero-cta-wrap .cta-btn{padding:1rem 2rem;font-size:17.5px}
+}
+
+/* === BARRA DE PROVA === */
+.proof-bar{padding:1.75rem 1.15rem;background:var(--indigo);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.proof-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.5rem}
+.proof-item{display:flex;align-items:baseline;gap:.55rem}
+.proof-num{color:#fff;font-family:'Anton',Impact,sans-serif;font-size:1.5rem;letter-spacing:.02em}
+.proof-text{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--sobre-escuro)}
+@media (min-width:768px){.proof-inner{gap:3.5rem}}
+
+/* === MECANISMO 3D === */
+.metodo-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:start}
+.metodo-cards{display:flex;flex-direction:column;gap:1rem}
+.metodo-card{background:var(--indigo);padding:1.4rem;border-radius:20px;display:flex;align-items:flex-start;gap:1.1rem;border:1px solid var(--linha)}
+.metodo-num{width:44px;height:44px;border-radius:12px;background:var(--coral);color:var(--indigo-deep);font-family:'Anton',Impact,sans-serif;font-size:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.metodo-card:nth-child(2) .metodo-num{background:#fff}
+.metodo-card:nth-child(3) .metodo-num{background:var(--acao);color:#fff}
+.metodo-card h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;color:#fff;font-size:19px;margin-bottom:.25rem}
+.metodo-card p{font-size:14px;color:var(--sobre-escuro);line-height:1.6}
+.metodo-content .prose{display:flex;flex-direction:column;gap:1.15rem;font-size:15.5px;margin-top:1.25rem}
+.metodo-content .prose b{color:#fff}
+.destaque{background:var(--indigo);padding:1.4rem 1.55rem;border-radius:18px;color:#fff;font-weight:600;font-size:17px}
+@media (min-width:1024px){
+  .metodo-grid{grid-template-columns:5fr 7fr;gap:3.5rem}
+  .metodo-cards{order:-1}
+  .metodo-content .prose{font-size:16.5px}
+}
+
+/* === PRA QUEM É === */
+.perfil-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.25rem}
+.perfil-card{background:var(--indigo-deep);border:1px solid var(--linha);border-radius:18px;padding:1.4rem}
+.perfil-card .n{display:block;color:var(--coral);font-weight:800;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
+.perfil-card h3{color:#fff;font-size:17px;font-weight:800;margin-bottom:.4rem}
+.perfil-card p{font-size:14px}
+.dores{margin-top:2.25rem;display:flex;flex-direction:column;gap:.85rem}
+.dores li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px}
+.dores .mk{color:var(--coral);font-weight:800;flex-shrink:0;line-height:1.6}
+@media (min-width:768px){.perfil-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* === O QUE VOCÊ RECEBE === */
+.recebe-grid{display:grid;grid-template-columns:1fr;gap:1.15rem;margin-top:2.5rem}
+.recebe-card{background:var(--indigo);border:1px solid var(--linha);border-radius:20px;padding:1.5rem;display:flex;flex-direction:column;gap:.55rem}
+.recebe-card .num{font-family:'Anton',Impact,sans-serif;font-size:15px;color:#fff;background:rgba(255,255,255,.12);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.35rem}
+.recebe-card h3{color:#fff;font-size:18px;font-weight:800;line-height:1.3}
+.recebe-card p{font-size:14.5px}
+@media (min-width:768px){.recebe-grid{grid-template-columns:1fr 1fr}}
+
+/* === TRILHA === */
+.trilha{display:grid;grid-template-columns:1fr;gap:.75rem;margin-top:2.25rem}
+.trilha-item{display:flex;align-items:center;gap:1rem;background:var(--indigo);border:1px solid var(--linha);border-radius:16px;padding:1rem 1.15rem}
+.trilha-bolha{width:40px;height:40px;border-radius:50%;background:var(--indigo-deep);border:2px solid var(--coral);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trilha-item:nth-child(4) .trilha-bolha,.trilha-item:nth-child(5) .trilha-bolha{border-color:var(--acao)}
+.trilha-item h3{color:#fff;font-size:15.5px;font-weight:800}
+.trilha-item p{font-size:13.5px;line-height:1.5}
+
+/* === DEPOIMENTO EM VÍDEO (facade: o iframe só entra no clique) === */
+.yt{position:relative;width:100%;max-width:720px;margin:2.5rem auto 0;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:3px solid rgba(232,122,133,.45);box-shadow:0 22px 44px -24px rgba(0,0,0,.75);cursor:pointer}
+.yt img{width:100%;height:100%;object-fit:cover}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(45,18,78,.32);transition:background .2s}
+.yt:hover .play{background:rgba(45,18,78,.12)}
+.yt .play span{width:66px;height:66px;border-radius:999px;background:var(--acao);display:grid;place-items:center;box-shadow:0 10px 22px -8px rgba(0,0,0,.6)}
+.yt .play svg{width:26px;height:26px;color:#fff;margin-left:4px}
+.yt:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+/* === DEPOIMENTOS === */
+.depo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;margin-top:2.5rem}
+.depo-item{width:100%;max-width:340px}
+.depo-item img{width:100%;border-radius:16px;border:1px solid var(--linha)}
+
+/* === BÔNUS === */
+.bonus-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2.5rem}
+.bonus-card{background:var(--indigo-deep);border:1px solid rgba(232,122,133,.4);border-radius:24px;padding:1.75rem;display:flex;flex-direction:column;gap:.7rem}
+.bonus-card h3{color:#fff;font-size:20px;font-weight:800;line-height:1.25}
+.bonus-card p{font-size:15px}
+@media (min-width:768px){.bonus-grid{grid-template-columns:1fr 1fr}}
+
+/* === RESUMINDO === */
+.outcome-grid{display:grid;grid-template-columns:1fr;gap:.85rem;margin-top:2.5rem}
+.outcome-card{background:var(--indigo);border:1px solid var(--linha);border-radius:16px;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:.9rem}
+.outcome-card svg{width:22px;height:22px;color:var(--coral);flex-shrink:0}
+.outcome-card p{font-size:14.5px;font-weight:600;color:#fff;text-align:left}
+@media (min-width:768px){.outcome-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1024px){.outcome-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* === PREÇO === */
+.price-box{max-width:900px;margin:2.5rem auto 0;background:var(--indigo);border:1px solid var(--linha);border-radius:28px;padding:1.75rem}
+.price-list{display:flex;flex-direction:column;gap:.9rem;padding-bottom:1.75rem;border-bottom:1px solid var(--linha)}
+.price-list li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px}
+.price-list .ck{color:var(--coral);font-weight:800;flex-shrink:0}
+.price-list b{color:#fff}
+.price-final{text-align:center;padding-top:1.75rem}
+.price-de{font-size:16px;font-weight:700;color:var(--sobre-escuro);display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:center}
+.price-de .price-old{font-size:30px;font-family:'Anton',Impact,sans-serif;letter-spacing:.02em}
+.price-por{margin:1.25rem auto 0;display:inline-block;background:rgba(232,122,133,.18);border:1px solid rgba(232,122,133,.55);color:#fff;padding:.9rem 1.35rem;border-radius:14px;font-weight:800;font-size:17px;line-height:1.35;max-width:34rem}
+@media (min-width:768px){.price-box{padding:3rem}.price-list li{font-size:16px}}
+
+/* === GARANTIA === */
+.guarantee{max-width:900px;margin:0 auto;background:var(--indigo);border:1px solid var(--linha);border-radius:28px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
+.guarantee-badge{width:96px;height:96px;border-radius:50%;background:var(--teal);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;line-height:1.05}
+.guarantee-badge b{font-family:'Anton',Impact,sans-serif;font-size:30px;font-weight:400}
+.guarantee-badge span{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.guarantee h2{font-size:clamp(22px,4.4vw,30px);margin-bottom:.75rem}
+.guarantee p{font-size:15px}
+.guarantee p+p{margin-top:.9rem}
+@media (min-width:768px){.guarantee{flex-direction:row;text-align:left;padding:2.75rem;gap:2.25rem}}
+
+/* === MENTOR === */
+.mentor-grid{max-width:1024px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2.25rem;align-items:center}
+.mentor-img{border-radius:28px;overflow:hidden;border:1px solid var(--linha);aspect-ratio:4/5}
+.mentor-img img{width:100%;height:100%;object-fit:cover}
+.mentor-content p{font-size:15px}
+.mentor-content p+p{margin-top:1rem}
+@media (min-width:768px){.mentor-grid{grid-template-columns:5fr 7fr;gap:3rem}}
+
+/* === FAQ === */
+.faq-wrap{max-width:900px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{background:var(--indigo);border:1px solid var(--linha);border-radius:14px;overflow:hidden}
+.faq-summary{list-style:none;padding:1.15rem 1.25rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:700;color:#fff;font-size:15px}
+.faq-summary::-webkit-details-marker{display:none}
+.faq-arrow{width:.7rem;height:.7rem;border-right:2px solid var(--coral);border-bottom:2px solid var(--coral);transform:rotate(45deg);transition:transform .2s;flex-shrink:0;margin-top:-4px}
+.faq-item[open] .faq-arrow{transform:rotate(-135deg);margin-top:4px}
+.faq-content{padding:0 1.25rem 1.35rem;font-size:14.5px}
+
+/* === CTA FINAL === */
+.final{max-width:768px;margin:0 auto;text-align:center}
+.final h2{font-size:clamp(24px,5vw,36px);margin-bottom:1.25rem}
+
+/* === RODAPÉ === */
+.rodape{padding:2.5rem 1.15rem 3rem;text-align:center;border-top:1px solid var(--linha);font-size:12.5px;color:var(--sobre-escuro)}
+
+/* === MODAL === */
+.custom-scrollbar::-webkit-scrollbar{width:5px}
+.custom-scrollbar::-webkit-scrollbar-track{background:#f1f1f1}
+.custom-scrollbar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:10px}
+.modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(45,18,78,.94);padding:1rem;backdrop-filter:blur(10px);opacity:0;transition:opacity .3s}
+.modal.open{display:flex}
+.modal.visible{opacity:1}
+.modal-content{width:100%;max-width:28rem;border-radius:28px;background:var(--card);padding:1.5rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);transform:scale(.95);transition:transform .3s;color:var(--ink);line-height:1.5}
+.modal-content.visible{transform:scale(1)}
+.modal h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:1.4rem;color:var(--indigo);margin-bottom:.4rem;text-align:center}
+.modal-sub{color:var(--muted);font-size:13px;margin-bottom:1.5rem;text-align:center;line-height:1.4}
+.modal-form{display:flex;flex-direction:column;gap:1rem}
+.modal-form label{display:block;font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;margin-left:.5rem}
+.modal-form input[type=text],.modal-form input[type=email]{width:100%;min-height:44px;padding:.8rem 1rem;border-radius:12px;background:var(--page);border:1px solid var(--line-forte);font-size:14px;font-family:inherit;color:var(--ink);transition:border-color .2s,background-color .2s}
+.modal-form input[type=text]:focus,.modal-form input[type=email]:focus{border-color:var(--indigo);background:var(--card)}
+.erro-msg{margin-top:.35rem;font-size:11px;font-weight:700;color:#B83A2E;margin-left:.5rem;display:none}
+.erro-msg.show{display:block}
+.aviso-msg{margin-top:.35rem;font-size:11px;font-weight:700;color:#8A5A00;margin-left:.5rem;display:none}
+.aviso-msg.show{display:block}
+.phone-wrap{display:flex;border-radius:12px;border:1px solid var(--line-forte);background:var(--page);transition:border-color .2s}
+.phone-wrap:focus-within{border-color:var(--indigo)}
+.ddi-container{position:relative;flex-shrink:0}
+.ddi-button{height:100%;min-height:44px;display:flex;align-items:center;padding:0 .75rem;background:var(--surface);border-right:1px solid var(--line-forte);border-radius:12px 0 0 12px;transition:background-color .2s}
+.ddi-button:hover{background:var(--sobre-escuro)}
+.ddi-button img{width:20px;height:auto;margin-right:.35rem;border-radius:2px;object-fit:cover}
+.ddi-button span{font-size:12.5px;font-weight:700;color:var(--ink)}
+.ddi-button svg{width:.75rem;height:.75rem;color:var(--muted);margin-left:.35rem}
+.ddi-menu{display:none;position:absolute;top:100%;left:0;margin-top:.25rem;width:16rem;max-height:15rem;overflow-y:auto;background:var(--card);border:1px solid var(--line-forte);border-radius:12px;box-shadow:0 10px 15px -3px rgba(0,0,0,.15);z-index:50}
+.ddi-menu.open{display:block}
+.ddi-option{width:100%;min-height:44px;display:flex;align-items:center;gap:.5rem;padding:.5rem .75rem;text-align:left;transition:background-color .15s}
+.ddi-option:hover{background:var(--page)}
+.ddi-option.other{border-top:1px solid var(--line-forte)}
+.ddi-option img{width:20px;height:auto;border-radius:2px}
+.ddi-option svg{width:20px;height:20px;color:var(--muted)}
+.ddi-option span{font-size:12.5px;font-weight:500;color:var(--ink)}
+.phone-wrap input[type=tel]{width:100%;min-height:44px;padding:.8rem 1rem;background:transparent;font-weight:500;font-size:14px;border:0;color:var(--ink);font-family:inherit}
+.modal-submit{width:100%;background:var(--acao);color:var(--acao-texto);padding:1rem;border-radius:12px;font-weight:800;font-size:17px;margin-top:.5rem;transition:background-color .2s,transform .2s}
+.modal-submit:hover:not(:disabled){background:var(--acao-hover);transform:translateY(-2px)}
+.modal-submit:disabled{opacity:.7;cursor:not-allowed}
+.modal-close{margin-top:1rem;width:100%;min-height:44px;text-align:center;color:var(--muted);font-size:11.5px;text-transform:uppercase;font-weight:700;letter-spacing:.1em;padding:.75rem .5rem}
+.modal-close:hover{color:var(--ink)}
+@media (min-width:768px){
+  .modal-content{padding:2.25rem}
+  .modal h3{font-size:1.6rem}
+  .modal-sub{font-size:14px;margin-bottom:1.75rem}
+  .modal-form input[type=text],.modal-form input[type=email]{padding:.9rem 1.1rem}
+  .phone-wrap input[type=tel]{padding:.9rem}
+}
+</style>
+</head>
+
+<body>
+<main class="main-wrap">
+
+<header class="hero-section">
+  <div class="hero-inner">
+
+    <div class="hero-img-mobile">
+      <div class="hero-image-wrap">
+        <img src="../../img/Hero.webp"
+             alt="Mateus Augusto tocando ukulele"
+             width="1086" height="1448"
+             fetchpriority="high" decoding="async">
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <img src="../../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" class="hero-logo" fetchpriority="high" decoding="async">
+      <span class="selo">Abertura 03/09 · grupo VIP</span>
+      <h1 class="hero-title">Aprender ukulele com <span>direção</span>, em vez de juntar vídeo solto</h1>
+      <p class="hero-sub">O Clube do Ukulele abre no dia 03/09 com uma condição que só vai existir dentro do grupo VIP. Entre no grupo e receba a oferta antes de qualquer anúncio.</p>
+      <div class="hero-cta-wrap">
+        <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
+        <div class="hero-price">
+          <span class="hero-price-label">De:</span>
+          <span class="price-old hero-price-old">R$ 600,00</span>
+          <span class="hero-price-new">Por: valor revelado no grupo, dia 03/09</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-img-desktop">
+      <div class="hero-image-wrap">
+        <img src="../../img/Hero.webp"
+             alt="Mateus Augusto tocando ukulele"
+             width="1086" height="1448"
+             fetchpriority="high" decoding="async">
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<section class="proof-bar">
+  <div class="container proof-inner">
+    <div class="proof-item"><span class="proof-num">+6.000</span> <span class="proof-text">alunos formados</span></div>
+    <div class="proof-item"><span class="proof-num">154</span> <span class="proof-text">músicas na biblioteca</span></div>
+    <div class="proof-item"><span class="proof-num">30</span> <span class="proof-text">dias de garantia</span></div>
+  </div>
+</section>
+
+<section class="sec sec-surface-soft">
+  <div class="container metodo-grid">
+    <div class="metodo-content">
+      <span class="eyebrow">O mecanismo por trás do Clube</span>
+      <h2 class="h2">Tocar parece uma coisa só. São camadas acontecendo ao mesmo tempo.</h2>
+      <div class="prose">
+        <p>A mão que monta o acorde, a mão que faz a batida, a troca no tempo certo e, se você quiser, a voz por cima. Enquanto pelo menos uma dessas camadas ainda exige a sua atenção consciente, elas competem entre si e tudo se embaralha. Daí vem a frase que todo iniciante fala: <b>"eu não tenho ritmo, a minha mão da batida não acompanha o acorde"</b>.</p>
+        <p>E repetir a música inteira nesse estado, cheia de erros, só treina o erro por mais tempo.</p>
+        <p class="destaque">O Mecanismo 3D isola uma camada por vez, treina até ela rodar sozinha e só então acrescenta a próxima por cima. Dividir, Destravar, Dominar.</p>
+        <p>Você não precisa de mais horas no dia. <b>Os 20 minutos que você já tem resolvem</b>, desde que a prática seja a certa. E funciona como bola de neve: os mesmos acordes e as mesmas batidas coringas voltam nas próximas músicas, então a décima música sai muito mais rápido que a primeira.</p>
+        <p>É o mesmo mecanismo que mais de <b>6.000 alunos</b> usaram para sair do zero ou destravar.</p>
+      </div>
+      <div class="cta-wrap" style="justify-content:flex-start">
+        <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero receber a oferta no dia 03/09</button>
+      </div>
+    </div>
+    <div class="metodo-cards">
+      <div class="metodo-card">
+        <div class="metodo-num">1</div>
+        <div>
+          <h3>Dividir</h3>
+          <p>Antes de tocar, você mapeia a música: quais acordes ela usa, em que ordem eles aparecem e qual é a batida. É a etapa mais rápida, e é onde aparecem os padrões que se repetem do começo ao fim.</p>
+        </div>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-num">2</div>
+        <div>
+          <h3>Destravar</h3>
+          <p>Cada camada é treinada sozinha e devagar, até rodar sem pedir a sua atenção. Primeiro os acordes e a troca entre eles, depois a batida, sempre uma de cada vez.</p>
+        </div>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-num">3</div>
+        <div>
+          <h3>Dominar</h3>
+          <p>Aí você empilha as camadas e toca junto com a música: entrar na hora certa, virar a parte na hora certa e voltar sozinho quando errar, sem parar no meio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-surface">
+  <div class="container container-5xl">
+    <span class="eyebrow">Pra quem é o Clube</span>
+    <h2 class="h2">O ukulele não é o problema. Aprender sozinho é.</h2>
+    <div class="perfil-grid">
+      <div class="perfil-card">
+        <span class="n">Perfil 1</span>
+        <h3>Iniciante do zero absoluto</h3>
+        <p>Nem tem ukulele ainda? A trilha começa antes disso, ensinando você a escolher o instrumento.</p>
+      </div>
+      <div class="perfil-card">
+        <span class="n">Perfil 2</span>
+        <h3>Iniciante já iniciado</h3>
+        <p>Já começou, mas não consegue sair do lugar. É o perfil mais comum aqui dentro.</p>
+      </div>
+      <div class="perfil-card">
+        <span class="n">Perfil 3</span>
+        <h3>Intermediário</h3>
+        <p>Toca várias músicas, mas sai tudo igual e você não sabe qual é o próximo passo.</p>
+      </div>
+    </div>
+    <ul class="dores">
+      <li><span class="mk">›</span> Você toca sempre a mesma batida e sente que não sai do lugar.</li>
+      <li><span class="mk">›</span> Tem dez anos de vídeo à disposição no YouTube e mesmo assim não sabe o que estudar amanhã.</li>
+      <li><span class="mk">›</span> Você já pulou etapa sem perceber, porque no vídeo solto ninguém avisa que faltou uma base lá atrás.</li>
+      <li><span class="mk">›</span> Nem tem ukulele ainda, e fica em dúvida se compra ou se desiste antes de começar.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="container container-5xl">
+    <span class="eyebrow">O que você recebe</span>
+    <h2 class="h2">A sua escola de ukulele online, aberta o ano inteiro</h2>
+    <p class="lead" style="margin-top:1rem">Funciona como uma academia: você entra e tem acesso ilimitado a tudo, no seu ritmo e no seu horário.</p>
+    <div class="recebe-grid">
+      <div class="recebe-card">
+        <span class="num">01</span>
+        <h3>Trilha completa, do zero ao intermediário</h3>
+        <p>Iniciante 0, 1 e 2, Intermediário 1 e 2. Começa em escolher o instrumento e vai até beirar o avançado, tudo organizado em módulos. Você entra no seu nível e faz no seu tempo.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">02</span>
+        <h3>Biblioteca com 154 músicas</h3>
+        <p>Cada música tem aula, destrinchamento e o Toque Comigo, que é o play along com a cifra na tela. Todas com PDF para baixar, e a lista cresce todo mês.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">03</span>
+        <h3>Gravações de aulas ao vivo extras inclusas</h3>
+        <p>Toda semana entra uma aula com exercício ou tema prático, para você ir além da trilha quando bater vontade de fazer algo diferente. No YouTube a live sai do ar em sete dias. Aqui a gravação fica, com o material junto.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">04</span>
+        <h3>Comunidade e desafios do mês</h3>
+        <p>Gente no mesmo momento que você, trocando vídeo e dando força. No começo você pode só ficar de olho, se for mais tímido.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">05</span>
+        <h3>Cursos extras inclusos</h3>
+        <p>Workshop de Canto com Ukulele, com professora de canto convidada. Destrava Dedos, com 21 exercícios. E o Dicionário de Acordes em PDF.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">06</span>
+        <h3>Material de cada aula para baixar</h3>
+        <p>Cifra, tablatura e PDF de apoio dentro da própria plataforma, sem caçar arquivo perdido em pasta de download.</p>
+      </div>
+    </div>
+
+    <div class="trilha">
+      <div class="trilha-item">
+        <div class="trilha-bolha">I0</div>
+        <div><h3>Iniciante 0</h3><p>Escolher o ukulele, afinar, postura e os primeiros sons.</p></div>
+      </div>
+      <div class="trilha-item">
+        <div class="trilha-bolha">I1</div>
+        <div><h3>Iniciante 1</h3><p>Primeiros acordes, primeira batida e a sua primeira música inteira.</p></div>
+      </div>
+      <div class="trilha-item">
+        <div class="trilha-bolha">I2</div>
+        <div><h3>Iniciante 2</h3><p>Trocas mais rápidas, batidas coringas e repertório crescendo.</p></div>
+      </div>
+      <div class="trilha-item">
+        <div class="trilha-bolha">M1</div>
+        <div><h3>Intermediário 1</h3><p>Pestana destravada, ritmos novos e som mais limpo.</p></div>
+      </div>
+      <div class="trilha-item">
+        <div class="trilha-bolha">M2</div>
+        <div><h3>Intermediário 2</h3><p>Estilos diferentes, dedilhado e autonomia para tirar música sozinho.</p></div>
+      </div>
+    </div>
+
+    <div class="cta-wrap">
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-surface">
+  <div class="container center">
+    <span class="eyebrow">Não é só a minha palavra</span>
+    <h2 class="h2">Quem já está no Clube contando como foi</h2>
+    <div class="yt" data-yt="ZJQYqm_y5qw" tabindex="0" role="button" aria-label="Assistir aos depoimentos de alunos do Clube do Ukulele">
+      <img src="https://i.ytimg.com/vi/ZJQYqm_y5qw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/ZJQYqm_y5qw/hqdefault.jpg'" alt="Depoimentos de alunos do Clube do Ukulele" width="1280" height="720" loading="lazy" decoding="async">
+      <div class="play"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+    </div>
+    <div class="depo-grid">
+      <div class="depo-item"><img src="../../img/Depoimento Aline (b).webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Leila.webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Marcelo.webp" alt="Depoimento de aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Maria.webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Wellen b.webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="container container-5xl center">
+    <span class="eyebrow">Só nesta abertura</span>
+    <h2 class="h2">Dois bônus para quem entrar por essa condição</h2>
+    <p class="lead" style="margin-top:1rem">São esses dois, e mais nenhum. Prefiro prometer pouco e entregar inteiro.</p>
+    <div class="bonus-grid" style="text-align:left">
+      <div class="bonus-card">
+        <h3>Bônus 1 · 5 atividades com correção minha em vídeo</h3>
+        <p>Cinco atividades posicionadas no primeiro módulo, para você começar com alguém olhando. Você grava com o celular, envia por dentro da plataforma e eu respondo em vídeo, mostrando o que está certo e o que dá para ajustar.</p>
+      </div>
+      <div class="bonus-card">
+        <h3>Bônus 2 · Aula quinzenal com espaço para dúvidas</h3>
+        <p>A cada quinze dias tem uma aula com um momento aberto para você perguntar o que estiver travando. É exclusiva para os alunos que entrarem por esta condição.</p>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero receber a oferta no dia 03/09</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-surface">
+  <div class="container center">
+    <span class="eyebrow">Resumindo</span>
+    <h2 class="h2">Como você sai do outro lado</h2>
+    <div class="outcome-grid">
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg><p>Tocando músicas do início ao fim</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.93 12.79c1.62 3.96 4.34 6.79 8.27 8.36l3.05-3.05c.39-.39.39-.99 0-1.38l-3.05-3.05c-.39-.39-.99-.39-1.38 0l-1.27 1.27c-2.06-1.06-3.7-2.69-4.76-4.76l1.27-1.27c.39-.39.39-.99 0-1.38L9.01 4.46c-.39-.39-.99-.39-1.38 0L4.58 7.51c1.57 3.93 4.4 6.65 8.36 8.27z"/></svg><p>Trocando acordes sem engasgar</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 00-5 5v4a5 5 0 0010 0V7a5 5 0 00-5-5zm7 9a7 7 0 01-6 6.93V21h-2v-3.07A7 7 0 015 11h2a5 5 0 0010 0h2z"/></svg><p>Cantando e tocando ao mesmo tempo</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><p>Pronto para tocar na roda de amigos</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17h2v-6H3v6zm4 4h2V7H7v14zm4-8h2V3h-2v10zm4 8h2V9h-2v12zm4-4h2v-4h-2v4z"/></svg><p>Sabendo qual é o próximo passo do seu estudo</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55l1.33.26zM11.17 17s3.74-1.55 5.89-3.7c5.4-5.4 4.5-9.62 4.21-10.57-.95-.3-5.17-1.19-10.57 4.21C8.55 9.09 7 12.83 7 12.83L11.17 17z"/></svg><p>Aplicando o Mecanismo 3D em qualquer música nova</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="container container-4xl center">
+    <span class="eyebrow">A condição da abertura</span>
+    <h2 class="h2">Certo, quanto custa entrar?</h2>
+    <div class="price-box" style="text-align:left">
+      <ul class="price-list">
+        <li><span class="ck">✓</span> <span><b>Trilha completa</b>, do Iniciante 0 ao Intermediário 2</span></li>
+        <li><span class="ck">✓</span> <span><b>Biblioteca com 154 músicas</b>, com aula, play along e cifra em PDF</span></li>
+        <li><span class="ck">✓</span> <span><b>Gravações de aulas ao vivo extras inclusas</b>, uma nova toda semana</span></li>
+        <li><span class="ck">✓</span> <span><b>Comunidade e desafios do mês</b>, para você não estudar sozinho</span></li>
+        <li><span class="ck">✓</span> <span><b>Cursos extras</b>: Canto com Ukulele, Destrava Dedos e Dicionário de Acordes</span></li>
+        <li><span class="ck">✓</span> <span><b>Bônus 1</b>: 5 atividades no primeiro módulo com correção minha em vídeo</span></li>
+        <li><span class="ck">✓</span> <span><b>Bônus 2</b>: aula quinzenal com espaço para tirar dúvidas</span></li>
+      </ul>
+      <div class="price-final">
+        <p class="price-de">De: <span class="price-old">R$ 600,00</span></p>
+        <p class="price-por">O valor com a condição da abertura é revelado no dia 03/09, dentro do grupo VIP, antes de qualquer anúncio.</p>
+        <div class="cta-wrap">
+          <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-surface">
+  <div class="container">
+    <div class="guarantee">
+      <div class="guarantee-badge"><b>30</b><span>dias</span></div>
+      <div>
+        <h2>Garantia incondicional de 30 dias</h2>
+        <p>Entra e usa tudo. Assiste as aulas da trilha, participa da comunidade, baixa o que quiser. Se em 30 dias você achar que não é para você, é só falar com a gente que devolvo o valor inteiro, sem justificativa e sem letra miúda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec center">
+  <div class="container container-4xl">
+    <span class="eyebrow">Ainda em dúvida?</span>
+    <h2 class="h2">Escuta quem já estava na sua situação</h2>
+    <p class="lead" style="margin-top:1rem">Gente que também achava que não levava jeito, ou que era tarde demais.</p>
+    <div class="yt" data-yt="zEtXv7rg7JY" tabindex="0" role="button" aria-label="Assistir a mais depoimentos de alunos do Clube do Ukulele">
+      <img src="https://i.ytimg.com/vi/zEtXv7rg7JY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/zEtXv7rg7JY/hqdefault.jpg'" alt="Mais depoimentos de alunos do Clube do Ukulele" width="1280" height="720" loading="lazy" decoding="async">
+      <div class="play"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+    </div>
+    <div class="cta-wrap">
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-surface">
+  <div class="container mentor-grid">
+    <div class="mentor-img">
+      <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto, professor do Clube do Ukulele" width="800" height="1000" loading="lazy" decoding="async">
+    </div>
+    <div class="mentor-content">
+      <span class="eyebrow">Quem vai te acompanhar</span>
+      <h2 class="h2">Mateus Augusto</h2>
+      <p style="margin-top:1rem">Toco desde criança e dou aula de ukulele há quase dez anos. Em 2014 o ukulele virou o meu refúgio durante um tratamento contra um câncer, e quando me curei transformei isso em trabalho: ensinar gente comum a ter o mesmo refúgio.</p>
+      <p>Desde então já formei mais de 6.000 alunos no Brasil e fora dele, com mais de 300.000 pessoas acompanhando nas redes.</p>
+      <p>O Clube nasceu de uma coisa simples: vídeo solto não resolve o problema de quem trava, porque falta ordem e falta alguém dizendo qual é o próximo passo. Aqui você tem os dois.</p>
+    </div>
+  </div>
+  <div class="cta-wrap">
+    <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero receber a oferta no dia 03/09</button>
+  </div>
+</section>
+
+<section class="sec sec-surface">
+  <div class="container container-4xl">
+    <span class="eyebrow">Antes de decidir</span>
+    <h2 class="h2">Dúvidas que sempre aparecem</h2>
+    <div class="faq-wrap">
+      <details class="faq-item">
+        <summary class="faq-summary">Eu ainda nem tenho ukulele. Posso entrar?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Pode. A trilha começa antes disso: eu ensino a escolher o instrumento, e se você me procurar pelo suporte eu ajudo você pessoalmente nessa escolha.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Nunca toquei nenhum instrumento. Serve para mim?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Serve. O ponto de partida do Clube é o zero absoluto, com passo a passo e sem exigir nenhuma base musical anterior.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Já sei tocar um pouco. Vale a pena?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Vale. Boa parte dos alunos chega tocando algumas músicas, travada na mesma batida e sem saber qual é o próximo passo. A trilha te dá o caminho e mostra as bases que ficaram para trás.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Eu não tenho ritmo nem coordenação. Mesmo assim consigo?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Consegue. O Mecanismo 3D existe exatamente por isso: em vez de tentar fazer tudo ao mesmo tempo, você isola cada camada, treina até ela rodar sozinha e só então junta. A coordenação aparece como consequência.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Preciso saber teoria musical?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Não. Você aprende direto na prática, dentro de músicas reais. A teoria entra na hora em que ela faz diferença no que você está tocando.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Por quanto tempo eu tenho acesso?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">É como uma academia: um ano de acesso ilimitado a tudo que está dentro do Clube. Ao fim do período a assinatura renova, e a condição que você pegou na abertura continua valendo na renovação.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Eu mando vídeo tocando para você corrigir?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Neste plano você tem as 5 atividades do primeiro módulo, e eu respondo cada uma em vídeo. Fora essas, o espaço para tirar dúvida comigo é a aula quinzenal.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Tem encontro ao vivo toda semana?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Neste plano não. O que você tem é a aula quinzenal com espaço para dúvidas, mais as gravações das aulas ao vivo extras, que entram toda semana e ficam guardadas com o material junto.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Tenho pouco tempo para estudar.<span class="faq-arrow"></span></summary>
+        <div class="faq-content">A trilha é feita para você ir no seu ritmo, acelerando quando dá e freando quando precisa. Quem tem pouco tempo raramente sofre pelo tempo em si: sofre por gastar o pouco que tem estudando a coisa errada, sem saber se está no caminho.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">E se eu entrar e não gostar?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">São 30 dias de garantia incondicional. Você usa tudo nesse período e, se achar que não é para você, pede o reembolso e eu devolvo o valor integral, sem justificativa.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Entrar no grupo VIP me obriga a alguma coisa?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Nada. Não tem pagamento e não tem reserva. Você entra no grupo, recebe a oferta no dia 03/09 antes de todo mundo e decide na hora.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="final">
+    <h2>A abertura é dia 03/09, e o grupo VIP recebe primeiro</h2>
+    <p class="lead center">Quem está no grupo vê a condição antes de qualquer anúncio, e tem mais tempo para decidir.</p>
+    <div class="cta-wrap">
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
+    </div>
+    <span class="cta-nota">Sem compromisso e sem pagamento agora.</span>
+  </div>
+</section>
+
+<footer class="rodape">Clube do Ukulele · Mateus Augusto · Todos os direitos reservados</footer>
+
+</main>
+
+<div id="capture-modal" class="modal">
+  <div class="modal-content" id="capture-content">
+    <h3>Falta muito pouco</h3>
+    <p class="modal-sub">Preencha seus dados para receber o link de acesso ao grupo VIP no WhatsApp.</p>
+    <form onsubmit="handleCapture(event)" class="modal-form">
+      <div>
+        <label for="lead-nome">Nome Completo *</label>
+        <input required type="text" id="lead-nome" placeholder="Ex: Mateus Augusto">
+        <p id="erro-nome" class="erro-msg">Por favor, insira nome e sobrenome.</p>
+      </div>
+      <div>
+        <label for="lead-email">Melhor E-mail *</label>
+        <input required type="email" id="lead-email" placeholder="seu@email.com">
+        <p id="erro-email" class="erro-msg">Verifique se o e-mail está correto.</p>
+        <p id="aviso-email" class="aviso-msg">Corrigimos um possível erro de digitação. Verifique se está certo.</p>
+      </div>
+      <div>
+        <label for="lead-whatsapp">WhatsApp *</label>
+        <div class="phone-wrap">
+          <div id="ddi-container" class="ddi-container">
+            <input type="hidden" id="lead-ddi" value="55">
+            <button type="button" id="ddi-button" class="ddi-button">
+              <img src="https://flagcdn.com/w20/br.png" width="20" height="15" id="ddi-selected-flag" alt="BR" loading="lazy">
+              <span id="ddi-selected-text">+55</span>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="ddi-menu" class="ddi-menu custom-scrollbar"></div>
+          </div>
+          <input required type="tel" id="lead-whatsapp" placeholder="(00) 00000-0000">
+        </div>
+        <p id="erro-whatsapp" class="erro-msg"></p>
+      </div>
+      <button type="submit" id="btn-submit" class="modal-submit">Liberar vaga no grupo VIP</button>
+    </form>
+    <button type="button" onclick="fecharCaptura()" class="modal-close">Fechar Janela</button>
+  </div>
+</div>
+
+<script>
+// ============================
+// PAÍSES (populado sob demanda para reduzir DOM inicial)
+// ============================
+var paises=[['55','br','Brasil (+55)'],['1','us','EUA / Canadá (+1)'],['351','pt','Portugal (+351)'],['34','es','Espanha (+34)'],['33','fr','França (+33)'],['44','gb','Reino Unido (+44)'],['49','de','Alemanha (+49)'],['39','it','Itália (+39)'],['54','ar','Argentina (+54)'],['56','cl','Chile (+56)'],['57','co','Colômbia (+57)'],['52','mx','México (+52)'],['81','jp','Japão (+81)'],['61','au','Austrália (+61)']];
+
+// ============================
+// MODAL
+// ============================
+var modalEl,modalContentEl,menuPopulated=false;
+function abrirCaptura(){
+  modalEl=modalEl||document.getElementById('capture-modal');
+  modalContentEl=modalContentEl||document.getElementById('capture-content');
+  modalEl.classList.add('open');
+  if(!menuPopulated){popularDDI();menuPopulated=true}
+  requestAnimationFrame(function(){modalEl.classList.add('visible');modalContentEl.classList.add('visible')});
+}
+function fecharCaptura(){
+  modalEl.classList.remove('visible');modalContentEl.classList.remove('visible');
+  setTimeout(function(){modalEl.classList.remove('open')},300);
+}
+
+// ============================
+// POPULA DDI SOB DEMANDA
+// ============================
+function popularDDI(){
+  var menu=document.getElementById('ddi-menu'),html='';
+  for(var i=0;i<paises.length;i++){
+    var p=paises[i];
+    html+='<button type="button" class="ddi-option" data-value="'+p[0]+'" data-code="'+p[1]+'"><img src="https://flagcdn.com/w20/'+p[1]+'.png" width="20" height="15" alt="" loading="lazy"><span>'+p[2]+'</span></button>';
+  }
+  html+='<button type="button" class="ddi-option other" data-value="" data-code="other"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Outro país</span></button>';
+  menu.innerHTML=html;
+  menu.addEventListener('click',function(e){
+    var btn=e.target.closest('.ddi-option');
+    if(!btn)return;
+    selecionarDDI(btn.getAttribute('data-value'),btn.getAttribute('data-code'));
+  });
+}
+
+// ============================
+// DDI DROPDOWN
+// ============================
+var ddiBtn=document.getElementById('ddi-button'),ddiMenu=document.getElementById('ddi-menu'),ddiInput=document.getElementById('lead-ddi'),waInput=document.getElementById('lead-whatsapp');
+ddiBtn.addEventListener('click',function(e){e.stopPropagation();ddiMenu.classList.toggle('open')});
+document.addEventListener('click',function(e){
+  if(!document.getElementById('ddi-container').contains(e.target)){ddiMenu.classList.remove('open')}
+});
+
+function selecionarDDI(value,code){
+  var textSpan=document.getElementById('ddi-selected-text'),flag=document.getElementById('ddi-selected-flag');
+  ddiInput.value=value;
+  if(code==='other'){
+    flag.outerHTML='<svg id="ddi-selected-flag" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#5C5A70;margin-right:.375rem"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+    textSpan.innerText='';
+  } else {
+    if(flag.tagName.toLowerCase()==='svg'){
+      flag.outerHTML='<img src="https://flagcdn.com/w20/'+code+'.png" width="20" height="15" id="ddi-selected-flag" alt="'+code+'">';
+    } else {
+      flag.src='https://flagcdn.com/w20/'+code+'.png';
+    }
+    textSpan.innerText='+'+value;
+  }
+  ddiMenu.classList.remove('open');
+  var v=waInput.value.replace(/\D/g,'');
+  if(value==='55'){waInput.placeholder='(00) 00000-0000';waInput.value=v;waInput.dispatchEvent(new Event('input'))}
+  else{waInput.placeholder='Número com DDD';waInput.value=v}
+}
+
+// ============================
+// MÁSCARA WHATSAPP
+// ============================
+waInput.addEventListener('input',function(e){
+  var v=e.target.value.replace(/\D/g,'');
+  if(ddiInput.value==='55'){
+    if(v.length>11)v=v.substring(0,11);
+    if(v.length<=10){v=v.replace(/^(\d{2})(\d)/g,'($1) $2');v=v.replace(/(\d{4})(\d)/,'$1-$2')}
+    else{v=v.replace(/^(\d{2})(\d)/g,'($1) $2');v=v.replace(/(\d{5})(\d)/,'$1-$2')}
+    e.target.value=v.substring(0,15);
+  } else {
+    e.target.value=v.substring(0,20);
+  }
+});
+
+// ============================
+// VALIDAÇÃO E-MAIL
+// ============================
+var emailInput=document.getElementById('lead-email');
+var provedoresIncorretos={'gmial':'gmail','gamil':'gmail','gmal':'gmail','gmaill':'gmail','gemail':'gmail','gnail':'gmail','hotmial':'hotmail','hotmai':'hotmail','hotmal':'hotmail','hormail':'hotmail','hotmaill':'hotmail','htomail':'hotmail','oulook':'outlook','outlok':'outlook','outloo':'outlook','outllok':'outlook','yaho':'yahoo','yahooo':'yahoo','yhoo':'yahoo','icoud':'icloud','iclod':'icloud'};
+var sufixosIncorretos=[{erro:'.comm',certo:'.com'},{erro:'.cm',certo:'.com'},{erro:'.cmo',certo:'.com'},{erro:'.xom',certo:'.com'},{erro:'.con',certo:'.com'},{erro:'.coom',certo:'.com'},{erro:'.cm.br',certo:'.com.br'},{erro:'.con.br',certo:'.com.br'},{erro:'.com.brr',certo:'.com.br'},{erro:'.com.b',certo:'.com.br'}];
+
+function corrigirEmail(val){
+  val=val.toLowerCase().trim();
+  if(!val.includes('@'))return{valor:val,alterado:false};
+  var parts=val.split('@'),user=parts[0],fullDomain=parts[1],alterado=false;
+  if(!fullDomain)return{valor:val,alterado:false};
+  var di=fullDomain.indexOf('.');
+  if(di>-1){
+    var dn=fullDomain.substring(0,di),sf=fullDomain.substring(di);
+    if(provedoresIncorretos[dn]){dn=provedoresIncorretos[dn];alterado=true}
+    for(var i=0;i<sufixosIncorretos.length;i++){
+      if(sf===sufixosIncorretos[i].erro){sf=sufixosIncorretos[i].certo;alterado=true;break}
+    }
+    return{valor:user+'@'+dn+sf,alterado:alterado};
+  }
+  return{valor:val,alterado:false};
+}
+function emailValido(val){return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(val)}
+
+emailInput.addEventListener('blur',function(e){
+  var erroEl=document.getElementById('erro-email'),avisoEl=document.getElementById('aviso-email');
+  erroEl.classList.remove('show');avisoEl.classList.remove('show');
+  if(!e.target.value.trim())return;
+  var r=corrigirEmail(e.target.value);
+  if(r.alterado){e.target.value=r.valor;avisoEl.classList.add('show');setTimeout(function(){avisoEl.classList.remove('show')},5000)}
+});
+
+// ============================
+// SUBMISSÃO
+// ============================
+function handleCapture(event){
+  event.preventDefault();
+  var btn=document.getElementById('btn-submit'),nomeEl=document.getElementById('lead-nome'),emailEl=document.getElementById('lead-email'),erroNome=document.getElementById('erro-nome'),erroEmail=document.getElementById('erro-email'),erroWhats=document.getElementById('erro-whatsapp');
+  var nome=nomeEl.value.trim(),email=emailEl.value.trim(),phoneRaw=waInput.value.replace(/\D/g,''),ddi=ddiInput.value,isValid=true;
+
+  if(nome.split(' ').filter(function(p){return p.length>0}).length<2){erroNome.classList.add('show');isValid=false}
+  else{erroNome.classList.remove('show')}
+
+  var r=corrigirEmail(email);
+  if(r.alterado){emailEl.value=r.valor;email=r.valor}
+  if(!emailValido(email)){erroEmail.innerText='Insira um e-mail válido.';erroEmail.classList.add('show');isValid=false}
+  else{erroEmail.classList.remove('show')}
+
+  if(ddi==='55'){
+    if(phoneRaw.length!==10&&phoneRaw.length!==11){erroWhats.innerText='Insira um número válido com DDD (10 ou 11 dígitos).';erroWhats.classList.add('show');isValid=false}
+    else{erroWhats.classList.remove('show')}
+  } else {
+    if(phoneRaw.length<6){erroWhats.innerText='Insira um número de telefone válido.';erroWhats.classList.add('show');isValid=false}
+    else{erroWhats.classList.remove('show')}
+  }
+  if(!isValid)return;
+
+  btn.innerHTML='Liberando...';btn.disabled=true;
+  var phoneFinal=(ddi?ddi:'')+phoneRaw;
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'lead_capture_vip',lead_name:nome,lead_email:email,lead_phone:phoneFinal,lead_ddi:ddi||'other'});
+  window.location.href='https://cursos.comotocarukulele.com/ukulele-fundamental/ev-semana-grupo-vip/prematricula-confirmada';
+}
+
+// ============================
+// DEPOIMENTOS EM VÍDEO (facade)
+// A thumb é imagem estática; o iframe do YouTube só é criado no clique,
+// então a página não carrega o player de ninguém à toa.
+// ============================
+document.querySelectorAll('.yt[data-yt]').forEach(function(box){
+  function abrir(){
+    var id=box.getAttribute('data-yt');
+    box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="Depoimentos de alunos do Clube do Ukulele" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    box.style.cursor='default';
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'depoimento_play',origem:'prematricula-vip-clube',video_id:id});
+  }
+  box.addEventListener('click',abrir);
+  box.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();abrir();}});
+});
+
+// ============================
+// FAQ
+// ============================
+document.querySelectorAll('details.faq-item').forEach(function(d){
+  d.addEventListener('click',function(){
+    if(!this.open){
+      document.querySelectorAll('details.faq-item').forEach(function(o){if(o!==this&&o.open)o.removeAttribute('open')}.bind(this));
+    }
+  });
+});
+</script>
+
+<script>
+// GTM dispara ~1.5s após DOMContentLoaded, garantindo tracking confiável de PageView
+// sem bloquear o LCP. Inicializa dataLayer imediatamente para capturar eventos
+// disparados antes do carregamento (ex: lead_capture_vip).
+window.dataLayer = window.dataLayer || [];
+(function(){
+  function loadGTM(){
+    (function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');
+  }
+  if(document.readyState==='complete'||document.readyState==='interactive'){
+    setTimeout(loadGTM,1500);
+  } else {
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(loadGTM,1500)},{once:true});
+  }
+})();
+</script>
+<noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+</body>
+</html>
