@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pré-Matrícula Ukulele Fundamental - Oferta Especial GRUPO VIP</title>
+<title>Clube do Ukulele - Grupo VIP da abertura de 03/09</title>
 <link rel="icon" type="image/svg+xml" href="../../img/favicon-mini-ukulele.svg">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,32 +12,49 @@
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://flagcdn.com">
 
-<link rel="preload" as="image" href="../../img/Hero.webp" fetchpriority="high" imagesrcset="../../img/Hero-mobile.webp 820w, ../../img/Hero.webp 1086w" imagesizes="(max-width: 1023px) 82vw, 50vw">
+<link rel="preload" as="image" href="../../img/Hero.webp" fetchpriority="high">
 
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap"></noscript>
 
 <style>
 /* === RESET & BASE === */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;font-family:'Poppins',system-ui,-apple-system,sans-serif;color:#334155;background:#f8fafc;-webkit-font-smoothing:antialiased;line-height:1.5}
-body::selection,body *::selection{background:#fb6719;color:#fff}
 img{max-width:100%;height:auto;display:block}
 button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
-h1,h2,h3,h4{margin:0;font-family:'Montserrat',system-ui,sans-serif;line-height:1.1}
+h1,h2,h3,h4{margin:0;line-height:1.15}
 p,ul{margin:0}
 ul{padding:0;list-style:none}
 
-/* === CORES E UTILS BÁSICOS === */
+/* === PALETA CLUBE DO UKULELE 2026 (tema escuro) ===
+   Regra de ouro do manual: base índigo, detalhe coral, teal em tudo que o
+   aluno vai buscar, laranja só no que anuncia a oferta.
+   Coral cheio nunca vira texto sobre o índigo médio (#443468): lá só entra
+   branco ou --sobre-escuro. Coral como texto só sobre o índigo profundo. */
 :root{
-  --brand-blue:#2d6dbf;
-  --brand-orange:#fb6719;
-  --brand-dark:#1e293b;
-  --brand-light:#f8fafc;
-  --brand-cta:#ea580c;
-  --brand-ctahover:#c2410c;
+  --indigo:#443468;
+  --indigo-deep:#2D124E;
+  --coral:#E87A85;
+  --laranja:#CD3701;
+  --acao:#12A18A;
+  --acao-hover:#25A993;
+  --acao-texto:#2D124E;
+  --teal:#177A6A;
+  --sobre-escuro:#DCD6E6;
+  --linha:rgba(220,214,230,.16);
 }
+
+body{
+  margin:0;
+  font-family:'Montserrat',system-ui,-apple-system,sans-serif;
+  background:var(--indigo-deep);
+  color:var(--sobre-escuro);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.65;
+  font-size:16px;
+}
+body::selection,body *::selection{background:var(--coral);color:var(--indigo-deep)}
 
 /* === ANIMAÇÕES === */
 .cascade-section{display:none;opacity:0}
@@ -45,337 +62,255 @@ ul{padding:0;list-style:none}
 .cascade-section.hero-section{display:flex;opacity:1}
 @keyframes cascadeIn{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
 
-.btn-pulsar{animation:pulse-cta 2s infinite;transition:transform .3s,filter .3s,box-shadow .3s,background-color .3s}
-@keyframes pulse-cta{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-.btn-pulsar:hover{transform:translateY(-4px);filter:brightness(1.1);box-shadow:0 20px 25px -5px rgba(234,88,12,.4)}
-
-@keyframes ping{75%,100%{transform:scale(2);opacity:0}}
-.animate-ping{animation:ping 1s cubic-bezier(0,0,.2,1) infinite}
-
-/* === COMPONENTES === */
-.method-card{border:2px solid transparent;transition:transform .4s cubic-bezier(.175,.885,.32,1.275),border-color .4s}
-.method-card:hover{transform:scale(1.05);border-color:#fb6719}
-
-.price-old{text-decoration:line-through;text-decoration-color:#ef4444;text-decoration-thickness:3px}
-
-.outcome-card{background:#fff;border:1px solid #e2e8f0;padding:1.5rem;border-radius:1.5rem;display:flex;align-items:center;gap:1rem;transition:transform .3s,border-color .3s,box-shadow .3s}
-.outcome-card:hover{border-color:#2d6dbf;transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
-.outcome-icon{width:45px;height:45px;border-radius:12px;background:#f0f9ff;color:#2d6dbf;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.outcome-icon svg{width:22px;height:22px}
-
-.custom-scrollbar::-webkit-scrollbar{width:5px}
-.custom-scrollbar::-webkit-scrollbar-track{background:#f1f1f1}
-.custom-scrollbar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:10px}
-
-/* === HERO === */
-.hero-image-wrap{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.hero-image-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(251,103,25,.18) 0%,transparent 65%);border-radius:24px;z-index:0}
-.hero-image-wrap img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 25px 30px rgba(0,0,0,.4))}
-
-@media (max-height:740px){.hero-title{font-size:1.2rem!important}}
-@media (max-height:680px){.hero-title{font-size:1.1rem!important}}
+.btn-pulsar{animation:pulse-cta 2.4s infinite;transition:transform .3s,background-color .3s,box-shadow .3s}
+@keyframes pulse-cta{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.btn-pulsar:hover{transform:translateY(-3px);box-shadow:0 14px 24px -12px rgba(0,0,0,.55)}
+@media (prefers-reduced-motion:reduce){
+  .btn-pulsar{animation:none}
+  .cascade-section.animate-reveal{animation:none}
+}
 
 /* === LAYOUT === */
 .main-wrap{width:100%;overflow-x:hidden}
-.container{width:100%;max-width:1280px;margin:0 auto;padding:0 1rem}
-.container-6xl{max-width:1152px}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 1.15rem}
 .container-5xl{max-width:1024px}
-.container-4xl{max-width:896px}
-.container-3xl{max-width:768px}
-.container-900{max-width:900px}
+.container-4xl{max-width:900px}
+.sec{padding:4.5rem 1.15rem}
+.sec-surface{background:var(--indigo)}
+.sec-surface-soft{background:linear-gradient(180deg,rgba(68,52,104,.55),rgba(68,52,104,0))}
 
-/* === HEADER === */
-header.hero-section{background:#1e293b;color:#fff;height:100dvh;min-height:600px;width:100%;border-radius:0 0 40px 40px;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);position:relative;align-items:center;justify-content:center;padding:0 1rem;overflow:hidden}
-.hero-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:.5rem;height:100%;padding:.75rem 0}
-.hero-img-mobile{width:100%;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:.5rem 0}
-.hero-img-mobile .hero-image-wrap{height:100%;max-height:38vh}
+/* === TIPOGRAFIA === */
+h1,h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.01em;font-weight:400;color:#fff}
+.eyebrow{display:block;color:var(--coral);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:.75rem}
+.sec-surface .eyebrow{color:#fff}
+.h2{font-size:clamp(26px,5.2vw,40px)}
+.lead{max-width:44rem;font-size:16px}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
+
+/* === BOTÕES === */
+.cta-btn{
+  background:var(--acao);color:var(--acao-texto);
+  padding:1.1rem 1.75rem;border-radius:14px;
+  font-weight:800;font-size:18px;line-height:1.2;
+  text-transform:uppercase;letter-spacing:-.01em;
+  width:100%;max-width:30rem;
+  box-shadow:0 14px 26px -14px rgba(0,0,0,.7);
+}
+.cta-btn:hover{background:var(--acao-hover)}
+.cta-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.cta-wrap{display:flex;justify-content:center;margin-top:2.5rem}
+.cta-nota{display:block;text-align:center;font-size:12.5px;color:var(--sobre-escuro);margin-top:.9rem}
+@media (min-width:640px){.cta-btn{width:auto;padding:1.2rem 2.5rem;font-size:20px}}
+
+/* === SELO DE OFERTA (laranja, só aqui) === */
+.selo{display:inline-block;background:var(--laranja);color:#fff;font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.12em;padding:.4rem .85rem;border-radius:999px}
+.price-old{text-decoration:line-through;text-decoration-color:var(--laranja);text-decoration-thickness:3px;color:#fff}
+
+/* === HERO === */
+header.hero-section{
+  background:linear-gradient(160deg,var(--indigo) 0%,var(--indigo-deep) 62%);
+  min-height:100dvh;width:100%;
+  border-radius:0 0 36px 36px;
+  position:relative;align-items:center;justify-content:center;
+  padding:1.25rem 1.15rem 2rem;overflow:hidden;
+}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.hero-logo{width:150px;height:auto;margin:0 auto;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.hero-img-mobile{width:100%;display:flex;justify-content:center}
+.hero-img-mobile .hero-image-wrap{height:30vh}
 .hero-img-desktop{display:none}
-.hero-text{width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:.5rem;flex-shrink:0}
-.hero-text>*+*{margin-top:.5rem}
-.hero-badge{display:inline-block;background:rgba(251,103,25,.2);border:1px solid rgba(251,103,25,.4);color:#fb6719;font-size:10px;font-weight:700;padding:.25rem .75rem;border-radius:9999px;text-transform:uppercase;letter-spacing:.1em;flex-shrink:0}
-.hero-title{font-family:'Montserrat',sans-serif;font-size:1.3rem;line-height:1.1;font-weight:800;flex-shrink:0;margin:0}
-.hero-title span{color:#fb6719}
-.hero-sub{font-size:12px;color:#cbd5e1;max-width:36rem;font-weight:500;line-height:1.375}
-.hero-cta-wrap{width:100%;max-width:28rem;padding-top:.25rem}
-.hero-cta{width:100%;background:#ea580c;color:#fff;padding:.875rem 1rem;border-radius:1rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);line-height:1.1}
-.hero-price{margin-top:.75rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem}
-.hero-price-label{color:#cbd5e1;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:-.025em}
-.hero-price-old{color:#fca5a5;font-weight:900;font-size:14px}
-.hero-price-new{color:#fb6719;background:rgba(251,103,25,.2);border:1px solid rgba(251,103,25,.4);font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.025em;padding:.375rem .75rem;border-radius:.5rem;box-shadow:0 1px 2px rgba(0,0,0,.05)}
-.hero-price-new b{font-weight:700;color:#fff}
-
+.hero-image-wrap{position:relative;width:100%;display:flex;align-items:center;justify-content:center}
+.hero-image-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(232,122,133,.22) 0%,transparent 66%);border-radius:24px;z-index:0}
+.hero-image-wrap img{position:relative;z-index:1;width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:20px;border:1px solid rgba(220,214,230,.18);filter:drop-shadow(0 25px 30px rgba(0,0,0,.5))}
+.hero-text{width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.85rem}
+.hero-title{font-size:clamp(24px,6.4vw,30px)}
+.hero-title span{color:var(--coral)}
+.hero-sub{font-size:14px;color:var(--sobre-escuro);max-width:34rem}
+.hero-cta-wrap{width:100%;max-width:30rem;display:flex;flex-direction:column;align-items:center}
+.hero-price{margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem;font-size:13px}
+.hero-price-label{color:var(--sobre-escuro);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.hero-price-old{font-weight:800;font-size:17px}
+.hero-price-new{color:#fff;background:rgba(205,55,1,.22);border:1px solid rgba(205,55,1,.75);font-weight:800;padding:.4rem .8rem;border-radius:10px}
 @media (min-width:1024px){
-  header.hero-section{padding:0 1rem}
-  .hero-inner{flex-direction:row;gap:3rem;padding:3rem 0}
+  .hero-inner{flex-direction:row;gap:3rem;align-items:center}
   .hero-img-mobile{display:none}
-  .hero-img-desktop{display:flex;width:50%;height:100%;align-items:center;justify-content:center}
-  .hero-img-desktop .hero-image-wrap{max-height:80vh}
-  .hero-text{width:50%;align-items:flex-start;text-align:left;gap:1.5rem;height:100%}
-  .hero-text>*+*{margin-top:0}
-  .hero-badge{font-size:12px}
-  .hero-title{font-size:3rem}
-  .hero-sub{font-size:1.125rem}
-  .hero-cta{padding:1.25rem 1rem;font-size:1.25rem}
-  .hero-price-label{font-size:14px}
-  .hero-price-old{font-size:16px}
-  .hero-price-new{font-size:14px}
-}
-@media (min-width:640px) and (max-width:1023px){
-  .hero-title{font-size:1.875rem}
-  .hero-sub{font-size:14px}
+  .hero-img-desktop{display:flex;width:47%;align-items:center;justify-content:center}
+  .hero-img-desktop .hero-image-wrap{height:76vh;max-height:720px}
+  .hero-text{width:53%;align-items:flex-start;text-align:left;gap:1.25rem}
+  .hero-logo{margin:0;width:200px}
+  .hero-title{font-size:clamp(36px,3.6vw,52px)}
+  .hero-sub{font-size:17px}
+  .hero-price{font-size:14px}
+  .hero-price-old{font-size:22px}
 }
 
-/* === SOCIAL PROOF BAR === */
-.proof-bar{padding:2rem 0;background:#fff;border-bottom:1px solid #f1f5f9}
-.proof-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.5rem;color:#1e293b}
-.proof-item{display:flex;align-items:center;gap:.75rem}
-.proof-num{color:#fb6719;font-weight:900;font-size:1.25rem}
-.proof-text{font-weight:700;font-size:12px;text-transform:uppercase}
-@media (min-width:768px){.proof-inner{gap:4rem}}
+/* === BARRA DE PROVA === */
+.proof-bar{padding:1.75rem 1.15rem;background:var(--indigo);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.proof-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.5rem}
+.proof-item{display:flex;align-items:baseline;gap:.55rem}
+.proof-num{color:#fff;font-family:'Anton',Impact,sans-serif;font-size:1.5rem;letter-spacing:.02em}
+.proof-text{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--sobre-escuro)}
+@media (min-width:768px){.proof-inner{gap:3.5rem}}
 
-/* === SECTIONS GENÉRICAS === */
-.sec{padding:5rem 1rem}
-.sec-light{background:#f8fafc}
-.sec-white{background:#fff}
-.sec-dark{background:#1e293b;color:#fff;border-radius:60px;margin:2.5rem .5rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);padding:6rem 1rem}
-.sec-dark2{background:#1e293b;border-radius:60px;margin:0 .5rem 4rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);padding:6rem 1rem}
-@media (min-width:768px){.sec-dark,.sec-dark2{margin-left:1rem;margin-right:1rem}}
-
-/* === MÉTODO 3D === */
-.metodo-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
-.metodo-cards{display:flex;flex-direction:column;gap:1.5rem}
-.metodo-card{background:#fff;padding:1.5rem;border-radius:32px;box-shadow:0 1px 2px rgba(0,0,0,.05);display:flex;align-items:center;gap:1.5rem;border:2px solid transparent;transition:transform .4s cubic-bezier(.175,.885,.32,1.275),border-color .4s}
-.metodo-card:hover{transform:scale(1.05);border-color:#fb6719}
-.metodo-card.highlight{border-color:rgba(251,103,25,.3)}
-.metodo-icon{width:4rem;height:4rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:1.875rem;flex-shrink:0}
-.metodo-icon.blue{background:rgba(45,109,191,.1);color:#2d6dbf}
-.metodo-icon.orange-light{background:rgba(251,103,25,.1);color:#fb6719}
-.metodo-icon.orange-solid{background:#fb6719;color:#fff}
-.metodo-card h4{font-family:'Montserrat',sans-serif;font-weight:800;color:#1e293b;font-size:1.125rem}
-.metodo-card p{font-size:12px;color:#64748b;line-height:1.625}
-.metodo-content h2{font-family:'Montserrat',sans-serif;font-size:1.875rem;color:#1e293b;font-weight:800;line-height:1.1;margin-bottom:2rem}
-.metodo-content h2 span{color:#2d6dbf}
-.metodo-content .prose{display:flex;flex-direction:column;gap:1.5rem;color:#475569;font-size:14px;line-height:1.625}
-.metodo-content .highlight-box{font-weight:700;color:#1e293b;background:#fff;padding:1.5rem;border-radius:1rem;border-left:4px solid #fb6719;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+/* === MECANISMO 3D === */
+.metodo-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:start}
+.metodo-cards{display:flex;flex-direction:column;gap:1rem}
+.metodo-card{background:var(--indigo);padding:1.4rem;border-radius:20px;display:flex;align-items:flex-start;gap:1.1rem;border:1px solid var(--linha)}
+.metodo-num{width:44px;height:44px;border-radius:12px;background:var(--coral);color:var(--indigo-deep);font-family:'Anton',Impact,sans-serif;font-size:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.metodo-card:nth-child(2) .metodo-num{background:#fff}
+.metodo-card:nth-child(3) .metodo-num{background:var(--acao)}
+.metodo-card h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;color:#fff;font-size:19px;margin-bottom:.25rem}
+.metodo-card p{font-size:14px;color:var(--sobre-escuro);line-height:1.6}
+.metodo-content .prose{display:flex;flex-direction:column;gap:1.15rem;font-size:15.5px;margin-top:1.25rem}
+.metodo-content .prose b{color:#fff}
+.destaque{background:var(--indigo);border-left:4px solid var(--coral);padding:1.25rem 1.35rem;border-radius:0 16px 16px 0;color:#fff;font-weight:600}
 @media (min-width:1024px){
-  .metodo-grid{grid-template-columns:5fr 7fr}
-  .metodo-content h2{font-size:3rem}
-  .metodo-content .prose{font-size:16px}
+  .metodo-grid{grid-template-columns:5fr 7fr;gap:3.5rem}
+  .metodo-content .prose{font-size:16.5px}
 }
 
-/* === DENTRO DO CURSO === */
-.dentro-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
-.dentro-img-wrap{position:relative;display:flex;justify-content:center}
-.dentro-badge{position:absolute;top:-1.5rem;right:-1rem;z-index:20;background:#1e293b;color:#fff;padding:1.25rem;border-radius:1rem;transform:rotate(12deg);display:flex;flex-direction:column;align-items:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);border:2px solid #2d6dbf}
-.dentro-badge span:first-child{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;opacity:.8}
-.dentro-badge span:nth-child(2){font-size:1.5rem;font-weight:900}
-.dentro-badge .bar{width:2rem;height:.25rem;background:#fb6719;margin-top:.25rem;border-radius:9999px}
-.dentro-img{width:100%;max-width:500px;height:auto;object-fit:contain;filter:drop-shadow(0 25px 25px rgba(0,0,0,.15))}
-.dentro-content h2{font-family:'Montserrat',sans-serif;font-size:1.875rem;color:#1e293b;font-weight:800;margin-bottom:2.5rem;line-height:1.1}
-.dentro-content h2 span{color:#2d6dbf}
-.dentro-list{display:flex;flex-direction:column;gap:1.5rem;font-size:14px;color:#475569}
-.dentro-list li{display:flex;gap:1rem;align-items:flex-start;background:#f8fafc;padding:1.25rem;border-radius:1rem;border:1px solid #f1f5f9}
-.dentro-list .check{color:#fb6719;font-weight:700;font-size:1.25rem}
-@media (min-width:768px){.dentro-img-wrap{margin-right:-1rem}.dentro-content h2{font-size:2.25rem}.dentro-list{font-size:16px}}
-@media (min-width:1024px){.dentro-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+/* === PRA QUEM É === */
+.perfil-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.25rem}
+.perfil-card{background:var(--indigo-deep);border:1px solid var(--linha);border-radius:18px;padding:1.4rem}
+.perfil-card .n{display:block;color:var(--coral);font-weight:800;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
+.perfil-card h3{color:#fff;font-size:17px;font-weight:800;margin-bottom:.4rem}
+.perfil-card p{font-size:14px}
+.dores{margin-top:2.25rem;display:flex;flex-direction:column;gap:.85rem}
+.dores li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px}
+.dores .mk{color:var(--coral);font-weight:800;flex-shrink:0;line-height:1.6}
+@media (min-width:768px){.perfil-grid{grid-template-columns:repeat(3,1fr)}}
 
-/* === 4 FASES === */
-.fases-title{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;text-align:center;color:#1e293b;margin-bottom:4rem;text-transform:uppercase;letter-spacing:-.05em}
-.fases-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
-.fase-card{background:#fff;padding:1.5rem;border-radius:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,.05)}
-.fase-img{margin:0 auto 1rem;width:8rem;height:8rem;border-radius:9999px;overflow:hidden;border:2px solid #2d6dbf;display:flex;justify-content:center;align-items:center}
-.fase-img.orange{border-color:#fb6719}
-.fase-img img{width:100%;height:100%;object-fit:cover}
-.fase-badge{font-size:10px;font-weight:900;color:#2d6dbf;text-transform:uppercase;background:rgba(45,109,191,.05);padding:.25rem .5rem;border-radius:.375rem;margin-bottom:.5rem;display:inline-block}
-.fase-card h4{font-weight:700;color:#1e293b;font-size:14px;margin-bottom:.5rem;text-transform:uppercase}
-.fase-card p{font-size:11px;color:#64748b;line-height:1.625}
-@media (min-width:640px){.fases-grid{grid-template-columns:1fr 1fr}.fases-title{font-size:1.875rem}}
-@media (min-width:1024px){.fases-grid{grid-template-columns:repeat(4,1fr)}}
+/* === O QUE VOCÊ RECEBE === */
+.recebe-grid{display:grid;grid-template-columns:1fr;gap:1.15rem;margin-top:2.5rem}
+.recebe-card{background:var(--indigo);border:1px solid var(--linha);border-radius:20px;padding:1.5rem;display:flex;flex-direction:column;gap:.55rem}
+.recebe-card .num{font-family:'Anton',Impact,sans-serif;font-size:15px;color:#fff;background:rgba(255,255,255,.12);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.35rem}
+.recebe-card h3{color:#fff;font-size:18px;font-weight:800;line-height:1.3}
+.recebe-card p{font-size:14.5px}
+@media (min-width:768px){.recebe-grid{grid-template-columns:1fr 1fr}}
+
+/* === TRILHA === */
+.trilha{display:grid;grid-template-columns:1fr;gap:.75rem;margin-top:2.25rem}
+.trilha-item{display:flex;align-items:center;gap:1rem;background:var(--indigo);border:1px solid var(--linha);border-radius:16px;padding:1rem 1.15rem}
+.trilha-bolha{width:40px;height:40px;border-radius:50%;background:var(--indigo-deep);border:2px solid var(--coral);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trilha-item:nth-child(4) .trilha-bolha,.trilha-item:nth-child(5) .trilha-bolha{border-color:var(--acao)}
+.trilha-item h3{color:#fff;font-size:15.5px;font-weight:800}
+.trilha-item p{font-size:13.5px;line-height:1.5}
 
 /* === DEPOIMENTOS === */
-.depo-title{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:3rem;text-align:center;color:#1e293b}
-.depo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
-.depo-item{width:100%}
-.depo-item img{width:100%;height:auto;border-radius:1rem;box-shadow:0 1px 2px rgba(0,0,0,.05);border:1px solid #f1f5f9}
-@media (min-width:640px){.depo-item{width:350px}}
+.depo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;margin-top:2.5rem}
+.depo-item{width:100%;max-width:340px}
+.depo-item img{width:100%;border-radius:16px;border:1px solid var(--linha)}
 
 /* === BÔNUS === */
-.bonus-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:800;text-align:center;margin-bottom:1rem;color:#fff}
-.bonus-title span{color:#fb6719;font-style:italic}
-.bonus-sub{text-align:center;color:#94a3b8;margin-bottom:4rem;max-width:36rem;margin-left:auto;margin-right:auto;font-size:1.125rem}
-.bonus-grid{display:grid;grid-template-columns:1fr;gap:2rem}
-.bonus-card{background:#fff;padding:1.5rem;border-radius:40px;box-shadow:0 20px 25px -5px rgba(0,0,0,.1);display:flex;flex-direction:column}
-.bonus-card.gradient{background:linear-gradient(to bottom right,#fb6719,#ea580c)}
-.bonus-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
-.bonus-tag{background:rgba(45,109,191,.1);color:#2d6dbf;font-size:10px;font-weight:900;padding:.375rem 1rem;border-radius:9999px;text-transform:uppercase;letter-spacing:.1em}
-.bonus-card.gradient .bonus-tag{background:rgba(255,255,255,.2);color:#fff}
-.bonus-prices{text-align:right}
-.bonus-prices .price-old{color:#94a3b8;font-weight:900;font-size:14px;display:block}
-.bonus-card.gradient .bonus-prices .price-old{color:rgba(255,255,255,.8)}
-.bonus-prices .gratis{color:#fb6719;font-weight:900;font-size:14px;text-transform:uppercase}
-.bonus-card.gradient .bonus-prices .gratis{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.1)}
-.bonus-card h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:1rem;color:#1e293b;text-transform:uppercase}
-.bonus-card.gradient h4{color:#fff}
-.bonus-card p{font-size:16px;color:#475569;font-weight:500;line-height:1.625}
-.bonus-card.gradient p{color:#fff;font-style:italic}
-@media (min-width:768px){.bonus-title{font-size:3rem}.bonus-grid{grid-template-columns:1fr 1fr}.bonus-card{padding:2rem}.bonus-card p{font-size:1.125rem}}
-
-/* === BÔNUS DA SEMANA === */
-.bonus-week{max-width:896px;margin:0 auto;background:#fff;padding:1.5rem;border-radius:40px;box-shadow:0 20px 25px -5px rgba(0,0,0,.1);border-top:8px solid #ea580c;margin-top:-4rem;position:relative;z-index:20}
-.bonus-week-title{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;text-align:center;color:#1e293b;margin-bottom:3rem}
-.bonus-week-items{display:flex;flex-direction:column;gap:1.5rem}
-.bonus-week-item{display:flex;flex-direction:column;gap:1.5rem;align-items:center;padding:1.5rem;background:#f8fafc;border:1px solid #f1f5f9;border-radius:1.5rem;text-align:center}
-.bonus-week-icon{width:5rem;height:5rem;background:rgba(45,109,191,.05);border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:1.875rem;flex-shrink:0}
-.bonus-week-img{width:6rem;height:6rem;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.bonus-week-img img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 15px rgba(0,0,0,.1))}
-.bonus-week-item h4{font-family:'Montserrat',sans-serif;font-weight:800;color:#1e293b;font-size:1.125rem;margin-bottom:.5rem;text-transform:uppercase}
-.bonus-week-item p{font-size:14px;color:#64748b;margin-bottom:.75rem;line-height:1.25}
-.bonus-week-tag{font-size:10px;font-weight:900;background:#fb6719;color:#fff;padding:.25rem .75rem;border-radius:.375rem;text-transform:uppercase;display:inline-block}
-.bonus-week-cta{margin-top:3rem;width:100%;display:flex;justify-content:center}
-@media (min-width:768px){
-  .bonus-week{padding:4rem}
-  .bonus-week-title{font-size:1.875rem}
-  .bonus-week-item{flex-direction:row;text-align:left;padding:2rem;gap:2rem}
-  .bonus-week-icon{width:6rem;height:6rem;font-size:2.25rem}
-  .bonus-week-img{width:8rem;height:8rem}
-  .bonus-week-item h4{font-size:1.25rem}
-}
+.bonus-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2.5rem}
+.bonus-card{background:var(--indigo-deep);border:1px solid rgba(232,122,133,.4);border-radius:24px;padding:1.75rem;display:flex;flex-direction:column;gap:.7rem}
+.bonus-card .selo{align-self:flex-start;margin-bottom:.3rem}
+.bonus-card h3{color:#fff;font-size:20px;font-weight:800;line-height:1.25}
+.bonus-card p{font-size:15px}
+@media (min-width:768px){.bonus-grid{grid-template-columns:1fr 1fr}}
 
 /* === RESUMINDO === */
-.outcome-eyebrow{color:#2d6dbf;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:block}
-.outcome-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:900;color:#1e293b;margin-bottom:4rem;line-height:1.1}
-.outcome-title span{color:#fb6719}
-.outcome-grid{display:grid;grid-template-columns:1fr;gap:1rem;max-width:1152px;margin:0 auto}
-.outcome-card p{font-weight:700;font-size:14px;color:#1e293b;text-align:left;margin:0}
-.outcome-card.featured{background:rgba(45,109,191,.05);border:2px solid rgba(45,109,191,.2)}
-.outcome-card.featured .outcome-icon{background:#2d6dbf;color:#fff;transition:transform .3s}
-.outcome-card.featured:hover .outcome-icon{transform:scale(1.1)}
-.outcome-card.featured p{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.125rem;color:#2d6dbf;text-transform:uppercase;letter-spacing:-.05em}
-@media (min-width:768px){.outcome-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.outcome-title{font-size:3rem}}
-@media (min-width:1024px){.outcome-grid{grid-template-columns:repeat(3,1fr);gap:2rem}.outcome-card.featured{grid-column:span 3;justify-content:center;padding:2rem 3rem}.outcome-card.featured p{font-size:1.25rem;text-align:center}}
+.outcome-grid{display:grid;grid-template-columns:1fr;gap:.85rem;margin-top:2.5rem}
+.outcome-card{background:var(--indigo);border:1px solid var(--linha);border-radius:16px;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:.9rem}
+.outcome-card svg{width:22px;height:22px;color:var(--coral);flex-shrink:0}
+.outcome-card p{font-size:14.5px;font-weight:600;color:#fff;text-align:left}
+@media (min-width:768px){.outcome-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1024px){.outcome-grid{grid-template-columns:repeat(3,1fr)}}
 
 /* === PREÇO === */
-.price-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:800;margin-bottom:3rem;text-transform:uppercase;letter-spacing:-.05em;color:#fff;text-align:center}
-.price-box{background:rgba(15,23,42,.8);backdrop-filter:blur(12px);border-radius:40px;padding:1.5rem;border:1px solid #334155;box-shadow:inset 0 2px 4px rgba(0,0,0,.06)}
-.price-list{text-align:left;display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem;font-size:16px;color:#e2e8f0;border-bottom:1px solid rgba(51,65,85,.5);padding-bottom:2.5rem}
-.price-list li{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
-.price-list .item{display:flex;align-items:flex-start;gap:.75rem;flex:1}
-.price-list .check{color:#fb6719;margin-top:.125rem;font-size:1.25rem}
-.price-list .price-old{color:#94a3b8;font-weight:900;white-space:nowrap;font-size:1.125rem}
-.price-final{text-align:center}
-.price-final-line{color:#cbd5e1;font-size:1.25rem;font-weight:700;margin-bottom:1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem}
-.price-final-line .price-old{color:#fca5a5;font-weight:900;font-size:1.875rem;margin:0 .5rem}
-.price-surprise{color:#fff;font-size:16px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2.5rem;font-weight:500;padding:0 .5rem}
-.price-surprise-box{display:inline-block;background:rgba(251,103,25,.2);border:1px solid rgba(251,103,25,.5);color:#fb6719;padding:.75rem 1rem;border-radius:.75rem;font-weight:900;box-shadow:0 1px 2px rgba(0,0,0,.05);font-size:1.125rem;line-height:1.1}
-@media (min-width:768px){
-  .price-title{font-size:3rem}
-  .price-box{padding:3.5rem}
-  .price-list{font-size:1.125rem}
-  .price-list .price-old{font-size:1.25rem}
-  .price-final-line{font-size:1.5rem}
-  .price-final-line .price-old{font-size:2.25rem}
-  .price-surprise{font-size:1.25rem}
-  .price-surprise-box{font-size:1.875rem;padding:.75rem 1.5rem}
-}
+.price-box{max-width:900px;margin:2.5rem auto 0;background:var(--indigo);border:1px solid var(--linha);border-radius:28px;padding:1.75rem}
+.price-list{display:flex;flex-direction:column;gap:.9rem;padding-bottom:1.75rem;border-bottom:1px solid var(--linha)}
+.price-list li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px}
+.price-list .ck{color:var(--acao);font-weight:800;flex-shrink:0}
+.price-list b{color:#fff}
+.price-final{text-align:center;padding-top:1.75rem}
+.price-de{font-size:16px;font-weight:700;color:var(--sobre-escuro);display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:center}
+.price-de .price-old{font-size:30px;font-family:'Anton',Impact,sans-serif;letter-spacing:.02em}
+.price-por{margin:1.25rem auto 0;display:inline-block;background:rgba(205,55,1,.2);border:1px solid rgba(205,55,1,.8);color:#fff;padding:.9rem 1.35rem;border-radius:14px;font-weight:800;font-size:17px;line-height:1.35;max-width:34rem}
+@media (min-width:768px){.price-box{padding:3rem}.price-list li{font-size:16px}}
 
 /* === GARANTIA === */
-.guarantee-box{max-width:896px;margin:0 auto;background:linear-gradient(to bottom right,#fff,#f8fafc);border:1px solid #e2e8f0;padding:2rem;border-radius:40px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center}
-.guarantee-bg{position:absolute;right:-2.5rem;top:-2.5rem;color:#2d6dbf;opacity:.03;font-size:200px;pointer-events:none;line-height:1}
-.guarantee-icon{width:6rem;height:6rem;background:#f8fafc;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:3rem;border:4px solid #fff;box-shadow:0 4px 6px -1px rgba(0,0,0,.1);flex-shrink:0;z-index:10;position:relative}
-.guarantee-icon-ping{position:absolute;inset:0;background:rgba(45,109,191,.1);border-radius:9999px;animation:ping 1s cubic-bezier(0,0,.2,1) infinite;opacity:.5}
-.guarantee-content{z-index:10}
-.guarantee-eyebrow{color:#fb6719;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;display:block}
-.guarantee-content h2{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;color:#1e293b;margin-bottom:1rem;line-height:1.1}
-.guarantee-content p{color:#475569;font-size:14px;line-height:1.625}
-@media (min-width:768px){.guarantee-box{flex-direction:row;text-align:left;padding:3rem;gap:2.5rem}.guarantee-icon{width:8rem;height:8rem;font-size:3.75rem}.guarantee-content h2{font-size:1.875rem}.guarantee-content p{font-size:16px}}
+.guarantee{max-width:900px;margin:0 auto;background:var(--indigo);border:1px solid var(--linha);border-radius:28px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
+.guarantee-badge{width:96px;height:96px;border-radius:50%;background:var(--teal);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;line-height:1.05}
+.guarantee-badge b{font-family:'Anton',Impact,sans-serif;font-size:30px;font-weight:400}
+.guarantee-badge span{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.guarantee h2{font-size:clamp(22px,4.4vw,30px);margin-bottom:.75rem}
+.guarantee p{font-size:15px}
+.guarantee p+p{margin-top:.9rem}
+@media (min-width:768px){.guarantee{flex-direction:row;text-align:left;padding:2.75rem;gap:2.25rem}}
 
 /* === MENTOR === */
-.mentor-grid{max-width:1024px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
-.mentor-img-wrap{background:#e2e8f0;border-radius:40px;aspect-ratio:4/5;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);border:8px solid #fff;position:relative;overflow:hidden}
-.mentor-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .7s ease-in-out}
-.mentor-img-wrap:hover img{transform:scale(1.05)}
-.mentor-content{display:flex;flex-direction:column;gap:1.5rem}
-.mentor-content h2{font-family:'Montserrat',sans-serif;font-size:1.875rem;font-weight:800;color:#1e293b;line-height:1.1}
-.mentor-content h2 span{color:#2d6dbf;font-weight:900}
-.mentor-list{display:flex;flex-direction:column;gap:1rem;font-size:14px;color:#475569;line-height:1.625}
-.mentor-list p{display:flex;gap:1rem;margin:0}
-.mentor-list .check{color:#fb6719;font-size:1.25rem}
-.mentor-cta{max-width:1024px;margin:3rem auto 0;width:100%;display:flex;justify-content:center}
-@media (min-width:768px){.mentor-grid{grid-template-columns:1fr 1fr;gap:3rem}.mentor-content h2{font-size:2.25rem}.mentor-list{font-size:16px}}
-@media (min-width:1024px){.mentor-grid{gap:5rem}}
+.mentor-grid{max-width:1024px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2.25rem;align-items:center}
+.mentor-img{border-radius:28px;overflow:hidden;border:1px solid var(--linha);aspect-ratio:4/5}
+.mentor-img img{width:100%;height:100%;object-fit:cover}
+.mentor-content p{font-size:15px}
+.mentor-content p+p{margin-top:1rem}
+@media (min-width:768px){.mentor-grid{grid-template-columns:5fr 7fr;gap:3rem}}
 
 /* === FAQ === */
-.faq-wrap{max-width:900px;margin:0 auto;background:#fff;border-radius:30px;padding:2rem;box-shadow:0 15px 40px rgba(0,0,0,.05);border:1px solid #f1f5f9}
-.faq-title{font-family:'Montserrat',sans-serif;font-size:1.875rem;text-align:center;color:#1e293b;margin-bottom:2.5rem;font-weight:800}
-.faq-list{display:flex;flex-direction:column;gap:1rem;text-align:left}
-.faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05);transition:box-shadow .2s}
-.faq-item[open]{box-shadow:0 4px 6px -1px rgba(0,0,0,.1)}
-.faq-summary{list-style:none;padding:1.25rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Montserrat',sans-serif;font-weight:700;color:#1e293b;font-size:14px}
+.faq-wrap{max-width:900px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{background:var(--indigo);border:1px solid var(--linha);border-radius:14px;overflow:hidden}
+.faq-summary{list-style:none;padding:1.15rem 1.25rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:700;color:#fff;font-size:15px}
 .faq-summary::-webkit-details-marker{display:none}
-.faq-arrow{width:.75rem;height:.75rem;border-right:2px solid #94a3b8;border-bottom:2px solid #94a3b8;transform:rotate(45deg);transition:transform .2s,border-color .2s;margin-left:1rem;flex-shrink:0}
-.faq-item[open] .faq-arrow{transform:rotate(-135deg);border-color:#fb6719}
-.faq-content{padding:1rem 1.25rem 1.5rem;color:#475569;font-size:14px;line-height:1.625;border-top:1px solid #e2e8f0;margin-top:.25rem}
-@media (min-width:768px){.faq-wrap{padding:3rem}.faq-title{font-size:2.25rem}.faq-summary{padding:1.5rem;font-size:16px}.faq-content{padding:1rem 1.5rem 1.5rem}}
+.faq-arrow{width:.7rem;height:.7rem;border-right:2px solid var(--coral);border-bottom:2px solid var(--coral);transform:rotate(45deg);transition:transform .2s;flex-shrink:0;margin-top:-4px}
+.faq-item[open] .faq-arrow{transform:rotate(-135deg);margin-top:4px}
+.faq-content{padding:0 1.25rem 1.35rem;font-size:14.5px}
 
-/* === FINAL CTA === */
-.final-cta-wrap{max-width:768px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
-.final-cta-wrap h2{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:800;color:#1e293b;margin-bottom:2rem;line-height:1.1}
-@media (min-width:768px){.final-cta-wrap h2{font-size:2.25rem}}
+/* === CTA FINAL === */
+.final{max-width:768px;margin:0 auto;text-align:center}
+.final h2{font-size:clamp(24px,5vw,36px);margin-bottom:1.25rem}
 
-/* === BOTÕES CTA GENÉRICOS === */
-.cta-btn{background:#ea580c;color:#fff;padding:1.25rem 1.5rem;border-radius:1rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;box-shadow:0 20px 25px -5px rgba(0,0,0,.1);letter-spacing:-.025em;line-height:1.1;width:100%}
-.cta-btn:hover{background:#c2410c}
-@media (min-width:640px){.cta-btn{width:auto;padding:1.25rem 2.5rem;font-size:1.25rem}}
+/* === RODAPÉ === */
+.rodape{padding:2.5rem 1.15rem 3rem;text-align:center;border-top:1px solid var(--linha);font-size:12.5px;color:var(--sobre-escuro)}
 
 /* === MODAL === */
-.modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(30,41,59,.95);padding:1rem;backdrop-filter:blur(12px);opacity:0;transition:opacity .3s}
+.custom-scrollbar::-webkit-scrollbar{width:5px}
+.custom-scrollbar::-webkit-scrollbar-track{background:#f1f1f1}
+.custom-scrollbar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:10px}
+.modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(45,18,78,.94);padding:1rem;backdrop-filter:blur(10px);opacity:0;transition:opacity .3s}
 .modal.open{display:flex}
 .modal.visible{opacity:1}
-.modal-content{width:100%;max-width:28rem;border-radius:40px;background:#fff;padding:1.5rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);transform:scale(.95);transition:transform .3s}
+.modal-content{width:100%;max-width:28rem;border-radius:28px;background:#fff;padding:1.5rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);transform:scale(.95);transition:transform .3s;color:#1F1A2B;line-height:1.5}
 .modal-content.visible{transform:scale(1)}
-.modal h3{font-family:'Montserrat',sans-serif;font-size:1.25rem;font-weight:800;color:#1e293b;margin-bottom:.5rem;text-align:center}
-.modal-sub{color:#94a3b8;font-size:12px;margin-bottom:1.5rem;text-align:center;line-height:1.25}
+.modal h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:1.4rem;color:var(--indigo);margin-bottom:.4rem;text-align:center}
+.modal-sub{color:#5C5A70;font-size:13px;margin-bottom:1.5rem;text-align:center;line-height:1.4}
 .modal-form{display:flex;flex-direction:column;gap:1rem}
-.modal-form label{display:block;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:.5rem;margin-left:.5rem}
-.modal-form input[type=text],.modal-form input[type=email]{width:100%;padding:.75rem 1rem;border-radius:1rem;background:#f8fafc;border:1px solid #e2e8f0;font-size:14px;transition:border-color .2s,background-color .2s;font-family:inherit;color:#334155}
-.modal-form input[type=text]:focus,.modal-form input[type=email]:focus{border-color:#2d6dbf;background:#fff;outline:none}
-.erro-msg{margin-top:.375rem;font-size:10px;font-weight:700;color:#ef4444;margin-left:.5rem;display:none}
+.modal-form label{display:block;font-size:10.5px;font-weight:700;color:#5C5A70;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;margin-left:.5rem}
+.modal-form input[type=text],.modal-form input[type=email]{width:100%;padding:.8rem 1rem;border-radius:12px;background:#F5F4F7;border:1px solid #C9C4D6;font-size:14px;font-family:inherit;color:#1F1A2B;transition:border-color .2s,background-color .2s}
+.modal-form input[type=text]:focus,.modal-form input[type=email]:focus{border-color:var(--indigo);background:#fff;outline:none}
+.erro-msg{margin-top:.35rem;font-size:11px;font-weight:700;color:#B83A2E;margin-left:.5rem;display:none}
 .erro-msg.show{display:block}
-.aviso-msg{margin-top:.375rem;font-size:10px;font-weight:700;color:#d97706;margin-left:.5rem;display:none}
+.aviso-msg{margin-top:.35rem;font-size:11px;font-weight:700;color:#8A5A00;margin-left:.5rem;display:none}
 .aviso-msg.show{display:block}
-.phone-wrap{display:flex;border-radius:1rem;border:1px solid #e2e8f0;background:#f8fafc;transition:border-color .2s}
-.phone-wrap:focus-within{border-color:#2d6dbf}
+.phone-wrap{display:flex;border-radius:12px;border:1px solid #C9C4D6;background:#F5F4F7;transition:border-color .2s}
+.phone-wrap:focus-within{border-color:var(--indigo)}
 .ddi-container{position:relative;flex-shrink:0}
-.ddi-button{height:100%;display:flex;align-items:center;padding:0 .75rem;background:#f1f5f9;border-right:1px solid #e2e8f0;border-radius:1rem 0 0 1rem;transition:background-color .2s}
-.ddi-button:hover{background:#e2e8f0}
-.ddi-button img{width:20px;height:auto;margin-right:.375rem;border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.05);object-fit:cover}
-.ddi-button span{font-size:12px;font-weight:700;color:#334155}
-.ddi-button svg{width:.75rem;height:.75rem;color:#64748b;margin-left:.375rem}
-.ddi-menu{display:none;position:absolute;top:100%;left:0;margin-top:.25rem;width:16rem;max-height:15rem;overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:.75rem;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);z-index:50}
+.ddi-button{height:100%;display:flex;align-items:center;padding:0 .75rem;background:#ECEAF1;border-right:1px solid #C9C4D6;border-radius:12px 0 0 12px;transition:background-color .2s}
+.ddi-button:hover{background:#DCD6E6}
+.ddi-button img{width:20px;height:auto;margin-right:.35rem;border-radius:2px;object-fit:cover}
+.ddi-button span{font-size:12.5px;font-weight:700;color:#1F1A2B}
+.ddi-button svg{width:.75rem;height:.75rem;color:#5C5A70;margin-left:.35rem}
+.ddi-menu{display:none;position:absolute;top:100%;left:0;margin-top:.25rem;width:16rem;max-height:15rem;overflow-y:auto;background:#fff;border:1px solid #C9C4D6;border-radius:12px;box-shadow:0 10px 15px -3px rgba(0,0,0,.15);z-index:50}
 .ddi-menu.open{display:block}
 .ddi-option{width:100%;display:flex;align-items:center;gap:.5rem;padding:.5rem .75rem;text-align:left;transition:background-color .15s}
-.ddi-option:hover{background:#f8fafc}
-.ddi-option.other{border-top:1px solid #f1f5f9}
-.ddi-option img{width:20px;height:auto;border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
-.ddi-option svg{width:20px;height:20px;color:#64748b}
-.ddi-option span{font-size:12px;font-weight:500;color:#334155}
-.phone-wrap input[type=tel]{width:100%;padding:.75rem 1rem;background:transparent;outline:none;font-weight:500;font-size:14px;border:0;color:#334155;font-family:inherit}
-.modal-submit{width:100%;background:#ea580c;color:#fff;padding:1rem;border-radius:1rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);margin-top:.5rem;letter-spacing:-.025em;transition:transform .2s}
-.modal-submit:hover:not(:disabled){transform:translateY(-4px)}
+.ddi-option:hover{background:#F5F4F7}
+.ddi-option.other{border-top:1px solid #E1DEE8}
+.ddi-option img{width:20px;height:auto;border-radius:2px}
+.ddi-option svg{width:20px;height:20px;color:#5C5A70}
+.ddi-option span{font-size:12.5px;font-weight:500;color:#1F1A2B}
+.phone-wrap input[type=tel]{width:100%;padding:.8rem 1rem;background:transparent;outline:none;font-weight:500;font-size:14px;border:0;color:#1F1A2B;font-family:inherit}
+.modal-submit{width:100%;background:var(--acao);color:var(--acao-texto);padding:1rem;border-radius:12px;font-weight:800;font-size:17px;text-transform:uppercase;margin-top:.5rem;transition:background-color .2s,transform .2s}
+.modal-submit:hover:not(:disabled){background:var(--acao-hover);transform:translateY(-2px)}
 .modal-submit:disabled{opacity:.7;cursor:not-allowed}
-.modal-close{margin-top:1rem;width:100%;text-align:center;color:#94a3b8;font-size:10px;text-transform:uppercase;font-weight:700;letter-spacing:.1em;padding:.5rem}
-.modal-close:hover{color:#64748b}
+.modal-close{margin-top:1rem;width:100%;text-align:center;color:#5C5A70;font-size:10.5px;text-transform:uppercase;font-weight:700;letter-spacing:.1em;padding:.5rem}
+.modal-close:hover{color:#1F1A2B}
 @media (min-width:768px){
-  .modal-content{padding:2.5rem}
-  .modal h3{font-size:1.5rem}
-  .modal-sub{font-size:14px;margin-bottom:2rem}
-  .modal-form{gap:1.25rem}
-  .modal-form input[type=text],.modal-form input[type=email]{padding:1rem 1.25rem}
-  .ddi-button{padding:0 1rem}
-  .ddi-button span{font-size:14px}
-  .phone-wrap input[type=tel]{padding:1rem}
-  .modal-submit{padding:1.25rem;font-size:1.125rem}
-  .modal-close{margin-top:1.5rem}
+  .modal-content{padding:2.25rem}
+  .modal h3{font-size:1.6rem}
+  .modal-sub{font-size:14px;margin-bottom:1.75rem}
+  .modal-form input[type=text],.modal-form input[type=email]{padding:.9rem 1.1rem}
+  .phone-wrap input[type=tel]{padding:.9rem}
 }
 </style>
 </head>
@@ -389,24 +324,23 @@ header.hero-section{background:#1e293b;color:#fff;height:100dvh;min-height:600px
     <div class="hero-img-mobile">
       <div class="hero-image-wrap">
         <img src="../../img/Hero.webp"
-             srcset="../../img/Hero-mobile.webp 820w, ../../img/Hero.webp 1086w"
-             sizes="82vw"
              alt="Mateus Augusto tocando ukulele"
-             width="820" height="1094"
+             width="1086" height="1448"
              fetchpriority="high" decoding="async">
       </div>
     </div>
 
     <div class="hero-text">
-      <span class="hero-badge">🔥 Condição exclusiva no Grupo VIP 🔥</span>
-      <h1 class="hero-title">Tire o ukulele do canto da sala e toque suas músicas favoritas com <span>20 minutos por dia</span></h1>
-      <p class="hero-sub">Mesmo que você já tenha tentado antes e travado no caminho, e mesmo que ache que não tenha talento.</p>
+      <img src="../../img/logo-clube-horizontal.webp" alt="Clube do Ukulele" width="900" height="471" class="hero-logo" fetchpriority="high" decoding="async">
+      <span class="selo">Abertura em 03/09 · só no grupo VIP</span>
+      <h1 class="hero-title">Aprender ukulele com <span>direção</span>, em vez de juntar vídeo solto</h1>
+      <p class="hero-sub">O Clube do Ukulele abre no dia 03/09 com uma condição que só vai existir dentro do grupo VIP. Entre no grupo e receba a oferta antes de qualquer anúncio.</p>
       <div class="hero-cta-wrap">
-        <button onclick="abrirCaptura()" class="btn-pulsar hero-cta">Quero Entrar no Grupo VIP</button>
+        <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
         <div class="hero-price">
           <span class="hero-price-label">De:</span>
-          <span class="price-old hero-price-old">R$ 597,00</span>
-          <span class="hero-price-new">Por: <b>SURPRESA</b> no Grupo, dia 04/06</span>
+          <span class="price-old hero-price-old">R$ 600,00</span>
+          <span class="hero-price-new">Por: valor revelado no grupo, dia 03/09</span>
         </div>
       </div>
     </div>
@@ -424,301 +358,331 @@ header.hero-section{background:#1e293b;color:#fff;height:100dvh;min-height:600px
 </header>
 
 <section class="cascade-section proof-bar">
-  <div class="container container-6xl proof-inner">
-    <div class="proof-item"><span class="proof-num">+6.000</span> <span class="proof-text">Alunos</span></div>
-    <div class="proof-item"><span class="proof-num">14</span> <span class="proof-text">Dias de Garantia</span></div>
-    <div class="proof-item"><span class="proof-num">Acesso</span> <span class="proof-text">VITALÍCIO!</span></div>
+  <div class="container proof-inner">
+    <div class="proof-item"><span class="proof-num">+6.000</span> <span class="proof-text">alunos formados</span></div>
+    <div class="proof-item"><span class="proof-num">154</span> <span class="proof-text">músicas na biblioteca</span></div>
+    <div class="proof-item"><span class="proof-num">30</span> <span class="proof-text">dias de garantia</span></div>
   </div>
 </section>
 
-<section class="cascade-section sec sec-light">
-  <div class="container container-6xl metodo-grid">
+<section class="cascade-section sec sec-surface-soft">
+  <div class="container metodo-grid">
     <div class="metodo-cards">
       <div class="metodo-card">
-        <div class="metodo-icon blue">🧩</div>
+        <div class="metodo-num">1</div>
         <div>
-          <h4>1. Dividir</h4>
-          <p>Cada música em peças pequenas e gerenciáveis para o seu cérebro.</p>
+          <h3>Dividir</h3>
+          <p>Antes de tocar, você mapeia a música: quais acordes ela usa, em que ordem eles aparecem e qual é a batida. É a etapa mais rápida, e é onde aparecem os padrões que se repetem do começo ao fim.</p>
         </div>
       </div>
       <div class="metodo-card">
-        <div class="metodo-icon orange-light">🔓</div>
+        <div class="metodo-num">2</div>
         <div>
-          <h4>2. Destravar</h4>
-          <p>Treino com repetição inteligente em velocidade reduzida.</p>
+          <h3>Destravar</h3>
+          <p>Cada camada é treinada sozinha e devagar, até rodar sem pedir a sua atenção. Primeiro os acordes e a troca entre eles, depois a batida, sempre uma de cada vez.</p>
         </div>
       </div>
-      <div class="metodo-card highlight">
-        <div class="metodo-icon orange-solid">🎵</div>
+      <div class="metodo-card">
+        <div class="metodo-num">3</div>
         <div>
-          <h4>3. Dominar</h4>
-          <p>A música flui, o som sai limpo e o ritmo fica firme.</p>
+          <h3>Dominar</h3>
+          <p>Aí você empilha as camadas e toca junto com a música: entrar na hora certa, virar a parte na hora certa e voltar sozinho quando errar, sem parar no meio.</p>
         </div>
       </div>
     </div>
     <div class="metodo-content">
-      <h2>O método 3D transforma <span>a forma de aprender e de tocar</span></h2>
+      <span class="eyebrow">O mecanismo por trás do Clube</span>
+      <h2 class="h2">Tocar parece uma coisa só. São camadas acontecendo ao mesmo tempo.</h2>
       <div class="prose">
-        <p>Aprender música em vídeo avulso do YouTube é como receber peças de quebra-cabeça soltas vindas de caixas diferentes. Cada tutorial ensina um pedaço, mas ninguém te mostra onde encaixa, e a culpa parece sua quando você não evolui.</p>
-        <p class="highlight-box">O Método 3D faz o oposto. Divide cada música, cada acorde e cada batida em peças pequenas, destrava cada peça com repetição inteligente, e o domínio chega como consequência.</p>
-        <p>O mesmo método que mais de <b>6.000 alunos</b> usaram para sair do zero ou destravar.</p>
+        <p>A mão que monta o acorde, a mão que faz a batida, a troca no tempo certo e, se você quiser, a voz por cima. Enquanto pelo menos uma dessas camadas ainda exige a sua atenção consciente, elas competem entre si e tudo se embaralha. Daí vem a frase que todo iniciante fala: <b>"eu não tenho ritmo, a minha mão da batida não acompanha o acorde"</b>.</p>
+        <p>E repetir a música inteira nesse estado, cheia de erros, só treina o erro por mais tempo.</p>
+        <p class="destaque">O Mecanismo 3D isola uma camada por vez, treina até ela rodar sozinha e só então acrescenta a próxima por cima. Dividir, Destravar, Dominar.</p>
+        <p>Você não precisa de mais horas no dia. <b>Os 20 minutos que você já tem resolvem</b>, desde que a prática seja a certa. E funciona como bola de neve: os mesmos acordes e as mesmas batidas coringas voltam nas próximas músicas, então a décima música sai muito mais rápido que a primeira.</p>
+        <p>É o mesmo mecanismo que mais de <b>6.000 alunos</b> usaram para sair do zero ou destravar.</p>
       </div>
-      <div style="padding-top:2rem;display:flex;justify-content:center">
-        <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero RECEBER A OFERTA no Grupo VIP NO DIA 04/06</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cascade-section sec sec-white" style="position:relative;overflow:hidden">
-  <div class="container container-6xl dentro-grid">
-    <div class="dentro-img-wrap">
-      <div class="dentro-badge">
-        <span>Acesso</span>
-        <span>VITALÍCIO</span>
-        <div class="bar"></div>
-      </div>
-      <img src="../../img/Mockup - Mateus + aulas e tal.webp" alt="Conteúdo do curso Ukulele Fundamental" width="800" height="440" loading="lazy" decoding="async" class="dentro-img">
-    </div>
-    <div class="dentro-content">
-      <h2>Dentro do Ukulele Fundamental, <span>você tem tudo</span>:</h2>
-      <ul class="dentro-list">
-        <li><span class="check">✅</span> <p><b>Curso completo</b> em 4 etapas estruturadas, do zero à autonomia.</p></li>
-        <li><span class="check">✅</span> <p><b>Aulas curtas</b> pensadas para caber em 20 min/dia, no seu horário.</p></li>
-        <li><span class="check">✅</span> <p><b>Aplicação prática imediata</b> com música real já na Primeira Fase.</p></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="cascade-section sec sec-light">
-  <div class="container container-6xl">
-    <h2 class="fases-title">Em 4 etapas simples, você sai do zero</h2>
-    <div class="fases-grid">
-      <div class="fase-card">
-        <div class="fase-img"><img src="../../img/1c.webp" alt="Fase 1" width="128" height="128" loading="lazy" decoding="async"></div>
-        <span class="fase-badge">Fase 1</span>
-        <h4>Início Imediato</h4>
-        <p>Postura, afinação e sua primeira música já na etapa 1.</p>
-      </div>
-      <div class="fase-card">
-        <div class="fase-img orange"><img src="../../img/2c.webp" alt="Fase 2" width="128" height="128" loading="lazy" decoding="async"></div>
-        <span class="fase-badge">Fase 2</span>
-        <h4>Destrave</h4>
-        <p>Domine as batidas coringas e troque acordes sem engasgar.</p>
-      </div>
-      <div class="fase-card">
-        <div class="fase-img"><img src="../../img/3c.webp" alt="Fase 3" width="128" height="128" loading="lazy" decoding="async"></div>
-        <span class="fase-badge">Fase 3</span>
-        <h4>Temperar</h4>
-        <p>Refine o toque para um som limpo e cristalino.</p>
-      </div>
-      <div class="fase-card">
-        <div class="fase-img orange"><img src="../../img/4b.webp" alt="Fase 4" width="128" height="128" loading="lazy" decoding="async"></div>
-        <span class="fase-badge">Fase 4</span>
-        <h4>Autonomia</h4>
-        <p>Toque diferentes estilos, como reggae e baião e ganhe liberdade musical total.</p>
+      <div class="cta-wrap" style="justify-content:flex-start">
+        <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero receber a oferta no dia 03/09</button>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cascade-section sec sec-white">
-  <div class="container container-6xl">
-    <h2 class="depo-title">O que nossos alunos dizem:</h2>
+<section class="cascade-section sec sec-surface">
+  <div class="container container-5xl">
+    <span class="eyebrow">Pra quem é o Clube</span>
+    <h2 class="h2">O ukulele não é o problema. Aprender sozinho é.</h2>
+    <div class="perfil-grid">
+      <div class="perfil-card">
+        <span class="n">Perfil 1</span>
+        <h3>Iniciante do zero absoluto</h3>
+        <p>Nem tem ukulele ainda? A trilha começa antes disso, ensinando você a escolher o instrumento.</p>
+      </div>
+      <div class="perfil-card">
+        <span class="n">Perfil 2</span>
+        <h3>Iniciante já iniciado</h3>
+        <p>Já começou, mas não consegue sair do lugar. É o perfil mais comum aqui dentro.</p>
+      </div>
+      <div class="perfil-card">
+        <span class="n">Perfil 3</span>
+        <h3>Intermediário</h3>
+        <p>Toca várias músicas, mas sai tudo igual e você não sabe qual é o próximo passo.</p>
+      </div>
+    </div>
+    <ul class="dores">
+      <li><span class="mk">›</span> Você toca sempre a mesma batida e sente que não sai do lugar.</li>
+      <li><span class="mk">›</span> Tem dez anos de vídeo à disposição no YouTube e mesmo assim não sabe o que estudar amanhã.</li>
+      <li><span class="mk">›</span> Você já pulou etapa sem perceber, porque no vídeo solto ninguém avisa que faltou uma base lá atrás.</li>
+      <li><span class="mk">›</span> Nem tem ukulele ainda, e fica em dúvida se compra ou se desiste antes de começar.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cascade-section sec">
+  <div class="container container-5xl">
+    <span class="eyebrow">O que você recebe</span>
+    <h2 class="h2">A sua escola de ukulele online, aberta o ano inteiro</h2>
+    <p class="lead" style="margin-top:1rem">Funciona como uma academia: você entra e tem acesso ilimitado a tudo, no seu ritmo e no seu horário.</p>
+    <div class="recebe-grid">
+      <div class="recebe-card">
+        <span class="num">01</span>
+        <h3>Trilha completa, do zero ao intermediário</h3>
+        <p>Iniciante 0, 1 e 2, Intermediário 1 e 2. Começa em escolher o instrumento e vai até beirar o avançado, tudo organizado em módulos. Você entra no seu nível e faz no seu tempo.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">02</span>
+        <h3>Biblioteca com 154 músicas</h3>
+        <p>Cada música tem aula, destrinchamento e o Toque Comigo, que é o play along com a cifra na tela. Todas com PDF para baixar, e a lista cresce todo mês.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">03</span>
+        <h3>Gravações de aulas ao vivo extras inclusas</h3>
+        <p>Toda semana entra uma aula com exercício ou tema prático, para você ir além da trilha quando bater vontade de fazer algo diferente. No YouTube a live sai do ar em sete dias. Aqui a gravação fica, com o material junto.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">04</span>
+        <h3>Comunidade e desafios do mês</h3>
+        <p>Gente no mesmo momento que você, trocando vídeo e dando força. No começo você pode só ficar de olho, se for mais tímido.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">05</span>
+        <h3>Cursos extras inclusos</h3>
+        <p>Workshop de Canto com Ukulele, com professora de canto convidada. Destrava Dedos, com 21 exercícios. E o Dicionário de Acordes em PDF.</p>
+      </div>
+      <div class="recebe-card">
+        <span class="num">06</span>
+        <h3>Material de cada aula para baixar</h3>
+        <p>Cifra, tablatura e PDF de apoio dentro da própria plataforma, sem caçar arquivo perdido em pasta de download.</p>
+      </div>
+    </div>
+
+    <div class="trilha">
+      <div class="trilha-item">
+        <div class="trilha-bolha">I0</div>
+        <div><h3>Iniciante 0</h3><p>Escolher o ukulele, afinar, postura e os primeiros sons.</p></div>
+      </div>
+      <div class="trilha-item">
+        <div class="trilha-bolha">I1</div>
+        <div><h3>Iniciante 1</h3><p>Primeiros acordes, primeira batida e a sua primeira música inteira.</p></div>
+      </div>
+      <div class="trilha-item">
+        <div class="trilha-bolha">I2</div>
+        <div><h3>Iniciante 2</h3><p>Trocas mais rápidas, batidas coringas e repertório crescendo.</p></div>
+      </div>
+      <div class="trilha-item">
+        <div class="trilha-bolha">M1</div>
+        <div><h3>Intermediário 1</h3><p>Pestana destravada, ritmos novos e som mais limpo.</p></div>
+      </div>
+      <div class="trilha-item">
+        <div class="trilha-bolha">M2</div>
+        <div><h3>Intermediário 2</h3><p>Estilos diferentes, dedilhado e autonomia para tirar música sozinho.</p></div>
+      </div>
+    </div>
+
+    <div class="cta-wrap">
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec sec-surface">
+  <div class="container center">
+    <span class="eyebrow">Não é só a minha palavra</span>
+    <h2 class="h2">Quem já está no Clube contando como foi</h2>
     <div class="depo-grid">
-      <div class="depo-item"><img src="../../img/Depoimento Aline (b).webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
-      <div class="depo-item"><img src="../../img/Depoimento Leila.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
-      <div class="depo-item"><img src="../../img/Depoimento Marcelo.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
-      <div class="depo-item"><img src="../../img/Depoimento Maria.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
-      <div class="depo-item"><img src="../../img/Depoimento Wellen b.webp" alt="Depoimento Aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Aline (b).webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Leila.webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Marcelo.webp" alt="Depoimento de aluno" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Maria.webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
+      <div class="depo-item"><img src="../../img/Depoimento Wellen b.webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
     </div>
   </div>
 </section>
 
-<section class="cascade-section sec-dark">
-  <div class="container container-6xl">
-    <h2 class="bonus-title">Você ainda leva <span>4 bônus exclusivos</span></h2>
-    <p class="bonus-sub">Tudo o que você precisa para transformar o aprendizado em um hobby para a vida toda.</p>
-    <div class="bonus-grid">
+<section class="cascade-section sec">
+  <div class="container container-5xl center">
+    <span class="eyebrow">Só nesta abertura</span>
+    <h2 class="h2">Dois bônus para quem entrar por essa condição</h2>
+    <p class="lead" style="margin-top:1rem">São esses dois, e mais nenhum. Prefiro prometer pouco e entregar inteiro.</p>
+    <div class="bonus-grid" style="text-align:left">
       <div class="bonus-card">
-        <div class="bonus-head">
-          <span class="bonus-tag">Bônus 01</span>
-          <div class="bonus-prices"><span class="price-old">R$ 297,00/ano</span><span class="gratis">Grátis</span></div>
-        </div>
-        <h4>Comunidade Exclusiva</h4>
-        <p>Tira-dúvidas direto com professores e alunos, missões mensais com encontros ao vivo e o lugar onde você vê outras pessoas exatamente onde você está hoje.</p>
+        <span class="selo">Bônus 01</span>
+        <h3>5 atividades com correção minha em vídeo</h3>
+        <p>Cinco atividades posicionadas no primeiro módulo, para você começar com alguém olhando. Você grava com o celular, envia por dentro da plataforma e eu respondo em vídeo, mostrando o que está certo e o que dá para ajustar.</p>
       </div>
       <div class="bonus-card">
-        <div class="bonus-head">
-          <span class="bonus-tag">Bônus 02</span>
-          <div class="bonus-prices"><span class="price-old">R$ 297,00</span><span class="gratis">Grátis</span></div>
-        </div>
-        <h4>Biblioteca 150+ Músicas</h4>
-        <p>Repertório em pop, rock, reggae, gospel e MPB ensinado passo a passo, para você nunca mais ficar procurando tutorial avulso no YouTube.</p>
+        <span class="selo">Bônus 02</span>
+        <h3>Aula quinzenal com espaço para dúvidas</h3>
+        <p>A cada quinze dias tem uma aula com um momento aberto para você perguntar o que estiver travando. É exclusiva para os alunos que entrarem por esta condição.</p>
       </div>
-      <div class="bonus-card">
-        <div class="bonus-head">
-          <span class="bonus-tag">Bônus 03</span>
-          <div class="bonus-prices"><span class="price-old">R$ 147,00</span><span class="gratis">Grátis</span></div>
-        </div>
-        <h4>Workshop de Canto</h4>
-        <p>Aprenda a encontrar seu tom, aquecer a voz e tocar e cantar ao mesmo tempo afinado, mesmo se você nunca se considerou bom de voz.</p>
-      </div>
-      <div class="bonus-card gradient">
-        <div class="bonus-head">
-          <span class="bonus-tag">Bônus Especial</span>
-          <div class="bonus-prices"><span class="price-old">R$ 597,00</span><span class="gratis">Grátis</span></div>
-        </div>
-        <h4>Acesso Vitalício</h4>
-        <p>Como bônus desta condição, o acesso vira vitalício: você assiste no seu ritmo, refaz quantas vezes precisar e recebe todas as atualizações futuras.</p>
-      </div>
+    </div>
+    <div class="cta-wrap">
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero receber a oferta no dia 03/09</button>
     </div>
   </div>
 </section>
 
-<section class="cascade-section sec sec-light">
-  <div class="bonus-week">
-    <h2 class="bonus-week-title">🔥 Bônus Exclusivos da Semana 🔥</h2>
-    <div class="bonus-week-items">
-      <div class="bonus-week-item">
-        <div class="bonus-week-icon">🎥</div>
-        <div>
-          <h4>Acompanhamento Uke a Uke</h4>
-          <p>Envie 3 vídeos tocando e receba correções personalizadas em vídeo pelo Mateus.</p>
-          <span class="bonus-week-tag">Para inscrições feitas no dia 04/06</span>
-        </div>
-      </div>
-      <div class="bonus-week-item">
-        <div class="bonus-week-img">
-          <img src="../../img/Dicionário mockup melhor.webp" alt="eBook Dicionário de Acordes" width="922" height="647" loading="lazy" decoding="async">
-        </div>
-        <div>
-          <h4>Dicionário de Acordes (eBook)</h4>
-          <p>Bate o olho, vê a posição e toca. Guia de consulta definitiva.</p>
-          <span class="bonus-week-tag">Nas 2 primeiras horas de abertura da oferta, no dia 04/06</span>
-        </div>
-      </div>
-    </div>
-    <div class="bonus-week-cta">
-      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero Entrar no Grupo VIP e receber a oferta no dia 04/06</button>
-    </div>
-  </div>
-</section>
-
-<section class="cascade-section sec sec-white" style="text-align:center">
-  <div class="container container-6xl">
-    <span class="outcome-eyebrow">Sua Nova Jornada</span>
-    <h2 class="outcome-title">Resumindo, você sai desse curso <span>assim:</span></h2>
+<section class="cascade-section sec sec-surface">
+  <div class="container center">
+    <span class="eyebrow">Resumindo</span>
+    <h2 class="h2">Como você sai do outro lado</h2>
     <div class="outcome-grid">
-      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div><p>Tocando músicas do início ao fim</p></div>
-      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 7c0-1.66-1.34-3-3-3-1.06 0-2 .55-2.54 1.38l-.13.2-.12-.2C14.66 4.55 13.72 4 12.66 4c-.96 0-1.81.45-2.36 1.15L9 7l-1.3-1.85C7.15 4.45 6.3 4 5.34 4 4.28 4 3.34 4.55 2.8 5.38L2 7l5 7v6h12v-6l5-7-.8-1.62C20.66 4.55 19.72 4 18.66 4z"/></svg></div><p>Trocando acordes sem engasgar</p></div>
-      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15z"/></svg></div><p>Com a pestana destravada de vez</p></div>
-      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><p>Pronto para tocar na roda de amigos</p></div>
-      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg></div><p>Cantando e tocando ao mesmo tempo</p></div>
-      <div class="outcome-card"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.93 12.79c1.62 3.96 4.34 6.79 8.27 8.36l3.05-3.05c.39-.39.39-.99 0-1.38l-3.05-3.05c-.39-.39-.99-.39-1.38 0l-1.27 1.27c-2.06-1.06-3.7-2.69-4.76-4.76l1.27-1.27c.39-.39.39-.99 0-1.38L9.01 4.46c-.39-.39-.99-.39-1.38 0L4.58 7.51c1.57 3.93 4.4 6.65 8.36 8.27z"/></svg></div><p>Dominando mais de 10 batidas</p></div>
-      <div class="outcome-card featured"><div class="outcome-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55l1.33.26zM11.17 17s3.74-1.55 5.89-3.7c5.4-5.4 4.5-9.62 4.21-10.57-.95-.3-5.17-1.19-10.57 4.21C8.55 9.09 7 12.83 7 12.83L11.17 17z"/></svg></div><p>Sabendo como praticar para evoluir sem limites</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg><p>Tocando músicas do início ao fim</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.93 12.79c1.62 3.96 4.34 6.79 8.27 8.36l3.05-3.05c.39-.39.39-.99 0-1.38l-3.05-3.05c-.39-.39-.99-.39-1.38 0l-1.27 1.27c-2.06-1.06-3.7-2.69-4.76-4.76l1.27-1.27c.39-.39.39-.99 0-1.38L9.01 4.46c-.39-.39-.99-.39-1.38 0L4.58 7.51c1.57 3.93 4.4 6.65 8.36 8.27z"/></svg><p>Trocando acordes sem engasgar</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 00-5 5v4a5 5 0 0010 0V7a5 5 0 00-5-5zm7 9a7 7 0 01-6 6.93V21h-2v-3.07A7 7 0 015 11h2a5 5 0 0010 0h2z"/></svg><p>Cantando e tocando ao mesmo tempo</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><p>Pronto para tocar na roda de amigos</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17h2v-6H3v6zm4 4h2V7H7v14zm4-8h2V3h-2v10zm4 8h2V9h-2v12zm4-4h2v-4h-2v4z"/></svg><p>Sabendo qual é o próximo passo do seu estudo</p></div>
+      <div class="outcome-card"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55l1.33.26zM11.17 17s3.74-1.55 5.89-3.7c5.4-5.4 4.5-9.62 4.21-10.57-.95-.3-5.17-1.19-10.57 4.21C8.55 9.09 7 12.83 7 12.83L11.17 17z"/></svg><p>Aplicando o Mecanismo 3D em qualquer música nova</p></div>
     </div>
   </div>
 </section>
 
-<section class="cascade-section sec-dark2">
-  <div class="container container-4xl" style="color:#fff;text-align:center">
-    <h2 class="price-title">Certo, mas quanto vai custar tudo isso?</h2>
-    <div class="price-box">
+<section class="cascade-section sec">
+  <div class="container container-4xl center">
+    <span class="eyebrow">A condição da abertura</span>
+    <h2 class="h2">Certo, quanto custa entrar?</h2>
+    <div class="price-box" style="text-align:left">
       <ul class="price-list">
-        <li><span class="item"><span class="check">✅</span> <span><b>Curso Ukulele Fundamental completo</b> (4 etapas, do zero à autonomia musical)</span></span><span class="price-old">R$ 597</span></li>
-        <li><span class="item"><span class="check">✅</span> <span><b>Comunidade Exclusiva por 1 Ano</b> (tira-dúvidas e Missão Uke ao vivo)</span></span><span class="price-old">R$ 297</span></li>
-        <li><span class="item"><span class="check">✅</span> <span><b>Biblioteca com Mais de 150 Músicas</b> (pop, rock, reggae, gospel, MPB)</span></span><span class="price-old">R$ 297</span></li>
-        <li><span class="item"><span class="check">✅</span> <span><b>Workshop de Canto com Ukulele</b> (tocar e cantar afinado ao mesmo tempo)</span></span><span class="price-old">R$ 147</span></li>
-        <li><span class="item"><span class="check">✅</span> <span><b>Acesso Vitalício</b> (sem prazo, com todas as atualizações futuras)</span></span><span class="price-old">R$ 297</span></li>
-        <li><span class="item"><span class="check">✅</span> <span><b>Acompanhamento Uke a Uke com o Mateus</b> (bônus exclusivo para inscrições no dia 04/06 pela oferta especial)</span></span><span class="price-old">R$ 497</span></li>
-        <li><span class="item"><span class="check">✅</span> <span><b>Dicionário de Acordes do Ukulele (eBook)</b> (nas 2 primeiras horas de abertura no dia 04/06)</span></span><span class="price-old">R$ 27</span></li>
+        <li><span class="ck">✓</span> <span><b>Trilha completa</b>, do Iniciante 0 ao Intermediário 2</span></li>
+        <li><span class="ck">✓</span> <span><b>Biblioteca com 154 músicas</b>, com aula, play along e cifra em PDF</span></li>
+        <li><span class="ck">✓</span> <span><b>Gravações de aulas ao vivo extras inclusas</b>, uma nova toda semana</span></li>
+        <li><span class="ck">✓</span> <span><b>Comunidade e desafios do mês</b>, para você não estudar sozinho</span></li>
+        <li><span class="ck">✓</span> <span><b>Cursos extras</b>: Canto com Ukulele, Destrava Dedos e Dicionário de Acordes</span></li>
+        <li><span class="ck">✓</span> <span><b>Bônus 1</b>: 5 atividades no primeiro módulo com correção minha em vídeo</span></li>
+        <li><span class="ck">✓</span> <span><b>Bônus 2</b>: aula quinzenal com espaço para tirar dúvidas</span></li>
       </ul>
       <div class="price-final">
-        <p class="price-final-line">De: <span class="price-old">R$ 2.159,00</span> | Por:</p>
-        <p class="price-surprise"><span class="price-surprise-box">SURPRESA, liberada no dia 04/06 somente no grupo vip</span></p>
-        <div style="display:flex;justify-content:center"><button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero Entrar no Grupo VIP</button></div>
+        <p class="price-de">De: <span class="price-old">R$ 600,00</span></p>
+        <p class="price-por">O valor com a condição da abertura é revelado no dia 03/09, dentro do grupo VIP, antes de qualquer anúncio.</p>
+        <div class="cta-wrap">
+          <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cascade-section sec-white" style="padding:2rem 1rem">
-  <div class="guarantee-box">
-    <div class="guarantee-bg"><svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
-    <div class="guarantee-icon"><div class="guarantee-icon-ping"></div>🛡️</div>
-    <div class="guarantee-content">
-      <span class="guarantee-eyebrow">100% Livre de Risco</span>
-      <h2>Garantia incondicional de 14 dias</h2>
-      <p>Você entra no curso, testa o método e toca a primeira música. Se por qualquer motivo não gostar da metodologia, devolvemos 100% do seu dinheiro sem letras miúdas e sem fricção. O risco está todo nas nossas costas.</p>
+<section class="cascade-section sec sec-surface">
+  <div class="container">
+    <div class="guarantee">
+      <div class="guarantee-badge"><b>30</b><span>dias</span></div>
+      <div>
+        <h2>Garantia incondicional de 30 dias</h2>
+        <p>Entra e usa tudo. Assiste as aulas da trilha, participa da comunidade, baixa o que quiser. Se em 30 dias você achar que não é para você, é só falar com a gente que devolvo o valor inteiro, sem justificativa e sem letra miúda.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="cascade-section sec-light" style="padding:4rem 1rem">
-  <div class="mentor-grid">
-    <div class="mentor-img-wrap">
-      <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto - Professor e Mentor do Ukulele Fundamental" width="800" height="1000" loading="lazy" decoding="async">
+<section class="cascade-section sec">
+  <div class="container mentor-grid">
+    <div class="mentor-img">
+      <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto, professor do Clube do Ukulele" width="800" height="1000" loading="lazy" decoding="async">
     </div>
     <div class="mentor-content">
-      <h2>O seu mentor nessa jornada é o <span>Mateus Augusto</span></h2>
-      <div class="mentor-list">
-        <p><span class="check">✓</span> Há 30 anos aprendendo e tocando instrumentos musicais.</p>
-        <p><span class="check">✓</span> Em 2014, o Ukulele foi seu refúgio no tratamento contra um câncer.</p>
-        <p><span class="check">✓</span> Quando se curou, transformou essa experiência em missão de ensinar pessoas comuns a ter o mesmo refúgio.</p>
-        <p><span class="check">✓</span> Desde então, já formou mais de 6.000 alunos em todos os cantos do Brasil e do mundo, além de ter +300.000 seguidores nas redes sociais.</p>
-      </div>
+      <span class="eyebrow">Quem vai te acompanhar</span>
+      <h2 class="h2">Mateus Augusto</h2>
+      <p style="margin-top:1rem">Toco desde criança e dou aula de ukulele há quase dez anos. Em 2014 o ukulele virou o meu refúgio durante um tratamento contra um câncer, e quando me curei transformei isso em trabalho: ensinar gente comum a ter o mesmo refúgio.</p>
+      <p>Desde então já formei mais de 6.000 alunos no Brasil e fora dele, com mais de 300.000 pessoas acompanhando nas redes.</p>
+      <p>O Clube nasceu de uma coisa simples: vídeo solto não resolve o problema de quem trava, porque falta ordem e falta alguém dizendo qual é o próximo passo. Aqui você tem os dois.</p>
     </div>
   </div>
-  <div class="mentor-cta">
-    <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero receber a oferta especial, dia 04/06, no Grupo VIP</button>
+  <div class="cta-wrap">
+    <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero receber a oferta no dia 03/09</button>
   </div>
 </section>
 
-<section class="cascade-section sec-white" style="padding:4rem 1rem">
-  <div class="faq-wrap">
-    <h2 class="faq-title">Perguntas frequentes</h2>
-    <div class="faq-list">
+<section class="cascade-section sec sec-surface">
+  <div class="container container-4xl">
+    <span class="eyebrow">Antes de decidir</span>
+    <h2 class="h2">Dúvidas que sempre aparecem</h2>
+    <div class="faq-wrap">
       <details class="faq-item">
-        <summary class="faq-summary">Nunca toquei nenhum instrumento. Esse curso é para mim?<span class="faq-arrow"></span></summary>
-        <div class="faq-content">Sim! O Ukulele Fundamental foi criado exatamente para quem está começando do zero. Você vai aprender passo a passo, com segurança e praticidade.</div>
+        <summary class="faq-summary">Eu ainda nem tenho ukulele. Posso entrar?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Pode. A trilha começa antes disso: eu ensino a escolher o instrumento, e se você me procurar pelo suporte eu ajudo você pessoalmente nessa escolha.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-summary">Já sei o básico, mas ainda travo. Vai me ajudar?<span class="faq-arrow"></span></summary>
-        <div class="faq-content">Com certeza. Se você já começou a aprender, mas sente que não evolui, o curso vai corrigir sua base e acelerar sua autonomia musical.</div>
+        <summary class="faq-summary">Nunca toquei nenhum instrumento. Serve para mim?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Serve. O ponto de partida do Clube é o zero absoluto, com passo a passo e sem exigir nenhuma base musical anterior.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-summary">Eu não tenho coordenação ou ritmo. Mesmo assim consigo?<span class="faq-arrow"></span></summary>
-        <div class="faq-content">Sim. O método 3D (Dividir, Destravar, Dominar) foi feito justamente para ajudar quem sente os dedos duros ou travados. A coordenação aparece com os exercícios certos.</div>
+        <summary class="faq-summary">Já sei tocar um pouco. Vale a pena?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Vale. Boa parte dos alunos chega tocando algumas músicas, travada na mesma batida e sem saber qual é o próximo passo. A trilha te dá o caminho e mostra as bases que ficaram para trás.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Eu não tenho ritmo nem coordenação. Mesmo assim consigo?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Consegue. O Mecanismo 3D existe exatamente por isso: em vez de tentar fazer tudo ao mesmo tempo, você isola cada camada, treina até ela rodar sozinha e só então junta. A coordenação aparece como consequência.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-summary">Preciso saber teoria musical?<span class="faq-arrow"></span></summary>
-        <div class="faq-content">Não! Você aprende direto na prática, dentro de músicas reais. A teoria que você aprende aqui é a que faz sentido na hora que você precisa.</div>
+        <div class="faq-content">Não. Você aprende direto na prática, dentro de músicas reais. A teoria entra na hora em que ela faz diferença no que você está tocando.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-summary">O acesso ao curso é por tempo limitado?<span class="faq-arrow"></span></summary>
-        <div class="faq-content">Não! O acesso é vitalício. Você pode seguir no seu ritmo, sem pressão, e revisitar as aulas sempre que quiser.</div>
+        <summary class="faq-summary">Por quanto tempo eu tenho acesso?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">É como uma academia: um ano de acesso ilimitado a tudo que está dentro do Clube. Ao fim do período a assinatura renova, e a condição que você pegou na abertura continua valendo na renovação.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Eu mando vídeo tocando para você corrigir?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Neste plano você tem as 5 atividades do primeiro módulo, e eu respondo cada uma em vídeo. Fora essas, o espaço para tirar dúvida comigo é a aula quinzenal.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Tem encontro ao vivo toda semana?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Neste plano não. O que você tem é a aula quinzenal com espaço para dúvidas, mais as gravações das aulas ao vivo extras, que entram toda semana e ficam guardadas com o material junto.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Tenho pouco tempo para estudar.<span class="faq-arrow"></span></summary>
+        <div class="faq-content">A trilha é feita para você ir no seu ritmo, acelerando quando dá e freando quando precisa. Quem tem pouco tempo raramente sofre pelo tempo em si: sofre por gastar o pouco que tem estudando a coisa errada, sem saber se está no caminho.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">E se eu entrar e não gostar?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">São 30 dias de garantia incondicional. Você usa tudo nesse período e, se achar que não é para você, pede o reembolso e eu devolvo o valor integral, sem justificativa.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">Entrar no grupo VIP me obriga a alguma coisa?<span class="faq-arrow"></span></summary>
+        <div class="faq-content">Nada. Não tem pagamento e não tem reserva. Você entra no grupo, recebe a oferta no dia 03/09 antes de todo mundo e decide na hora.</div>
       </details>
     </div>
   </div>
 </section>
 
-<section class="cascade-section sec-light" style="padding:4rem 1rem;border-top:1px solid #e2e8f0">
-  <div class="final-cta-wrap">
-    <h2>Sua chance de destravar no ukulele começa agora</h2>
-    <div style="width:100%;display:flex;justify-content:center">
-      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero Entrar no Grupo VIP e receber a oferta dia 04/06</button>
+<section class="cascade-section sec">
+  <div class="final">
+    <h2>A abertura é dia 03/09, e o grupo VIP recebe primeiro</h2>
+    <p class="lead center">Quem está no grupo vê a condição antes de qualquer anúncio, e tem mais tempo para decidir.</p>
+    <div class="cta-wrap">
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
     </div>
+    <span class="cta-nota">Sem compromisso e sem pagamento agora.</span>
   </div>
 </section>
+
+<footer class="rodape">Clube do Ukulele · Mateus Augusto · Todos os direitos reservados</footer>
 
 </main>
 
 <div id="capture-modal" class="modal">
   <div class="modal-content" id="capture-content">
-    <h3>Falta muito pouco!</h3>
-    <p class="modal-sub">Preencha seus dados para receber o link de acesso ao Grupo VIP no WhatsApp.</p>
+    <h3>Falta muito pouco</h3>
+    <p class="modal-sub">Preencha seus dados para receber o link de acesso ao grupo VIP no WhatsApp.</p>
     <form onsubmit="handleCapture(event)" class="modal-form">
       <div>
         <label for="lead-nome">Nome Completo *</label>
@@ -747,7 +711,7 @@ header.hero-section{background:#1e293b;color:#fff;height:100dvh;min-height:600px
         </div>
         <p id="erro-whatsapp" class="erro-msg"></p>
       </div>
-      <button type="submit" id="btn-submit" class="modal-submit">Liberar Vaga no Grupo VIP</button>
+      <button type="submit" id="btn-submit" class="modal-submit">Liberar vaga no grupo VIP</button>
     </form>
     <button type="button" onclick="fecharCaptura()" class="modal-close">Fechar Janela</button>
   </div>
@@ -822,7 +786,7 @@ function selecionarDDI(value,code){
   var textSpan=document.getElementById('ddi-selected-text'),flag=document.getElementById('ddi-selected-flag');
   ddiInput.value=value;
   if(code==='other'){
-    flag.outerHTML='<svg id="ddi-selected-flag" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#64748b;margin-right:.375rem"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+    flag.outerHTML='<svg id="ddi-selected-flag" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#5C5A70;margin-right:.375rem"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
     textSpan.innerText='';
   } else {
     if(flag.tagName.toLowerCase()==='svg'){
