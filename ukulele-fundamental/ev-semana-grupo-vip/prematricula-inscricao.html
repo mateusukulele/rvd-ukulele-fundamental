@@ -11,6 +11,8 @@
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://flagcdn.com">
+<link rel="dns-prefetch" href="https://i.ytimg.com">
+<link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
 
 <link rel="preload" as="image" href="../../img/Hero.webp" fetchpriority="high">
 
@@ -43,7 +45,21 @@ ul{padding:0;list-style:none}
   --teal:#177A6A;
   --sobre-escuro:#DCD6E6;
   --linha:rgba(220,214,230,.16);
+  /* tema claro, usado só dentro do modal de captura */
+  --ink:#1F1A2B;
+  --muted:#5C5A70;
+  --page:#F5F4F7;
+  --surface:#ECEAF1;
+  --card:#FFFFFF;
+  --line-forte:#C9C4D6;
 }
+
+/* Anel de foco por teclado: obrigatório no manual, não é enfeite. */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
+  outline:3px solid var(--coral);
+  outline-offset:3px;
+}
+.modal :where(a,button,input,select,textarea):focus-visible{outline-color:var(--indigo)}
 
 body{
   margin:0;
@@ -116,7 +132,7 @@ header.hero-section{
   padding:1.25rem 1.15rem 2rem;overflow:hidden;
 }
 .hero-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;gap:1rem}
-.hero-logo{width:150px;height:auto;margin:0 auto;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.hero-logo{width:170px;height:auto;margin:0 auto;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
 .hero-img-mobile{width:100%;display:flex;justify-content:center}
 .hero-img-mobile .hero-image-wrap{height:30vh}
 .hero-img-desktop{display:none}
@@ -138,7 +154,7 @@ header.hero-section{
   .hero-img-desktop{display:flex;width:47%;align-items:center;justify-content:center}
   .hero-img-desktop .hero-image-wrap{height:76vh;max-height:720px}
   .hero-text{width:53%;align-items:flex-start;text-align:left;gap:1.25rem}
-  .hero-logo{margin:0;width:200px}
+  .hero-logo{margin:0;width:230px}
   .hero-title{font-size:clamp(36px,3.6vw,52px)}
   .hero-sub{font-size:17px}
   .hero-price{font-size:14px}
@@ -197,6 +213,16 @@ header.hero-section{
 .trilha-item:nth-child(4) .trilha-bolha,.trilha-item:nth-child(5) .trilha-bolha{border-color:var(--acao)}
 .trilha-item h3{color:#fff;font-size:15.5px;font-weight:800}
 .trilha-item p{font-size:13.5px;line-height:1.5}
+
+/* === DEPOIMENTO EM VÍDEO (facade: o iframe só entra no clique) === */
+.yt{position:relative;width:100%;max-width:720px;margin:2.5rem auto 0;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:3px solid rgba(232,122,133,.45);box-shadow:0 22px 44px -24px rgba(0,0,0,.75);cursor:pointer}
+.yt img{width:100%;height:100%;object-fit:cover}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(45,18,78,.32);transition:background .2s}
+.yt:hover .play{background:rgba(45,18,78,.12)}
+.yt .play span{width:66px;height:66px;border-radius:999px;background:var(--acao);display:grid;place-items:center;box-shadow:0 10px 22px -8px rgba(0,0,0,.6)}
+.yt .play svg{width:26px;height:26px;color:var(--acao-texto);margin-left:4px}
+.yt:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
 /* === DEPOIMENTOS === */
 .depo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;margin-top:2.5rem}
@@ -271,40 +297,40 @@ header.hero-section{
 .modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(45,18,78,.94);padding:1rem;backdrop-filter:blur(10px);opacity:0;transition:opacity .3s}
 .modal.open{display:flex}
 .modal.visible{opacity:1}
-.modal-content{width:100%;max-width:28rem;border-radius:28px;background:#fff;padding:1.5rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);transform:scale(.95);transition:transform .3s;color:#1F1A2B;line-height:1.5}
+.modal-content{width:100%;max-width:28rem;border-radius:28px;background:var(--card);padding:1.5rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);transform:scale(.95);transition:transform .3s;color:var(--ink);line-height:1.5}
 .modal-content.visible{transform:scale(1)}
 .modal h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:1.4rem;color:var(--indigo);margin-bottom:.4rem;text-align:center}
-.modal-sub{color:#5C5A70;font-size:13px;margin-bottom:1.5rem;text-align:center;line-height:1.4}
+.modal-sub{color:var(--muted);font-size:13px;margin-bottom:1.5rem;text-align:center;line-height:1.4}
 .modal-form{display:flex;flex-direction:column;gap:1rem}
-.modal-form label{display:block;font-size:11.5px;font-weight:700;color:#5C5A70;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;margin-left:.5rem}
-.modal-form input[type=text],.modal-form input[type=email]{width:100%;padding:.8rem 1rem;border-radius:12px;background:#F5F4F7;border:1px solid #C9C4D6;font-size:14px;font-family:inherit;color:#1F1A2B;transition:border-color .2s,background-color .2s}
-.modal-form input[type=text]:focus,.modal-form input[type=email]:focus{border-color:var(--indigo);background:#fff;outline:none}
+.modal-form label{display:block;font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;margin-left:.5rem}
+.modal-form input[type=text],.modal-form input[type=email]{width:100%;min-height:44px;padding:.8rem 1rem;border-radius:12px;background:var(--page);border:1px solid var(--line-forte);font-size:14px;font-family:inherit;color:var(--ink);transition:border-color .2s,background-color .2s}
+.modal-form input[type=text]:focus,.modal-form input[type=email]:focus{border-color:var(--indigo);background:var(--card)}
 .erro-msg{margin-top:.35rem;font-size:11px;font-weight:700;color:#B83A2E;margin-left:.5rem;display:none}
 .erro-msg.show{display:block}
 .aviso-msg{margin-top:.35rem;font-size:11px;font-weight:700;color:#8A5A00;margin-left:.5rem;display:none}
 .aviso-msg.show{display:block}
-.phone-wrap{display:flex;border-radius:12px;border:1px solid #C9C4D6;background:#F5F4F7;transition:border-color .2s}
+.phone-wrap{display:flex;border-radius:12px;border:1px solid var(--line-forte);background:var(--page);transition:border-color .2s}
 .phone-wrap:focus-within{border-color:var(--indigo)}
 .ddi-container{position:relative;flex-shrink:0}
-.ddi-button{height:100%;display:flex;align-items:center;padding:0 .75rem;background:#ECEAF1;border-right:1px solid #C9C4D6;border-radius:12px 0 0 12px;transition:background-color .2s}
-.ddi-button:hover{background:#DCD6E6}
+.ddi-button{height:100%;min-height:44px;display:flex;align-items:center;padding:0 .75rem;background:var(--surface);border-right:1px solid var(--line-forte);border-radius:12px 0 0 12px;transition:background-color .2s}
+.ddi-button:hover{background:var(--sobre-escuro)}
 .ddi-button img{width:20px;height:auto;margin-right:.35rem;border-radius:2px;object-fit:cover}
-.ddi-button span{font-size:12.5px;font-weight:700;color:#1F1A2B}
-.ddi-button svg{width:.75rem;height:.75rem;color:#5C5A70;margin-left:.35rem}
-.ddi-menu{display:none;position:absolute;top:100%;left:0;margin-top:.25rem;width:16rem;max-height:15rem;overflow-y:auto;background:#fff;border:1px solid #C9C4D6;border-radius:12px;box-shadow:0 10px 15px -3px rgba(0,0,0,.15);z-index:50}
+.ddi-button span{font-size:12.5px;font-weight:700;color:var(--ink)}
+.ddi-button svg{width:.75rem;height:.75rem;color:var(--muted);margin-left:.35rem}
+.ddi-menu{display:none;position:absolute;top:100%;left:0;margin-top:.25rem;width:16rem;max-height:15rem;overflow-y:auto;background:var(--card);border:1px solid var(--line-forte);border-radius:12px;box-shadow:0 10px 15px -3px rgba(0,0,0,.15);z-index:50}
 .ddi-menu.open{display:block}
-.ddi-option{width:100%;display:flex;align-items:center;gap:.5rem;padding:.5rem .75rem;text-align:left;transition:background-color .15s}
-.ddi-option:hover{background:#F5F4F7}
-.ddi-option.other{border-top:1px solid #E1DEE8}
+.ddi-option{width:100%;min-height:44px;display:flex;align-items:center;gap:.5rem;padding:.5rem .75rem;text-align:left;transition:background-color .15s}
+.ddi-option:hover{background:var(--page)}
+.ddi-option.other{border-top:1px solid var(--line-forte)}
 .ddi-option img{width:20px;height:auto;border-radius:2px}
-.ddi-option svg{width:20px;height:20px;color:#5C5A70}
-.ddi-option span{font-size:12.5px;font-weight:500;color:#1F1A2B}
-.phone-wrap input[type=tel]{width:100%;padding:.8rem 1rem;background:transparent;outline:none;font-weight:500;font-size:14px;border:0;color:#1F1A2B;font-family:inherit}
+.ddi-option svg{width:20px;height:20px;color:var(--muted)}
+.ddi-option span{font-size:12.5px;font-weight:500;color:var(--ink)}
+.phone-wrap input[type=tel]{width:100%;min-height:44px;padding:.8rem 1rem;background:transparent;font-weight:500;font-size:14px;border:0;color:var(--ink);font-family:inherit}
 .modal-submit{width:100%;background:var(--acao);color:var(--acao-texto);padding:1rem;border-radius:12px;font-weight:800;font-size:17px;margin-top:.5rem;transition:background-color .2s,transform .2s}
 .modal-submit:hover:not(:disabled){background:var(--acao-hover);transform:translateY(-2px)}
 .modal-submit:disabled{opacity:.7;cursor:not-allowed}
-.modal-close{margin-top:1rem;width:100%;text-align:center;color:#5C5A70;font-size:11.5px;text-transform:uppercase;font-weight:700;letter-spacing:.1em;padding:.5rem}
-.modal-close:hover{color:#1F1A2B}
+.modal-close{margin-top:1rem;width:100%;min-height:44px;text-align:center;color:var(--muted);font-size:11.5px;text-transform:uppercase;font-weight:700;letter-spacing:.1em;padding:.75rem .5rem}
+.modal-close:hover{color:var(--ink)}
 @media (min-width:768px){
   .modal-content{padding:2.25rem}
   .modal h3{font-size:1.6rem}
@@ -331,7 +357,7 @@ header.hero-section{
     </div>
 
     <div class="hero-text">
-      <img src="../../img/logo-clube-horizontal.webp" alt="Clube do Ukulele" width="900" height="471" class="hero-logo" fetchpriority="high" decoding="async">
+      <img src="../../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" class="hero-logo" fetchpriority="high" decoding="async">
       <span class="selo">Abertura 03/09 · grupo VIP</span>
       <h1 class="hero-title">Aprender ukulele com <span>direção</span>, em vez de juntar vídeo solto</h1>
       <p class="hero-sub">O Clube do Ukulele abre no dia 03/09 com uma condição que só vai existir dentro do grupo VIP. Entre no grupo e receba a oferta antes de qualquer anúncio.</p>
@@ -508,6 +534,10 @@ header.hero-section{
   <div class="container center">
     <span class="eyebrow">Não é só a minha palavra</span>
     <h2 class="h2">Quem já está no Clube contando como foi</h2>
+    <div class="yt" data-yt="ZJQYqm_y5qw" tabindex="0" role="button" aria-label="Assistir aos depoimentos de alunos do Clube do Ukulele">
+      <img src="https://i.ytimg.com/vi/ZJQYqm_y5qw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/ZJQYqm_y5qw/hqdefault.jpg'" alt="Depoimentos de alunos do Clube do Ukulele" width="1280" height="720" loading="lazy" decoding="async">
+      <div class="play"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+    </div>
     <div class="depo-grid">
       <div class="depo-item"><img src="../../img/Depoimento Aline (b).webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
       <div class="depo-item"><img src="../../img/Depoimento Leila.webp" alt="Depoimento de aluna" width="1080" height="1080" loading="lazy" decoding="async"></div>
@@ -591,7 +621,22 @@ header.hero-section{
   </div>
 </section>
 
-<section class="cascade-section sec">
+<section class="cascade-section sec center">
+  <div class="container container-4xl">
+    <span class="eyebrow">Ainda em dúvida?</span>
+    <h2 class="h2">Escuta quem já estava na sua situação</h2>
+    <p class="lead" style="margin-top:1rem">Gente que também achava que não levava jeito, ou que era tarde demais.</p>
+    <div class="yt" data-yt="zEtXv7rg7JY" tabindex="0" role="button" aria-label="Assistir a mais depoimentos de alunos do Clube do Ukulele">
+      <img src="https://i.ytimg.com/vi/zEtXv7rg7JY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/zEtXv7rg7JY/hqdefault.jpg'" alt="Mais depoimentos de alunos do Clube do Ukulele" width="1280" height="720" loading="lazy" decoding="async">
+      <div class="play"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+    </div>
+    <div class="cta-wrap">
+      <button onclick="abrirCaptura()" class="btn-pulsar cta-btn">Quero entrar no grupo VIP</button>
+    </div>
+  </div>
+</section>
+
+<section class="cascade-section sec sec-surface">
   <div class="container mentor-grid">
     <div class="mentor-img">
       <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto, professor do Clube do Ukulele" width="800" height="1000" loading="lazy" decoding="async">
@@ -694,7 +739,7 @@ header.hero-section{
         <p id="aviso-email" class="aviso-msg">Corrigimos um possível erro de digitação. Verifique se está certo.</p>
       </div>
       <div>
-        <label>WhatsApp *</label>
+        <label for="lead-whatsapp">WhatsApp *</label>
         <div class="phone-wrap">
           <div id="ddi-container" class="ddi-container">
             <input type="hidden" id="lead-ddi" value="55">
@@ -879,6 +924,23 @@ function handleCapture(event){
   window.dataLayer.push({event:'lead_capture_vip',lead_name:nome,lead_email:email,lead_phone:phoneFinal,lead_ddi:ddi||'other'});
   window.location.href='https://cursos.comotocarukulele.com/ukulele-fundamental/ev-semana-grupo-vip/prematricula-confirmada';
 }
+
+// ============================
+// DEPOIMENTOS EM VÍDEO (facade)
+// A thumb é imagem estática; o iframe do YouTube só é criado no clique,
+// então a página não carrega o player de ninguém à toa.
+// ============================
+document.querySelectorAll('.yt[data-yt]').forEach(function(box){
+  function abrir(){
+    var id=box.getAttribute('data-yt');
+    box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="Depoimentos de alunos do Clube do Ukulele" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    box.style.cursor='default';
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'depoimento_play',origem:'prematricula-vip-clube',video_id:id});
+  }
+  box.addEventListener('click',abrir);
+  box.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();abrir();}});
+});
 
 // ============================
 // FAQ
