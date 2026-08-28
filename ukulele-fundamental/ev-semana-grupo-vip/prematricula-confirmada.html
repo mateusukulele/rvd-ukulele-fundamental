@@ -121,69 +121,27 @@ h1 span{color:var(--coral)}
 .timer-off:hover{color:#fff}
 .timer-off:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
 
-/* === O QUE ACONTECE AGORA === */
-.passos{
-  width:100%;
-  border-top:1px solid var(--linha);
-  padding-top:1.15rem;margin-top:.25rem;
-  display:flex;flex-direction:column;gap:.7rem;
-  text-align:left;
-}
-/* Coral rende 3,9:1 sobre o índigo do card: serve para o H1, que é texto
-   grande, e reprova num rótulo de 11,5px. Aqui o rótulo vai de branco. */
-.passos-titulo{
-  font-size:12px;font-weight:800;color:#fff;
-  text-transform:uppercase;letter-spacing:.14em;text-align:center;
-}
-.passo{display:flex;gap:.75rem;align-items:flex-start;font-size:15px;line-height:1.45}
-.passo .n{
-  width:26px;height:26px;flex-shrink:0;
-  border-radius:50%;
-  background:rgba(220,214,230,.12);border:1px solid var(--linha);
-  color:#fff;font-size:12px;font-weight:800;
-  display:flex;align-items:center;justify-content:center;
-  margin-top:.1rem;
-}
-.passo b{color:#fff}
-
-/* === ASSINATURA === */
-.assinatura{display:flex;align-items:center;gap:.75rem;text-align:left}
-.assinatura img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--linha);flex-shrink:0}
-.assinatura p{font-size:12px;line-height:1.4}
-.assinatura b{color:#fff;display:block;font-size:15px}
-
 @media (prefers-reduced-motion:reduce){
   .btn-whats{animation:none}
   .btn-whats:hover{transform:none}
 }
 
-/* Celular baixo: o que sai primeiro é enfeite (o check), nunca informação */
-@media (max-height:860px){
+/* Celular baixo: aperta o respiro antes de tirar qualquer coisa da tela */
+@media (max-height:700px){
   .card{gap:.7rem;padding:1.3rem 1.15rem}
-  .check{display:none}
   .logo{width:clamp(92px,20vw,112px)}
   .sub{font-size:15px}
-  .passo{font-size:14px}
   .timer,.timer-off{font-size:14px}
-  .passos{padding-top:.85rem;gap:.5rem}
-  .assinatura img{width:42px;height:42px}
 }
-/* Tela curta de verdade: a assinatura é o único bloco sem função aqui,
-   então é ela que sai para o botão e os três passos caberem inteiros. */
-@media (max-height:700px){
-  .assinatura{display:none}
+/* Tela muito baixa: o check é o único enfeite, e é ele que sai */
+@media (max-height:560px){
+  .check{display:none}
 }
 
-@media (min-width:768px) and (min-height:861px){
+@media (min-width:768px){
   .card{padding:2.25rem 2.5rem;gap:1.05rem;border-radius:36px}
   .sub{font-size:18px}
   .btn-whats{font-size:18px;padding:1.15rem 1.5rem}
-}
-/* Notebook de 768px de altura: largura de desktop, altura de celular */
-@media (min-width:768px) and (max-height:860px){
-  .card{padding:1.6rem 2.25rem;max-width:44rem}
-  .sub{font-size:16px}
-  .btn-whats{font-size:18px}
 }
 </style>
 </head>
@@ -203,7 +161,7 @@ h1 span{color:var(--coral)}
 
     <h1>Pré-matrícula <span>confirmada</span></h1>
 
-    <p class="sub">Falta um passo: entrar no grupo VIP. É lá que a condição de abertura sai no dia <b>03/09</b>, antes de qualquer anúncio.</p>
+    <p class="sub">Falta um passo: entrar no grupo VIP. A condição de abertura sai lá no dia <b>03/09</b>, antes de qualquer anúncio. Sem pagamento até lá.</p>
 
     <!-- Link do grupo: trocar SÓ aqui, no href. O script lê este mesmo href
          para o redirecionamento automático, então não existe segundo lugar. -->
@@ -216,18 +174,6 @@ h1 span{color:var(--coral)}
 
     <p class="timer" id="timer" aria-live="polite">Levo você para o grupo em <strong id="count">7</strong> segundos.</p>
     <button type="button" class="timer-off" id="timer-off">Prefiro entrar sozinho</button>
-
-    <div class="passos">
-      <p class="passos-titulo">O que acontece agora</p>
-      <div class="passo"><span class="n">1</span><p>Você entra no grupo VIP e já vê tudo que for combinado por lá.</p></div>
-      <div class="passo"><span class="n">2</span><p>No dia <b>03/09</b> eu libero a condição de abertura dentro do grupo, antes de qualquer anúncio.</p></div>
-      <div class="passo"><span class="n">3</span><p>Você decide na hora. Sem pagamento e sem reserva até lá.</p></div>
-    </div>
-
-    <div class="assinatura">
-      <img src="../../img/mateus-perfil.webp" alt="Mateus Augusto" width="96" height="96" loading="lazy" decoding="async">
-      <p><b>Mateus Augusto</b>Professor do Clube do Ukulele. Te vejo no grupo.</p>
-    </div>
 
   </div>
 </main>
