@@ -913,9 +913,46 @@ function handleCapture(event){
 
   btn.innerHTML='Liberando...';btn.disabled=true;
   var phoneFinal=(ddi?ddi:'')+phoneRaw;
+  var destino='https://cursos.comotocarukulele.com/ukulele-fundamental/ev-semana-grupo-vip/prematricula-confirmada';
+
+  // O lead só sai da página depois que o GTM termina. Antes, o push e o
+  // location.href rodavam no mesmo tick: o navegador começava a descarregar
+  // a página no mesmo instante e toda tag que precisa de rede (GA4, Meta,
+  // Google Ads e as HTML personalizadas) morria no meio. No preview do GTM
+  // elas ficavam paradas em "ainda está em execução" e o generate_lead
+  // nunca chegava no servidor.
+  //
+  // São três relógios porque um só não cobre todos os casos:
+  //   ESPERA_MINIMA  segura uma janela mínima mesmo quando o eventCallback
+  //                  volta na hora. Ele volta cedo quando as tags de
+  //                  generate_lead penduram num evento seguinte da cadeia
+  //                  (o submit_cadastro), e não neste push.
+  //   eventCallback  encurta a espera quando as tags já terminaram antes.
+  //   ESPERA_MAXIMA  é o teto: uma tag travada não pode prender o lead
+  //                  aqui, e o GTM pode nem ter carregado ainda (ele entra
+  //                  1,5s depois do DOM), caso em que o callback nunca vem.
+  var ESPERA_MINIMA=900, ESPERA_MAXIMA=2500;
+  var inicio=Date.now(), navegou=false;
+  function seguir(){
+    if(navegou)return;
+    navegou=true;
+    window.location.href=destino;
+  }
+  function seguirQuandoDer(){
+    var falta=ESPERA_MINIMA-(Date.now()-inicio);
+    if(falta>0){setTimeout(seguir,falta)}else{seguir()}
+  }
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'lead_capture_vip',lead_name:nome,lead_email:email,lead_phone:phoneFinal,lead_ddi:ddi||'other'});
-  window.location.href='https://cursos.comotocarukulele.com/ukulele-fundamental/ev-semana-grupo-vip/prematricula-confirmada';
+  window.dataLayer.push({
+    event:'lead_capture_vip',
+    lead_name:nome,
+    lead_email:email,
+    lead_phone:phoneFinal,
+    lead_ddi:ddi||'other',
+    eventTimeout:ESPERA_MAXIMA,
+    eventCallback:seguirQuandoDer
+  });
+  setTimeout(seguir,ESPERA_MAXIMA);
 }
 
 // ============================

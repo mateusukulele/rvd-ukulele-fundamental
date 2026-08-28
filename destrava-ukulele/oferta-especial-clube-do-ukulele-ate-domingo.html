@@ -830,14 +830,37 @@ document.getElementById('lead').addEventListener('submit',function(e){
   mark('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
   if(!ok) return;
   var btn=document.getElementById('go'); btn.textContent='Abrindo o formulário…'; btn.disabled=true;
+
+  /* Os 400ms que estavam aqui eram um chute curto demais. Se a página sai
+     antes das tags terminarem, toda tag que precisa de rede morre no meio e
+     o lead não chega no servidor: no preview do GTM elas ficam paradas em
+     "ainda está em execução". Agora são três relógios.
+       ESPERA_MINIMA  janela mínima mesmo quando o eventCallback volta na
+                      hora, porque parte das tags pendura num evento
+                      seguinte da cadeia e não neste push.
+       eventCallback  encurta a espera quando as tags já terminaram.
+       ESPERA_MAXIMA  teto, para uma tag travada não prender o lead aqui e
+                      para o caso de o GTM ainda não ter carregado. */
+  var ESPERA_MINIMA=900, ESPERA_MAXIMA=2500;
+  var inicio=Date.now(), navegou=false, url;
+  function seguir(){
+    if(navegou)return;
+    navegou=true;
+    location.href=url||FORM_URL;
+  }
+  function seguirQuandoDer(){
+    var falta=ESPERA_MINIMA-(Date.now()-inicio);
+    if(falta>0){setTimeout(seguir,falta)}else{seguir()}
+  }
+
   window.dataLayer=window.dataLayer||[];
   /* Mesmo evento e mesmas chaves da página de venda. O GTM desta conta
      dispara por nome de evento, então qualquer nome diferente daqui não
      acionaria trigger nenhum e o lead não chegaria. lead_has_ukulele vai
      em branco porque a pergunta saiu do formulário, mas a chave fica pra
      variável do GTM não chegar como undefined. */
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:''});
-  var url;
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:'',eventTimeout:ESPERA_MAXIMA,eventCallback:seguirQuandoDer});
+
   try{
     url=new URL(FORM_URL);
     url.searchParams.set('usp','pp_url');
@@ -848,7 +871,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
     url.searchParams.set(FORM_CAMPOS.whats, ddi.value==='55' ? waIn.value : '+'+(ddi.value||'')+' '+tel);
     url=url.toString();
   }catch(_){ url=FORM_URL; }
-  setTimeout(function(){location.href=url;},400);
+  setTimeout(seguir,ESPERA_MAXIMA);
 });
 
 /* ===== Depoimentos em vídeo (facade) =====
