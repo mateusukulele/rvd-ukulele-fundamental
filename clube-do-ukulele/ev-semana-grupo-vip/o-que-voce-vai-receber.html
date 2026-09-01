@@ -139,6 +139,52 @@ header.hero-section{
   .hero-title{font-size:clamp(34px,3.4vw,48px)}
   .hero-sub{font-size:18px}
   .hero-data{font-size:15px}
+  .hero-text .contador{align-self:flex-start}
+}
+
+/* Tela baixa: o contador é a informação da dobra, então a foto cede espaço
+   antes dele. Abaixo de 700px de altura ela sai de cena, como já acontece na
+   página de captura. */
+@media (max-height:880px) and (max-width:1023px){
+  .hero-img-mobile .hero-image-wrap{max-height:28vh}
+  .hero-inner{gap:.9rem}
+  .hero-text{gap:.5rem}
+}
+@media (max-height:700px) and (max-width:1023px){
+  .hero-img-mobile{display:none}
+}
+
+/* === CONTADOR ===
+   Alvo fixo com fuso -03:00 no HTML: quem abre a página fora do Brasil vê o
+   mesmo instante, não 8h do fuso dele. Os dígitos usam largura tabular para
+   a caixa não tremer a cada segundo. */
+.contador{margin-top:.9rem;align-self:center;display:inline-flex;flex-direction:column;align-items:center;gap:.55rem;border-radius:16px;padding:.9rem 1.1rem;border:1px solid rgba(232,122,133,.45);background:rgba(45,18,78,.35)}
+.contador-label{font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--coral)}
+.contador-grid{display:flex;align-items:flex-start;gap:.45rem}
+.contador-item{min-width:52px;display:flex;flex-direction:column;align-items:center;gap:.1rem;background:rgba(255,255,255,.06);border-radius:10px;padding:.45rem .3rem}
+.contador-item b{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:26px;line-height:1;color:#fff;font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.contador-item span{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--sobre-escuro)}
+.contador-sep{font-family:'Anton',Impact,sans-serif;font-size:22px;line-height:1;color:var(--coral);padding-top:.5rem}
+.contador-aberto{font-weight:800;font-size:14px;color:#fff;text-align:center;max-width:22rem}
+/* Sobre fundo claro o coral cheio perde contraste: troca pela família forte
+   e escurece o texto, mesma regra do resto da página. */
+.sec-branca .contador,.sec-clara .contador{background:var(--page);border-color:var(--line-forte)}
+.sec-branca .contador-label,.sec-clara .contador-label{color:var(--coral-forte)}
+.sec-branca .contador-item,.sec-clara .contador-item{background:var(--card);border:1px solid var(--line)}
+.sec-branca .contador-item b,.sec-clara .contador-item b{color:var(--indigo)}
+.sec-branca .contador-item span,.sec-clara .contador-item span{color:var(--muted)}
+.sec-branca .contador-sep,.sec-clara .contador-sep{color:var(--coral-forte)}
+.sec-branca .contador-aberto,.sec-clara .contador-aberto{color:var(--indigo)}
+.final .contador{margin-top:1.5rem}
+@media (min-width:420px){
+  .contador{padding:1rem 1.35rem}
+  .contador-item{min-width:60px}
+  .contador-item b{font-size:30px}
+  .contador-item span{font-size:10.5px}
+}
+@media (min-width:768px){
+  .contador-item{min-width:68px}
+  .contador-item b{font-size:34px}
 }
 
 /* === BARRA DE PROVA === */
@@ -300,7 +346,20 @@ header.hero-section{
       <span class="selo">🎸 Você já está no Grupo VIP 🎸</span>
       <h1 class="hero-title">Veja tudo o que você vai receber no <span>Clube do Ukulele</span> ao se inscrever</h1>
       <p class="hero-sub">Você garantiu seu lugar no grupo e agora pode conhecer com calma cada parte do Clube, do método à trilha, antes da oferta ser liberada.</p>
-      <span class="hero-data">A oferta abre dia <b>03/09</b>, no Grupo VIP do WhatsApp</span>
+      <span class="hero-data">A oferta abre dia <b>03/09, às 8h</b>, no Grupo VIP do WhatsApp</span>
+      <div class="contador" data-alvo="2026-09-03T08:00:00-03:00" role="timer">
+        <span class="contador-label">A oferta abre em</span>
+        <div class="contador-grid">
+          <div class="contador-item"><b data-cd="d">--</b><span>dias</span></div>
+          <span class="contador-sep" aria-hidden="true">:</span>
+          <div class="contador-item"><b data-cd="h">--</b><span>horas</span></div>
+          <span class="contador-sep" aria-hidden="true">:</span>
+          <div class="contador-item"><b data-cd="m">--</b><span>min</span></div>
+          <span class="contador-sep" aria-hidden="true">:</span>
+          <div class="contador-item"><b data-cd="s">--</b><span>seg</span></div>
+        </div>
+        <span class="contador-aberto" hidden>A oferta está aberta agora, no Grupo VIP do WhatsApp.</span>
+      </div>
     </div>
 
     <div class="hero-img-desktop">
@@ -525,7 +584,7 @@ header.hero-section{
       </ul>
       <div class="price-final">
         <p class="price-de">De: <span class="price-old">R$ 600,00</span></p>
-        <p class="price-por">O valor com a condição da abertura é revelado no dia 03/09, dentro do grupo VIP, antes de qualquer anúncio.</p>
+        <p class="price-por">O valor com a condição da abertura é revelado no dia 03/09, às 8h, dentro do grupo VIP, antes de qualquer anúncio.</p>
       </div>
     </div>
   </div>
@@ -626,8 +685,21 @@ header.hero-section{
 <section class="sec sec-branca">
   <div class="final">
     <h2>Agora você já conhece tudo o que vem pela frente</h2>
-    <p>No dia 03/09 a oferta abre aqui mesmo, dentro do grupo, antes de qualquer anúncio. Fica de olho nas mensagens para não perder o aviso e a condição especial.</p>
-    <span class="final-data">Anota aí: <span>03/09</span>, no Grupo VIP do WhatsApp</span>
+    <p>No dia 03/09, às 8h da manhã, a oferta abre aqui mesmo, dentro do grupo, antes de qualquer anúncio. Fica de olho nas mensagens para não perder o aviso e a condição especial.</p>
+    <span class="final-data">Anota aí: <span>03/09, às 8h</span>, no Grupo VIP do WhatsApp</span>
+    <div class="contador" data-alvo="2026-09-03T08:00:00-03:00" role="timer">
+      <span class="contador-label">A oferta abre em</span>
+      <div class="contador-grid">
+        <div class="contador-item"><b data-cd="d">--</b><span>dias</span></div>
+        <span class="contador-sep" aria-hidden="true">:</span>
+        <div class="contador-item"><b data-cd="h">--</b><span>horas</span></div>
+        <span class="contador-sep" aria-hidden="true">:</span>
+        <div class="contador-item"><b data-cd="m">--</b><span>min</span></div>
+        <span class="contador-sep" aria-hidden="true">:</span>
+        <div class="contador-item"><b data-cd="s">--</b><span>seg</span></div>
+      </div>
+      <span class="contador-aberto" hidden>A oferta está aberta agora, no Grupo VIP do WhatsApp.</span>
+    </div>
   </div>
 </section>
 
@@ -636,6 +708,44 @@ header.hero-section{
 </main>
 
 <script>
+// ============================
+// CONTADOR ATÉ A ABERTURA
+// ============================
+(function(){
+  var caixas=[].slice.call(document.querySelectorAll('.contador[data-alvo]'));
+  if(!caixas.length)return;
+  caixas.forEach(function(c){
+    c.alvo=new Date(c.getAttribute('data-alvo')).getTime();
+    c.campos={d:c.querySelector('[data-cd=d]'),h:c.querySelector('[data-cd=h]'),m:c.querySelector('[data-cd=m]'),s:c.querySelector('[data-cd=s]')};
+    c.grid=c.querySelector('.contador-grid');
+    c.aberto=c.querySelector('.contador-aberto');
+    c.rotulo=c.querySelector('.contador-label');
+  });
+  function dois(n){return n<10?'0'+n:''+n}
+  function tick(){
+    var agora=Date.now(),vivo=false;
+    caixas.forEach(function(c){
+      // Data inválida (fuso mal escrito no HTML) some com o bloco em vez de
+      // estampar NaN na página.
+      if(isNaN(c.alvo)){c.hidden=true;return}
+      var falta=c.alvo-agora;
+      if(falta<=0){
+        c.grid.hidden=true;c.rotulo.hidden=true;c.aberto.hidden=false;
+        return;
+      }
+      vivo=true;
+      var s=Math.floor(falta/1000);
+      c.campos.d.textContent=Math.floor(s/86400);
+      c.campos.h.textContent=dois(Math.floor(s/3600)%24);
+      c.campos.m.textContent=dois(Math.floor(s/60)%60);
+      c.campos.s.textContent=dois(s%60);
+    });
+    if(!vivo&&timer){clearInterval(timer);timer=null}
+  }
+  var timer=setInterval(tick,1000);
+  tick();
+})();
+
 // ============================
 // DEPOIMENTO EM VÍDEO (facade)
 // ============================
