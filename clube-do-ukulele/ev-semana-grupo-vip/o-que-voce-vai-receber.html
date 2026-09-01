@@ -26,6 +26,10 @@ img{max-width:100%;height:auto;display:block}
 h1,h2,h3,h4{margin:0;line-height:1.15}
 p,ul{margin:0}
 ul{padding:0;list-style:none}
+/* Regras de display do autor (.contador-grid é flex) vencem o [hidden] do
+   navegador. Sem esta linha, os dígitos congelados ficam na tela junto com o
+   aviso de que a oferta abriu. */
+[hidden]{display:none!important}
 
 /* === PALETA CLUBE DO UKULELE 2026 ===
    Mesma regra da página de captura: base índigo, detalhe coral, laranja só
@@ -321,6 +325,58 @@ header.hero-section{
 .final-data{margin-top:1.75rem;display:inline-block;background:var(--indigo-deep);color:#fff;font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.03em;font-size:17px;padding:1rem 1.75rem;border-radius:16px;line-height:1.3}
 .final-data span{color:var(--coral)}
 
+/* === BARRA FIXA DO CONTADOR ===
+   É uma barra só, que muda de pouso: rodapé no celular (zona do polegar),
+   topo no desktop. Como é o mesmo elemento, é impossível as duas aparecerem
+   juntas. Ela também só entra em cena quando nenhum contador da página está
+   visível, para nunca haver dois contadores na tela ao mesmo tempo. */
+.barra-fixa{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  display:flex;align-items:center;justify-content:center;gap:.65rem;
+  padding:.55rem 1rem calc(.55rem + env(safe-area-inset-bottom,0px));
+  background:rgba(45,18,78,.95);
+  border-top:1px solid rgba(232,122,133,.45);
+  box-shadow:0 -10px 30px -18px rgba(0,0,0,.85);
+  color:#fff;
+  opacity:0;visibility:hidden;transform:translateY(100%);
+  transition:opacity .28s ease,transform .28s ease,visibility .28s;
+}
+@supports (backdrop-filter:blur(10px)){
+  .barra-fixa{background:rgba(45,18,78,.82);backdrop-filter:blur(10px)}
+}
+.barra-fixa.visivel{opacity:1;visibility:visible;transform:none}
+.barra-fixa .contador-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.11em;color:var(--coral);line-height:1.2}
+.barra-fixa .contador-grid{display:flex;align-items:baseline;gap:.28rem}
+.barra-fixa .bloco{display:inline-flex;align-items:baseline;gap:.08rem}
+.barra-fixa b{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:20px;line-height:1;color:#fff;font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.barra-fixa .un{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--sobre-escuro)}
+.barra-fixa .sep{font-size:13px;line-height:1;color:rgba(232,122,133,.7)}
+.barra-fixa .contador-aberto{font-size:13px;max-width:none}
+@media (max-width:359px){
+  .barra-fixa{gap:.45rem}
+  .barra-fixa .contador-label{font-size:9px;max-width:5.5rem}
+  .barra-fixa b{font-size:18px}
+}
+@media (min-width:1024px){
+  .barra-fixa{
+    bottom:auto;top:0;
+    transform:translateY(-100%);
+    border-top:0;border-bottom:1px solid rgba(232,122,133,.45);
+    box-shadow:0 10px 30px -18px rgba(0,0,0,.85);
+    padding:.7rem 1rem;gap:1rem;
+  }
+  .barra-fixa .contador-label{font-size:11.5px}
+  .barra-fixa b{font-size:24px}
+  .barra-fixa .un{font-size:11px}
+  .barra-fixa .contador-aberto{font-size:15px}
+}
+/* Quem pediu menos movimento continua vendo a barra: ela aparece por opacidade,
+   sem o deslize. */
+@media (prefers-reduced-motion:reduce){
+  .barra-fixa,.barra-fixa.visivel{transform:none}
+  .barra-fixa{transition:opacity .2s ease,visibility .2s}
+}
+
 /* === RODAPÉ === */
 .rodape{padding:2.5rem 1.15rem 3rem;text-align:center;background:var(--indigo-deep);color:var(--sobre-escuro);font-size:12.5px}
 </style>
@@ -477,8 +533,8 @@ header.hero-section{
       </div>
       <div class="recebe-card">
         <span class="num">05</span>
-        <h3>Cursos extras inclusos</h3>
-        <p>Workshop de Canto com Ukulele, com professora de canto convidada. Destrava Dedos, com 21 exercícios. E o Dicionário de Acordes em PDF.</p>
+        <h3>Curso de canto incluso</h3>
+        <p>Workshop de Canto com Ukulele, com professora de canto convidada, para você tocar e cantar afinado ao mesmo tempo.</p>
       </div>
       <div class="recebe-card">
         <span class="num">06</span>
@@ -533,8 +589,8 @@ header.hero-section{
 <section class="sec sec-escura">
   <div class="container container-5xl center">
     <span class="eyebrow">Só nesta abertura</span>
-    <h2 class="h2">Três bônus para quem entrar por essa condição</h2>
-    <p class="lead" style="margin-top:1rem">São esses três, e mais nenhum. Prefiro prometer pouco e entregar inteiro.</p>
+    <h2 class="h2">Cinco bônus para quem entrar por essa condição</h2>
+    <p class="lead" style="margin-top:1rem">São esses cinco, e mais nenhum. Prefiro prometer pouco e entregar inteiro.</p>
     <div class="bonus-grid" style="text-align:left">
       <div class="bonus-card">
         <h3>Bônus 1 · 5 atividades com correção minha em vídeo</h3>
@@ -547,6 +603,14 @@ header.hero-section{
       <div class="bonus-card">
         <h3>Bônus 3 · Guia de Compra do Primeiro Ukulele</h3>
         <p>Qual tamanho escolher, o que muda de um material para outro, quanto vale a pena gastar e o que evitar. Se você ainda não tem instrumento, começa por aqui, sem depender de palpite de vendedor.</p>
+      </div>
+      <div class="bonus-card">
+        <h3>Bônus 4 · Destrava Dedos</h3>
+        <p>Mini curso com 21 exercícios para destravar os dedos e acelerar o desenvolvimento da sua coordenação motora desde o primeiro dia.</p>
+      </div>
+      <div class="bonus-card">
+        <h3>Bônus 5 · Dicionário de Acordes do Ukulele (eBook)</h3>
+        <p>Bate o olho, vê a posição e toca. O guia de consulta definitivo para você nunca mais travar procurando um acorde.</p>
       </div>
     </div>
   </div>
@@ -577,10 +641,12 @@ header.hero-section{
         <li><span class="ck">✓</span> <span><b>Biblioteca com 154 músicas</b>, com aula, play along e cifra em PDF</span></li>
         <li><span class="ck">✓</span> <span><b>Gravações de aulas ao vivo extras inclusas</b>, uma nova toda semana</span></li>
         <li><span class="ck">✓</span> <span><b>Comunidade e desafios do mês</b>, para você não estudar sozinho</span></li>
-        <li><span class="ck">✓</span> <span><b>Cursos extras</b>: Canto com Ukulele, Destrava Dedos e Dicionário de Acordes</span></li>
+        <li><span class="ck">✓</span> <span><b>Workshop de Canto com Ukulele</b>, para tocar e cantar afinado ao mesmo tempo</span></li>
         <li><span class="ck">✓</span> <span><b>Bônus 1</b>: 5 atividades no primeiro módulo com correção minha em vídeo</span></li>
         <li><span class="ck">✓</span> <span><b>Bônus 2</b>: aula quinzenal com espaço para tirar dúvidas</span></li>
         <li><span class="ck">✓</span> <span><b>Bônus 3</b>: Guia de Compra do Primeiro Ukulele</span></li>
+        <li><span class="ck">✓</span> <span><b>Bônus 4</b>: Destrava Dedos, com 21 exercícios de coordenação</span></li>
+        <li><span class="ck">✓</span> <span><b>Bônus 5</b>: Dicionário de Acordes do Ukulele em eBook</span></li>
       </ul>
       <div class="price-final">
         <p class="price-de">De: <span class="price-old">R$ 600,00</span></p>
@@ -707,12 +773,26 @@ header.hero-section{
 
 </main>
 
+<div class="barra-fixa" data-alvo="2026-09-03T08:00:00-03:00" role="timer" aria-label="Contagem regressiva para a abertura da oferta">
+  <span class="contador-label">A oferta abre em</span>
+  <div class="contador-grid">
+    <span class="bloco"><b data-cd="d">--</b><span class="un">d</span></span>
+    <span class="sep" aria-hidden="true">:</span>
+    <span class="bloco"><b data-cd="h">--</b><span class="un">h</span></span>
+    <span class="sep" aria-hidden="true">:</span>
+    <span class="bloco"><b data-cd="m">--</b><span class="un">m</span></span>
+    <span class="sep" aria-hidden="true">:</span>
+    <span class="bloco"><b data-cd="s">--</b><span class="un">s</span></span>
+  </div>
+  <span class="contador-aberto" hidden>A oferta está aberta agora, no Grupo VIP.</span>
+</div>
+
 <script>
 // ============================
 // CONTADOR ATÉ A ABERTURA
 // ============================
 (function(){
-  var caixas=[].slice.call(document.querySelectorAll('.contador[data-alvo]'));
+  var caixas=[].slice.call(document.querySelectorAll('[data-alvo]'));
   if(!caixas.length)return;
   caixas.forEach(function(c){
     c.alvo=new Date(c.getAttribute('data-alvo')).getTime();
@@ -744,6 +824,38 @@ header.hero-section{
   }
   var timer=setInterval(tick,1000);
   tick();
+})();
+
+// ============================
+// BARRA FIXA: some quando um contador da página está na tela
+// ============================
+(function(){
+  var barra=document.querySelector('.barra-fixa');
+  if(!barra)return;
+  var inline=[].slice.call(document.querySelectorAll('.contador[data-alvo]'));
+  if(!inline.length){barra.classList.add('visivel');return}
+  function naTela(el){
+    var r=el.getBoundingClientRect();
+    return r.bottom>0&&r.top<(window.innerHeight||document.documentElement.clientHeight);
+  }
+  var ultimo=-1;
+  function avaliar(){
+    // Duas medidas por evento de scroll, e só quando a posição mudou de fato.
+    // requestAnimationFrame seria o caminho usual, mas ele congela em aba de
+    // segundo plano e a barra ficaria presa no estado antigo ao voltar.
+    var y=window.pageYOffset||document.documentElement.scrollTop||0;
+    if(y===ultimo)return;
+    ultimo=y;
+    barra.classList.toggle('visivel',!inline.some(naTela));
+  }
+  function reavaliar(){ultimo=-1;avaliar()}
+  window.addEventListener('scroll',avaliar,{passive:true});
+  window.addEventListener('resize',reavaliar);
+  // O navegador restaura a posição do scroll depois de um F5, e às vezes
+  // depois deste script: sem o load, a barra ficaria presa no estado do topo
+  // até o primeiro toque na tela.
+  window.addEventListener('load',reavaliar);
+  reavaliar();
 })();
 
 // ============================
