@@ -24,12 +24,21 @@
     - a oferta é TEMPO, não conteúdo: mais um ano somado ao que a pessoa
       acabou de comprar.
 
-  COPY: segue o teleprompter gravado (Upsell 197). Números travados:
-    renovação anual normal do Clube R$ 597 · esta página R$ 197 à vista
-    (ou 12x — CONFERIR a parcela em /calculadora-juros-hotmart antes de subir).
-  A página NÃO cita o valor que a pessoa acabou de pagar, de propósito: ela roda
-  tanto para quem entrou por R$ 297 na campanha quanto por R$ 597 fora dela.
-  Também não cita data, lançamento, grupo VIP nem "condição especial de hoje".
+  COPY: segue o teleprompter gravado (Upsell 197). Único número de dinheiro na
+  página: R$ 197 à vista, ou 12x de R$ 20,37 no cartão.
+
+  ⚠️ O QUE NÃO PODE ENTRAR NESTA PÁGINA, por mais tentador que pareça:
+     - valor de renovação (R$ 597 ou qualquer outro) e conta de desconto em reais;
+     - promessa de preço futuro ("trava o preço", "sem reajuste");
+     - o valor que a pessoa acabou de pagar;
+     - preço por mês do Clube;
+     - data, lançamento, grupo VIP, "condição especial de hoje".
+  Motivo: as pessoas chegam aqui por ofertas diferentes, cada uma com um cupom
+  vitalício diferente (R$ 200 ou R$ 300 sobre os R$ 597), então cada uma tem uma
+  anuidade própria e já paga menos para sempre. Qualquer número de renovação
+  escrito aqui contradiz a conta que ela viu minutos atrás. Por isso o quadro de
+  preço faz a conta em MESES, e a vantagem aparece só na frase relativa "menos do
+  que você acabou de pagar", que é verdade em todas as portas de entrada.
 
   PLACEHOLDERS NESTA VERSÃO (procure por "PLACEHOLDER"):
      1. player do vídeo 4:5 — falta o ID do VTurb do vídeo novo;
@@ -435,16 +444,28 @@ footer a{color:#C9C2DC}
 <section class="section surface-cream">
   <div class="wrap">
     <div class="preco">
-      <p class="cham">Mais um ano de Clube por menos do que você acabou de pagar agora</p>
-      <p class="ancora">Não é conteúdo novo e nem versão melhor do que você comprou. É mais tempo:
-      um segundo ano somado ao acesso que você acabou de garantir.</p>
+      <p class="cham">Mais um ano inteiro, por menos do que você acabou de pagar agora</p>
+      <p class="ancora">O que entra aqui é tempo. O mesmo Clube, com o dobro de prazo pra você
+      atravessar a trilha inteira sem pressa.</p>
+      <!-- A CONTA É EM MESES, E ISSO NÃO É ESTILO.
+           A pessoa chega aqui por ofertas diferentes, e cada uma dá um cupom
+           vitalício diferente (200 ou 300 de desconto sobre os R$ 597). Uma conta
+           em reais ancorada em "renovação normal R$ 597" seria falsa para quem
+           tem cupom: o desconto que ela enxerga na própria conta não bate com o
+           que está escrito aqui, e isso queima a oferta.
+           A conta em meses é verdadeira para todas as portas de entrada, e a
+           vantagem de preço fica só na frase relativa ("menos do que você acabou
+           de pagar"), que é verdade tanto contra 297 quanto contra 397.
+           NÃO reintroduzir valor de renovação, nem promessa de preço futuro:
+           o cupom vitalício já cuida disso, e a partir do terceiro ano a pessoa
+           renova pelo valor que pagou no primeiro. -->
       <div class="conta">
-        <div><span>Segundo ano de Clube (renovação normal)</span><b>R$ 597</b></div>
-        <div class="menos"><span>Desconto exclusivo desta página</span><b>− R$ 400</b></div>
+        <div><span>O ano que você acabou de garantir</span><b>12 meses</b></div>
+        <div class="menos"><span>O ano que entra por esta página</span><b>+ 12 meses</b></div>
+        <div><span>Você fica com</span><b>24 meses seguidos</b></div>
       </div>
       <p class="val"><small>R$</small> 197</p>
-      <!-- CONFERIR A PARCELA em /calculadora-juros-hotmart antes de publicar. -->
-      <p class="avista">pelo segundo ano inteiro, à vista · ou 12x de R$ 20 no cartão</p>
+      <p class="avista">pelos 12 meses extras, à vista · ou 12x de R$ 20,37 no cartão</p>
       <div class="abate">São dois anos, um atrás do outro, sem interrupção e sem ter que decidir
       nada no meio do caminho. Aluno que sabe que tem tempo aprende melhor: volta depois de uma
       semana ruim sem culpa e não pula etapa pra correr atrás do calendário. É por isso que esse
@@ -478,10 +499,13 @@ footer a{color:#C9C2DC}
         <p>A biblioteca cresce todo mês. O repertório que vai entrar no seu segundo ano ainda não
         está lá dentro hoje.</p>
       </div>
+      <!-- NÃO voltar com "você trava o preço": o preço travado é o do cupom
+           vitalício que a pessoa já tem, e prometer isso aqui confunde o que ela
+           comprou com o que está comprando agora. Este bullet fala de tempo. -->
       <div>
-        <b>Você trava o preço agora</b>
-        <p>Sem depender do que a assinatura vai custar no ano que vem, e sem ter que lembrar disso
-        daqui a onze meses.</p>
+        <b>Tempo de mandar vídeo e receber resposta em tudo</b>
+        <p>São 49 atividades ao longo da trilha, cada uma com um vídeo meu de volta. Em dois anos
+        você atravessa isso com folga, no seu ritmo.</p>
       </div>
       <div>
         <b>É a decisão mais barata de tomar hoje</b>
@@ -535,8 +559,11 @@ footer a{color:#C9C2DC}
 
     <details>
       <summary>E quando os dois anos acabarem?</summary>
-      <p>Aí entra a renovação normal do Clube, e você decide na hora se quer continuar. Nada te
-      prende: se quiser parar, é só não renovar.</p>
+      <!-- Sem falar em valor de renovação: cada porta de entrada tem um cupom
+           vitalício diferente, e citar preço aqui contradiz o que a pessoa
+           comprou minutos atrás. -->
+      <p>Perto do fim eu te aviso, e você decide na hora se quer continuar. Nada é cobrado sem você
+      saber, e nada te prende.</p>
     </details>
 
     <details>
@@ -548,8 +575,7 @@ footer a{color:#C9C2DC}
     <details>
       <summary>Essa condição volta depois?</summary>
       <p>Não. Ela existe só nesta página, no dia em que você entra, e é o menor valor que você vai
-      ver para mais um ano de Clube. Depois que você sair daqui, o segundo ano volta a custar o
-      valor normal de renovação.</p>
+      ver para mais um ano de Clube. Depois que você sair daqui, esse valor não volta.</p>
     </details>
 
     <details>
