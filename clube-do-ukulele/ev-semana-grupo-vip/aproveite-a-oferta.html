@@ -150,7 +150,20 @@ h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;lett
 .janela-card .quem{margin-top:auto;font-size:13px;font-weight:700;color:var(--sobre-escuro)}
 .janela-card .quem b{color:var(--coral)}
 .janela-card.cedo .quem b{color:#fff}
+/* Janela vencida: o cartão continua na página, apagado e riscado. Sumir com
+   ele apagaria também a prova de que o prazo era real — e quem chega 10h05
+   precisa entender o que perdeu para levar a sério o prazo das 20h. */
+.janela-card.expirado{opacity:.5;filter:saturate(.25)}
+.janela-card.expirado h3{text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:2px}
+.janela-card.cedo.expirado{border-color:var(--linha);background:var(--indigo)}
+.janela-card.expirado .janela-hora,.janela-card.cedo.expirado .janela-hora{background:rgba(255,255,255,.07);border-color:var(--line-forte);color:var(--sobre-escuro)}
+.janela-card.expirado .quem b,.janela-card.cedo.expirado .quem b{color:var(--sobre-escuro)}
+.price-list li.expirado{opacity:.5}
+.price-list li.expirado .txt{text-decoration:line-through}
 @media (min-width:768px){.janela-grid{grid-template-columns:1fr 1fr}}
+
+/* Tarja do modo de teste: só aparece quando a URL força um horário. */
+.aviso-teste{position:fixed;top:.5rem;right:.5rem;z-index:200;background:#8A5A00;color:#fff;font-size:11px;font-weight:800;line-height:1.3;padding:.4rem .65rem;border-radius:8px;max-width:15rem;text-align:right;pointer-events:none;box-shadow:0 8px 20px -10px rgba(0,0,0,.6)}
 
 /* === SELO === */
 .selo{display:inline-block;background:transparent;border:1px solid rgba(232,122,133,.6);color:var(--coral);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;padding:.4rem .9rem;border-radius:999px}
@@ -666,11 +679,11 @@ header.hero-section{
         <span class="quem">Para <b>qualquer inscrição feita hoje</b></span>
       </div>
 
-      <div class="janela-card cedo">
-        <span class="janela-hora"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>Só das 8h às 10h</span>
+      <div class="janela-card cedo" id="bonus-cedo">
+        <span class="janela-hora"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg><span id="bonus-cedo-hora">Só das 8h às 10h</span></span>
         <h3>Nivelamento personalizado</h3>
         <p>Você responde um questionário interativo e, no fim, recebe os seus primeiros passos e as recomendações de como estudar dentro do curso. Se precisar, ainda tem a possibilidade de me enviar um vídeo tocando: eu analiso e te digo por onde começar dentro do Clube e qual é o seu caminho, em vez de você adivinhar sozinho.</p>
-        <span class="quem">Só para quem entrar nas <b>2 primeiras horas</b>!</span>
+        <span class="quem" id="bonus-cedo-quem">Só para quem entrar nas <b>2 primeiras horas</b>!</span>
       </div>
 
     </div>
@@ -709,7 +722,7 @@ header.hero-section{
         <li><span class="ck">✓</span> <span><b>Bônus 4</b>: Destrava Dedos, com 21 exercícios de coordenação</span></li>
         <li><span class="ck">✓</span> <span><b>Bônus 5</b>: Dicionário de Acordes do Ukulele em eBook</span></li>
         <li><span class="ck">✓</span> <span><b>Dois encontros ao vivo</b> comigo, para quem entrar hoje</span></li>
-        <li><span class="ck">✓</span> <span><b>Nivelamento personalizado</b>, para quem entrar das 8h às 10h</span></li>
+        <li id="item-nivelamento"><span class="ck">✓</span> <span class="txt"><b>Nivelamento personalizado</b>, para quem entrar das 8h às 10h</span></li>
       </ul>
       <div class="price-final">
         <p class="price-de">De <span class="price-old">R$ 597</span> por ano</p>
@@ -873,6 +886,37 @@ header.hero-section{
 (function(){
   var ABRE_UTC  = Date.UTC(2026, 8, 3, 10, 59, 0);
   var FECHA_UTC = Date.UTC(2026, 8, 3, 23, 0, 0);
+  var FIM_CEDO  = Date.UTC(2026, 8, 3, 13,  0, 0); // 10:00 BRT, fim do nivelamento
+
+  // ---- horário simulado por parâmetro na URL, para conferir os estados ----
+  // ?estado=antes | cedo | aberta | encerrada     ou     ?t=2026-09-03T09:30-03:00
+  // Sem parâmetro, o deslocamento é zero e a página roda no horário real.
+  var DESLOCAMENTO = (function(){
+    var q, forcado=null;
+    try{ q=new URLSearchParams(location.search); }catch(e){ return 0 }
+    var t=q.get('t')||q.get('agora');
+    if(t){
+      var d=new Date(t);
+      if(!isNaN(d.getTime())) forcado=d.getTime();
+    } else {
+      var atalhos={
+        antes:     Date.UTC(2026, 8, 2, 15, 0, 0), // 02/09 12:00 BRT
+        cedo:      Date.UTC(2026, 8, 3, 12, 0, 0), // 03/09 09:00 BRT
+        aberta:    Date.UTC(2026, 8, 3, 17, 0, 0), // 03/09 14:00 BRT
+        encerrada: Date.UTC(2026, 8, 3, 23,30, 0)  // 03/09 20:30 BRT
+      };
+      var e=q.get('estado');
+      if(e && atalhos.hasOwnProperty(e)) forcado=atalhos[e];
+    }
+    if(forcado===null) return 0;
+    // Tarja para ninguém confundir página em teste com página no ar.
+    var tarja=document.createElement('div');
+    tarja.className='aviso-teste';
+    tarja.textContent='MODO DE TESTE · horário simulado: '+new Date(forcado).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'});
+    document.body.appendChild(tarja);
+    return forcado-Date.now();
+  })();
+  function agora(){return Date.now()+DESLOCAMENTO}
   var CHECKOUT_URL = 'https://pay.hotmart.com/I107367779O?off=kb9xgzrf&hideBillet=1&offDiscount=RVD-CLUBE3';
   var WA_URL = 'https://wa.me/5531985852860?text=' + encodeURIComponent('Oi! Eu queria entrar no Clube do Ukulele pela condição do dia 03/09, mas cheguei depois do encerramento. Dá para me ajudar?');
 
@@ -884,6 +928,10 @@ header.hero-section{
   var td=document.getElementById('t-d'), th=document.getElementById('t-h');
   var tm=document.getElementById('t-m'), ts=document.getElementById('t-s');
   var selo     = document.getElementById('hero-selo');
+  var cardCedo = document.getElementById('bonus-cedo');
+  var cedoHora = document.getElementById('bonus-cedo-hora');
+  var cedoQuem = document.getElementById('bonus-cedo-quem');
+  var itemNivel= document.getElementById('item-nivelamento');
   var fimTit   = document.getElementById('final-titulo');
   var fimTxt   = document.getElementById('final-texto');
   var botoes   = document.querySelectorAll('.cta-link');
@@ -941,7 +989,7 @@ header.hero-section{
   }
 
   function relogio(alvo){
-    var falta=Math.max(0,alvo-Date.now());
+    var falta=Math.max(0,alvo-agora());
     var seg=Math.floor(falta/1000);
     var d=Math.floor(seg/86400);
     if(td) td.textContent=d;
@@ -954,10 +1002,26 @@ header.hero-section{
     if(ts) ts.textContent=dois(seg%60);
   }
 
+  // O nivelamento das 8h às 10h não some quando vence: fica apagado e riscado,
+  // com a janela marcada como encerrada.
+  var cedoVencido=null;
+  function atualizaCedo(){
+    var venceu = agora()>=FIM_CEDO;
+    if(venceu===cedoVencido) return;
+    cedoVencido=venceu;
+    if(cardCedo) cardCedo.classList.toggle('expirado',venceu);
+    if(itemNivel) itemNivel.classList.toggle('expirado',venceu);
+    if(cedoHora) cedoHora.textContent = venceu ? 'Janela encerrada às 10h' : 'Só das 8h às 10h';
+    if(cedoQuem) cedoQuem.innerHTML = venceu
+      ? 'Esta janela fechou às <b>10h</b>'
+      : 'Só para quem entrar nas <b>2 primeiras horas</b>!';
+  }
+
   var estadoAtual=null;
   function tick(){
-    var agora=Date.now();
-    var estado = agora<ABRE_UTC ? 'antes' : (agora<FECHA_UTC ? 'aberta' : 'encerrada');
+    var t=agora();
+    var estado = t<ABRE_UTC ? 'antes' : (t<FECHA_UTC ? 'aberta' : 'encerrada');
+    atualizaCedo();
     if(estado!==estadoAtual){
       if(estado==='antes') antesDeAbrir();
       else if(estado==='aberta') aberta();
