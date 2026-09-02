@@ -665,7 +665,7 @@ header.hero-section{
   </div>
 </section>
 
-<section class="sec sec-escura">
+<section class="sec sec-escura" id="secao-janela">
   <div class="container container-5xl center">
     <span class="eyebrow">Quanto mais cedo, mais você leva</span>
     <h2 class="h2">Dois bônus que dependem da hora em que você entrar</h2>
@@ -721,7 +721,7 @@ header.hero-section{
         <li><span class="ck">✓</span> <span><b>Bônus 3</b>: Guia de Compra do Primeiro Ukulele</span></li>
         <li><span class="ck">✓</span> <span><b>Bônus 4</b>: Destrava Dedos, com 21 exercícios de coordenação</span></li>
         <li><span class="ck">✓</span> <span><b>Bônus 5</b>: Dicionário de Acordes do Ukulele em eBook</span></li>
-        <li><span class="ck">✓</span> <span><b>Dois encontros ao vivo</b> comigo, para quem entrar hoje</span></li>
+        <li id="item-encontros"><span class="ck">✓</span> <span class="txt"><b>Dois encontros ao vivo</b> comigo, para quem entrar hoje</span></li>
         <li id="item-nivelamento"><span class="ck">✓</span> <span class="txt"><b>Nivelamento personalizado</b>, para quem entrar das 8h às 10h</span></li>
       </ul>
       <div class="price-final">
@@ -932,6 +932,17 @@ header.hero-section{
   var cedoHora = document.getElementById('bonus-cedo-hora');
   var cedoQuem = document.getElementById('bonus-cedo-quem');
   var itemNivel= document.getElementById('item-nivelamento');
+  var itemEnc  = document.getElementById('item-encontros');
+  var secJanela= document.getElementById('secao-janela');
+
+  // Depois das 20h os bônus de horário deixam de existir: some a seção inteira
+  // e as duas linhas correspondentes na lista do preço. O que sobra na página é
+  // só o que continua valendo.
+  function mostraBonusDoDia(mostra){
+    if(secJanela) secJanela.hidden=!mostra;
+    if(itemNivel) itemNivel.hidden=!mostra;
+    if(itemEnc)   itemEnc.hidden=!mostra;
+  }
   var fimTit   = document.getElementById('final-titulo');
   var fimTxt   = document.getElementById('final-texto');
   var botoes   = document.querySelectorAll('.cta-link');
@@ -941,6 +952,7 @@ header.hero-section{
   function cadaBotao(fn){for(var i=0;i<botoes.length;i++)fn(botoes[i])}
 
   function antesDeAbrir(){
+    mostraBonusDoDia(true);
     if(topo) topo.textContent='A oferta abre 03/09 às 8h';
     if(base) base.textContent='Começa em';
     if(selo) selo.textContent='A oferta abre 03/09 às 8h';
@@ -957,6 +969,7 @@ header.hero-section{
   }
 
   function aberta(){
+    mostraBonusDoDia(true);
     if(barra) barra.classList.remove('encerrada');
     if(topo) topo.textContent='A condição especial encerra às 20h';
     if(base) base.textContent='Faltam apenas';
@@ -974,6 +987,7 @@ header.hero-section{
   }
 
   function encerrada(){
+    mostraBonusDoDia(false);
     if(barra) barra.classList.add('encerrada');
     if(selo) selo.textContent='Oferta encerrada';
     if(fimTit) fimTit.textContent='A oferta encerrou';
