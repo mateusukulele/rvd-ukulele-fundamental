@@ -1777,14 +1777,23 @@ var CHECKOUT_CLUBE='https://pay.hotmart.com/I107367779O?off=kb9xgzrf&hideBillet=
     try{
       url=new URL(CHECKOUT_CLUBE);
       url.searchParams.set('name',nome); url.searchParams.set('email',email);
-      url.searchParams.set('phonenumber',tel);
-      if(ddi.value) url.searchParams.set('phoneac',ddi.value);
+      // Na Hotmart, phoneac é o DDD e phonenumber é o número SEM o DDD. Mandar
+      // o DDI em phoneac, como estava, entregava o telefone errado no checkout.
+      // Fora do Brasil não há parâmetro para o código do país, então vai só o
+      // número, sem phoneac, para não plantar um DDD que não existe.
+      if(br && tel.length>=10){
+        url.searchParams.set('phoneac',tel.slice(0,2));
+        url.searchParams.set('phonenumber',tel.slice(2));
+      } else {
+        url.searchParams.set('phonenumber',tel);
+      }
       var qp=new URLSearchParams(location.search), utms=[];
       ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
       if(utms.length) url.searchParams.set('sck',utms.join('|'));
       var uid=cookie('user_id'); if(uid) url.searchParams.set('xcod',uid);
       url=url.toString();
     }catch(_){ url=CHECKOUT_CLUBE; }
+    document.dispatchEvent(new CustomEvent('checkout:pronto',{detail:{url:url}}));
     setTimeout(function(){location.href=url;},400);
   });
 })();
