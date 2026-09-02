@@ -40,10 +40,6 @@
   preço faz a conta em MESES, e a vantagem aparece só na frase relativa "menos do
   que você acabou de pagar", que é verdade em todas as portas de entrada.
 
-  PLACEHOLDER QUE AINDA FALTA (procure por "PLACEHOLDER"): o player do vídeo 4:5,
-     que espera o ID do VTurb. Está como caixa visível, com o código real logo
-     abaixo, comentado. O widget da Hotmart já está ligado.
-
   REGRAS QUE VALEM AQUI TAMBÉM:
      - o widget da Hotmart só monta UMA vez por página, por isso o botão do
        quadro de preço é uma âncora que rola de volta até ele;
@@ -84,17 +80,15 @@ if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
 })();
 </script>
 
-<!-- ===== PLACEHOLDER · preloads do player VTurb (vídeo 4:5) =====
-     Descomentar e trocar os IDs quando o vídeo estiver no VTurb.
+<!-- ===== Player VTurb (vídeo 4:5 do upsell) ===== -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/PLAYER_ID_AQUI/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a98adbcaf48284d4cd3147d/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/VIDEO_ID_AQUI/main.m3u8" as="fetch">
+<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a98ad9f8533f99df9f5fc24/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
 <link rel="dns-prefetch" href="https://license.vturb.com">
--->
 
 <style>
 :root{
@@ -179,6 +173,12 @@ strong{color:var(--ink);font-weight:600}
 /* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
    próprio elemento, e max-width ganha de width. */
 .vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
+/* O VTurb segura o 4:5 dele com padding-top:125% em cada bloco que injeta: o
+   placeholder inicial, depois a thumbnail, depois o player. Aqui a proporção já
+   é da .vframe, então esses blocos só precisam preencher a moldura. A regra
+   pega qualquer filho direto porque os nomes de classe mudam conforme o estado
+   do player, e um deles fora do lugar deixa a moldura preta e vazia. */
+.vframe vturb-smartplayer > *{padding:0!important;width:100%!important;height:100%!important}
 
 /* ---------- 4. widget da hotmart ----------
    Colado no vídeo de propósito (padding de topo curto): é o mesmo assunto, e
@@ -189,13 +189,8 @@ strong{color:var(--ink);font-weight:600}
 #hotmart-sales-funnel:empty{display:none}
 #hotmart-sales-funnel iframe{width:100%!important;min-width:100%!important;min-height:300px;border:0;display:block}
 
-/* ---------- placeholders visíveis (SAEM quando os IDs existirem) ---------- */
-.ph{display:grid;place-items:center;text-align:center;gap:6px;
   border:2px dashed #B9AFD0;border-radius:14px;background:#F3EFF9;color:var(--purple);
   font-family:'Montserrat',sans-serif;font-weight:800;padding:22px 18px;line-height:1.4}
-.ph small{display:block;font-family:'Poppins',sans-serif;font-weight:400;font-size:12.5px;color:var(--muted)}
-.vframe .ph{width:100%;height:100%;border:0;border-radius:16px;background:#1B1130;color:#D9CFF2}
-.vframe .ph small{color:#A79EC2}
 
 /* ---------- faixa de atenção ---------- */
 .faixa{background:var(--ink);color:#fff;text-align:center;padding:18px;
@@ -371,20 +366,15 @@ footer a{color:#C9C2DC}
     <div class="video">
       <div class="vframe">
 
-        <!-- PLACEHOLDER DO PLAYER — apagar este bloco inteiro quando o vídeo subir -->
-        <div class="ph">
-          Vídeo do upsell · 4:5
-          <small>PLACEHOLDER · trocar pelo &lt;vturb-smartplayer&gt; com o ID do vídeo novo</small>
-        </div>
-
-        <!-- CÓDIGO REAL (descomentar e trocar os dois IDs):
-        <vturb-smartplayer id="vid-PLAYER_ID_AQUI" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
+        <!-- O style inline do VTurb traz max-width:400px e o placeholder interno traz
+             padding-top:125%. Os dois são neutralizados no CSS lá em cima: quem manda
+             no tamanho aqui é a .vframe, que deriva a largura da altura da dobra. -->
+        <vturb-smartplayer id="vid-6a98adbcaf48284d4cd3147d" style="display:block;margin:0 auto;width:100%"><div class="vturb-player-placeholder" style="position:relative;width:100%;padding:125% 0 0;z-index:0;background-color:black"></div></vturb-smartplayer>
         <script type="text/javascript">
           var s=document.createElement("script");
-          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/PLAYER_ID_AQUI/v4/player.js";
+          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a98adbcaf48284d4cd3147d/v4/player.js";
           s.async=true;document.head.appendChild(s);
         </script>
-        -->
 
       </div>
     </div>
