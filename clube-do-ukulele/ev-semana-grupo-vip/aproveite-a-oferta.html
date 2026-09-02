@@ -26,6 +26,10 @@ img{max-width:100%;height:auto;display:block}
 h1,h2,h3,h4{margin:0;line-height:1.15}
 p,ul{margin:0}
 ul{padding:0;list-style:none}
+/* Sem isto o <button> cai na fonte padrão do navegador (Arial), enquanto a
+   página inteira roda em Montserrat. Vale para o botão do formulário e para o
+   X de fechar o modal. */
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
 /* Regras de display do autor (os blocos do timer são inline-flex) vencem o
    [hidden] do navegador. Sem esta linha, o bloco de dias continuaria na barra
    no dia da oferta, marcando zero. */
