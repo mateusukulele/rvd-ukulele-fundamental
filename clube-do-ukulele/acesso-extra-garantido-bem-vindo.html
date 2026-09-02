@@ -57,36 +57,36 @@ body{font-family:'Poppins',system-ui,-apple-system,sans-serif;color:var(--text);
 h1,h2,h3{font-family:'Montserrat',sans-serif;color:var(--ink);line-height:1.2}
 strong{color:var(--ink);font-weight:600}
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
-.section{padding:44px 0}
+/* Seções curtas: a página tem uma função só, que é levar ao login. */
+.section{padding:28px 0 34px}
 .surface-white{background:var(--card)}
 .hairline{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .h2{font-size:clamp(21px,4.4vw,28px);font-weight:800;margin-bottom:14px}
 .lead{font-size:clamp(15px,3.4vw,17px)}
 
 /* topo */
-.hero{background:var(--ink);color:#EDE9F5;padding:52px 0 46px;text-align:center}
-.hero .check{width:66px;height:66px;border-radius:50%;margin:0 auto 18px;display:grid;
-  place-items:center;font-size:32px;background:rgba(15,169,104,.18);border:2px solid rgba(15,169,104,.5)}
-.hero h1{color:#fff;font-size:clamp(24px,5.4vw,34px);font-weight:900}
-.hero p{margin-top:14px;font-size:clamp(15px,3.4vw,17px);color:#C9C2DC;max-width:34em;
+.hero{background:var(--ink);color:#EDE9F5;padding:26px 0 24px;text-align:center}
+.hero .check{width:46px;height:46px;border-radius:50%;margin:0 auto 12px;display:grid;
+  place-items:center;font-size:23px;background:rgba(15,169,104,.18);border:2px solid rgba(15,169,104,.5)}
+.hero h1{color:#fff;font-size:clamp(21px,4.6vw,29px);font-weight:900;text-wrap:balance}
+.hero p{margin-top:9px;font-size:clamp(14px,3.2vw,16px);color:#C9C2DC;max-width:34em;
   margin-inline:auto}
 
-/* selo de confirmação: o resumo do pedido, em duas linhas, para a pessoa bater
-   o olho e ver que os dois anos entraram mesmo. */
-.confirma{display:grid;gap:10px;background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px 20px;
-  margin:22px auto 0;max-width:460px;text-align:left}
-.confirma div{display:flex;justify-content:space-between;gap:14px;font-size:14.5px;color:#C9C2DC}
-.confirma b{font-family:'Montserrat',sans-serif;color:#fff;white-space:nowrap}
+/* Selo de confirmação em UMA linha. Em três linhas ele empurrava o login para
+   fora da dobra, e o que a pessoa precisa ver aqui é só o resultado da conta. */
+.confirma{display:inline-block;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:9px 18px;
+  margin-top:12px;font-size:clamp(13px,3vw,15px);color:#C9C2DC}
+.confirma b{font-family:'Montserrat',sans-serif;color:#fff;padding:0 2px}
 
 /* passos */
-.passos{counter-reset:p;display:grid;gap:14px;margin-top:20px}
-.passo{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 20px 20px 62px;position:relative}
-.passo::before{counter-increment:p;content:counter(p);position:absolute;left:18px;top:19px;
-  width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;
-  font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;display:grid;place-items:center}
-.passo h3{font-size:16.5px;font-weight:800;margin-bottom:5px}
-.passo p{font-size:14.5px;color:var(--muted)}
+.passos{counter-reset:p;display:grid;gap:10px;margin-top:26px}
+.passo{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px 15px 56px;position:relative}
+.passo::before{counter-increment:p;content:counter(p);position:absolute;left:16px;top:15px;
+  width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;display:grid;place-items:center}
+.passo h3{font-size:15.5px;font-weight:800;margin-bottom:3px}
+.passo p{font-size:14px;color:var(--muted);line-height:1.55}
 
 /* botões */
 .btn{display:block;width:100%;background:var(--cta);color:#fff;text-decoration:none;border-radius:12px;
@@ -96,16 +96,17 @@ strong{color:var(--ink);font-weight:600}
 .btn.wa{background:var(--wa)}
 
 /* suporte (fecha a página) */
-.ajuda{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;text-align:center}
+.ajuda{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;text-align:center}
 .ajuda h3{font-size:17px;font-weight:800;margin-bottom:8px}
 .ajuda p{font-size:14.5px;color:var(--muted)}
 
 /* dados de acesso */
 /* O box de login é o ponto da página. Borda verde e sombra dão a ele o mesmo
    peso que o quadro de preço tem na página da oferta. */
-.acesso{background:var(--card);border:2px solid var(--cta);border-radius:var(--r);padding:26px 24px;margin-top:24px;
+.acesso{background:var(--card);border:2px solid var(--cta);border-radius:var(--r);padding:24px 22px;
   box-shadow:0 18px 40px -26px rgba(66,48,102,.5)}
-.acesso h3{font-size:18.5px;font-weight:800;margin-bottom:14px}
+.acesso .h3-box{font-family:'Montserrat',sans-serif;color:var(--ink);line-height:1.25;
+  font-size:clamp(17px,3.9vw,21px);font-weight:800;margin-bottom:16px}
 .dados{display:grid;gap:10px;margin-bottom:14px}
 .dado{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
   border-bottom:1px dashed var(--line);padding-bottom:10px}
@@ -113,40 +114,46 @@ strong{color:var(--ink);font-weight:600}
 .dado .rot{flex:none;min-width:96px;font-size:13px;color:var(--muted);font-weight:600;
   text-transform:uppercase;letter-spacing:.3px}
 .dado .val{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--ink);font-size:15.5px;word-break:break-word}
-.acesso .obs{font-size:13.5px;color:var(--muted);line-height:1.6}
+.acesso .obs{font-size:13px;color:var(--muted);line-height:1.55;margin-top:14px}
 
-footer{background:var(--ink);color:#A79EC2;padding:32px 0 40px;font-size:12.5px;line-height:1.7;text-align:center}
+footer{background:var(--ink);color:#A79EC2;padding:24px 0 30px;font-size:12.5px;line-height:1.7;text-align:center}
 footer a{color:#C9C2DC}
-@media(min-width:720px){.section{padding:56px 0}}
+@media(min-width:720px){.section{padding:34px 0 40px}}
 </style>
 </head>
 <body>
 
+<!-- HERO CURTO DE PROPÓSITO. Quem chega aqui acabou de atravessar uma página de
+     vendas e um vídeo: está cansado de leitura e quer entrar. Confirmação em
+     três linhas, e o box de login logo abaixo, dentro da primeira dobra.
+     O selo dos dois anos virou uma linha só pelo mesmo motivo. -->
 <section class="hero">
   <div class="wrap">
     <div class="check">✓</div>
     <h1 id="saudacao">Pronto! Os seus dois anos de Clube estão garantidos</h1>
-    <p>Pagamento aprovado. Você acabou de fazer a coisa mais inteligente que dá pra fazer com um
-    instrumento na mão, que é se dar tempo.</p>
-
-    <div class="confirma">
-      <div><span>O ano que você já tinha</span><b>12 meses</b></div>
-      <div><span>O ano que você acabou de somar</span><b>+ 12 meses</b></div>
-      <div><span>Seu acesso ao Clube</span><b>dois anos seguidos</b></div>
-    </div>
+    <p>Pagamento aprovado, acesso liberado.</p>
+    <p class="confirma">12 meses <b>+</b> 12 meses <b>=</b> dois anos seguidos de Clube</p>
   </div>
 </section>
 
+<!-- O LOGIN VEM ANTES DOS PASSOS, e essa ordem é a página inteira: o que a
+     pessoa quer neste minuto é entrar. O que fazer lá dentro pode esperar a
+     rolagem. -->
 <section class="section surface-white hairline">
   <div class="wrap">
-    <h2 class="h2">Acesse a sua plataforma do Clube agora mesmo</h2>
-    <!-- Três passos, e não cinco: esta página existe para a pessoa entrar, não
-         para ela ler. Tudo que não ajuda a entrar hoje foi cortado. -->
-    <div class="passos">
-      <div class="passo">
-        <h3>Seu acesso já está liberado</h3>
-        <p>Mesma área de alunos, mesmo login, sem criar conta nova e sem baixar nada.</p>
+    <div class="acesso">
+      <h2 class="h3-box">Acesse a sua plataforma do Clube agora mesmo</h2>
+      <div class="dados">
+        <div class="dado"><span class="rot">Plataforma</span><span class="val">aluno.comotocarukulele.com</span></div>
+        <div class="dado"><span class="rot">Seu login</span><span class="val">o e-mail que você usou na compra</span></div>
+        <div class="dado"><span class="rot">Sua senha</span><span class="val">ukulele</span></div>
       </div>
+      <a class="btn" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">ENTRAR NA MINHA ÁREA DE ALUNOS</a>
+      <p class="obs">A senha <strong>ukulele</strong> é a do primeiro acesso: troque por uma sua lá
+      dentro. Estes dados também vão para o seu e-mail em alguns minutos.</p>
+    </div>
+
+    <div class="passos">
       <div class="passo">
         <h3>Os dois anos já estão na sua conta</h3>
         <p>Um ano atrás do outro, sem interrupção. Quando o primeiro terminar, você não precisa
@@ -157,20 +164,6 @@ footer a{color:#C9C2DC}
         <p>Se bater dúvida de por onde começar, o curso Rotina de 20 Minutos resolve isso em poucos
         minutos.</p>
       </div>
-    </div>
-
-    <div class="acesso">
-      <h3>Seus dados de acesso</h3>
-      <div class="dados">
-        <div class="dado"><span class="rot">Plataforma</span><span class="val">aluno.comotocarukulele.com</span></div>
-        <div class="dado"><span class="rot">Seu login</span><span class="val">o e-mail que você usou na compra</span></div>
-        <div class="dado"><span class="rot">Sua senha</span><span class="val">ukulele</span></div>
-      </div>
-      <p class="obs">A senha <strong>ukulele</strong> é a do primeiro acesso. Depois de entrar,
-      troque por uma senha sua dentro da plataforma. Estes dados também vão para o seu e-mail em
-      alguns minutos, e a nossa equipe reenvia por WhatsApp em horário comercial. Nada se perde.</p>
-      <a class="btn" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener"
-         style="margin-top:18px">ENTRAR NA MINHA ÁREA DE ALUNOS</a>
     </div>
   </div>
 </section>
