@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Parabéns, sua compra foi concluída | Clube do Ukulele</title>
+
+<!--
+  ============================================================
+  UPSELL PÓS-COMPRA DO CLUBE DO UKULELE · +1 ANO POR R$ 197
+  URL: /clube-do-ukulele/parabens-compra-concluida-clube-do-ukulele
+
+  Caminhos a partir daqui (configurados na etapa do funil da Hotmart):
+    aceitou  → página de boas-vindas do Clube (dois anos)
+    recusou  → página de boas-vindas do Clube (um ano)
+
+  IRMÃ DESTA PÁGINA: /ukulele-fundamental/parabens-compra-concluida-ukulele-fundamental
+  Mesmos tokens, mesma estrutura, mesmo JS. O que muda:
+    - o vídeo aqui é 4:5 (o de lá é 9:16), então o widget da Hotmart sobe e
+      aparece parcialmente já na primeira dobra;
+    - entre o widget e o quadro de preço não existe nenhuma dobra: quem rola
+      meia tela cai direto na conta;
+    - a oferta é TEMPO, não conteúdo: mais um ano somado ao que a pessoa
+      acabou de comprar.
+
+  COPY: segue o teleprompter gravado (Upsell 197). Números travados:
+    renovação anual normal do Clube R$ 597 · esta página R$ 197 à vista
+    (ou 12x — CONFERIR a parcela em /calculadora-juros-hotmart antes de subir).
+  A página NÃO cita o valor que a pessoa acabou de pagar, de propósito: ela roda
+  tanto para quem entrou por R$ 297 na campanha quanto por R$ 597 fora dela.
+  Também não cita data, lançamento, grupo VIP nem "condição especial de hoje".
+
+  PLACEHOLDERS NESTA VERSÃO (procure por "PLACEHOLDER"):
+     1. player do vídeo 4:5 — falta o ID do VTurb do vídeo novo;
+     2. widget da Hotmart — falta criar a etapa "Upsell Clube -> 2o ano" e ligar.
+     Os dois estão como caixas visíveis, com o código real logo abaixo,
+     comentado. Trocar caixa por código quando os IDs existirem.
+
+  REGRAS QUE VALEM AQUI TAMBÉM:
+     - o widget da Hotmart só monta UMA vez por página, por isso o botão do
+       quadro de preço é uma âncora que rola de volta até ele;
+     - o widget entrega os dois caminhos (comprar e recusar), então a página não
+       tem link próprio de recusa;
+     - nenhum link de checkout antes do vídeo.
+  ============================================================
+-->
+
+<link rel="icon" href="/favicon.webp">
+<link rel="preconnect" href="https://serversidegtm.comotocarukulele.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- ===== A PÁGINA SEMPRE ABRE NO TOPO =====
+     Mesmo motivo da página irmã: o navegador restaura a rolagem antes de o
+     player e o widget montarem, e o iframe do checkout puxa o foco para si ao
+     montar. Qualquer toque, rolagem ou tecla cancela os resets seguintes.
+     Com âncora na URL (#oferta-hotmart) não faz nada. -->
+<script>
+if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
+(function(){
+  if(location.hash) return;
+  var interagiu=false;
+  ['wheel','touchstart','keydown','pointerdown'].forEach(function(ev){
+    window.addEventListener(ev,function(){ interagiu=true; },{once:true,passive:true});
+  });
+  function topo(){
+    if(interagiu) return;
+    /* behavior:'instant' porque o CSS tem scroll-behavior:smooth, e sem isso o
+       reset vira uma animação de rolagem na cara do visitante. */
+    try{ window.scrollTo({top:0,left:0,behavior:'instant'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  topo();
+  window.addEventListener('load',topo,{once:true});
+  setTimeout(topo,400); setTimeout(topo,1200);
+})();
+</script>
+
+<!-- ===== PLACEHOLDER · preloads do player VTurb (vídeo 4:5) =====
+     Descomentar e trocar os IDs quando o vídeo estiver no VTurb.
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/PLAYER_ID_AQUI/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/VIDEO_ID_AQUI/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+-->
+
+<style>
+:root{
+  --ink:#2A1854; --purple:#423066; --text:#463F58; --muted:#6E687F;
+  --coral:#EA546C; --coral-deep:#C9364F;
+  --cream:#FBF7F2; --card:#fff; --line:#ECE6F2;
+  --cta:#0FA968; --cta-deep:#0B8A55;
+  --wa:#25D366;
+  --alert:#D93025;
+  --maxw:760px; --r:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,-apple-system,sans-serif;color:var(--text);
+  background:var(--cream);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.h2{font-family:'Montserrat',sans-serif;color:var(--ink);line-height:1.2}
+strong{color:var(--ink);font-weight:600}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.section{padding:44px 0}
+.surface-white{background:var(--card)}
+.surface-cream{background:var(--cream)}
+.surface-dark{background:var(--ink);color:#EDE9F5}
+.surface-dark h2,.surface-dark h3{color:#fff}
+.hairline{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.h2{font-size:clamp(22px,4.6vw,30px);font-weight:800;margin-bottom:14px}
+.lead{font-size:clamp(15px,3.4vw,17px)}
+.center{text-align:center}
+
+/* ============================================================
+   PRIMEIRA DOBRA — uma coluna só, em qualquer tela.
+   Diferença para a página irmã: o vídeo é 4:5, e 4:5 come muito menos altura
+   que 9:16. Sobra dobra, e essa sobra é usada de propósito para o topo do
+   widget da Hotmart aparecer já na primeira tela: a pessoa vê que existe um
+   botão ali embaixo antes mesmo de rolar.
+   A reserva (banner + texto) é MEDIDA por JS; os números do CSS são o primeiro
+   quadro e o fallback de JS desligado.
+   ============================================================ */
+
+/* ---------- 1. banner de retenção ---------- */
+.retencao{background:var(--alert);color:#fff;text-align:center;padding:9px 16px}
+.retencao b{display:block;font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(12.5px,3.2vw,16px);line-height:1.32;letter-spacing:.2px;text-transform:uppercase}
+.retencao span{display:block;font-size:clamp(11px,2.8vw,13px);opacity:.92;margin-top:2px}
+
+/* ---------- 2. barra + aviso + headline ---------- */
+.topo{padding:8px 0 0;--fold-reserve:230px;--peek:104px}
+.hero-grid{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px;
+  display:grid;gap:10px;justify-items:center}
+.hero-top{width:100%}
+.barra{height:10px;border-radius:999px;background:#E6E1EE;overflow:hidden;margin-bottom:8px}
+.barra i{display:block;height:100%;width:82%;border-radius:999px;
+  background:repeating-linear-gradient(45deg,var(--cta) 0 12px,var(--cta-deep) 12px 24px);
+  background-size:34px 34px;animation:anda 1s linear infinite}
+@keyframes anda{from{background-position:0 0}to{background-position:34px 0}}
+/* O aviso pulsa de leve: 2% de escala num ciclo longo chama o olho sem virar
+   pisca-pisca. */
+.aviso-wrap{display:flex;justify-content:center;margin-bottom:10px}
+.aviso{display:inline-flex;align-items:center;gap:.45em;
+  font-family:'Montserrat',sans-serif;font-weight:900;color:#B02D45;
+  background:#FDE8EC;border:1px solid #F6C3CD;border-radius:999px;
+  padding:.45em 1em;letter-spacing:.05em;text-transform:uppercase;
+  font-size:clamp(12px,3.1vw,16px);line-height:1.15;
+  animation:avisoPulse 2.6s ease-in-out infinite}
+@keyframes avisoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+.headline{font-size:clamp(16.5px,4.1vw,28px);font-weight:800;text-align:center;line-height:1.28;
+  max-width:23em;margin:0 auto;text-wrap:balance}
+
+/* ---------- 3. vídeo 4:5 ----------
+   Largura derivada da dobra, altura pela proporção. Três travas, nesta ordem:
+     - nunca mais largo que a tela (100vw - 40px);
+     - nunca mais largo que 430px no celular (teto estético);
+     - nunca alto a ponto de empurrar o widget inteiro para fora da dobra:
+       --peek é o pedaço do widget que a gente QUER visível na primeira tela.
+   O piso de 260px evita o vídeo virar um selo em tela baixa: nesse caso o
+   widget fica todo abaixo da dobra, que é o mal menor. */
+.video{width:100%;display:flex;justify-content:center}
+.vframe{width:min(calc(100vw - 40px), max(260px, min(430px,
+        calc((100svh - var(--fold-reserve) - var(--peek)) * 4 / 5))));
+  aspect-ratio:4/5;margin-inline:auto;
+  border-radius:16px;overflow:hidden;background:#000;
+  box-shadow:0 26px 55px -24px rgba(66,48,102,.45)}
+/* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
+   próprio elemento, e max-width ganha de width. */
+.vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
+
+/* ---------- 4. widget da hotmart ----------
+   Colado no vídeo de propósito (padding de topo curto): é o mesmo assunto, e
+   qualquer respiro maior joga o widget para fora da primeira dobra. */
+.oferta-sec{padding:16px 0 30px}
+.oferta-box{width:100%;max-width:520px;margin-inline:auto}
+#hotmart-sales-funnel{border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+#hotmart-sales-funnel:empty{display:none}
+#hotmart-sales-funnel iframe{width:100%!important;min-width:100%!important;min-height:300px;border:0;display:block}
+
+/* ---------- placeholders visíveis (SAEM quando os IDs existirem) ---------- */
+.ph{display:grid;place-items:center;text-align:center;gap:6px;
+  border:2px dashed #B9AFD0;border-radius:14px;background:#F3EFF9;color:var(--purple);
+  font-family:'Montserrat',sans-serif;font-weight:800;padding:22px 18px;line-height:1.4}
+.ph small{display:block;font-family:'Poppins',sans-serif;font-weight:400;font-size:12.5px;color:var(--muted)}
+.vframe .ph{width:100%;height:100%;border:0;border-radius:16px;background:#1B1130;color:#D9CFF2}
+.vframe .ph small{color:#A79EC2}
+.ph-widget{min-height:260px}
+
+/* ---------- faixa de atenção ---------- */
+.faixa{background:var(--ink);color:#fff;text-align:center;padding:18px;
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(14px,3.4vw,18px);line-height:1.35}
+
+/* ---------- preço ---------- */
+.preco{background:var(--card);border:2px solid var(--cta);border-radius:var(--r);padding:28px 22px;text-align:center}
+.preco .cham{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--ink);
+  font-size:clamp(16px,3.8vw,20px);line-height:1.35;margin-bottom:10px}
+.preco .ancora{font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:16px}
+.conta{display:grid;gap:8px;margin-bottom:18px;text-align:left}
+.conta div{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;
+  border-bottom:1px dashed var(--line);padding-top:2px;padding-bottom:11px}
+.conta div:last-child{border-bottom:0;padding-bottom:0}
+.conta b{font-family:'Montserrat',sans-serif;color:var(--ink);white-space:nowrap}
+.conta .menos b{color:var(--cta-deep)}
+.preco .val{font-family:'Montserrat',sans-serif;font-weight:900;color:var(--ink);font-size:clamp(34px,9vw,52px);line-height:1}
+.preco .val small{font-size:.42em;font-weight:800;vertical-align:super}
+.preco .avista{font-size:15px;color:var(--muted);margin-top:6px}
+.preco .abate{background:#E7F7EF;border-radius:12px;padding:14px 16px;margin-top:18px;
+  font-size:14.5px;color:var(--cta-deep);font-weight:600;line-height:1.55}
+.btn{display:block;width:100%;margin-top:18px;background:var(--cta);color:#fff;text-decoration:none;
+  border-radius:12px;padding:17px 18px;font-family:'Montserrat',sans-serif;font-weight:800;
+  font-size:clamp(14px,3.4vw,16.5px);line-height:1.3;text-align:center}
+
+/* ---------- razões do segundo ano ---------- */
+.linha{display:grid;gap:12px;margin-top:18px}
+@media(min-width:640px){.linha{grid-template-columns:repeat(2,1fr)}}
+.linha div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:16px;padding:18px}
+.linha b{display:block;font-family:'Montserrat',sans-serif;color:#fff;font-size:16px;margin-bottom:5px}
+.linha p{font-size:14px;color:#C9C2DC}
+
+/* ---------- garantia ---------- */
+.garantia{display:flex;gap:16px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.garantia .selo-g{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+  font-size:26px;background:#E7F7EF;border:2px solid rgba(15,169,104,.35)}
+.garantia h3{font-size:17px;font-weight:800;margin-bottom:5px}
+.garantia p{font-size:14.5px;color:var(--muted)}
+
+/* ---------- faq ---------- */
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+details[open]{border-color:var(--purple)}
+summary{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--ink);
+  font-size:15px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:20px;color:var(--coral);line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;font-size:14.5px;color:var(--muted)}
+
+/* ---------- acesso / suporte ---------- */
+.acesso{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;margin-top:20px}
+.acesso h3{font-size:17px;font-weight:800;margin-bottom:14px}
+.dados{display:grid;gap:10px;margin-bottom:14px}
+.dado{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  border-bottom:1px dashed var(--line);padding-top:2px;padding-bottom:11px}
+.dado:last-child{border-bottom:0;padding-bottom:0}
+.dado .rot{flex:none;min-width:96px;font-size:13px;color:var(--muted);font-weight:600;
+  text-transform:uppercase;letter-spacing:.3px}
+.dado .val{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--ink);font-size:15.5px;word-break:break-word}
+.acesso .obs{font-size:13.5px;color:var(--muted);line-height:1.6}
+.acesso-intro{font-size:15px;color:var(--muted);max-width:600px}
+.ajuda{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;text-align:center}
+.ajuda h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.ajuda p{font-size:14.5px;color:var(--muted)}
+.btn.wa{background:var(--wa)}
+
+/* ---------- botão flutuante do WhatsApp ----------
+   Só entra depois que o vídeo sai da tela. Enquanto o player está visível a
+   primeira dobra tem uma função só, que é vender o play. */
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:60;
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--wa);color:#fff;text-decoration:none;border-radius:999px;
+  padding:12px 18px 12px 14px;font-family:'Montserrat',sans-serif;font-weight:800;
+  font-size:14px;line-height:1;box-shadow:0 8px 22px rgba(42,24,84,.28);
+  opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:opacity .25s ease,transform .25s ease,visibility .25s}
+.wa-float.on{opacity:1;visibility:visible;transform:none}
+.wa-float svg{width:20px;height:20px;flex:none}
+@media (max-width:380px){.wa-float{padding:11px 15px 11px 12px;font-size:13px}}
+
+/* ---------- rodapé ---------- */
+footer{background:var(--ink);color:#A79EC2;padding:32px 0 40px;font-size:12.5px;line-height:1.7;text-align:center}
+footer a{color:#C9C2DC}
+
+@media(min-width:720px){.section{padding:56px 0}}
+
+/* Celular baixo: texto mais apertado e menos peek, para o vídeo continuar
+   inteiro na dobra. */
+@media(max-width:899px) and (max-height:680px){
+  .retencao{padding:7px 14px}
+  .barra{height:8px;margin-bottom:7px}
+  .aviso-wrap{margin-bottom:8px}
+  .aviso{font-size:11.5px;padding:.4em .9em}
+  .headline{font-size:15.5px;line-height:1.25}
+  .topo{--peek:76px}
+}
+@media(max-width:899px) and (max-height:600px){
+  .retencao{padding:6px 12px}
+  .retencao b{font-size:12px}
+  .retencao span{font-size:10.5px}
+  .headline{font-size:14.5px}
+  .topo{--peek:56px}
+}
+/* Desktop: mesma pilha, só respirando. O 4:5 permite um player bem maior sem
+   expulsar o widget da dobra. */
+@media(min-width:900px){
+  .topo{padding:14px 0 0;--peek:130px}
+  .hero-grid{max-width:900px;gap:14px}
+  /* A barra acompanha a largura do player, não a do container. */
+  .barra{height:15px;margin:0 auto 14px;max-width:520px}
+  .aviso-wrap{margin-bottom:14px}
+  .aviso{font-size:17px;padding:.6em 1.4em}
+  .headline{font-size:clamp(22px,1.9vw,29px);max-width:26em}
+  .vframe{width:min(calc(100vw - 40px), max(300px, min(560px,
+          calc((100svh - var(--fold-reserve) - var(--peek)) * 4 / 5))))}
+  .oferta-sec{padding:22px 0 44px}
+  .oferta-box{max-width:560px}
+}
+@media(min-width:900px) and (max-height:820px){
+  .topo{padding:10px 0 0;--peek:100px}
+  .barra{height:12px;margin-bottom:10px}
+  .aviso-wrap{margin-bottom:10px}
+  .aviso{font-size:15px;padding:.5em 1.2em}
+  .headline{font-size:23px;max-width:30em}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. BANNER DE RETENÇÃO ============
+     Versão honesta: a compra ESTÁ confirmada, e o vídeo diz isso na primeira
+     frase. Nada de "sua compra não foi concluída". -->
+<div class="retencao">
+  <b>Espere! Sua matrícula está confirmada, mas falta uma última coisa</b>
+  <span>Não aperte “voltar” e não feche esta página</span>
+</div>
+
+<!-- ============ 2. BARRA + AVISO + HEADLINE ============
+     A headline só vende o play. Quem está aqui acabou de comprar e não precisa
+     ouvir de novo o que é o Clube. -->
+<section class="surface-white topo">
+  <div class="hero-grid">
+    <div class="hero-top">
+      <div class="barra"><i></i></div>
+      <p class="aviso-wrap"><span class="aviso">⚠️ Aviso importante</span></p>
+      <h1 class="headline">Tem uma porta aberta pra você no fim deste vídeo rápido, e ela fecha junto com esta página</h1>
+    </div>
+
+    <!-- ============ 3. VÍDEO 4:5 ============ -->
+    <div class="video">
+      <div class="vframe">
+
+        <!-- PLACEHOLDER DO PLAYER — apagar este bloco inteiro quando o vídeo subir -->
+        <div class="ph">
+          Vídeo do upsell · 4:5
+          <small>PLACEHOLDER · trocar pelo &lt;vturb-smartplayer&gt; com o ID do vídeo novo</small>
+        </div>
+
+        <!-- CÓDIGO REAL (descomentar e trocar os dois IDs):
+        <vturb-smartplayer id="vid-PLAYER_ID_AQUI" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
+        <script type="text/javascript">
+          var s=document.createElement("script");
+          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/PLAYER_ID_AQUI/v4/player.js";
+          s.async=true;document.head.appendChild(s);
+        </script>
+        -->
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 4. OFERTA: WIDGET DA HOTMART (one-click buy) ============
+     Fica logo abaixo do vídeo e aparece parcialmente já na primeira dobra: com
+     4:5 sobra altura, e mostrar o topo do botão antes da rolagem é de graça.
+     Continua valendo a regra: nenhum link de checkout ANTES do vídeo. -->
+<section class="surface-white oferta-sec">
+  <div class="wrap">
+    <div class="oferta-box" id="oferta-hotmart">
+
+      <!-- PLACEHOLDER DO WIDGET — apagar quando a etapa do funil existir -->
+      <div class="ph ph-widget">
+        Widget de compra da Hotmart
+        <small>PLACEHOLDER · criar a etapa “Upsell Clube → 2º ano” no funil, configurar
+        o botão no verde #0FA968 e o texto de recusa, e colar o snippet que está
+        comentado aqui no código. O widget entrega os dois caminhos: comprar e recusar.</small>
+      </div>
+
+      <!-- CÓDIGO REAL (descomentar quando a etapa estiver ligada):
+      <div id="hotmart-sales-funnel"></div>
+      <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+      <script>
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+      </script>
+      -->
+
+      <!-- Sem link próprio de recusa: quem entrega o "Não, obrigado" é o próprio
+           widget, e dois caminhos de saída lado a lado dão à recusa mais peso
+           que à compra. O destino da recusa é configurado na etapa da Hotmart. -->
+    </div>
+  </div>
+</section>
+
+<script>
+/* DOBRA MEDIDA, em qualquer largura de tela.
+   A reserva é tudo que não é vídeo na primeira tela: banner + bloco de texto +
+   gap + padding. O CSS tira dela (e do --peek) a largura do player.
+   Fail-safe: se este script não rodar, os valores do CSS continuam valendo. */
+(function(){
+  var topo=document.querySelector('.topo'),
+      grid=topo&&topo.querySelector('.hero-grid'),
+      top=topo&&topo.querySelector('.hero-top'),
+      ban=document.querySelector('.retencao');
+  if(!topo||!grid||!top||!ban) return;
+  var ultimo=null;
+  function medir(){
+    var cs=getComputedStyle(grid), cst=getComputedStyle(topo);
+    /* +2px cobre arredondamento de subpixel. */
+    var r=Math.ceil(ban.offsetHeight+parseFloat(cst.paddingTop)+top.offsetHeight+
+          (parseFloat(cs.rowGap)||0)+2);
+    if(r!==ultimo){ ultimo=r; topo.style.setProperty('--fold-reserve',r+'px'); }
+  }
+  medir();
+  /* Observa só o texto e o banner: observar o vídeo criaria laço, porque a
+     largura dele vem da reserva. */
+  if(window.ResizeObserver){ var ro=new ResizeObserver(medir); ro.observe(top); ro.observe(ban); }
+  window.addEventListener('resize',medir);
+  window.addEventListener('orientationchange',medir);
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(medir); }
+})();
+</script>
+
+<!-- ============ 5. FAIXA DE ATENÇÃO ============ -->
+<div class="faixa">Esta condição só existe nesta página, no dia em que você entra</div>
+
+<!-- ============ 6. PREÇO + CTA ============
+     Vem colado no widget, sem nenhuma dobra no meio: quem terminou o vídeo e
+     rolou meia tela cai direto na conta. -->
+<section class="section surface-cream">
+  <div class="wrap">
+    <div class="preco">
+      <p class="cham">Mais um ano de Clube por menos do que você acabou de pagar agora</p>
+      <p class="ancora">Não é conteúdo novo e nem versão melhor do que você comprou. É mais tempo:
+      um segundo ano somado ao acesso que você acabou de garantir.</p>
+      <div class="conta">
+        <div><span>Segundo ano de Clube (renovação normal)</span><b>R$ 597</b></div>
+        <div class="menos"><span>Desconto exclusivo desta página</span><b>− R$ 400</b></div>
+      </div>
+      <p class="val"><small>R$</small> 197</p>
+      <!-- CONFERIR A PARCELA em /calculadora-juros-hotmart antes de publicar. -->
+      <p class="avista">pelo segundo ano inteiro, à vista · ou 12x de R$ 20 no cartão</p>
+      <div class="abate">São dois anos, um atrás do outro, sem interrupção e sem ter que decidir
+      nada no meio do caminho. Aluno que sabe que tem tempo aprende melhor: volta depois de uma
+      semana ruim sem culpa e não pula etapa pra correr atrás do calendário. É por isso que esse
+      valor existe, e é por isso que ele só existe aqui. Saindo desta página, ele não volta.</div>
+      <a class="btn" href="#oferta-hotmart">QUERO GARANTIR O MEU SEGUNDO ANO</a>
+      <!-- Motivo técnico (o widget da Hotmart só monta uma vez por página) fica
+           no comentário, não na tela. -->
+      <p class="nota" style="font-size:12.5px;color:var(--muted);margin-top:12px">
+      Ao clicar, a página volta para o botão de compra, logo abaixo do vídeo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. O QUE MUDA COM O SEGUNDO ANO ============
+     Quatro razões, todas do handoff da copy. Nada de repetir a vitrine do
+     Clube: quem está aqui acabou de ver a página de vendas e comprar. -->
+<section class="section surface-dark">
+  <div class="wrap">
+    <h2 class="h2">O que muda quando você tem dois anos pela frente</h2>
+    <p class="lead" style="color:#C9C2DC">Aprender um instrumento é gostoso justamente quando não
+    tem pressa. Você toca vinte minutos hoje, pula amanhã porque a vida apertou, volta depois de
+    amanhã e continua de onde parou. Ninguém aprende música olhando para o calendário.</p>
+    <div class="linha">
+      <div>
+        <b>A trilha inteira cabe no seu tempo</b>
+        <p>A Jornada vai do Iniciante 0 ao Intermediário 2. Quem entra do zero estudando 20 minutos
+        por dia dificilmente fecha tudo isso em doze meses, e não precisa.</p>
+      </div>
+      <div>
+        <b>O segundo ano tem coisa que ainda nem existe</b>
+        <p>A biblioteca cresce todo mês. O repertório que vai entrar no seu segundo ano ainda não
+        está lá dentro hoje.</p>
+      </div>
+      <div>
+        <b>Você trava o preço agora</b>
+        <p>Sem depender do que a assinatura vai custar no ano que vem, e sem ter que lembrar disso
+        daqui a onze meses.</p>
+      </div>
+      <div>
+        <b>É a decisão mais barata de tomar hoje</b>
+        <p>Um clique, com o cartão que você acabou de usar. Nada de preencher dados de novo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. GARANTIA ============ -->
+<section class="section surface-white hairline">
+  <div class="wrap">
+    <div class="garantia">
+      <div class="selo-g">🛡️</div>
+      <div>
+        <h3>30 dias de garantia incondicional, valendo pelos dois anos</h3>
+        <p>Entra, estuda, manda vídeo, aparece nos encontros ao vivo. Se em 30 dias não fizer
+        sentido por qualquer motivo, é só mandar uma mensagem e você recebe 100% de volta, dos dois
+        anos, sem letra miúda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. FAQ ============
+     Perguntas específicas DESTA oferta (tempo, cobrança, recusa), não do Clube:
+     quem está aqui já viu a página de vendas e já comprou. -->
+<section class="section surface-cream">
+  <div class="wrap">
+    <h2 class="h2 center">Perguntas frequentes</h2>
+
+    <details>
+      <summary>Quando começa esse segundo ano?</summary>
+      <p>Ele é somado ao ano que você acabou de comprar. Você não perde nada e não recomeça nada:
+      o seu acesso passa a valer por dois anos seguidos, sem interrupção no meio do caminho.</p>
+    </details>
+
+    <details>
+      <summary>É mais conteúdo ou é o mesmo Clube?</summary>
+      <p>É o mesmo Clube, por mais tempo. Tudo o que você comprou continua igual: a Jornada de
+      Aprendizado, a biblioteca de músicas, os encontros ao vivo, a comunidade e o material para
+      baixar. O que muda é o prazo. E como a biblioteca cresce todo mês, no segundo ano você pega
+      aula e repertório que ainda não existem hoje.</p>
+    </details>
+
+    <details>
+      <summary>Vou pagar agora ou daqui a um ano?</summary>
+      <p>Agora, uma vez só, no mesmo cartão que você acabou de usar. É um clique, sem preencher
+      nada de novo. Depois disso você não tem mais nenhuma cobrança até o fim do segundo ano.</p>
+    </details>
+
+    <details>
+      <summary>E quando os dois anos acabarem?</summary>
+      <p>Aí entra a renovação normal do Clube, e você decide na hora se quer continuar. Nada te
+      prende: se quiser parar, é só não renovar.</p>
+    </details>
+
+    <details>
+      <summary>Se eu não quiser, eu perco alguma coisa?</summary>
+      <p>Nada. O ano que você comprou continua inteiro, com tudo dentro, e eu te espero no Clube
+      exatamente igual. Esta página é uma porta a mais, não uma condição da sua compra.</p>
+    </details>
+
+    <details>
+      <summary>Essa condição volta depois?</summary>
+      <p>Não. Ela existe só nesta página, no dia em que você entra, e é o menor valor que você vai
+      ver para mais um ano de Clube. Depois que você sair daqui, o segundo ano volta a custar o
+      valor normal de renovação.</p>
+    </details>
+
+    <details>
+      <summary>E se eu não tiver tempo agora?</summary>
+      <p>É exatamente por isso que esta oferta é de tempo, e não de conteúdo. Vinte minutos por dia
+      dão o ritmo, e não existe prova nem cobrança. Se a vida apertar e você sumir um mês, você é
+      recebido de volta do mesmo jeito, e agora com um ano a mais pela frente.</p>
+    </details>
+
+    <details>
+      <summary>E se eu não gostar?</summary>
+      <p>Você tem 30 dias de garantia incondicional, e ela cobre os dois anos. Se sentir que não é
+      pra você, é só pedir e eu devolvo o seu dinheiro, inteiro.</p>
+    </details>
+
+    <details>
+      <summary>O acesso é o mesmo, ou muda alguma coisa?</summary>
+      <p>É o mesmo. Mesma plataforma, mesmo login, mesma senha. Nada de conta nova e nada para
+      baixar: o que muda é só a data em que o seu acesso termina.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 10. ACESSO AO CLUBE ============
+     Fecha o caminho de quem recusa. Mesmos dados da página
+     /ukulele-fundamental/bem-vindo-ao-clube-do-ukulele: se a senha de primeiro
+     acesso ou o domínio mudarem, os dois lugares mudam junto. -->
+<section class="section surface-white hairline">
+  <div class="wrap">
+    <h2 class="h2">Prefere continuar sem o ano a mais?</h2>
+    <p class="acesso-intro">Está ótimo do mesmo jeito. O seu ano de Clube já está liberado e não
+    muda em nada. Você entra seguindo os passos abaixo.</p>
+
+    <div class="acesso">
+      <h3>Seus dados de acesso</h3>
+      <div class="dados">
+        <div class="dado"><span class="rot">Plataforma</span><span class="val">aluno.comotocarukulele.com</span></div>
+        <div class="dado"><span class="rot">Seu login</span><span class="val">o e-mail que você usou na compra</span></div>
+        <div class="dado"><span class="rot">Sua senha</span><span class="val">ukulele</span></div>
+      </div>
+      <p class="obs">A senha <strong>ukulele</strong> é a do primeiro acesso. Depois de entrar,
+      troque por uma senha sua dentro da plataforma. Estes dados também vão para o seu e-mail em
+      alguns minutos, e a nossa equipe reenvia por WhatsApp em horário comercial. Nada se perde.</p>
+      <a class="btn" href="https://aluno.comotocarukulele.com" target="_blank" rel="noopener">ENTRAR NA MINHA ÁREA DE ALUNOS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. SUPORTE ============
+     Fecha a página: quem chegou até aqui e não clicou quase sempre tem uma
+     pergunta, e não uma objeção de preço. -->
+<section class="section surface-white hairline">
+  <div class="wrap">
+    <div class="ajuda">
+      <h3>Ficou com alguma dúvida?</h3>
+      <p>Se sobrou qualquer pergunta sobre o ano a mais, sobre o seu acesso ou sobre o pagamento,
+      fale com a nossa equipe. A gente responde de verdade.</p>
+      <a class="btn wa" target="_blank" rel="noopener"
+         href="https://wa.me/5531998585286?text=Acabei%20de%20entrar%20no%20Clube%20do%20Ukulele%20e%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20ano%20a%20mais.">FALAR COM O SUPORTE NO WHATSAPP</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12. RODAPÉ ============ -->
+<footer>
+  <div class="wrap">
+    <p>Clube do Ukulele · Todos os direitos reservados</p>
+    <p style="margin-top:8px">Dúvidas? Fale com a gente em
+      <a href="mailto:suporte@clubedoukulele.com">suporte@clubedoukulele.com</a></p>
+  </div>
+</footer>
+
+<!-- ============ BOTÃO FLUTUANTE DO WHATSAPP ============ -->
+<a class="wa-float" id="waFloat" target="_blank" rel="noopener"
+   aria-label="Falar com o suporte no WhatsApp"
+   href="https://wa.me/5531998585286?text=Acabei%20de%20entrar%20no%20Clube%20do%20Ukulele%20e%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20ano%20a%20mais.">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.01c0-5.18 4.22-9.4 9.42-9.4a9.35 9.35 0 016.65 2.76 9.32 9.32 0 012.75 6.65c0 5.18-4.22 9.41-9.41 9.41zM20.06 3.99A11.28 11.28 0 0012.05.67C5.84.67.79 5.72.79 11.93c0 2.02.53 3.99 1.53 5.73L.7 23.33l5.82-1.53a11.27 11.27 0 005.53 1.41h.01c6.2 0 11.25-5.05 11.25-11.26 0-3.01-1.17-5.83-3.25-7.96z"/></svg>
+  Suporte
+</a>
+<script>
+/* O flutuante só aparece quando o vídeo já saiu por cima da tela, e some de novo
+   se a pessoa voltar pro topo. */
+(function(){
+  var alvo=document.querySelector('.vframe'), fab=document.getElementById('waFloat');
+  if(!alvo||!fab) return;
+  function ver(){ fab.classList.toggle('on', alvo.getBoundingClientRect().bottom<0); }
+  addEventListener('scroll',ver,{passive:true});
+  addEventListener('resize',ver);
+  ver();
+})();
+</script>
+
+<!-- GTM server-side, mesmo ID e mesmo padrão das outras páginas (carrega atrasado) -->
+<noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'upsell_view',page_type:'upsell',page_name:'parabens-compra-concluida-clube-do-ukulele'});
+(function(){function g(){(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');}
+if(document.readyState!=='loading'){setTimeout(g,1500);}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(g,1500);},{once:true});}})();
+</script>
+
+</body>
+</html>
