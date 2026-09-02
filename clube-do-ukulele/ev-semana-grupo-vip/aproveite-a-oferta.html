@@ -464,6 +464,38 @@ header.hero-section{
   .barra-encerrada b{font-size:16px}
 }
 
+/* === FORMULÁRIO ANTES DO CHECKOUT ===
+   Mesmos campos, ids e eventos da página do Ukulele Fundamental; o que muda
+   aqui é só a paleta, para o modal não parecer de outro produto. */
+dialog.modal{width:min(30rem,92vw);max-height:92vh;overflow-y:auto;border:0;border-radius:24px;padding:0;background:var(--card);color:var(--ink);box-shadow:0 30px 70px -20px rgba(0,0,0,.5)}
+dialog.modal::backdrop{background:rgba(45,18,78,.66);backdrop-filter:blur(4px)}
+.modal-bd{padding:clamp(1.4rem,4vw,2rem);position:relative}
+.modal-x{position:absolute;top:.8rem;right:.8rem;width:2.1rem;height:2.1rem;border:0;border-radius:999px;background:var(--page);color:var(--muted);display:grid;place-items:center;cursor:pointer}
+.modal-x:hover{background:var(--line);color:var(--ink)}
+.modal-x svg{width:1rem;height:1rem}
+.modal h3{text-align:center;font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;color:var(--indigo);font-size:1.5rem;padding:0 1.5rem}
+.modal .sub{text-align:center;color:var(--muted);font-size:.88rem;margin:.5rem 0 1.2rem}
+.modal-cupom{display:flex;align-items:center;justify-content:center;gap:.4rem;width:fit-content;margin:.7rem auto 0;background:var(--acao);color:#fff;font-weight:800;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;padding:.45rem .9rem;border-radius:999px}
+.modal-cupom svg{width:.9rem;height:.9rem;flex-shrink:0}
+.field{margin-bottom:.9rem}
+.field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 .35rem .3rem}
+.field input{width:100%;min-height:46px;padding:.85rem 1rem;border:1px solid var(--line-forte);border-radius:12px;background:var(--page);font:inherit;font-size:15px;color:var(--ink)}
+.field input:focus{outline:0;border-color:var(--indigo);background:var(--card)}
+.phone{display:flex;gap:.5rem}
+.phone select{flex-shrink:0;max-width:42%;min-height:46px;border:1px solid var(--line-forte);border-radius:12px;background:var(--page);font:inherit;font-size:13.5px;color:var(--ink);padding:.85rem .5rem}
+.phone select:focus{outline:0;border-color:var(--indigo)}
+.phone input{flex:1;min-width:0}
+.radios{display:flex;flex-wrap:wrap;gap:1.5rem;padding:.2rem .3rem}
+.radios label{display:inline-flex;align-items:center;gap:.5rem;font-size:14px;color:var(--ink);cursor:pointer;text-transform:none;font-weight:500;letter-spacing:0;margin:0}
+.radios input{width:1.15rem;height:1.15rem;flex-shrink:0;margin:0;accent-color:var(--indigo)}
+.hint{font-size:11px;color:#8A5A00;font-weight:600;margin:.35rem 0 0 .3rem;display:none}
+.hint.on{display:block}
+.err{color:#B83A2E;font-size:11px;font-weight:600;margin:.3rem 0 0 .3rem;display:none}
+.err.on{display:block}
+.modal .cta-btn{width:100%;max-width:none;margin-top:.4rem}
+.secure{text-align:center;font-size:11px;color:var(--muted);margin-top:.8rem;display:flex;gap:.35rem;justify-content:center;align-items:center}
+.secure svg{width:14px;height:14px;color:var(--teal)}
+
 /* === RODAPÉ ===
    No celular a barra da oferta mora aqui embaixo, então o rodapé precisa da
    altura dela em folga, senão a última linha fica atrás do botão. */
@@ -1411,6 +1443,38 @@ header.hero-section{
 
 </main>
 
+<dialog class="modal" id="checkout" aria-labelledby="ckt">
+  <div class="modal-bd">
+    <button class="modal-x" type="button" id="fechar-checkout" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 id="ckt">Falta muito pouco!</h3>
+    <div class="modal-cupom"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> Desconto de R$ 300 já aplicado</div>
+    <p class="sub">Preencha para garantir sua vaga no Clube do Ukulele.</p>
+    <form id="lead" novalidate>
+      <div class="field"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Ex: Mateus Augusto" required><p class="err" id="e-nome">Insira nome e sobrenome.</p></div>
+      <div class="field"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="hint" id="h-email">Corrigimos um possível erro de digitação. Confira se está certo.</p><p class="err" id="e-email">Verifique o e-mail.</p></div>
+      <div class="field"><label for="wa">WhatsApp</label>
+        <div class="phone">
+          <select id="ddi" aria-label="Código do país">
+            <option value="55" selected>Brasil +55</option>
+            <option value="351">Portugal +351</option>
+            <option value="1">EUA/Canadá +1</option>
+            <option value="244">Angola +244</option>
+            <option value="258">Moçambique +258</option>
+            <option value="34">Espanha +34</option>
+            <option value="44">Reino Unido +44</option>
+            <option value="">Outro país</option>
+          </select>
+          <input id="wa" name="tel" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000" required>
+        </div>
+        <p class="err" id="e-wa">Número com DDD (10 ou 11 dígitos).</p>
+      </div>
+      <div class="field"><label>Você já possui um ukulele?</label><div class="radios"><label><input type="radio" name="uke" value="Sim"> Sim</label><label><input type="radio" name="uke" value="Não"> Não</label></div><p class="err" id="e-uke">Responda essa pergunta.</p></div>
+      <button class="cta-btn" type="submit" id="go">Ir para o pagamento</button>
+      <p class="secure"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Ambiente 100% seguro pela Hotmart</p>
+    </form>
+  </div>
+</dialog>
+
 <div class="barra-oferta" id="barra-oferta" role="timer" aria-label="Tempo restante da oferta">
   <div class="barra-inner">
     <div class="barra-esq">
@@ -1438,6 +1502,10 @@ header.hero-section{
 </div>
 
 <script>
+// Checkout do Clube: uma constante só, usada pelo formulário e pelo href dos
+// botões, para não existirem duas versões do link se ele mudar.
+var CHECKOUT_CLUBE='https://pay.hotmart.com/I107367779O?off=kb9xgzrf&hideBillet=1&offDiscount=RVD-CLUBE3';
+
 // ============================
 // ESTADO DA OFERTA E RELÓGIO (horário de Brasília)
 // Abre: 03/09/2026 07:59 BRT (10:59 UTC) — um minuto de folga, para o link já
@@ -1480,7 +1548,7 @@ header.hero-section{
     return forcado-Date.now();
   })();
   function agora(){return Date.now()+DESLOCAMENTO}
-  var CHECKOUT_URL = 'https://pay.hotmart.com/I107367779O?off=kb9xgzrf&hideBillet=1&offDiscount=RVD-CLUBE3';
+  var CHECKOUT_URL = CHECKOUT_CLUBE;
   var WA_URL = 'https://wa.me/5531985852860?text=' + encodeURIComponent('Oi! Eu queria entrar no Clube do Ukulele pela condição do dia 03/09, mas cheguei depois do encerramento. Dá para me ajudar?');
 
   var barra    = document.getElementById('barra-oferta');
@@ -1611,6 +1679,110 @@ header.hero-section{
 
   tick();
   setInterval(tick,1000);
+})();
+
+// ============================
+// FORMULÁRIO ANTES DO CHECKOUT
+// ============================
+(function(){
+  var dlg=document.getElementById('checkout');
+  if(!dlg)return;
+  var origem='';
+
+  function abrir(de){
+    origem=de||'';
+    if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+    var n=document.getElementById('nome');
+    if(n) setTimeout(function(){n.focus()},50);
+  }
+  function fechar(){ if(dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+  document.getElementById('fechar-checkout').addEventListener('click',fechar);
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) fechar(); });
+
+  // Os botões guardam o href do checkout: sem JS, o clique ainda leva ao
+  // pagamento. Com JS, o formulário entra antes. Botão desligado (antes das
+  // 8h) ou de WhatsApp (depois das 20h) não abre nada.
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('.cta-link'):null;
+    if(!a)return;
+    if(a.classList.contains('desligado')||a.classList.contains('whatsapp'))return;
+    if(!a.getAttribute('href'))return;
+    e.preventDefault();
+    abrir(a.getAttribute('data-cta')||'');
+  });
+
+  var ddi=document.getElementById('ddi'), waIn=document.getElementById('wa');
+  function mascara(){
+    var v=waIn.value.replace(/\D/g,'');
+    if(ddi.value==='55'){
+      v=v.slice(0,11);
+      if(v.length>10) v=v.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3');
+      else if(v.length>6) v=v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3');
+      else if(v.length>2) v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+      waIn.value=v;
+    } else { waIn.value=v.slice(0,15); }
+  }
+  waIn.addEventListener('input',mascara);
+  ddi.addEventListener('change',function(){
+    waIn.value='';
+    waIn.placeholder = ddi.value==='55' ? '(00) 00000-0000' : 'Número com DDD';
+  });
+
+  // Autocorreção de e-mail: erro de digitação aqui vira login errado no
+  // checkout, que já entra pré-preenchido.
+  var provFix={gmial:'gmail',gamil:'gmail',gmal:'gmail',gmaill:'gmail',gemail:'gmail',gnail:'gmail',hotmial:'hotmail',hotmai:'hotmail',hotmal:'hotmail',hormail:'hotmail',hotmaill:'hotmail',htomail:'hotmail',oulook:'outlook',outlok:'outlook',outloo:'outlook',outllok:'outlook',yaho:'yahoo',yahooo:'yahoo',yhoo:'yahoo',icoud:'icloud',iclod:'icloud'};
+  var sufFix=[['.comm','.com'],['.cm','.com'],['.cmo','.com'],['.xom','.com'],['.con','.com'],['.coom','.com'],['.cm.br','.com.br'],['.con.br','.com.br'],['.com.brr','.com.br'],['.com.b','.com.br']];
+  function corrigeEmail(val){
+    val=val.toLowerCase().trim(); if(val.indexOf('@')<0) return {v:val,c:false};
+    var p=val.split('@'),u=p[0],d=p[1],ch=false; if(!d) return {v:val,c:false};
+    var i=d.indexOf('.'); if(i<0) return {v:val,c:false};
+    var dn=d.slice(0,i),sf=d.slice(i);
+    if(provFix[dn]){dn=provFix[dn];ch=true;}
+    for(var k=0;k<sufFix.length;k++){ if(sf===sufFix[k][0]){sf=sufFix[k][1];ch=true;break;} }
+    return {v:u+'@'+dn+sf,c:ch};
+  }
+  function emailOk(v){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);}
+  var emailIn=document.getElementById('email');
+  emailIn.addEventListener('blur',function(){
+    var h=document.getElementById('h-email'); h.classList.remove('on');
+    if(!emailIn.value.trim()) return;
+    var r=corrigeEmail(emailIn.value);
+    if(r.c){ emailIn.value=r.v; h.classList.add('on'); setTimeout(function(){h.classList.remove('on')},6000); }
+  });
+
+  function cookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
+
+  document.getElementById('lead').addEventListener('submit',function(e){
+    e.preventDefault();
+    var nome=document.getElementById('nome').value.trim();
+    var r=corrigeEmail(emailIn.value); if(r.c) emailIn.value=r.v;
+    var email=emailIn.value.trim();
+    var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
+    var uke=(document.querySelector('input[name=uke]:checked')||{}).value;
+    var ok=true;
+    function marca(id,cond){document.getElementById(id).classList.toggle('on',!cond);if(!cond)ok=false;}
+    marca('e-nome', nome.split(' ').filter(Boolean).length>=2);
+    marca('e-email', emailOk(email));
+    marca('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
+    marca('e-uke', !!uke);
+    if(!ok) return;
+    var btn=document.getElementById('go'); btn.textContent='Liberando…'; btn.disabled=true;
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:uke,lead_origem:origem});
+    var url;
+    try{
+      url=new URL(CHECKOUT_CLUBE);
+      url.searchParams.set('name',nome); url.searchParams.set('email',email);
+      url.searchParams.set('phonenumber',tel);
+      if(ddi.value) url.searchParams.set('phoneac',ddi.value);
+      var qp=new URLSearchParams(location.search), utms=[];
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
+      if(utms.length) url.searchParams.set('sck',utms.join('|'));
+      var uid=cookie('user_id'); if(uid) url.searchParams.set('xcod',uid);
+      url=url.toString();
+    }catch(_){ url=CHECKOUT_CLUBE; }
+    setTimeout(function(){location.href=url;},400);
+  });
 })();
 
 // ============================
