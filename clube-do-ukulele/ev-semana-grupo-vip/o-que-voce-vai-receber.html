@@ -42,6 +42,8 @@ ul{padding:0;list-style:none}
   --coral-forte:#B4404F;
   --laranja:#CD3701;
   --acao:#CD3701;
+  --acao-hover:#A82D01;
+  --acao-texto:#FFFFFF;
   --teal:#177A6A;
   --sobre-escuro:#DCD6E6;
   --linha:rgba(220,214,230,.16);
@@ -98,6 +100,36 @@ h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;lett
 .sec-escura .lead{color:var(--sobre-escuro)}
 .center{text-align:center}
 .center .lead{margin-left:auto;margin-right:auto}
+
+/* === BOTÃO QUE LEVA À PÁGINA DE VENDA ===
+   Só existe entre as 8h e as 20h do dia 03/09: antes não há para onde mandar
+   ninguém, e depois a condição não existe mais. Quem controla é o JS. */
+.cta-btn{
+  display:inline-block;text-align:center;text-decoration:none;
+  background:var(--acao);color:var(--acao-texto);
+  padding:1.05rem 1.5rem;border-radius:14px;
+  font-weight:800;font-size:17px;line-height:1.35;
+  width:100%;max-width:30rem;
+  box-shadow:0 14px 26px -14px rgba(0,0,0,.45);
+  transition:background-color .3s,transform .3s,box-shadow .3s;
+}
+.cta-btn:hover{background:var(--acao-hover)}
+.cta-wrap{display:flex;justify-content:center;margin-top:1.75rem}
+@media (min-width:640px){.cta-btn{width:auto;padding:1.15rem 2.4rem;font-size:19px}}
+.btn-pulsar{animation:pulse-cta 2.4s infinite}
+@keyframes pulse-cta{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.btn-pulsar:hover{transform:translateY(-3px);box-shadow:0 14px 24px -12px rgba(0,0,0,.35)}
+@media (prefers-reduced-motion:reduce){
+  .btn-pulsar{animation:none}
+  .btn-pulsar:hover{transform:none}
+}
+.hero-text .cta-btn{margin-top:.9rem}
+.barra-fixa .cta-btn{width:auto;max-width:none;flex-shrink:0;padding:.7rem 1rem;font-size:14px;border-radius:12px}
+@media (min-width:1024px){.barra-fixa .cta-btn{padding:.8rem 1.5rem;font-size:15.5px}}
+
+/* Tarja do modo de teste: só aparece quando a URL força um horário. */
+.aviso-teste{position:fixed;top:calc(72px + .5rem);right:.5rem;z-index:200;background:#8A5A00;color:#fff;font-size:11px;font-weight:800;line-height:1.3;padding:.4rem .65rem;border-radius:8px;max-width:15rem;text-align:right;pointer-events:none;box-shadow:0 8px 20px -10px rgba(0,0,0,.6)}
+@media (max-width:1023px){.aviso-teste{top:.5rem}}
 
 /* === SELO === */
 .selo{display:inline-block;background:transparent;border:1px solid rgba(232,122,133,.6);color:var(--coral);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;padding:.4rem .9rem;border-radius:999px}
@@ -440,10 +472,11 @@ header.hero-section{
 
     <div class="hero-text">
       <img src="../../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" class="hero-logo" fetchpriority="high" decoding="async">
-      <span class="selo">Você já está no Grupo VIP</span>
+      <span class="selo" id="hero-selo">Você já está no Grupo VIP</span>
       <h1 class="hero-title">Veja tudo o que você vai receber no <span>Clube do Ukulele</span> ao se inscrever</h1>
       <p class="hero-sub">Você garantiu seu lugar no grupo e agora pode conhecer com calma cada parte do Clube, do método à trilha, antes da oferta ser liberada.</p>
-      <span class="hero-data">A oferta abre dia <b>03/09, às 8h</b>, no Grupo VIP do WhatsApp</span>
+      <span class="hero-data" id="hero-data">A oferta abre dia <b>03/09, às 8h</b>, no Grupo VIP do WhatsApp</span>
+      <a href="aproveite-a-oferta" class="btn-pulsar cta-btn cta-fase" data-cta="hero" hidden>Quero aproveitar a oferta</a>
       <div class="contador" data-alvo="2026-09-03T08:00:00-03:00" role="timer">
         <span class="contador-label">A oferta abre em</span>
         <div class="contador-grid">
@@ -455,7 +488,7 @@ header.hero-section{
           <span class="contador-sep" aria-hidden="true">:</span>
           <div class="contador-item"><b data-cd="s">--</b><span>seg</span></div>
         </div>
-        <span class="contador-aberto" hidden>A oferta está aberta agora, no Grupo VIP do WhatsApp.</span>
+        <span class="contador-aberto" hidden>A condição especial encerrou às 20h do dia 03/09.</span>
       </div>
     </div>
 
@@ -1311,9 +1344,10 @@ header.hero-section{
 
 <section class="sec sec-branca">
   <div class="final">
-    <h2>Agora você já conhece tudo o que vem pela frente</h2>
-    <p>No dia 03/09, às 8h da manhã, a oferta abre aqui mesmo, dentro do grupo, antes de qualquer anúncio. Fica de olho nas mensagens para não perder o aviso e a condição especial.</p>
-    <span class="final-data">Anota aí: <span>03/09, às 8h</span>, no Grupo VIP do WhatsApp</span>
+    <h2 id="final-titulo">Agora você já conhece tudo o que vem pela frente</h2>
+    <p id="final-texto">No dia 03/09, às 8h da manhã, a oferta abre aqui mesmo, dentro do grupo, antes de qualquer anúncio. Fica de olho nas mensagens para não perder o aviso e a condição especial.</p>
+    <span class="final-data" id="final-data">Anota aí: <span>03/09, às 8h</span>, no Grupo VIP do WhatsApp</span>
+    <div class="cta-wrap"><a href="aproveite-a-oferta" class="btn-pulsar cta-btn cta-fase" data-cta="final" hidden>Ver a oferta e me inscrever</a></div>
     <div class="contador" data-alvo="2026-09-03T08:00:00-03:00" role="timer">
       <span class="contador-label">A oferta abre em</span>
       <div class="contador-grid">
@@ -1325,7 +1359,7 @@ header.hero-section{
         <span class="contador-sep" aria-hidden="true">:</span>
         <div class="contador-item"><b data-cd="s">--</b><span>seg</span></div>
       </div>
-      <span class="contador-aberto" hidden>A oferta está aberta agora, no Grupo VIP do WhatsApp.</span>
+      <span class="contador-aberto" hidden>A condição especial encerrou às 20h do dia 03/09.</span>
     </div>
   </div>
 </section>
@@ -1345,46 +1379,139 @@ header.hero-section{
     <span class="sep" aria-hidden="true">:</span>
     <span class="bloco"><b data-cd="s">--</b><span class="un">s</span></span>
   </div>
-  <span class="contador-aberto" hidden>A oferta está aberta agora, no Grupo VIP.</span>
+  <span class="contador-aberto" hidden>A condição encerrou às 20h do dia 03/09.</span>
+  <a href="aproveite-a-oferta" class="btn-pulsar cta-btn cta-fase" data-cta="barra" hidden>Ver a oferta</a>
 </div>
 
 <script>
 // ============================
-// CONTADOR ATÉ A ABERTURA
+// FASES DA OFERTA E CONTADOR (horário de Brasília)
+// Abre: 03/09/2026 07:59 BRT (10:59 UTC) — mesma folga de um minuto da página
+//       de venda, para o botão não apontar para uma oferta ainda fechada.
+// Fecha: 03/09/2026 20:00 BRT (23:00 UTC).
+// Antes das 8h esta página só conta o tempo. Entre 8h e 20h ela ganha o botão
+// que leva à página de venda. Depois das 20h o botão sai e fica o aviso.
+// Mês em JavaScript começa em 0, então setembro é 8.
 // ============================
 (function(){
+  var ABRE_UTC  = Date.UTC(2026, 8, 3, 10, 59, 0);
+  var FECHA_UTC = Date.UTC(2026, 8, 3, 23, 0, 0);
+
+  // Horário simulado por parâmetro, para conferir as fases sem esperar o dia:
+  // ?estado=antes | aberta | encerrada    ou    ?t=2026-09-03T09:30-03:00
+  var DESLOCAMENTO = (function(){
+    var q, forcado=null;
+    try{ q=new URLSearchParams(location.search); }catch(e){ return 0 }
+    var t=q.get('t')||q.get('agora');
+    if(t){
+      var d=new Date(t);
+      if(!isNaN(d.getTime())) forcado=d.getTime();
+    } else {
+      var atalhos={
+        antes:     Date.UTC(2026, 8, 2, 15, 0, 0),
+        aberta:    Date.UTC(2026, 8, 3, 17, 0, 0),
+        encerrada: Date.UTC(2026, 8, 3, 23,30, 0)
+      };
+      var e=q.get('estado');
+      if(e && atalhos.hasOwnProperty(e)) forcado=atalhos[e];
+    }
+    if(forcado===null) return 0;
+    var tarja=document.createElement('div');
+    tarja.className='aviso-teste';
+    tarja.textContent='MODO DE TESTE · horário simulado: '+new Date(forcado).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'});
+    document.body.appendChild(tarja);
+    return forcado-Date.now();
+  })();
+  function agora(){return Date.now()+DESLOCAMENTO}
+
   var caixas=[].slice.call(document.querySelectorAll('[data-alvo]'));
-  if(!caixas.length)return;
   caixas.forEach(function(c){
-    c.alvo=new Date(c.getAttribute('data-alvo')).getTime();
     c.campos={d:c.querySelector('[data-cd=d]'),h:c.querySelector('[data-cd=h]'),m:c.querySelector('[data-cd=m]'),s:c.querySelector('[data-cd=s]')};
     c.grid=c.querySelector('.contador-grid');
-    c.aberto=c.querySelector('.contador-aberto');
+    c.aviso=c.querySelector('.contador-aberto');
     c.rotulo=c.querySelector('.contador-label');
   });
+  var ctas   = [].slice.call(document.querySelectorAll('.cta-fase'));
+  var selo   = document.getElementById('hero-selo');
+  var heroData = document.getElementById('hero-data');
+  var fimTit = document.getElementById('final-titulo');
+  var fimTxt = document.getElementById('final-texto');
+  var fimData= document.getElementById('final-data');
+
   function dois(n){return n<10?'0'+n:''+n}
-  function tick(){
-    var agora=Date.now(),vivo=false;
+  function mostraCtas(v){ ctas.forEach(function(a){a.hidden=!v}) }
+
+  function antesDeAbrir(){
+    mostraCtas(false);
     caixas.forEach(function(c){
-      // Data inválida (fuso mal escrito no HTML) some com o bloco em vez de
-      // estampar NaN na página.
-      if(isNaN(c.alvo)){c.hidden=true;return}
-      var falta=c.alvo-agora;
-      if(falta<=0){
-        c.grid.hidden=true;c.rotulo.hidden=true;c.aberto.hidden=false;
-        return;
-      }
-      vivo=true;
-      var s=Math.floor(falta/1000);
-      c.campos.d.textContent=Math.floor(s/86400);
-      c.campos.h.textContent=dois(Math.floor(s/3600)%24);
-      c.campos.m.textContent=dois(Math.floor(s/60)%60);
-      c.campos.s.textContent=dois(s%60);
+      if(c.rotulo) c.rotulo.textContent='A oferta abre em';
+      if(c.grid) c.grid.hidden=false;
+      if(c.rotulo) c.rotulo.hidden=false;
+      if(c.aviso) c.aviso.hidden=true;
     });
-    if(!vivo&&timer){clearInterval(timer);timer=null}
+    if(selo) selo.textContent='Você já está no Grupo VIP';
+    if(heroData) heroData.innerHTML='A oferta abre dia <b>03/09, às 8h</b>, no Grupo VIP do WhatsApp';
+    if(fimTit) fimTit.textContent='Agora você já conhece tudo o que vem pela frente';
+    if(fimTxt) fimTxt.innerHTML='No dia 03/09, às 8h da manhã, a oferta abre aqui mesmo, dentro do grupo, antes de qualquer anúncio. Fica de olho nas mensagens para não perder o aviso e a condição especial.';
+    if(fimData){ fimData.hidden=false; fimData.innerHTML='Anota aí: <span>03/09, às 8h</span>, no Grupo VIP do WhatsApp'; }
   }
-  var timer=setInterval(tick,1000);
+
+  function aberta(){
+    mostraCtas(true);
+    caixas.forEach(function(c){
+      if(c.rotulo) c.rotulo.textContent='A oferta encerra em';
+      if(c.grid) c.grid.hidden=false;
+      if(c.rotulo) c.rotulo.hidden=false;
+      if(c.aviso) c.aviso.hidden=true;
+    });
+    if(selo) selo.textContent='A oferta está no ar';
+    if(heroData) heroData.innerHTML='A condição especial vai até as <b>20h de hoje</b>';
+    if(fimTit) fimTit.textContent='A oferta está aberta agora';
+    if(fimTxt) fimTxt.innerHTML='Você já conhece tudo o que vem pela frente. A condição especial vale até as <b>20h de hoje</b>, horário de Brasília.';
+    if(fimData) fimData.hidden=true;
+  }
+
+  function encerrada(){
+    mostraCtas(false);
+    caixas.forEach(function(c){
+      if(c.grid) c.grid.hidden=true;
+      if(c.rotulo) c.rotulo.hidden=true;
+      if(c.aviso){ c.aviso.textContent='A condição especial encerrou às 20h do dia 03/09.'; c.aviso.hidden=false; }
+    });
+    if(selo) selo.textContent='Oferta encerrada';
+    if(heroData) heroData.innerHTML='A condição especial encerrou às <b>20h do dia 03/09</b>';
+    if(fimTit) fimTit.textContent='A oferta encerrou';
+    if(fimTxt) fimTxt.innerHTML='A janela da condição especial fechou às <b>20h do dia 03/09</b>. Se quiser conversar sobre outras formas de entrar no Clube, fale com a gente no WhatsApp.';
+    if(fimData) fimData.hidden=true;
+  }
+
+  function relogio(alvo){
+    var falta=Math.max(0,alvo-agora());
+    var seg=Math.floor(falta/1000);
+    caixas.forEach(function(c){
+      if(!c.campos.d) return;
+      c.campos.d.textContent=Math.floor(seg/86400);
+      c.campos.h.textContent=dois(Math.floor(seg/3600)%24);
+      c.campos.m.textContent=dois(Math.floor(seg/60)%60);
+      c.campos.s.textContent=dois(seg%60);
+    });
+  }
+
+  var faseAtual=null;
+  function tick(){
+    var t=agora();
+    var fase = t<ABRE_UTC ? 'antes' : (t<FECHA_UTC ? 'aberta' : 'encerrada');
+    if(fase!==faseAtual){
+      if(fase==='antes') antesDeAbrir();
+      else if(fase==='aberta') aberta();
+      else encerrada();
+      faseAtual=fase;
+    }
+    if(fase==='antes') relogio(ABRE_UTC);
+    else if(fase==='aberta') relogio(FECHA_UTC);
+  }
   tick();
+  setInterval(tick,1000);
 })();
 
 // ============================
