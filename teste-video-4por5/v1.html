@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V1 · pilha completa | teste 4:5</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="theme-color" content="#2A1854">
+<link rel="icon" type="image/svg+xml" href="../img/favicon-mini-ukulele.svg">
+
+<!-- ===== OTIMIZAÇÃO DE CARREGAMENTO DO PLAYER VTURB (oficial) ===== -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a982022f2db3546747cca7d/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a98201cf609532b25e0509c/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap"></noscript>
+
+<style>
+:root{
+  --ink:#2A1854;--purple:#423066;--coral:#EA546C;--cream:#FBF7F2;
+  --text:#463F58;--muted:#5B5468;--line:#E6DEEE;
+  --ok:#0B8A55;--ok-bg:#E4F3EC;--no:#B92F47;--no-bg:#FBE7EB;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+/* Celular antigo e baixo (568 e 640 de altura): a escala inteira encolhe um
+   degrau para a dobra continuar fechando sem tirar texto. */
+@media (max-height:600px){html{font-size:82%}}
+@media (min-height:601px) and (max-height:680px){html{font-size:90%}}
+body{margin:0;font-family:'Poppins',system-ui,-apple-system,sans-serif;color:var(--text);
+  background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1{margin:0;font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);font-weight:900;
+  line-height:1.08;letter-spacing:-.022em;text-wrap:balance}
+h1 em{font-style:normal;color:#B92F47}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+
+/* Superfícies que o navegador desenha sozinho e entregam o padrão dele se a
+   gente não pintar: seleção, cursor de texto, anel de foco. */
+::selection{background:var(--coral);color:#fff}
+:focus-visible{outline:2.5px solid var(--purple);outline-offset:3px;border-radius:8px}
+:root{caret-color:var(--coral);accent-color:var(--coral)}
+
+/* ===== A DOBRA =====
+   O vídeo é 4:5: a altura dele é 1,25x a largura. Para tudo fechar em uma tela
+   quem cede é a LARGURA do player, nunca o texto. O CSS já entrega um valor
+   seguro; o script no fim da página mede o texto de verdade e afina. */
+.fold{min-height:100svh;display:flex;flex-direction:column;
+  background:radial-gradient(88% 58% at 50% -6%,#F1E9FA 0%,rgba(241,233,250,0) 70%),var(--cream)}
+.wrap{width:100%;max-width:900px;margin:0 auto;flex:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(.85rem,2.4vh,1.5rem);text-align:center;
+  padding:clamp(.9rem,3vh,2rem) clamp(1.15rem,5vw,1.5rem)}
+.video{width:var(--vw,min(100%,400px,calc((100svh - 340px) * .8)));
+  margin-inline:auto;border-radius:20px;overflow:hidden;background:#0B0713;
+  box-shadow:0 2px 4px rgba(0,0,0,.09),0 22px 48px -12px rgba(0,0,0,.26)}
+.video vturb-smartplayer{display:block;width:100%!important;max-width:none!important}
+
+/* Ícones desenhados, mesma família e traço. Emoji sai com cor, tamanho e
+   alinhamento diferentes em cada aparelho. */
+.ic{flex:0 0 auto;border-radius:50%;display:grid;place-items:center}
+.ic svg{fill:none;stroke:currentColor;stroke-width:3.1;stroke-linecap:round;stroke-linejoin:round}
+.ic--ok{background:var(--ok-bg);color:var(--ok)}
+.ic--no{background:var(--no-bg);color:var(--no)}
+
+.sub{color:var(--muted);line-height:1.4}
+.kicker{display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Montserrat',system-ui,sans-serif;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.kicker svg{width:1.15em;height:1.15em;fill:none;stroke:var(--coral);stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round;animation:nudge 2.6s cubic-bezier(.22,1,.36,1) 1.2s infinite}
+/* translate e não transform: no layout de duas colunas a seta é girada por
+   transform, e um keyframe de transform apagaria a rotação. */
+@keyframes nudge{0%,62%,100%{translate:0 0}74%{translate:0 5px}86%{translate:0 1px}}
+@media (prefers-reduced-motion:no-preference){
+  .txt,.video{animation:rise .7s cubic-bezier(.16,1,.3,1) both}
+  .video{animation-delay:.09s}
+}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.kicker svg{animation:none}}
+
+/* Empilhado (celular e telas altas): o .col se dissolve e a ordem na dobra é
+   dada por order, para o player entrar entre os blocos de texto. */
+@media (max-width:899px),(min-height:901px){
+  .col{display:contents}
+  .txt{order:1}.video{order:2}.after{order:3}.foot{order:4}
+}
+/* Tela larga e baixa: texto em uma coluna, player na outra, e o player joga
+   no tamanho cheio porque a altura deixa. */
+@media (min-width:900px) and (max-height:900px){
+  .wrap{flex-direction:row;align-items:center;justify-content:center;text-align:left;
+    gap:clamp(1.75rem,4.5vw,3.25rem);max-width:1120px}
+  /* Prefixo .wrap de propósito: o CSS de cada variação vem depois deste bloco
+     no arquivo, e sem a especificidade extra o alinhamento centralizado do
+     empilhado venceria aqui. */
+  .wrap .col{display:flex;flex-direction:column;align-items:flex-start;
+    gap:clamp(.7rem,2vh,1.15rem);max-width:34rem}
+  .wrap .txt,.wrap .after{align-items:flex-start;text-align:left}
+  .wrap .tops,.wrap .steps{justify-content:flex-start}
+  .wrap .kicker svg{transform:rotate(-90deg);animation-name:nudge-x}
+  @keyframes nudge-x{0%,62%,100%{translate:0 0}74%{translate:5px 0}86%{translate:1px 0}}
+  .video{flex:0 0 auto;width:min(400px,calc((100svh - 4rem) * .8))}
+}
+
+/* Etiqueta de comparação. Só existe porque são 5 variações lado a lado. */
+.mark{position:fixed;top:.7rem;left:.7rem;z-index:9;display:flex;gap:.3rem;align-items:center}
+.mark a,.mark span{font-size:.78rem;font-weight:600;text-decoration:none;
+  padding:.24rem .5rem;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted)}
+.mark span{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media (max-width:600px){.mark{top:.45rem;left:.45rem}.mark a,.mark span{font-size:.75rem;padding:.2rem .45rem}}
+/* No celular a etiqueta fica sobre o texto: a dobra abre espaço para ela.
+   O script mede esse padding, então o player se ajusta sozinho. */
+@media (max-width:899px){.wrap{padding-top:calc(clamp(.9rem,3vh,2rem) + 2.15rem)}}
+
+/* V1 — a ordem que você escreveu, sem mexer em nada: headline, subheadline,
+   tópicos, chamada, vídeo, subtexto. O preço aparece no celular: com todo esse
+   texto em cima, o player fica com a altura que sobra. */
+.txt{display:flex;flex-direction:column;align-items:center;gap:clamp(.55rem,1.6vh,.9rem)}
+h1{font-size:clamp(1.18rem,4.7vw,2.15rem);max-width:17em}
+.sub{font-size:clamp(.8rem,2.9vw,1rem);max-width:40em}
+.tops{display:flex;flex-direction:column;align-items:stretch;gap:0;
+  font-size:clamp(.82rem,3vw,1rem);color:var(--purple);font-weight:500}
+.tops li{display:flex;align-items:center;gap:.55rem;padding:.32rem .1rem;text-align:left}
+.tops li + li{border-top:1px solid var(--line)}
+.tops .ic{width:1.35em;height:1.35em}
+.tops .ic svg{width:.72em;height:.72em}
+.kicker{font-size:clamp(.92rem,3.4vw,1.12rem)}
+.foot{color:var(--muted);font-size:clamp(.74rem,2.6vw,.88rem);margin-top:.15rem}
+
+</style>
+</head>
+<body>
+
+<nav class="mark" aria-label="Variações"><a href="./">todas</a><span>v1</span><a href="v2">v2</a><a href="v3">v3</a><a href="v4">v4</a><a href="v5">v5</a></nav>
+
+<main class="fold">
+  <div class="wrap">
+    <div class="col">
+      <div class="txt">
+        <h1>Toque suas músicas favoritas no Ukulele seguindo um <em>mecanismo simples de 3 passos</em></h1>
+        <p class="sub">Música é para todos, não é dom ou talento. Domine os fundamentos do ukulele e conquiste a liberdade de tocar músicas novas do início ao fim, sem travar e curtindo cada momento</p>
+        <ul class="tops">
+          <li><span class="ic ic--ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 12.4l5 5L19.5 7"/></svg></span> 20 minutinhos por dia</li>
+          <li><span class="ic ic--no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></span> Não precisa levar jeito pra música</li>
+          <li><span class="ic ic--no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></span> Não importa a sua idade</li>
+        </ul>
+        <p class="kicker">No vídeo eu explico! <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5v14.5M5.5 12.5L12 19l6.5-6.5"/></svg></p>
+      </div>
+      <p class="foot">É para todos que querem aprender a tocar um instrumento musical.</p>
+    </div>
+
+    <div class="video">
+<vturb-smartplayer id="vid-6a982022f2db3546747cca7d" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 125% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a982022f2db3546747cca7d/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+    </div>
+  </div>
+</main>
+
+<script>
+/* Mede a altura real do texto e devolve ao player a maior largura cuja altura
+   4:5 ainda cabe na tela. Sem isso a dobra depende de valores chutados por
+   breakpoint, que quebram no primeiro celular com outra altura de barra. */
+(function(){
+  var wrap=document.querySelector('.wrap');
+  if(!wrap) return;
+  function fit(){
+    var cs=getComputedStyle(wrap);
+    if(cs.flexDirection==='row'){document.documentElement.style.removeProperty('--vw');return;}
+    /* Tudo o que divide a dobra com o player: pode estar acima dele, abaixo,
+       ou dos dois lados, dependendo da variação. */
+    var parts=[].slice.call(wrap.querySelectorAll('.txt,.after,.foot'));
+    var used=0;
+    for(var i=0;i<parts.length;i++) used+=parts[i].getBoundingClientRect().height;
+    var gap=parseFloat(cs.rowGap)||0;
+    used+=gap*parts.length;
+    used+=parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom);
+    var maxW=wrap.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+    var w=Math.min(400,maxW,Math.max(132,(window.innerHeight-used-8)*0.8));
+    set(w);
+    /* A conta acima erra por alguns pixels quando uma linha de texto reflui na
+       largura nova. Em vez de calibrar à mão, corrige contra o que a página
+       realmente mede, no máximo três vezes. */
+    for(var k=0;k<3;k++){
+      var over=document.documentElement.scrollHeight-window.innerHeight;
+      if(over<=0) break;
+      w=Math.max(132,w-Math.ceil(over*0.8)-1);
+      set(w);
+    }
+  }
+  function set(w){document.documentElement.style.setProperty('--vw',Math.floor(w)+'px');}
+  /* Rodar uma vez no resize não basta: a barra do navegador e a fonte mudam a
+     altura depois do evento. Refaz no quadro seguinte e de novo um pouco
+     depois, quando o layout já assentou. */
+  var t;
+  function schedule(){requestAnimationFrame(fit);clearTimeout(t);t=setTimeout(fit,140);}
+  fit();
+  addEventListener('resize',schedule);
+  addEventListener('orientationchange',schedule);
+  addEventListener('load',schedule);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(schedule);
+  if(window.ResizeObserver){
+    var ro=new ResizeObserver(schedule);
+    [].forEach.call(wrap.querySelectorAll('.txt,.after,.foot'),function(e){ro.observe(e);});
+  }
+})();
+</script>
+
+</body>
+</html>
