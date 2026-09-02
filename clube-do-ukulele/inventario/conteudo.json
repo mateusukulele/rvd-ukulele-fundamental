@@ -1,0 +1,3877 @@
+{
+  "extraido_em": "2026-09-02",
+  "origem": "https://34a123.cademi.com.br/api/v1 (API REST Cademi)",
+  "escopo": "Jornada de Aprendizado + Cursos e Materiais Extras + Biblioteca de Músicas. Fora: validadores de entrega, Central do Aluno, Coisas Ocultas, Avançado 1/2 (vazios).",
+  "campos_ausentes_na_api": [
+    "duração da aula",
+    "materiais anexos",
+    "marcação de live"
+  ],
+  "totais": {
+    "aulas_jornada": 201,
+    "cursos_jornada": 5,
+    "aulas_extras": 36,
+    "cursos_extras": 3,
+    "aulas_de_musica": 157,
+    "musicas_distintas": 149,
+    "paginas_indice_biblioteca": 5,
+    "total_aulas_do_clube": 394,
+    "nota": "total_aulas_do_clube = trilha + extras + aulas de música (cada versão Simplificada/Principal conta como uma aula). Sem as 5 páginas-índice \"Lista de Músicas\"."
+  },
+  "cursos": [
+    {
+      "id": 619216,
+      "nome": "Do ZERO à 1ª Música",
+      "ordem": 1,
+      "vitrine": "Jornada de Aprendizado",
+      "vitrine_ordem": 3,
+      "total_modulos": 2,
+      "total_aulas": 19,
+      "modulos": [
+        {
+          "id": 1748174,
+          "ordem": 1,
+          "nome": "Sua primeira música!",
+          "aulas": [
+            {
+              "id": 8807614,
+              "ordem": 1,
+              "nome": "A Base de tudo!"
+            },
+            {
+              "id": 8807616,
+              "ordem": 2,
+              "nome": "Guia de Compra do 1º Ukulele!"
+            },
+            {
+              "id": 9033089,
+              "ordem": 3,
+              "nome": "Glossário do Ukulele"
+            },
+            {
+              "id": 8897743,
+              "ordem": 4,
+              "nome": "🟣 Atividade | Me conta mais sobre você e o ukulele!"
+            },
+            {
+              "id": 8870522,
+              "ordem": 5,
+              "nome": "Anatomia do Ukulele"
+            },
+            {
+              "id": 8870523,
+              "ordem": 6,
+              "nome": "Como afinar o ukulele"
+            },
+            {
+              "id": 8897744,
+              "ordem": 7,
+              "nome": "🟣 Atividade | Seu ukulele está afinado?"
+            },
+            {
+              "id": 8870697,
+              "ordem": 8,
+              "nome": "Como segurar o ukulele"
+            },
+            {
+              "id": 8870728,
+              "ordem": 9,
+              "nome": "O primeiro ritmo: Batida Bate e Desce"
+            },
+            {
+              "id": 8897745,
+              "ordem": 10,
+              "nome": "🟣  Atividade | Batida Bate e Desce"
+            },
+            {
+              "id": 8870731,
+              "ordem": 11,
+              "nome": "Seus primeiros acordes"
+            },
+            {
+              "id": 8897746,
+              "ordem": 12,
+              "nome": "🟣  Atividade | Batida Bate e Desce + C e Fadd9"
+            },
+            {
+              "id": 8978143,
+              "ordem": 13,
+              "nome": "Sua primeira música!"
+            },
+            {
+              "id": 9023015,
+              "ordem": 14,
+              "nome": "Seus próximos passos"
+            },
+            {
+              "id": 8897747,
+              "ordem": 15,
+              "nome": "🟣 Atividade | Sua primeira música"
+            }
+          ]
+        },
+        {
+          "id": 1776944,
+          "ordem": 2,
+          "nome": "Suas próximas músicas",
+          "aulas": [
+            {
+              "id": 9027352,
+              "ordem": 1,
+              "nome": "Como eu organizaria meus estudos se começasse hoje"
+            },
+            {
+              "id": 8978615,
+              "ordem": 2,
+              "nome": "As próximas músicas!"
+            },
+            {
+              "id": 8897748,
+              "ordem": 3,
+              "nome": "🟣 Atividade | Sua segunda música"
+            },
+            {
+              "id": 9041097,
+              "ordem": 5,
+              "nome": "Próximos Passos!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 619217,
+      "nome": "Ukulele Fundamental",
+      "ordem": 2,
+      "vitrine": "Jornada de Aprendizado",
+      "vitrine_ordem": 3,
+      "total_modulos": 5,
+      "total_aulas": 41,
+      "modulos": [
+        {
+          "id": 1748298,
+          "ordem": 1,
+          "nome": "Efeito Bola de Neve",
+          "aulas": [
+            {
+              "id": 8870808,
+              "ordem": 1,
+              "nome": "Domando os dedos! - Exercício 1234"
+            },
+            {
+              "id": 8897749,
+              "ordem": 2,
+              "nome": "💎 Atividade | Exercício 1234"
+            },
+            {
+              "id": 8870839,
+              "ordem": 3,
+              "nome": "Os 7 erros fatais dos iniciantes"
+            },
+            {
+              "id": 8870840,
+              "ordem": 4,
+              "nome": "Os 5 Passos para Tirar qualquer música!"
+            },
+            {
+              "id": 8870841,
+              "ordem": 5,
+              "nome": "Passo 1: Identificar os Acordes"
+            },
+            {
+              "id": 8870842,
+              "ordem": 6,
+              "nome": "Passo 2: Identificar a Batida"
+            },
+            {
+              "id": 8870843,
+              "ordem": 7,
+              "nome": "Passo 3: Treinar Batidas + Acordes"
+            },
+            {
+              "id": 8870844,
+              "ordem": 8,
+              "nome": "Passo 4: Voz + Batida + Acordes"
+            },
+            {
+              "id": 8870845,
+              "ordem": 9,
+              "nome": "Passo 5: Treinar e Repetir"
+            }
+          ]
+        },
+        {
+          "id": 1757996,
+          "ordem": 2,
+          "nome": "Dominando os Fundamentos",
+          "aulas": [
+            {
+              "id": 8870853,
+              "ordem": 1,
+              "nome": "Entendendo tempos e ritmos"
+            },
+            {
+              "id": 8870854,
+              "ordem": 2,
+              "nome": "Como fazer as batidas, Movimento Perpétuo e Swing Time (Sossego + La Bella Luna)"
+            },
+            {
+              "id": 8897750,
+              "ordem": 3,
+              "nome": "💎 Atividade | Música com Batida Mãe"
+            },
+            {
+              "id": 8870855,
+              "ordem": 4,
+              "nome": "Elementos da Batida, Peteleco, Gancho"
+            },
+            {
+              "id": 8870856,
+              "ordem": 5,
+              "nome": "Notas Musicais, Sustenido e Bemol"
+            },
+            {
+              "id": 8870857,
+              "ordem": 6,
+              "nome": "Batida Pop 1 (a mais coringa) e Dedo Guia"
+            },
+            {
+              "id": 8897751,
+              "ordem": 7,
+              "nome": "🟣 Atividade | Música com Batida Pop 1"
+            },
+            {
+              "id": 8870858,
+              "ordem": 8,
+              "nome": "Como ler Diagramas de Acorde"
+            },
+            {
+              "id": 8870859,
+              "ordem": 9,
+              "nome": "Acordes Maiores vs. Acordes Menores"
+            }
+          ]
+        },
+        {
+          "id": 1757999,
+          "ordem": 3,
+          "nome": "Dominando as trocas de acordes!",
+          "aulas": [
+            {
+              "id": 8870860,
+              "ordem": 1,
+              "nome": "Como Trocar de Acorde Rapidamente"
+            },
+            {
+              "id": 8870861,
+              "ordem": 2,
+              "nome": "O melhor exercício para acordes"
+            },
+            {
+              "id": 8897752,
+              "ordem": 3,
+              "nome": "💎 Atividade | Exercício Toc Toc (Troca de Acordes)"
+            },
+            {
+              "id": 8870865,
+              "ordem": 4,
+              "nome": "Cifras e Símbolos"
+            },
+            {
+              "id": 8870872,
+              "ordem": 5,
+              "nome": "Como ler acordes com \"Barra\""
+            },
+            {
+              "id": 8897754,
+              "ordem": 6,
+              "nome": "💎 Atividade | Pares de Acordes + Batida Pop 1"
+            },
+            {
+              "id": 8870873,
+              "ordem": 7,
+              "nome": "Pegadinhas dos Sites de Cifras!"
+            },
+            {
+              "id": 8870862,
+              "ordem": 8,
+              "nome": "Diagramas de Acordes para Imprimir"
+            }
+          ]
+        },
+        {
+          "id": 1757997,
+          "ordem": 4,
+          "nome": "As batidas e Acordes essenciais",
+          "aulas": [
+            {
+              "id": 8870874,
+              "ordem": 1,
+              "nome": "Diferentes afinações e formas de afinar"
+            },
+            {
+              "id": 8870875,
+              "ordem": 2,
+              "nome": "Uma nova Batida Dinâmica"
+            },
+            {
+              "id": 8897755,
+              "ordem": 3,
+              "nome": "💎 Atividade | Música com Batida Dinâmica"
+            },
+            {
+              "id": 8870876,
+              "ordem": 4,
+              "nome": "Tirando mais rodinhas…"
+            },
+            {
+              "id": 8870878,
+              "ordem": 5,
+              "nome": "Onde encontrar cifras e dicas de utilização dos sites"
+            },
+            {
+              "id": 8870879,
+              "ordem": 6,
+              "nome": "A segunda batida MAIS coringa: POP 2"
+            },
+            {
+              "id": 8897756,
+              "ordem": 7,
+              "nome": "🟣 Atividade | Música com Batida Pop 2"
+            },
+            {
+              "id": 8870880,
+              "ordem": 8,
+              "nome": "Como cantar e tocar ao mesmo tempo?"
+            },
+            {
+              "id": 8870881,
+              "ordem": 9,
+              "nome": "Acordes Essenciais para Ukulele"
+            },
+            {
+              "id": 8897757,
+              "ordem": 10,
+              "nome": "💎 Atividade | Acordes Essenciais pro Ukulele"
+            }
+          ]
+        },
+        {
+          "id": 1762344,
+          "ordem": 5,
+          "nome": "Os 4 Acordes Mágicos",
+          "aulas": [
+            {
+              "id": 8897758,
+              "ordem": 1,
+              "nome": "💎 Atividade | Acordes Mágicos 1 + Batida Mãe"
+            },
+            {
+              "id": 8897759,
+              "ordem": 2,
+              "nome": "💎 Atividade | Acordes Mágicos 2 + Batida Pop 1"
+            },
+            {
+              "id": 8897760,
+              "ordem": 3,
+              "nome": "💎 Atividade | Acordes Mágicos 3 + Batida Dinâmica"
+            },
+            {
+              "id": 8897761,
+              "ordem": 4,
+              "nome": "💎 Atividade | Acordes Mágicos 4 + Batida Pop 2"
+            },
+            {
+              "id": 8897762,
+              "ordem": 5,
+              "nome": "🟣 Atividade | Música usando os 4 Acordes Mágicos!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 619267,
+      "nome": "Ukulele Além do Básico",
+      "ordem": 3,
+      "vitrine": "Jornada de Aprendizado",
+      "vitrine_ordem": 3,
+      "total_modulos": 6,
+      "total_aulas": 69,
+      "modulos": [
+        {
+          "id": 1748454,
+          "ordem": 1,
+          "nome": "Temperando sua música",
+          "aulas": [
+            {
+              "id": 8870885,
+              "ordem": 1,
+              "nome": "Abafamento, Batida de Reggae e Símbolos nas Cifras"
+            },
+            {
+              "id": 8897763,
+              "ordem": 2,
+              "nome": "💎 Atividade | Música com Batida Reggae 1"
+            },
+            {
+              "id": 8870886,
+              "ordem": 3,
+              "nome": "Como trazer a sua identidade para a música"
+            },
+            {
+              "id": 8897764,
+              "ordem": 4,
+              "nome": "💎 Atividade | Técnicas de Batida (Livre)"
+            },
+            {
+              "id": 8870887,
+              "ordem": 5,
+              "nome": "Acabando com o medo da pestana"
+            },
+            {
+              "id": 8897765,
+              "ordem": 6,
+              "nome": "💎 Atividade | Pestanas na 5ª Casa"
+            },
+            {
+              "id": 8897766,
+              "ordem": 7,
+              "nome": "💎 Atividade | Pestanas na 3ª e 5ª casas (Toca e abafa)"
+            },
+            {
+              "id": 8870888,
+              "ordem": 8,
+              "nome": "Acordes com mais dedos"
+            },
+            {
+              "id": 8897767,
+              "ordem": 9,
+              "nome": "💎 Atividade | Acordes D e G7M"
+            },
+            {
+              "id": 8897768,
+              "ordem": 10,
+              "nome": "💎 Atividade | Formas do m7 e diminuto"
+            }
+          ]
+        },
+        {
+          "id": 1748455,
+          "ordem": 2,
+          "nome": "Conceitos Básicos (e úteis!) de Teoria Musical",
+          "aulas": [
+            {
+              "id": 8870889,
+              "ordem": 1,
+              "nome": "Introdução"
+            },
+            {
+              "id": 8870890,
+              "ordem": 2,
+              "nome": "O que é teoria musical?"
+            },
+            {
+              "id": 8870891,
+              "ordem": 3,
+              "nome": "Elementos da Música"
+            },
+            {
+              "id": 8870892,
+              "ordem": 4,
+              "nome": "Um pouco sobre as notas musicais..."
+            },
+            {
+              "id": 8870893,
+              "ordem": 5,
+              "nome": "Sustenido e Bemol"
+            },
+            {
+              "id": 8870894,
+              "ordem": 6,
+              "nome": "Tom e Semitom"
+            },
+            {
+              "id": 8870895,
+              "ordem": 7,
+              "nome": "As Notas Musicais"
+            },
+            {
+              "id": 8870896,
+              "ordem": 8,
+              "nome": "As Notas no Braço do Ukulele"
+            }
+          ]
+        },
+        {
+          "id": 1758002,
+          "ordem": 3,
+          "nome": "Dedilhando o Ukulele",
+          "aulas": [
+            {
+              "id": 8870897,
+              "ordem": 1,
+              "nome": "Dedilhados e o Ukulele"
+            },
+            {
+              "id": 8870898,
+              "ordem": 2,
+              "nome": "Introdução"
+            },
+            {
+              "id": 8870900,
+              "ordem": 3,
+              "nome": "Como usar os dedos para fazer dedilhados"
+            },
+            {
+              "id": 8870901,
+              "ordem": 4,
+              "nome": "Como Ler Tablaturas"
+            },
+            {
+              "id": 8870902,
+              "ordem": 5,
+              "nome": "️ Apostila para Download"
+            },
+            {
+              "id": 8870903,
+              "ordem": 6,
+              "nome": "Os padrões mais comuns"
+            },
+            {
+              "id": 8870904,
+              "ordem": 7,
+              "nome": "Padrão #01 - Só de Ida PIMA"
+            },
+            {
+              "id": 8897769,
+              "ordem": 8,
+              "nome": "💎 Atividade | Dedilhado PIMA"
+            },
+            {
+              "id": 8870905,
+              "ordem": 9,
+              "nome": "Padrão #02 - Vai e Volta 1"
+            },
+            {
+              "id": 8870906,
+              "ordem": 10,
+              "nome": "Padrão #03 - Vai e Volta 2"
+            },
+            {
+              "id": 8897770,
+              "ordem": 11,
+              "nome": "💎 Atividade | Dedilhado Vai e Volta"
+            },
+            {
+              "id": 8870907,
+              "ordem": 12,
+              "nome": "Padrão #04 - Cordas Juntas 1"
+            },
+            {
+              "id": 8870908,
+              "ordem": 13,
+              "nome": "Padrão #05 - Cordas Juntas 2"
+            },
+            {
+              "id": 8897771,
+              "ordem": 14,
+              "nome": "💎 Atividade | Dedilhado Cordas Juntas"
+            },
+            {
+              "id": 8870909,
+              "ordem": 15,
+              "nome": "Padrão #06 - Polegar 1"
+            },
+            {
+              "id": 8870910,
+              "ordem": 16,
+              "nome": "Padrão #07 - Polegar 2"
+            },
+            {
+              "id": 8870911,
+              "ordem": 17,
+              "nome": "Padrão #08 - Polegar Alternado"
+            },
+            {
+              "id": 8897772,
+              "ordem": 18,
+              "nome": "💎 Atividade | Dedilhado com Polegar"
+            },
+            {
+              "id": 8870912,
+              "ordem": 19,
+              "nome": "Padrão #09 - Dentro Fora 1"
+            },
+            {
+              "id": 8870913,
+              "ordem": 20,
+              "nome": "Padrão #10 - Dentro Fora 2"
+            },
+            {
+              "id": 8870914,
+              "ordem": 21,
+              "nome": "Padrão #11 - Dentro Fora 3"
+            },
+            {
+              "id": 8897773,
+              "ordem": 22,
+              "nome": "💎 Atividade | Dedilhado Dentro Fora"
+            },
+            {
+              "id": 8870915,
+              "ordem": 23,
+              "nome": "Conclusão"
+            }
+          ]
+        },
+        {
+          "id": 1758003,
+          "ordem": 4,
+          "nome": "Alongamento e fortalecimento dos dedos",
+          "aulas": [
+            {
+              "id": 8870916,
+              "ordem": 1,
+              "nome": "Acordes que precisam de flexibilidade dos dedos"
+            },
+            {
+              "id": 8870917,
+              "ordem": 2,
+              "nome": "Sequência de Alongamentos (para antes e depois de tocar)"
+            },
+            {
+              "id": 8897775,
+              "ordem": 3,
+              "nome": "💎 Atividade | Alongando Pares de Dedos na 1ª corda"
+            },
+            {
+              "id": 8870918,
+              "ordem": 4,
+              "nome": "Exercício: Tom Tom Tom"
+            },
+            {
+              "id": 8897776,
+              "ordem": 5,
+              "nome": "💎 Atividade | Exercício Tom Tom Tom"
+            },
+            {
+              "id": 8870919,
+              "ordem": 6,
+              "nome": "Força nos Dedos : Você vai precisar!"
+            },
+            {
+              "id": 8897777,
+              "ordem": 7,
+              "nome": "💎 Atividade | Marteladas (Hammer On) e Pull Off"
+            }
+          ]
+        },
+        {
+          "id": 1758004,
+          "ordem": 5,
+          "nome": "Progressões de Acordes para Expandir o repertório",
+          "aulas": [
+            {
+              "id": 8870921,
+              "ordem": 1,
+              "nome": "Progressões de Acordes, Batida Baião e Expansão de Repertório"
+            },
+            {
+              "id": 8897778,
+              "ordem": 2,
+              "nome": "💎 Atividade | Batida Baião"
+            },
+            {
+              "id": 8870922,
+              "ordem": 3,
+              "nome": "Dia 1 - Treino\t1"
+            },
+            {
+              "id": 8870924,
+              "ordem": 4,
+              "nome": "Dia 2 - Treino\t2"
+            },
+            {
+              "id": 8870925,
+              "ordem": 5,
+              "nome": "Dia 3 - Treino\t3"
+            },
+            {
+              "id": 8870926,
+              "ordem": 6,
+              "nome": "Dia 4 - Treino\t1"
+            },
+            {
+              "id": 8870927,
+              "ordem": 7,
+              "nome": "Dia 5 - Treino\t2"
+            },
+            {
+              "id": 8870928,
+              "ordem": 8,
+              "nome": "Dia 6 - Treino 3"
+            },
+            {
+              "id": 8870929,
+              "ordem": 9,
+              "nome": "Dia 7 - Treino 1"
+            },
+            {
+              "id": 8897779,
+              "ordem": 10,
+              "nome": "💎 Atividade | Registro Treino 1"
+            },
+            {
+              "id": 8870930,
+              "ordem": 11,
+              "nome": "Dia 8 - Treino 2"
+            },
+            {
+              "id": 8897780,
+              "ordem": 12,
+              "nome": "💎 Atividade | Registro Treino 2"
+            },
+            {
+              "id": 8870931,
+              "ordem": 13,
+              "nome": "Dia 9 - Treino 3"
+            },
+            {
+              "id": 8897781,
+              "ordem": 14,
+              "nome": "💎 Atividade | Registro Treino 3"
+            }
+          ]
+        },
+        {
+          "id": 1758005,
+          "ordem": 6,
+          "nome": "Explodindo o Repertório!",
+          "aulas": [
+            {
+              "id": 8870932,
+              "ordem": 1,
+              "nome": "Meia Batida, outra batida coringa e mais progressões"
+            },
+            {
+              "id": 8897782,
+              "ordem": 2,
+              "nome": "💎 Atividade | Meia Batida + Batida Coringa D-DUDUDU"
+            },
+            {
+              "id": 8870933,
+              "ordem": 3,
+              "nome": "8 Novas Batidas pra tocar (quase) de tudo"
+            },
+            {
+              "id": 8870934,
+              "ordem": 4,
+              "nome": "3 últimas progressões + Treinos!"
+            },
+            {
+              "id": 8897783,
+              "ordem": 5,
+              "nome": "💎 Atividade | Progressão 1 + Meia Batida"
+            },
+            {
+              "id": 8897784,
+              "ordem": 6,
+              "nome": "💎 Atividade | Progressão 2 + Batida Coringa D-DUDUDU"
+            },
+            {
+              "id": 8897785,
+              "ordem": 7,
+              "nome": "💎 Atividade | Progressão 3 + Batida Baião"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 619276,
+      "nome": "Navegando pelo Ukulele",
+      "ordem": 4,
+      "vitrine": "Jornada de Aprendizado",
+      "vitrine_ordem": 3,
+      "total_modulos": 5,
+      "total_aulas": 33,
+      "modulos": [
+        {
+          "id": 1758007,
+          "ordem": 1,
+          "nome": "Leitura Musical",
+          "aulas": [
+            {
+              "id": 8870938,
+              "ordem": 1,
+              "nome": "Tablaturas e Partituras"
+            },
+            {
+              "id": 8870940,
+              "ordem": 2,
+              "nome": "Exercícios - Partitura e Tablatura"
+            },
+            {
+              "id": 8897786,
+              "ordem": 3,
+              "nome": "💎 Atividade | Exercícios de Partitura e Tablatura"
+            },
+            {
+              "id": 8870941,
+              "ordem": 4,
+              "nome": "Exercícios - Partitura"
+            },
+            {
+              "id": 8870942,
+              "ordem": 5,
+              "nome": "Figuras Rítmicas na Partitura"
+            },
+            {
+              "id": 8870943,
+              "ordem": 6,
+              "nome": "Exercício - Figuras Rítmicas"
+            },
+            {
+              "id": 8897787,
+              "ordem": 7,
+              "nome": "💎 Atividade | Figuras Rítmicas"
+            },
+            {
+              "id": 8870944,
+              "ordem": 8,
+              "nome": "Colcheias e Semicolcheias"
+            },
+            {
+              "id": 8870945,
+              "ordem": 9,
+              "nome": "Pausas, Ponto e Quiálteras (Tercinas)"
+            }
+          ]
+        },
+        {
+          "id": 1758009,
+          "ordem": 2,
+          "nome": "Escalas Musicais",
+          "aulas": [
+            {
+              "id": 8870946,
+              "ordem": 1,
+              "nome": "Intervalos, Enarmonia, Altura e Intensidade do Som"
+            },
+            {
+              "id": 8870947,
+              "ordem": 2,
+              "nome": "Escalas Musicais, Escala Cromática e Escala Maior"
+            }
+          ]
+        },
+        {
+          "id": 1758010,
+          "ordem": 3,
+          "nome": "Escalas Maiores",
+          "aulas": [
+            {
+              "id": 8870948,
+              "ordem": 1,
+              "nome": "Escala Maior de C - aplicações"
+            },
+            {
+              "id": 8870949,
+              "ordem": 2,
+              "nome": "Escala Maior de Dó (C) - desenhos pelo braço e padrões"
+            },
+            {
+              "id": 8897788,
+              "ordem": 3,
+              "nome": "💎 Atividade | Escala Maior de C"
+            },
+            {
+              "id": 8870951,
+              "ordem": 4,
+              "nome": "Escala de C usando diferentes padrões"
+            },
+            {
+              "id": 8897789,
+              "ordem": 5,
+              "nome": "💎 Atividade | Escala Maior de C (Padrões)"
+            },
+            {
+              "id": 8870952,
+              "ordem": 6,
+              "nome": "Introduzindo os próximos exercícios"
+            },
+            {
+              "id": 8870953,
+              "ordem": 7,
+              "nome": "Escala Maior de G (Sol) - desenhos"
+            },
+            {
+              "id": 8897790,
+              "ordem": 8,
+              "nome": "💎 Atividade | Escala Maior de G"
+            },
+            {
+              "id": 8870954,
+              "ordem": 9,
+              "nome": "Escala Maior de G (Sol) - Exercícios"
+            },
+            {
+              "id": 8897791,
+              "ordem": 10,
+              "nome": "💎 Atividade | Escala Maior de G (Exercícios)"
+            },
+            {
+              "id": 8870955,
+              "ordem": 11,
+              "nome": "A# ou Bb? É a mesma coisa? É diferente?"
+            },
+            {
+              "id": 8870956,
+              "ordem": 12,
+              "nome": "Escala Maior de F (Fá) - desenhos"
+            },
+            {
+              "id": 8897792,
+              "ordem": 13,
+              "nome": "💎 Atividade | Escala Maior de F"
+            },
+            {
+              "id": 8870957,
+              "ordem": 14,
+              "nome": "Escala Maior de F (Fá) - exercícios"
+            },
+            {
+              "id": 8897793,
+              "ordem": 15,
+              "nome": "💎 Atividade | Escala Maior de F (Exercícios)"
+            }
+          ]
+        },
+        {
+          "id": 1758011,
+          "ordem": 5,
+          "nome": "Formatos Mágicos (Tríades)",
+          "aulas": [
+            {
+              "id": 8870958,
+              "ordem": 1,
+              "nome": "Acordes Móveis - Acordes Maiores (Parte 1)"
+            },
+            {
+              "id": 8870959,
+              "ordem": 2,
+              "nome": "Acordes Móveis - Acordes Menores (Parte 2)"
+            }
+          ]
+        },
+        {
+          "id": 1758012,
+          "ordem": 6,
+          "nome": "Formatos Mágicos (Tétrades)",
+          "aulas": [
+            {
+              "id": 8870960,
+              "ordem": 1,
+              "nome": "Acorde Maior com Sétima Menor - 7"
+            },
+            {
+              "id": 8870961,
+              "ordem": 3,
+              "nome": "Acorde Menor com Sétima - m7"
+            },
+            {
+              "id": 8870962,
+              "ordem": 4,
+              "nome": "Acorde Maior com Sétima Maior - 7M"
+            },
+            {
+              "id": 8870963,
+              "ordem": 5,
+              "nome": "Acorde Meio Diminuto - m7(b5)"
+            },
+            {
+              "id": 8870964,
+              "ordem": 6,
+              "nome": "Acorde Diminuto - º"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 619278,
+      "nome": "Harmonia & Técnica Rítmica",
+      "ordem": 5,
+      "vitrine": "Jornada de Aprendizado",
+      "vitrine_ordem": 3,
+      "total_modulos": 7,
+      "total_aulas": 39,
+      "modulos": [
+        {
+          "id": 1748461,
+          "ordem": 2,
+          "nome": "Formação de Acordes",
+          "aulas": [
+            {
+              "id": 8808659,
+              "ordem": 1,
+              "nome": "Introdução à Formação de Acordes"
+            },
+            {
+              "id": 8870967,
+              "ordem": 2,
+              "nome": "O que são acordes?"
+            },
+            {
+              "id": 8870968,
+              "ordem": 3,
+              "nome": "Intervalos - distância entre uma nota e outra"
+            },
+            {
+              "id": 8870969,
+              "ordem": 4,
+              "nome": "Tríades"
+            },
+            {
+              "id": 8870970,
+              "ordem": 5,
+              "nome": "Tétrades"
+            }
+          ]
+        },
+        {
+          "id": 1758013,
+          "ordem": 3,
+          "nome": "Introdução ao Campo Harmônico",
+          "aulas": [
+            {
+              "id": 8870971,
+              "ordem": 1,
+              "nome": "Campo Harmônico em Tríades"
+            },
+            {
+              "id": 8870972,
+              "ordem": 2,
+              "nome": "Campo Harmônico em Tétrades"
+            }
+          ]
+        },
+        {
+          "id": 1758014,
+          "ordem": 4,
+          "nome": "Técnicas Rítmicas Avançadas - Batidas Ternárias",
+          "aulas": [
+            {
+              "id": 8870975,
+              "ordem": 1,
+              "nome": "Material de Acompanhamento [Download]"
+            },
+            {
+              "id": 8870977,
+              "ordem": 2,
+              "nome": "Batidas em Compasso Ternário"
+            },
+            {
+              "id": 8870978,
+              "ordem": 3,
+              "nome": "Batida Ternária 1"
+            },
+            {
+              "id": 8870979,
+              "ordem": 4,
+              "nome": "Batida Ternária 2"
+            },
+            {
+              "id": 8870980,
+              "ordem": 5,
+              "nome": "Batida Ternária 3"
+            },
+            {
+              "id": 8870981,
+              "ordem": 6,
+              "nome": "Batida Ternária 4"
+            }
+          ]
+        },
+        {
+          "id": 1758015,
+          "ordem": 5,
+          "nome": "Técnicas Rítmicas Avançadas - Reggae, Jazz, Abafamento e \"Scratch\"",
+          "aulas": [
+            {
+              "id": 8870982,
+              "ordem": 1,
+              "nome": "Abafamento com a Mão do Acorde"
+            },
+            {
+              "id": 8870983,
+              "ordem": 2,
+              "nome": "Batida de Reggae com Abafamento 1"
+            },
+            {
+              "id": 8870984,
+              "ordem": 3,
+              "nome": "Batida de Reggae com Abafamento 2"
+            },
+            {
+              "id": 8870985,
+              "ordem": 4,
+              "nome": "Manipulando o Abafamento"
+            },
+            {
+              "id": 8870986,
+              "ordem": 5,
+              "nome": "Batida de Jazz com Abafamento"
+            },
+            {
+              "id": 8870987,
+              "ordem": 6,
+              "nome": "Scratch"
+            },
+            {
+              "id": 8870988,
+              "ordem": 7,
+              "nome": "Batida de Reggae com Scratch 1"
+            },
+            {
+              "id": 8870989,
+              "ordem": 8,
+              "nome": "Batida Pop com Scratch 1"
+            },
+            {
+              "id": 8870990,
+              "ordem": 9,
+              "nome": "Batida de Reggae com Scratch 2"
+            },
+            {
+              "id": 8870991,
+              "ordem": 10,
+              "nome": "Batida de Jazz com Scratch"
+            }
+          ]
+        },
+        {
+          "id": 1758016,
+          "ordem": 6,
+          "nome": "Ténicas Rítmicas Avançadas - Usando o polegar",
+          "aulas": [
+            {
+              "id": 8870992,
+              "ordem": 1,
+              "nome": "Usando o Polegar"
+            },
+            {
+              "id": 8870995,
+              "ordem": 2,
+              "nome": "Batida com Polegar 1"
+            },
+            {
+              "id": 8870996,
+              "ordem": 3,
+              "nome": "Batida com Polegar 2"
+            },
+            {
+              "id": 8870997,
+              "ordem": 4,
+              "nome": "Batida com Polegar 3"
+            },
+            {
+              "id": 8870998,
+              "ordem": 5,
+              "nome": "Batida com Polegar Alternado"
+            }
+          ]
+        },
+        {
+          "id": 1758017,
+          "ordem": 7,
+          "nome": "Técnicas Rítmicas Avançadas - Palm Mute e Tremolo",
+          "aulas": [
+            {
+              "id": 8871000,
+              "ordem": 1,
+              "nome": "Palm Mute"
+            },
+            {
+              "id": 8871001,
+              "ordem": 3,
+              "nome": "Batida com Palm Mute 1"
+            },
+            {
+              "id": 8871003,
+              "ordem": 4,
+              "nome": "Batida com Palm Mute 2"
+            },
+            {
+              "id": 8871005,
+              "ordem": 5,
+              "nome": "Tremolo"
+            }
+          ]
+        },
+        {
+          "id": 1758018,
+          "ordem": 8,
+          "nome": "Técnicas Rítmicas Avançadas - Rasgueados e Tripletes",
+          "aulas": [
+            {
+              "id": 8871008,
+              "ordem": 2,
+              "nome": "Rasgueado"
+            },
+            {
+              "id": 8871009,
+              "ordem": 3,
+              "nome": "Batida com Rasgueado 1"
+            },
+            {
+              "id": 8871010,
+              "ordem": 4,
+              "nome": "Rasgueado de 4 Dedos"
+            },
+            {
+              "id": 8871011,
+              "ordem": 5,
+              "nome": "Rasgueado de 5 Dedos"
+            },
+            {
+              "id": 8871012,
+              "ordem": 6,
+              "nome": "Triplete"
+            },
+            {
+              "id": 8871013,
+              "ordem": 7,
+              "nome": "Batida com Triplete"
+            },
+            {
+              "id": 8871015,
+              "ordem": 8,
+              "nome": "Outras Formas de Fazer o Triplete"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 622982,
+      "nome": "Biblioteca de Músicas - Iniciante 0",
+      "ordem": 1,
+      "vitrine": "Biblioteca de Músicas",
+      "vitrine_ordem": 4,
+      "total_modulos": 2,
+      "total_aulas": 7,
+      "modulos": [
+        {
+          "id": 1755624,
+          "ordem": 1,
+          "nome": "Lista de Músicas",
+          "aulas": [
+            {
+              "id": 8858494,
+              "ordem": 1,
+              "nome": "Músicas | Iniciante 0"
+            }
+          ]
+        },
+        {
+          "id": 1753914,
+          "ordem": 2,
+          "nome": "Aulas",
+          "aulas": [
+            {
+              "id": 8838411,
+              "ordem": 1,
+              "nome": "Bola de Neve | Manhã de Sol (Simplificada)"
+            },
+            {
+              "id": 8856135,
+              "ordem": 2,
+              "nome": "Skank | Garota Nacional (Simplificada)"
+            },
+            {
+              "id": 8858576,
+              "ordem": 3,
+              "nome": "Skank | Jackie Tequila (Simplificada)"
+            },
+            {
+              "id": 8858695,
+              "ordem": 5,
+              "nome": "Skank | Te ver (Simplificada)"
+            },
+            {
+              "id": 8858698,
+              "ordem": 6,
+              "nome": "Tradicional | Parabéns pra Você (Super Simplificada)"
+            },
+            {
+              "id": 8858700,
+              "ordem": 7,
+              "nome": "Jorge Ben Jor | W/Brasil (Simplificada)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 622983,
+      "nome": "Biblioteca de Músicas - Iniciante 1",
+      "ordem": 2,
+      "vitrine": "Biblioteca de Músicas",
+      "vitrine_ordem": 4,
+      "total_modulos": 2,
+      "total_aulas": 88,
+      "modulos": [
+        {
+          "id": 1755628,
+          "ordem": 1,
+          "nome": "Lista de Músicas",
+          "aulas": [
+            {
+              "id": 8858583,
+              "ordem": 1,
+              "nome": "Músicas | Iniciante 1"
+            }
+          ]
+        },
+        {
+          "id": 1755005,
+          "ordem": 2,
+          "nome": "Aulas",
+          "aulas": [
+            {
+              "id": 8858703,
+              "ordem": 2,
+              "nome": "Almir Sater | Tocando em Frente (Simplificada)"
+            },
+            {
+              "id": 8858704,
+              "ordem": 3,
+              "nome": "Amanda Loyola | Acredite em você (Principal)"
+            },
+            {
+              "id": 8858706,
+              "ordem": 4,
+              "nome": "Ana Vilela | Trem Bala (simplificada)"
+            },
+            {
+              "id": 8858707,
+              "ordem": 5,
+              "nome": "Armandinho | Desenho de Deus (Simplificada)"
+            },
+            {
+              "id": 8858708,
+              "ordem": 6,
+              "nome": "Ben E. King | Stand By Me (Simplificada)"
+            },
+            {
+              "id": 8858709,
+              "ordem": 7,
+              "nome": "Bob Marley | Get up, stand up (Simplificada)"
+            },
+            {
+              "id": 8858745,
+              "ordem": 8,
+              "nome": "Bob Marley | Lively Up Yourself (Simplificada)"
+            },
+            {
+              "id": 8858746,
+              "ordem": 9,
+              "nome": "Bob Marley | No Woman No Cry (Simplificada)"
+            },
+            {
+              "id": 8858748,
+              "ordem": 10,
+              "nome": "Bob Marley | Three Little Birds (Simplificada)"
+            },
+            {
+              "id": 8858749,
+              "ordem": 11,
+              "nome": "Capital Inicial | O Passageiro (Simplificada 2)"
+            },
+            {
+              "id": 8858750,
+              "ordem": 12,
+              "nome": "Cássia Eller | Palavras Ao Vento (Simplificada 1)"
+            },
+            {
+              "id": 8858753,
+              "ordem": 13,
+              "nome": "Cássia Eller | Palavras Ao Vento (Simplificada 2)"
+            },
+            {
+              "id": 8858754,
+              "ordem": 14,
+              "nome": "Charlie Brown Jr. | Proibida pra Mim (Simplificada)"
+            },
+            {
+              "id": 8858756,
+              "ordem": 15,
+              "nome": "Charlie Brown Jr. | Zóio de Lula (Simplificada)"
+            },
+            {
+              "id": 8858757,
+              "ordem": 16,
+              "nome": "Coldplay | Yellow (Simplificada)"
+            },
+            {
+              "id": 8858758,
+              "ordem": 17,
+              "nome": "Creedence Clearwater Revival | Have You Ever Seen The Rain (Simplificada)"
+            },
+            {
+              "id": 8858782,
+              "ordem": 18,
+              "nome": "Diante do Trono | Me Ama (Simplificada)"
+            },
+            {
+              "id": 8859060,
+              "ordem": 19,
+              "nome": "Diante do Trono | Outra Vez (Simplificada)"
+            },
+            {
+              "id": 8859061,
+              "ordem": 20,
+              "nome": "Diante do Trono | Te Agradeço (Simplificada)"
+            },
+            {
+              "id": 8859062,
+              "ordem": 21,
+              "nome": "Ed Sheeran | Photograph (Simplificada)"
+            },
+            {
+              "id": 8859063,
+              "ordem": 22,
+              "nome": "Natiruts/Edu Ribeiro | Me Namora (Simplificada)"
+            },
+            {
+              "id": 8859064,
+              "ordem": 23,
+              "nome": "Falamansa | Amigo Velho (Principal)"
+            },
+            {
+              "id": 8859065,
+              "ordem": 24,
+              "nome": "Gabriel Elias | Somos Instantes (Simplificada)"
+            },
+            {
+              "id": 8859066,
+              "ordem": 25,
+              "nome": "Gabriela Rocha | Atos 2 (Simplificada)"
+            },
+            {
+              "id": 8859067,
+              "ordem": 26,
+              "nome": "Gabriela Rocha | Deixa Queimar (Principal)"
+            },
+            {
+              "id": 8859068,
+              "ordem": 27,
+              "nome": "Gabriela Rocha | Lugar Secreto (Simplificada)"
+            },
+            {
+              "id": 8859070,
+              "ordem": 28,
+              "nome": "Gabriela Rocha | Pai Nosso (Principal)"
+            },
+            {
+              "id": 8859071,
+              "ordem": 29,
+              "nome": "Guns N' Roses | Knockin' On Heaven's Door (Simplificada)"
+            },
+            {
+              "id": 8859072,
+              "ordem": 30,
+              "nome": "Harpa Cristã | A Mensagem da Cruz (Simplificada)"
+            },
+            {
+              "id": 8859073,
+              "ordem": 31,
+              "nome": "Imagine Dragons | Demons (Simplificada)"
+            },
+            {
+              "id": 8859074,
+              "ordem": 32,
+              "nome": "Isadora Pompeo | Braços de Amor (Principal)"
+            },
+            {
+              "id": 8859075,
+              "ordem": 33,
+              "nome": "Isadora Pompeo | Hey Pai (Principal)"
+            },
+            {
+              "id": 8859076,
+              "ordem": 34,
+              "nome": "Isadora Pompeo | Minha Morada (Principal)"
+            },
+            {
+              "id": 8859078,
+              "ordem": 35,
+              "nome": "Isadora Pompeo | Vai Passar (Simplificada)"
+            },
+            {
+              "id": 8859079,
+              "ordem": 36,
+              "nome": "Isaias Saad | Ousado Amor (Simplificada)"
+            },
+            {
+              "id": 8859080,
+              "ordem": 37,
+              "nome": "Israel Kamakawiwo'ole | Somewhere over the Rainbow (Super Simplificada)"
+            },
+            {
+              "id": 8859081,
+              "ordem": 38,
+              "nome": "Ivete Sangalo | Sorte Grande (Poeira)"
+            },
+            {
+              "id": 8859082,
+              "ordem": 39,
+              "nome": "Jason Mraz | I'm Yours (Simplificada)"
+            },
+            {
+              "id": 8859083,
+              "ordem": 40,
+              "nome": "Jorge e Mateus | Louca de Saudade (Simplificada)"
+            },
+            {
+              "id": 8859085,
+              "ordem": 41,
+              "nome": "Lagum | Deixa (Simplificada)"
+            },
+            {
+              "id": 8859086,
+              "ordem": 42,
+              "nome": "Mamonas Assassinas | Sábado de Sol (Principal)"
+            },
+            {
+              "id": 8859087,
+              "ordem": 43,
+              "nome": "Mamonas Assassinas | Sábado de Sol (Simplificada)"
+            },
+            {
+              "id": 8859088,
+              "ordem": 44,
+              "nome": "Maroon 5 | Girls Like You (Simplificada)"
+            },
+            {
+              "id": 8859091,
+              "ordem": 45,
+              "nome": "Melim | Meu Abrigo (Simplificada)"
+            },
+            {
+              "id": 8859092,
+              "ordem": 46,
+              "nome": "Mundo Bita | Fazendinha (Simplificada)"
+            },
+            {
+              "id": 8859093,
+              "ordem": 47,
+              "nome": "Nengo Vieira | Deus de Abraão (Simplificada)"
+            },
+            {
+              "id": 8859094,
+              "ordem": 48,
+              "nome": "Novos Baianos | Preta, Pretinha (Simplificada)"
+            },
+            {
+              "id": 8859095,
+              "ordem": 49,
+              "nome": "Rappa | Pescador de Ilusões (Principal)"
+            },
+            {
+              "id": 8859096,
+              "ordem": 50,
+              "nome": "O Rei Leão | Quem Dorme é o Leão (Simplificada)"
+            },
+            {
+              "id": 8859097,
+              "ordem": 51,
+              "nome": "Oasis | Songbird (Simplificada)"
+            },
+            {
+              "id": 8859098,
+              "ordem": 52,
+              "nome": "Paralamas do Sucesso | La Bella Luna (Simplificada)"
+            },
+            {
+              "id": 8859100,
+              "ordem": 53,
+              "nome": "Raça Negra | Cheia de Manias (Simplificada)"
+            },
+            {
+              "id": 8859149,
+              "ordem": 54,
+              "nome": "Red Hot Chili Peppers | Aeroplane (Simplificada)"
+            },
+            {
+              "id": 8859150,
+              "ordem": 55,
+              "nome": "Red Hot Chili Peppers | By The Way (Simplificada)"
+            },
+            {
+              "id": 8859151,
+              "ordem": 56,
+              "nome": "Red Hot Chili Peppers | Scar Tissue (Simplificada)"
+            },
+            {
+              "id": 8859152,
+              "ordem": 57,
+              "nome": "Rodolfo Abrantes | O Dia que Será Pra Sempre (Principal)"
+            },
+            {
+              "id": 8859153,
+              "ordem": 58,
+              "nome": "Salomão do Reggae | Balela (Simplificada)"
+            },
+            {
+              "id": 8859154,
+              "ordem": 59,
+              "nome": "Salomão do Reggae | Faz Chover (Principal)"
+            },
+            {
+              "id": 8859155,
+              "ordem": 60,
+              "nome": "Sandra de Sá | Olhos Coloridos (Simplificada)"
+            },
+            {
+              "id": 8859156,
+              "ordem": 61,
+              "nome": "Sandy & Júnior | Eu Acho que Pirei (Simplificada)"
+            },
+            {
+              "id": 8859157,
+              "ordem": 62,
+              "nome": "Sérgio Reis | Tristeza do Jeca (Simplificada)"
+            },
+            {
+              "id": 8859158,
+              "ordem": 63,
+              "nome": "Skank | Acima do Sol (Simplificada)"
+            },
+            {
+              "id": 8859159,
+              "ordem": 64,
+              "nome": "Skank | Te Ver (Principal)"
+            },
+            {
+              "id": 8859160,
+              "ordem": 65,
+              "nome": "Infantil | Brilha, brilha, estrelinha (Simplificada)"
+            },
+            {
+              "id": 8859161,
+              "ordem": 66,
+              "nome": "Thales Roberto | Deus Me Ama (Simplificada)"
+            },
+            {
+              "id": 8859162,
+              "ordem": 67,
+              "nome": "Beatles | Let it be (Simplificada v1)"
+            },
+            {
+              "id": 8859163,
+              "ordem": 68,
+              "nome": "Beatles | Let It Be (Simplificada v2)"
+            },
+            {
+              "id": 8859164,
+              "ordem": 69,
+              "nome": "Beatles | Love me Do (Principal)"
+            },
+            {
+              "id": 8859165,
+              "ordem": 70,
+              "nome": "Beatles | Paperback Writer (Simplificada)"
+            },
+            {
+              "id": 8859166,
+              "ordem": 71,
+              "nome": "The Calling | Wherever You Will Go (Simplificada)"
+            },
+            {
+              "id": 8859167,
+              "ordem": 72,
+              "nome": "Thiago Brava | Dona Maria (Simplificada)"
+            },
+            {
+              "id": 8859168,
+              "ordem": 73,
+              "nome": "Tim Maia | Azul da Cor do Mar (Super Simplificada)"
+            },
+            {
+              "id": 8859169,
+              "ordem": 74,
+              "nome": "Tim Maia | Gostava Tanto de Você (Super Simplificada)"
+            },
+            {
+              "id": 8859170,
+              "ordem": 75,
+              "nome": "Tim Maia | Sossego (Simplificada)"
+            },
+            {
+              "id": 8859171,
+              "ordem": 76,
+              "nome": "Titãs | Flores (Simplificada)"
+            },
+            {
+              "id": 8859173,
+              "ordem": 77,
+              "nome": "Tonico e Tinoco | Chico Mineiro (Principal)"
+            },
+            {
+              "id": 8859174,
+              "ordem": 78,
+              "nome": "Tribalistas | Já sei namorar (Principal)"
+            },
+            {
+              "id": 8859177,
+              "ordem": 79,
+              "nome": "Tribalistas | Velha Infância (Simplificada)"
+            },
+            {
+              "id": 8859178,
+              "ordem": 80,
+              "nome": "Vance Joy | Riptide (Super Simplificada)"
+            },
+            {
+              "id": 8859180,
+              "ordem": 81,
+              "nome": "Vance Joy | Riptide (Simplificada)"
+            },
+            {
+              "id": 8859182,
+              "ordem": 82,
+              "nome": "Ventania | Viajando (Principal)"
+            },
+            {
+              "id": 8859183,
+              "ordem": 83,
+              "nome": "Victor Kley | O Sol (Simplificada)"
+            },
+            {
+              "id": 8859184,
+              "ordem": 84,
+              "nome": "Vinícius de Moraes | Samba da Benção (Simplificada)"
+            },
+            {
+              "id": 8859185,
+              "ordem": 85,
+              "nome": "Zeca Baleiro | Lenha (Principal)"
+            },
+            {
+              "id": 8859187,
+              "ordem": 86,
+              "nome": "Zezé Di Camargo & Luciano | É o Amor (Simplificada)"
+            },
+            {
+              "id": 8859188,
+              "ordem": 87,
+              "nome": "Oh Suzana (Simplificada)"
+            },
+            {
+              "id": 8864950,
+              "ordem": 88,
+              "nome": "America | A Horse With No Name (Simplificada)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 623634,
+      "nome": "Biblioteca de Músicas - Iniciante 2",
+      "ordem": 3,
+      "vitrine": "Biblioteca de Músicas",
+      "vitrine_ordem": 4,
+      "total_modulos": 2,
+      "total_aulas": 41,
+      "modulos": [
+        {
+          "id": 1755609,
+          "ordem": 2,
+          "nome": "Lista de Músicas",
+          "aulas": [
+            {
+              "id": 8858584,
+              "ordem": 2,
+              "nome": "Músicas | Iniciante 2"
+            }
+          ]
+        },
+        {
+          "id": 1755696,
+          "ordem": 3,
+          "nome": "Músicas",
+          "aulas": [
+            {
+              "id": 8859192,
+              "ordem": 2,
+              "nome": "4 Non Blondes | What's Up (Simplificada)"
+            },
+            {
+              "id": 8859194,
+              "ordem": 3,
+              "nome": "Ana Vilela | Trem Bala (Principal)"
+            },
+            {
+              "id": 8859197,
+              "ordem": 4,
+              "nome": "Avril Lavigne | I’m With You (Principal)"
+            },
+            {
+              "id": 8859198,
+              "ordem": 5,
+              "nome": "Beirut | Elephant Gun (Simplificada)"
+            },
+            {
+              "id": 8859199,
+              "ordem": 6,
+              "nome": "Belchior | Sujeito de Sorte (Principal)"
+            },
+            {
+              "id": 8859201,
+              "ordem": 7,
+              "nome": "Bob Marley | Three Little Birds (Principal)"
+            },
+            {
+              "id": 8859202,
+              "ordem": 8,
+              "nome": "Bruno e Marrone | Dormi Na Praça (Simplificada)"
+            },
+            {
+              "id": 8859203,
+              "ordem": 9,
+              "nome": "Bruno Mars | Count On Me (Principal)"
+            },
+            {
+              "id": 8859231,
+              "ordem": 10,
+              "nome": "Capital Inicial | A Sua Maneira (Simplificada)"
+            },
+            {
+              "id": 8859232,
+              "ordem": 11,
+              "nome": "Capital Inicial | O Passageiro (Simplificada 1)"
+            },
+            {
+              "id": 8859233,
+              "ordem": 12,
+              "nome": "Cássia Eller | Malandragem (Principal)"
+            },
+            {
+              "id": 8859234,
+              "ordem": 13,
+              "nome": "Charlie Brown Jr. | Céu Azul (Simplificada)"
+            },
+            {
+              "id": 8859235,
+              "ordem": 14,
+              "nome": "Infantil | Coelhinho da Páscoa (Melodia)"
+            },
+            {
+              "id": 8859236,
+              "ordem": 15,
+              "nome": "Diante do Trono | A Ele a Glória (Simplificada)"
+            },
+            {
+              "id": 8859237,
+              "ordem": 16,
+              "nome": "Dua Lipa | Levitating (Simplificada)"
+            },
+            {
+              "id": 8859238,
+              "ordem": 17,
+              "nome": "Giulia Be | Menina Solta (Principal)"
+            },
+            {
+              "id": 8859239,
+              "ordem": 18,
+              "nome": "Harpa Cristã | Grandioso És Tu (Principal)"
+            },
+            {
+              "id": 8859240,
+              "ordem": 19,
+              "nome": "Isadora Pompeo | Oi, Jesus (Principal)"
+            },
+            {
+              "id": 8859241,
+              "ordem": 20,
+              "nome": "Isadora Pompeo | Seja Forte (Principal)"
+            },
+            {
+              "id": 8859242,
+              "ordem": 21,
+              "nome": "Isadora Pompeo | Toca em Mim de Novo (Principal)"
+            },
+            {
+              "id": 8859243,
+              "ordem": 22,
+              "nome": "Israel Kamakawiwo'ole | Somewhere over the Rainbow (Simplificada)"
+            },
+            {
+              "id": 8859244,
+              "ordem": 23,
+              "nome": "Ivete Sangalo | Quando a Chuva Passar (Simplificada)"
+            },
+            {
+              "id": 8859245,
+              "ordem": 24,
+              "nome": "Jeff Buckley | Hallelujah (Simplificada)"
+            },
+            {
+              "id": 8859247,
+              "ordem": 25,
+              "nome": "John Lennon | Imagine (Simplificada)"
+            },
+            {
+              "id": 8859248,
+              "ordem": 26,
+              "nome": "Kid Abelha | Como Eu Quero (Principal)"
+            },
+            {
+              "id": 8859249,
+              "ordem": 27,
+              "nome": "Marisa Monte | Amor I love you (Simplificada)"
+            },
+            {
+              "id": 8859251,
+              "ordem": 28,
+              "nome": "Melim | Ouvi Dizer (Simplificada)"
+            },
+            {
+              "id": 8859252,
+              "ordem": 29,
+              "nome": "Mundo Bita | Fazendinha (Principal)"
+            },
+            {
+              "id": 8859253,
+              "ordem": 30,
+              "nome": "Paralamas do Sucesso | Aonde Quer Que Eu Vá (Principal)"
+            },
+            {
+              "id": 8859254,
+              "ordem": 31,
+              "nome": "Paramore | Decode (Simplificada)"
+            },
+            {
+              "id": 8859255,
+              "ordem": 32,
+              "nome": "Paramore | The Only Exception (Simplificada)"
+            },
+            {
+              "id": 8859256,
+              "ordem": 33,
+              "nome": "Raul Seixas | Maluco Beleza (Principal)"
+            },
+            {
+              "id": 8859257,
+              "ordem": 34,
+              "nome": "Red Hot Chili Peppers | Other Side (Simplificada)"
+            },
+            {
+              "id": 8859258,
+              "ordem": 35,
+              "nome": "Rita Lee | Ovelha Negra (Simplificada)"
+            },
+            {
+              "id": 8859259,
+              "ordem": 36,
+              "nome": "Beatles | All My Loving (Simplificada)"
+            },
+            {
+              "id": 8859260,
+              "ordem": 37,
+              "nome": "Beatles | Twist And Shout (Principal)"
+            },
+            {
+              "id": 8859261,
+              "ordem": 38,
+              "nome": "Tim Maia | Gostava Tanto de Você (Simplificada)"
+            },
+            {
+              "id": 8859262,
+              "ordem": 39,
+              "nome": "Train | Hey, Soul Sister (Simplificada)"
+            },
+            {
+              "id": 8859263,
+              "ordem": 40,
+              "nome": "Vários | 5 Músicas de Natal pra tocar no ukulele (Principal)"
+            },
+            {
+              "id": 9072986,
+              "ordem": 41,
+              "nome": "Creedence | Have you ever seen the rain"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 623633,
+      "nome": "Biblioteca de Músicas - Intermediário 1",
+      "ordem": 4,
+      "vitrine": "Biblioteca de Músicas",
+      "vitrine_ordem": 4,
+      "total_modulos": 2,
+      "total_aulas": 21,
+      "modulos": [
+        {
+          "id": 1755608,
+          "ordem": 2,
+          "nome": "Lista de Músicas",
+          "aulas": [
+            {
+              "id": 8858582,
+              "ordem": 2,
+              "nome": "´Músicas | Intermediário 1"
+            }
+          ]
+        },
+        {
+          "id": 1755716,
+          "ordem": 3,
+          "nome": "Aulas",
+          "aulas": [
+            {
+              "id": 8859264,
+              "ordem": 2,
+              "nome": "A Turma do Balão Mágico | Super Fantástico (Principal)"
+            },
+            {
+              "id": 8859265,
+              "ordem": 3,
+              "nome": "Adriana Calcanhotto | Fico Assim Sem Você (Principal)"
+            },
+            {
+              "id": 8859266,
+              "ordem": 4,
+              "nome": "Adriana Calcanhotto | Palpite (Principal)"
+            },
+            {
+              "id": 8859267,
+              "ordem": 5,
+              "nome": "Anavitória | Trevo (Simplificada)"
+            },
+            {
+              "id": 8859268,
+              "ordem": 6,
+              "nome": "Capital Inicial | Tudo que vai (Principal)"
+            },
+            {
+              "id": 8859269,
+              "ordem": 7,
+              "nome": "Chico César | Deus Me Proteja (Principal)"
+            },
+            {
+              "id": 8859270,
+              "ordem": 8,
+              "nome": "Gilberto Gil | Eu Só Quero Um Xodó (Simplificada)"
+            },
+            {
+              "id": 8859271,
+              "ordem": 9,
+              "nome": "Israel Kamakawiwoʻole | Somewhere Over the Rainbow (Principal)"
+            },
+            {
+              "id": 8859272,
+              "ordem": 10,
+              "nome": "Los Hermanos | Anna Julia (Simplificada)"
+            },
+            {
+              "id": 8859273,
+              "ordem": 11,
+              "nome": "Luiz Gonzaga | O Xote das Meninas (Simplificada)"
+            },
+            {
+              "id": 8859274,
+              "ordem": 12,
+              "nome": "Lulu Santos | De repente, Califórnia (Principal)"
+            },
+            {
+              "id": 8859275,
+              "ordem": 13,
+              "nome": "Milton Nascimento | Maria Maria (Simplificada)"
+            },
+            {
+              "id": 8859276,
+              "ordem": 14,
+              "nome": "Randy Newman | Amigo estou aqui - Toy Story (Simplificada)"
+            },
+            {
+              "id": 8859277,
+              "ordem": 15,
+              "nome": "Renato Teixeira | Romaria (Principal)"
+            },
+            {
+              "id": 8859278,
+              "ordem": 16,
+              "nome": "Skank | Vou Deixar (Principal)"
+            },
+            {
+              "id": 8859279,
+              "ordem": 17,
+              "nome": "Beatles | Till There Was You (Simplificada)"
+            },
+            {
+              "id": 8859280,
+              "ordem": 18,
+              "nome": "Tom Jobim e Vinícius de Moraes | Garota de Ipanema (Simplificada)"
+            },
+            {
+              "id": 8859281,
+              "ordem": 19,
+              "nome": "Tribalistas | Velha Infância (Principal)"
+            },
+            {
+              "id": 8859282,
+              "ordem": 20,
+              "nome": "Vance Joy | Riptide (Principal)"
+            },
+            {
+              "id": 8859283,
+              "ordem": 21,
+              "nome": "Vanessa da Mata feat. Ben Harper | Boa Sorte / Good Luck (Principal)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 623635,
+      "nome": "Biblioteca de Músicas - Intermediário 2",
+      "ordem": 5,
+      "vitrine": "Biblioteca de Músicas",
+      "vitrine_ordem": 4,
+      "total_modulos": 2,
+      "total_aulas": 5,
+      "modulos": [
+        {
+          "id": 1755612,
+          "ordem": 2,
+          "nome": "Lista de Músicas",
+          "aulas": [
+            {
+              "id": 8858588,
+              "ordem": 2,
+              "nome": "Músicas | Intermediário 2"
+            }
+          ]
+        },
+        {
+          "id": 1755718,
+          "ordem": 3,
+          "nome": "Aulas",
+          "aulas": [
+            {
+              "id": 8859286,
+              "ordem": 2,
+              "nome": "Mallu Magalhães | Sambinha bom (Principal)"
+            },
+            {
+              "id": 8859287,
+              "ordem": 3,
+              "nome": "Melim | Ouvi Dizer (Principal)"
+            },
+            {
+              "id": 8859289,
+              "ordem": 4,
+              "nome": "Seu Jorge | Tive Razão (Simplificada)"
+            },
+            {
+              "id": 8859290,
+              "ordem": 5,
+              "nome": "Beatles | In My Life (Principal)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 619310,
+      "nome": "Workshop de Canto com Ukulele",
+      "ordem": 1,
+      "vitrine": "Cursos e Materiais Extras",
+      "vitrine_ordem": 5,
+      "total_modulos": 1,
+      "total_aulas": 4,
+      "modulos": [
+        {
+          "id": 1748493,
+          "ordem": 2,
+          "nome": "Workshop de Canto com Ukulele",
+          "aulas": [
+            {
+              "id": 8871193,
+              "ordem": 2,
+              "nome": "Introdução à técnica vocal"
+            },
+            {
+              "id": 8871194,
+              "ordem": 3,
+              "nome": "Cuidados com a voz e aquecimento"
+            },
+            {
+              "id": 8871195,
+              "ordem": 4,
+              "nome": "Como descobrir meu tom"
+            },
+            {
+              "id": 8871196,
+              "ordem": 5,
+              "nome": "Análise vocal e dicas de como tocar e cantar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 619308,
+      "nome": "Dicionário de Acordes para Ukulele",
+      "ordem": 2,
+      "vitrine": "Cursos e Materiais Extras",
+      "vitrine_ordem": 5,
+      "total_modulos": 1,
+      "total_aulas": 7,
+      "modulos": [
+        {
+          "id": 1748492,
+          "ordem": 2,
+          "nome": "Dicionário de Acordes para Ukulele",
+          "aulas": [
+            {
+              "id": 8808766,
+              "ordem": 2,
+              "nome": "Baixe seu Dicionário!"
+            },
+            {
+              "id": 8871186,
+              "ordem": 3,
+              "nome": "Quando usar Dicionário?"
+            },
+            {
+              "id": 8871187,
+              "ordem": 4,
+              "nome": "Como ler Diagramas de Acorde"
+            },
+            {
+              "id": 8871188,
+              "ordem": 5,
+              "nome": "Cifras e Símbolos"
+            },
+            {
+              "id": 8871189,
+              "ordem": 6,
+              "nome": "Como ler acordes com \"Barra\""
+            },
+            {
+              "id": 8871191,
+              "ordem": 7,
+              "nome": "Pegadinhas dos Sites de Cifras!"
+            },
+            {
+              "id": 8871192,
+              "ordem": 8,
+              "nome": "Outras formas de escrever/ler os Acordes!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 624538,
+      "nome": "Destrava Dedos | Iniciante",
+      "ordem": 3,
+      "vitrine": "Cursos e Materiais Extras",
+      "vitrine_ordem": 5,
+      "total_modulos": 2,
+      "total_aulas": 25,
+      "modulos": [
+        {
+          "id": 1758027,
+          "ordem": 2,
+          "nome": "Informações Importantes",
+          "aulas": [
+            {
+              "id": 8871198,
+              "ordem": 1,
+              "nome": "Como Seguir o Desafio"
+            },
+            {
+              "id": 8871199,
+              "ordem": 2,
+              "nome": "Como funciona o Desafio"
+            },
+            {
+              "id": 8871200,
+              "ordem": 3,
+              "nome": "Pré-Requisito Básico - Tablatura"
+            },
+            {
+              "id": 8871201,
+              "ordem": 4,
+              "nome": "[Download] PDF com Exercícios"
+            }
+          ]
+        },
+        {
+          "id": 1758028,
+          "ordem": 3,
+          "nome": "Exercícios",
+          "aulas": [
+            {
+              "id": 8871202,
+              "ordem": 1,
+              "nome": "Dia 1"
+            },
+            {
+              "id": 8871203,
+              "ordem": 2,
+              "nome": "Dia 2"
+            },
+            {
+              "id": 8871205,
+              "ordem": 3,
+              "nome": "Dia 3"
+            },
+            {
+              "id": 8871206,
+              "ordem": 4,
+              "nome": "Dia 4"
+            },
+            {
+              "id": 8871207,
+              "ordem": 5,
+              "nome": "Dia 5"
+            },
+            {
+              "id": 8871208,
+              "ordem": 6,
+              "nome": "Dia 6"
+            },
+            {
+              "id": 8871209,
+              "ordem": 7,
+              "nome": "Dia 7"
+            },
+            {
+              "id": 8871210,
+              "ordem": 8,
+              "nome": "Dia 8"
+            },
+            {
+              "id": 8871211,
+              "ordem": 9,
+              "nome": "Dia 9"
+            },
+            {
+              "id": 8871212,
+              "ordem": 10,
+              "nome": "Dia 10"
+            },
+            {
+              "id": 8871213,
+              "ordem": 11,
+              "nome": "Dia 11"
+            },
+            {
+              "id": 8871214,
+              "ordem": 12,
+              "nome": "Dia 12"
+            },
+            {
+              "id": 8871215,
+              "ordem": 13,
+              "nome": "Dia 13"
+            },
+            {
+              "id": 8871216,
+              "ordem": 14,
+              "nome": "Dia 14"
+            },
+            {
+              "id": 8871217,
+              "ordem": 15,
+              "nome": "Dia 15"
+            },
+            {
+              "id": 8871218,
+              "ordem": 16,
+              "nome": "Dia 16"
+            },
+            {
+              "id": 8871219,
+              "ordem": 17,
+              "nome": "Dia 17"
+            },
+            {
+              "id": 8871220,
+              "ordem": 18,
+              "nome": "Dia 18"
+            },
+            {
+              "id": 8871221,
+              "ordem": 19,
+              "nome": "Dia 19"
+            },
+            {
+              "id": 8871222,
+              "ordem": 20,
+              "nome": "Dia 20"
+            },
+            {
+              "id": 8871223,
+              "ordem": 21,
+              "nome": "Dia 21"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "excluidos": [
+    {
+      "id": 626019,
+      "nome": "Acesso Gratuito - Do ZERO à 1ª Música",
+      "vitrine": "VALIDADORES DE ENTREGA",
+      "aulas": 0,
+      "motivo": "validador/entrega"
+    },
+    {
+      "id": 619391,
+      "nome": "Avançado 1",
+      "vitrine": "Jornada de Aprendizado",
+      "aulas": 0,
+      "motivo": "nível ainda vazio / página-índice"
+    },
+    {
+      "id": 619392,
+      "nome": "Avançado 2",
+      "vitrine": "Jornada de Aprendizado",
+      "aulas": 0,
+      "motivo": "nível ainda vazio / página-índice"
+    },
+    {
+      "id": 623636,
+      "nome": "Biblioteca de Músicas - Avançado 1",
+      "vitrine": "Biblioteca de Músicas",
+      "aulas": 0,
+      "motivo": "nível ainda vazio / página-índice"
+    },
+    {
+      "id": 623637,
+      "nome": "Biblioteca de Músicas - Avançado 2",
+      "vitrine": "Biblioteca de Músicas",
+      "aulas": 0,
+      "motivo": "nível ainda vazio / página-índice"
+    },
+    {
+      "id": 626023,
+      "nome": "Clube do Ukulele (Basic - Sem Vídeo)",
+      "vitrine": "VALIDADORES DE ENTREGA",
+      "aulas": 0,
+      "motivo": "validador/entrega"
+    },
+    {
+      "id": 626022,
+      "nome": "Clube do Ukulele (Premium - Com Vídeo)",
+      "vitrine": "VALIDADORES DE ENTREGA",
+      "aulas": 0,
+      "motivo": "validador/entrega"
+    },
+    {
+      "id": 624591,
+      "nome": "Comece por aqui!",
+      "vitrine": "Central do Aluno",
+      "aulas": 8,
+      "motivo": "vitrine interna"
+    },
+    {
+      "id": 624592,
+      "nome": "Comunidade de Alunos, Desafios e Atividades",
+      "vitrine": "Central do Aluno",
+      "aulas": 12,
+      "motivo": "vitrine interna"
+    },
+    {
+      "id": 625018,
+      "nome": "Do zero à primeira música (Pago)",
+      "vitrine": "VALIDADORES DE ENTREGA",
+      "aulas": 0,
+      "motivo": "validador/entrega"
+    },
+    {
+      "id": 631964,
+      "nome": "Intercâmbio de Vídeos (Do Zero a 1)",
+      "vitrine": "VALIDADORES DE ENTREGA",
+      "aulas": 0,
+      "motivo": "validador/entrega"
+    },
+    {
+      "id": 627766,
+      "nome": "Lista Geral da Biblioteca de Músicas",
+      "vitrine": "Coisas Ocultas",
+      "aulas": 0,
+      "motivo": "vitrine interna"
+    },
+    {
+      "id": 623673,
+      "nome": "Lista Geral de Aulas da Biblioteca de Músicas",
+      "vitrine": "Biblioteca de Músicas",
+      "aulas": 0,
+      "motivo": "nível ainda vazio / página-índice"
+    },
+    {
+      "id": 624593,
+      "nome": "Minhas Análises",
+      "vitrine": "Central do Aluno",
+      "aulas": 0,
+      "motivo": "vitrine interna"
+    },
+    {
+      "id": 627235,
+      "nome": "Missão Ukulele: 6 dias intensivos para tocar de verdade do zero",
+      "vitrine": "Central do Aluno",
+      "aulas": 10,
+      "motivo": "vitrine interna"
+    },
+    {
+      "id": 626020,
+      "nome": "Ukulele Fundamental (Iniciante 0 + 1)",
+      "vitrine": "VALIDADORES DE ENTREGA",
+      "aulas": 0,
+      "motivo": "validador/entrega"
+    }
+  ],
+  "biblioteca": {
+    "aulas_de_musica": 157,
+    "musicas_distintas": 149,
+    "observacao": "Cada nível tem 1 item extra \"Lista de Músicas\" (página-índice), não contado. Músicas com versão Simplificada e Principal contam como duas aulas.",
+    "itens": [
+      {
+        "id": 8859192,
+        "artista": "4 Non Blondes",
+        "musica": "What's Up",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "4 Non Blondes | What's Up (Simplificada)"
+      },
+      {
+        "id": 8859264,
+        "artista": "A Turma do Balão Mágico",
+        "musica": "Super Fantástico",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "A Turma do Balão Mágico | Super Fantástico (Principal)"
+      },
+      {
+        "id": 8859265,
+        "artista": "Adriana Calcanhotto",
+        "musica": "Fico Assim Sem Você",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Adriana Calcanhotto | Fico Assim Sem Você (Principal)"
+      },
+      {
+        "id": 8859266,
+        "artista": "Adriana Calcanhotto",
+        "musica": "Palpite",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Adriana Calcanhotto | Palpite (Principal)"
+      },
+      {
+        "id": 8858703,
+        "artista": "Almir Sater",
+        "musica": "Tocando em Frente",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Almir Sater | Tocando em Frente (Simplificada)"
+      },
+      {
+        "id": 8858704,
+        "artista": "Amanda Loyola",
+        "musica": "Acredite em você",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Amanda Loyola | Acredite em você (Principal)"
+      },
+      {
+        "id": 8864950,
+        "artista": "America",
+        "musica": "A Horse With No Name",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "America | A Horse With No Name (Simplificada)"
+      },
+      {
+        "id": 8858706,
+        "artista": "Ana Vilela",
+        "musica": "Trem Bala",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Ana Vilela | Trem Bala (simplificada)"
+      },
+      {
+        "id": 8859194,
+        "artista": "Ana Vilela",
+        "musica": "Trem Bala",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Ana Vilela | Trem Bala (Principal)"
+      },
+      {
+        "id": 8859267,
+        "artista": "Anavitória",
+        "musica": "Trevo",
+        "versao": "simplificada",
+        "nivel": "Intermediário 1",
+        "nome_original": "Anavitória | Trevo (Simplificada)"
+      },
+      {
+        "id": 8858707,
+        "artista": "Armandinho",
+        "musica": "Desenho de Deus",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Armandinho | Desenho de Deus (Simplificada)"
+      },
+      {
+        "id": 8859197,
+        "artista": "Avril Lavigne",
+        "musica": "I’m With You",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Avril Lavigne | I’m With You (Principal)"
+      },
+      {
+        "id": 8859259,
+        "artista": "Beatles",
+        "musica": "All My Loving",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Beatles | All My Loving (Simplificada)"
+      },
+      {
+        "id": 8859290,
+        "artista": "Beatles",
+        "musica": "In My Life",
+        "versao": "principal",
+        "nivel": "Intermediário 2",
+        "nome_original": "Beatles | In My Life (Principal)"
+      },
+      {
+        "id": 8859162,
+        "artista": "Beatles",
+        "musica": "Let it be (Simplificada v1)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Beatles | Let it be (Simplificada v1)"
+      },
+      {
+        "id": 8859163,
+        "artista": "Beatles",
+        "musica": "Let It Be (Simplificada v2)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Beatles | Let It Be (Simplificada v2)"
+      },
+      {
+        "id": 8859164,
+        "artista": "Beatles",
+        "musica": "Love me Do",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Beatles | Love me Do (Principal)"
+      },
+      {
+        "id": 8859165,
+        "artista": "Beatles",
+        "musica": "Paperback Writer",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Beatles | Paperback Writer (Simplificada)"
+      },
+      {
+        "id": 8859279,
+        "artista": "Beatles",
+        "musica": "Till There Was You",
+        "versao": "simplificada",
+        "nivel": "Intermediário 1",
+        "nome_original": "Beatles | Till There Was You (Simplificada)"
+      },
+      {
+        "id": 8859260,
+        "artista": "Beatles",
+        "musica": "Twist And Shout",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Beatles | Twist And Shout (Principal)"
+      },
+      {
+        "id": 8859198,
+        "artista": "Beirut",
+        "musica": "Elephant Gun",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Beirut | Elephant Gun (Simplificada)"
+      },
+      {
+        "id": 8859199,
+        "artista": "Belchior",
+        "musica": "Sujeito de Sorte",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Belchior | Sujeito de Sorte (Principal)"
+      },
+      {
+        "id": 8858708,
+        "artista": "Ben E. King",
+        "musica": "Stand By Me",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Ben E. King | Stand By Me (Simplificada)"
+      },
+      {
+        "id": 8858709,
+        "artista": "Bob Marley",
+        "musica": "Get up, stand up",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Bob Marley | Get up, stand up (Simplificada)"
+      },
+      {
+        "id": 8858745,
+        "artista": "Bob Marley",
+        "musica": "Lively Up Yourself",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Bob Marley | Lively Up Yourself (Simplificada)"
+      },
+      {
+        "id": 8858746,
+        "artista": "Bob Marley",
+        "musica": "No Woman No Cry",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Bob Marley | No Woman No Cry (Simplificada)"
+      },
+      {
+        "id": 8858748,
+        "artista": "Bob Marley",
+        "musica": "Three Little Birds",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Bob Marley | Three Little Birds (Simplificada)"
+      },
+      {
+        "id": 8859201,
+        "artista": "Bob Marley",
+        "musica": "Three Little Birds",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Bob Marley | Three Little Birds (Principal)"
+      },
+      {
+        "id": 8838411,
+        "artista": "Bola de Neve",
+        "musica": "Manhã de Sol",
+        "versao": "simplificada",
+        "nivel": "Iniciante 0",
+        "nome_original": "Bola de Neve | Manhã de Sol (Simplificada)"
+      },
+      {
+        "id": 8859202,
+        "artista": "Bruno e Marrone",
+        "musica": "Dormi Na Praça",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Bruno e Marrone | Dormi Na Praça (Simplificada)"
+      },
+      {
+        "id": 8859203,
+        "artista": "Bruno Mars",
+        "musica": "Count On Me",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Bruno Mars | Count On Me (Principal)"
+      },
+      {
+        "id": 8859231,
+        "artista": "Capital Inicial",
+        "musica": "A Sua Maneira",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Capital Inicial | A Sua Maneira (Simplificada)"
+      },
+      {
+        "id": 8859232,
+        "artista": "Capital Inicial",
+        "musica": "O Passageiro (Simplificada 1)",
+        "versao": null,
+        "nivel": "Iniciante 2",
+        "nome_original": "Capital Inicial | O Passageiro (Simplificada 1)"
+      },
+      {
+        "id": 8858749,
+        "artista": "Capital Inicial",
+        "musica": "O Passageiro (Simplificada 2)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Capital Inicial | O Passageiro (Simplificada 2)"
+      },
+      {
+        "id": 8859268,
+        "artista": "Capital Inicial",
+        "musica": "Tudo que vai",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Capital Inicial | Tudo que vai (Principal)"
+      },
+      {
+        "id": 8859234,
+        "artista": "Charlie Brown Jr.",
+        "musica": "Céu Azul",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Charlie Brown Jr. | Céu Azul (Simplificada)"
+      },
+      {
+        "id": 8858754,
+        "artista": "Charlie Brown Jr.",
+        "musica": "Proibida pra Mim",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Charlie Brown Jr. | Proibida pra Mim (Simplificada)"
+      },
+      {
+        "id": 8858756,
+        "artista": "Charlie Brown Jr.",
+        "musica": "Zóio de Lula",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Charlie Brown Jr. | Zóio de Lula (Simplificada)"
+      },
+      {
+        "id": 8859269,
+        "artista": "Chico César",
+        "musica": "Deus Me Proteja",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Chico César | Deus Me Proteja (Principal)"
+      },
+      {
+        "id": 8858757,
+        "artista": "Coldplay",
+        "musica": "Yellow",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Coldplay | Yellow (Simplificada)"
+      },
+      {
+        "id": 9072986,
+        "artista": "Creedence",
+        "musica": "Have you ever seen the rain",
+        "versao": null,
+        "nivel": "Iniciante 2",
+        "nome_original": "Creedence | Have you ever seen the rain"
+      },
+      {
+        "id": 8858758,
+        "artista": "Creedence Clearwater Revival",
+        "musica": "Have You Ever Seen The Rain",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Creedence Clearwater Revival | Have You Ever Seen The Rain (Simplificada)"
+      },
+      {
+        "id": 8859233,
+        "artista": "Cássia Eller",
+        "musica": "Malandragem",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Cássia Eller | Malandragem (Principal)"
+      },
+      {
+        "id": 8858750,
+        "artista": "Cássia Eller",
+        "musica": "Palavras Ao Vento (Simplificada 1)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Cássia Eller | Palavras Ao Vento (Simplificada 1)"
+      },
+      {
+        "id": 8858753,
+        "artista": "Cássia Eller",
+        "musica": "Palavras Ao Vento (Simplificada 2)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Cássia Eller | Palavras Ao Vento (Simplificada 2)"
+      },
+      {
+        "id": 8859236,
+        "artista": "Diante do Trono",
+        "musica": "A Ele a Glória",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Diante do Trono | A Ele a Glória (Simplificada)"
+      },
+      {
+        "id": 8858782,
+        "artista": "Diante do Trono",
+        "musica": "Me Ama",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Diante do Trono | Me Ama (Simplificada)"
+      },
+      {
+        "id": 8859060,
+        "artista": "Diante do Trono",
+        "musica": "Outra Vez",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Diante do Trono | Outra Vez (Simplificada)"
+      },
+      {
+        "id": 8859061,
+        "artista": "Diante do Trono",
+        "musica": "Te Agradeço",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Diante do Trono | Te Agradeço (Simplificada)"
+      },
+      {
+        "id": 8859237,
+        "artista": "Dua Lipa",
+        "musica": "Levitating",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Dua Lipa | Levitating (Simplificada)"
+      },
+      {
+        "id": 8859062,
+        "artista": "Ed Sheeran",
+        "musica": "Photograph",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Ed Sheeran | Photograph (Simplificada)"
+      },
+      {
+        "id": 8859064,
+        "artista": "Falamansa",
+        "musica": "Amigo Velho",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Falamansa | Amigo Velho (Principal)"
+      },
+      {
+        "id": 8859065,
+        "artista": "Gabriel Elias",
+        "musica": "Somos Instantes",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Gabriel Elias | Somos Instantes (Simplificada)"
+      },
+      {
+        "id": 8859066,
+        "artista": "Gabriela Rocha",
+        "musica": "Atos 2",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Gabriela Rocha | Atos 2 (Simplificada)"
+      },
+      {
+        "id": 8859067,
+        "artista": "Gabriela Rocha",
+        "musica": "Deixa Queimar",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Gabriela Rocha | Deixa Queimar (Principal)"
+      },
+      {
+        "id": 8859068,
+        "artista": "Gabriela Rocha",
+        "musica": "Lugar Secreto",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Gabriela Rocha | Lugar Secreto (Simplificada)"
+      },
+      {
+        "id": 8859070,
+        "artista": "Gabriela Rocha",
+        "musica": "Pai Nosso",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Gabriela Rocha | Pai Nosso (Principal)"
+      },
+      {
+        "id": 8859270,
+        "artista": "Gilberto Gil",
+        "musica": "Eu Só Quero Um Xodó",
+        "versao": "simplificada",
+        "nivel": "Intermediário 1",
+        "nome_original": "Gilberto Gil | Eu Só Quero Um Xodó (Simplificada)"
+      },
+      {
+        "id": 8859238,
+        "artista": "Giulia Be",
+        "musica": "Menina Solta",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Giulia Be | Menina Solta (Principal)"
+      },
+      {
+        "id": 8859071,
+        "artista": "Guns N' Roses",
+        "musica": "Knockin' On Heaven's Door",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Guns N' Roses | Knockin' On Heaven's Door (Simplificada)"
+      },
+      {
+        "id": 8859072,
+        "artista": "Harpa Cristã",
+        "musica": "A Mensagem da Cruz",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Harpa Cristã | A Mensagem da Cruz (Simplificada)"
+      },
+      {
+        "id": 8859239,
+        "artista": "Harpa Cristã",
+        "musica": "Grandioso És Tu",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Harpa Cristã | Grandioso És Tu (Principal)"
+      },
+      {
+        "id": 8859073,
+        "artista": "Imagine Dragons",
+        "musica": "Demons",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Imagine Dragons | Demons (Simplificada)"
+      },
+      {
+        "id": 8859160,
+        "artista": "Infantil",
+        "musica": "Brilha, brilha, estrelinha",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Infantil | Brilha, brilha, estrelinha (Simplificada)"
+      },
+      {
+        "id": 8859235,
+        "artista": "Infantil",
+        "musica": "Coelhinho da Páscoa (Melodia)",
+        "versao": null,
+        "nivel": "Iniciante 2",
+        "nome_original": "Infantil | Coelhinho da Páscoa (Melodia)"
+      },
+      {
+        "id": 8859074,
+        "artista": "Isadora Pompeo",
+        "musica": "Braços de Amor",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Isadora Pompeo | Braços de Amor (Principal)"
+      },
+      {
+        "id": 8859075,
+        "artista": "Isadora Pompeo",
+        "musica": "Hey Pai",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Isadora Pompeo | Hey Pai (Principal)"
+      },
+      {
+        "id": 8859076,
+        "artista": "Isadora Pompeo",
+        "musica": "Minha Morada",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Isadora Pompeo | Minha Morada (Principal)"
+      },
+      {
+        "id": 8859240,
+        "artista": "Isadora Pompeo",
+        "musica": "Oi, Jesus",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Isadora Pompeo | Oi, Jesus (Principal)"
+      },
+      {
+        "id": 8859241,
+        "artista": "Isadora Pompeo",
+        "musica": "Seja Forte",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Isadora Pompeo | Seja Forte (Principal)"
+      },
+      {
+        "id": 8859242,
+        "artista": "Isadora Pompeo",
+        "musica": "Toca em Mim de Novo",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Isadora Pompeo | Toca em Mim de Novo (Principal)"
+      },
+      {
+        "id": 8859078,
+        "artista": "Isadora Pompeo",
+        "musica": "Vai Passar",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Isadora Pompeo | Vai Passar (Simplificada)"
+      },
+      {
+        "id": 8859079,
+        "artista": "Isaias Saad",
+        "musica": "Ousado Amor",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Isaias Saad | Ousado Amor (Simplificada)"
+      },
+      {
+        "id": 8859243,
+        "artista": "Israel Kamakawiwo'ole",
+        "musica": "Somewhere over the Rainbow",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Israel Kamakawiwo'ole | Somewhere over the Rainbow (Simplificada)"
+      },
+      {
+        "id": 8859080,
+        "artista": "Israel Kamakawiwo'ole",
+        "musica": "Somewhere over the Rainbow (Super Simplificada)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Israel Kamakawiwo'ole | Somewhere over the Rainbow (Super Simplificada)"
+      },
+      {
+        "id": 8859271,
+        "artista": "Israel Kamakawiwoʻole",
+        "musica": "Somewhere Over the Rainbow",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Israel Kamakawiwoʻole | Somewhere Over the Rainbow (Principal)"
+      },
+      {
+        "id": 8859244,
+        "artista": "Ivete Sangalo",
+        "musica": "Quando a Chuva Passar",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Ivete Sangalo | Quando a Chuva Passar (Simplificada)"
+      },
+      {
+        "id": 8859081,
+        "artista": "Ivete Sangalo",
+        "musica": "Sorte Grande (Poeira)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Ivete Sangalo | Sorte Grande (Poeira)"
+      },
+      {
+        "id": 8859082,
+        "artista": "Jason Mraz",
+        "musica": "I'm Yours",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Jason Mraz | I'm Yours (Simplificada)"
+      },
+      {
+        "id": 8859245,
+        "artista": "Jeff Buckley",
+        "musica": "Hallelujah",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Jeff Buckley | Hallelujah (Simplificada)"
+      },
+      {
+        "id": 8859247,
+        "artista": "John Lennon",
+        "musica": "Imagine",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "John Lennon | Imagine (Simplificada)"
+      },
+      {
+        "id": 8858700,
+        "artista": "Jorge Ben Jor",
+        "musica": "W/Brasil",
+        "versao": "simplificada",
+        "nivel": "Iniciante 0",
+        "nome_original": "Jorge Ben Jor | W/Brasil (Simplificada)"
+      },
+      {
+        "id": 8859083,
+        "artista": "Jorge e Mateus",
+        "musica": "Louca de Saudade",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Jorge e Mateus | Louca de Saudade (Simplificada)"
+      },
+      {
+        "id": 8859248,
+        "artista": "Kid Abelha",
+        "musica": "Como Eu Quero",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Kid Abelha | Como Eu Quero (Principal)"
+      },
+      {
+        "id": 8859085,
+        "artista": "Lagum",
+        "musica": "Deixa",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Lagum | Deixa (Simplificada)"
+      },
+      {
+        "id": 8859272,
+        "artista": "Los Hermanos",
+        "musica": "Anna Julia",
+        "versao": "simplificada",
+        "nivel": "Intermediário 1",
+        "nome_original": "Los Hermanos | Anna Julia (Simplificada)"
+      },
+      {
+        "id": 8859273,
+        "artista": "Luiz Gonzaga",
+        "musica": "O Xote das Meninas",
+        "versao": "simplificada",
+        "nivel": "Intermediário 1",
+        "nome_original": "Luiz Gonzaga | O Xote das Meninas (Simplificada)"
+      },
+      {
+        "id": 8859274,
+        "artista": "Lulu Santos",
+        "musica": "De repente, Califórnia",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Lulu Santos | De repente, Califórnia (Principal)"
+      },
+      {
+        "id": 8859286,
+        "artista": "Mallu Magalhães",
+        "musica": "Sambinha bom",
+        "versao": "principal",
+        "nivel": "Intermediário 2",
+        "nome_original": "Mallu Magalhães | Sambinha bom (Principal)"
+      },
+      {
+        "id": 8859086,
+        "artista": "Mamonas Assassinas",
+        "musica": "Sábado de Sol",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Mamonas Assassinas | Sábado de Sol (Principal)"
+      },
+      {
+        "id": 8859087,
+        "artista": "Mamonas Assassinas",
+        "musica": "Sábado de Sol",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Mamonas Assassinas | Sábado de Sol (Simplificada)"
+      },
+      {
+        "id": 8859249,
+        "artista": "Marisa Monte",
+        "musica": "Amor I love you",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Marisa Monte | Amor I love you (Simplificada)"
+      },
+      {
+        "id": 8859088,
+        "artista": "Maroon 5",
+        "musica": "Girls Like You",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Maroon 5 | Girls Like You (Simplificada)"
+      },
+      {
+        "id": 8859091,
+        "artista": "Melim",
+        "musica": "Meu Abrigo",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Melim | Meu Abrigo (Simplificada)"
+      },
+      {
+        "id": 8859251,
+        "artista": "Melim",
+        "musica": "Ouvi Dizer",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Melim | Ouvi Dizer (Simplificada)"
+      },
+      {
+        "id": 8859287,
+        "artista": "Melim",
+        "musica": "Ouvi Dizer",
+        "versao": "principal",
+        "nivel": "Intermediário 2",
+        "nome_original": "Melim | Ouvi Dizer (Principal)"
+      },
+      {
+        "id": 8859275,
+        "artista": "Milton Nascimento",
+        "musica": "Maria Maria",
+        "versao": "simplificada",
+        "nivel": "Intermediário 1",
+        "nome_original": "Milton Nascimento | Maria Maria (Simplificada)"
+      },
+      {
+        "id": 8859092,
+        "artista": "Mundo Bita",
+        "musica": "Fazendinha",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Mundo Bita | Fazendinha (Simplificada)"
+      },
+      {
+        "id": 8859252,
+        "artista": "Mundo Bita",
+        "musica": "Fazendinha",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Mundo Bita | Fazendinha (Principal)"
+      },
+      {
+        "id": 8859063,
+        "artista": "Natiruts/Edu Ribeiro",
+        "musica": "Me Namora",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Natiruts/Edu Ribeiro | Me Namora (Simplificada)"
+      },
+      {
+        "id": 8859093,
+        "artista": "Nengo Vieira",
+        "musica": "Deus de Abraão",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Nengo Vieira | Deus de Abraão (Simplificada)"
+      },
+      {
+        "id": 8859094,
+        "artista": "Novos Baianos",
+        "musica": "Preta, Pretinha",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Novos Baianos | Preta, Pretinha (Simplificada)"
+      },
+      {
+        "id": 8859096,
+        "artista": "O Rei Leão",
+        "musica": "Quem Dorme é o Leão",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "O Rei Leão | Quem Dorme é o Leão (Simplificada)"
+      },
+      {
+        "id": 8859097,
+        "artista": "Oasis",
+        "musica": "Songbird",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Oasis | Songbird (Simplificada)"
+      },
+      {
+        "id": 8859188,
+        "artista": "Oh Suzana",
+        "musica": "",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Oh Suzana (Simplificada)"
+      },
+      {
+        "id": 8859253,
+        "artista": "Paralamas do Sucesso",
+        "musica": "Aonde Quer Que Eu Vá",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Paralamas do Sucesso | Aonde Quer Que Eu Vá (Principal)"
+      },
+      {
+        "id": 8859098,
+        "artista": "Paralamas do Sucesso",
+        "musica": "La Bella Luna",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Paralamas do Sucesso | La Bella Luna (Simplificada)"
+      },
+      {
+        "id": 8859254,
+        "artista": "Paramore",
+        "musica": "Decode",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Paramore | Decode (Simplificada)"
+      },
+      {
+        "id": 8859255,
+        "artista": "Paramore",
+        "musica": "The Only Exception",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Paramore | The Only Exception (Simplificada)"
+      },
+      {
+        "id": 8859276,
+        "artista": "Randy Newman",
+        "musica": "Amigo estou aqui - Toy Story",
+        "versao": "simplificada",
+        "nivel": "Intermediário 1",
+        "nome_original": "Randy Newman | Amigo estou aqui - Toy Story (Simplificada)"
+      },
+      {
+        "id": 8859095,
+        "artista": "Rappa",
+        "musica": "Pescador de Ilusões",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Rappa | Pescador de Ilusões (Principal)"
+      },
+      {
+        "id": 8859256,
+        "artista": "Raul Seixas",
+        "musica": "Maluco Beleza",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Raul Seixas | Maluco Beleza (Principal)"
+      },
+      {
+        "id": 8859100,
+        "artista": "Raça Negra",
+        "musica": "Cheia de Manias",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Raça Negra | Cheia de Manias (Simplificada)"
+      },
+      {
+        "id": 8859149,
+        "artista": "Red Hot Chili Peppers",
+        "musica": "Aeroplane",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Red Hot Chili Peppers | Aeroplane (Simplificada)"
+      },
+      {
+        "id": 8859150,
+        "artista": "Red Hot Chili Peppers",
+        "musica": "By The Way",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Red Hot Chili Peppers | By The Way (Simplificada)"
+      },
+      {
+        "id": 8859257,
+        "artista": "Red Hot Chili Peppers",
+        "musica": "Other Side",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Red Hot Chili Peppers | Other Side (Simplificada)"
+      },
+      {
+        "id": 8859151,
+        "artista": "Red Hot Chili Peppers",
+        "musica": "Scar Tissue",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Red Hot Chili Peppers | Scar Tissue (Simplificada)"
+      },
+      {
+        "id": 8859277,
+        "artista": "Renato Teixeira",
+        "musica": "Romaria",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Renato Teixeira | Romaria (Principal)"
+      },
+      {
+        "id": 8859258,
+        "artista": "Rita Lee",
+        "musica": "Ovelha Negra",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Rita Lee | Ovelha Negra (Simplificada)"
+      },
+      {
+        "id": 8859152,
+        "artista": "Rodolfo Abrantes",
+        "musica": "O Dia que Será Pra Sempre",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Rodolfo Abrantes | O Dia que Será Pra Sempre (Principal)"
+      },
+      {
+        "id": 8859153,
+        "artista": "Salomão do Reggae",
+        "musica": "Balela",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Salomão do Reggae | Balela (Simplificada)"
+      },
+      {
+        "id": 8859154,
+        "artista": "Salomão do Reggae",
+        "musica": "Faz Chover",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Salomão do Reggae | Faz Chover (Principal)"
+      },
+      {
+        "id": 8859155,
+        "artista": "Sandra de Sá",
+        "musica": "Olhos Coloridos",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Sandra de Sá | Olhos Coloridos (Simplificada)"
+      },
+      {
+        "id": 8859156,
+        "artista": "Sandy & Júnior",
+        "musica": "Eu Acho que Pirei",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Sandy & Júnior | Eu Acho que Pirei (Simplificada)"
+      },
+      {
+        "id": 8859289,
+        "artista": "Seu Jorge",
+        "musica": "Tive Razão",
+        "versao": "simplificada",
+        "nivel": "Intermediário 2",
+        "nome_original": "Seu Jorge | Tive Razão (Simplificada)"
+      },
+      {
+        "id": 8859158,
+        "artista": "Skank",
+        "musica": "Acima do Sol",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Skank | Acima do Sol (Simplificada)"
+      },
+      {
+        "id": 8856135,
+        "artista": "Skank",
+        "musica": "Garota Nacional",
+        "versao": "simplificada",
+        "nivel": "Iniciante 0",
+        "nome_original": "Skank | Garota Nacional (Simplificada)"
+      },
+      {
+        "id": 8858576,
+        "artista": "Skank",
+        "musica": "Jackie Tequila",
+        "versao": "simplificada",
+        "nivel": "Iniciante 0",
+        "nome_original": "Skank | Jackie Tequila (Simplificada)"
+      },
+      {
+        "id": 8858695,
+        "artista": "Skank",
+        "musica": "Te ver",
+        "versao": "simplificada",
+        "nivel": "Iniciante 0",
+        "nome_original": "Skank | Te ver (Simplificada)"
+      },
+      {
+        "id": 8859159,
+        "artista": "Skank",
+        "musica": "Te Ver",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Skank | Te Ver (Principal)"
+      },
+      {
+        "id": 8859278,
+        "artista": "Skank",
+        "musica": "Vou Deixar",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Skank | Vou Deixar (Principal)"
+      },
+      {
+        "id": 8859157,
+        "artista": "Sérgio Reis",
+        "musica": "Tristeza do Jeca",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Sérgio Reis | Tristeza do Jeca (Simplificada)"
+      },
+      {
+        "id": 8859161,
+        "artista": "Thales Roberto",
+        "musica": "Deus Me Ama",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Thales Roberto | Deus Me Ama (Simplificada)"
+      },
+      {
+        "id": 8859166,
+        "artista": "The Calling",
+        "musica": "Wherever You Will Go",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "The Calling | Wherever You Will Go (Simplificada)"
+      },
+      {
+        "id": 8859167,
+        "artista": "Thiago Brava",
+        "musica": "Dona Maria",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Thiago Brava | Dona Maria (Simplificada)"
+      },
+      {
+        "id": 8859168,
+        "artista": "Tim Maia",
+        "musica": "Azul da Cor do Mar (Super Simplificada)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Tim Maia | Azul da Cor do Mar (Super Simplificada)"
+      },
+      {
+        "id": 8859261,
+        "artista": "Tim Maia",
+        "musica": "Gostava Tanto de Você",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Tim Maia | Gostava Tanto de Você (Simplificada)"
+      },
+      {
+        "id": 8859169,
+        "artista": "Tim Maia",
+        "musica": "Gostava Tanto de Você (Super Simplificada)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Tim Maia | Gostava Tanto de Você (Super Simplificada)"
+      },
+      {
+        "id": 8859170,
+        "artista": "Tim Maia",
+        "musica": "Sossego",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Tim Maia | Sossego (Simplificada)"
+      },
+      {
+        "id": 8859171,
+        "artista": "Titãs",
+        "musica": "Flores",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Titãs | Flores (Simplificada)"
+      },
+      {
+        "id": 8859280,
+        "artista": "Tom Jobim e Vinícius de Moraes",
+        "musica": "Garota de Ipanema",
+        "versao": "simplificada",
+        "nivel": "Intermediário 1",
+        "nome_original": "Tom Jobim e Vinícius de Moraes | Garota de Ipanema (Simplificada)"
+      },
+      {
+        "id": 8859173,
+        "artista": "Tonico e Tinoco",
+        "musica": "Chico Mineiro",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Tonico e Tinoco | Chico Mineiro (Principal)"
+      },
+      {
+        "id": 8858698,
+        "artista": "Tradicional",
+        "musica": "Parabéns pra Você (Super Simplificada)",
+        "versao": null,
+        "nivel": "Iniciante 0",
+        "nome_original": "Tradicional | Parabéns pra Você (Super Simplificada)"
+      },
+      {
+        "id": 8859262,
+        "artista": "Train",
+        "musica": "Hey, Soul Sister",
+        "versao": "simplificada",
+        "nivel": "Iniciante 2",
+        "nome_original": "Train | Hey, Soul Sister (Simplificada)"
+      },
+      {
+        "id": 8859174,
+        "artista": "Tribalistas",
+        "musica": "Já sei namorar",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Tribalistas | Já sei namorar (Principal)"
+      },
+      {
+        "id": 8859177,
+        "artista": "Tribalistas",
+        "musica": "Velha Infância",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Tribalistas | Velha Infância (Simplificada)"
+      },
+      {
+        "id": 8859281,
+        "artista": "Tribalistas",
+        "musica": "Velha Infância",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Tribalistas | Velha Infância (Principal)"
+      },
+      {
+        "id": 8859180,
+        "artista": "Vance Joy",
+        "musica": "Riptide",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Vance Joy | Riptide (Simplificada)"
+      },
+      {
+        "id": 8859282,
+        "artista": "Vance Joy",
+        "musica": "Riptide",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Vance Joy | Riptide (Principal)"
+      },
+      {
+        "id": 8859178,
+        "artista": "Vance Joy",
+        "musica": "Riptide (Super Simplificada)",
+        "versao": null,
+        "nivel": "Iniciante 1",
+        "nome_original": "Vance Joy | Riptide (Super Simplificada)"
+      },
+      {
+        "id": 8859283,
+        "artista": "Vanessa da Mata feat. Ben Harper",
+        "musica": "Boa Sorte / Good Luck",
+        "versao": "principal",
+        "nivel": "Intermediário 1",
+        "nome_original": "Vanessa da Mata feat. Ben Harper | Boa Sorte / Good Luck (Principal)"
+      },
+      {
+        "id": 8859182,
+        "artista": "Ventania",
+        "musica": "Viajando",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Ventania | Viajando (Principal)"
+      },
+      {
+        "id": 8859183,
+        "artista": "Victor Kley",
+        "musica": "O Sol",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Victor Kley | O Sol (Simplificada)"
+      },
+      {
+        "id": 8859184,
+        "artista": "Vinícius de Moraes",
+        "musica": "Samba da Benção",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Vinícius de Moraes | Samba da Benção (Simplificada)"
+      },
+      {
+        "id": 8859263,
+        "artista": "Vários",
+        "musica": "5 Músicas de Natal pra tocar no ukulele",
+        "versao": "principal",
+        "nivel": "Iniciante 2",
+        "nome_original": "Vários | 5 Músicas de Natal pra tocar no ukulele (Principal)"
+      },
+      {
+        "id": 8859185,
+        "artista": "Zeca Baleiro",
+        "musica": "Lenha",
+        "versao": "principal",
+        "nivel": "Iniciante 1",
+        "nome_original": "Zeca Baleiro | Lenha (Principal)"
+      },
+      {
+        "id": 8859187,
+        "artista": "Zezé Di Camargo & Luciano",
+        "musica": "É o Amor",
+        "versao": "simplificada",
+        "nivel": "Iniciante 1",
+        "nome_original": "Zezé Di Camargo & Luciano | É o Amor (Simplificada)"
+      }
+    ],
+    "por_nivel": [
+      {
+        "nivel": "Iniciante 0",
+        "aulas": 6,
+        "musicas_distintas": 6,
+        "simplificada": 5,
+        "principal": 0,
+        "sem_versao": 1
+      },
+      {
+        "nivel": "Iniciante 1",
+        "aulas": 87,
+        "musicas_distintas": 86,
+        "simplificada": 60,
+        "principal": 17,
+        "sem_versao": 10
+      },
+      {
+        "nivel": "Iniciante 2",
+        "aulas": 40,
+        "musicas_distintas": 40,
+        "simplificada": 20,
+        "principal": 17,
+        "sem_versao": 3
+      },
+      {
+        "nivel": "Intermediário 1",
+        "aulas": 20,
+        "musicas_distintas": 20,
+        "simplificada": 8,
+        "principal": 12,
+        "sem_versao": 0
+      },
+      {
+        "nivel": "Intermediário 2",
+        "aulas": 4,
+        "musicas_distintas": 4,
+        "simplificada": 1,
+        "principal": 3,
+        "sem_versao": 0
+      }
+    ]
+  },
+  "numeros_publicaveis": {
+    "aulas_de_musica": {
+      "valor": 157,
+      "frase": "157 aulas de música",
+      "proibido": [
+        "157 aulas",
+        "157 músicas",
+        "154 músicas"
+      ],
+      "motivo": "A mesma música pode ter aula Simplificada e Principal. São 149 títulos distintos em 157 aulas."
+    },
+    "aulas_da_trilha": {
+      "valor": 201,
+      "frase": "201 aulas na Jornada de Aprendizado"
+    },
+    "aulas_extras": {
+      "valor": 36,
+      "frase": "36 aulas em cursos e materiais extras"
+    },
+    "total_do_clube": {
+      "valor": 394,
+      "frase": "394 aulas no total"
+    }
+  }
+}
