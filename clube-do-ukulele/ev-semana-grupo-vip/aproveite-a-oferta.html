@@ -133,6 +133,25 @@ h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;lett
   .btn-pulsar:hover{transform:none}
 }
 
+/* === PREÇO RISCADO === */
+.price-old{text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:3px;color:#fff}
+
+/* === BÔNUS POR JANELA DE HORÁRIO ===
+   Dois bônus dependem da hora em que a pessoa entra, então eles ganham bloco
+   próprio em vez de virar mais dois cartões na grade dos outros cinco. */
+.janela-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2.5rem;text-align:left}
+.janela-card{background:var(--indigo);border:1px solid rgba(232,122,133,.4);border-radius:24px;padding:1.75rem;display:flex;flex-direction:column;gap:.75rem}
+.janela-card.cedo{border-color:rgba(205,55,1,.75);background:linear-gradient(160deg,var(--indigo) 0%,#5A2A2A 140%)}
+.janela-hora{display:inline-flex;align-items:center;gap:.45rem;align-self:flex-start;background:rgba(232,122,133,.16);border:1px solid rgba(232,122,133,.5);color:var(--coral);font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.07em;padding:.35rem .8rem;border-radius:999px}
+.janela-card.cedo .janela-hora{background:var(--acao);border-color:var(--acao);color:#fff}
+.janela-hora svg{width:.85rem;height:.85rem;flex-shrink:0}
+.janela-card h3{color:#fff;font-size:20px;font-weight:800;line-height:1.25}
+.janela-card p{font-size:15px;color:var(--sobre-escuro)}
+.janela-card .quem{margin-top:auto;font-size:13px;font-weight:700;color:var(--sobre-escuro)}
+.janela-card .quem b{color:var(--coral)}
+.janela-card.cedo .quem b{color:#fff}
+@media (min-width:768px){.janela-grid{grid-template-columns:1fr 1fr}}
+
 /* === SELO === */
 .selo{display:inline-block;background:transparent;border:1px solid rgba(232,122,133,.6);color:var(--coral);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;padding:.4rem .9rem;border-radius:999px}
 .sec-clara .selo,.sec-branca .selo{background:rgba(180,64,79,.1);border-color:rgba(180,64,79,.35);color:var(--coral-forte)}
@@ -162,6 +181,16 @@ header.hero-section{
 .hero-title{font-family:'Montserrat',system-ui,sans-serif;font-weight:800;color:#fff;font-size:clamp(22px,6vw,30px);line-height:1.12;letter-spacing:-.01em}
 .hero-title span{color:var(--coral)}
 .hero-sub{font-size:13.5px;color:var(--sobre-escuro);max-width:34rem}
+.hero-preco{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:.5rem;margin-top:.2rem}
+.hero-preco-de{font-size:13px;font-weight:700;color:var(--sobre-escuro)}
+.hero-preco-de .price-old{font-size:19px;font-weight:800}
+.hero-preco-por{font-size:15px;font-weight:800;color:#fff}
+.hero-preco-por b{color:var(--coral)}
+@media (min-width:1024px){
+  .hero-preco{justify-content:flex-start}
+  .hero-preco-de .price-old{font-size:22px}
+  .hero-preco-por{font-size:18px}
+}
 .hero-data{margin-top:.35rem;display:inline-block;background:transparent;border:1px solid rgba(232,122,133,.6);color:#fff;font-weight:800;font-size:13px;padding:.6rem 1.1rem;border-radius:12px;line-height:1.35}
 .hero-data b{color:var(--coral)}
 
@@ -279,11 +308,21 @@ header.hero-section{
 /* === PREÇO (bloco escuro) === */
 .price-box{max-width:900px;margin:2.5rem auto 0;background:var(--indigo);border:1px solid var(--linha);border-radius:28px;padding:1.75rem}
 .price-list{display:flex;flex-direction:column;gap:.9rem;padding-bottom:1.75rem;border-bottom:1px solid var(--linha)}
-.price-list li{display:flex;gap:.8rem;align-items:flex-start;font-size:15px;color:var(--sobre-escuro)}
+.price-list li{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;font-size:15px;color:var(--sobre-escuro)}
+.price-item{display:flex;gap:.8rem;align-items:flex-start;flex:1}
+.price-valor{flex-shrink:0;font-weight:800;white-space:nowrap;font-size:15px;color:var(--sobre-escuro)}
+.price-valor.incluso{font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--coral);font-weight:800;padding-top:.2rem}
 /* Coral rende 3,9:1 sobre o indigo medio do card: aqui o check vai de branco. */
 .price-list .ck{color:#fff;font-weight:800;flex-shrink:0}
 .price-list b{color:#fff}
 .price-final{text-align:center;padding-top:1.75rem}
+.price-de{font-size:15px;font-weight:700;color:var(--sobre-escuro);display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline;justify-content:center}
+.price-de .price-old{font-family:'Anton',Impact,sans-serif;font-size:28px;letter-spacing:.02em}
+.price-agora{margin-top:.9rem;font-family:'Anton',Impact,sans-serif;font-weight:400;color:#fff;font-size:clamp(28px,7vw,44px);line-height:1.05;letter-spacing:.01em}
+.price-agora span{color:var(--coral)}
+.price-avista{margin-top:.35rem;font-size:16px;font-weight:700;color:#fff}
+.price-desconto{margin:1.1rem auto 0;display:inline-block;background:rgba(232,122,133,.12);border:1px solid rgba(232,122,133,.5);color:#fff;padding:.8rem 1.15rem;border-radius:14px;font-size:14px;font-weight:700;line-height:1.45;max-width:34rem}
+.price-desconto b{color:var(--coral)}
 .price-por{margin:1.25rem auto 0;display:inline-block;background:transparent;border:1px solid rgba(232,122,133,.6);color:#fff;padding:.9rem 1.35rem;border-radius:14px;font-weight:800;font-size:17px;line-height:1.35;max-width:34rem}
 @media (min-width:768px){.price-box{padding:3rem}.price-list li{font-size:16px}}
 
@@ -400,6 +439,10 @@ header.hero-section{
       <span class="selo" id="hero-selo">Oferta especial liberada</span>
       <h1 class="hero-title">Tire o ukulele do canto da sala e toque suas músicas favoritas com <span>20 minutos por dia</span></h1>
       <p class="hero-sub">Mesmo que você já tenha tentado antes e travado no caminho, e mesmo que ache que não tenha talento.</p>
+      <div class="hero-preco">
+        <span class="hero-preco-de">De <span class="price-old">R$ 597</span></span>
+        <span class="hero-preco-por">Por <b>12x R$ 31</b> ou <b>R$ 297</b> à vista</span>
+      </div>
       <a href="https://pay.hotmart.com/I107367779O?off=kb9xgzrf&amp;hideBillet=1&amp;offDiscount=RVD-CLUBE3" class="btn-pulsar cta-btn cta-link" data-texto="Quero aproveitar a oferta" data-cta="hero">Quero aproveitar a oferta</a>
       <span class="hero-data">Somente hoje, <b>03/09, das 8h às 20h</b></span>
     </div>
@@ -523,7 +566,7 @@ header.hero-section{
       <div class="recebe-card">
         <span class="num">05</span>
         <h3>Curso de canto incluso</h3>
-        <p>Workshop de Canto com Ukulele, com professora de canto convidada, para você tocar e cantar afinado ao mesmo tempo.</p>
+        <p>Workshop de Canto com Ukulele, com a professora Cissa Laval, para você tocar e cantar afinado ao mesmo tempo, mesmo achando que não tem voz.</p>
       </div>
       <div class="recebe-card">
         <span class="num">06</span>
@@ -612,6 +655,31 @@ header.hero-section{
   </div>
 </section>
 
+<section class="sec sec-escura">
+  <div class="container container-5xl center">
+    <span class="eyebrow">Quanto mais cedo, mais você leva</span>
+    <h2 class="h2">Dois bônus que dependem da hora em que você entrar</h2>
+    <p class="lead" style="margin-top:1rem">Os dois valem só para quem entrar hoje, e um deles fecha às 10h da manhã.</p>
+    <div class="janela-grid">
+
+      <div class="janela-card">
+        <span class="janela-hora"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>Das 8h às 20h</span>
+        <h3>Dois encontros ao vivo comigo</h3>
+        <p>Dois encontros no Zoom, só com a turma que entrar nesta abertura. Você tira as suas dúvidas comigo, conhece quem está começando junto e a gente conversa sobre música.</p>
+        <span class="quem">Para <b>qualquer inscrição feita hoje</b></span>
+      </div>
+
+      <div class="janela-card cedo">
+        <span class="janela-hora"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>Só das 8h às 10h</span>
+        <h3>Nivelamento personalizado comigo</h3>
+        <p>Você responde um questionário e pode me enviar um vídeo tocando. Eu analiso e te digo por onde começar dentro do Clube e qual é o seu caminho, em vez de você adivinhar sozinho.</p>
+        <span class="quem">Só para quem entrar nas <b>2 primeiras horas</b></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section class="sec sec-clara">
   <div class="container center">
     <span class="eyebrow">Resumindo</span>
@@ -633,19 +701,24 @@ header.hero-section{
     <h2 class="h2">Tudo que entra junto na sua assinatura</h2>
     <div class="price-box" style="text-align:left">
       <ul class="price-list">
-        <li><span class="ck">✓</span> <span><b>Trilha completa</b>, do Iniciante 0 ao Intermediário 2</span></li>
-        <li><span class="ck">✓</span> <span><b>Biblioteca com 154 músicas</b>, com aula, play along e cifra em PDF</span></li>
-        <li><span class="ck">✓</span> <span><b>Gravações de aulas ao vivo extras inclusas</b>, uma nova toda semana</span></li>
-        <li><span class="ck">✓</span> <span><b>Comunidade e desafios do mês</b>, para você não estudar sozinho</span></li>
-        <li><span class="ck">✓</span> <span><b>Workshop de Canto com Ukulele</b>, para tocar e cantar afinado ao mesmo tempo</span></li>
-        <li><span class="ck">✓</span> <span><b>Bônus 1</b>: 5 atividades no primeiro módulo com correção minha em vídeo</span></li>
-        <li><span class="ck">✓</span> <span><b>Bônus 2</b>: aula quinzenal com espaço para tirar dúvidas</span></li>
-        <li><span class="ck">✓</span> <span><b>Bônus 3</b>: Guia de Compra do Primeiro Ukulele</span></li>
-        <li><span class="ck">✓</span> <span><b>Bônus 4</b>: Destrava Dedos, com 21 exercícios de coordenação</span></li>
-        <li><span class="ck">✓</span> <span><b>Bônus 5</b>: Dicionário de Acordes do Ukulele em eBook</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Trilha completa</b>, do Iniciante 0 ao Intermediário 2</span></span><span class="price-valor">R$ 597</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Comunidade exclusiva</b> por um ano, para não estudar sozinho</span></span><span class="price-valor">R$ 297</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Biblioteca com 154 músicas</b>, com aula, play along e cifra em PDF</span></span><span class="price-valor">R$ 197</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Workshop de Canto com Ukulele</b>, com a professora Cissa Laval</span></span><span class="price-valor">R$ 197</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Gravações de aulas ao vivo extras</b>, uma nova toda semana</span></span><span class="price-valor incluso">Incluso</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Bônus 1</b>: 5 atividades no primeiro módulo com correção minha em vídeo</span></span><span class="price-valor incluso">Incluso</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Bônus 2</b>: aula quinzenal com espaço para tirar dúvidas</span></span><span class="price-valor incluso">Incluso</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Bônus 3</b>: Guia de Compra do Primeiro Ukulele</span></span><span class="price-valor incluso">Incluso</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Bônus 4</b>: Destrava Dedos, com 21 exercícios de coordenação</span></span><span class="price-valor incluso">Incluso</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Bônus 5</b>: Dicionário de Acordes do Ukulele em eBook</span></span><span class="price-valor incluso">Incluso</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Dois encontros ao vivo</b> comigo, para quem entrar hoje</span></span><span class="price-valor incluso">Incluso</span></li>
+        <li><span class="price-item"><span class="ck">✓</span> <span><b>Nivelamento personalizado</b>, para quem entrar das 8h às 10h</span></span><span class="price-valor incluso">Incluso</span></li>
       </ul>
       <div class="price-final">
-        <p class="price-por">O valor com a condição da abertura aparece no checkout, e vale só até as 20h de hoje.</p>
+        <p class="price-de">De <span class="price-old">R$ 597</span> por ano</p>
+        <p class="price-agora">12x de <span>R$ 31</span></p>
+        <p class="price-avista">ou R$ 297 à vista, por um ano de acesso</p>
+        <p class="price-desconto">São <b>50% de desconto</b> no plano anual, e ele não vale só agora: <b>enquanto você seguir no Clube, a renovação continua pela metade</b>. São R$ 300 a menos todo ano.</p>
         <div class="cta-wrap">
           <a href="https://pay.hotmart.com/I107367779O?off=kb9xgzrf&amp;hideBillet=1&amp;offDiscount=RVD-CLUBE3" class="btn-pulsar cta-btn cta-link" data-texto="Ver o valor e entrar no Clube" data-cta="preco">Ver o valor e entrar no Clube</a>
         </div>
@@ -724,7 +797,7 @@ header.hero-section{
       </details>
       <details class="faq-item">
         <summary class="faq-summary">Por quanto tempo eu tenho acesso?<span class="faq-arrow"></span></summary>
-        <div class="faq-content">É como uma academia: um ano de acesso ilimitado a tudo que está dentro do Clube. Ao fim do período a assinatura renova, e a condição que você pegou na abertura continua valendo na renovação.</div>
+        <div class="faq-content">É como uma academia: o plano é anual e te dá acesso ilimitado a tudo que está dentro do Clube por um ano. Ao fim do período a assinatura renova, e aqui está a melhor parte: <b>os 50% de desconto que você pega hoje valem também nas renovações</b>. Você não paga R$ 597 no ano que vem por ter entrado agora.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-summary">Eu mando vídeo tocando para você corrigir?<span class="faq-arrow"></span></summary>
@@ -732,7 +805,7 @@ header.hero-section{
       </details>
       <details class="faq-item">
         <summary class="faq-summary">Tem encontro ao vivo toda semana?<span class="faq-arrow"></span></summary>
-        <div class="faq-content">Neste plano não. O que você tem é a aula quinzenal com espaço para dúvidas, mais as gravações das aulas ao vivo extras, que entram toda semana e ficam guardadas com o material junto.</div>
+        <div class="faq-content">Toda semana não, e eu prefiro te dizer isso agora. O que você tem é a <b>aula quinzenal</b> com espaço para dúvidas, mais as gravações das aulas ao vivo extras, que entram toda semana e ficam guardadas com o material junto. Além disso, entrando hoje você ganha <b>dois encontros ao vivo comigo no Zoom</b>, só com a turma desta abertura.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-summary">Tenho pouco tempo para estudar.<span class="faq-arrow"></span></summary>
