@@ -326,6 +326,26 @@ footer a{color:#C9C2DC}
   .aviso{font-size:15px;padding:.5em 1.2em}
   .headline{font-size:23px;max-width:30em}
 }
+/* ---------- ESPERA DE 15 SEGUNDOS ----------
+   Tudo que fica abaixo do vídeo só aparece 15s depois de a página abrir. É a
+   regra do método: o botão não existe antes de o preço ser dito no vídeo.
+
+   Como esconder importa MUITO aqui. Não é display:none e não é remover do DOM:
+   o widget da Hotmart precisa montar e carregar o iframe dele durante esses 15
+   segundos, senão o aluno chega num botão que ainda está nascendo.
+     visibility:hidden  → o navegador continua fazendo layout e o iframe carrega
+                          normal, só não é pintado nem clicável;
+     height:0 + overflow → o bloco não ocupa espaço, então a página não fica com
+                          uma rolagem gigante e vazia esperando.
+   Nada de opacity:0 sozinho, que deixaria o conteúdo clicável e navegável por
+   teclado antes da hora.
+
+   O contador é o relógio da navegação (performance.now), não do DOMContentLoaded:
+   o que vale é quando a pessoa abriu a página. */
+#pos-video.espera{height:0;overflow:hidden;visibility:hidden}
+#pos-video.revelado{animation:revela .45s ease both}
+@keyframes revela{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -374,6 +394,33 @@ footer a{color:#C9C2DC}
 
   </div>
 </section>
+
+<!-- ============ TUDO ABAIXO DO VÍDEO ESPERA 15 SEGUNDOS ============
+     A classe "espera" já nasce no HTML para nunca haver um flash do conteúdo
+     antes de o script rodar. Sem JavaScript, o <noscript> abaixo devolve tudo
+     na hora: melhor mostrar cedo do que esconder para sempre. -->
+<noscript><style>#pos-video.espera{height:auto;overflow:visible;visibility:visible}</style></noscript>
+<div id="pos-video" class="espera">
+<script>
+(function(){
+  var el=document.getElementById('pos-video');
+  if(!el) return;
+  var revelado=false;
+  function revela(){
+    if(revelado) return; revelado=true;
+    el.classList.remove('espera'); el.classList.add('revelado');
+  }
+  /* performance.now() é o tempo desde que a navegação começou, então quem
+     demorou pra carregar não ganha 15 segundos a mais de espera. */
+  var jaPassou = (window.performance && performance.now) ? performance.now() : 0;
+  setTimeout(revela, Math.max(0, 15000 - jaPassou));
+  /* Rede de segurança: se aquele timer morrer (aba em segundo plano agressiva,
+     erro em outro script), o load agenda de novo. revela() é idempotente. */
+  window.addEventListener('load', function(){
+    setTimeout(revela, Math.max(0, 15000 - ((window.performance&&performance.now)?performance.now():0)));
+  }, {once:true});
+})();
+</script>
 
 <!-- ============ 4. OFERTA: WIDGET DA HOTMART (one-click buy) ============
      Fica logo abaixo do vídeo e aparece parcialmente já na primeira dobra: com
@@ -654,6 +701,7 @@ footer a{color:#C9C2DC}
       <a href="mailto:suporte@clubedoukulele.com">suporte@clubedoukulele.com</a></p>
   </div>
 </footer>
+</div><!-- /#pos-video -->
 
 <!-- ============ BOTÃO FLUTUANTE DO WHATSAPP ============ -->
 <a class="wa-float" id="waFloat" target="_blank" rel="noopener"
