@@ -163,7 +163,9 @@ h2{font-family:'Anton',Impact,system-ui,sans-serif;text-transform:uppercase;lett
 @media (min-width:768px){.janela-grid{grid-template-columns:1fr 1fr}}
 
 /* Tarja do modo de teste: só aparece quando a URL força um horário. */
-.aviso-teste{position:fixed;top:.5rem;right:.5rem;z-index:200;background:#8A5A00;color:#fff;font-size:11px;font-weight:800;line-height:1.3;padding:.4rem .65rem;border-radius:8px;max-width:15rem;text-align:right;pointer-events:none;box-shadow:0 8px 20px -10px rgba(0,0,0,.6)}
+.aviso-teste{position:fixed;top:calc(72px + .5rem);right:.5rem;z-index:200;background:#8A5A00;color:#fff;font-size:11px;font-weight:800;line-height:1.3;padding:.4rem .65rem;border-radius:8px;max-width:15rem;text-align:right;pointer-events:none;box-shadow:0 8px 20px -10px rgba(0,0,0,.6)}
+/* No celular a barra mora embaixo, então a tarja pode voltar para o topo. */
+@media (max-width:1023px){.aviso-teste{top:.5rem}}
 
 /* === SELO === */
 .selo{display:inline-block;background:transparent;border:1px solid rgba(232,122,133,.6);color:var(--coral);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;padding:.4rem .9rem;border-radius:999px}
@@ -286,6 +288,54 @@ header.hero-section{
 .trilha-item:nth-child(4) .trilha-bolha,.trilha-item:nth-child(5) .trilha-bolha{border-color:var(--acao)}
 .trilha-item h3{color:var(--indigo);font-size:15.5px;font-weight:800}
 .trilha-item p{font-size:13.5px;line-height:1.5;color:var(--muted)}
+
+/* === JORNADA E BIBLIOTECA (listas em acordeão) ===
+   Fechadas por padrão: no celular a seção inteira cabe em uma tela, e quem
+   quiser conferir aula por aula abre o curso que interessa. A lista de músicas
+   rola dentro do próprio bloco, senão o nível com 87 aulas empurraria o resto
+   da página para longe. */
+.jornada,.niveis{display:flex;flex-direction:column;gap:.75rem;margin-top:2.25rem;text-align:left}
+.curso,.nivel{background:var(--page);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.nivel{background:var(--card)}
+.curso summary,.nivel summary{list-style:none;display:flex;align-items:center;gap:.85rem;padding:1rem 1.1rem;cursor:pointer}
+.curso summary::-webkit-details-marker,.nivel summary::-webkit-details-marker{display:none}
+.curso-num{width:34px;height:34px;flex-shrink:0;border-radius:10px;background:var(--indigo);color:#fff;font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:16px;display:flex;align-items:center;justify-content:center}
+.curso-txt{display:flex;flex-direction:column;gap:.1rem;min-width:0;flex:1}
+.curso-txt b{color:var(--indigo);font-size:15.5px;font-weight:800;line-height:1.25}
+.curso-meta{font-size:12.5px;color:var(--muted);font-weight:600}
+.curso-seta{width:.7rem;height:.7rem;flex-shrink:0;border-right:2px solid var(--coral-forte);border-bottom:2px solid var(--coral-forte);transform:rotate(45deg);transition:transform .2s;margin-top:-4px}
+.curso[open] .curso-seta,.nivel[open] .curso-seta{transform:rotate(-135deg);margin-top:4px}
+.curso-corpo{padding:0 1.1rem 1.25rem;border-top:1px solid var(--line)}
+.modulo{padding-top:1.1rem}
+.modulo h4{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;font-size:12.5px;font-weight:800;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em;line-height:1.3}
+.modulo h4 span{flex-shrink:0;font-size:11px;color:var(--muted);font-weight:700;text-transform:none;letter-spacing:0}
+.modulo ul{margin-top:.6rem;display:flex;flex-direction:column;gap:.4rem}
+.modulo li{position:relative;padding-left:.95rem;font-size:13.5px;line-height:1.45;color:var(--muted)}
+.modulo li::before{content:'›';position:absolute;left:0;color:var(--coral-forte);font-weight:800}
+.curso-nota{margin-top:1.15rem;padding-top:.85rem;border-top:1px dashed var(--line-forte);font-size:12.5px;color:var(--muted);font-style:italic;line-height:1.5}
+
+.busca-wrap{margin-top:2rem;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.busca{width:100%;max-width:26rem;min-height:46px;padding:.8rem 1rem;border-radius:12px;border:1px solid var(--line-forte);background:var(--card);font-family:inherit;font-size:15px;color:var(--ink)}
+.busca::placeholder{color:var(--muted)}
+.busca:focus{border-color:var(--indigo);outline:none}
+.busca-info{font-size:12.5px;font-weight:700;color:var(--coral-forte)}
+.nivel-nome{flex:1;min-width:0;color:var(--indigo);font-size:15.5px;font-weight:800}
+.nivel-meta{flex-shrink:0;font-size:12.5px;color:var(--muted);font-weight:700}
+.nivel.vazio{display:none}
+.musicas{max-height:20rem;overflow-y:auto;padding:0 1.1rem;border-top:1px solid var(--line)}
+.musicas li{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem;padding:.6rem 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.musicas li:last-child{border-bottom:0}
+.musicas li[hidden]{display:none}
+.mus{font-weight:700;color:var(--ink)}
+.art{font-size:12.5px;color:var(--muted)}
+.art::before{content:'· '}
+.musicas em{margin-left:auto;font-style:normal;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--coral-forte);background:rgba(180,64,79,.09);padding:.15rem .45rem;border-radius:6px;white-space:nowrap}
+@media (min-width:768px){
+  .curso-txt b,.nivel-nome{font-size:17px}
+  .modulo li{font-size:14px}
+  .musicas{max-height:26rem}
+  .musicas li{font-size:14px}
+}
 
 /* === DEPOIMENTO EM VÍDEO (facade: o iframe só entra no clique) === */
 .yt{position:relative;width:100%;max-width:720px;margin:2.5rem auto 0;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:3px solid var(--indigo);box-shadow:0 22px 44px -24px rgba(0,0,0,.45);cursor:pointer}
@@ -414,7 +464,7 @@ header.hero-section{
   .barra-inner{padding:.7rem 1.15rem;gap:1.5rem}
   .barra-esq{flex-direction:row;align-items:center;gap:1rem;flex:1}
   .barra-topo{font-size:11.5px}
-  .barra-base{display:inline;margin-left:auto}
+  .barra-base{display:inline}
   .barra-timer b{font-size:24px}
   .barra-timer .un{font-size:11px}
   .barra-cta{padding:.85rem 1.75rem;font-size:16px}
@@ -472,7 +522,7 @@ header.hero-section{
 <section class="proof-bar">
   <div class="container proof-inner">
     <div class="proof-item"><span class="proof-num">+6.000</span> <span class="proof-text">alunos formados</span></div>
-    <div class="proof-item"><span class="proof-num">154</span> <span class="proof-text">músicas na biblioteca</span></div>
+    <div class="proof-item"><span class="proof-num">157</span> <span class="proof-text">aulas de música</span></div>
     <div class="proof-item"><span class="proof-num">30</span> <span class="proof-text">dias de garantia</span></div>
   </div>
 </section>
@@ -560,7 +610,7 @@ header.hero-section{
       </div>
       <div class="recebe-card">
         <span class="num">02</span>
-        <h3>Biblioteca com 154 músicas</h3>
+        <h3>Biblioteca com 157 aulas de música</h3>
         <p>Cada música tem aula, destrinchamento e o Toque Comigo, que é o play along com a cifra na tela. Todas com PDF para baixar, e a lista cresce todo mês.</p>
       </div>
       <div class="recebe-card">
@@ -610,6 +660,549 @@ header.hero-section{
 
     <div class="cta-wrap">
       <a href="https://pay.hotmart.com/I107367779O?off=kb9xgzrf&amp;hideBillet=1&amp;offDiscount=RVD-CLUBE3" class="btn-pulsar cta-btn cta-link" data-texto="Quero entrar no Clube" data-cta="trilha">Quero entrar no Clube</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-branca">
+  <div class="container container-5xl">
+    <span class="eyebrow">O caminho completo</span>
+    <h2 class="h2">A Jornada de Aprendizado, curso por curso</h2>
+    <p class="lead" style="margin-top:1rem">São <b>201 aulas na Jornada de Aprendizado, em 5 cursos</b>, nesta ordem. Toque em um curso para ver os módulos e as aulas por dentro.</p>
+    <div class="jornada">
+        <details class="curso">
+          <summary>
+            <span class="curso-num">1</span>
+            <span class="curso-txt"><b>Do ZERO à 1ª Música</b><span class="curso-meta">2 módulos · 19 aulas</span></span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <div class="curso-corpo">
+          <div class="modulo">
+            <h4>Sua primeira música! <span>10 aulas</span></h4>
+            <ul>
+            <li>A Base de tudo!</li>
+            <li>Guia de Compra do 1º Ukulele!</li>
+            <li>Glossário do Ukulele</li>
+            <li>Anatomia do Ukulele</li>
+            <li>Como afinar o ukulele</li>
+            <li>Como segurar o ukulele</li>
+            <li>O primeiro ritmo: Batida Bate e Desce</li>
+            <li>Seus primeiros acordes</li>
+            <li>Sua primeira música!</li>
+            <li>Seus próximos passos</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Suas próximas músicas <span>3 aulas</span></h4>
+            <ul>
+            <li>Como eu organizaria meus estudos se começasse hoje</li>
+            <li>As próximas músicas!</li>
+            <li>Próximos Passos!</li>
+            </ul>
+          </div>
+          <p class="curso-nota">Além destas, 6 atividades práticas para você gravar e enviar ao longo do curso.</p>          </div>
+        </details>
+        <details class="curso">
+          <summary>
+            <span class="curso-num">2</span>
+            <span class="curso-txt"><b>Ukulele Fundamental</b><span class="curso-meta">5 módulos · 41 aulas</span></span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <div class="curso-corpo">
+          <div class="modulo">
+            <h4>Efeito Bola de Neve <span>8 aulas</span></h4>
+            <ul>
+            <li>Domando os dedos! - Exercício 1234</li>
+            <li>Os 7 erros fatais dos iniciantes</li>
+            <li>Os 5 Passos para Tirar qualquer música!</li>
+            <li>Passo 1: Identificar os Acordes</li>
+            <li>Passo 2: Identificar a Batida</li>
+            <li>Passo 3: Treinar Batidas + Acordes</li>
+            <li>Passo 4: Voz + Batida + Acordes</li>
+            <li>Passo 5: Treinar e Repetir</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Dominando os Fundamentos <span>7 aulas</span></h4>
+            <ul>
+            <li>Entendendo tempos e ritmos</li>
+            <li>Como fazer as batidas, Movimento Perpétuo e Swing Time (Sossego + La Bella Luna)</li>
+            <li>Elementos da Batida, Peteleco, Gancho</li>
+            <li>Notas Musicais, Sustenido e Bemol</li>
+            <li>Batida Pop 1 (a mais coringa) e Dedo Guia</li>
+            <li>Como ler Diagramas de Acorde</li>
+            <li>Acordes Maiores vs. Acordes Menores</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Dominando as trocas de acordes! <span>6 aulas</span></h4>
+            <ul>
+            <li>Como Trocar de Acorde Rapidamente</li>
+            <li>O melhor exercício para acordes</li>
+            <li>Cifras e Símbolos</li>
+            <li>Como ler acordes com &quot;Barra&quot;</li>
+            <li>Pegadinhas dos Sites de Cifras!</li>
+            <li>Diagramas de Acordes para Imprimir</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>As batidas e Acordes essenciais <span>7 aulas</span></h4>
+            <ul>
+            <li>Diferentes afinações e formas de afinar</li>
+            <li>Uma nova Batida Dinâmica</li>
+            <li>Tirando mais rodinhas…</li>
+            <li>Onde encontrar cifras e dicas de utilização dos sites</li>
+            <li>A segunda batida MAIS coringa: POP 2</li>
+            <li>Como cantar e tocar ao mesmo tempo?</li>
+            <li>Acordes Essenciais para Ukulele</li>
+            </ul>
+          </div>
+          <p class="curso-nota">Além destas, 13 atividades práticas para você gravar e enviar ao longo do curso.</p>          </div>
+        </details>
+        <details class="curso">
+          <summary>
+            <span class="curso-num">3</span>
+            <span class="curso-txt"><b>Ukulele Além do Básico</b><span class="curso-meta">6 módulos · 69 aulas</span></span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <div class="curso-corpo">
+          <div class="modulo">
+            <h4>Temperando sua música <span>4 aulas</span></h4>
+            <ul>
+            <li>Abafamento, Batida de Reggae e Símbolos nas Cifras</li>
+            <li>Como trazer a sua identidade para a música</li>
+            <li>Acabando com o medo da pestana</li>
+            <li>Acordes com mais dedos</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Conceitos Básicos (e úteis!) de Teoria Musical <span>8 aulas</span></h4>
+            <ul>
+            <li>Introdução</li>
+            <li>O que é teoria musical?</li>
+            <li>Elementos da Música</li>
+            <li>Um pouco sobre as notas musicais...</li>
+            <li>Sustenido e Bemol</li>
+            <li>Tom e Semitom</li>
+            <li>As Notas Musicais</li>
+            <li>As Notas no Braço do Ukulele</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Dedilhando o Ukulele <span>18 aulas</span></h4>
+            <ul>
+            <li>Dedilhados e o Ukulele</li>
+            <li>Introdução</li>
+            <li>Como usar os dedos para fazer dedilhados</li>
+            <li>Como Ler Tablaturas</li>
+            <li>Apostila para Download</li>
+            <li>Os padrões mais comuns</li>
+            <li>Padrão #01 - Só de Ida PIMA</li>
+            <li>Padrão #02 - Vai e Volta 1</li>
+            <li>Padrão #03 - Vai e Volta 2</li>
+            <li>Padrão #04 - Cordas Juntas 1</li>
+            <li>Padrão #05 - Cordas Juntas 2</li>
+            <li>Padrão #06 - Polegar 1</li>
+            <li>Padrão #07 - Polegar 2</li>
+            <li>Padrão #08 - Polegar Alternado</li>
+            <li>Padrão #09 - Dentro Fora 1</li>
+            <li>Padrão #10 - Dentro Fora 2</li>
+            <li>Padrão #11 - Dentro Fora 3</li>
+            <li>Conclusão</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Alongamento e fortalecimento dos dedos <span>4 aulas</span></h4>
+            <ul>
+            <li>Acordes que precisam de flexibilidade dos dedos</li>
+            <li>Sequência de Alongamentos (para antes e depois de tocar)</li>
+            <li>Exercício: Tom Tom Tom</li>
+            <li>Força nos Dedos : Você vai precisar!</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Progressões de Acordes para Expandir o repertório <span>10 aulas</span></h4>
+            <ul>
+            <li>Progressões de Acordes, Batida Baião e Expansão de Repertório</li>
+            <li>Dia 1 - Treino 1</li>
+            <li>Dia 2 - Treino 2</li>
+            <li>Dia 3 - Treino 3</li>
+            <li>Dia 4 - Treino 1</li>
+            <li>Dia 5 - Treino 2</li>
+            <li>Dia 6 - Treino 3</li>
+            <li>Dia 7 - Treino 1</li>
+            <li>Dia 8 - Treino 2</li>
+            <li>Dia 9 - Treino 3</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Explodindo o Repertório! <span>3 aulas</span></h4>
+            <ul>
+            <li>Meia Batida, outra batida coringa e mais progressões</li>
+            <li>8 Novas Batidas pra tocar (quase) de tudo</li>
+            <li>3 últimas progressões + Treinos!</li>
+            </ul>
+          </div>
+          <p class="curso-nota">Além destas, 22 atividades práticas para você gravar e enviar ao longo do curso.</p>          </div>
+        </details>
+        <details class="curso">
+          <summary>
+            <span class="curso-num">4</span>
+            <span class="curso-txt"><b>Navegando pelo Ukulele</b><span class="curso-meta">5 módulos · 33 aulas</span></span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <div class="curso-corpo">
+          <div class="modulo">
+            <h4>Leitura Musical <span>7 aulas</span></h4>
+            <ul>
+            <li>Tablaturas e Partituras</li>
+            <li>Exercícios - Partitura e Tablatura</li>
+            <li>Exercícios - Partitura</li>
+            <li>Figuras Rítmicas na Partitura</li>
+            <li>Exercício - Figuras Rítmicas</li>
+            <li>Colcheias e Semicolcheias</li>
+            <li>Pausas, Ponto e Quiálteras (Tercinas)</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Escalas Musicais <span>2 aulas</span></h4>
+            <ul>
+            <li>Intervalos, Enarmonia, Altura e Intensidade do Som</li>
+            <li>Escalas Musicais, Escala Cromática e Escala Maior</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Escalas Maiores <span>9 aulas</span></h4>
+            <ul>
+            <li>Escala Maior de C - aplicações</li>
+            <li>Escala Maior de Dó (C) - desenhos pelo braço e padrões</li>
+            <li>Escala de C usando diferentes padrões</li>
+            <li>Introduzindo os próximos exercícios</li>
+            <li>Escala Maior de G (Sol) - desenhos</li>
+            <li>Escala Maior de G (Sol) - Exercícios</li>
+            <li>A# ou Bb? É a mesma coisa? É diferente?</li>
+            <li>Escala Maior de F (Fá) - desenhos</li>
+            <li>Escala Maior de F (Fá) - exercícios</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Formatos Mágicos (Tríades) <span>2 aulas</span></h4>
+            <ul>
+            <li>Acordes Móveis - Acordes Maiores (Parte 1)</li>
+            <li>Acordes Móveis - Acordes Menores (Parte 2)</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Formatos Mágicos (Tétrades) <span>5 aulas</span></h4>
+            <ul>
+            <li>Acorde Maior com Sétima Menor - 7</li>
+            <li>Acorde Menor com Sétima - m7</li>
+            <li>Acorde Maior com Sétima Maior - 7M</li>
+            <li>Acorde Meio Diminuto - m7(b5)</li>
+            <li>Acorde Diminuto - º</li>
+            </ul>
+          </div>
+          <p class="curso-nota">Além destas, 8 atividades práticas para você gravar e enviar ao longo do curso.</p>          </div>
+        </details>
+        <details class="curso">
+          <summary>
+            <span class="curso-num">5</span>
+            <span class="curso-txt"><b>Harmonia &amp; Técnica Rítmica</b><span class="curso-meta">7 módulos · 39 aulas</span></span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <div class="curso-corpo">
+          <div class="modulo">
+            <h4>Formação de Acordes <span>5 aulas</span></h4>
+            <ul>
+            <li>Introdução à Formação de Acordes</li>
+            <li>O que são acordes?</li>
+            <li>Intervalos - distância entre uma nota e outra</li>
+            <li>Tríades</li>
+            <li>Tétrades</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Introdução ao Campo Harmônico <span>2 aulas</span></h4>
+            <ul>
+            <li>Campo Harmônico em Tríades</li>
+            <li>Campo Harmônico em Tétrades</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Técnicas Rítmicas Avançadas - Batidas Ternárias <span>6 aulas</span></h4>
+            <ul>
+            <li>Material de Acompanhamento [Download]</li>
+            <li>Batidas em Compasso Ternário</li>
+            <li>Batida Ternária 1</li>
+            <li>Batida Ternária 2</li>
+            <li>Batida Ternária 3</li>
+            <li>Batida Ternária 4</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Técnicas Rítmicas Avançadas - Reggae, Jazz, Abafamento e &quot;Scratch&quot; <span>10 aulas</span></h4>
+            <ul>
+            <li>Abafamento com a Mão do Acorde</li>
+            <li>Batida de Reggae com Abafamento 1</li>
+            <li>Batida de Reggae com Abafamento 2</li>
+            <li>Manipulando o Abafamento</li>
+            <li>Batida de Jazz com Abafamento</li>
+            <li>Scratch</li>
+            <li>Batida de Reggae com Scratch 1</li>
+            <li>Batida Pop com Scratch 1</li>
+            <li>Batida de Reggae com Scratch 2</li>
+            <li>Batida de Jazz com Scratch</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Ténicas Rítmicas Avançadas - Usando o polegar <span>5 aulas</span></h4>
+            <ul>
+            <li>Usando o Polegar</li>
+            <li>Batida com Polegar 1</li>
+            <li>Batida com Polegar 2</li>
+            <li>Batida com Polegar 3</li>
+            <li>Batida com Polegar Alternado</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Técnicas Rítmicas Avançadas - Palm Mute e Tremolo <span>4 aulas</span></h4>
+            <ul>
+            <li>Palm Mute</li>
+            <li>Batida com Palm Mute 1</li>
+            <li>Batida com Palm Mute 2</li>
+            <li>Tremolo</li>
+            </ul>
+          </div>
+          <div class="modulo">
+            <h4>Técnicas Rítmicas Avançadas - Rasgueados e Tripletes <span>7 aulas</span></h4>
+            <ul>
+            <li>Rasgueado</li>
+            <li>Batida com Rasgueado 1</li>
+            <li>Rasgueado de 4 Dedos</li>
+            <li>Rasgueado de 5 Dedos</li>
+            <li>Triplete</li>
+            <li>Batida com Triplete</li>
+            <li>Outras Formas de Fazer o Triplete</li>
+            </ul>
+          </div>
+          </div>
+        </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-clara">
+  <div class="container container-5xl center">
+    <span class="eyebrow">Repertório</span>
+    <h2 class="h2">A biblioteca, nível por nível</h2>
+    <p class="lead" style="margin-top:1rem">São <b>157 aulas de música</b>, em 149 títulos. Boa parte tem duas versões: a <b>Simplificada</b>, para você tocar logo, e a <b>Principal</b>, mais perto do original.</p>
+    <div class="busca-wrap">
+      <input type="search" class="busca" id="busca-musica" placeholder="Buscar por música ou artista" aria-label="Buscar na biblioteca de músicas" autocomplete="off">
+      <span class="busca-info" id="busca-info" hidden></span>
+    </div>
+    <div class="niveis">
+        <details class="nivel">
+          <summary>
+            <span class="nivel-nome">Iniciante 0</span>
+            <span class="nivel-meta">6 aulas de música</span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <ul class="musicas">
+            <li data-b="manhã de sol bola de neve"><span class="mus">Manhã de Sol</span><span class="art">Bola de Neve</span><em>Simplificada</em></li>
+            <li data-b="w/brasil jorge ben jor"><span class="mus">W/Brasil</span><span class="art">Jorge Ben Jor</span><em>Simplificada</em></li>
+            <li data-b="garota nacional skank"><span class="mus">Garota Nacional</span><span class="art">Skank</span><em>Simplificada</em></li>
+            <li data-b="jackie tequila skank"><span class="mus">Jackie Tequila</span><span class="art">Skank</span><em>Simplificada</em></li>
+            <li data-b="te ver skank"><span class="mus">Te ver</span><span class="art">Skank</span><em>Simplificada</em></li>
+            <li data-b="parabéns pra você (super simplificada) tradicional"><span class="mus">Parabéns pra Você (Super Simplificada)</span><span class="art">Tradicional</span></li>
+          </ul>
+        </details>
+        <details class="nivel">
+          <summary>
+            <span class="nivel-nome">Iniciante 1</span>
+            <span class="nivel-meta">87 aulas de música</span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <ul class="musicas">
+            <li data-b="tocando em frente almir sater"><span class="mus">Tocando em Frente</span><span class="art">Almir Sater</span><em>Simplificada</em></li>
+            <li data-b="acredite em você amanda loyola"><span class="mus">Acredite em você</span><span class="art">Amanda Loyola</span><em>Principal</em></li>
+            <li data-b="a horse with no name america"><span class="mus">A Horse With No Name</span><span class="art">America</span><em>Simplificada</em></li>
+            <li data-b="trem bala ana vilela"><span class="mus">Trem Bala</span><span class="art">Ana Vilela</span><em>Simplificada</em></li>
+            <li data-b="desenho de deus armandinho"><span class="mus">Desenho de Deus</span><span class="art">Armandinho</span><em>Simplificada</em></li>
+            <li data-b="let it be (simplificada v1) beatles"><span class="mus">Let it be (Simplificada v1)</span><span class="art">Beatles</span></li>
+            <li data-b="let it be (simplificada v2) beatles"><span class="mus">Let It Be (Simplificada v2)</span><span class="art">Beatles</span></li>
+            <li data-b="love me do beatles"><span class="mus">Love me Do</span><span class="art">Beatles</span><em>Principal</em></li>
+            <li data-b="paperback writer beatles"><span class="mus">Paperback Writer</span><span class="art">Beatles</span><em>Simplificada</em></li>
+            <li data-b="stand by me ben e. king"><span class="mus">Stand By Me</span><span class="art">Ben E. King</span><em>Simplificada</em></li>
+            <li data-b="get up, stand up bob marley"><span class="mus">Get up, stand up</span><span class="art">Bob Marley</span><em>Simplificada</em></li>
+            <li data-b="lively up yourself bob marley"><span class="mus">Lively Up Yourself</span><span class="art">Bob Marley</span><em>Simplificada</em></li>
+            <li data-b="no woman no cry bob marley"><span class="mus">No Woman No Cry</span><span class="art">Bob Marley</span><em>Simplificada</em></li>
+            <li data-b="three little birds bob marley"><span class="mus">Three Little Birds</span><span class="art">Bob Marley</span><em>Simplificada</em></li>
+            <li data-b="o passageiro (simplificada 2) capital inicial"><span class="mus">O Passageiro (Simplificada 2)</span><span class="art">Capital Inicial</span></li>
+            <li data-b="proibida pra mim charlie brown jr."><span class="mus">Proibida pra Mim</span><span class="art">Charlie Brown Jr.</span><em>Simplificada</em></li>
+            <li data-b="zóio de lula charlie brown jr."><span class="mus">Zóio de Lula</span><span class="art">Charlie Brown Jr.</span><em>Simplificada</em></li>
+            <li data-b="yellow coldplay"><span class="mus">Yellow</span><span class="art">Coldplay</span><em>Simplificada</em></li>
+            <li data-b="have you ever seen the rain creedence clearwater revival"><span class="mus">Have You Ever Seen The Rain</span><span class="art">Creedence Clearwater Revival</span><em>Simplificada</em></li>
+            <li data-b="palavras ao vento (simplificada 1) cássia eller"><span class="mus">Palavras Ao Vento (Simplificada 1)</span><span class="art">Cássia Eller</span></li>
+            <li data-b="palavras ao vento (simplificada 2) cássia eller"><span class="mus">Palavras Ao Vento (Simplificada 2)</span><span class="art">Cássia Eller</span></li>
+            <li data-b="me ama diante do trono"><span class="mus">Me Ama</span><span class="art">Diante do Trono</span><em>Simplificada</em></li>
+            <li data-b="outra vez diante do trono"><span class="mus">Outra Vez</span><span class="art">Diante do Trono</span><em>Simplificada</em></li>
+            <li data-b="te agradeço diante do trono"><span class="mus">Te Agradeço</span><span class="art">Diante do Trono</span><em>Simplificada</em></li>
+            <li data-b="photograph ed sheeran"><span class="mus">Photograph</span><span class="art">Ed Sheeran</span><em>Simplificada</em></li>
+            <li data-b="amigo velho falamansa"><span class="mus">Amigo Velho</span><span class="art">Falamansa</span><em>Principal</em></li>
+            <li data-b="somos instantes gabriel elias"><span class="mus">Somos Instantes</span><span class="art">Gabriel Elias</span><em>Simplificada</em></li>
+            <li data-b="atos 2 gabriela rocha"><span class="mus">Atos 2</span><span class="art">Gabriela Rocha</span><em>Simplificada</em></li>
+            <li data-b="deixa queimar gabriela rocha"><span class="mus">Deixa Queimar</span><span class="art">Gabriela Rocha</span><em>Principal</em></li>
+            <li data-b="lugar secreto gabriela rocha"><span class="mus">Lugar Secreto</span><span class="art">Gabriela Rocha</span><em>Simplificada</em></li>
+            <li data-b="pai nosso gabriela rocha"><span class="mus">Pai Nosso</span><span class="art">Gabriela Rocha</span><em>Principal</em></li>
+            <li data-b="knockin&#x27; on heaven&#x27;s door guns n&#x27; roses"><span class="mus">Knockin&#x27; On Heaven&#x27;s Door</span><span class="art">Guns N&#x27; Roses</span><em>Simplificada</em></li>
+            <li data-b="a mensagem da cruz harpa cristã"><span class="mus">A Mensagem da Cruz</span><span class="art">Harpa Cristã</span><em>Simplificada</em></li>
+            <li data-b="demons imagine dragons"><span class="mus">Demons</span><span class="art">Imagine Dragons</span><em>Simplificada</em></li>
+            <li data-b="brilha, brilha, estrelinha infantil"><span class="mus">Brilha, brilha, estrelinha</span><span class="art">Infantil</span><em>Simplificada</em></li>
+            <li data-b="braços de amor isadora pompeo"><span class="mus">Braços de Amor</span><span class="art">Isadora Pompeo</span><em>Principal</em></li>
+            <li data-b="hey pai isadora pompeo"><span class="mus">Hey Pai</span><span class="art">Isadora Pompeo</span><em>Principal</em></li>
+            <li data-b="minha morada isadora pompeo"><span class="mus">Minha Morada</span><span class="art">Isadora Pompeo</span><em>Principal</em></li>
+            <li data-b="vai passar isadora pompeo"><span class="mus">Vai Passar</span><span class="art">Isadora Pompeo</span><em>Simplificada</em></li>
+            <li data-b="ousado amor isaias saad"><span class="mus">Ousado Amor</span><span class="art">Isaias Saad</span><em>Simplificada</em></li>
+            <li data-b="somewhere over the rainbow (super simplificada) israel kamakawiwo&#x27;ole"><span class="mus">Somewhere over the Rainbow (Super Simplificada)</span><span class="art">Israel Kamakawiwo&#x27;ole</span></li>
+            <li data-b="sorte grande (poeira) ivete sangalo"><span class="mus">Sorte Grande (Poeira)</span><span class="art">Ivete Sangalo</span></li>
+            <li data-b="i&#x27;m yours jason mraz"><span class="mus">I&#x27;m Yours</span><span class="art">Jason Mraz</span><em>Simplificada</em></li>
+            <li data-b="louca de saudade jorge e mateus"><span class="mus">Louca de Saudade</span><span class="art">Jorge e Mateus</span><em>Simplificada</em></li>
+            <li data-b="deixa lagum"><span class="mus">Deixa</span><span class="art">Lagum</span><em>Simplificada</em></li>
+            <li data-b="sábado de sol mamonas assassinas"><span class="mus">Sábado de Sol</span><span class="art">Mamonas Assassinas</span><em>Principal</em></li>
+            <li data-b="sábado de sol mamonas assassinas"><span class="mus">Sábado de Sol</span><span class="art">Mamonas Assassinas</span><em>Simplificada</em></li>
+            <li data-b="girls like you maroon 5"><span class="mus">Girls Like You</span><span class="art">Maroon 5</span><em>Simplificada</em></li>
+            <li data-b="meu abrigo melim"><span class="mus">Meu Abrigo</span><span class="art">Melim</span><em>Simplificada</em></li>
+            <li data-b="fazendinha mundo bita"><span class="mus">Fazendinha</span><span class="art">Mundo Bita</span><em>Simplificada</em></li>
+            <li data-b="me namora natiruts/edu ribeiro"><span class="mus">Me Namora</span><span class="art">Natiruts/Edu Ribeiro</span><em>Simplificada</em></li>
+            <li data-b="deus de abraão nengo vieira"><span class="mus">Deus de Abraão</span><span class="art">Nengo Vieira</span><em>Simplificada</em></li>
+            <li data-b="preta, pretinha novos baianos"><span class="mus">Preta, Pretinha</span><span class="art">Novos Baianos</span><em>Simplificada</em></li>
+            <li data-b="quem dorme é o leão o rei leão"><span class="mus">Quem Dorme é o Leão</span><span class="art">O Rei Leão</span><em>Simplificada</em></li>
+            <li data-b="songbird oasis"><span class="mus">Songbird</span><span class="art">Oasis</span><em>Simplificada</em></li>
+            <li data-b=" oh suzana"><span class="mus"></span><span class="art">Oh Suzana</span><em>Simplificada</em></li>
+            <li data-b="la bella luna paralamas do sucesso"><span class="mus">La Bella Luna</span><span class="art">Paralamas do Sucesso</span><em>Simplificada</em></li>
+            <li data-b="pescador de ilusões rappa"><span class="mus">Pescador de Ilusões</span><span class="art">Rappa</span><em>Principal</em></li>
+            <li data-b="cheia de manias raça negra"><span class="mus">Cheia de Manias</span><span class="art">Raça Negra</span><em>Simplificada</em></li>
+            <li data-b="aeroplane red hot chili peppers"><span class="mus">Aeroplane</span><span class="art">Red Hot Chili Peppers</span><em>Simplificada</em></li>
+            <li data-b="by the way red hot chili peppers"><span class="mus">By The Way</span><span class="art">Red Hot Chili Peppers</span><em>Simplificada</em></li>
+            <li data-b="scar tissue red hot chili peppers"><span class="mus">Scar Tissue</span><span class="art">Red Hot Chili Peppers</span><em>Simplificada</em></li>
+            <li data-b="o dia que será pra sempre rodolfo abrantes"><span class="mus">O Dia que Será Pra Sempre</span><span class="art">Rodolfo Abrantes</span><em>Principal</em></li>
+            <li data-b="balela salomão do reggae"><span class="mus">Balela</span><span class="art">Salomão do Reggae</span><em>Simplificada</em></li>
+            <li data-b="faz chover salomão do reggae"><span class="mus">Faz Chover</span><span class="art">Salomão do Reggae</span><em>Principal</em></li>
+            <li data-b="olhos coloridos sandra de sá"><span class="mus">Olhos Coloridos</span><span class="art">Sandra de Sá</span><em>Simplificada</em></li>
+            <li data-b="eu acho que pirei sandy &amp; júnior"><span class="mus">Eu Acho que Pirei</span><span class="art">Sandy &amp; Júnior</span><em>Simplificada</em></li>
+            <li data-b="acima do sol skank"><span class="mus">Acima do Sol</span><span class="art">Skank</span><em>Simplificada</em></li>
+            <li data-b="te ver skank"><span class="mus">Te Ver</span><span class="art">Skank</span><em>Principal</em></li>
+            <li data-b="tristeza do jeca sérgio reis"><span class="mus">Tristeza do Jeca</span><span class="art">Sérgio Reis</span><em>Simplificada</em></li>
+            <li data-b="deus me ama thales roberto"><span class="mus">Deus Me Ama</span><span class="art">Thales Roberto</span><em>Simplificada</em></li>
+            <li data-b="wherever you will go the calling"><span class="mus">Wherever You Will Go</span><span class="art">The Calling</span><em>Simplificada</em></li>
+            <li data-b="dona maria thiago brava"><span class="mus">Dona Maria</span><span class="art">Thiago Brava</span><em>Simplificada</em></li>
+            <li data-b="azul da cor do mar (super simplificada) tim maia"><span class="mus">Azul da Cor do Mar (Super Simplificada)</span><span class="art">Tim Maia</span></li>
+            <li data-b="gostava tanto de você (super simplificada) tim maia"><span class="mus">Gostava Tanto de Você (Super Simplificada)</span><span class="art">Tim Maia</span></li>
+            <li data-b="sossego tim maia"><span class="mus">Sossego</span><span class="art">Tim Maia</span><em>Simplificada</em></li>
+            <li data-b="flores titãs"><span class="mus">Flores</span><span class="art">Titãs</span><em>Simplificada</em></li>
+            <li data-b="chico mineiro tonico e tinoco"><span class="mus">Chico Mineiro</span><span class="art">Tonico e Tinoco</span><em>Principal</em></li>
+            <li data-b="já sei namorar tribalistas"><span class="mus">Já sei namorar</span><span class="art">Tribalistas</span><em>Principal</em></li>
+            <li data-b="velha infância tribalistas"><span class="mus">Velha Infância</span><span class="art">Tribalistas</span><em>Simplificada</em></li>
+            <li data-b="riptide vance joy"><span class="mus">Riptide</span><span class="art">Vance Joy</span><em>Simplificada</em></li>
+            <li data-b="riptide (super simplificada) vance joy"><span class="mus">Riptide (Super Simplificada)</span><span class="art">Vance Joy</span></li>
+            <li data-b="viajando ventania"><span class="mus">Viajando</span><span class="art">Ventania</span><em>Principal</em></li>
+            <li data-b="o sol victor kley"><span class="mus">O Sol</span><span class="art">Victor Kley</span><em>Simplificada</em></li>
+            <li data-b="samba da benção vinícius de moraes"><span class="mus">Samba da Benção</span><span class="art">Vinícius de Moraes</span><em>Simplificada</em></li>
+            <li data-b="lenha zeca baleiro"><span class="mus">Lenha</span><span class="art">Zeca Baleiro</span><em>Principal</em></li>
+            <li data-b="é o amor zezé di camargo &amp; luciano"><span class="mus">É o Amor</span><span class="art">Zezé Di Camargo &amp; Luciano</span><em>Simplificada</em></li>
+          </ul>
+        </details>
+        <details class="nivel">
+          <summary>
+            <span class="nivel-nome">Iniciante 2</span>
+            <span class="nivel-meta">40 aulas de música</span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <ul class="musicas">
+            <li data-b="what&#x27;s up 4 non blondes"><span class="mus">What&#x27;s Up</span><span class="art">4 Non Blondes</span><em>Simplificada</em></li>
+            <li data-b="trem bala ana vilela"><span class="mus">Trem Bala</span><span class="art">Ana Vilela</span><em>Principal</em></li>
+            <li data-b="i’m with you avril lavigne"><span class="mus">I’m With You</span><span class="art">Avril Lavigne</span><em>Principal</em></li>
+            <li data-b="all my loving beatles"><span class="mus">All My Loving</span><span class="art">Beatles</span><em>Simplificada</em></li>
+            <li data-b="twist and shout beatles"><span class="mus">Twist And Shout</span><span class="art">Beatles</span><em>Principal</em></li>
+            <li data-b="elephant gun beirut"><span class="mus">Elephant Gun</span><span class="art">Beirut</span><em>Simplificada</em></li>
+            <li data-b="sujeito de sorte belchior"><span class="mus">Sujeito de Sorte</span><span class="art">Belchior</span><em>Principal</em></li>
+            <li data-b="three little birds bob marley"><span class="mus">Three Little Birds</span><span class="art">Bob Marley</span><em>Principal</em></li>
+            <li data-b="dormi na praça bruno e marrone"><span class="mus">Dormi Na Praça</span><span class="art">Bruno e Marrone</span><em>Simplificada</em></li>
+            <li data-b="count on me bruno mars"><span class="mus">Count On Me</span><span class="art">Bruno Mars</span><em>Principal</em></li>
+            <li data-b="a sua maneira capital inicial"><span class="mus">A Sua Maneira</span><span class="art">Capital Inicial</span><em>Simplificada</em></li>
+            <li data-b="o passageiro (simplificada 1) capital inicial"><span class="mus">O Passageiro (Simplificada 1)</span><span class="art">Capital Inicial</span></li>
+            <li data-b="céu azul charlie brown jr."><span class="mus">Céu Azul</span><span class="art">Charlie Brown Jr.</span><em>Simplificada</em></li>
+            <li data-b="have you ever seen the rain creedence"><span class="mus">Have you ever seen the rain</span><span class="art">Creedence</span></li>
+            <li data-b="malandragem cássia eller"><span class="mus">Malandragem</span><span class="art">Cássia Eller</span><em>Principal</em></li>
+            <li data-b="a ele a glória diante do trono"><span class="mus">A Ele a Glória</span><span class="art">Diante do Trono</span><em>Simplificada</em></li>
+            <li data-b="levitating dua lipa"><span class="mus">Levitating</span><span class="art">Dua Lipa</span><em>Simplificada</em></li>
+            <li data-b="menina solta giulia be"><span class="mus">Menina Solta</span><span class="art">Giulia Be</span><em>Principal</em></li>
+            <li data-b="grandioso és tu harpa cristã"><span class="mus">Grandioso És Tu</span><span class="art">Harpa Cristã</span><em>Principal</em></li>
+            <li data-b="coelhinho da páscoa (melodia) infantil"><span class="mus">Coelhinho da Páscoa (Melodia)</span><span class="art">Infantil</span></li>
+            <li data-b="oi, jesus isadora pompeo"><span class="mus">Oi, Jesus</span><span class="art">Isadora Pompeo</span><em>Principal</em></li>
+            <li data-b="seja forte isadora pompeo"><span class="mus">Seja Forte</span><span class="art">Isadora Pompeo</span><em>Principal</em></li>
+            <li data-b="toca em mim de novo isadora pompeo"><span class="mus">Toca em Mim de Novo</span><span class="art">Isadora Pompeo</span><em>Principal</em></li>
+            <li data-b="somewhere over the rainbow israel kamakawiwo&#x27;ole"><span class="mus">Somewhere over the Rainbow</span><span class="art">Israel Kamakawiwo&#x27;ole</span><em>Simplificada</em></li>
+            <li data-b="quando a chuva passar ivete sangalo"><span class="mus">Quando a Chuva Passar</span><span class="art">Ivete Sangalo</span><em>Simplificada</em></li>
+            <li data-b="hallelujah jeff buckley"><span class="mus">Hallelujah</span><span class="art">Jeff Buckley</span><em>Simplificada</em></li>
+            <li data-b="imagine john lennon"><span class="mus">Imagine</span><span class="art">John Lennon</span><em>Simplificada</em></li>
+            <li data-b="como eu quero kid abelha"><span class="mus">Como Eu Quero</span><span class="art">Kid Abelha</span><em>Principal</em></li>
+            <li data-b="amor i love you marisa monte"><span class="mus">Amor I love you</span><span class="art">Marisa Monte</span><em>Simplificada</em></li>
+            <li data-b="ouvi dizer melim"><span class="mus">Ouvi Dizer</span><span class="art">Melim</span><em>Simplificada</em></li>
+            <li data-b="fazendinha mundo bita"><span class="mus">Fazendinha</span><span class="art">Mundo Bita</span><em>Principal</em></li>
+            <li data-b="aonde quer que eu vá paralamas do sucesso"><span class="mus">Aonde Quer Que Eu Vá</span><span class="art">Paralamas do Sucesso</span><em>Principal</em></li>
+            <li data-b="decode paramore"><span class="mus">Decode</span><span class="art">Paramore</span><em>Simplificada</em></li>
+            <li data-b="the only exception paramore"><span class="mus">The Only Exception</span><span class="art">Paramore</span><em>Simplificada</em></li>
+            <li data-b="maluco beleza raul seixas"><span class="mus">Maluco Beleza</span><span class="art">Raul Seixas</span><em>Principal</em></li>
+            <li data-b="other side red hot chili peppers"><span class="mus">Other Side</span><span class="art">Red Hot Chili Peppers</span><em>Simplificada</em></li>
+            <li data-b="ovelha negra rita lee"><span class="mus">Ovelha Negra</span><span class="art">Rita Lee</span><em>Simplificada</em></li>
+            <li data-b="gostava tanto de você tim maia"><span class="mus">Gostava Tanto de Você</span><span class="art">Tim Maia</span><em>Simplificada</em></li>
+            <li data-b="hey, soul sister train"><span class="mus">Hey, Soul Sister</span><span class="art">Train</span><em>Simplificada</em></li>
+            <li data-b="5 músicas de natal pra tocar no ukulele vários"><span class="mus">5 Músicas de Natal pra tocar no ukulele</span><span class="art">Vários</span><em>Principal</em></li>
+          </ul>
+        </details>
+        <details class="nivel">
+          <summary>
+            <span class="nivel-nome">Intermediário 1</span>
+            <span class="nivel-meta">20 aulas de música</span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <ul class="musicas">
+            <li data-b="super fantástico a turma do balão mágico"><span class="mus">Super Fantástico</span><span class="art">A Turma do Balão Mágico</span><em>Principal</em></li>
+            <li data-b="fico assim sem você adriana calcanhotto"><span class="mus">Fico Assim Sem Você</span><span class="art">Adriana Calcanhotto</span><em>Principal</em></li>
+            <li data-b="palpite adriana calcanhotto"><span class="mus">Palpite</span><span class="art">Adriana Calcanhotto</span><em>Principal</em></li>
+            <li data-b="trevo anavitória"><span class="mus">Trevo</span><span class="art">Anavitória</span><em>Simplificada</em></li>
+            <li data-b="till there was you beatles"><span class="mus">Till There Was You</span><span class="art">Beatles</span><em>Simplificada</em></li>
+            <li data-b="tudo que vai capital inicial"><span class="mus">Tudo que vai</span><span class="art">Capital Inicial</span><em>Principal</em></li>
+            <li data-b="deus me proteja chico césar"><span class="mus">Deus Me Proteja</span><span class="art">Chico César</span><em>Principal</em></li>
+            <li data-b="eu só quero um xodó gilberto gil"><span class="mus">Eu Só Quero Um Xodó</span><span class="art">Gilberto Gil</span><em>Simplificada</em></li>
+            <li data-b="somewhere over the rainbow israel kamakawiwoʻole"><span class="mus">Somewhere Over the Rainbow</span><span class="art">Israel Kamakawiwoʻole</span><em>Principal</em></li>
+            <li data-b="anna julia los hermanos"><span class="mus">Anna Julia</span><span class="art">Los Hermanos</span><em>Simplificada</em></li>
+            <li data-b="o xote das meninas luiz gonzaga"><span class="mus">O Xote das Meninas</span><span class="art">Luiz Gonzaga</span><em>Simplificada</em></li>
+            <li data-b="de repente, califórnia lulu santos"><span class="mus">De repente, Califórnia</span><span class="art">Lulu Santos</span><em>Principal</em></li>
+            <li data-b="maria maria milton nascimento"><span class="mus">Maria Maria</span><span class="art">Milton Nascimento</span><em>Simplificada</em></li>
+            <li data-b="amigo estou aqui - toy story randy newman"><span class="mus">Amigo estou aqui - Toy Story</span><span class="art">Randy Newman</span><em>Simplificada</em></li>
+            <li data-b="romaria renato teixeira"><span class="mus">Romaria</span><span class="art">Renato Teixeira</span><em>Principal</em></li>
+            <li data-b="vou deixar skank"><span class="mus">Vou Deixar</span><span class="art">Skank</span><em>Principal</em></li>
+            <li data-b="garota de ipanema tom jobim e vinícius de moraes"><span class="mus">Garota de Ipanema</span><span class="art">Tom Jobim e Vinícius de Moraes</span><em>Simplificada</em></li>
+            <li data-b="velha infância tribalistas"><span class="mus">Velha Infância</span><span class="art">Tribalistas</span><em>Principal</em></li>
+            <li data-b="riptide vance joy"><span class="mus">Riptide</span><span class="art">Vance Joy</span><em>Principal</em></li>
+            <li data-b="boa sorte / good luck vanessa da mata feat. ben harper"><span class="mus">Boa Sorte / Good Luck</span><span class="art">Vanessa da Mata feat. Ben Harper</span><em>Principal</em></li>
+          </ul>
+        </details>
+        <details class="nivel">
+          <summary>
+            <span class="nivel-nome">Intermediário 2</span>
+            <span class="nivel-meta">4 aulas de música</span>
+            <span class="curso-seta" aria-hidden="true"></span>
+          </summary>
+          <ul class="musicas">
+            <li data-b="in my life beatles"><span class="mus">In My Life</span><span class="art">Beatles</span><em>Principal</em></li>
+            <li data-b="sambinha bom mallu magalhães"><span class="mus">Sambinha bom</span><span class="art">Mallu Magalhães</span><em>Principal</em></li>
+            <li data-b="ouvi dizer melim"><span class="mus">Ouvi Dizer</span><span class="art">Melim</span><em>Principal</em></li>
+            <li data-b="tive razão seu jorge"><span class="mus">Tive Razão</span><span class="art">Seu Jorge</span><em>Simplificada</em></li>
+          </ul>
+        </details>
     </div>
   </div>
 </section>
@@ -713,7 +1306,7 @@ header.hero-section{
       <ul class="price-list">
         <li><span class="ck">✓</span> <span><b>Trilha completa</b>, do Iniciante 0 ao Intermediário 2</span></li>
         <li><span class="ck">✓</span> <span><b>Comunidade exclusiva</b> por um ano, para não estudar sozinho</span></li>
-        <li><span class="ck">✓</span> <span><b>Biblioteca com 154 músicas</b>, com aula, play along e cifra em PDF</span></li>
+        <li><span class="ck">✓</span> <span><b>Biblioteca com 157 aulas de música</b>, com aula, play along e cifra em PDF</span></li>
         <li><span class="ck">✓</span> <span><b>Workshop de Canto com Ukulele</b>, com a professora Cissa Laval</span></li>
         <li><span class="ck">✓</span> <span><b>Gravações de aulas ao vivo extras</b>, uma nova toda semana</span></li>
         <li><span class="ck">✓</span> <span><b>Bônus 1</b>: 5 atividades no primeiro módulo com correção minha em vídeo</span></li>
@@ -852,6 +1445,7 @@ header.hero-section{
   <div class="barra-inner">
     <div class="barra-esq">
       <span class="barra-topo" id="barra-topo">A condição especial encerra às 20h</span>
+      <span class="barra-base" id="barra-base">Faltam apenas</span>
       <div class="barra-timer">
         <span class="bloco" id="bloco-d" hidden><b id="t-d">0</b><span class="un">d</span></span>
         <span class="sep" id="sep-d" aria-hidden="true" hidden>:</span>
@@ -861,7 +1455,6 @@ header.hero-section{
         <span class="sep" aria-hidden="true">:</span>
         <span class="bloco"><b id="t-s">00</b><span class="un">s</span></span>
       </div>
-      <span class="barra-base" id="barra-base">Faltam apenas</span>
     </div>
     <div class="barra-encerrada">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
@@ -1048,6 +1641,57 @@ header.hero-section{
 
   tick();
   setInterval(tick,1000);
+})();
+
+// ============================
+// BUSCA NA BIBLIOTECA
+// ============================
+(function(){
+  var campo=document.getElementById('busca-musica');
+  if(!campo)return;
+  var info=document.getElementById('busca-info');
+  var niveis=[].slice.call(document.querySelectorAll('.nivel'));
+  // Acento sai da conta dos dois lados: quem digita "sabia" acha "Sabiá".
+  function achata(t){
+    return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+  }
+  // A chave de cada música é calculada uma vez, não a cada tecla.
+  var blocos=niveis.map(function(n){
+    var itens=[].slice.call(n.querySelectorAll('.musicas li')).map(function(li){
+      return {el:li,chave:achata(li.getAttribute('data-b'))};
+    });
+    return {el:n,itens:itens};
+  });
+  function limpar(){
+    blocos.forEach(function(b){
+      b.el.classList.remove('vazio');
+      b.el.open=false;
+      b.itens.forEach(function(i){i.el.hidden=false});
+    });
+    info.hidden=true;
+  }
+  function filtrar(){
+    var q=achata(campo.value);
+    if(q.length===0){limpar();return}
+    var total=0;
+    blocos.forEach(function(b){
+      var vis=0;
+      b.itens.forEach(function(i){
+        var bate=i.chave.indexOf(q)!==-1;
+        i.el.hidden=!bate;
+        if(bate)vis++;
+      });
+      b.el.classList.toggle('vazio',vis===0);
+      b.el.open=vis>0;
+      total+=vis;
+    });
+    info.hidden=false;
+    info.textContent = total===0 ? 'Nenhuma música com esse nome'
+      : (total===1 ? '1 aula encontrada' : total+' aulas encontradas');
+  }
+  campo.addEventListener('input',filtrar);
+  // O X do campo de busca dispara search, não input, em parte dos navegadores.
+  campo.addEventListener('search',filtrar);
 })();
 
 // ============================
