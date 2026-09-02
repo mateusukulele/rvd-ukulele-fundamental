@@ -40,11 +40,9 @@
   preço faz a conta em MESES, e a vantagem aparece só na frase relativa "menos do
   que você acabou de pagar", que é verdade em todas as portas de entrada.
 
-  PLACEHOLDERS NESTA VERSÃO (procure por "PLACEHOLDER"):
-     1. player do vídeo 4:5 — falta o ID do VTurb do vídeo novo;
-     2. widget da Hotmart — falta criar a etapa "Upsell Clube -> 2o ano" e ligar.
-     Os dois estão como caixas visíveis, com o código real logo abaixo,
-     comentado. Trocar caixa por código quando os IDs existirem.
+  PLACEHOLDER QUE AINDA FALTA (procure por "PLACEHOLDER"): o player do vídeo 4:5,
+     que espera o ID do VTurb. Está como caixa visível, com o código real logo
+     abaixo, comentado. O widget da Hotmart já está ligado.
 
   REGRAS QUE VALEM AQUI TAMBÉM:
      - o widget da Hotmart só monta UMA vez por página, por isso o botão do
@@ -198,7 +196,6 @@ strong{color:var(--ink);font-weight:600}
 .ph small{display:block;font-family:'Poppins',sans-serif;font-weight:400;font-size:12.5px;color:var(--muted)}
 .vframe .ph{width:100%;height:100%;border:0;border-radius:16px;background:#1B1130;color:#D9CFF2}
 .vframe .ph small{color:#A79EC2}
-.ph-widget{min-height:260px}
 
 /* ---------- faixa de atenção ---------- */
 .faixa{background:var(--ink);color:#fff;text-align:center;padding:18px;
@@ -430,21 +427,13 @@ footer a{color:#C9C2DC}
   <div class="wrap">
     <div class="oferta-box" id="oferta-hotmart">
 
-      <!-- PLACEHOLDER DO WIDGET — apagar quando a etapa do funil existir -->
-      <div class="ph ph-widget">
-        Widget de compra da Hotmart
-        <small>PLACEHOLDER · criar a etapa “Upsell Clube → 2º ano” no funil, configurar
-        o botão no verde #0FA968 e o texto de recusa, e colar o snippet que está
-        comentado aqui no código. O widget entrega os dois caminhos: comprar e recusar.</small>
-      </div>
-
-      <!-- CÓDIGO REAL (descomentar quando a etapa estiver ligada):
+      <!-- HOTMART - Sales Funnel Widget -->
       <div id="hotmart-sales-funnel"></div>
       <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
       <script>
       checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
       </script>
-      -->
+      <!-- HOTMART - Sales Funnel Widget -->
 
       <!-- Sem link próprio de recusa: quem entrega o "Não, obrigado" é o próprio
            widget, e dois caminhos de saída lado a lado dão à recusa mais peso
