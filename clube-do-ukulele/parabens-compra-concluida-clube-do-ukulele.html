@@ -133,7 +133,7 @@ strong{color:var(--ink);font-weight:600}
 .retencao span{display:block;font-size:clamp(11px,2.8vw,13px);opacity:.92;margin-top:2px}
 
 /* ---------- 2. barra + aviso + headline ---------- */
-.topo{padding:8px 0 0;--fold-reserve:230px;--peek:10px}
+.topo{padding:8px 0 0;--fold-reserve:230px;--peek:44px}
 .hero-grid{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px;
   display:grid;gap:10px;justify-items:center}
 .hero-top{width:100%}
@@ -166,23 +166,41 @@ strong{color:var(--ink);font-weight:600}
      - nunca alto a ponto de estourar a dobra.
    O piso de 240px evita o vídeo virar um selo em tela baixa; nesse caso o fim
    dele passa alguns pixels da dobra, que é o mal menor.
-   --peek encolheu para 10px: com 9:16 não sobra dobra para mostrar o topo do
-   widget, e vídeo inteiro vale mais que espiar o botão. */
+   --peek é o que fica reservado ABAIXO do vídeo, e o que mora ali é a seta, não
+   o widget. Mostrar meio widget na dobra pareceria bom para descoberta, mas
+   aquele iframe traz o "não, obrigado" junto com o botão de compra: seria
+   oferecer a recusa antes de a pessoa ouvir o preço. A seta resolve a mesma
+   coisa (dizer que a página continua) sem entregar o controle. */
 .video{width:100%;display:flex;justify-content:center}
 .vframe{width:min(calc(100vw - 40px), max(240px, min(400px,
         calc((100svh - var(--fold-reserve) - var(--peek)) * 9 / 16))));
-  aspect-ratio:9/16;margin-inline:auto;
+  margin-inline:auto;
   border-radius:16px;overflow:hidden;background:#000;
   box-shadow:0 26px 55px -24px rgba(66,48,102,.45)}
-/* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
-   próprio elemento, e max-width ganha de width. */
-.vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
-/* O VTurb segura a proporção dele com padding-top em cada bloco que injeta: o
-   placeholder inicial, depois a thumbnail, depois o player. Aqui a proporção já
-   é da .vframe, então esses blocos só precisam preencher a moldura. A regra
-   pega qualquer filho direto porque os nomes de classe mudam conforme o estado
-   do player, e um deles fora do lugar deixa a moldura preta e vazia. */
-.vframe vturb-smartplayer > *{padding:0!important;width:100%!important;height:100%!important}
+/* A MOLDURA MANDA NA LARGURA, O PLAYER MANDA NA ALTURA. Não inverter isso.
+   O VTurb monta a altura dele a partir da largura, com padding-top:177.77%, e
+   pendura os controles (barra de progresso, carregamento) nessa caixa. Forçar
+   height:100% no host e zerar o padding dos filhos, que era o que estava aqui,
+   deslocava tudo o que ele pendura: no celular a barra ficava fora da caixa e o
+   overflow da moldura cortava. Agora a .vframe só limita a largura, a altura
+   vem do próprio player, e não há nada para cortar.
+   max-width:none continua obrigatório: o script do VTurb aplica max-width:400px
+   no próprio elemento, e max-width ganha de width. */
+.vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important}
+
+/* ---------- seta de continuidade ----------
+   Fica no pé da dobra, no espaço do --peek, e só entra junto com a revelação
+   dos 15 segundos: antes disso não há nada abaixo para descobrir. É a única
+   coisa que a página mostra ali; o botão continua a meia rolagem de distância.
+   Ela não é um link nem um botão, e não pede clique: só diz que a página
+   continua. Some assim que a pessoa começa a rolar, para não virar enfeite
+   fixo em cima do conteúdo. */
+.cue{display:flex;justify-content:center;align-items:center;height:var(--peek);
+  opacity:0;pointer-events:none}
+html.revelado .cue{opacity:1}
+html.rolou .cue{opacity:0}
+.cue svg{width:26px;height:26px;color:var(--purple);animation:desce 1.8s ease-in-out infinite}
+@keyframes desce{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
 
 /* ---------- 4. widget da hotmart ----------
    Colado no vídeo de propósito (padding de topo curto): é o mesmo assunto, e
@@ -291,19 +309,19 @@ footer a{color:#C9C2DC}
   .aviso-wrap{margin-bottom:8px}
   .aviso{font-size:11.5px;padding:.4em .9em}
   .headline{font-size:15.5px;line-height:1.25}
-  .topo{--peek:10px}
+  .topo{--peek:38px}
 }
 @media(max-width:899px) and (max-height:600px){
   .retencao{padding:6px 12px}
   .retencao b{font-size:12px}
   .retencao span{font-size:10.5px}
   .headline{font-size:14.5px}
-  .topo{--peek:8px}
+  .topo{--peek:32px}
 }
 /* Desktop: mesma pilha, só respirando. Com 9:16 quem limita o player é sempre
    a altura da dobra, nunca o teto de largura. */
 @media(min-width:900px){
-  .topo{padding:14px 0 0;--peek:14px}
+  .topo{padding:14px 0 0;--peek:52px}
   .hero-grid{max-width:900px;gap:14px}
   /* A barra acompanha a largura do player, não a do container. */
   .barra{height:15px;margin:0 auto 14px;max-width:520px}
@@ -316,7 +334,7 @@ footer a{color:#C9C2DC}
   .oferta-box{max-width:560px}
 }
 @media(min-width:900px) and (max-height:820px){
-  .topo{padding:10px 0 0;--peek:10px}
+  .topo{padding:10px 0 0;--peek:44px}
   .barra{height:12px;margin-bottom:10px}
   .aviso-wrap{margin-bottom:10px}
   .aviso{font-size:15px;padding:.5em 1.2em}
@@ -384,6 +402,10 @@ footer a{color:#C9C2DC}
       </div>
     </div>
 
+    <div class="cue" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+
   </div>
 </section>
 
@@ -401,7 +423,13 @@ footer a{color:#C9C2DC}
   function revela(){
     if(revelado) return; revelado=true;
     el.classList.remove('espera'); el.classList.add('revelado');
+    /* a marca no <html> é o que acende a seta lá em cima, que está fora deste
+       container e por isso não pode depender da classe dele */
+    document.documentElement.classList.add('revelado');
   }
+  addEventListener('scroll',function(){
+    if(scrollY>24) document.documentElement.classList.add('rolou');
+  },{passive:true});
   /* performance.now() é o tempo desde que a navegação começou, então quem
      demorou pra carregar não ganha 15 segundos a mais de espera. */
   var jaPassou = (window.performance && performance.now) ? performance.now() : 0;
@@ -450,9 +478,12 @@ footer a{color:#C9C2DC}
   var ultimo=null;
   function medir(){
     var cs=getComputedStyle(grid), cst=getComputedStyle(topo);
-    /* +2px cobre arredondamento de subpixel. */
+    /* São DOIS gaps do grid dentro da dobra, não um: texto→vídeo e vídeo→seta.
+       Contar só o primeiro jogava a seta 8px para fora da tela.
+       +2px cobre arredondamento de subpixel. */
+    var gap=parseFloat(cs.rowGap)||0;
     var r=Math.ceil(ban.offsetHeight+parseFloat(cst.paddingTop)+top.offsetHeight+
-          (parseFloat(cs.rowGap)||0)+2);
+          gap*2+2);
     if(r!==ultimo){ ultimo=r; topo.style.setProperty('--fold-reserve',r+'px'); }
   }
   medir();
