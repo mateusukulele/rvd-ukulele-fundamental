@@ -101,8 +101,11 @@ strong{color:var(--ink);font-weight:600}
 .ajuda p{font-size:14.5px;color:var(--muted)}
 
 /* dados de acesso */
-.acesso{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;margin-top:20px}
-.acesso h3{font-size:17px;font-weight:800;margin-bottom:14px}
+/* O box de login é o ponto da página. Borda verde e sombra dão a ele o mesmo
+   peso que o quadro de preço tem na página da oferta. */
+.acesso{background:var(--card);border:2px solid var(--cta);border-radius:var(--r);padding:26px 24px;margin-top:24px;
+  box-shadow:0 18px 40px -26px rgba(66,48,102,.5)}
+.acesso h3{font-size:18.5px;font-weight:800;margin-bottom:14px}
 .dados{display:grid;gap:10px;margin-bottom:14px}
 .dado{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
   border-bottom:1px dashed var(--line);padding-bottom:10px}
@@ -111,14 +114,6 @@ strong{color:var(--ink);font-weight:600}
   text-transform:uppercase;letter-spacing:.3px}
 .dado .val{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--ink);font-size:15.5px;word-break:break-word}
 .acesso .obs{font-size:13.5px;color:var(--muted);line-height:1.6}
-
-/* garantia */
-.garantia{display:flex;gap:16px;align-items:flex-start;background:var(--card);
-  border:1px solid var(--line);border-radius:var(--r);padding:22px;margin-top:8px}
-.garantia .selo-g{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
-  font-size:24px;background:#E7F7EF;border:2px solid rgba(15,169,104,.35)}
-.garantia h3{font-size:16.5px;font-weight:800;margin-bottom:4px}
-.garantia p{font-size:14.5px;color:var(--muted)}
 
 footer{background:var(--ink);color:#A79EC2;padding:32px 0 40px;font-size:12.5px;line-height:1.7;text-align:center}
 footer a{color:#C9C2DC}
@@ -144,35 +139,23 @@ footer a{color:#C9C2DC}
 
 <section class="section surface-white hairline">
   <div class="wrap">
-    <h2 class="h2">O que acontece agora</h2>
-    <p class="lead">Nada muda no jeito de entrar: é o mesmo Clube, o mesmo login e a mesma área de
-    alunos. O que mudou foi o prazo, e agora você pode ir com calma de verdade.</p>
+    <h2 class="h2">Acesse a sua plataforma do Clube agora mesmo</h2>
+    <!-- Três passos, e não cinco: esta página existe para a pessoa entrar, não
+         para ela ler. Tudo que não ajuda a entrar hoje foi cortado. -->
     <div class="passos">
       <div class="passo">
         <h3>Seu acesso já está liberado</h3>
-        <p>Está tudo na mesma área de alunos, dentro da plataforma oficial do Clube do Ukulele.
-        Mesmo login, sem criar conta nova e sem baixar nada.</p>
+        <p>Mesma área de alunos, mesmo login, sem criar conta nova e sem baixar nada.</p>
       </div>
       <div class="passo">
         <h3>Os dois anos já estão na sua conta</h3>
-        <p>O segundo ano entra somado ao primeiro, um atrás do outro, sem interrupção. Você não
-        precisa fazer nada quando o primeiro terminar.</p>
+        <p>Um ano atrás do outro, sem interrupção. Quando o primeiro terminar, você não precisa
+        fazer nada.</p>
       </div>
       <div class="passo">
-        <h3>Comece pelo começo, com calma</h3>
-        <p>Entre pela trilha e siga a ordem. Se bater dúvida de por onde começar, o curso Rotina de
-        20 Minutos resolve isso em poucos minutos.</p>
-      </div>
-      <div class="passo">
-        <h3>Suas 49 atividades já estão liberadas</h3>
-        <p>Elas aparecem ao longo da trilha. Quando chegar numa, você grava com o celular, envia
-        ali mesmo e eu te respondo em vídeo em até 3 dias úteis. A resposta fica salva na sua conta,
-        e com dois anos pela frente dá pra atravessar todas sem correr.</p>
-      </div>
-      <div class="passo">
-        <h3>Marque os encontros ao vivo</h3>
-        <p>Toda semana eu encontro os alunos ao vivo. O calendário está lá dentro, e você já pode
-        marcar o próximo na sua agenda.</p>
+        <h3>Comece pela trilha, na ordem</h3>
+        <p>Se bater dúvida de por onde começar, o curso Rotina de 20 Minutos resolve isso em poucos
+        minutos.</p>
       </div>
     </div>
 
@@ -192,18 +175,9 @@ footer a{color:#C9C2DC}
   </div>
 </section>
 
-<section class="section surface-white hairline">
-  <div class="wrap">
-    <div class="garantia">
-      <div class="selo-g">🛡️</div>
-      <div>
-        <h3>Você tem 30 dias, sem nenhuma restrição</h3>
-        <p>Use tudo, participe dos encontros, mande as suas atividades. Se sentir que não é pra
-        você, é só pedir que eu devolvo o seu dinheiro, e a garantia cobre os dois anos.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- A garantia saiu desta página de propósito: a pessoa acabou de comprar e o que
+     ela precisa aqui é entrar. Lembrar de devolução na hora do acesso planta uma
+     dúvida que ela não tinha. Ela está na página da oferta, que é onde decide. -->
 
 <!-- ============ SUPORTE ============
      Sem botão flutuante aqui: esta página não vende nada, e um flutuante numa
