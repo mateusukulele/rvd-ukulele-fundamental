@@ -19,7 +19,7 @@
   Mesmos tokens, mesma estrutura, mesmo JS. O que muda:
     - entre o widget e o quadro de preço não existe nenhuma dobra: quem rola
       meia tela cai direto na conta;
-    - tudo o que fica abaixo do vídeo só aparece 15 segundos depois de a página
+    - tudo o que fica abaixo do vídeo só aparece 8 segundos depois de a página
       abrir, com o widget carregando escondido nesse meio tempo;
     - a oferta é TEMPO, não conteúdo: mais um ano somado ao que a pessoa
       acabou de comprar.
@@ -191,7 +191,7 @@ strong{color:var(--ink);font-weight:600}
 
 /* ---------- seta de continuidade ----------
    Fica no pé da dobra, no espaço do --peek, e só entra junto com a revelação
-   dos 15 segundos: antes disso não há nada abaixo para descobrir. É a única
+   dos 8 segundos: antes disso não há nada abaixo para descobrir. É a única
    coisa que a página mostra ali; o botão continua a meia rolagem de distância.
    Ela não é um link nem um botão, e não pede clique: só diz que a página
    continua. Some assim que a pessoa começa a rolar, para não virar enfeite
@@ -340,12 +340,12 @@ footer a{color:#C9C2DC}
   .headline{font-size:23px;max-width:30em}
 }
 /* ---------- ESPERA DE 15 SEGUNDOS ----------
-   Tudo que fica abaixo do vídeo só aparece 15s depois de a página abrir. É a
+   Tudo que fica abaixo do vídeo só aparece 8s depois de a página abrir. É a
    regra do método: o botão não existe antes de o preço ser dito no vídeo.
 
    Como esconder importa MUITO aqui, e já custou um widget em branco numa compra
    real. Não é display:none e não é remover do DOM: a lib da Hotmart monta o
-   widget sozinha assim que carrega, e o iframe precisa desses 15 segundos para
+   widget sozinha assim que carrega, e o iframe precisa desses 8 segundos para
    ficar pronto.
      height:0 + overflow → o bloco não ocupa espaço nem aparece, e a página não
                           fica com uma rolagem gigante e vazia esperando;
@@ -438,13 +438,13 @@ footer a{color:#C9C2DC}
     if(scrollY>24) document.documentElement.classList.add('rolou');
   },{passive:true});
   /* performance.now() é o tempo desde que a navegação começou, então quem
-     demorou pra carregar não ganha 15 segundos a mais de espera. */
+     demorou pra carregar não ganha 8 segundos a mais de espera. */
   var jaPassou = (window.performance && performance.now) ? performance.now() : 0;
-  setTimeout(revela, Math.max(0, 15000 - jaPassou));
+  setTimeout(revela, Math.max(0, 8000 - jaPassou));
   /* Rede de segurança: se aquele timer morrer (aba em segundo plano agressiva,
      erro em outro script), o load agenda de novo. revela() é idempotente. */
   window.addEventListener('load', function(){
-    setTimeout(revela, Math.max(0, 15000 - ((window.performance&&performance.now)?performance.now():0)));
+    setTimeout(revela, Math.max(0, 8000 - ((window.performance&&performance.now)?performance.now():0)));
   }, {once:true});
 })();
 </script>
@@ -460,7 +460,7 @@ footer a{color:#C9C2DC}
            A lib monta o widget SOZINHA assim que carrega, sem ninguém chamar
            init/mount: verificado no navegador, o iframe já existia com a lib
            recém-carregada e nenhuma chamada nossa. Por isso não adianta adiar o
-           mount para os 15 segundos; o que precisa estar certo é a forma de
+           mount para os 8 segundos; o que precisa estar certo é a forma de
            esconder o bloco, e ela está explicada no CSS do #pos-video. -->
       <div id="hotmart-sales-funnel"></div>
       <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
