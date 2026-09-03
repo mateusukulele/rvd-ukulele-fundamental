@@ -343,19 +343,22 @@ footer a{color:#C9C2DC}
    Tudo que fica abaixo do vídeo só aparece 15s depois de a página abrir. É a
    regra do método: o botão não existe antes de o preço ser dito no vídeo.
 
-   Como esconder importa MUITO aqui. Não é display:none e não é remover do DOM:
-   o widget da Hotmart precisa montar e carregar o iframe dele durante esses 15
-   segundos, senão o aluno chega num botão que ainda está nascendo.
-     visibility:hidden  → o navegador continua fazendo layout e o iframe carrega
-                          normal, só não é pintado nem clicável;
-     height:0 + overflow → o bloco não ocupa espaço, então a página não fica com
-                          uma rolagem gigante e vazia esperando.
-   Nada de opacity:0 sozinho, que deixaria o conteúdo clicável e navegável por
-   teclado antes da hora.
+   Como esconder importa MUITO aqui, e já custou um widget em branco numa compra
+   real. Não é display:none e não é remover do DOM: a lib da Hotmart monta o
+   widget sozinha assim que carrega, e o iframe precisa desses 15 segundos para
+   ficar pronto.
+     height:0 + overflow → o bloco não ocupa espaço nem aparece, e a página não
+                          fica com uma rolagem gigante e vazia esperando;
+     inert (via JS)      → nada ali dentro recebe clique, foco ou leitor de tela
+                          antes da hora.
+   NÃO voltar com visibility:hidden: era o que estava aqui, e o navegador para
+   de pintar o iframe do checkout. Ele montava com tamanho certo e, quando o
+   bloco aparecia, ficava branco. Testado: o mesmo widget remontado num
+   container visível responde normalmente.
 
    O contador é o relógio da navegação (performance.now), não do DOMContentLoaded:
    o que vale é quando a pessoa abriu a página. */
-#pos-video.espera{height:0;overflow:hidden;visibility:hidden}
+#pos-video.espera{height:0;overflow:hidden}
 #pos-video.revelado{animation:revela .45s ease both}
 @keyframes revela{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
@@ -419,9 +422,14 @@ footer a{color:#C9C2DC}
   var el=document.getElementById('pos-video');
   if(!el) return;
   var revelado=false;
+  /* inert enquanto espera: o bloco está renderizado (o iframe do checkout
+     precisa disso para pintar), mas fora do alcance de clique, foco e leitor
+     de tela até a hora certa. */
+  try{ el.inert = true; }catch(e){}
   function revela(){
     if(revelado) return; revelado=true;
     el.classList.remove('espera'); el.classList.add('revelado');
+    try{ el.inert = false; }catch(e){}
     /* a marca no <html> é o que acende a seta lá em cima, que está fora deste
        container e por isso não pode depender da classe dele */
     document.documentElement.classList.add('revelado');
@@ -448,12 +456,14 @@ footer a{color:#C9C2DC}
   <div class="wrap">
     <div class="oferta-box" id="oferta-hotmart">
 
-      <!-- HOTMART - Sales Funnel Widget -->
+      <!-- HOTMART - Sales Funnel Widget
+           A lib monta o widget SOZINHA assim que carrega, sem ninguém chamar
+           init/mount: verificado no navegador, o iframe já existia com a lib
+           recém-carregada e nenhuma chamada nossa. Por isso não adianta adiar o
+           mount para os 15 segundos; o que precisa estar certo é a forma de
+           esconder o bloco, e ela está explicada no CSS do #pos-video. -->
       <div id="hotmart-sales-funnel"></div>
       <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
-      <script>
-      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
-      </script>
       <!-- HOTMART - Sales Funnel Widget -->
 
       <!-- Sem link próprio de recusa: quem entrega o "Não, obrigado" é o próprio
