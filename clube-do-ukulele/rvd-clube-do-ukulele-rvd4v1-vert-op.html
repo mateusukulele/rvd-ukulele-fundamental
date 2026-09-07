@@ -130,23 +130,26 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
    A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
    --fold-reserve = tudo que precisa caber na dobra junto com o vídeo:
-   padding + h1 + subtítulo + 2 gaps + botão de checkout. A dobra termina no fim
-   do botão: preço e nota de garantia ficam abaixo dela de propósito.
+   padding + h1 + subtítulo + convite + 2 gaps. A dobra termina no FIM DO VÍDEO:
+   o botão de checkout, o preço e a nota de garantia ficam abaixo dela de
+   propósito, porque a primeira dobra de uma VSL tem um trabalho só, que é gerar
+   play, e botão de compra acima da linha compete com ele. O segundo gap é o
+   respiro embaixo do vídeo, para a página não parecer que acabou ali.
    ATENÇÃO: abaixo de 900px quem manda nestes valores é o script logo depois do
    hero, que MEDE o texto e o botão e sobrescreve a variável. Os números aqui são
    só o primeiro quadro e o fallback de JS desligado, por isso ficam alguns pixels
-   acima do medido (292 contra 274 a 287 num celular atual). Mexer neles não muda
+   acima do medido (242 contra 221 a 234 num celular atual). Mexer neles não muda
    a página com JS ligado; para mudar a dobra, mexer no script. */
 .video{grid-area:video;width:100%;display:flex;justify-content:center}
-.hero{--fold-reserve:292px}
+.hero{--fold-reserve:242px}
 /* Tablet ainda no layout de 1 coluna: a fonte do h1 e do subtítulo crescem com
    o vw e o texto ocupa bem mais altura, então a reserva sobe junto.
    A faixa de 520 a 619 existe porque a partir de ~459px o clamp do h1 sai do piso
-   de 1.55rem e passa a seguir o 5.4vw. Valores medidos nessas faixas: 299 a 313,
-   343 e 373; aqui ficam alguns pixels acima, pelo mesmo motivo do bloco acima. */
-@media (min-width:520px) and (max-width:619px){.hero{--fold-reserve:316px}}
-@media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:346px}}
-@media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:376px}}
+   de 1.55rem e passa a seguir o 5.4vw. Valores medidos nessas faixas: 228, 271 e
+   295; aqui ficam alguns pixels acima, pelo mesmo motivo do bloco acima. */
+@media (min-width:520px) and (max-width:619px){.hero{--fold-reserve:236px}}
+@media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:280px}}
+@media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:304px}}
 .vframe{position:relative;height:min(calc(100vh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
 /* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
    próprio elemento, e max-width ganha de width. Enquanto o vídeo era menor que
@@ -492,8 +495,11 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <button class="btn btn--block btn--pulse" onclick="openCheckout()">Quero entrar no Clube do Ukulele</button>
       <div class="price-line"><span class="from">De</span> <span class="strike">R$ 597,00</span> <span class="price-now">Com cupom: <b>12x R$ 41</b> ou R$ 397 à vista, no plano anual</span></div>
       <p class="note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Plano anual · cupom de R$ 200 OFF já aplicado · 30 dias de garantia</p>
-      <!-- O preço e a nota de garantia ficam FORA da dobra de propósito: a dobra
-           termina no fim do botão. Ver o script logo abaixo do hero. -->
+      <!-- O botão, o preço e a nota de garantia ficam FORA da dobra de propósito:
+           no celular a dobra termina no fim do vídeo, para nada competir com o
+           play. O botão é a primeira coisa ao rolar, e o sticky assume mais
+           abaixo. No desktop o botão fica AO LADO do vídeo e cabe na dobra. Ver o
+           script logo abaixo do hero. -->
     </div>
   </div>
 </header>
@@ -520,15 +526,22 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     if(window.innerWidth>=900){ hero.style.removeProperty('--fold-reserve'); ultimo=null; return; }
     var cs=getComputedStyle(cont);
     var gap=parseFloat(cs.rowGap)||0;
-    /* +2px cobre arredondamento de subpixel, senão o botão encosta e pode cortar */
-    var r=Math.ceil(parseFloat(cs.paddingTop)+top.offsetHeight+gap*2+btn.offsetHeight+2);
+    /* A dobra termina no FIM DO VÍDEO, não no fim do botão. A primeira dobra de
+       uma VSL tem um trabalho só, que é gerar play, e botão de compra acima da
+       linha compete com ele. O botão passa a ser a primeira coisa ao rolar, e o
+       sticky assume mais abaixo.
+       O segundo `gap` é o respiro embaixo do vídeo: sem ele o vídeo encostaria na
+       borda da dobra e a página pareceria ter acabado ali. Com ele sobra uma
+       fatia do botão à mostra, que é o que convida a rolar.
+       +2px cobre arredondamento de subpixel. */
+    var r=Math.ceil(parseFloat(cs.paddingTop)+top.offsetHeight+gap*2+2);
     if(r!==ultimo){ ultimo=r; hero.style.setProperty('--fold-reserve',r+'px'); }
   }
   medir();
-  /* Observa só o texto e o botão. A altura do vídeo depende da reserva, então
-     observar o vídeo aqui criaria laço. */
+  /* Observa só o texto. O botão saiu da conta da dobra, e a altura do vídeo
+     depende da reserva, então observar o vídeo aqui criaria laço. */
   if(window.ResizeObserver){
-    var ro=new ResizeObserver(medir); ro.observe(top); ro.observe(btn);
+    var ro=new ResizeObserver(medir); ro.observe(top);
   }
   window.addEventListener('resize',medir);
   window.addEventListener('orientationchange',medir);
