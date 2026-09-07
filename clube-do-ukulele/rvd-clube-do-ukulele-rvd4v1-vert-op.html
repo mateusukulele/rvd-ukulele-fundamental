@@ -302,16 +302,19 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .grid{display:grid;gap:var(--gap)}
 .g-3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
 .g-4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+/* Quatro cards com texto de verdade dentro. Em uma linha só cada card mede 246px
+   e sobram 190 de texto, que quebra a frase de duas em duas palavras. Com 340 de
+   piso o desktop cai em 2x2 e o texto ganha 480px. */
+.g-2x2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.2rem,3vw,1.7rem);box-shadow:0 10px 30px -20px rgba(66,48,102,.35);height:100%}
 
 /* Método */
-.method{display:flex;gap:1rem;align-items:flex-start}
+.method{display:flex;flex-direction:column;gap:.9rem;align-items:flex-start}
 .method .ic{flex-shrink:0;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:1.5rem;background:rgba(66,48,102,.09)}
 .method .ic.c2{background:rgba(234,84,108,.12)}
 .method .ic.c3{background:var(--coral)}
-.method h3{font-size:1.05rem}
-.method p{font-size:.9rem;color:var(--muted);margin-top:.2rem}
-.pull{max-width:44rem;margin:clamp(1.6rem,4vw,2rem) auto 0;background:#fff;border-left:4px solid var(--coral);border-radius:12px;padding:1.15rem 1.3rem;font-weight:600;color:var(--ink);box-shadow:0 8px 24px -18px rgba(66,48,102,.5)}
+.method h3{font-size:1.05rem;text-wrap:balance}
+.method p{font-size:.9rem;color:var(--muted);margin-top:.35rem;text-wrap:pretty}
 
 /* Entregas */
 .deliver{max-width:46rem;margin-inline:auto;display:flex;flex-direction:column;gap:.9rem}
@@ -378,6 +381,10 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* Garantia */
 .guarantee{max-width:820px;margin-inline:auto;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:24px;padding:clamp(1.5rem,4vw,2.5rem);box-shadow:0 14px 40px -28px rgba(66,48,102,.5)}
 .guarantee .seal{flex-shrink:0;width:88px;height:88px;border-radius:999px;background:var(--cream);display:grid;place-items:center;font-size:2.4rem;border:4px solid #fff;box-shadow:0 8px 20px -8px rgba(66,48,102,.3)}
+/* Ícone de ukulele no lugar do emoji. Altura fixa e largura pela proporção do
+   viewBox (40x98), que é a silhueta medida no alpha da foto do soprano.
+   A cópia solta do desenho, com as cores da marca, vive em /img/icone-ukulele.svg. */
+.guarantee .seal .uke{height:56px;width:auto;display:block}
 .guarantee .gc{flex:1;min-width:16rem}
 .guarantee + .guarantee{margin-top:clamp(1rem,2.5vw,1.4rem)}
 .guarantee--year{border-color:rgba(234,84,108,.45);background:linear-gradient(180deg,#fff 0%,#FFF6F8 100%)}
@@ -589,7 +596,6 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>A jornada completa em 4 etapas</b>, do zero até tocar qualquer música que você goste, na ordem certa.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Biblioteca com mais de 150 músicas</b>, cada uma com aula, destrinchamento, o "toque comigo" e a cifra em PDF. E entra música nova todo mês.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Guia de Compra do Primeiro Ukulele</b>, com vídeo detalhado: tamanhos, o que olhar e quanto vale a pena investir. Ainda em dúvida, a gente te indica o modelo no WhatsApp.</p></li>
-      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>O Método 3D aplicado aula por aula</b>: dividir, destravar e dominar, até você fazer isso sozinho em qualquer música nova.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Dúvida embaixo de cada aula</b>: você pergunta ali mesmo, na aula em que travou, e a nossa equipe responde no mesmo lugar.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>A comunidade do Clube</b>, onde os professores passam todo dia. Você grava um vídeo tocando, posta, e recebe por escrito o que ajustar. Tem coisa que só se entende vendo.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Encontros quinzenais ao vivo com os professores</b>, numa sala fechada que só quem é do Clube entra. A gente traz assunto novo e responde o que aparecer, e a gravação fica guardada lá dentro.</p></li>
@@ -617,13 +623,12 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <section class="section surface-white hairline cv">
   <div class="container">
     <div class="sec-head"><span class="eyebrow">O dia que decide tudo</span><h2 class="h2">Vai chegar um dia em que <span>não vai sair</span></h2><p class="lead">O acorde não sai, a batida trava, e você não faz ideia do que está fazendo de errado. Todo aluno tem esse dia. A diferença está no que acontece nele.</p></div>
-    <div class="grid g-3">
+    <div class="grid g-2x2">
       <div class="card method"><div class="ic">❓</div><div><h3>Você pergunta na própria aula</h3><p>Embaixo de cada aula tem um espaço para a sua dúvida, e a resposta vem ali mesmo, na aula em que você travou.</p></div></div>
       <div class="card method"><div class="ic c2">🎥</div><div><h3>Você mostra, a gente olha</h3><p>Grava um vídeo tocando e posta na comunidade. A equipe assiste e te responde por escrito o que ajustar.</p></div></div>
       <div class="card method"><div class="ic c3">🤝</div><div><h3>E a turma responde junto</h3><p>Gente que travou nesse mesmo ponto seis meses atrás e passou. Daqui a pouco é você respondendo quem está começando agora.</p></div></div>
       <div class="card method"><div class="ic">📅</div><div><h3>E de quinze em quinze dias, ao vivo</h3><p>Encontro com os professores numa sala fechada só do Clube: assunto novo, espaço para a sua dúvida e a gravação guardada lá dentro.</p></div></div>
     </div>
-    <p class="pull">Sozinho, esse é o dia em que o ukulele volta pro canto. Aqui no Clube, esse é o dia em que você pergunta.</p>
     <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero entrar no Clube do Ukulele</button></div>
   </div>
 </section>
@@ -715,7 +720,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <div class="gc"><span class="eyebrow" style="margin-bottom:.3rem">Garantia 1 · incondicional</span><h2>30 dias para testar tudo por dentro</h2><p>Você entra no Clube, assiste as aulas, baixa os materiais, participa da comunidade e envia os seus vídeos. Se por qualquer motivo não fizer sentido pra você, é só pedir o cancelamento dentro dos 30 dias que eu devolvo 100% do seu dinheiro, sem letra miúda e sem fricção.</p></div>
     </div>
     <div class="guarantee guarantee--year">
-      <div class="seal">🎸</div>
+      <div class="seal"><svg class="uke" viewBox="0 0 40 98" role="img" aria-label="Ukulele"><path d="M20 55.2 C15.5 55.2 7.2 56.5 6.8 62.4 C6.6 66.6 8.15 67.5 8.15 70 C8.15 73.5 3 76.5 3 84.5 C3 91.5 10.5 96 20 96 C29.5 96 37 91.5 37 84.5 C37 76.5 31.85 73.5 31.85 70 C31.85 67.5 33.4 66.6 33.2 62.4 C32.8 56.5 24.5 55.2 20 55.2 Z" fill="var(--coral)"/><rect x="16.6" y="17" width="6.8" height="49" fill="var(--ink)"/><path d="M16.2 1.2 L23.8 1.2 C24.9 1.2 25.6 2 25.6 3.2 L25.6 17.4 L14.4 17.4 L14.4 3.2 C14.4 2 15.1 1.2 16.2 1.2 Z" fill="var(--ink)"/><circle cx="12.6" cy="5.6" r="1.8" fill="var(--ink)"/><circle cx="12.6" cy="13.2" r="1.8" fill="var(--ink)"/><circle cx="27.4" cy="5.6" r="1.8" fill="var(--ink)"/><circle cx="27.4" cy="13.2" r="1.8" fill="var(--ink)"/><circle cx="20" cy="72" r="5" fill="#fff"/><rect x="14.2" y="84" width="11.6" height="2.6" rx="1" fill="var(--ink)"/><g stroke="#fff" stroke-width="0.7"><line x1="18.5" y1="4" x2="18.5" y2="84"/><line x1="19.5" y1="4" x2="19.5" y2="84"/><line x1="20.5" y1="4" x2="20.5" y2="84"/><line x1="21.5" y1="4" x2="21.5" y2="84"/></g></svg></div>
       <div class="gc"><span class="eyebrow" style="margin-bottom:.3rem">Garantia 2 · de resultado</span><h2>1 ano inteiro para você tocar 10 músicas</h2><p>Essa é a que eu faço questão de assinar embaixo. Faça as aulas, siga o Método 3D e me envie os seus vídeos. Se depois de um ano fazendo a sua parte você ainda não estiver tocando pelo menos 10 músicas, eu devolvo o valor do Clube. A minha parte eu já sei que funciona: foi assim com mais de 6.000 alunos.</p></div>
     </div>
   </div>
