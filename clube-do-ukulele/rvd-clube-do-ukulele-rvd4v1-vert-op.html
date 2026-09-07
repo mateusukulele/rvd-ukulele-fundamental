@@ -155,10 +155,6 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    borda de 8px de cada lado. */
 .vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
 .cta-block{grid-area:cta;width:100%;max-width:30rem;display:flex;flex-direction:column;gap:.55rem}
-/* "abaixo" no celular, "ao lado" no desktop: a mesma frase, a posição do vídeo é
-   que muda. Dois spans em vez de JS, então não tem troca de texto depois da
-   pintura nem pulo de layout. */
-.so-desk{display:none}
 /* O convite da seta aparece no celular e no desktop: ele é a terceira linha da
    promessa, não um enfeite. Fica fora do .gate de propósito: na página fechada ele
    continua visível enquanto a oferta está trancada, que é justamente quando a
@@ -231,8 +227,6 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      o bloco engorda sem mudar uma quebra: continua em 3 linhas a 96/99/95 de
      preenchimento em qualquer largura. Proporção h1/sub fica em ~1,75. */
   .hero-sub{font-size:clamp(1.28rem,2.15vw,1.72rem)}
-  .so-cel{display:none}
-  .so-desk{display:inline}
   /* Texto em Montserrat 800 para ler como etiqueta, não como parágrafo, e a seta
      em coral: puxa o olho para o vídeo sem competir com o verde, que nesta página
      significa comprar. Sem pílula nem caixa alta de propósito. */
@@ -384,7 +378,9 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* Ícone de ukulele no lugar do emoji. Altura fixa e largura pela proporção do
    viewBox (40x98), que é a silhueta medida no alpha da foto do soprano.
    A cópia solta do desenho, com as cores da marca, vive em /img/icone-ukulele.svg. */
-.guarantee .seal .uke{height:56px;width:auto;display:block}
+.guarantee .seal .uke{height:56px;width:22.9px;display:block}
+.guarantee .seal .uke .u-corpo{fill:var(--coral)}
+.guarantee .seal .uke .u-mad{fill:var(--ink)}
 .guarantee .gc{flex:1;min-width:16rem}
 .guarantee + .guarantee{margin-top:clamp(1rem,2.5vw,1.4rem)}
 .guarantee--year{border-color:rgba(234,84,108,.45);background:linear-gradient(180deg,#fff 0%,#FFF6F8 100%)}
@@ -720,7 +716,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <div class="gc"><span class="eyebrow" style="margin-bottom:.3rem">Garantia 1 · incondicional</span><h2>30 dias para testar tudo por dentro</h2><p>Você entra no Clube, assiste as aulas, baixa os materiais, participa da comunidade e envia os seus vídeos. Se por qualquer motivo não fizer sentido pra você, é só pedir o cancelamento dentro dos 30 dias que eu devolvo 100% do seu dinheiro, sem letra miúda e sem fricção.</p></div>
     </div>
     <div class="guarantee guarantee--year">
-      <div class="seal"><svg class="uke" viewBox="0 0 40 98" role="img" aria-label="Ukulele"><path d="M20 55.2 C15.5 55.2 7.2 56.5 6.8 62.4 C6.6 66.6 8.15 67.5 8.15 70 C8.15 73.5 3 76.5 3 84.5 C3 91.5 10.5 96 20 96 C29.5 96 37 91.5 37 84.5 C37 76.5 31.85 73.5 31.85 70 C31.85 67.5 33.4 66.6 33.2 62.4 C32.8 56.5 24.5 55.2 20 55.2 Z" fill="var(--coral)"/><rect x="16.6" y="17" width="6.8" height="49" fill="var(--ink)"/><path d="M16.2 1.2 L23.8 1.2 C24.9 1.2 25.6 2 25.6 3.2 L25.6 17.4 L14.4 17.4 L14.4 3.2 C14.4 2 15.1 1.2 16.2 1.2 Z" fill="var(--ink)"/><circle cx="12.6" cy="5.6" r="1.8" fill="var(--ink)"/><circle cx="12.6" cy="13.2" r="1.8" fill="var(--ink)"/><circle cx="27.4" cy="5.6" r="1.8" fill="var(--ink)"/><circle cx="27.4" cy="13.2" r="1.8" fill="var(--ink)"/><circle cx="20" cy="72" r="5" fill="#fff"/><rect x="14.2" y="84" width="11.6" height="2.6" rx="1" fill="var(--ink)"/><g stroke="#fff" stroke-width="0.7"><line x1="18.5" y1="4" x2="18.5" y2="84"/><line x1="19.5" y1="4" x2="19.5" y2="84"/><line x1="20.5" y1="4" x2="20.5" y2="84"/><line x1="21.5" y1="4" x2="21.5" y2="84"/></g></svg></div>
+      <div class="seal"><svg class="uke" viewBox="0 0 40 98" width="40" height="98" role="img" aria-label="Ukulele"><path d="M20 55.2 C15.5 55.2 7.2 56.5 6.8 62.4 C6.6 66.6 8.15 67.5 8.15 70 C8.15 73.5 3 76.5 3 84.5 C3 91.5 10.5 96 20 96 C29.5 96 37 91.5 37 84.5 C37 76.5 31.85 73.5 31.85 70 C31.85 67.5 33.4 66.6 33.2 62.4 C32.8 56.5 24.5 55.2 20 55.2 Z" class="u-corpo"/><rect x="16.6" y="17" width="6.8" height="49" class="u-mad"/><path d="M16.2 1.2 L23.8 1.2 C24.9 1.2 25.6 2 25.6 3.2 L25.6 17.4 L14.4 17.4 L14.4 3.2 C14.4 2 15.1 1.2 16.2 1.2 Z" class="u-mad"/><circle cx="12.6" cy="5.6" r="1.8" class="u-mad"/><circle cx="12.6" cy="13.2" r="1.8" class="u-mad"/><circle cx="27.4" cy="5.6" r="1.8" class="u-mad"/><circle cx="27.4" cy="13.2" r="1.8" class="u-mad"/><circle cx="20" cy="72" r="5" fill="#fff"/><rect x="14.2" y="84" width="11.6" height="2.6" rx="1" class="u-mad"/><g stroke="#fff" stroke-width="0.7"><line x1="18.5" y1="4" x2="18.5" y2="84"/><line x1="19.5" y1="4" x2="19.5" y2="84"/><line x1="20.5" y1="4" x2="20.5" y2="84"/><line x1="21.5" y1="4" x2="21.5" y2="84"/></g></svg></div>
       <div class="gc"><span class="eyebrow" style="margin-bottom:.3rem">Garantia 2 · de resultado</span><h2>1 ano inteiro para você tocar 10 músicas</h2><p>Essa é a que eu faço questão de assinar embaixo. Faça as aulas, siga o Método 3D e me envie os seus vídeos. Se depois de um ano fazendo a sua parte você ainda não estiver tocando pelo menos 10 músicas, eu devolvo o valor do Clube. A minha parte eu já sei que funciona: foi assim com mais de 6.000 alunos.</p></div>
     </div>
   </div>
