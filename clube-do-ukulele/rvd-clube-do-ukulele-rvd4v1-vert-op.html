@@ -462,6 +462,16 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 .lb-x{position:absolute;top:.5rem;right:.5rem;width:2.3rem;height:2.3rem;border:0;border-radius:999px;background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .lb-x svg{width:1.1rem;height:1.1rem}
 
+/* Logo da marca. Fora da hero de propósito: lá o único assunto é o play.
+   Entra só nas seções de fundo escuro, onde ela vai direta; em fundo claro a
+   marca exige o selo índigo em volta, que pesaria no meio da página. A arte é
+   única (1190x778, proporção 1,53:1) e a largura mínima da marca é 96px, então o
+   piso do clamp fica acima disso. Espaço em volta se resolve com margem, nunca
+   trocando de arquivo. */
+.marca{display:block;width:clamp(118px,17vw,152px);height:auto;margin:0 auto clamp(1.1rem,3vw,1.6rem)}
+.rodape{background:var(--ink);color:#B7ADCB;text-align:center;font-size:13.5px;line-height:1.7;padding:clamp(2.2rem,5vw,3rem) 1rem calc(clamp(2.2rem,5vw,3rem) + env(safe-area-inset-bottom))}
+.rodape .marca{width:126px;margin-bottom:1rem}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -698,6 +708,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <!-- Oferta / preço -->
 <section class="section surface-dark cv">
   <div class="container">
+    <img class="marca" src="/img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" loading="lazy" decoding="async">
     <div class="sec-head"><span class="eyebrow">A oferta completa</span><h2 class="h2">Tudo isso você leva junto</h2><p class="lead">Uma aula particular por semana numa escola de música custa por volta de R$ 600 por mês, R$ 7.200 no ano. É um caminho que funciona e vale o que cobra. O plano anual do Clube, o ano inteiro, custa o mesmo que uma única mensalidade dessas, e você ainda tem tudo organizado na ordem certa, com a turma e os professores junto.</p></div>
     <div class="offer">
       <ul>
@@ -782,6 +793,14 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <p class="note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Desconto de R$ 200 desta página, aplicado direto no checkout</p>
   </div>
 </section>
+
+<!-- Rodapé. Fica DENTRO do .gate na versão fechada, junto com o resto: com a
+     página travada a dobra é só o hero, e um rodapé solto embaixo dela pareceria
+     página quebrada. -->
+<footer class="rodape">
+  <img class="marca" src="/img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" loading="lazy" decoding="async">
+  <p>Clube do Ukulele · Mateus Augusto · Todos os direitos reservados</p>
+</footer>
 
 </main>
 
