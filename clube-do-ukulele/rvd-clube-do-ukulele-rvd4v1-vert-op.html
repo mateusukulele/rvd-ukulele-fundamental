@@ -360,19 +360,18 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* Oferta */
 .offer{max-width:640px;margin-inline:auto;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:clamp(1.4rem,4vw,2.4rem)}
 .offer ul{border-bottom:1px solid rgba(255,255,255,.16);padding-bottom:1.3rem;margin-bottom:1.3rem}
-.offer li{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding:.5rem 0;font-size:.95rem;color:#E7E1F2}
+.offer li{display:flex;gap:1rem;align-items:flex-start;padding:.5rem 0;font-size:.95rem;color:#E7E1F2}
 .offer li .it{display:flex;gap:.6rem;align-items:flex-start}
 .offer li svg{width:20px;height:20px;color:var(--coral);flex-shrink:0}
-.offer li s{color:#A99DC2;font-weight:800;white-space:nowrap}
-/* Item sem preço de tabela: entra junto com o Clube, não é bônus com âncora. */
-.offer li em{color:#A99DC2;font-weight:800;font-style:normal;white-space:nowrap}
 .coupon-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:rgba(15,169,104,.14);border:1px solid rgba(15,169,104,.4);border-radius:12px;padding:.8rem 1rem;margin-bottom:1.3rem;font-weight:700;color:#8FE3BE;font-size:.9rem}
 .coupon-row .v{font-family:'Montserrat',sans-serif;font-weight:900;color:#28C98A}
 .final-price{text-align:center;margin-bottom:1.3rem}
-.final-price .was{color:#C4BAD6;font-size:.95rem}
+/* Sem preço de tabela na lista, este bloco virou o único número da caixa, então
+   cresce: o "de R$ 597 por ano" sobe para 1.15rem e o valor final para 2.9rem. */
+.final-price .was{color:#C4BAD6;font-size:clamp(1rem,2.6vw,1.15rem)}
 .final-price .was s{color:#F6A9B4;font-weight:800}
-.final-price .now{font-family:'Montserrat',sans-serif;font-weight:900;color:#fff;font-size:clamp(1.5rem,5vw,2.1rem);margin-top:.2rem}
-.final-price .now span{color:var(--coral)}
+.final-price .now{font-family:'Montserrat',sans-serif;font-weight:900;color:#fff;font-size:clamp(1.9rem,6.4vw,2.9rem);line-height:1.08;margin-top:.35rem}
+.final-price .now span{color:var(--coral);display:block;font-size:clamp(1rem,2.9vw,1.25rem);font-weight:800;margin-top:.3rem}
 .surface-dark .note{color:#C4BAD6}
 .surface-dark .note svg{color:#7BE0B4}
 
@@ -689,18 +688,18 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <div class="sec-head"><span class="eyebrow">A oferta completa</span><h2 class="h2">Tudo isso você leva junto</h2><p class="lead">Uma aula particular por semana numa escola de música custa por volta de R$ 600 por mês, R$ 7.200 no ano. É um caminho que funciona e vale o que cobra. O plano anual do Clube, o ano inteiro, custa o mesmo que uma única mensalidade dessas, e você ainda tem tudo organizado na ordem certa, com a turma e os professores junto.</p></div>
     <div class="offer">
       <ul>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Clube do Ukulele por 1 ano</b> (a jornada completa em 4 etapas, do zero ao intermediário)</span></span><s>R$ 597</s></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Biblioteca com mais de 150 músicas</b> (aula, "toque comigo" e PDF), com música nova todo mês</span></span><em>Incluso</em></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Guia de Compra do Primeiro Ukulele</b>, com vídeo, para quem ainda não tem instrumento</span></span><em>Incluso</em></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Comunidade, suporte embaixo de cada aula e aulas ao vivo extras toda semana</b></span></span><em>Incluso</em></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Encontros quinzenais ao vivo com os professores</b>, em sala fechada só do Clube</span></span><em>Incluso</em></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 01. 5 Atividades em Vídeo pra você enviar</b> (o professor responde cada uma em vídeo)</span></span><s>R$ 497</s></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 02. Dicionário de Acordes do Ukulele</b></span></span><s>R$ 47</s></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 03. Destrava Dedos</b> (exercícios de coordenação)</span></span><s>R$ 97</s></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 04. Workshop de Canto com Ukulele</b></span></span><s>R$ 147</s></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Clube do Ukulele por 1 ano</b> (a jornada completa em 4 etapas, do zero ao intermediário)</span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Biblioteca com mais de 150 músicas</b> (aula, "toque comigo" e PDF), com música nova todo mês</span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Guia de Compra do Primeiro Ukulele</b>, com vídeo, para quem ainda não tem instrumento</span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Comunidade, suporte embaixo de cada aula e aulas ao vivo extras toda semana</b></span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Encontros quinzenais ao vivo com os professores</b>, em sala fechada só do Clube</span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 01. 5 Atividades em Vídeo pra você enviar</b> (o professor responde cada uma em vídeo)</span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 02. Dicionário de Acordes do Ukulele</b></span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 03. Destrava Dedos</b> (exercícios de coordenação)</span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 04. Workshop de Canto com Ukulele</b></span></span></li>
       </ul>
       <div class="coupon-row"><span>Cupom exclusivo desta página, já aplicado</span><span class="v">− R$ 200</span></div>
-      <div class="final-price"><p class="was">Plano anual. De <s>R$ 597,00</s> por ano, por:</p><p class="now">12x de R$ 41 <span>ou R$ 397 à vista, por 1 ano de Clube</span></p></div>
+      <div class="final-price"><p class="was">Plano anual. De <s>R$ 597,00</s> por ano, com o desconto sai por:</p><p class="now">12x de R$ 41 <span>ou R$ 397 à vista, por 1 ano de Clube</span></p></div>
       <button class="btn btn--block btn--pulse" onclick="openCheckout()">Quero entrar no Clube do Ukulele</button>
       <p class="note" style="margin-top:.9rem"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cupom aplicado direto no checkout, sem digitar nada</p>
       <p class="note" style="margin-top:.45rem"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg> Plano anual com renovação automática. Você desativa quando quiser pelo suporte.</p>
