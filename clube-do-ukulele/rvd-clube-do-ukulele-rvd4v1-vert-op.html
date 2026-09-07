@@ -399,6 +399,11 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .mentor li{display:flex;gap:.7rem;color:var(--text);font-size:.95rem}
 .mentor li svg{width:20px;height:20px;color:var(--coral);flex-shrink:0}
 @media (min-width:800px){.mentor{grid-template-columns:0.85fr 1.15fr}.mentor img{margin-inline:0}}
+/* Capa do Guia de Compra: página A4 (proporção 0,707), então nada de aspect-ratio
+   4/5 com cover, que decepa o título. Borda fina no lugar dos 6px brancos porque
+   a capa já tem fundo escuro cheio e a moldura larga engordava a peça. */
+.mentor--guia img{aspect-ratio:auto;object-fit:contain;max-width:320px;border-width:0;border-radius:14px;box-shadow:0 26px 55px -26px rgba(66,48,102,.65)}
+.mentor--guia p{margin-top:1rem;color:var(--text)}
 
 /* FAQ */
 .faq{max-width:800px;margin-inline:auto;display:flex;flex-direction:column;gap:.75rem}
@@ -488,8 +493,8 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 
     <div class="cta-block">
       <button class="btn btn--block btn--pulse" onclick="openCheckout()">Quero entrar no Clube do Ukulele</button>
-      <div class="price-line"><span class="from">De</span> <span class="strike">R$ 597,00</span> <span class="price-now">Com cupom: <b>12x R$ 41</b> ou R$ 397 à vista</span></div>
-      <p class="note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cupom de R$ 200 OFF já aplicado · 30 dias de garantia</p>
+      <div class="price-line"><span class="from">De</span> <span class="strike">R$ 597,00</span> <span class="price-now">Com cupom: <b>12x R$ 41</b> ou R$ 397 à vista, no plano anual</span></div>
+      <p class="note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Plano anual · cupom de R$ 200 OFF já aplicado · 30 dias de garantia</p>
       <!-- O preço e a nota de garantia ficam FORA da dobra de propósito: a dobra
            termina no fim do botão. Ver o script logo abaixo do hero. -->
     </div>
@@ -542,7 +547,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <div class="trust-item"><b>+6.000</b> alunos</div>
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> +150 músicas com aula</div>
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> 30 dias de garantia</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg> 5 envios com resposta em vídeo</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg> <b>5</b> atividades em vídeo</div>
   </div>
 </section>
 
@@ -590,6 +595,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <ul class="deliver">
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>A jornada completa em 4 etapas</b>, do zero até tocar qualquer música que você goste, na ordem certa.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Biblioteca com mais de 150 músicas</b>, cada uma com aula, destrinchamento, o "toque comigo" e a cifra em PDF. E entra música nova todo mês.</p></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Guia de Compra do Primeiro Ukulele</b>, com vídeo detalhado: tamanhos, o que olhar e quanto vale a pena investir. Ainda em dúvida, a gente te indica o modelo no WhatsApp.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>O Mecanismo 3D aplicado aula por aula</b>: dividir, destravar e dominar, até você fazer isso sozinho em qualquer música nova.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Dúvida embaixo de cada aula</b>: você pergunta ali mesmo, na aula em que travou, e a nossa equipe responde no mesmo lugar.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>A comunidade do Clube</b>, onde os professores passam todo dia. Você grava um vídeo tocando, posta, e recebe por escrito o que ajustar. Tem coisa que só se entende vendo.</p></li>
@@ -629,8 +635,23 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
   </div>
 </section>
 
-<!-- Depoimentos em texto -->
+<!-- Guia de Compra. Não é bônus: está dentro do Clube, e a seção existe para
+     matar a objeção "eu nem tenho ukulele ainda" antes da prova social. -->
 <section class="section surface-cream cv">
+  <div class="container mentor mentor--guia">
+    <img src="/img/guia-compra-primeiro-ukulele.webp" alt="Capa do Guia de Compra do Primeiro Ukulele, incluso no Clube do Ukulele" width="763" height="1080" loading="lazy" decoding="async">
+    <div>
+      <span class="eyebrow">E se você ainda não tem ukulele?</span>
+      <h2 class="h2">Não ter o instrumento ainda <span>não te atrasa</span></h2>
+      <p>Se você já tem o seu ukulele, dá para aproveitar tudo o que existe no Clube hoje mesmo. E se você ainda nem tem, esse é justamente o melhor momento para entrar.</p>
+      <p>Dentro do Clube tem o <b>Guia de Compra do Primeiro Ukulele</b>, onde eu explico os tamanhos, o que olhar na hora de escolher e quanto vale a pena investir, com um vídeo detalhado junto. E se ainda ficar dúvida, você chama a gente no WhatsApp que a gente te indica o modelo e o link para comprar.</p>
+      <p>Por isso entrar hoje é melhor do que esperar o ukulele chegar. Você escolhe o instrumento com a gente do seu lado e, quando a caixa chegar na sua casa, o curso já está te esperando. Você abre a caixa e toca no mesmo dia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Depoimentos em texto -->
+<section class="section surface-white hairline cv">
   <div class="container">
     <div class="sec-head"><span class="eyebrow">Nas palavras deles</span><h2 class="h2">O que os alunos <span>me mandam</span></h2></div>
     <div class="proofs">
@@ -648,7 +669,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
   <div class="container">
     <div class="sec-head"><span class="eyebrow">Vai junto, de graça</span><h2 class="h2">Você ainda leva <span>4 bônus exclusivos</span></h2><p class="lead">Cada um resolve um problema que eu escuto de aluno toda semana. São esses quatro, e mais nenhum.</p></div>
     <div class="grid g-4">
-      <div class="bonus free"><div class="top"><span class="tag">Bônus 01</span><span class="val"><s>R$ 497</s><em>Grátis</em></span></div><h3>Intercâmbio de Vídeos</h3><p>"E se eu estiver fazendo errado e não perceber?" Você grava você tocando e envia. O professor assiste e grava um vídeo em cima do seu, mostrando o que ajustar. São 5 envios, em 5 aulas escolhidas a dedo: as que mais travam quem está começando.</p></div>
+      <div class="bonus free"><div class="top"><span class="tag">Bônus 01</span><span class="val"><s>R$ 497</s><em>Grátis</em></span></div><h3>5 Atividades em Vídeo pra você enviar!</h3><p>"E se eu estiver fazendo errado e não perceber?" Você grava você tocando e envia. O professor assiste e grava um vídeo em cima do seu, mostrando o que ajustar. São <b>5 envios</b>, em 5 aulas escolhidas a dedo: as que mais travam quem está começando.</p></div>
       <div class="bonus"><div class="top"><span class="tag">Bônus 02</span><span class="val"><s>R$ 47</s><em>Grátis</em></span></div><h3>Dicionário de Acordes</h3><p>"E se aparecer um acorde que eu não sei fazer?" Todos os acordes do ukulele na sua mão, para imprimir ou deixar aberto no computador, e nunca mais ficar na dúvida se o formato que você está fazendo é o certo.</p></div>
       <div class="bonus"><div class="top"><span class="tag">Bônus 03</span><span class="val"><s>R$ 97</s><em>Grátis</em></span></div><h3>Destrava Dedos</h3><p>"Meus dedos não acompanham a música." Todo mundo diz isso. É uma sequência de exercícios para ganhar flexibilidade e força e conseguir acompanhar qualquer música, de acorde ou de dedilhado.</p></div>
       <div class="bonus"><div class="top"><span class="tag">Bônus 04</span><span class="val"><s>R$ 147</s><em>Grátis</em></span></div><h3>Workshop de Canto</h3><p>"Eu queria cantar junto, mas não consigo fazer as duas coisas ao mesmo tempo." Eu não sou professor de canto, então chamei uma professora incrível para gravar esse curso pra você.</p></div>
@@ -662,7 +683,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
   <div class="container">
     <div class="guarantee">
       <div class="seal">🔒</div>
-      <div class="gc"><span class="eyebrow" style="margin-bottom:.3rem">O que mais importa aqui</span><h2>O valor que você trava hoje é o seu valor para sempre</h2><p>O seu acesso ao Clube é de um ano, e enquanto você seguir dentro ele renova com o mesmo desconto de R$ 200, sem reajuste. Se o Clube subir de preço no ano que vem, e ele vai subir, quem entrou hoje continua pagando o mesmo. Quem entrar depois paga o novo. Não é uma promoção que acaba, é uma porta que fecha num preço.</p></div>
+      <div class="gc"><span class="eyebrow" style="margin-bottom:.3rem">O que mais importa aqui</span><h2>O valor que você trava hoje é o seu valor para sempre</h2><p>O Clube é um plano anual, e o desconto de R$ 200 que você pega aqui fica preso ao seu nome: enquanto você seguir dentro, o valor continua esse, sem reajuste. Se o Clube subir de preço no ano que vem, e ele vai subir, quem entrou hoje continua pagando o mesmo. Quem entrar depois paga o novo. Não é uma promoção que acaba, é uma porta que fecha num preço.</p></div>
     </div>
   </div>
 </section>
@@ -670,22 +691,24 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <!-- Oferta / preço -->
 <section class="section surface-dark cv">
   <div class="container">
-    <div class="sec-head"><span class="eyebrow">A oferta completa</span><h2 class="h2">Tudo isso você leva junto</h2><p class="lead">Uma aula particular por semana numa escola de música custa por volta de R$ 600 por mês, R$ 7.200 no ano. É um caminho que funciona e vale o que cobra. O plano anual do Clube custa o mesmo que uma única mensalidade dessas, e você ainda tem tudo organizado na ordem certa, com a turma e os professores junto.</p></div>
+    <div class="sec-head"><span class="eyebrow">A oferta completa</span><h2 class="h2">Tudo isso você leva junto</h2><p class="lead">Uma aula particular por semana numa escola de música custa por volta de R$ 600 por mês, R$ 7.200 no ano. É um caminho que funciona e vale o que cobra. O plano anual do Clube, o ano inteiro, custa o mesmo que uma única mensalidade dessas, e você ainda tem tudo organizado na ordem certa, com a turma e os professores junto.</p></div>
     <div class="offer">
       <ul>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Clube do Ukulele por 1 ano</b> (a jornada completa em 4 etapas, do zero ao intermediário)</span></span><s>R$ 597</s></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Biblioteca com mais de 150 músicas</b> (aula, "toque comigo" e PDF), com música nova todo mês</span></span><em>Incluso</em></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Guia de Compra do Primeiro Ukulele</b>, com vídeo, para quem ainda não tem instrumento</span></span><em>Incluso</em></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Comunidade, suporte embaixo de cada aula e aulas ao vivo extras toda semana</b></span></span><em>Incluso</em></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Encontros quinzenais ao vivo com os professores</b>, em sala fechada só do Clube</span></span><em>Incluso</em></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 01. Intercâmbio de Vídeos</b> (5 envios com resposta em vídeo do professor)</span></span><s>R$ 497</s></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 01. 5 Atividades em Vídeo pra você enviar</b> (o professor responde cada uma em vídeo)</span></span><s>R$ 497</s></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 02. Dicionário de Acordes do Ukulele</b></span></span><s>R$ 47</s></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 03. Destrava Dedos</b> (exercícios de coordenação)</span></span><s>R$ 97</s></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 04. Workshop de Canto com Ukulele</b></span></span><s>R$ 147</s></li>
       </ul>
       <div class="coupon-row"><span>Cupom exclusivo desta página, já aplicado</span><span class="v">− R$ 200</span></div>
-      <div class="final-price"><p class="was">De <s>R$ 597,00</s> por ano, por:</p><p class="now">12x de R$ 41 <span>ou R$ 397 à vista</span></p></div>
+      <div class="final-price"><p class="was">Plano anual. De <s>R$ 597,00</s> por ano, por:</p><p class="now">12x de R$ 41 <span>ou R$ 397 à vista, por 1 ano de Clube</span></p></div>
       <button class="btn btn--block btn--pulse" onclick="openCheckout()">Quero entrar no Clube do Ukulele</button>
       <p class="note" style="margin-top:.9rem"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cupom aplicado direto no checkout, sem digitar nada</p>
+      <p class="note" style="margin-top:.45rem"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg> Plano anual com renovação automática. Você desativa quando quiser pelo suporte.</p>
     </div>
   </div>
 </section>
@@ -729,14 +752,15 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
     <div class="faq">
       <details><summary>Nunca toquei nenhum instrumento. O Clube é para mim?</summary><div class="a">Sim! O ponto de partida do Clube é o zero absoluto. Você aprende passo a passo, sem precisar de nenhuma base musical anterior, e a primeira música costuma sair já na primeira semana.</div></details>
       <details><summary>Já sei o básico, mas ainda travo. Vai me ajudar?</summary><div class="a">Com certeza, e esse é o perfil mais comum aqui dentro. Boa parte dos alunos chega tocando algumas músicas, presa na mesma batida e sem saber qual é o próximo passo. A jornada em 4 etapas te dá o caminho e mostra as bases que ficaram para trás.</div></details>
-      <details><summary>Como funciona o Intercâmbio de Vídeos?</summary><div class="a">São 5 envios, em 5 aulas escolhidas a dedo, justamente as que mais travam quem está começando. Você grava com o celular, envia por dentro da plataforma e o professor grava um vídeo em cima do seu, mostrando o que ajustar e como evoluir. É o mais perto que dá de ter um professor sentado do seu lado.</div></details>
+      <details><summary>Como funcionam as 5 atividades em vídeo?</summary><div class="a">São 5 envios, em 5 aulas escolhidas a dedo, justamente as que mais travam quem está começando. Você grava com o celular, envia por dentro da plataforma e o professor grava um vídeo em cima do seu, mostrando o que ajustar e como evoluir. É o mais perto que dá de ter um professor sentado do seu lado.</div></details>
       <details><summary>E se eu travar numa dúvida no meio do caminho?</summary><div class="a">Você tem três caminhos: perguntar embaixo da própria aula em que travou, postar um vídeo na comunidade do Clube para a equipe assistir e te responder, ou levar a dúvida para o encontro quinzenal ao vivo com os professores. Para problema de acesso ou senha, tem um WhatsApp nosso com gente de verdade do outro lado.</div></details>
       <details><summary>Eu não tenho coordenação ou ritmo. Mesmo assim consigo?</summary><div class="a">Sim. O Mecanismo 3D (Dividir, Destravar, Dominar) existe exatamente por isso: em vez de tentar fazer tudo ao mesmo tempo, você isola cada camada, treina até ela rodar sozinha e só então junta. A coordenação aparece como consequência.</div></details>
       <details><summary>Preciso saber teoria musical?</summary><div class="a">Não! Você aprende direto na prática, dentro de músicas reais. A teoria entra só na hora em que ela faz diferença no que você está tocando.</div></details>
-      <details><summary>Ainda não tenho ukulele. Consigo começar?</summary><div class="a">Consegue. A jornada começa antes disso: eu ensino a escolher o instrumento, o que muda de um tamanho para outro e quanto vale a pena gastar. Você começa a assistir hoje e escolhe o ukulele com calma.</div></details>
+      <details><summary>Ainda não tenho ukulele. Consigo começar?</summary><div class="a">Consegue, e esse é o melhor momento para entrar. Dentro do Clube tem o Guia de Compra do Primeiro Ukulele, com vídeo detalhado: os tamanhos, o que olhar e quanto vale a pena investir. Se ainda ficar dúvida, você chama a gente no WhatsApp que a gente te indica o modelo e o link. Quando a caixa chegar na sua casa, o curso já está te esperando.</div></details>
       <details><summary>Tem muita coisa de graça na internet. Por que pagar?</summary><div class="a">Tem mesmo, e tem coisa muito boa, inclusive no meu canal. O que não vem de graça é a ordem certa dos passos e alguém olhando o que você está fazendo. Vídeo avulso te dá peça solta; aqui você tem o caminho inteiro na sequência, a turma junto e os seus vídeos comentados por um professor.</div></details>
       <details><summary>Minha rotina é corrida. Vou conseguir usar mesmo?</summary><div class="a">As aulas foram cortadas para caber em 20 minutos por dia, aquele tempo que costuma ir embora no celular. A primeira música costuma sair já na primeira semana, então você vê resultado antes de a novidade passar.</div></details>
-      <details><summary>Por quanto tempo eu tenho acesso?</summary><div class="a">É como uma academia: um ano de acesso ilimitado a tudo que está dentro do Clube, com as atualizações e as músicas novas que entram todo mês. Ao fim do período a assinatura renova, e o desconto de R$ 200 que você pegou aqui continua valendo na renovação, sem reajuste.</div></details>
+      <details><summary>Por quanto tempo eu tenho acesso?</summary><div class="a">O Clube é um plano anual: um ano de acesso ilimitado a tudo que está lá dentro, como uma academia, com as atualizações e as músicas novas que entram todo mês. Enquanto você seguir no Clube, o desconto de R$ 200 que você pegou aqui continua valendo, sem reajuste.</div></details>
+      <details><summary>É uma assinatura? Como funciona a cobrança?</summary><div class="a">É um plano anual. Você paga pelo ano inteiro de uma vez, à vista ou parcelado, e a renovação automática já entra ativada na inscrição, para o seu acesso não cair sozinho no meio do caminho. Se em algum momento você não quiser continuar, é só falar com o nosso suporte que a gente desativa a renovação automática pra você. E nos primeiros 30 dias vale a garantia incondicional, com 100% do valor de volta.</div></details>
       <details><summary>E se eu entrar e não for pra mim?</summary><div class="a">São 30 dias de garantia incondicional: você entra, assiste tudo, baixa tudo, envia seus vídeos e, se não fizer sentido, pede o reembolso e recebe 100% de volta. Além disso tem a garantia de resultado de 1 ano, para quem segue as aulas e envia as atividades.</div></details>
     </div>
   </div>
@@ -746,7 +770,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <section class="section surface-white hairline cv">
   <div class="container final">
     <h2 class="h2">Comece sua jornada no ukulele hoje</h2>
-    <p class="lead">Um ano de Clube, os 4 bônus, 30 dias de garantia incondicional e o cupom de R$ 200 já aplicado, que continua valendo em toda renovação. O risco fica comigo.</p>
+    <p class="lead">Um ano de Clube, os 4 bônus, 30 dias de garantia incondicional e o cupom de R$ 200 já aplicado, que fica travado no seu nome enquanto você seguir dentro. O risco fica comigo.</p>
     <button class="btn btn--pulse" onclick="openCheckout()" data-final>Quero entrar no Clube do Ukulele</button>
     <p class="note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Desconto de R$ 200 desta página, aplicado direto no checkout</p>
   </div>
@@ -757,7 +781,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <!-- Sticky CTA -->
 <div class="sticky" id="sticky" aria-hidden="true">
   <div class="sticky-in">
-    <div class="sticky-tx"><strong>Clube do Ukulele</strong><span>12x R$ 41 · cupom de R$ 200 já aplicado</span></div>
+    <div class="sticky-tx"><strong>Clube do Ukulele</strong><span>Plano anual: 12x R$ 41 · cupom de R$ 200 já aplicado</span></div>
     <button class="btn" onclick="openCheckout()">Quero entrar no Clube</button>
   </div>
 </div>
@@ -935,20 +959,21 @@ document.querySelectorAll('.vid').forEach(function(el){
 </script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Course","name":"Clube do Ukulele","description":"Escola de ukulele online com jornada de aprendizado em 4 etapas, do zero ao intermediário, usando o Mecanismo 3D. Inclui biblioteca com mais de 150 músicas com aula e play along, comunidade com professores, encontros quinzenais ao vivo, aulas ao vivo extras toda semana, 5 envios de vídeo com resposta do professor, dicionário de acordes, Destrava Dedos e workshop de canto.","inLanguage":"pt-BR","provider":{"@type":"Person","name":"Mateus Augusto","url":"https://cursos.comotocarukulele.com/"},"offers":{"@type":"Offer","price":"397.00","priceCurrency":"BRL","category":"Paid","availability":"https://schema.org/InStock","url":"https://cursos.comotocarukulele.com/clube-do-ukulele/rvd-clube-do-ukulele-rvd4v1-vert-op"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT20M"}}
+{"@context":"https://schema.org","@type":"Course","name":"Clube do Ukulele","description":"Escola de ukulele online com jornada de aprendizado em 4 etapas, do zero ao intermediário, usando o Mecanismo 3D. Inclui biblioteca com mais de 150 músicas com aula e play along, guia de compra do primeiro ukulele, comunidade com professores, encontros quinzenais ao vivo, aulas ao vivo extras toda semana, 5 envios de vídeo com resposta do professor, dicionário de acordes, Destrava Dedos e workshop de canto.","inLanguage":"pt-BR","provider":{"@type":"Person","name":"Mateus Augusto","url":"https://cursos.comotocarukulele.com/"},"offers":{"@type":"Offer","price":"397.00","priceCurrency":"BRL","category":"Paid","availability":"https://schema.org/InStock","url":"https://cursos.comotocarukulele.com/clube-do-ukulele/rvd-clube-do-ukulele-rvd4v1-vert-op"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT20M"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Nunca toquei nenhum instrumento. O Clube é para mim?","acceptedAnswer":{"@type":"Answer","text":"Sim! O ponto de partida do Clube é o zero absoluto. Você aprende passo a passo, sem precisar de nenhuma base musical anterior, e a primeira música costuma sair já na primeira semana."}},
 {"@type":"Question","name":"Já sei o básico, mas ainda travo. Vai me ajudar?","acceptedAnswer":{"@type":"Answer","text":"Com certeza, e esse é o perfil mais comum aqui dentro. A jornada em 4 etapas te dá o caminho e mostra as bases que ficaram para trás."}},
-{"@type":"Question","name":"Como funciona o Intercâmbio de Vídeos?","acceptedAnswer":{"@type":"Answer","text":"São 5 envios, em 5 aulas escolhidas a dedo. Você grava com o celular, envia por dentro da plataforma e o professor grava um vídeo em cima do seu, mostrando o que ajustar e como evoluir."}},
+{"@type":"Question","name":"Como funcionam as 5 atividades em vídeo?","acceptedAnswer":{"@type":"Answer","text":"São 5 envios, em 5 aulas escolhidas a dedo. Você grava com o celular, envia por dentro da plataforma e o professor grava um vídeo em cima do seu, mostrando o que ajustar e como evoluir."}},
 {"@type":"Question","name":"E se eu travar numa dúvida no meio do caminho?","acceptedAnswer":{"@type":"Answer","text":"Você pergunta embaixo da própria aula, posta um vídeo na comunidade para a equipe assistir e responder, ou leva a dúvida para o encontro quinzenal ao vivo com os professores. Para problema de acesso, tem suporte no WhatsApp."}},
 {"@type":"Question","name":"Eu não tenho coordenação ou ritmo. Mesmo assim consigo?","acceptedAnswer":{"@type":"Answer","text":"Sim. O Mecanismo 3D foi feito para quem sente os dedos duros ou travados: você isola cada camada, treina até ela rodar sozinha e só então junta."}},
 {"@type":"Question","name":"Preciso saber teoria musical?","acceptedAnswer":{"@type":"Answer","text":"Não! Você aprende direto na prática, dentro de músicas reais."}},
-{"@type":"Question","name":"Ainda não tenho ukulele. Consigo começar?","acceptedAnswer":{"@type":"Answer","text":"Consegue. A jornada começa antes disso: eu ensino a escolher o instrumento, o que muda de um tamanho para outro e quanto vale a pena gastar."}},
+{"@type":"Question","name":"Ainda não tenho ukulele. Consigo começar?","acceptedAnswer":{"@type":"Answer","text":"Consegue, e esse é o melhor momento para entrar. Dentro do Clube tem o Guia de Compra do Primeiro Ukulele, com vídeo detalhado: os tamanhos, o que olhar e quanto vale a pena investir. Se ainda ficar dúvida, a gente te indica o modelo pelo WhatsApp."}},
 {"@type":"Question","name":"Tem muita coisa de graça na internet. Por que pagar?","acceptedAnswer":{"@type":"Answer","text":"O que não vem de graça é a ordem certa dos passos e alguém olhando o que você faz. Aqui você tem o caminho inteiro na sequência, a turma junto e os seus vídeos comentados por um professor."}},
 {"@type":"Question","name":"Minha rotina é corrida. Vou conseguir usar mesmo?","acceptedAnswer":{"@type":"Answer","text":"As aulas cabem em 20 minutos por dia e a primeira música costuma sair já na primeira semana."}},
-{"@type":"Question","name":"Por quanto tempo eu tenho acesso?","acceptedAnswer":{"@type":"Answer","text":"É um ano de acesso ilimitado a tudo que está dentro do Clube, com as atualizações e as músicas novas que entram todo mês. Na renovação, o desconto de R$ 200 que você pegou aqui continua valendo, sem reajuste."}},
+{"@type":"Question","name":"Por quanto tempo eu tenho acesso?","acceptedAnswer":{"@type":"Answer","text":"O Clube é um plano anual: um ano de acesso ilimitado a tudo que está lá dentro, com as atualizações e as músicas novas que entram todo mês. Enquanto você seguir no Clube, o desconto de R$ 200 continua valendo, sem reajuste."}},
+{"@type":"Question","name":"É uma assinatura? Como funciona a cobrança?","acceptedAnswer":{"@type":"Answer","text":"É um plano anual. Você paga pelo ano inteiro de uma vez, à vista ou parcelado, e a renovação automática já entra ativada na inscrição. Se não quiser continuar, é só falar com o suporte que a gente desativa a renovação automática. Nos primeiros 30 dias vale a garantia incondicional, com 100% do valor de volta."}},
 {"@type":"Question","name":"E se eu entrar e não for pra mim?","acceptedAnswer":{"@type":"Answer","text":"São 30 dias de garantia incondicional com 100% do valor de volta, mais uma garantia de resultado de 1 ano para quem segue as aulas e envia as atividades."}}
 ]}
 </script>
