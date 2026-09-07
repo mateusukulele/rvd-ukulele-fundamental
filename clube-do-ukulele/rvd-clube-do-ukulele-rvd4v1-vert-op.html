@@ -349,14 +349,9 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* Bônus */
 .bonus{display:flex;flex-direction:column;gap:.5rem;background:#fff;border-radius:20px;padding:1.5rem;color:var(--text);height:100%}
 .bonus.free{background:linear-gradient(150deg,var(--coral),var(--coral-deep));color:#fff}
-.bonus .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem}
+.bonus .top{display:flex;align-items:center;margin-bottom:.35rem}
 .bonus .tag{font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);background:rgba(66,48,102,.1);padding:.3rem .7rem;border-radius:999px}
 .bonus.free .tag{background:rgba(255,255,255,.22);color:#fff}
-.bonus .val{font-size:12px;font-weight:800}
-.bonus .val s{color:var(--muted);margin-right:.4rem}
-.bonus.free .val s{color:rgba(255,255,255,.75)}
-.bonus .val em{color:var(--cta);font-style:normal;text-transform:uppercase}
-.bonus.free .val em{color:#fff}
 .bonus h3{color:var(--ink);font-size:1.18rem}
 .bonus.free h3{color:#fff}
 .bonus p{font-size:.9rem;color:var(--muted)}
@@ -669,10 +664,10 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
   <div class="container">
     <div class="sec-head"><span class="eyebrow">Vai junto, de graça</span><h2 class="h2">Você ainda leva <span>4 bônus exclusivos</span></h2><p class="lead">Cada um resolve um problema que eu escuto de aluno toda semana. São esses quatro, e mais nenhum.</p></div>
     <div class="grid g-4">
-      <div class="bonus free"><div class="top"><span class="tag">Bônus 01</span><span class="val"><s>R$ 497</s><em>Grátis</em></span></div><h3>5 Atividades em Vídeo pra você enviar!</h3><p>"E se eu estiver fazendo errado e não perceber?" Você grava você tocando e envia. O professor assiste e grava um vídeo em cima do seu, mostrando o que ajustar. São <b>5 envios</b>, em 5 aulas escolhidas a dedo: as que mais travam quem está começando.</p></div>
-      <div class="bonus"><div class="top"><span class="tag">Bônus 02</span><span class="val"><s>R$ 47</s><em>Grátis</em></span></div><h3>Dicionário de Acordes</h3><p>"E se aparecer um acorde que eu não sei fazer?" Todos os acordes do ukulele na sua mão, para imprimir ou deixar aberto no computador, e nunca mais ficar na dúvida se o formato que você está fazendo é o certo.</p></div>
-      <div class="bonus"><div class="top"><span class="tag">Bônus 03</span><span class="val"><s>R$ 97</s><em>Grátis</em></span></div><h3>Destrava Dedos</h3><p>"Meus dedos não acompanham a música." Todo mundo diz isso. É uma sequência de exercícios para ganhar flexibilidade e força e conseguir acompanhar qualquer música, de acorde ou de dedilhado.</p></div>
-      <div class="bonus"><div class="top"><span class="tag">Bônus 04</span><span class="val"><s>R$ 147</s><em>Grátis</em></span></div><h3>Workshop de Canto</h3><p>"Eu queria cantar junto, mas não consigo fazer as duas coisas ao mesmo tempo." Eu não sou professor de canto, então chamei uma professora incrível para gravar esse curso pra você.</p></div>
+      <div class="bonus free"><div class="top"><span class="tag">Bônus 01</span></div><h3>5 Atividades em Vídeo pra você enviar!</h3><p>"E se eu estiver fazendo errado e não perceber?" Você grava você tocando e envia. O professor assiste e grava um vídeo em cima do seu, mostrando o que ajustar. São <b>5 envios</b>, em 5 aulas escolhidas a dedo: as que mais travam quem está começando.</p></div>
+      <div class="bonus"><div class="top"><span class="tag">Bônus 02</span></div><h3>Dicionário de Acordes</h3><p>"E se aparecer um acorde que eu não sei fazer?" Todos os acordes do ukulele na sua mão, para imprimir ou deixar aberto no computador, e nunca mais ficar na dúvida se o formato que você está fazendo é o certo.</p></div>
+      <div class="bonus"><div class="top"><span class="tag">Bônus 03</span></div><h3>Destrava Dedos</h3><p>"Meus dedos não acompanham a música." Todo mundo diz isso. É uma sequência de exercícios para ganhar flexibilidade e força e conseguir acompanhar qualquer música, de acorde ou de dedilhado.</p></div>
+      <div class="bonus"><div class="top"><span class="tag">Bônus 04</span></div><h3>Workshop de Canto</h3><p>"Eu queria cantar junto, mas não consigo fazer as duas coisas ao mesmo tempo." Eu não sou professor de canto, então chamei uma professora incrível para gravar esse curso pra você.</p></div>
     </div>
     <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero entrar no Clube do Ukulele</button></div>
   </div>
