@@ -302,7 +302,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* Quatro cards com texto de verdade dentro. Em uma linha só cada card mede 246px
    e sobram 190 de texto, que quebra a frase de duas em duas palavras. Com 340 de
    piso o desktop cai em 2x2 e o texto ganha 480px. */
-.g-2x2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.g-2x2{grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr))}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.2rem,3vw,1.7rem);box-shadow:0 10px 30px -20px rgba(66,48,102,.35);height:100%}
 
 /* Método */
@@ -364,7 +364,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .offer li .it{display:flex;gap:.6rem;align-items:flex-start}
 .offer li svg{width:20px;height:20px;color:var(--coral);flex-shrink:0}
 .coupon-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:rgba(15,169,104,.14);border:1px solid rgba(15,169,104,.4);border-radius:12px;padding:.8rem 1rem;margin-bottom:1.3rem;font-weight:700;color:#8FE3BE;font-size:.9rem}
-.coupon-row .v{font-family:'Montserrat',sans-serif;font-weight:900;color:#28C98A}
+.coupon-row .v{font-family:'Montserrat',sans-serif;font-weight:900;color:#28C98A;white-space:nowrap;flex-shrink:0}
 .final-price{text-align:center;margin-bottom:1.3rem}
 /* Sem preço de tabela na lista, este bloco virou o único número da caixa, então
    cresce: o "de R$ 597 por ano" sobe para 1.15rem e o valor final para 2.9rem. */
