@@ -13,12 +13,12 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Clube do Ukulele">
-<meta property="og:title" content="Toque as suas músicas favoritas no ukulele, com 20 minutos por dia">
+<meta property="og:title" content="Toque suas músicas favoritas no ukulele com 20 minutinhos por dia">
 <meta property="og:description" content="O passo a passo que +6.000 alunos seguiram para sair do zero no ukulele, sem teoria chata. Um ano de Clube, com turma, professores e 30 dias de garantia.">
 <meta property="og:url" content="https://cursos.comotocarukulele.com/clube-do-ukulele/rvd-clube-do-ukulele-rvd4v1-vert-op">
 <meta property="og:image" content="https://cursos.comotocarukulele.com/img/mateus-perfil.webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Aprenda ukulele do zero no Clube do Ukulele">
+<meta name="twitter:title" content="Toque suas músicas favoritas no ukulele com 20 minutinhos por dia">
 <meta name="twitter:description" content="Mecanismo 3D validado por +6.000 alunos. Correção em vídeo do professor, comunidade e 30 dias de garantia.">
 <meta name="twitter:image" content="https://cursos.comotocarukulele.com/img/mateus-perfil.webp">
 
@@ -159,10 +159,18 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    que muda. Dois spans em vez de JS, então não tem troca de texto depois da
    pintura nem pulo de layout. */
 .so-desk{display:none}
-/* O convite da seta é só do desktop. Fica fora do .gate de propósito: na página
-   fechada ele continua visível enquanto a oferta está trancada, que é justamente
-   quando a pessoa só tem o vídeo para assistir. */
-.hero-nudge{display:none}
+/* O convite da seta aparece no celular e no desktop: ele é a terceira linha da
+   promessa, não um enfeite. Fica fora do .gate de propósito: na página fechada ele
+   continua visível enquanto a oferta está trancada, que é justamente quando a
+   pessoa só tem o vídeo para assistir.
+   No celular o vídeo está logo ABAIXO, então a seta gira para baixo. No desktop
+   ele está ao lado e a seta volta para a horizontal (regra no @media de 900px). */
+.hero-nudge{display:inline-flex;align-items:center;gap:.5rem;margin:.15rem 0 0;
+  font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
+  font-size:clamp(.95rem,2.6vw,1.1rem);color:var(--purple)}
+.hero-nudge svg{width:1.5rem;height:auto;color:var(--coral);flex-shrink:0;
+  transform:rotate(90deg);animation:nudge-baixo 2.4s cubic-bezier(.16,1,.3,1) infinite}
+@keyframes nudge-baixo{0%,55%,100%{transform:rotate(90deg) translateX(0)}25%{transform:rotate(90deg) translateX(5px)}}
 /* No celular o subtítulo também aparece, então --fold-reserve conta com ele. */
 /* Desktop: texto à esquerda, vídeo vertical à direita, ainda em uma dobra */
 @media (min-width:900px){
@@ -243,7 +251,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      de renderizacao o quebraria em duas linhas. Com o clamp ele cai para ~444 la e
      fica igual de 1500px para cima, que e onde o tamanho importa. */
   .hero-nudge svg{width:clamp(3.4rem,4.9vw,4.7rem);height:auto;color:var(--coral);flex-shrink:0;
-    animation:nudge 2.4s cubic-bezier(.16,1,.3,1) infinite}
+    transform:none;animation:nudge 2.4s cubic-bezier(.16,1,.3,1) infinite}
   /* O @media prefers-reduced-motion lá embaixo já desliga esta animação. */
   @keyframes nudge{0%,55%,100%{transform:translateX(0)}25%{transform:translateX(7px)}}
   /* O bloco de checkout não pode passar da promessa. A medida da promessa é
@@ -458,11 +466,11 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <header class="hero">
   <div class="container">
     <div class="hero-top">
-      <h1>Os 3 passos para sair do ZERO e tocar <span>centenas de músicas no ukulele</span>, com 20 minutos por dia</h1>
-      <p class="hero-sub">Até quem não leva jeito nenhum pra música já está tocando e se divertindo com o mecanismo revelado <span class="so-cel">abaixo</span><span class="so-desk">ao lado</span>.</p>
+      <h1>Toque <span>suas músicas favoritas</span> no ukulele com 20 minutinhos por dia</h1>
+      <p class="hero-sub">Um passo a passo de 3 etapas, mesmo do zero ou travado.</p>
       <!-- Convite para o vídeo. Só aparece no desktop, onde o vídeo está AO LADO;
            no celular ele está logo abaixo e a seta não faria sentido. -->
-      <p class="hero-nudge">Aperte o play e veja na prática
+      <p class="hero-nudge">Dá o play que eu te mostro tocando
         <svg viewBox="0 0 44 14" fill="none" aria-hidden="true"><path d="M1 7h35M30 1.5 36.5 7 30 12.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </p>
     </div>
@@ -585,6 +593,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>O Mecanismo 3D aplicado aula por aula</b>: dividir, destravar e dominar, até você fazer isso sozinho em qualquer música nova.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Dúvida embaixo de cada aula</b>: você pergunta ali mesmo, na aula em que travou, e a nossa equipe responde no mesmo lugar.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>A comunidade do Clube</b>, onde os professores passam todo dia. Você grava um vídeo tocando, posta, e recebe por escrito o que ajustar. Tem coisa que só se entende vendo.</p></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Encontros quinzenais ao vivo com os professores</b>, numa sala fechada que só quem é do Clube entra. A gente traz assunto novo e responde o que aparecer, e a gravação fica guardada lá dentro.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Aulas ao vivo extras, gravadas e guardadas</b>: uma nova toda semana, com o material junto, para quando bater vontade de fazer algo diferente da trilha.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Suporte de gente de verdade no WhatsApp</b>, para qualquer problema de acesso, senha ou plataforma.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Assiste onde quiser</b>, no celular, computador, tablet ou televisão, no horário que der.</p></li>
@@ -613,6 +622,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <div class="card method"><div class="ic">❓</div><div><h3>Você pergunta na própria aula</h3><p>Embaixo de cada aula tem um espaço para a sua dúvida, e a resposta vem ali mesmo, na aula em que você travou.</p></div></div>
       <div class="card method"><div class="ic c2">🎥</div><div><h3>Você mostra, a gente olha</h3><p>Grava um vídeo tocando e posta na comunidade. A equipe assiste e te responde por escrito o que ajustar.</p></div></div>
       <div class="card method"><div class="ic c3">🤝</div><div><h3>E a turma responde junto</h3><p>Gente que travou nesse mesmo ponto seis meses atrás e passou. Daqui a pouco é você respondendo quem está começando agora.</p></div></div>
+      <div class="card method"><div class="ic">📅</div><div><h3>E de quinze em quinze dias, ao vivo</h3><p>Encontro com os professores numa sala fechada só do Clube: assunto novo, espaço para a sua dúvida e a gravação guardada lá dentro.</p></div></div>
     </div>
     <p class="pull">Sozinho, esse é o dia em que o ukulele volta pro canto. Aqui no Clube, esse é o dia em que você pergunta.</p>
     <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero entrar no Clube do Ukulele</button></div>
@@ -636,13 +646,12 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <!-- Bônus -->
 <section class="section surface-dark cv">
   <div class="container">
-    <div class="sec-head"><span class="eyebrow">Vai junto, de graça</span><h2 class="h2">Você ainda leva <span>5 bônus exclusivos</span></h2><p class="lead">Cada um resolve um problema que eu escuto de aluno toda semana. São esses cinco, e mais nenhum.</p></div>
+    <div class="sec-head"><span class="eyebrow">Vai junto, de graça</span><h2 class="h2">Você ainda leva <span>4 bônus exclusivos</span></h2><p class="lead">Cada um resolve um problema que eu escuto de aluno toda semana. São esses quatro, e mais nenhum.</p></div>
     <div class="grid g-4">
       <div class="bonus free"><div class="top"><span class="tag">Bônus 01</span><span class="val"><s>R$ 497</s><em>Grátis</em></span></div><h3>Intercâmbio de Vídeos</h3><p>"E se eu estiver fazendo errado e não perceber?" Você grava você tocando e envia. O professor assiste e grava um vídeo em cima do seu, mostrando o que ajustar. São 5 envios, em 5 aulas escolhidas a dedo: as que mais travam quem está começando.</p></div>
-      <div class="bonus"><div class="top"><span class="tag">Bônus 02</span><span class="val"><s>R$ 397</s><em>Grátis</em></span></div><h3>Encontros Quinzenais ao Vivo</h3><p>"E se eu travar numa dúvida e ficar parado?" A cada quinze dias tem um encontro ao vivo com os professores, numa sala fechada só para quem é do Clube. A gente traz assunto novo e responde o que aparecer, e a gravação fica guardada lá dentro.</p></div>
-      <div class="bonus"><div class="top"><span class="tag">Bônus 03</span><span class="val"><s>R$ 47</s><em>Grátis</em></span></div><h3>Dicionário de Acordes</h3><p>"E se aparecer um acorde que eu não sei fazer?" Todos os acordes do ukulele na sua mão, para imprimir ou deixar aberto no computador, e nunca mais ficar na dúvida se o formato que você está fazendo é o certo.</p></div>
-      <div class="bonus"><div class="top"><span class="tag">Bônus 04</span><span class="val"><s>R$ 97</s><em>Grátis</em></span></div><h3>Destrava Dedos</h3><p>"Meus dedos não acompanham a música." Todo mundo diz isso. É uma sequência de exercícios para ganhar flexibilidade e força e conseguir acompanhar qualquer música, de acorde ou de dedilhado.</p></div>
-      <div class="bonus"><div class="top"><span class="tag">Bônus 05</span><span class="val"><s>R$ 147</s><em>Grátis</em></span></div><h3>Workshop de Canto</h3><p>"Eu queria cantar junto, mas não consigo fazer as duas coisas ao mesmo tempo." Eu não sou professor de canto, então chamei uma professora incrível para gravar esse curso pra você.</p></div>
+      <div class="bonus"><div class="top"><span class="tag">Bônus 02</span><span class="val"><s>R$ 47</s><em>Grátis</em></span></div><h3>Dicionário de Acordes</h3><p>"E se aparecer um acorde que eu não sei fazer?" Todos os acordes do ukulele na sua mão, para imprimir ou deixar aberto no computador, e nunca mais ficar na dúvida se o formato que você está fazendo é o certo.</p></div>
+      <div class="bonus"><div class="top"><span class="tag">Bônus 03</span><span class="val"><s>R$ 97</s><em>Grátis</em></span></div><h3>Destrava Dedos</h3><p>"Meus dedos não acompanham a música." Todo mundo diz isso. É uma sequência de exercícios para ganhar flexibilidade e força e conseguir acompanhar qualquer música, de acorde ou de dedilhado.</p></div>
+      <div class="bonus"><div class="top"><span class="tag">Bônus 04</span><span class="val"><s>R$ 147</s><em>Grátis</em></span></div><h3>Workshop de Canto</h3><p>"Eu queria cantar junto, mas não consigo fazer as duas coisas ao mesmo tempo." Eu não sou professor de canto, então chamei uma professora incrível para gravar esse curso pra você.</p></div>
     </div>
     <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero entrar no Clube do Ukulele</button></div>
   </div>
@@ -666,12 +675,12 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
       <ul>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Clube do Ukulele por 1 ano</b> (a jornada completa em 4 etapas, do zero ao intermediário)</span></span><s>R$ 597</s></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Biblioteca com mais de 150 músicas</b> (aula, "toque comigo" e PDF), com música nova todo mês</span></span><em>Incluso</em></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Comunidade, suporte nas aulas e aulas ao vivo extras toda semana</b></span></span><em>Incluso</em></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Comunidade, suporte embaixo de cada aula e aulas ao vivo extras toda semana</b></span></span><em>Incluso</em></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Encontros quinzenais ao vivo com os professores</b>, em sala fechada só do Clube</span></span><em>Incluso</em></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 01. Intercâmbio de Vídeos</b> (5 envios com resposta em vídeo do professor)</span></span><s>R$ 497</s></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 02. Encontros Quinzenais ao Vivo</b> com os professores</span></span><s>R$ 397</s></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 03. Dicionário de Acordes do Ukulele</b></span></span><s>R$ 47</s></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 04. Destrava Dedos</b> (exercícios de coordenação)</span></span><s>R$ 97</s></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 05. Workshop de Canto com Ukulele</b></span></span><s>R$ 147</s></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 02. Dicionário de Acordes do Ukulele</b></span></span><s>R$ 47</s></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 03. Destrava Dedos</b> (exercícios de coordenação)</span></span><s>R$ 97</s></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 04. Workshop de Canto com Ukulele</b></span></span><s>R$ 147</s></li>
       </ul>
       <div class="coupon-row"><span>Cupom exclusivo desta página, já aplicado</span><span class="v">− R$ 200</span></div>
       <div class="final-price"><p class="was">De <s>R$ 597,00</s> por ano, por:</p><p class="now">12x de R$ 41 <span>ou R$ 397 à vista</span></p></div>
@@ -737,7 +746,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <section class="section surface-white hairline cv">
   <div class="container final">
     <h2 class="h2">Comece sua jornada no ukulele hoje</h2>
-    <p class="lead">Um ano de Clube, os 5 bônus, 30 dias de garantia incondicional e o cupom de R$ 200 já aplicado, que continua valendo em toda renovação. O risco fica comigo.</p>
+    <p class="lead">Um ano de Clube, os 4 bônus, 30 dias de garantia incondicional e o cupom de R$ 200 já aplicado, que continua valendo em toda renovação. O risco fica comigo.</p>
     <button class="btn btn--pulse" onclick="openCheckout()" data-final>Quero entrar no Clube do Ukulele</button>
     <p class="note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Desconto de R$ 200 desta página, aplicado direto no checkout</p>
   </div>
@@ -926,7 +935,7 @@ document.querySelectorAll('.vid').forEach(function(el){
 </script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Course","name":"Clube do Ukulele","description":"Escola de ukulele online com jornada de aprendizado em 4 etapas, do zero ao intermediário, usando o Mecanismo 3D. Inclui biblioteca com mais de 150 músicas com aula e play along, comunidade com professores, aulas ao vivo extras toda semana, 5 envios de vídeo com resposta do professor, encontros quinzenais ao vivo, dicionário de acordes, Destrava Dedos e workshop de canto.","inLanguage":"pt-BR","provider":{"@type":"Person","name":"Mateus Augusto","url":"https://cursos.comotocarukulele.com/"},"offers":{"@type":"Offer","price":"397.00","priceCurrency":"BRL","category":"Paid","availability":"https://schema.org/InStock","url":"https://cursos.comotocarukulele.com/clube-do-ukulele/rvd-clube-do-ukulele-rvd4v1-vert-op"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT20M"}}
+{"@context":"https://schema.org","@type":"Course","name":"Clube do Ukulele","description":"Escola de ukulele online com jornada de aprendizado em 4 etapas, do zero ao intermediário, usando o Mecanismo 3D. Inclui biblioteca com mais de 150 músicas com aula e play along, comunidade com professores, encontros quinzenais ao vivo, aulas ao vivo extras toda semana, 5 envios de vídeo com resposta do professor, dicionário de acordes, Destrava Dedos e workshop de canto.","inLanguage":"pt-BR","provider":{"@type":"Person","name":"Mateus Augusto","url":"https://cursos.comotocarukulele.com/"},"offers":{"@type":"Offer","price":"397.00","priceCurrency":"BRL","category":"Paid","availability":"https://schema.org/InStock","url":"https://cursos.comotocarukulele.com/clube-do-ukulele/rvd-clube-do-ukulele-rvd4v1-vert-op"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT20M"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
