@@ -277,3 +277,107 @@ variante só, e parecer que o teste A/B está desligado.
 Última verificação em produção: 08/09/2026, na página
 `cursos.comotocarukulele.com/ukulele-fundamental/rvd-ukulele-fundamental-rvd3v1-vert-cl`.
 Variante servida no teste: `6a7cad437d249b839f63c448` (curto `63c448`).
+
+---
+
+# Parte 2: a Conversion Key do VTurb (parâmetro `src`)
+
+Mecanismo diferente do de cima e complementar a ele. A variante responde "qual
+vídeo foi servido". A Conversion Key responde "qual sessão de vídeo gerou esta
+venda", e é o que o painel do VTurb usa para atribuir conversão.
+
+No ar desde 08/09/2026 em `rvd-ukulele-fundamental-rvd2v1-op`,
+`rvd-ukulele-fundamental-rvd2v1-cl`, `clube-do-ukulele/rvd-clube-do-ukulele-rvd4v1-vert-op`,
+`clube-do-ukulele/rvd-clube-do-ukulele-rvd4v1-vert-cl` e na página de teste
+`clube-do-ukulele/rvd-teste-src`.
+
+## 1. O formato
+
+```
+v3_<session_id>_<player_id>_<ms no vídeo>[_t-<turbo×10>][_h-<headline>][_s-<smartautoplay>]
+```
+
+Exemplo do próprio VTurb:
+
+```
+v3_bff0a123-5c10-49d2-8059-ed03bcbb38e7_67f9605e3c95e6f3915a01f8_2800_t-13_s-1
+```
+
+O nome do parâmetro que carrega essa chave é escolhido no painel, em
+Configurações → Conversões. Nos quatro players das nossas páginas está `src`, e
+dá para conferir sem abrir o painel: `document.querySelector('vturb-smartplayer').config.conversion`
+devolve `["src"]`.
+
+## 2. Por que a injeção automática não pega nestas páginas
+
+O VTurb promete injetar a chave sozinho "mesmo que o botão tenha sido feito em
+html". Lendo o `smartplayer.js`, a injeção escuta `mouseover`, `pointerdown` e
+`touchstart` na janela, acha o elemento clicável mais próximo e:
+
+- se for `<a href>`, reescreve o `href`;
+- se for campo de formulário, reescreve o `action` do formulário.
+
+Nenhuma das nossas páginas se encaixa. O formulário de lead não tem `action`, e a
+ida para o checkout é feita com `location.href` dentro do `submit`. Resultado: sem
+código nosso, a chave nunca chega na Hotmart. Isso é silencioso, não gera erro.
+
+## 3. Como a chave é lida
+
+O player dispara no próprio `<vturb-smartplayer>` o evento
+`conversion-tracking:update`, com `detail.key` sendo a chave. Primeiro disparo no
+`firstUpdated` do componente, e depois um a cada `timeupdate` do vídeo, com o `ms`
+atualizado.
+
+Duas consequências que decidem onde o código fica:
+
+1. **O listener tem que estar registrado antes do `player.js`.** Por isso o bloco
+   fica logo depois da tag `<vturb-smartplayer>`, e não junto do resto do JS lá
+   embaixo. Quem registra depois perde a primeira chave.
+2. **Só o primeiro disparo vira evento no dataLayer.** Os seguintes chegam a cada
+   `timeupdate` e encheriam o dataLayer de ruído. O valor atualizado fica em
+   `window.VTURB_SRC` e é lido de novo na hora de montar a URL do checkout.
+
+O fallback é uma âncora escondida (`#vt-src-probe`), sem `href` no HTML. Na hora
+do checkout o código escreve o `HOTMART_URL` nela e dispara um `pointerdown`: o
+próprio VTurb carimba o `src` no `href` e a gente lê de volta. É o caminho
+nativo, usado só se o evento não tiver chegado.
+
+## 4. O que a página passa a emitir
+
+```js
+{
+  event: 'vturb_src',
+  vturb_src: 'v3_...',        // chave inteira, é ela que vai no checkout
+  vturb_session: '...',        // UUID da sessão de vídeo
+  vturb_player: '...',         // id do player
+  vturb_video_ms: '2800',      // ms de vídeo no momento
+  vturb_turbo: '13',           // velocidade × 10, quando há teste de turbo
+  vturb_headline: '',          // número da headline, quando há teste
+  vturb_autoplay: '1'          // número do SmartAutoPlay, quando há teste
+}
+```
+
+Os mesmos campos vão junto no `lead_capture_uke` / `lead_capture_clube`, então
+não dependem de ordem de push. E a URL da Hotmart ganha `src=<chave>`.
+
+## 5. Como conferir
+
+Na página publicada, console:
+
+```js
+document.querySelector('vturb-smartplayer').config.conversion   // ["src"]
+window.VTURB_SRC                                                 // v3_...
+window.dataLayer.filter(x => x && x.event === 'vturb_src')
+```
+
+Se `VTURB_SRC` estiver `null`, o player ainda não montou. Ele só monta com a aba
+visível: em navegador headless ou com a aba em segundo plano, `document.hidden` é
+`true`, o player para no thumbnail e a chave nunca nasce. Isso não é bug da
+página, e é a razão de esse teste não fechar pelo preview interno.
+
+## 6. Armadilha do lado da Hotmart
+
+`src` é campo de origem de tráfego na Hotmart e aparece no relatório de vendas.
+Depois desta mudança ele passa a mostrar a Conversion Key, não um rótulo de
+origem. Quem quiser origem continua olhando o `sck`, que segue no formato
+`utm_source|utm_campaign|vXXXXXX` e não foi tocado.
