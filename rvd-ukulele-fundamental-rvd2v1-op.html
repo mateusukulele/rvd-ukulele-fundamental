@@ -284,6 +284,46 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 
     <div class="video">
       <vturb-smartplayer id="vid-6a5173df8b3d290830648dfb" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
+      <!-- ===== Conversion Key do VTurb (parametro src) =====
+           O player dispara o evento 'conversion-tracking:update' no proprio
+           <vturb-smartplayer>, com a chave no formato
+           v3_<sessao>_<player>_<ms no video>[_t-XX][_h-N][_s-N].
+           O listener fica AQUI, antes do player.js, porque o primeiro disparo
+           acontece no firstUpdated do componente: quem escuta depois perde
+           essa primeira chave e so recebe a proxima no timeupdate. -->
+      <script type="text/javascript">
+      window.VTURB_SRC=null;
+      window.vturbSrcPartes=function(k){
+        var o={vturb_src:k||'',vturb_session:'',vturb_player:'',vturb_video_ms:'',vturb_turbo:'',vturb_headline:'',vturb_autoplay:''};
+        if(!k||k.indexOf('v3_')!==0) return o;
+        var p=k.slice(3).split('_');
+        o.vturb_session=p[0]||''; o.vturb_player=p[1]||''; o.vturb_video_ms=p[2]||'';
+        p.slice(3).forEach(function(f){
+          if(f.indexOf('t-')===0) o.vturb_turbo=f.slice(2);
+          else if(f.indexOf('h-')===0) o.vturb_headline=f.slice(2);
+          else if(f.indexOf('s-')===0) o.vturb_autoplay=f.slice(2);
+        });
+        return o;
+      };
+      (function(){
+        var el=document.getElementById('vid-6a5173df8b3d290830648dfb');
+        if(!el) return;
+        el.addEventListener('conversion-tracking:update',function(e){
+          var k=e&&e.detail&&e.detail.key;
+          if(!k) return;
+          var primeira=!window.VTURB_SRC;
+          window.VTURB_SRC=k;
+          /* So o primeiro disparo vira evento no dataLayer. Os seguintes chegam a
+             cada timeupdate do video e encheriam o dataLayer de ruido; o valor
+             atualizado fica em window.VTURB_SRC e e lido na hora do checkout. */
+          if(primeira){
+            window.dataLayer=window.dataLayer||[];
+            var d=window.vturbSrcPartes(k); d.event='vturb_src';
+            window.dataLayer.push(d);
+          }
+        });
+      })();
+      </script>
       <script type="text/javascript">
         var s=document.createElement("script");
         s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a5173df8b3d290830648dfb/v4/player.js";
@@ -520,6 +560,25 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 
 <script>
 var HOTMART_URL='https://pay.hotmart.com/F106563581S?off=di3klttp&checkoutMode=10&offDiscount=UKE-VITALICIO-RV02&hideBillet=1';
+/* ===== Leitura da Conversion Key (parametro src) =====
+   O VTurb injeta o src sozinho em <a href> e em action de formulario, escutando
+   mouseover/pointerdown/touchstart na janela. Esta pagina nao se encaixa em
+   nenhum dos dois: o formulario nao tem action e a ida pro checkout e feita com
+   location.href. Por isso a chave e lida pelo evento (bloco la em cima) e o
+   src e carimbado na mao na URL da Hotmart.
+   Fallback: uma ancora escondida com o link do checkout. Disparando pointerdown
+   nela, o proprio VTurb escreve o src no href e a gente le de volta. E o caminho
+   nativo, usado so se o evento nao tiver chegado. */
+function vturbSrcFallback(){
+  try{
+    var a=document.getElementById('vt-src-probe');
+    if(!a) return null;
+    a.setAttribute('href',HOTMART_URL);
+    a.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));
+    return new URL(a.getAttribute('href'),location.href).searchParams.get('src');
+  }catch(_){ return null; }
+}
+function vturbSrc(){ return window.VTURB_SRC || vturbSrcFallback(); }
 var dlg=document.getElementById('checkout');
 function openCheckout(){ dlg.showModal ? dlg.showModal() : dlg.setAttribute('open',''); }
 dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
@@ -580,7 +639,11 @@ document.getElementById('lead').addEventListener('submit',function(e){
   if(!ok) return;
   var btn=document.getElementById('go'); btn.textContent='Liberando…'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:uke});
+  var SRC=vturbSrc();
+  var dlLead={event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_ukulele:uke};
+  var partes=window.vturbSrcPartes(SRC);
+  for(var kk in partes){ dlLead[kk]=partes[kk]; }
+  window.dataLayer.push(dlLead);
   var url;
   try{
     url=new URL(HOTMART_URL);
@@ -590,6 +653,9 @@ document.getElementById('lead').addEventListener('submit',function(e){
     var qp=new URLSearchParams(location.search), utms=[];
     ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
     if(utms.length) url.searchParams.set('sck',utms.join('|'));
+    /* Conversion Key do VTurb no parametro escolhido no painel (src). E o que
+       faz a venda voltar ligada a sessao de video que a gerou. */
+    if(SRC) url.searchParams.set('src',SRC);
     var uid=cookie('user_id'); if(uid) url.searchParams.set('xcod',uid);
     url=url.toString();
   }catch(_){ url=HOTMART_URL; }
@@ -642,6 +708,9 @@ document.querySelectorAll('.vid').forEach(function(el){
 ]}
 </script>
 
+<!-- Ancora so do fallback de leitura do src: o href e escrito pelo vturbSrcFallback
+     no instante do clique, para o VTurb carimbar a Conversion Key nele. -->
+<a id="vt-src-probe" aria-hidden="true" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">.</a>
 <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 window.dataLayer=window.dataLayer||[];
