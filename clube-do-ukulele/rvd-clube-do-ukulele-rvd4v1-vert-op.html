@@ -29,10 +29,13 @@
 <!-- Recarregar sempre abre no topo. Sem isso o navegador restaura o scroll antes do
      player montar, e a página abre num ponto errado logo abaixo do hero. -->
 <script>if('scrollRestoration' in history){history.scrollRestoration='manual';}</script>
-<!-- Player único (sem teste A/B), então dá pra pré-carregar o m3u8 do vídeo. -->
-<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a9f2ebf8545cdd0108205a8/v4/player.js" as="script">
+<!-- Teste A/B do VTurb: o player servido muda por visitante, então NÃO dá para
+     pré-carregar o m3u8. Um preload fixo aqui baixaria o vídeo errado para quem
+     caísse na outra variante, gastando banda antes mesmo do play. Quem resolve o
+     vídeo é o player.js do teste, e o dns-prefetch abaixo já deixa a conexão com
+     o CDN pronta. -->
+<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/ab-test/6aa1db4739597210fcdb8153/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6a9f2bb9bf576ce12ce7f1c5/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -492,7 +495,7 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 
     <div class="video">
       <div class="vframe">
-        <vturb-smartplayer id="vid-6a9f2ebf8545cdd0108205a8" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
+        <vturb-smartplayer id="ab-6aa1db4739597210fcdb8153" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
         <!-- ===== Conversion Key do VTurb (parametro src) =====
              O player dispara o evento 'conversion-tracking:update' no proprio
              <vturb-smartplayer>, com a chave no formato
@@ -515,9 +518,15 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
           return o;
         };
         (function(){
-          var el=document.getElementById('vid-6a9f2ebf8545cdd0108205a8');
-          if(!el) return;
-          el.addEventListener('conversion-tracking:update',function(e){
+          /* O listener fica no DOCUMENT, em fase de CAPTURA, e não no elemento.
+             Motivo medido: o script do teste A/B TROCA o <vturb-smartplayer> do
+             HTML por um novo, com o id do player sorteado (o id="ab-..." daqui
+             vira id="vid-<player>"). Um listener preso ao elemento original morre
+             junto com ele, e a chave nunca chegava: window.VTURB_SRC ficava null.
+             Capturar no document resolve os dois riscos de uma vez, porque a fase
+             de captura passa pelo document antes de chegar ao alvo mesmo quando o
+             evento não borbulha, e independe de qual elemento está lá na hora. */
+          document.addEventListener('conversion-tracking:update',function(e){
             var k=e&&e.detail&&e.detail.key;
             if(!k) return;
             var primeira=!window.VTURB_SRC;
@@ -530,12 +539,12 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
               var d=window.vturbSrcPartes(k); d.event='vturb_src';
               window.dataLayer.push(d);
             }
-          });
+          },true);
         })();
         </script>
         <script type="text/javascript">
           var s=document.createElement("script");
-          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6a9f2ebf8545cdd0108205a8/v4/player.js";
+          s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/ab-test/6aa1db4739597210fcdb8153/player.js";
           s.async=true;document.head.appendChild(s);
         </script>
       </div>
