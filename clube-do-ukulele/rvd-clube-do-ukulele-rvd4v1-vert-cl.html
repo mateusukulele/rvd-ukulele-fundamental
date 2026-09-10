@@ -524,95 +524,63 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 </head>
 <body>
 <script>
-/* GATE da VSL: libera o conteúdo abaixo do vídeo depois de N segundos na página
-   (persiste entre reloads). É a única diferença de comportamento para a -op.
-   O tempo NÃO é fixo: cada vídeo do teste A/B tem o pitch num minuto diferente,
-   então o gate espera o player dizer qual vídeo caiu e só então marca a hora de
-   abrir. Medido nesta página: o player.js do teste termina em 135ms e o m3u8 do
-   vídeo sorteado já é pedido aos 189ms, ou seja a variante é conhecida em menos
-   de 0,3s. Num tempo de ~17min isso é ruído.
-   À PROVA DE ERRO (fail-open): a trava só é aplicada SE o JS rodar. Com JS
-   desligado ou erro no script a página NUNCA fica presa fechada, mostra a oferta.
-   Nunca abre cedo com JS ligado. Verifica pelo relógio (a cada 3s + quando a aba
-   volta ao foco), então funciona mesmo em segundo plano. */
+/* GATE da VSL, abre pelo TEMPO DO VIDEO, nao pelo relogio.
+   O player do VTurb expoe onTime(segundos, callback), que dispara quando o video
+   passa daquele ponto. Testado: pausa congela a contagem, aba em segundo plano
+   continua, seek para frente dispara, 2x dispara no mesmo ponto do video.
+   O tempo vem do config.pitchTime da variante que o teste A/B sorteou.
+   TETO DE RELOGIO: quem nunca da play nunca chegaria no onTime, entao um relogio
+   de 40min a partir do carregamento abre assim mesmo. E rede, nao o caminho normal.
+   Fail-open: a trava so existe se o JS rodar.
+   Atalhos (visitante real chega sem parametro):
+     ?unlock=1   abre na hora
+     ?reset=1    zera o teto de relogio guardado
+     ?pitch=30   finge que o pitch e aos 30s do video, para testar sem esperar */
 (function(){
-  var b=document.body; b.classList.add('locked'); /* trava antes de pintar, sem piscar */
-
-  /* >>> NÃO EXISTE MAIS TABELA DE TEMPO AQUI, E É DE PROPÓSITO.
-     O tempo de cada vídeo vem do próprio VTurb, no config.pitchTime do player que
-     o teste A/B sorteou. Conferido nas seis variantes desta página: o pitchTime
-     bate exatamente com o tempo do pitch de cada uma (1059, 1067, 1067, 1070,
-     1075 e 1085 segundos). Ou seja, quem manda no tempo é o painel do VTurb:
-     trocar um vídeo, mudar o pitch de um deles ou acrescentar uma variante nova
-     passa a funcionar sozinho, sem tocar nesta página.
-     A única exigência é que o vídeo tenha o pitch configurado lá. Se vier sem, ou
-     com um valor sem sentido, a página cai no PADRAO e dispara
-     vsl_pitchtime_ausente no dataLayer, para o caso aparecer no GTM em vez de
-     morrer calado. */
-
-  /* Escolha do Mateus: o menor dos seis (o L05). Vale quando o player não responde
-     a tempo, ou responde sem um pitchTime utilizável. */
-  var PADRAO=1059, ESPERA_MAX=5000;
-
+  var b=document.body; b.classList.add('locked');
+  var TETO=2400, ESPERA_MAX=5000, PADRAO=1059;
   var qs=location.search;
-  /* Atalhos de teste (o visitante real chega sem parâmetro):
-     ?unlock=1 → abre na hora | ?reset=1 → zera e recomeça a contagem.
-     O reset varre todas as chaves porque a chave certa depende da variante, que
-     nesse momento ainda nem é conhecida. */
   if(/[?&]reset=1/.test(qs)){
     try{ Object.keys(localStorage).forEach(function(k){ if(k.indexOf('clube_unlock_v4vert_')===0){ localStorage.removeItem(k); } }); }catch(e){}
   }
   if(/[?&]unlock=1/.test(qs)){ b.classList.remove('locked'); b.classList.add('unlocked'); return; }
+  var forcado=(qs.match(/[?&]pitch=(\d+)/)||[])[1];
 
-  var done=false, iv=null, at=null, segundos=null, vid=null;
-
-  function abrir(){
-    done=true; if(iv){clearInterval(iv);}
+  var aberto=false;
+  function abrir(motivo,seg,vid){
+    if(aberto){ return; } aberto=true;
     b.classList.remove('locked'); b.classList.add('unlocked');
-    /* A dobra muda de estado junto: o texto de apoio sai e o vídeo abre espaço
-       para o botão. Quem recalcula é o script depois do hero. */
     if(window.medirDobra){ window.medirDobra(); }
     window.dataLayer=window.dataLayer||[];
-    window.dataLayer.push({event:'vsl_unlock',unlock_seconds:segundos,video_id:vid||'na',video_variant:(window.VIDEO_VARIANT?window.VIDEO_VARIANT.curto:'na')});
-  }
-  function check(){ if(done||at===null){ return; } if(Date.now()>=at){ abrir(); } }
-
-  /* Fixa o tempo e o horário de abrir. A partir daqui é o relógio que manda. */
-  function armar(segs,idDoVideo){
-    if(at!==null){ return; }
-    segundos=segs; vid=idDoVideo||null;
-    var K='clube_unlock_v4vert_'+segs+'_'+(vid||'padrao');
-    try{
-      at=parseInt(localStorage.getItem(K)||'0',10)||0;
-      if(!at){ at=Date.now()+segs*1000; localStorage.setItem(K,String(at)); }
-    }catch(e){ at=Date.now()+segs*1000; }
-    iv=setInterval(check, 3000);
-    document.addEventListener('visibilitychange',function(){ if(!document.hidden){ check(); } });
-    window.addEventListener('focus', check);
-    check();
+    window.dataLayer.push({event:'vsl_unlock',unlock_motivo:motivo,unlock_seconds:seg,video_id:vid||'na',
+      video_variant:(window.VIDEO_VARIANT?window.VIDEO_VARIANT.curto:'na')});
+    window.__gate={motivo:motivo,segundos:seg,quando:Math.round(performance.now())};
   }
 
-  /* Espera o player resolver o teste A/B. O config aparece bem antes do teto. */
+  /* Rede de seguranca: relogio de parede, para quem nunca da play. */
+  var K='clube_unlock_v4vert_teto', at;
+  try{ at=parseInt(localStorage.getItem(K)||'0',10)||0; if(!at){ at=Date.now()+TETO*1000; localStorage.setItem(K,String(at)); } }
+  catch(e){ at=Date.now()+TETO*1000; }
+  var iv=setInterval(function(){ if(aberto){ clearInterval(iv); return; } if(Date.now()>=at){ clearInterval(iv); abrir('teto-relogio',TETO,null); } },3000);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden&&!aberto&&Date.now()>=at){ abrir('teto-relogio',TETO,null); } });
+
+  /* Caminho normal: o proprio video avisa quando chegou no pitch. */
   var t0=Date.now(), poll=setInterval(function(){
     var el=document.querySelector('vturb-smartplayer'), c=el&&el.config;
     var id=c&&c.video&&c.video.id;
     if(id){
       clearInterval(poll);
-      var pt=c.pitchTime;
-      /* Sanidade antes de confiar no número: tem que ser um tempo de verdade e
-         cair dentro do vídeo. Um pitch depois do fim nunca chegaria, e um pitch
-         perto do zero abriria a oferta antes de o vídeo argumentar. */
+      var pt=forcado?parseInt(forcado,10):c.pitchTime;
       var dur=(typeof el.duration==='number'&&el.duration>0)?el.duration:null;
-      var vale=(typeof pt==='number')&&isFinite(pt)&&pt>60&&(!dur||pt<dur);
-      if(vale){ armar(Math.round(pt),id); }
-      else{
+      var vale=(typeof pt==='number')&&isFinite(pt)&&pt>5&&(!dur||pt<dur);
+      if(!vale){
         window.dataLayer=window.dataLayer||[];
-        window.dataLayer.push({event:'vsl_pitchtime_ausente',video_id:id,video_name:(c.name||''),pitch_time_lido:(pt===undefined?'ausente':String(pt)),unlock_seconds:PADRAO});
-        armar(PADRAO,id);
+        window.dataLayer.push({event:'vsl_pitchtime_ausente',video_id:id,video_name:(c.name||''),pitch_time_lido:String(pt),unlock_seconds:PADRAO});
+        pt=PADRAO;
       }
-    } else if(Date.now()-t0>ESPERA_MAX){
-      clearInterval(poll); armar(PADRAO,null);
-    }
+      window.__alvo={segundos:pt,video:id,nome:c.name,forcado:!!forcado};
+      el.onTime(pt,function(){ abrir(forcado?'onTime-forcado':'onTime',pt,id); },{once:true});
+    } else if(Date.now()-t0>ESPERA_MAX){ clearInterval(poll); }
   },50);
 })();
 </script>
