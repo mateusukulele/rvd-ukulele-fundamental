@@ -545,7 +545,14 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 @media (orientation:landscape) and (max-height:520px) and (max-width:899px){
   .hero .container{
     grid-template-areas:"top video" "cta video";
-    grid-template-columns:auto min(78svh,300px,42vw);
+    /* Em tela deitada quem manda e a ALTURA. Entao a altura do video vem
+       primeiro e a largura da coluna sai dela, na proporcao 9:16. Fazer o
+       contrario, largura primeiro, esmagava o video: com width:100% e altura
+       fixa o aspect-ratio e ignorado e ele saia em 300x340, ou seja 0,88.
+       Largura explicita aqui pelo mesmo motivo do desktop: o Safari nao deriva
+       largura de aspect-ratio quando a coluna esta em medicao intrinseca. */
+    grid-template-columns:auto calc(min(86vh,330px) * 9 / 16);
+    grid-template-columns:auto calc(min(86svh,330px) * 9 / 16);
     grid-template-rows:auto auto;
     align-content:center;justify-content:center;justify-items:center;
     max-width:none;gap:.6rem 1.4rem;padding-block:.6rem;
@@ -559,7 +566,8 @@ body.unlocked .gate{animation:gateIn .6s ease both}
      da dobra. Sem esta parte a .vframe continuava usando 100svh menos a reserva,
      que numa tela de 390px de altura sobra quase nada: o video ficava com 48x86. */
   .video{margin-block:0;align-self:center;width:100%}
-  .vframe{height:min(88svh,340px,calc(42vw * 16 / 9));width:100%;max-width:none}
+  .vframe{height:min(86vh,330px);width:100%;max-width:none}
+  .vframe{height:min(86svh,330px);width:100%;max-width:none}
   .cta-block{max-width:24rem}
 }
 
