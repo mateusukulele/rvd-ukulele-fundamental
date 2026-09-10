@@ -555,7 +555,11 @@ body.unlocked .gate{animation:gateIn .6s ease both}
   .hero h1{font-size:clamp(1.15rem,3.4vw,1.6rem);max-width:16em}
   .hero-sub{font-size:clamp(.85rem,1.9vw,1rem);max-width:24em}
   .hero-nudge{display:none}
-  .video{margin-block:0}
+  /* A altura do video passa a vir da coluna, como no desktop, e nao mais da conta
+     da dobra. Sem esta parte a .vframe continuava usando 100svh menos a reserva,
+     que numa tela de 390px de altura sobra quase nada: o video ficava com 48x86. */
+  .video{margin-block:0;align-self:center;width:100%}
+  .vframe{height:min(88svh,340px,calc(42vw * 16 / 9));width:100%;max-width:none}
   .cta-block{max-width:24rem}
 }
 
