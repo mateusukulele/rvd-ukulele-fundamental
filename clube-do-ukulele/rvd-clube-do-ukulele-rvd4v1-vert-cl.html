@@ -552,10 +552,9 @@ body.unlocked .gate{animation:gateIn .6s ease both}
     '6aa1a10f9f85b6d73e156de0':1059, /* L05 - 17min39s */
     '6aa1a1de3cd0aaad5ac73e08':1070  /* L10 - 17min50s */
   };
-  /* O MAIOR dos seis. Serve para quando o player não responde a tempo ou traz um
-     vídeo fora da tabela: abrir tarde custa um botão que demora, abrir cedo entrega
-     a oferta antes do pitch e estraga o vídeo inteiro. */
-  var PADRAO=1085, ESPERA_MAX=5000;
+  /* Escolha do Mateus: o MENOR dos seis (o L05). Serve para quando o player não
+     responde a tempo ou traz um vídeo fora da tabela. */
+  var PADRAO=1059, ESPERA_MAX=5000;
 
   var qs=location.search;
   /* Atalhos de teste (o visitante real chega sem parâmetro):
