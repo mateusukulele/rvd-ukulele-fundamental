@@ -532,11 +532,11 @@ body.unlocked .gate{animation:gateIn .6s ease both}
    volta ao foco), então funciona mesmo em segundo plano. */
 (function(){
   var b=document.body; b.classList.add('locked'); /* trava antes de pintar, sem piscar */
-  /* >>> ÚNICO NÚMERO A MEXER. 1172 = 19min32s contados a partir do carregamento.
+  /* >>> ÚNICO NÚMERO A MEXER. 1059 = 17min39s contados a partir do carregamento.
      A chave do localStorage é derivada dele de propósito: mudar o tempo troca a
      chave sozinha, então quem já visitou não chega com um horário de liberação
      vencido e a página não abre na hora. */
-  var SEGUNDOS=1172;
+  var SEGUNDOS=1059;
   var MS=SEGUNDOS*1000, K='clube_unlock_v4vert_'+SEGUNDOS, qs=location.search;
   /* Atalhos de teste (o visitante real chega sem parâmetro):
      ?unlock=1 → abre na hora | ?reset=1 → zera e recomeça a contagem */
