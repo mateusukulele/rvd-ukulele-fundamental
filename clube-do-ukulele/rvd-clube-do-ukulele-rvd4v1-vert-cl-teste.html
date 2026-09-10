@@ -57,12 +57,23 @@
    O size-adjust foi medido nesta propria pagina, comparando a largura media dos
    glifos: Montserrat 112,37% do Arial e Poppins 104,57%. Com isso a reserva ocupa
    a mesma caixa da fonte final e a troca nao mexe no layout. */
-@font-face{font-family:'Montserrat Reserva';src:local('Arial'),local('Helvetica'),local('Liberation Sans');size-adjust:112.37%;ascent-override:96.8%;descent-override:25.1%;line-gap-override:0%}
-@font-face{font-family:'Poppins Reserva';src:local('Arial'),local('Helvetica'),local('Liberation Sans');size-adjust:104.57%;ascent-override:105%;descent-override:35%;line-gap-override:0%}
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/montserrat-v31-latin-regular.woff2') format('woff2')}
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/montserrat-v31-latin-700.woff2') format('woff2')}
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/montserrat-v31-latin-800.woff2') format('woff2')}
-@font-face{font-family:'Montserrat';font-style:normal;font-weight:900;font-display:swap;src:url('/fonts/montserrat-v31-latin-900.woff2') format('woff2')}
+/* Montserrat 900 EMBUTIDA no HTML, so os 109 caracteres que o portugues usa:
+   6,6kb contra os 18kb do arquivo inteiro. E o peso do h1, e medido era o unico
+   texto do hero que mudava de caixa quando a fonte chegava: 82px em 3 linhas
+   viravam 109px em 4, o bloco crescia, a reserva da dobra mudava e o video
+   pulava de 687 para 659. Sozinho isso valia 0.09 de CLS.
+   Embutida, ela ja esta pronta no primeiro byte do HTML: o h1 nasce com 4 linhas
+   e nunca muda. Tentei antes resolver com uma fonte de reserva de metrica
+   ajustada (size-adjust), e nao funcionou: medido, ela renderizava igual a fonte
+   do sistema, porque casar altura por size-adjust nao controla em quantas linhas
+   o texto quebra.
+   O arquivo solto continua declarado depois, para o resto da pagina e para quem
+   precisar de um caractere fora do subset. */
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:900;font-display:swap;src:url(data:font/woff2;base64,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) format('woff2')}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:900;font-display:swap;unicode-range:U+0100-FFFF;src:url('/fonts/montserrat-v31-latin-900.woff2') format('woff2')}
 @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/poppins-v24-latin-regular.woff2') format('woff2')}
 @font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/poppins-v24-latin-500.woff2') format('woff2')}
 @font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/poppins-v24-latin-600.woff2') format('woff2')}
@@ -74,9 +85,9 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;font-family:'Poppins','Poppins Reserva',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:'Poppins',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
-h1,h2,h3,h4{margin:0;font-family:'Montserrat','Montserrat Reserva',system-ui,sans-serif;line-height:1.14;color:var(--ink)}
+h1,h2,h3,h4{margin:0;font-family:'Montserrat',system-ui,sans-serif;line-height:1.14;color:var(--ink)}
 p{margin:0}
 ul{margin:0;padding:0;list-style:none}
 a{color:inherit}
@@ -96,7 +107,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 
 /* Cabeçalho de seção: padrão único, sempre centralizado */
 .sec-head{max-width:48rem;margin-inline:auto;text-align:center;margin-bottom:clamp(2rem,5vw,3rem)}
-.eyebrow{display:inline-block;font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-deep);margin-bottom:.7rem}
+.eyebrow{display:inline-block;font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-deep);margin-bottom:.7rem}
 .surface-dark .eyebrow{color:#F6A9B4}
 .h2{font-size:clamp(1.6rem,4.2vw,2.5rem);font-weight:800}
 .h2 span{color:var(--coral)}
@@ -104,7 +115,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .surface-dark .lead{color:#C4BAD6}
 
 /* Botões */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--cta);color:#fff;font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:800;font-size:clamp(15px,2.2vw,17px);text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;text-decoration:none;border:0;border-radius:14px;padding:1.05rem 1.75rem;cursor:pointer;box-shadow:0 12px 26px -10px rgba(15,169,104,.7);transition:background-color .2s,transform .12s,box-shadow .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--cta);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(15px,2.2vw,17px);text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;text-decoration:none;border:0;border-radius:14px;padding:1.05rem 1.75rem;cursor:pointer;box-shadow:0 12px 26px -10px rgba(15,169,104,.7);transition:background-color .2s,transform .12s,box-shadow .2s}
 .btn:hover{background:var(--cta-deep);transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(15,169,104,.85)}
 .btn:active{transform:translateY(0)}
 .btn--block{width:100%}
@@ -196,7 +207,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    No celular o vídeo está logo ABAIXO, então a seta gira para baixo. No desktop
    ele está ao lado e a seta volta para a horizontal (regra no @media de 900px). */
 .hero-nudge{display:inline-flex;align-items:center;gap:.5rem;margin:.15rem 0 0;
-  font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:800;letter-spacing:-.01em;
+  font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
   font-size:clamp(.95rem,2.6vw,1.1rem);color:var(--purple)}
 .hero-nudge svg{width:1.5rem;height:auto;color:var(--coral);flex-shrink:0;
   transform:rotate(90deg);animation:nudge-baixo 2.4s cubic-bezier(.16,1,.3,1) infinite}
@@ -272,7 +283,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      gap do .hero-top, entao o total ate a subpromessa e ~3x o espaco de cima. */
   .hero-nudge{display:inline-flex;align-items:center;gap:1.03rem;
     margin:clamp(3rem,6.4vh,4.6rem) 0 0;
-    font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:800;letter-spacing:-.01em;
+    font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
     font-size:clamp(1.47rem,1.79vw,1.76rem);color:var(--purple)}
   /* A seta encolhe so na ponta estreita do desktop. Em 900px de tela a coluna de
      texto tem 468px e o convite chegava a 465: 3px de folga, e qualquer diferenca
@@ -323,7 +334,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* Trust bar */
 .trust-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(1rem,4vw,2.6rem);padding-block:1.5rem;text-align:center}
 .trust-item{display:flex;align-items:center;gap:.55rem;color:var(--ink);font-weight:700;font-size:13px}
-.trust-item b{color:var(--coral);font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:900;font-size:1.35rem;line-height:1}
+.trust-item b{color:var(--coral);font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.35rem;line-height:1}
 .trust-item svg{width:20px;height:20px;color:var(--purple);flex-shrink:0}
 
 /* Grids */
@@ -354,7 +365,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .step{display:flex;flex-direction:column;align-items:center;text-align:center}
 .step img{width:118px;height:118px;border-radius:999px;object-fit:cover;margin-bottom:1rem;border:3px solid var(--purple)}
 .step:nth-child(even) img{border-color:var(--coral)}
-.step .n{display:inline-block;font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:900;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);background:rgba(66,48,102,.08);padding:.25rem .6rem;border-radius:7px;margin-bottom:.6rem}
+.step .n{display:inline-block;font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);background:rgba(66,48,102,.08);padding:.25rem .6rem;border-radius:7px;margin-bottom:.6rem}
 .step h3{font-size:1.02rem;margin-bottom:.45rem}
 .step p{font-size:.88rem;color:var(--muted)}
 
@@ -395,13 +406,13 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .offer li .it{display:flex;gap:.6rem;align-items:flex-start}
 .offer li svg{width:20px;height:20px;color:var(--coral);flex-shrink:0}
 .coupon-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:rgba(15,169,104,.14);border:1px solid rgba(15,169,104,.4);border-radius:12px;padding:.8rem 1rem;margin-bottom:1.3rem;font-weight:700;color:#8FE3BE;font-size:.9rem}
-.coupon-row .v{font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:900;color:#28C98A;white-space:nowrap;flex-shrink:0}
+.coupon-row .v{font-family:'Montserrat',sans-serif;font-weight:900;color:#28C98A;white-space:nowrap;flex-shrink:0}
 .final-price{text-align:center;margin-bottom:1.3rem}
 /* Sem preço de tabela na lista, este bloco virou o único número da caixa, então
    cresce: o "de R$ 597 por ano" sobe para 1.15rem e o valor final para 2.9rem. */
 .final-price .was{color:#C4BAD6;font-size:clamp(1rem,2.6vw,1.15rem)}
 .final-price .was s{color:#F6A9B4;font-weight:800}
-.final-price .now{font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:900;color:#fff;font-size:clamp(1.9rem,6.4vw,2.9rem);line-height:1.08;margin-top:.35rem}
+.final-price .now{font-family:'Montserrat',sans-serif;font-weight:900;color:#fff;font-size:clamp(1.9rem,6.4vw,2.9rem);line-height:1.08;margin-top:.35rem}
 .final-price .now span{color:var(--coral);display:block;font-size:clamp(1rem,2.9vw,1.25rem);font-weight:800;margin-top:.3rem}
 .surface-dark .note{color:#C4BAD6}
 .surface-dark .note svg{color:#7BE0B4}
@@ -439,7 +450,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* FAQ */
 .faq{max-width:800px;margin-inline:auto;display:flex;flex-direction:column;gap:.75rem}
 .faq details{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.faq summary{list-style:none;cursor:pointer;padding:1.1rem 1.25rem;font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:700;color:var(--ink);font-size:.98rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq summary{list-style:none;cursor:pointer;padding:1.1rem 1.25rem;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--ink);font-size:.98rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"";width:.7rem;height:.7rem;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);flex-shrink:0;transition:transform .2s}
 .faq details[open] summary::after{transform:rotate(-135deg);border-color:var(--coral)}
@@ -453,7 +464,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 .sticky.show{transform:translateY(0)}
 .sticky-in{max-width:var(--maxw);margin-inline:auto;display:flex;align-items:center;gap:1rem}
 .sticky-tx{display:none;flex-direction:column;line-height:1.25}
-.sticky-tx strong{color:#fff;font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:800;font-size:15px}
+.sticky-tx strong{color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px}
 .sticky-tx span{color:#F6A9B4;font-size:12.5px;font-weight:600}
 .sticky .btn{width:100%}
 @media (min-width:720px){.sticky-in{justify-content:space-between}.sticky-tx{display:flex}.sticky .btn{width:auto;flex-shrink:0}}
@@ -466,7 +477,7 @@ dialog.modal::backdrop{background:rgba(42,24,84,.6);-webkit-backdrop-filter:blur
 .modal-x:hover{background:var(--line);color:var(--ink)}
 .modal h3{text-align:center;font-size:1.3rem}
 .modal .sub{text-align:center;color:var(--muted);font-size:.88rem;margin:.4rem 0 1.2rem}
-.modal-coupon{display:flex;align-items:center;justify-content:center;gap:.4rem;width:fit-content;margin:.7rem auto 0;background:linear-gradient(90deg,var(--coral),var(--coral-deep));color:#fff;font-family:'Montserrat','Montserrat Reserva',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;padding:.45rem .9rem;border-radius:999px;box-shadow:0 6px 16px -6px rgba(234,84,108,.6)}
+.modal-coupon{display:flex;align-items:center;justify-content:center;gap:.4rem;width:fit-content;margin:.7rem auto 0;background:linear-gradient(90deg,var(--coral),var(--coral-deep));color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;padding:.45rem .9rem;border-radius:999px;box-shadow:0 6px 16px -6px rgba(234,84,108,.6)}
 .modal-coupon svg{width:.9rem;height:.9rem;flex-shrink:0}
 .field{margin-bottom:.9rem}
 .field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0 0 .35rem .3rem}
