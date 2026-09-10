@@ -537,6 +537,28 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 .rodape{background:var(--ink);color:#B7ADCB;text-align:center;font-size:13.5px;line-height:1.7;padding:clamp(2.2rem,5vw,3rem) 1rem calc(clamp(2.2rem,5vw,3rem) + env(safe-area-inset-bottom))}
 .rodape .marca{width:126px;margin-bottom:1rem}
 
+/* CELULAR DEITADO. Em paisagem sobra pouca altura, e no layout de 1 coluna o
+   video encolhia para 61x108: praticamente sumia. Aqui a tela deitada e baixa
+   passa a usar o mesmo arranjo do desktop, texto de um lado e video do outro,
+   que e onde a altura da tela deixa de ser o gargalo. O recorte de 520px de
+   altura pega celular deitado sem pegar tablet em pe. */
+@media (orientation:landscape) and (max-height:520px) and (max-width:899px){
+  .hero .container{
+    grid-template-areas:"top video" "cta video";
+    grid-template-columns:auto min(78svh,300px,42vw);
+    grid-template-rows:auto auto;
+    align-content:center;justify-content:center;justify-items:center;
+    max-width:none;gap:.6rem 1.4rem;padding-block:.6rem;
+  }
+  body.locked .hero .container{grid-template-areas:"top video";grid-template-rows:auto}
+  body.locked .hero-top{align-self:center}
+  .hero h1{font-size:clamp(1.15rem,3.4vw,1.6rem);max-width:16em}
+  .hero-sub{font-size:clamp(.85rem,1.9vw,1rem);max-width:24em}
+  .hero-nudge{display:none}
+  .video{margin-block:0}
+  .cta-block{max-width:24rem}
+}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -721,7 +743,10 @@ body.unlocked .gate{animation:gateIn .6s ease both}
   if(!hero||!cont||!top||!btn||!vf){ return; }
   var ultimo=null;
   function medir(){
-    if(window.innerWidth>=900){
+    /* Tela deitada e baixa usa o layout de 2 colunas, igual ao desktop, e la a
+       altura do video vem do CSS, nao desta conta. */
+    var deitado=window.matchMedia&&window.matchMedia('(orientation:landscape) and (max-height:520px)').matches;
+    if(window.innerWidth>=900||deitado){
       hero.style.removeProperty('--fold-reserve');
       hero.style.removeProperty('--fold-extra');
       ultimo=null; return;
@@ -749,7 +774,12 @@ body.unlocked .gate{animation:gateIn .6s ease both}
      Resize e rotacao continuam remedindo, e la o salto nao conta para o CLS. */
   window.addEventListener('resize',medir);
   window.addEventListener('orientationchange',medir);
-  /* A fonte agora vem local e pre-carregada, entao nao muda altura depois. */
+  /* O PRIMEIRO calculo espera a fonte estar aplicada. Sem isso ele mede o texto
+     na fonte de sistema, que e mais baixa, a reserva sai menor e o video fica alto
+     demais: medido, 624px de altura contra os 596px corretos, e no celular de
+     verdade a barra do navegador cortava o video. Esperar aqui evita tambem o vai
+     e volta que fazia o CLS, porque so existe um calculo, ja com a fonte certa. */
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(medir); }
 })();
 </script>
 
