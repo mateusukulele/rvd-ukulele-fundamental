@@ -524,43 +524,93 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 </head>
 <body>
 <script>
-/* GATE da VSL: libera o conteúdo abaixo do vídeo depois de SEGUNDOS na página
+/* GATE da VSL: libera o conteúdo abaixo do vídeo depois de N segundos na página
    (persiste entre reloads). É a única diferença de comportamento para a -op.
+   O tempo NÃO é fixo: cada vídeo do teste A/B tem o pitch num minuto diferente,
+   então o gate espera o player dizer qual vídeo caiu e só então marca a hora de
+   abrir. Medido nesta página: o player.js do teste termina em 135ms e o m3u8 do
+   vídeo sorteado já é pedido aos 189ms, ou seja a variante é conhecida em menos
+   de 0,3s. Num tempo de ~17min isso é ruído.
    À PROVA DE ERRO (fail-open): a trava só é aplicada SE o JS rodar. Com JS
    desligado ou erro no script a página NUNCA fica presa fechada, mostra a oferta.
    Nunca abre cedo com JS ligado. Verifica pelo relógio (a cada 3s + quando a aba
    volta ao foco), então funciona mesmo em segundo plano. */
 (function(){
   var b=document.body; b.classList.add('locked'); /* trava antes de pintar, sem piscar */
-  /* >>> ÚNICO NÚMERO A MEXER. 1059 = 17min39s contados a partir do carregamento.
-     A chave do localStorage é derivada dele de propósito: mudar o tempo troca a
-     chave sozinha, então quem já visitou não chega com um horário de liberação
-     vencido e a página não abre na hora. */
-  var SEGUNDOS=1059;
-  var MS=SEGUNDOS*1000, K='clube_unlock_v4vert_'+SEGUNDOS, qs=location.search;
+
+  /* >>> A TABELA A MEXER. Chave = id do VÍDEO no VTurb, valor = segundos até abrir.
+     Pelo id do vídeo e não pelo nome: renomear no painel do VTurb não quebra nada
+     aqui. O que quebra é TROCAR o vídeo de uma variante, porque aí nasce um id que
+     esta tabela não conhece; nesse caso a página cai no PADRAO abaixo e dispara
+     vsl_unlock_desconhecido no dataLayer, para o caso aparecer no GTM em vez de
+     morrer calado. */
+  var TEMPOS={
+    '6aa1af4b6ce493f207c32075':1067, /* L01 - 17min47s */
+    '6aa197e971c8570a7964074a':1067, /* L02 - 17min47s */
+    '6aa1b27cf8db29a62d78c8fc':1075, /* L03 - 17min55s */
+    '6aa1ab582ab9148c368c2e6d':1085, /* L04 - 18min05s */
+    '6aa1a10f9f85b6d73e156de0':1059, /* L05 - 17min39s */
+    '6aa1a1de3cd0aaad5ac73e08':1070  /* L10 - 17min50s */
+  };
+  /* O MAIOR dos seis. Serve para quando o player não responde a tempo ou traz um
+     vídeo fora da tabela: abrir tarde custa um botão que demora, abrir cedo entrega
+     a oferta antes do pitch e estraga o vídeo inteiro. */
+  var PADRAO=1085, ESPERA_MAX=5000;
+
+  var qs=location.search;
   /* Atalhos de teste (o visitante real chega sem parâmetro):
-     ?unlock=1 → abre na hora | ?reset=1 → zera e recomeça a contagem */
-  if(/[?&]reset=1/.test(qs)){ try{ localStorage.removeItem(K); }catch(e){} }
-  if(/[?&]unlock=1/.test(qs)){ b.classList.remove('locked'); b.classList.add('unlocked'); return; }
-  var at;
-  try{ at=parseInt(localStorage.getItem(K)||'0',10)||0; if(!at){ at=Date.now()+MS; localStorage.setItem(K,String(at)); } }catch(e){ at=Date.now()+MS; }
-  var done=false, iv=null;
-  function check(){
-    if(done){ return; }
-    if(Date.now()>=at){
-      done=true; if(iv){clearInterval(iv);}
-      b.classList.remove('locked'); b.classList.add('unlocked');
-      /* A dobra muda de estado junto: o texto de apoio sai e o vídeo abre espaço
-         para o botão. Quem recalcula é o script depois do hero. */
-      if(window.medirDobra){ window.medirDobra(); }
-      window.dataLayer=window.dataLayer||[];
-      window.dataLayer.push({event:'vsl_unlock',unlock_seconds:SEGUNDOS,video_variant:(window.VIDEO_VARIANT?window.VIDEO_VARIANT.curto:'na')});
-    }
+     ?unlock=1 → abre na hora | ?reset=1 → zera e recomeça a contagem.
+     O reset varre todas as chaves porque a chave certa depende da variante, que
+     nesse momento ainda nem é conhecida. */
+  if(/[?&]reset=1/.test(qs)){
+    try{ Object.keys(localStorage).forEach(function(k){ if(k.indexOf('clube_unlock_v4vert_')===0){ localStorage.removeItem(k); } }); }catch(e){}
   }
-  iv=setInterval(check, 3000);
-  document.addEventListener('visibilitychange',function(){ if(!document.hidden){ check(); } });
-  window.addEventListener('focus', check);
-  check();
+  if(/[?&]unlock=1/.test(qs)){ b.classList.remove('locked'); b.classList.add('unlocked'); return; }
+
+  var done=false, iv=null, at=null, segundos=null, vid=null;
+
+  function abrir(){
+    done=true; if(iv){clearInterval(iv);}
+    b.classList.remove('locked'); b.classList.add('unlocked');
+    /* A dobra muda de estado junto: o texto de apoio sai e o vídeo abre espaço
+       para o botão. Quem recalcula é o script depois do hero. */
+    if(window.medirDobra){ window.medirDobra(); }
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'vsl_unlock',unlock_seconds:segundos,video_id:vid||'na',video_variant:(window.VIDEO_VARIANT?window.VIDEO_VARIANT.curto:'na')});
+  }
+  function check(){ if(done||at===null){ return; } if(Date.now()>=at){ abrir(); } }
+
+  /* Fixa o tempo e o horário de abrir. A partir daqui é o relógio que manda. */
+  function armar(segs,idDoVideo){
+    if(at!==null){ return; }
+    segundos=segs; vid=idDoVideo||null;
+    var K='clube_unlock_v4vert_'+segs+'_'+(vid||'padrao');
+    try{
+      at=parseInt(localStorage.getItem(K)||'0',10)||0;
+      if(!at){ at=Date.now()+segs*1000; localStorage.setItem(K,String(at)); }
+    }catch(e){ at=Date.now()+segs*1000; }
+    iv=setInterval(check, 3000);
+    document.addEventListener('visibilitychange',function(){ if(!document.hidden){ check(); } });
+    window.addEventListener('focus', check);
+    check();
+  }
+
+  /* Espera o player resolver o teste A/B. O config aparece bem antes do teto. */
+  var t0=Date.now(), poll=setInterval(function(){
+    var el=document.querySelector('vturb-smartplayer'), c=el&&el.config;
+    var id=c&&c.video&&c.video.id;
+    if(id){
+      clearInterval(poll);
+      if(TEMPOS[id]){ armar(TEMPOS[id],id); }
+      else{
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'vsl_unlock_desconhecido',video_id:id,video_name:(c.name||''),unlock_seconds:PADRAO});
+        armar(PADRAO,id);
+      }
+    } else if(Date.now()-t0>ESPERA_MAX){
+      clearInterval(poll); armar(PADRAO,null);
+    }
+  },50);
 })();
 </script>
 
