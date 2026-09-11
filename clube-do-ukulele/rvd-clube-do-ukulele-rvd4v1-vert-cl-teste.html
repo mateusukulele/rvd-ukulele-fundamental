@@ -196,9 +196,6 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    A faixa de 520 a 619 existe porque a partir de ~459px o clamp do h1 sai do piso
    de 1.55rem e passa a seguir o 5.4vw. Valores medidos nessas faixas: 228, 271 e
    295; aqui ficam alguns pixels acima, pelo mesmo motivo do bloco acima. */
-@media (min-width:520px) and (max-width:619px){.hero{--fold-reserve:236px}}
-@media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:280px}}
-@media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:304px}}
 .vframe{position:relative;height:min(calc(100vh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
 /* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
    próprio elemento, e max-width ganha de width. Enquanto o vídeo era menor que
@@ -551,7 +548,8 @@ body.unlocked .gate{animation:gateIn .6s ease both}
      a dobra nao e mais uma conta. LIBERADA: o botao entra logo abaixo e o video
      encolhe para os dois caberem na tela (a reserva medida pelo script e so
      botao + gap + padding, sem o texto, que ficou acima). */
-  body.locked .vframe{height:calc((100vw - 2rem) * 16 / 9);max-height:none}
+  body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100vh - 1.5rem));max-height:none}
+  body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100svh - 1.5rem))}
   /* Respiro so entre promessa, subpromessa e faixa (alem do gap do .hero-top);
      do convite para o video nada muda. */
   .hero-sub{margin-top:.5rem}
@@ -581,34 +579,42 @@ body.unlocked .gate{animation:gateIn .6s ease both}
    passa a usar o mesmo arranjo do desktop, texto de um lado e video do outro,
    que e onde a altura da tela deixa de ser o gargalo. O recorte de 520px de
    altura pega celular deitado sem pegar tablet em pe. */
-@media (orientation:landscape) and (max-height:520px) and (max-width:899px){
+/* Sem teto de largura de proposito: um iPhone Pro Max deitado tem 932px e caia
+   na regra de desktop, com o video em 45svh (193px) e a pilha de texto mais alta
+   que a tela. O que define celular deitado e a ALTURA, nao a largura. Este bloco
+   vem depois do de desktop e vence por ordem, com a mesma especificidade. */
+@media (orientation:landscape) and (max-height:520px){
+  /* Uma variavel so para a altura do video: a coluna do grid e a .vframe leem a
+     mesma conta, entao nao ha como as duas desandarem. 100svh menos o padding
+     do container (2 x .6rem) e 2px de folga: o video toma a tela inteira em pe,
+     que e o maximo que um 9:16 consegue numa tela deitada sem ir para o
+     fullscreen do player. A linha com vh e o fallback sem svh (Safari < 15.4). */
+  .hero{--v-alt:calc(100vh - 1.2rem - 2px);--v-alt:calc(100svh - 1.2rem - 2px)}
   .hero .container{
     grid-template-areas:"top video" "cta video";
-    /* Em tela deitada quem manda e a ALTURA. Entao a altura do video vem
-       primeiro e a largura da coluna sai dela, na proporcao 9:16. Fazer o
-       contrario, largura primeiro, esmagava o video: com width:100% e altura
-       fixa o aspect-ratio e ignorado e ele saia em 300x340, ou seja 0,88.
-       Largura explicita aqui pelo mesmo motivo do desktop: o Safari nao deriva
-       largura de aspect-ratio quando a coluna esta em medicao intrinseca. */
-    grid-template-columns:auto calc(min(86vh,330px) * 9 / 16);
-    grid-template-columns:auto calc(min(86svh,330px) * 9 / 16);
+    /* Largura da coluna explicita (altura x 9/16): o Safari nao deriva largura de
+       aspect-ratio quando a coluna esta em medicao intrinseca, e o video sumia. */
+    grid-template-columns:minmax(0,1fr) calc(var(--v-alt) * 9 / 16);
     grid-template-rows:auto auto;
     align-content:center;justify-content:center;justify-items:center;
-    max-width:none;gap:.6rem 1.4rem;padding-block:.6rem;
+    max-width:none;gap:.5rem 1.2rem;padding-block:.6rem;min-height:100vh;min-height:100svh;
   }
   body.locked .hero .container{grid-template-areas:"top video";grid-template-rows:auto}
   body.locked .hero-top{align-self:center}
-  .hero h1{font-size:clamp(1.15rem,3.4vw,1.6rem);max-width:16em}
+  .hero-top{align-self:center;gap:.4rem}
+  .hero h1{font-size:clamp(1.1rem,3vw,1.5rem);line-height:1.12;max-width:16em}
+  .hero-sub{font-size:clamp(.85rem,1.9vw,1rem);line-height:1.3;max-width:26em;margin-top:.1rem}
+  /* Faixa e convite nao cabem ao lado de um video que ocupa a tela toda em pe. */
   .hero-strip,.hero-nudge{display:none}
-  .hero-sub{font-size:clamp(.85rem,1.9vw,1rem);max-width:24em}
-  .hero-nudge{display:none}
-  /* A altura do video passa a vir da coluna, como no desktop, e nao mais da conta
-     da dobra. Sem esta parte a .vframe continuava usando 100svh menos a reserva,
-     que numa tela de 390px de altura sobra quase nada: o video ficava com 48x86. */
   .video{margin-block:0;align-self:center;width:100%}
-  .vframe{height:min(86vh,330px);width:100%;max-width:none}
-  .vframe{height:min(86svh,330px);width:100%;max-width:none}
-  .cta-block{max-width:24rem}
+  /* Mesma altura travada ou liberada; o botao entra na coluna do texto, ao lado.
+     body.locked aqui vence a regra de retrato (largura cheia), que em paisagem
+     daria um video de 1444px de altura. */
+  .vframe,body.locked .vframe{height:var(--v-alt);width:100%;max-width:none}
+  .cta-block{max-width:22rem}
+  .cta-block .btn{padding-block:.8rem}
+  /* A nota de garantia nao cabe na altura de um celular deitado; o preco fica. */
+  .cta-block .note{display:none}
 }
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -616,7 +622,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 </head>
 <body>
 <script>
-/* GATE da VSL, versao de TESTE: abre pelo TEMPO DO VIDEO, nao pelo relogio.
+/* GATE da VSL: abre pelo TEMPO DO VIDEO, nao pelo relogio.
    O player do VTurb expoe onTime(segundos, callback), que dispara quando o video
    passa daquele ponto. Testado: pausa congela a contagem, aba em segundo plano
    continua, seek para frente dispara, 2x dispara no mesmo ponto do video.
@@ -630,7 +636,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
      ?pitch=30   finge que o pitch e aos 30s do video, para testar sem esperar */
 (function(){
   var b=document.body; b.classList.add('locked');
-  var TETO=2400, ESPERA_MAX=5000, PADRAO=1059;
+  var TETO=2400, PADRAO=1059;
   var qs=location.search;
   if(/[?&]reset=1/.test(qs)){
     try{ Object.keys(localStorage).forEach(function(k){ if(k.indexOf('clube_unlock_v4vert_')===0){ localStorage.removeItem(k); } }); }catch(e){}
@@ -656,8 +662,14 @@ body.unlocked .gate{animation:gateIn .6s ease both}
   var iv=setInterval(function(){ if(aberto){ clearInterval(iv); return; } if(Date.now()>=at){ clearInterval(iv); abrir('teto-relogio',TETO,null); } },3000);
   document.addEventListener('visibilitychange',function(){ if(!document.hidden&&!aberto&&Date.now()>=at){ abrir('teto-relogio',TETO,null); } });
 
-  /* Caminho normal: o proprio video avisa quando chegou no pitch. */
-  var t0=Date.now(), poll=setInterval(function(){
+  /* Caminho normal: o proprio video avisa quando chegou no pitch.
+     O poll NAO desiste. Medido em producao com rede estrangulada: em 3G o player
+     leva 10 a 13s para expor o config, em 2G de 18 a 22s. A versao anterior
+     desistia aos 5s e, sem onTime armado, quem assistia o video inteiro nessa
+     rede so via a oferta no teto de 40min. Depois dos primeiros 5s o poll
+     desacelera para 250ms, que e barato e continua achando o player. */
+  var armado=false, lento=false, t0=Date.now(), poll=null;
+  function checarPlayer(){
     var el=document.querySelector('vturb-smartplayer'), c=el&&el.config;
     var id=c&&c.video&&c.video.id;
     if(id){
@@ -670,10 +682,20 @@ body.unlocked .gate{animation:gateIn .6s ease both}
         window.dataLayer.push({event:'vsl_pitchtime_ausente',video_id:id,video_name:(c.name||''),pitch_time_lido:String(pt),unlock_seconds:PADRAO});
         pt=PADRAO;
       }
-      window.__alvo={segundos:pt,video:id,nome:c.name,forcado:!!forcado};
+      window.__alvo={segundos:pt,video:id,nome:c.name,forcado:!!forcado}; armado=true;
       el.onTime(pt,function(){ abrir(forcado?'onTime-forcado':'onTime',pt,id); },{once:true});
-    } else if(Date.now()-t0>ESPERA_MAX){ clearInterval(poll); }
+    }
+  }
+  poll=setInterval(function(){
+    checarPlayer();
+    if(!armado&&!lento&&Date.now()-t0>5000){ lento=true; clearInterval(poll); poll=setInterval(checarPlayer,250); }
   },50);
+  /* Rede que barra o VTurb (adblock, firewall): o player nunca chega, o poll nunca
+     arma e sem esta linha a pagina ficava 40min so com o hero e uma caixa preta.
+     Aqui vale o relogio no tempo padrao, como era antes do onTime. Se o player
+     chegar antes disso, o onTime ja armou e este timer nao faz nada. */
+  var semPlayer=forcado?parseInt(forcado,10):PADRAO;
+  setTimeout(function(){ if(!armado&&!aberto){ abrir('sem-player',semPlayer,null); } }, semPlayer*1000);
 })();
 </script>
 
@@ -806,9 +828,13 @@ body.unlocked .gate{animation:gateIn .6s ease both}
       hero.style.removeProperty('--fold-reserve'); ultimo=null; return;
     }
     var cs=getComputedStyle(cont);
-    var gap=parseFloat(cs.rowGap)||0;
-    /* +2px cobre arredondamento de subpixel, senão o botão encosta e pode cortar */
-    var r=Math.ceil(gap+btn.offsetHeight+parseFloat(cs.paddingBottom)+2);
+    /* Do fim do video ao fim do botao, MEDIDO no layout (gap do grid + o que o
+       .cta-block puser em volta do botao), mais o padding de baixo do container.
+       Essa distancia nao depende da altura do video, entao nao ha laco.
+       +2px cobre arredondamento de subpixel, senão o botão encosta e pode cortar */
+    var abaixo=btn.getBoundingClientRect().bottom-vf.getBoundingClientRect().bottom;
+    if(!(abaixo>0)){ abaixo=(parseFloat(cs.rowGap)||0)+btn.offsetHeight; }
+    var r=Math.ceil(abaixo+parseFloat(cs.paddingBottom)+2);
     if(r!==ultimo){ ultimo=r; hero.style.setProperty('--fold-reserve',r+'px'); }
   }
   window.medirDobra=medir;
