@@ -161,12 +161,12 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* 13.5em = medida da promessa, presa ao proprio font-size. No celular nao pega
    (a tela e mais estreita), no tablet segura o h1 em 4 linhas cheias no lugar de
    4 linhas soltas a 76% da caixa. 12.5em vira 5 linhas: nao descer daqui. */
-.hero h1{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(2.2rem,11.5vw,4.4rem);line-height:1.02;max-width:11em;margin-inline:auto;text-wrap:balance}
+.hero h1{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.6rem,7.5vw,3.2rem);line-height:1.06;max-width:12em;margin-inline:auto;text-wrap:balance}
 .hero h1 span{color:var(--coral)}
 /* 20em = medida da subpromessa. Presa ao proprio font-size, entao acompanha o
    clamp e o bloco quebra igual em qualquer largura de tela acima de ~352px.
    Com 46ch a ultima linha caia para 40% da caixa e o bloco desalinhava do h1. */
-.hero-sub{color:var(--ink);font-weight:600;font-size:clamp(1.05rem,3vw,1.25rem);line-height:1.35;max-width:20em;margin-inline:auto;text-wrap:pretty}
+.hero-sub{color:var(--ink);font-weight:600;font-size:clamp(1.1rem,3.1vw,1.25rem);line-height:1.35;max-width:20em;margin-inline:auto;text-wrap:pretty}
 /* .vframe = moldura 9:16 com ALTURA explícita (largura sai da proporção).
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
    A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
