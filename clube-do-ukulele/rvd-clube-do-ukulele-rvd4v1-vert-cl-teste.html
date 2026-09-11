@@ -37,7 +37,6 @@
 <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/ab-test/6aa1da895ea41f93450e3a85/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
 <link rel="preload" as="image" href="/img/poster-vsl-2.webp" fetchpriority="high">
-<link rel="preload" as="font" type="font/woff2" href="/fonts/anton-v27-latin-regular.woff2" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -59,8 +58,6 @@
    O size-adjust foi medido nesta propria pagina, comparando a largura media dos
    glifos: Montserrat 112,37% do Arial e Poppins 104,57%. Com isso a reserva ocupa
    a mesma caixa da fonte final e a troca nao mexe no layout. */
-/* Anton: só o h1 usa. Teste de promessa desta página (-cl-teste). */
-@font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/anton-v27-latin-regular.woff2') format('woff2')}
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/montserrat-v31-latin-regular.woff2') format('woff2')}
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/montserrat-v31-latin-700.woff2') format('woff2')}
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/montserrat-v31-latin-800.woff2') format('woff2')}
@@ -161,16 +158,20 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* 13.5em = medida da promessa, presa ao proprio font-size. No celular nao pega
    (a tela e mais estreita), no tablet segura o h1 em 4 linhas cheias no lugar de
    4 linhas soltas a 76% da caixa. 12.5em vira 5 linhas: nao descer daqui. */
-.hero h1{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.25rem,6.3vw,3rem);line-height:1.2;max-width:16em;margin-inline:auto;text-wrap:balance}
-/* No celular a promessa invade 10px do padding do .container de cada lado: com
-   363px de caixa (375 de tela) ela fecha em 3 linhas a 6.3vw; nos 343px do
-   container eram 4 linhas, 29px a mais de altura tirados do video. */
-@media (max-width:899px){.hero h1{margin-inline:-10px;max-width:none}}
+/* Montserrat 900 em caixa normal, como a -op. 7vw = 26px em 375, a promessa
+   fecha em 4 linhas. No celular o texto nao disputa mais a dobra com o video
+   (ele vem abaixo, em largura cheia), entao a fonte pode ser a de leitura. */
+.hero h1{font-size:clamp(1.5rem,7vw,2.9rem);font-weight:900;line-height:1.14;max-width:13.5em;margin-inline:auto;text-wrap:balance}
 .hero h1 span{color:var(--coral)}
 /* 20em = medida da subpromessa. Presa ao proprio font-size, entao acompanha o
    clamp e o bloco quebra igual em qualquer largura de tela acima de ~352px.
    Com 46ch a ultima linha caia para 40% da caixa e o bloco desalinhava do h1. */
-.hero-sub{color:var(--ink);font-weight:600;font-size:clamp(1rem,2.9vw,1.2rem);line-height:1.35;max-width:26em;margin-inline:auto;text-wrap:pretty}
+.hero-sub{color:var(--ink);font-weight:600;font-size:clamp(1rem,2.9vw,1.2rem);line-height:1.4;max-width:26em;margin-inline:auto;text-wrap:pretty}
+/* Faixa de destaque: marcador coral com o texto em branco, linha a linha
+   (box-decoration-break:clone). Coral forte da pagina (#C9364F) com branco mede
+   5,6:1. A entrelinha alta e o que abre o vao entre as tarjas. */
+.hero-strip{margin:.4rem 0 0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(.95rem,2.7vw,1.1rem);line-height:2.05;max-width:24em;margin-inline:auto;text-wrap:balance}
+.hero-strip span{background:var(--coral-deep);color:#fff;padding:.14em .45em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 /* .vframe = moldura 9:16 com ALTURA explícita (largura sai da proporção).
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
    A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
@@ -189,7 +190,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    acima do medido (242 contra 221 a 234 num celular atual). Mexer neles não muda
    a página com JS ligado; para mudar a dobra, mexer no script. */
 .video{grid-area:video;width:100%;display:flex;justify-content:center}
-.hero{--fold-reserve:242px}
+.hero{--fold-reserve:120px}
 /* Tablet ainda no layout de 1 coluna: a fonte do h1 e do subtítulo crescem com
    o vw e o texto ocupa bem mais altura, então a reserva sobe junto.
    A faixa de 520 a 619 existe porque a partir de ~459px o clamp do h1 sai do piso
@@ -223,12 +224,9 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    pessoa só tem o vídeo para assistir.
    No celular o vídeo está logo ABAIXO, então a seta gira para baixo. No desktop
    ele está ao lado e a seta volta para a horizontal (regra no @media de 900px). */
-.hero-nudge{display:inline-flex;align-items:center;gap:.5rem;margin:.15rem 0 0;
-  font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
-  font-size:clamp(.95rem,2.6vw,1.1rem);color:var(--purple)}
-.hero-nudge svg{width:1.5rem;height:auto;color:var(--coral);flex-shrink:0;
-  transform:rotate(90deg);animation:nudge-baixo 2.4s cubic-bezier(.16,1,.3,1) infinite}
-@keyframes nudge-baixo{0%,55%,100%{transform:rotate(90deg) translateX(0)}25%{transform:rotate(90deg) translateX(5px)}}
+.hero-nudge{display:block;margin:.5rem 0 0;font-size:clamp(.95rem,2.6vw,1.05rem);color:var(--muted);max-width:26em;margin-inline:auto}
+/* No celular o video esta logo abaixo: a frase basta, sem seta. */
+.hero-nudge svg{display:none}
 /* No celular o subtítulo também aparece, então --fold-reserve conta com ele. */
 /* Desktop: texto à esquerda, vídeo vertical à direita, ainda em uma dobra */
 @media (min-width:900px){
@@ -284,18 +282,14 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      de bloco num 1512x860, com a promessa em 4 linhas a 98/96/96/97. Ja tentei
      11.5em aqui, que dava 5 linhas e uma coluna mais alta, mas ficou estreita
      demais. A altura que faltava veio dos espacos internos, nao de espremer. */
-  /* Anton e condensada: a promessa cabe em 3 ou 4 linhas com a fonte bem maior
-     que a Montserrat aguentava. O tamanho segue a LARGURA e a ALTURA da tela, o
-     menor vence: o video ao lado escala com svh, e numa janela baixa (1000x575)
-     a promessa em 6.55vw passava da altura do video. Teto de 3rem (48px): promessa de 16 palavras, 3 linhas em qualquer largura.
-     Medido: 1000x575 -> 32px; 1280x800 -> 44px;
-     1920x1080 -> 48px. A linha com vh e o fallback de navegador sem svh. */
-  .hero h1{font-size:clamp(1.9rem,min(3.4vw,5.5vh),3rem)}
-  .hero h1{font-size:clamp(1.9rem,min(3.4vw,5.5svh),3rem)}
+  /* Teto de 2.7rem: a coluna agora carrega promessa, subpromessa, faixa e
+     convite, e em 3rem a pilha passava da altura do video em 1280x800. */
+  .hero h1{font-size:clamp(1.9rem,3.3vw,2.7rem)}
   /* A subpromessa cresce junto no desktop. A medida é 20em, presa à fonte, então
      o bloco engorda sem mudar uma quebra: continua em 3 linhas a 96/99/95 de
      preenchimento em qualquer largura. Proporção h1/sub fica em ~1,75. */
-  .hero-sub{font-size:clamp(1.2rem,1.9vw,1.5rem)}
+  .hero-sub{font-size:clamp(1.1rem,1.5vw,1.3rem)}
+  .hero-strip{font-size:clamp(1rem,1.3vw,1.2rem);max-width:26em}
   /* Texto em Montserrat 800 para ler como etiqueta, não como parágrafo, e a seta
      em coral: puxa o olho para o vídeo sem competir com o verde, que nesta página
      significa comprar. Sem pílula nem caixa alta de propósito. */
@@ -305,20 +299,15 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
   /* O convite ganha um espaco bem maior que o do resto da pilha: ele nao e
      continuacao da subpromessa, e um segundo assunto. O margin-top vem alem do
      gap do .hero-top, entao o total ate a subpromessa e ~3x o espaco de cima. */
-  .hero-nudge{display:inline-flex;align-items:center;gap:1.03rem;
-    margin:clamp(3rem,6.4vh,4.6rem) 0 0;
+  .hero-nudge{display:block;margin:clamp(1.6rem,3.4vh,2.6rem) 0 0;
     font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
-    /* Um degrau abaixo da subpromessa (27px): com a promessa em Anton a pilha
-       e h1 > sub > convite, e em 1.76rem o convite empatava com a sub. Em 900px
-       de tela o convite tambem parava de caber na coluna e quebrava em 2 linhas;
-       a 1.25rem ele mede ~440 numa coluna de 489. */
-    font-size:clamp(1.25rem,1.5vw,1.5rem);color:var(--purple)}
+    font-size:clamp(1.05rem,1.25vw,1.25rem);color:var(--purple);max-width:22em}
   /* A seta encolhe so na ponta estreita do desktop. Em 900px de tela a coluna de
      texto tem 468px e o convite chegava a 465: 3px de folga, e qualquer diferenca
      de renderizacao o quebraria em duas linhas. Com o clamp ele cai para ~444 la e
      fica igual de 1500px para cima, que e onde o tamanho importa. */
-  .hero-nudge svg{width:clamp(3.4rem,4.9vw,4.7rem);height:auto;color:var(--coral);flex-shrink:0;
-    transform:none;animation:nudge 2.4s cubic-bezier(.16,1,.3,1) infinite}
+  .hero-nudge svg{display:inline-block;vertical-align:middle;margin-left:.5rem;width:2.6rem;height:auto;color:var(--coral);
+    animation:nudge 2.4s cubic-bezier(.16,1,.3,1) infinite}
   /* O @media prefers-reduced-motion lá embaixo já desliga esta animação. */
   @keyframes nudge{0%,55%,100%{transform:translateX(0)}25%{transform:translateX(7px)}}
   /* O bloco de checkout não pode passar da promessa. A medida da promessa é
@@ -556,13 +545,14 @@ body.unlocked .gate{animation:gateIn .6s ease both}
    uma vez (o texto saiu do grid) enquanto a altura encolheria aos poucos, ou seja
    o vídeo pularia. A troca é seca, e quem dá o tempo é o gateIn do conteúdo. */
 @media (max-width:899px){
-  .hero-nudge{display:none}
   /* Travada o grid tem 2 linhas, não 3: senão sobra o gap da linha do botão. */
   body.locked .hero .container{grid-template-areas:"top" "video";grid-template-rows:auto auto}
-  /* Num celular largo a altura do vídeo passa a ser limitada pela LARGURA, não
-     pela dobra: ele para de crescer e sobra espaço. O script mede essa sobra e
-     devolve ela aqui, metade acima e metade abaixo do vídeo. */
-  .video{margin-block:calc(var(--fold-extra,0px) / 2)}
+  /* TRAVADA: o video ocupa a largura toda do container e a pessoa rola ate ele;
+     a dobra nao e mais uma conta. LIBERADA: o botao entra logo abaixo e o video
+     encolhe para os dois caberem na tela (a reserva medida pelo script e so
+     botao + gap + padding, sem o texto, que ficou acima). */
+  body.locked .vframe{height:calc((100vw - 2rem) * 16 / 9);max-height:none}
+  .hero .container{min-height:0}
 }
 /* Desktop travado: sem o bloco de checkout, o grid fica com uma linha vazia que
    engole a sobra e o texto gruda no topo ao lado de um vídeo alto. Uma linha só
@@ -604,7 +594,8 @@ body.unlocked .gate{animation:gateIn .6s ease both}
   }
   body.locked .hero .container{grid-template-areas:"top video";grid-template-rows:auto}
   body.locked .hero-top{align-self:center}
-  .hero h1{font-size:clamp(1.6rem,4.4vw,2.2rem);max-width:14em}
+  .hero h1{font-size:clamp(1.15rem,3.4vw,1.6rem);max-width:16em}
+  .hero-strip,.hero-nudge{display:none}
   .hero-sub{font-size:clamp(.85rem,1.9vw,1rem);max-width:24em}
   .hero-nudge{display:none}
   /* A altura do video passa a vir da coluna, como no desktop, e nao mais da conta
@@ -686,13 +677,12 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 <header class="hero">
   <div class="container">
     <div class="hero-top">
-      <h1>Conheça o hobby que ajuda a aliviar o estresse e já virou refúgio de <span>+ de 300.000 brasileiros</span></h1>
-      <p class="hero-sub">Aprenda a tocar ukulele com 3 passos, com 20 minutos por dia, mesmo que você nunca tenha tocada nada antes.</p>
-      <!-- Convite para o vídeo. Só no desktop (>=900px), onde o vídeo está AO LADO;
-           no celular nunca aparece, nem com a página travada. -->
-      <p class="hero-nudge">Dá o play que eu te mostro tocando
-        <svg viewBox="0 0 44 14" fill="none" aria-hidden="true"><path d="M1 7h35M30 1.5 36.5 7 30 12.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </p>
+      <h1>Toque <span>suas músicas favoritas</span> no Ukulele, com 20 minutinhos por dia</h1>
+      <p class="hero-sub">Conheça o hobby que ajuda a aliviar o estresse e já virou refúgio de +&nbsp;de&nbsp;300.000 brasileiros</p>
+      <p class="hero-strip"><span>Nessa demonstração você vai conhecer os 3 passos simples que te levam a aprender qualquer música</span></p>
+      <!-- Convite para o vídeo. No desktop a seta aponta para o vídeo ao lado;
+           no celular a seta some e fica só a frase. -->
+      <p class="hero-nudge">Assista a aula e veja a lógica por trás do nosso Método.<svg viewBox="0 0 44 14" fill="none" aria-hidden="true"><path d="M1 7h35M30 1.5 36.5 7 30 12.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
     </div>
 
     <div class="video">
@@ -804,21 +794,18 @@ body.unlocked .gate{animation:gateIn .6s ease both}
       hero.style.removeProperty('--fold-extra');
       ultimo=null; return;
     }
+    /* Travada, o CSS da ao video a altura da largura cheia e esta conta nao
+       entra. Liberada, a reserva e so o que fica ABAIXO do video: gap + botao +
+       padding de baixo. O texto ficou acima e fora da conta, entao o video
+       encolhe ate video + botao caberem juntos na tela. */
+    if(document.body.classList.contains('locked')){
+      hero.style.removeProperty('--fold-reserve'); ultimo=null; return;
+    }
     var cs=getComputedStyle(cont);
     var gap=parseFloat(cs.rowGap)||0;
-    var travada=document.body.classList.contains('locked');
     /* +2px cobre arredondamento de subpixel, senão o botão encosta e pode cortar */
-    var r=travada
-      ? parseFloat(cs.paddingTop)+top.offsetHeight+gap+parseFloat(cs.paddingBottom)+2
-      : parseFloat(cs.paddingTop)+top.offsetHeight+gap*2+btn.offsetHeight+2;
-    r=Math.ceil(r);
+    var r=Math.ceil(gap+btn.offsetHeight+parseFloat(cs.paddingBottom)+2);
     if(r!==ultimo){ ultimo=r; hero.style.setProperty('--fold-reserve',r+'px'); }
-    /* Se a largura da tela limitou o vídeo antes da dobra, ele não cresce até o
-       fim e sobra espaço. Devolve a diferença como margem do vídeo, senão o botão
-       não encosta no fim da tela. Não gera laço: margem no .video não muda a
-       altura da .vframe, que vem do viewport. */
-    var folga=Math.round((window.innerHeight-r)-vf.offsetHeight);
-    hero.style.setProperty('--fold-extra',(folga>2?folga:0)+'px');
   }
   window.medirDobra=medir;
   medir();
