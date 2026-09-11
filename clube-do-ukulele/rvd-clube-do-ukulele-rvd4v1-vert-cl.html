@@ -618,7 +618,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
      ?pitch=30   finge que o pitch e aos 30s do video, para testar sem esperar */
 (function(){
   var b=document.body; b.classList.add('locked');
-  var TETO=2400, ESPERA_MAX=5000, PADRAO=1059;
+  var TETO=2400, PADRAO=1059;
   var qs=location.search;
   if(/[?&]reset=1/.test(qs)){
     try{ Object.keys(localStorage).forEach(function(k){ if(k.indexOf('clube_unlock_v4vert_')===0){ localStorage.removeItem(k); } }); }catch(e){}
@@ -644,8 +644,14 @@ body.unlocked .gate{animation:gateIn .6s ease both}
   var iv=setInterval(function(){ if(aberto){ clearInterval(iv); return; } if(Date.now()>=at){ clearInterval(iv); abrir('teto-relogio',TETO,null); } },3000);
   document.addEventListener('visibilitychange',function(){ if(!document.hidden&&!aberto&&Date.now()>=at){ abrir('teto-relogio',TETO,null); } });
 
-  /* Caminho normal: o proprio video avisa quando chegou no pitch. */
-  var t0=Date.now(), poll=setInterval(function(){
+  /* Caminho normal: o proprio video avisa quando chegou no pitch.
+     O poll NAO desiste. Medido em producao com rede estrangulada: em 3G o player
+     leva 10 a 13s para expor o config, em 2G de 18 a 22s. A versao anterior
+     desistia aos 5s e, sem onTime armado, quem assistia o video inteiro nessa
+     rede so via a oferta no teto de 40min. Depois dos primeiros 5s o poll
+     desacelera para 250ms, que e barato e continua achando o player. */
+  var armado=false, lento=false, t0=Date.now(), poll=null;
+  function checarPlayer(){
     var el=document.querySelector('vturb-smartplayer'), c=el&&el.config;
     var id=c&&c.video&&c.video.id;
     if(id){
@@ -658,10 +664,20 @@ body.unlocked .gate{animation:gateIn .6s ease both}
         window.dataLayer.push({event:'vsl_pitchtime_ausente',video_id:id,video_name:(c.name||''),pitch_time_lido:String(pt),unlock_seconds:PADRAO});
         pt=PADRAO;
       }
-      window.__alvo={segundos:pt,video:id,nome:c.name,forcado:!!forcado};
+      window.__alvo={segundos:pt,video:id,nome:c.name,forcado:!!forcado}; armado=true;
       el.onTime(pt,function(){ abrir(forcado?'onTime-forcado':'onTime',pt,id); },{once:true});
-    } else if(Date.now()-t0>ESPERA_MAX){ clearInterval(poll); }
+    }
+  }
+  poll=setInterval(function(){
+    checarPlayer();
+    if(!armado&&!lento&&Date.now()-t0>5000){ lento=true; clearInterval(poll); poll=setInterval(checarPlayer,250); }
   },50);
+  /* Rede que barra o VTurb (adblock, firewall): o player nunca chega, o poll nunca
+     arma e sem esta linha a pagina ficava 40min so com o hero e uma caixa preta.
+     Aqui vale o relogio no tempo padrao, como era antes do onTime. Se o player
+     chegar antes disso, o onTime ja armou e este timer nao faz nada. */
+  var semPlayer=forcado?parseInt(forcado,10):PADRAO;
+  setTimeout(function(){ if(!armado&&!aberto){ abrir('sem-player',semPlayer,null); } }, semPlayer*1000);
 })();
 </script>
 
