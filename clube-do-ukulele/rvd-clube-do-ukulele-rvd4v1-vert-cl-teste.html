@@ -283,11 +283,11 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
   /* Anton e condensada: a promessa cabe em 3 ou 4 linhas com a fonte bem maior
      que a Montserrat aguentava. O tamanho segue a LARGURA e a ALTURA da tela, o
      menor vence: o video ao lado escala com svh, e numa janela baixa (1000x575)
-     a promessa em 6.55vw passava da altura do video. Teto de 5.25rem (84px).
-     Medido: 1000x575 -> 52px, 3 linhas, coluna 338 contra video 460;
-     1512x860 -> 77px. A linha com vh e o fallback de navegador sem svh. */
-  .hero h1{font-size:clamp(2.5rem,min(5.5vw,9vh),5.25rem)}
-  .hero h1{font-size:clamp(2.5rem,min(5.5vw,9svh),5.25rem)}
+     a promessa em 6.55vw passava da altura do video. Teto de 4.5rem (72px); 84px ainda era grande demais em 1920.
+     Medido: 1000x575 -> 44px; 1280x800 -> 60px;
+     1512x860 -> 66px; 1920x1080 -> 72px. A linha com vh e o fallback de navegador sem svh. */
+  .hero h1{font-size:clamp(2.25rem,min(4.7vw,7.7vh),4.5rem)}
+  .hero h1{font-size:clamp(2.25rem,min(4.7vw,7.7svh),4.5rem)}
   /* A subpromessa cresce junto no desktop. A medida é 20em, presa à fonte, então
      o bloco engorda sem mudar uma quebra: continua em 3 linhas a 96/99/95 de
      preenchimento em qualquer largura. Proporção h1/sub fica em ~1,75. */
