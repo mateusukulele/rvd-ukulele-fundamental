@@ -144,42 +144,50 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      A conta garante caixa de texto >= 328px ate 360px de tela: com 2vw a caixa caia
      para 314px num Android de 360 e o h1 virava 5 linhas a 71% de preenchimento.
      Em 375px o valor bate exatamente com o 2vw antigo (7,5px). */
-  padding-inline:clamp(0px,calc((100vw - 360px) / 2),1rem)}
+  padding-inline:0}
 /* 1.55rem e o teto: em 1.6rem a headline vira 5 linhas num iPhone de 375px e come
    32px de altura de uma vez. Medido, nao chutado. */
 /* 13.5em = medida da promessa, presa ao proprio font-size. No celular nao pega
    (a tela e mais estreita), no tablet segura o h1 em 4 linhas cheias no lugar de
    4 linhas soltas a 76% da caixa. 12.5em vira 5 linhas: nao descer daqui. */
-.hero h1{font-size:clamp(1.55rem,5.4vw,2.9rem);font-weight:900;line-height:1.1;max-width:13.5em;margin-inline:auto;text-wrap:balance}
+/* Montserrat 900 em caixa normal, como a -op. 7vw = 26px em 375, a promessa
+   fecha em 4 linhas. No celular o texto nao disputa mais a dobra com o video
+   (ele vem abaixo, em largura cheia), entao a fonte pode ser a de leitura. */
+.hero h1{font-size:clamp(1.6rem,7.6vw,3rem);font-weight:900;line-height:1.14;max-width:13.5em;margin-inline:auto;text-wrap:balance}
 .hero h1 span{color:var(--coral)}
 /* 20em = medida da subpromessa. Presa ao proprio font-size, entao acompanha o
    clamp e o bloco quebra igual em qualquer largura de tela acima de ~352px.
    Com 46ch a ultima linha caia para 40% da caixa e o bloco desalinhava do h1. */
-.hero-sub{color:#5C5A70;font-size:clamp(1rem,2.9vw,1.2rem);line-height:1.35;max-width:20em;margin-inline:auto;text-wrap:pretty}
+.hero-sub{color:var(--ink);font-weight:600;font-size:clamp(1.1rem,3.2vw,1.3rem);line-height:1.4;max-width:26em;margin-inline:auto;text-wrap:pretty}
+/* Faixa de destaque: marcador coral com o texto em branco, linha a linha
+   (box-decoration-break:clone). Coral forte da pagina (#C9364F) com branco mede
+   5,6:1. A entrelinha alta e o que abre o vao entre as tarjas. */
+.hero-strip{margin:.4rem 0 0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.05rem,2.95vw,1.2rem);line-height:2.05;max-width:24em;margin-inline:auto;text-wrap:balance}
+.hero-strip span{background:var(--coral-deep);color:#fff;padding:.14em .45em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 /* .vframe = moldura 9:16 com ALTURA explícita (largura sai da proporção).
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
    A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
-   --fold-reserve = tudo que precisa caber na dobra junto com o vídeo:
-   padding + h1 + subtítulo + convite + 2 gaps. A dobra termina no FIM DO VÍDEO:
-   o botão de checkout, o preço e a nota de garantia ficam abaixo dela de
-   propósito, porque a primeira dobra de uma VSL tem um trabalho só, que é gerar
-   play, e botão de compra acima da linha compete com ele. O segundo gap é o
-   respiro embaixo do vídeo, para a página não parecer que acabou ali.
+   --fold-reserve = tudo que precisa caber na dobra junto com o vídeo. Nesta
+   página ele tem DOIS valores, porque a dobra tem dois estados:
+
+   TRAVADA   padding de cima + promessa, subpromessa e convite + 1 gap + padding
+             de baixo. Sem botão para caber, o vídeo desce até o fim da tela e
+             nada compete com o play.
+   LIBERADA  padding de cima + promessa e subpromessa + 2 gaps + botão. O convite
+             já saiu pelo CSS, então o offsetHeight do .hero-top já vem menor
+             sozinho, e o vídeo encolhe para o botão entrar na dobra.
    ATENÇÃO: abaixo de 900px quem manda nestes valores é o script logo depois do
    hero, que MEDE o texto e o botão e sobrescreve a variável. Os números aqui são
    só o primeiro quadro e o fallback de JS desligado, por isso ficam alguns pixels
    acima do medido (242 contra 221 a 234 num celular atual). Mexer neles não muda
    a página com JS ligado; para mudar a dobra, mexer no script. */
 .video{grid-area:video;width:100%;display:flex;justify-content:center}
-.hero{--fold-reserve:242px}
+.hero{--fold-reserve:120px}
 /* Tablet ainda no layout de 1 coluna: a fonte do h1 e do subtítulo crescem com
    o vw e o texto ocupa bem mais altura, então a reserva sobe junto.
    A faixa de 520 a 619 existe porque a partir de ~459px o clamp do h1 sai do piso
    de 1.55rem e passa a seguir o 5.4vw. Valores medidos nessas faixas: 228, 271 e
    295; aqui ficam alguns pixels acima, pelo mesmo motivo do bloco acima. */
-@media (min-width:520px) and (max-width:619px){.hero{--fold-reserve:236px}}
-@media (min-width:620px) and (max-width:767px){.hero{--fold-reserve:280px}}
-@media (min-width:768px) and (max-width:899px){.hero{--fold-reserve:304px}}
 .vframe{position:relative;height:min(calc(100vh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));height:min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9));aspect-ratio:9/16;width:auto;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -24px rgba(66,48,102,.45);background:#000}
 /* max-width:none é obrigatório: o script do VTurb aplica max-width:400px no
    próprio elemento, e max-width ganha de width. Enquanto o vídeo era menor que
@@ -187,6 +195,11 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    travava em 400 dentro de uma .vframe de 416 e o fundo preto dela virava uma
    borda de 8px de cada lado. */
 .vframe vturb-smartplayer{display:block;width:100%!important;max-width:none!important;height:100%!important}
+/* O VTurb desenha o placeholder de carregamento com fundo preto opaco, e ele fica
+   por cima do poster: a metrica de LCP melhorava mas o visitante continuava vendo
+   um retangulo preto com o spinner. Deixando esse fundo transparente, o spinner
+   aparece SOBRE a capa do video, que e o que a gente queria mostrar. O preto da
+   propria .vframe continua atras, entao nada fica sem fundo. */
 /* O player fica por cima do poster de forma explicita. Sem isto a ordem dependia
    de um container interno do VTurb ser position:relative, o que funciona hoje e
    pode mudar numa versao do player sem aviso. */
@@ -200,12 +213,9 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    pessoa só tem o vídeo para assistir.
    No celular o vídeo está logo ABAIXO, então a seta gira para baixo. No desktop
    ele está ao lado e a seta volta para a horizontal (regra no @media de 900px). */
-.hero-nudge{display:inline-flex;align-items:center;gap:.5rem;margin:.15rem 0 0;
-  font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
-  font-size:clamp(.95rem,2.6vw,1.1rem);color:var(--purple)}
-.hero-nudge svg{width:1.5rem;height:auto;color:var(--coral);flex-shrink:0;
-  transform:rotate(90deg);animation:nudge-baixo 2.4s cubic-bezier(.16,1,.3,1) infinite}
-@keyframes nudge-baixo{0%,55%,100%{transform:rotate(90deg) translateX(0)}25%{transform:rotate(90deg) translateX(5px)}}
+.hero-nudge{display:block;margin:.5rem 0 0;font-size:clamp(1.05rem,2.85vw,1.15rem);color:var(--muted);max-width:26em;margin-inline:auto}
+/* No celular o video esta logo abaixo: a frase basta, sem seta. */
+.hero-nudge svg{display:none}
 /* No celular o subtítulo também aparece, então --fold-reserve conta com ele. */
 /* Desktop: texto à esquerda, vídeo vertical à direita, ainda em uma dobra */
 @media (min-width:900px){
@@ -261,11 +271,14 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      de bloco num 1512x860, com a promessa em 4 linhas a 98/96/96/97. Ja tentei
      11.5em aqui, que dava 5 linhas e uma coluna mais alta, mas ficou estreita
      demais. A altura que faltava veio dos espacos internos, nao de espremer. */
-  .hero h1{font-size:clamp(2.1rem,3.85vw,3rem)}
+  /* Teto de 2.7rem: a coluna agora carrega promessa, subpromessa, faixa e
+     convite, e em 3rem a pilha passava da altura do video em 1280x800. */
+  .hero h1{font-size:clamp(2rem,3.55vw,2.9rem)}
   /* A subpromessa cresce junto no desktop. A medida é 20em, presa à fonte, então
      o bloco engorda sem mudar uma quebra: continua em 3 linhas a 96/99/95 de
      preenchimento em qualquer largura. Proporção h1/sub fica em ~1,75. */
-  .hero-sub{font-size:clamp(1.28rem,2.15vw,1.72rem)}
+  .hero-sub{font-size:clamp(1.2rem,1.6vw,1.4rem)}
+  .hero-strip{font-size:clamp(1.1rem,1.4vw,1.3rem);max-width:26em}
   /* Texto em Montserrat 800 para ler como etiqueta, não como parágrafo, e a seta
      em coral: puxa o olho para o vídeo sem competir com o verde, que nesta página
      significa comprar. Sem pílula nem caixa alta de propósito. */
@@ -275,16 +288,15 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
   /* O convite ganha um espaco bem maior que o do resto da pilha: ele nao e
      continuacao da subpromessa, e um segundo assunto. O margin-top vem alem do
      gap do .hero-top, entao o total ate a subpromessa e ~3x o espaco de cima. */
-  .hero-nudge{display:inline-flex;align-items:center;gap:1.03rem;
-    margin:clamp(3rem,6.4vh,4.6rem) 0 0;
+  .hero-nudge{display:block;margin:clamp(1.6rem,3.4vh,2.6rem) 0 0;
     font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
-    font-size:clamp(1.47rem,1.79vw,1.76rem);color:var(--purple)}
+    font-size:clamp(1.15rem,1.35vw,1.35rem);color:var(--purple);max-width:22em}
   /* A seta encolhe so na ponta estreita do desktop. Em 900px de tela a coluna de
      texto tem 468px e o convite chegava a 465: 3px de folga, e qualquer diferenca
      de renderizacao o quebraria em duas linhas. Com o clamp ele cai para ~444 la e
      fica igual de 1500px para cima, que e onde o tamanho importa. */
-  .hero-nudge svg{width:clamp(3.4rem,4.9vw,4.7rem);height:auto;color:var(--coral);flex-shrink:0;
-    transform:none;animation:nudge 2.4s cubic-bezier(.16,1,.3,1) infinite}
+  .hero-nudge svg{display:inline-block;vertical-align:middle;margin-left:.5rem;width:2.6rem;height:auto;color:var(--coral);
+    animation:nudge 2.4s cubic-bezier(.16,1,.3,1) infinite}
   /* O @media prefers-reduced-motion lá embaixo já desliga esta animação. */
   @keyframes nudge{0%,55%,100%{transform:translateX(0)}25%{transform:translateX(7px)}}
   /* O bloco de checkout não pode passar da promessa. A medida da promessa é
@@ -498,6 +510,52 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 .lb-x{position:absolute;top:.5rem;right:.5rem;width:2.3rem;height:2.3rem;border:0;border-radius:999px;background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .lb-x svg{width:1.1rem;height:1.1rem}
 
+/* ===== GATE (o que separa esta página da -op) =====
+   Tudo com a classe .gate fica escondido enquanto body.locked estiver ligado. */
+body.locked .gate{display:none!important}
+body.locked .sticky{display:none!important}
+@keyframes gateIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+body.unlocked .gate{animation:gateIn .6s ease both}
+
+/* A DOBRA TEM DOIS ESTADOS NO CELULAR.
+   Travada: promessa + subpromessa + convite do play + vídeo, e o vídeo desce até
+   o fim da tela. Não existe botão para caber, então a reserva não conta com ele.
+   Liberada: o convite do play sai (a oferta abriu, o assunto da dobra deixou de
+   ser só o play), o vídeo encolhe e a dobra fecha em promessa + subpromessa +
+   vídeo + botão de compra.
+   Sai SÓ o convite, e não a subpromessa junto: aqui o texto de apoio tem duas
+   linhas mais os gaps e pesa mais que o botão, então esconder os dois faria o
+   vídeo CRESCER na liberação, que é o oposto do efeito. Medido em 390x844:
+   escondendo os dois o vídeo ia de 606 para 632; escondendo só o convite ele cai.
+   O padrão é o convite ESCONDIDO, e só o body.locked traz ele de volta. É de
+   propósito: se o JS não rodar, o gate falha aberto e a página cai no estado
+   liberado, que é o que precisa caber junto com o botão.
+   Sem transição de altura no vídeo de propósito: na virada o topo dele sobe de
+   uma vez (o texto saiu do grid) enquanto a altura encolheria aos poucos, ou seja
+   o vídeo pularia. A troca é seca, e quem dá o tempo é o gateIn do conteúdo. */
+@media (max-width:899px){
+  /* Travada o grid tem 2 linhas, não 3: senão sobra o gap da linha do botão. */
+  body.locked .hero .container{grid-template-areas:"top" "video";grid-template-rows:auto auto}
+  /* TRAVADA: o video ocupa a largura toda do container e a pessoa rola ate ele;
+     a dobra nao e mais uma conta. LIBERADA: o botao entra logo abaixo e o video
+     encolhe para os dois caberem na tela (a reserva medida pelo script e so
+     botao + gap + padding, sem o texto, que ficou acima). */
+  body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100vh - 1.5rem));max-height:none}
+  body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100svh - 1.5rem))}
+  /* Respiro so entre promessa, subpromessa e faixa (alem do gap do .hero-top);
+     do convite para o video nada muda. */
+  .hero-sub{margin-top:.5rem}
+  .hero-strip{margin-top:.9rem}
+  .hero .container{min-height:0}
+}
+/* Desktop travado: sem o bloco de checkout, o grid fica com uma linha vazia que
+   engole a sobra e o texto gruda no topo ao lado de um vídeo alto. Uma linha só
+   + center deixa o texto centrado no vídeo. Liberado, volta ao layout da -op. */
+@media (min-width:900px){
+  body.locked .hero .container{grid-template-areas:"top video";grid-template-rows:auto}
+  body.locked .hero-top{align-self:center}
+}
+
 /* Logo da marca. Fora da hero de propósito: lá o único assunto é o play.
    Entra só nas seções de fundo escuro, onde ela vai direta; em fundo claro a
    marca exige o selo índigo em volta, que pesaria no meio da página. A arte é
@@ -513,33 +571,42 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
    passa a usar o mesmo arranjo do desktop, texto de um lado e video do outro,
    que e onde a altura da tela deixa de ser o gargalo. O recorte de 520px de
    altura pega celular deitado sem pegar tablet em pe. */
-@media (orientation:landscape) and (max-height:520px) and (max-width:899px){
+/* Sem teto de largura de proposito: um iPhone Pro Max deitado tem 932px e caia
+   na regra de desktop, com o video em 45svh (193px) e a pilha de texto mais alta
+   que a tela. O que define celular deitado e a ALTURA, nao a largura. Este bloco
+   vem depois do de desktop e vence por ordem, com a mesma especificidade. */
+@media (orientation:landscape) and (max-height:520px){
+  /* Uma variavel so para a altura do video: a coluna do grid e a .vframe leem a
+     mesma conta, entao nao ha como as duas desandarem. 100svh menos o padding
+     do container (2 x .6rem) e 2px de folga: o video toma a tela inteira em pe,
+     que e o maximo que um 9:16 consegue numa tela deitada sem ir para o
+     fullscreen do player. A linha com vh e o fallback sem svh (Safari < 15.4). */
+  .hero{--v-alt:calc(100vh - 1.2rem - 2px);--v-alt:calc(100svh - 1.2rem - 2px)}
   .hero .container{
     grid-template-areas:"top video" "cta video";
-    /* Em tela deitada quem manda e a ALTURA. Entao a altura do video vem
-       primeiro e a largura da coluna sai dela, na proporcao 9:16. Fazer o
-       contrario, largura primeiro, esmagava o video: com width:100% e altura
-       fixa o aspect-ratio e ignorado e ele saia em 300x340, ou seja 0,88.
-       Largura explicita aqui pelo mesmo motivo do desktop: o Safari nao deriva
-       largura de aspect-ratio quando a coluna esta em medicao intrinseca. */
-    grid-template-columns:auto calc(min(86vh,330px) * 9 / 16);
-    grid-template-columns:auto calc(min(86svh,330px) * 9 / 16);
+    /* Largura da coluna explicita (altura x 9/16): o Safari nao deriva largura de
+       aspect-ratio quando a coluna esta em medicao intrinseca, e o video sumia. */
+    grid-template-columns:minmax(0,1fr) calc(var(--v-alt) * 9 / 16);
     grid-template-rows:auto auto;
     align-content:center;justify-content:center;justify-items:center;
-    max-width:none;gap:.6rem 1.4rem;padding-block:.6rem;
+    max-width:none;gap:.5rem 1.2rem;padding-block:.6rem;min-height:100vh;min-height:100svh;
   }
   body.locked .hero .container{grid-template-areas:"top video";grid-template-rows:auto}
   body.locked .hero-top{align-self:center}
-  .hero h1{font-size:clamp(1.15rem,3.4vw,1.6rem);max-width:16em}
-  .hero-sub{font-size:clamp(.85rem,1.9vw,1rem);max-width:24em}
-  .hero-nudge{display:none}
-  /* A altura do video passa a vir da coluna, como no desktop, e nao mais da conta
-     da dobra. Sem esta parte a .vframe continuava usando 100svh menos a reserva,
-     que numa tela de 390px de altura sobra quase nada: o video ficava com 48x86. */
+  .hero-top{align-self:center;gap:.4rem}
+  .hero h1{font-size:clamp(1.1rem,3vw,1.5rem);line-height:1.12;max-width:16em}
+  .hero-sub{font-size:clamp(.85rem,1.9vw,1rem);line-height:1.3;max-width:26em;margin-top:.1rem}
+  /* Faixa e convite nao cabem ao lado de um video que ocupa a tela toda em pe. */
+  .hero-strip,.hero-nudge{display:none}
   .video{margin-block:0;align-self:center;width:100%}
-  .vframe{height:min(86vh,330px);width:100%;max-width:none}
-  .vframe{height:min(86svh,330px);width:100%;max-width:none}
-  .cta-block{max-width:24rem}
+  /* Mesma altura travada ou liberada; o botao entra na coluna do texto, ao lado.
+     body.locked aqui vence a regra de retrato (largura cheia), que em paisagem
+     daria um video de 1444px de altura. */
+  .vframe,body.locked .vframe{height:var(--v-alt);width:100%;max-width:none}
+  .cta-block{max-width:22rem}
+  .cta-block .btn{padding-block:.8rem}
+  /* A nota de garantia nao cabe na altura de um celular deitado; o preco fica. */
+  .cta-block .note{display:none}
 }
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -551,13 +618,12 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
 <header class="hero">
   <div class="container">
     <div class="hero-top">
-      <h1>Toque <span>suas músicas favoritas</span> no ukulele com 20 minutinhos por dia</h1>
-      <p class="hero-sub">Um método de 3 passos, mesmo do zero ou travado.</p>
-      <!-- Convite para o vídeo. Só aparece no desktop, onde o vídeo está AO LADO;
-           no celular ele está logo abaixo e a seta não faria sentido. -->
-      <p class="hero-nudge">Dá o play que eu te mostro tocando
-        <svg viewBox="0 0 44 14" fill="none" aria-hidden="true"><path d="M1 7h35M30 1.5 36.5 7 30 12.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </p>
+      <h1>Toque <span>suas músicas favoritas</span> no Ukulele, com 20 minutinhos por dia</h1>
+      <p class="hero-sub">Conheça o hobby que ajuda a aliviar o estresse e já virou refúgio de +&nbsp;de&nbsp;300.000 brasileiros</p>
+      <p class="hero-strip"><span>Nessa aula você vai conhecer os 3 passos simples que te levam a aprender qualquer música</span></p>
+      <!-- Convite para o vídeo. No desktop a seta aponta para o vídeo ao lado;
+           no celular a seta some e fica só a frase. -->
+      <p class="hero-nudge">Assista a aula e veja a lógica por trás do nosso Método.<svg viewBox="0 0 44 14" fill="none" aria-hidden="true"><path d="M1 7h35M30 1.5 36.5 7 30 12.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
     </div>
 
     <div class="video">
@@ -658,32 +724,47 @@ dialog.lightbox img{width:100%;height:auto;border-radius:16px;box-shadow:0 30px 
   var cont=hero&&hero.querySelector('.container');
   var top=hero&&hero.querySelector('.hero-top');
   var btn=hero&&hero.querySelector('.cta-block .btn');
-  if(!hero||!cont||!top||!btn){ return; }
+  var vf=hero&&hero.querySelector('.vframe');
+  if(!hero||!cont||!top||!btn||!vf){ return; }
   var ultimo=null;
   function medir(){
     /* Tela deitada e baixa usa o layout de 2 colunas, igual ao desktop, e la a
        altura do video vem do CSS, nao desta conta. */
     var deitado=window.matchMedia&&window.matchMedia('(orientation:landscape) and (max-height:520px)').matches;
-    if(window.innerWidth>=900||deitado){ hero.style.removeProperty('--fold-reserve'); ultimo=null; return; }
+    if(window.innerWidth>=900||deitado){
+      hero.style.removeProperty('--fold-reserve');
+      hero.style.removeProperty('--fold-extra');
+      ultimo=null; return;
+    }
+    /* Travada, o CSS da ao video a altura da largura cheia e esta conta nao
+       entra. Liberada, a reserva e so o que fica ABAIXO do video: gap + botao +
+       padding de baixo. O texto ficou acima e fora da conta, entao o video
+       encolhe ate video + botao caberem juntos na tela. */
+    if(document.body.classList.contains('locked')){
+      hero.style.removeProperty('--fold-reserve'); ultimo=null; return;
+    }
     var cs=getComputedStyle(cont);
-    var gap=parseFloat(cs.rowGap)||0;
-    /* A dobra termina no FIM DO VÍDEO, não no fim do botão. A primeira dobra de
-       uma VSL tem um trabalho só, que é gerar play, e botão de compra acima da
-       linha compete com ele. O botão passa a ser a primeira coisa ao rolar, e o
-       sticky assume mais abaixo.
-       O segundo `gap` é o respiro embaixo do vídeo: sem ele o vídeo encostaria na
-       borda da dobra e a página pareceria ter acabado ali. Com ele sobra uma
-       fatia do botão à mostra, que é o que convida a rolar.
-       +2px cobre arredondamento de subpixel. */
-    var r=Math.ceil(parseFloat(cs.paddingTop)+top.offsetHeight+gap*2+2);
+    /* Do fim do video ao fim do botao, MEDIDO no layout (gap do grid + o que o
+       .cta-block puser em volta do botao), mais o padding de baixo do container.
+       Essa distancia nao depende da altura do video, entao nao ha laco.
+       +2px cobre arredondamento de subpixel, senão o botão encosta e pode cortar */
+    var abaixo=btn.getBoundingClientRect().bottom-vf.getBoundingClientRect().bottom;
+    if(!(abaixo>0)){ abaixo=(parseFloat(cs.rowGap)||0)+btn.offsetHeight; }
+    var r=Math.ceil(abaixo+parseFloat(cs.paddingBottom)+2);
     if(r!==ultimo){ ultimo=r; hero.style.setProperty('--fold-reserve',r+'px'); }
   }
+  window.medirDobra=medir;
   medir();
   /* SEM ResizeObserver no texto: ele disparava a cada mudanca de altura do hero,
      inclusive a que a fonte causa ao ser aplicada, e a altura do video ia e voltava.
      Resize e rotacao continuam remedindo, e la o salto nao conta para o CLS. */
   window.addEventListener('resize',medir);
   window.addEventListener('orientationchange',medir);
+  /* O PRIMEIRO calculo espera a fonte estar aplicada. Sem isso ele mede o texto
+     na fonte de sistema, que e mais baixa, a reserva sai menor e o video fica alto
+     demais: medido, 624px de altura contra os 596px corretos, e no celular de
+     verdade a barra do navegador cortava o video. Esperar aqui evita tambem o vai
+     e volta que fazia o CLS, porque so existe um calculo, ja com a fonte certa. */
   if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(medir); }
 })();
 </script>
