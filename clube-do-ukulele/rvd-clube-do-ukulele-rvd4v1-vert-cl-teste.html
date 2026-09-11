@@ -161,16 +161,16 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* Montserrat 900 em caixa normal, como a -op. 7vw = 26px em 375, a promessa
    fecha em 4 linhas. No celular o texto nao disputa mais a dobra com o video
    (ele vem abaixo, em largura cheia), entao a fonte pode ser a de leitura. */
-.hero h1{font-size:clamp(1.5rem,7vw,2.9rem);font-weight:900;line-height:1.14;max-width:13.5em;margin-inline:auto;text-wrap:balance}
+.hero h1{font-size:clamp(1.6rem,7.6vw,3rem);font-weight:900;line-height:1.14;max-width:13.5em;margin-inline:auto;text-wrap:balance}
 .hero h1 span{color:var(--coral)}
 /* 20em = medida da subpromessa. Presa ao proprio font-size, entao acompanha o
    clamp e o bloco quebra igual em qualquer largura de tela acima de ~352px.
    Com 46ch a ultima linha caia para 40% da caixa e o bloco desalinhava do h1. */
-.hero-sub{color:var(--ink);font-weight:600;font-size:clamp(1rem,2.9vw,1.2rem);line-height:1.4;max-width:26em;margin-inline:auto;text-wrap:pretty}
+.hero-sub{color:var(--ink);font-weight:600;font-size:clamp(1.1rem,3.2vw,1.3rem);line-height:1.4;max-width:26em;margin-inline:auto;text-wrap:pretty}
 /* Faixa de destaque: marcador coral com o texto em branco, linha a linha
    (box-decoration-break:clone). Coral forte da pagina (#C9364F) com branco mede
    5,6:1. A entrelinha alta e o que abre o vao entre as tarjas. */
-.hero-strip{margin:.4rem 0 0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(.95rem,2.7vw,1.1rem);line-height:2.05;max-width:24em;margin-inline:auto;text-wrap:balance}
+.hero-strip{margin:.4rem 0 0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.05rem,2.95vw,1.2rem);line-height:2.05;max-width:24em;margin-inline:auto;text-wrap:balance}
 .hero-strip span{background:var(--coral-deep);color:#fff;padding:.14em .45em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 /* .vframe = moldura 9:16 com ALTURA explícita (largura sai da proporção).
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
@@ -224,7 +224,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
    pessoa só tem o vídeo para assistir.
    No celular o vídeo está logo ABAIXO, então a seta gira para baixo. No desktop
    ele está ao lado e a seta volta para a horizontal (regra no @media de 900px). */
-.hero-nudge{display:block;margin:.5rem 0 0;font-size:clamp(.95rem,2.6vw,1.05rem);color:var(--muted);max-width:26em;margin-inline:auto}
+.hero-nudge{display:block;margin:.5rem 0 0;font-size:clamp(1.05rem,2.85vw,1.15rem);color:var(--muted);max-width:26em;margin-inline:auto}
 /* No celular o video esta logo abaixo: a frase basta, sem seta. */
 .hero-nudge svg{display:none}
 /* No celular o subtítulo também aparece, então --fold-reserve conta com ele. */
@@ -284,12 +284,12 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      demais. A altura que faltava veio dos espacos internos, nao de espremer. */
   /* Teto de 2.7rem: a coluna agora carrega promessa, subpromessa, faixa e
      convite, e em 3rem a pilha passava da altura do video em 1280x800. */
-  .hero h1{font-size:clamp(1.9rem,3.3vw,2.7rem)}
+  .hero h1{font-size:clamp(2rem,3.55vw,2.9rem)}
   /* A subpromessa cresce junto no desktop. A medida é 20em, presa à fonte, então
      o bloco engorda sem mudar uma quebra: continua em 3 linhas a 96/99/95 de
      preenchimento em qualquer largura. Proporção h1/sub fica em ~1,75. */
-  .hero-sub{font-size:clamp(1.1rem,1.5vw,1.3rem)}
-  .hero-strip{font-size:clamp(1rem,1.3vw,1.2rem);max-width:26em}
+  .hero-sub{font-size:clamp(1.2rem,1.6vw,1.4rem)}
+  .hero-strip{font-size:clamp(1.1rem,1.4vw,1.3rem);max-width:26em}
   /* Texto em Montserrat 800 para ler como etiqueta, não como parágrafo, e a seta
      em coral: puxa o olho para o vídeo sem competir com o verde, que nesta página
      significa comprar. Sem pílula nem caixa alta de propósito. */
@@ -301,7 +301,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      gap do .hero-top, entao o total ate a subpromessa e ~3x o espaco de cima. */
   .hero-nudge{display:block;margin:clamp(1.6rem,3.4vh,2.6rem) 0 0;
     font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;
-    font-size:clamp(1.05rem,1.25vw,1.25rem);color:var(--purple);max-width:22em}
+    font-size:clamp(1.15rem,1.35vw,1.35rem);color:var(--purple);max-width:22em}
   /* A seta encolhe so na ponta estreita do desktop. Em 900px de tela a coluna de
      texto tem 468px e o convite chegava a 465: 3px de folga, e qualquer diferenca
      de renderizacao o quebraria em duas linhas. Com o clamp ele cai para ~444 la e
