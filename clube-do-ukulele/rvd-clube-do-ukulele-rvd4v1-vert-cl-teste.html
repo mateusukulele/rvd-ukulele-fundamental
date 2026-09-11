@@ -37,6 +37,7 @@
 <link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/ab-test/6aa1da895ea41f93450e3a85/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
 <link rel="preload" as="image" href="/img/poster-vsl-2.webp" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/anton-v27-latin-regular.woff2" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -58,6 +59,8 @@
    O size-adjust foi medido nesta propria pagina, comparando a largura media dos
    glifos: Montserrat 112,37% do Arial e Poppins 104,57%. Com isso a reserva ocupa
    a mesma caixa da fonte final e a troca nao mexe no layout. */
+/* Anton: só o h1 usa. Teste de promessa desta página (-cl-teste). */
+@font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/anton-v27-latin-regular.woff2') format('woff2')}
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/montserrat-v31-latin-regular.woff2') format('woff2')}
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/montserrat-v31-latin-700.woff2') format('woff2')}
 @font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/montserrat-v31-latin-800.woff2') format('woff2')}
@@ -152,18 +155,18 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      A conta garante caixa de texto >= 328px ate 360px de tela: com 2vw a caixa caia
      para 314px num Android de 360 e o h1 virava 5 linhas a 71% de preenchimento.
      Em 375px o valor bate exatamente com o 2vw antigo (7,5px). */
-  padding-inline:clamp(0px,calc((100vw - 360px) / 2),1rem)}
+  padding-inline:0}
 /* 1.55rem e o teto: em 1.6rem a headline vira 5 linhas num iPhone de 375px e come
    32px de altura de uma vez. Medido, nao chutado. */
 /* 13.5em = medida da promessa, presa ao proprio font-size. No celular nao pega
    (a tela e mais estreita), no tablet segura o h1 em 4 linhas cheias no lugar de
    4 linhas soltas a 76% da caixa. 12.5em vira 5 linhas: nao descer daqui. */
-.hero h1{font-size:clamp(1.55rem,5.4vw,2.9rem);font-weight:900;line-height:1.1;max-width:13.5em;margin-inline:auto;text-wrap:balance}
+.hero h1{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(2.2rem,11.5vw,4.4rem);line-height:1.02;max-width:11em;margin-inline:auto;text-wrap:balance}
 .hero h1 span{color:var(--coral)}
 /* 20em = medida da subpromessa. Presa ao proprio font-size, entao acompanha o
    clamp e o bloco quebra igual em qualquer largura de tela acima de ~352px.
    Com 46ch a ultima linha caia para 40% da caixa e o bloco desalinhava do h1. */
-.hero-sub{color:#5C5A70;font-size:clamp(1rem,2.9vw,1.2rem);line-height:1.35;max-width:20em;margin-inline:auto;text-wrap:pretty}
+.hero-sub{color:var(--ink);font-weight:600;font-size:clamp(1.05rem,3vw,1.25rem);line-height:1.35;max-width:20em;margin-inline:auto;text-wrap:pretty}
 /* .vframe = moldura 9:16 com ALTURA explícita (largura sai da proporção).
    Nada de esticar por stretch: Safari iOS não deriva a largura daí e o vídeo some.
    A altura é o menor valor entre a sobra da dobra e o que a largura da tela permite.
@@ -277,7 +280,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
      de bloco num 1512x860, com a promessa em 4 linhas a 98/96/96/97. Ja tentei
      11.5em aqui, que dava 5 linhas e uma coluna mais alta, mas ficou estreita
      demais. A altura que faltava veio dos espacos internos, nao de espremer. */
-  .hero h1{font-size:clamp(2.1rem,3.85vw,3rem)}
+  .hero h1{font-size:clamp(3rem,6.55vw,6.2rem)}
   /* A subpromessa cresce junto no desktop. A medida é 20em, presa à fonte, então
      o bloco engorda sem mudar uma quebra: continua em 3 linhas a 96/99/95 de
      preenchimento em qualquer largura. Proporção h1/sub fica em ~1,75. */
@@ -539,7 +542,6 @@ body.unlocked .gate{animation:gateIn .6s ease both}
    o vídeo pularia. A troca é seca, e quem dá o tempo é o gateIn do conteúdo. */
 @media (max-width:899px){
   .hero-nudge{display:none}
-  body.locked .hero-nudge{display:inline-flex}
   /* Travada o grid tem 2 linhas, não 3: senão sobra o gap da linha do botão. */
   body.locked .hero .container{grid-template-areas:"top" "video";grid-template-rows:auto auto}
   /* Num celular largo a altura do vídeo passa a ser limitada pela LARGURA, não
@@ -587,7 +589,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
   }
   body.locked .hero .container{grid-template-areas:"top video";grid-template-rows:auto}
   body.locked .hero-top{align-self:center}
-  .hero h1{font-size:clamp(1.15rem,3.4vw,1.6rem);max-width:16em}
+  .hero h1{font-size:clamp(1.6rem,4.4vw,2.2rem);max-width:14em}
   .hero-sub{font-size:clamp(.85rem,1.9vw,1rem);max-width:24em}
   .hero-nudge{display:none}
   /* A altura do video passa a vir da coluna, como no desktop, e nao mais da conta
@@ -671,8 +673,8 @@ body.unlocked .gate{animation:gateIn .6s ease both}
     <div class="hero-top">
       <h1>Toque <span>suas músicas favoritas</span> no ukulele com 20 minutinhos por dia</h1>
       <p class="hero-sub">Um método de 3 passos, mesmo do zero ou travado.</p>
-      <!-- Convite para o vídeo. Só aparece no desktop, onde o vídeo está AO LADO;
-           no celular ele está logo abaixo e a seta não faria sentido. -->
+      <!-- Convite para o vídeo. Só no desktop (>=900px), onde o vídeo está AO LADO;
+           no celular nunca aparece, nem com a página travada. -->
       <p class="hero-nudge">Dá o play que eu te mostro tocando
         <svg viewBox="0 0 44 14" fill="none" aria-hidden="true"><path d="M1 7h35M30 1.5 36.5 7 30 12.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </p>
