@@ -527,6 +527,7 @@ body.locked .gate{display:none!important}
 body.locked .sticky{display:none!important}
 @keyframes gateIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 body.unlocked .gate{animation:gateIn .6s ease both}
+.cta-block .btn{scroll-margin-bottom:1rem}
 
 /* A DOBRA TEM DOIS ESTADOS NO CELULAR.
    Travada: promessa + subpromessa + convite do play + vídeo, e o vídeo desce até
@@ -547,12 +548,17 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 @media (max-width:899px){
   /* Travada o grid tem 2 linhas, não 3: senão sobra o gap da linha do botão. */
   body.locked .hero .container{grid-template-areas:"top" "video";grid-template-rows:auto auto}
-  /* TRAVADA: o video ocupa a largura toda do container e a pessoa rola ate ele;
-     a dobra nao e mais uma conta. LIBERADA: o botao entra logo abaixo e o video
-     encolhe para os dois caberem na tela (a reserva medida pelo script e so
-     botao + gap + padding, sem o texto, que ficou acima). */
-  body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100vh - 1.5rem));max-height:none}
-  body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100svh - 1.5rem))}
+  /* TRAVADA (versao de teste): o video INTEIRO cabe na primeira tela, abaixo da
+     promessa e da subpromessa. A reserva e medida pelo script (padding + texto +
+     gap + padding de baixo); o valor aqui e so o primeiro quadro. Se sobrar menos
+     que 480px para o video, o script liga .compacto e o texto encolhe um pouco.
+     LIBERADA: o botao entra logo abaixo e o video encolhe para os dois caberem
+     (a reserva medida e so botao + gap + padding, sem o texto, que ficou acima). */
+  body.locked .hero{--fold-reserve:292px}
+  body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100vh - var(--fold-reserve)));max-height:none}
+  body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100svh - var(--fold-reserve)))}
+  .hero.compacto h1{font-size:clamp(1.3rem,6.2vw,2.4rem)}
+  .hero.compacto .hero-sub{font-size:clamp(.95rem,2.8vw,1.15rem);line-height:1.35}
   /* Respiro so entre promessa, subpromessa e faixa (alem do gap do .hero-top);
      do convite para o video nada muda. */
   .hero-sub{margin-top:.5rem}
@@ -654,6 +660,9 @@ body.unlocked .gate{animation:gateIn .6s ease both}
     if(aberto){ return; } aberto=true;
     b.classList.remove('locked'); b.classList.add('unlocked');
     if(window.medirDobra){ window.medirDobra(); }
+    /* Celular: o botao entra colado no pe da tela e empurra o video para cima. */
+    var btn=document.querySelector('.cta-block .btn');
+    if(btn&&matchMedia('(max-width:899px)').matches){ requestAnimationFrame(function(){ btn.scrollIntoView({block:'end',behavior:'smooth'}); }); }
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'vsl_unlock',unlock_motivo:motivo,unlock_seconds:seg,video_id:vid||'na',
       video_variant:(window.VIDEO_VARIANT?window.VIDEO_VARIANT.curto:'na')});
@@ -828,10 +837,22 @@ body.unlocked .gate{animation:gateIn .6s ease both}
        entra. Liberada, a reserva e so o que fica ABAIXO do video: gap + botao +
        padding de baixo. O texto ficou acima e fora da conta, entao o video
        encolhe ate video + botao caberem juntos na tela. */
-    if(document.body.classList.contains('locked')){
-      hero.style.removeProperty('--fold-reserve'); ultimo=null; return;
-    }
     var cs=getComputedStyle(cont);
+    if(document.body.classList.contains('locked')){
+      /* Travada: tudo que fica ACIMA do video (padding do topo, texto, gap) mais o
+         padding de baixo. Mede sem .compacto; se o video ficaria com menos de
+         480px, liga .compacto e mede de novo. Uma decisao por medicao, sem laco. */
+      hero.classList.remove('compacto');
+      var acima=vf.getBoundingClientRect().top-cont.getBoundingClientRect().top;
+      var rt=Math.ceil(acima+parseFloat(cs.paddingBottom)+2);
+      if(window.innerHeight-rt<480){
+        hero.classList.add('compacto');
+        acima=vf.getBoundingClientRect().top-cont.getBoundingClientRect().top;
+        rt=Math.ceil(acima+parseFloat(cs.paddingBottom)+2);
+      }
+      if(rt!==ultimo){ ultimo=rt; hero.style.setProperty('--fold-reserve',rt+'px'); }
+      return;
+    }
     /* Do fim do video ao fim do botao, MEDIDO no layout (gap do grid + o que o
        .cta-block puser em volta do botao), mais o padding de baixo do container.
        Essa distancia nao depende da altura do video, entao nao ha laco.
