@@ -476,6 +476,77 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .obrigado section{padding:48px 0}
 @media (prefers-reduced-motion:reduce){.lp .ob-video .play-yt{animation:none}}
 
+/* ===== Dobra da análise em vídeo ===== */
+.lp .analise-dobra{background:var(--fundo)}
+.lp .an-grid{display:grid;grid-template-columns:1fr;gap:22px;margin:30px auto 0;max-width:1040px;text-align:left}
+.lp .an-rot{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-forte);margin:0 0 10px;text-align:left}
+.lp .an-nota{font-size:14.5px;color:var(--texto-suave);margin:12px 0 0;text-align:left;hyphens:manual}
+.lp .an-sub{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(24px,3vw,32px);text-transform:uppercase;color:var(--indigo);text-align:center;margin:44px 0 8px;letter-spacing:.3px}
+.lp .an-videos{grid-template-columns:1fr 1fr}
+/* mock: envio */
+.mock-envio{position:relative;background:var(--card);border-radius:16px;padding:18px;box-shadow:var(--sombra-card);overflow:hidden}
+.me-cab{display:flex;flex-direction:column;gap:6px;margin:0 0 10px}
+.me-tag{align-self:flex-start;background:var(--coral-suave);color:var(--coral-forte);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.me-cab strong{font-size:16px;color:var(--texto)}
+.me-dicas{margin:0 0 12px;padding:10px 12px 10px 28px;background:var(--fundo);border-radius:10px;font-size:12.5px;line-height:1.45;color:var(--texto-suave);max-width:none}
+.me-dicas li{margin:3px 0;text-align:left;hyphens:manual}
+.me-btn{position:relative;overflow:hidden;background:var(--teal-util);color:#fff;border-radius:10px;min-height:46px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:14px}
+.me-btn svg{width:18px;height:18px}
+.me-barra{position:absolute;left:0;top:0;bottom:0;width:0;background:rgb(255 255 255 / .22)}
+.me-ok{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;font-weight:700;color:var(--verde);opacity:0;transform:translateY(6px)}
+.me-ok svg{width:18px;height:18px}
+.me-cursor{position:absolute;width:22px;height:22px;left:70%;top:20%;opacity:0;pointer-events:none}
+.me-cursor svg{width:22px;height:22px;filter:drop-shadow(0 2px 3px rgb(0 0 0 / .35))}
+.me-zap{margin:12px 0 0;background:#DCF8C6;border-radius:14px;padding:10px 14px 12px;font-size:13px;line-height:1.45;color:#1F1A2B;box-shadow:var(--sombra-card);opacity:0;transform:translateY(12px)}
+.zap-topo{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.zap-logo{width:22px;height:22px;border-radius:999px;background:#25D366;color:#fff;font-weight:900;font-size:12px;display:grid;place-items:center}
+.zap-topo strong{font-size:12.5px}.zap-topo small{margin-left:auto;font-size:11px;color:#5C5A70}
+.me-zap p{margin:0;text-align:left;hyphens:manual;max-width:none}
+@keyframes me-cursor{0%{opacity:0;left:70%;top:20%}20%{opacity:1;left:70%;top:20%}40%{opacity:1;left:52%;top:72%}48%{transform:scale(.85)}52%{transform:scale(1)}60%{opacity:1;left:52%;top:72%}70%{opacity:0}100%{opacity:0}}
+@keyframes me-barra{0%,42%{width:0}72%{width:100%}100%{width:100%}}
+@keyframes me-ok{0%,72%{opacity:0;transform:translateY(6px)}80%,100%{opacity:1;transform:none}}
+@keyframes me-zap{0%,84%{opacity:0;transform:translateY(12px)}92%,100%{opacity:1;transform:none}}
+.an-passo.on .me-cursor{animation:me-cursor 9s ease-in-out infinite}
+.an-passo.on .me-barra{animation:me-barra 9s ease-in-out infinite}
+.an-passo.on .me-ok{animation:me-ok 9s ease-in-out infinite}
+.an-passo.on .me-zap{animation:me-zap 9s ease-in-out infinite}
+.mock-envio.on ~ .me-zap{animation:me-zap 9s ease-in-out infinite}
+/* mock: minhas análises */
+.mock-minhas{background:var(--card);border-radius:16px;box-shadow:var(--sombra-card);overflow:hidden}
+.mm-cab{background:var(--indigo-profundo);color:#fff;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.mm-cab strong{font-size:17px}.mm-cab span{font-size:12px;color:var(--sobre-escuro)}.mm-n{color:var(--coral);font-weight:700}
+.mm-corpo{display:grid;grid-template-columns:1fr;gap:12px;padding:12px}
+.mm-lista{list-style:none;padding:0;margin:0;display:none;gap:4px;max-width:none}
+.mm-lista li{font-size:12px;color:var(--texto);padding:6px 8px;border-radius:8px;opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .4s}
+.mm-lista li:first-child{background:var(--fundo);font-weight:700}
+.mm-lista em{font-style:normal;color:var(--coral-forte);font-weight:700;margin-right:6px;font-size:11px}
+.mock-minhas.on .mm-lista li{opacity:1;transform:none}
+.mock-minhas.on .mm-lista li:nth-child(2){transition-delay:.1s}.mock-minhas.on .mm-lista li:nth-child(3){transition-delay:.2s}.mock-minhas.on .mm-lista li:nth-child(4){transition-delay:.3s}.mock-minhas.on .mm-lista li:nth-child(5){transition-delay:.4s}.mock-minhas.on .mm-lista li:nth-child(6){transition-delay:.5s}
+.mm-card{border:1px solid var(--superficie);border-radius:12px;overflow:hidden;opacity:0;transform:translateY(10px);transition:opacity .6s .3s,transform .6s .3s cubic-bezier(.16,1,.3,1)}
+.mock-minhas.on .mm-card{opacity:1;transform:none}
+.mm-video{position:relative;aspect-ratio:16/9;background:#0d0a14;overflow:hidden}
+.mm-aluno{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+.mm-pip{position:absolute;right:8px;top:8px;width:34%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;box-shadow:0 8px 20px -8px rgb(0 0 0 / .7);border:2px solid rgb(255 255 255 / .6)}
+.mm-pip img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.mm-pip span{position:absolute;left:6px;bottom:4px;font-size:10px;font-weight:700;color:#fff;background:rgb(0 0 0 / .5);padding:1px 6px;border-radius:999px}
+.mm-video .play-yt{width:52px;height:52px;margin:-26px 0 0 -26px}
+.mm-video .play-yt svg{width:24px;height:24px}
+.mm-barra{position:absolute;left:4%;right:4%;bottom:8%;height:4px;border-radius:999px;background:rgb(255 255 255 / .3);overflow:hidden}
+.mm-barra span{display:block;height:100%;width:0;background:var(--coral);transition:width 7s linear 1s}
+.mock-minhas.on .mm-barra span{width:62%}
+.mm-rodape{display:flex;align-items:center;gap:8px;padding:10px 12px;font-size:13px;flex-wrap:wrap}
+.mm-rodape em{font-style:normal;background:var(--coral-forte);color:#fff;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px}
+.mm-rodape small{width:100%;color:var(--texto-suave);font-size:11.5px}
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgb(13 10 20 / .86);display:none;align-items:center;justify-content:center;padding:16px;z-index:100}
+.lightbox.aberto{display:flex;animation:aparecer .25s ease-out}
+.lb-caixa{position:relative;width:min(960px,100%);aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 30px 80px -30px rgb(0 0 0 / .9)}
+.lb-corpo,.lb-corpo iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lb-fechar{position:absolute;right:10px;top:10px;z-index:2;width:44px;height:44px;border-radius:999px;border:0;background:rgb(255 255 255 / .92);color:var(--indigo-profundo);display:grid;place-items:center;cursor:pointer}
+.lb-fechar svg{width:20px;height:20px}
+@media (min-width:760px){.lp .an-grid{grid-template-columns:1fr 1.15fr;align-items:start}.mm-corpo{grid-template-columns:150px 1fr}.mm-lista{display:grid}.lp .an-videos{grid-template-columns:repeat(4,1fr)}}
+@media (prefers-reduced-motion:reduce){.an-passo.on .me-cursor,.an-passo.on .me-barra,.an-passo.on .me-ok,.an-passo.on .me-zap{animation:none}.me-ok,.me-zap{opacity:1;transform:none}.mm-lista li,.mm-card{opacity:1;transform:none}}
+
 /* ===== LP: depoimentos em vídeo ===== */
 .lp .videos{display:grid;grid-template-columns:1fr;gap:16px;margin:28px auto 0;max-width:1000px}
 .lp .video-facade{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0d0a14;cursor:pointer;box-shadow:var(--sombra-card)}
@@ -742,10 +813,10 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
   <div class="re-grid">
     <div><span class="re-rot">Produto</span><p>Clube do Ukulele Academy: escola online de ukulele para adultos, sempre aberta, com jornada gravada e um professor acompanhando cada passo.</p></div>
     <div><span class="re-rot">Promessa</span><p>"Aprenda ukulele com um professor acompanhando o seu progresso, vídeo a vídeo, sem sair de casa e sem hora marcada."</p></div>
-    <div><span class="re-rot">Mecanismo</span><p>DMA: Direção (jornada, 3D dentro), Motivação (sete fontes contínuas) e Acompanhamento (devolutiva, análise, plantão, encontro). O A sustenta a oferta.</p></div>
+    <div><span class="re-rot">Mecanismo</span><p>DMA: Direção (jornada, 3D dentro), Motivação (sete fontes contínuas) e Acompanhamento (análise, análise, plantão, encontro). O A sustenta a oferta.</p></div>
     <div><span class="re-rot">Planos</span><p>Essencial 12x R$ 50 · Bronze 12x R$ 100 · Prata 12x R$ 150 · Ouro 12x R$ 300 · Diamante 12x R$ 400 (à vista = 10 parcelas). Provisórios. Essencial e Bronze só pelo closer.</p></div>
     <div><span class="re-rot">Venda</span><p>Perpétuo com closer (Marco): página vende o cadastro, preço só no WhatsApp. Lançamentos gratuitos e pagos abrem preço com condição e data.</p></div>
-    <div><span class="re-rot">Garantia</span><p>30 dias incondicional + 1 ano condicionada (Iniciante completo, atividades enviadas, não toca 10 músicas). Devolutiva em 3 dias úteis.</p></div>
+    <div><span class="re-rot">Garantia</span><p>30 dias incondicional + 1 ano condicionada (Iniciante completo, atividades enviadas, não toca 10 músicas). Análise em 3 dias úteis.</p></div>
     <div><span class="re-rot">Público</span><p>Três portas: nunca tocou, começou e travou, sempre quis. Sem rótulo de idade nem de violão. 61% mulheres, sem idade central.</p></div>
     <div><span class="re-rot">Pendências</span><p><strong class="re-num">6</strong> travando peças, 0 resolvidas. Lista na seção 12.</p></div>
   </div>
@@ -756,7 +827,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
   <p class="info-t">A escada dos cinco planos</p>
   <div class="escada">
     <div class="degrau d0"><span class="dg-nome">Essencial</span><span class="dg-preco">12x R$ 50 ou R$ 500 à vista</span><span class="dg-add">jornada + biblioteca + comunidade</span><span class="dg-onde">só closer</span></div>
-    <div class="degrau d1"><span class="dg-nome">Bronze</span><span class="dg-preco">12x R$ 100 ou R$ 1.000 à vista</span><span class="dg-add">+ Confraria + 49 atividades com devolutiva</span><span class="dg-onde">só closer</span></div>
+    <div class="degrau d1"><span class="dg-nome">Bronze</span><span class="dg-preco">12x R$ 100 ou R$ 1.000 à vista</span><span class="dg-add">+ Confraria + 49 atividades com análise</span><span class="dg-onde">só closer</span></div>
     <div class="degrau d2"><span class="dg-nome">Prata</span><span class="dg-preco">12x R$ 150 ou R$ 1.500 à vista</span><span class="dg-add">+ plantão 2x/sem + 1 análise/mês</span><span class="dg-onde">oferta</span></div>
     <div class="degrau d3"><span class="dg-nome">Ouro</span><span class="dg-preco">12x R$ 300 ou R$ 3.000 à vista</span><span class="dg-add">+ 2 análises + 2 encontros/mês</span><span class="dg-onde">oferta</span></div>
     <div class="degrau d4"><span class="dg-nome">Diamante</span><span class="dg-preco">12x R$ 400 ou R$ 4.000 à vista</span><span class="dg-add">+ 4 análises + 1 encontro/semana</span><span class="dg-onde">oferta</span></div>
@@ -764,15 +835,15 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
   <p class="info-n">Cada degrau tem tudo do anterior. Preços provisórios.</p>
 </div>
 <p><strong>Em uma linha:</strong> escola online de ukulele para adultos, sempre aberta, em que o aluno segue uma jornada gravada e tem um professor acompanhando o que ele toca.</p>
-<p><strong>O que é, em três frases:</strong> o aluno entra numa jornada gravada do zero ao intermediário (Iniciante 0, 1, 2 e Intermediário 1, 2), com biblioteca de 152 músicas por nível e cursos extras. Ao longo da jornada, nos pontos cruciais, ele grava uma atividade tocando e recebe a devolutiva do professor em vídeo. Nos planos maiores, ganha plantão ao vivo, análise das músicas que já toca e encontro individual.</p>
+<p><strong>O que é, em três frases:</strong> o aluno entra numa jornada gravada do zero ao intermediário (Iniciante 0, 1, 2 e Intermediário 1, 2), com biblioteca de 152 músicas por nível e cursos extras. Ao longo da jornada, nos pontos cruciais, ele grava uma atividade tocando e recebe a análise do professor em vídeo. Nos planos maiores, ganha plantão ao vivo, análise das músicas que já toca e encontro individual.</p>
 <p><strong>Prateleira:</strong> escola de música online. Concorre com a escola presencial e com o professor particular, não com "curso online de ukulele" (o curso online gravado é o que a pessoa já tentou e não resolveu).</p>
 <p><strong>Tipo:</strong> assinatura anual (12x ou à vista), cinco planos, sempre aberta.</p>
 <p><strong>Marca × produto:</strong> Clube do Ukulele é a marca guarda-chuva (Instagram, YouTube, lives Ukulele na Mão, comunidade aberta, produtos de front). Clube do Ukulele Academy, ou "a Academy", é o produto pago. "Entrar no Clube" é expressão válida. <code><span class="pend">Pendente: apresentação marca × Academy para o público não confundir o grátis com o pago.</span></code></p>
 <h3>Os cinco planos</h3>
 <p>Escada inclusiva: cada plano tem tudo do anterior e mais alguma coisa. O que muda de um para outro é uma coisa só: quanto acompanhamento humano a pessoa recebe. Preços provisórios até a planilha de custo fechar.</p>
-<div class="tabela"><table><thead><tr><th></th><th>Essencial</th><th>Bronze</th><th>Prata</th><th>Ouro</th><th>Diamante</th></tr></thead><tbody><tr><td>Preço</td><td>12x R$ 50 ou R$ 500 à vista</td><td>12x R$ 100 ou R$ 1.000 à vista</td><td>12x R$ 150 ou R$ 1.500 à vista</td><td>12x R$ 300 ou R$ 3.000 à vista</td><td>12x R$ 400 ou R$ 4.000 à vista</td></tr><tr><td>Jornada, bibliotecas, extras, comunidade</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Confraria do Ukulele (quinta 19:40)</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Atividades Propostas com devolutiva em vídeo (49, crescendo com a jornada)</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Plantão agendado, 2 × 1 h por semana</td><td>não</td><td>não</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Análise de performance por mês</td><td>não</td><td>não</td><td>1</td><td>2</td><td>4</td></tr><tr><td>Encontro individual de 25 min</td><td>não</td><td>não</td><td>não</td><td>2 por mês</td><td>1 por semana</td></tr><tr><td>Onde aparece</td><td>só o closer, último recurso e retenção</td><td>só o closer</td><td>oferta</td><td>oferta</td><td>oferta</td></tr></tbody></table></div>
+<div class="tabela"><table><thead><tr><th></th><th>Essencial</th><th>Bronze</th><th>Prata</th><th>Ouro</th><th>Diamante</th></tr></thead><tbody><tr><td>Preço</td><td>12x R$ 50 ou R$ 500 à vista</td><td>12x R$ 100 ou R$ 1.000 à vista</td><td>12x R$ 150 ou R$ 1.500 à vista</td><td>12x R$ 300 ou R$ 3.000 à vista</td><td>12x R$ 400 ou R$ 4.000 à vista</td></tr><tr><td>Jornada, bibliotecas, extras, comunidade</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Confraria do Ukulele (quinta 19:40)</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Atividades Propostas com análise em vídeo (49, crescendo com a jornada)</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Plantão agendado, 2 × 1 h por semana</td><td>não</td><td>não</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Análise de performance por mês</td><td>não</td><td>não</td><td>1</td><td>2</td><td>4</td></tr><tr><td>Encontro individual de 25 min</td><td>não</td><td>não</td><td>não</td><td>2 por mês</td><td>1 por semana</td></tr><tr><td>Onde aparece</td><td>só o closer, último recurso e retenção</td><td>só o closer</td><td>oferta</td><td>oferta</td><td>oferta</td></tr></tbody></table></div>
 <p>O que cada componente é, em uma linha (definição completa no Formato do Produto, seção 4):</p>
-<ul><li><strong>Atividades Propostas:</strong> 49 pontos ao longo da jornada, depois das aulas cruciais, e novas entram conforme a jornada cresce. Não é envio embaixo de toda aula, não é envio de música.</li><li><strong>Devolutiva:</strong> sempre em vídeo, estilo react, o professor assiste junto e mostra no instrumento. Em 3 dias úteis a partir do dia seguinte ao envio.</li><li><strong>Confraria:</strong> encontro em grupo, horário fixo, sem agendar, para trocar ideia.</li><li><strong>Plantão:</strong> sessão de 1 h, só para quem agendou, para tirar dúvida e pedir ajuda numa música. Terça às 20h e sexta às 10h.</li><li><strong>Análise de performance:</strong> o aluno manda uma música que já aprendeu e treinou; o professor diz o que pode melhorar. Cota mensal, não acumula.</li><li><strong>Encontro individual:</strong> 25 min, reativo, sem conteúdo preparado. O aluno traz o que quer trabalhar, principalmente repertório. Nunca chamar de "aula".</li></ul>
+<ul><li><strong>Atividades Propostas:</strong> 49 pontos ao longo da jornada, depois das aulas cruciais, e novas entram conforme a jornada cresce. Não é envio embaixo de toda aula, não é envio de música.</li><li><strong>Análise:</strong> sempre em vídeo, estilo react, o professor assiste junto e mostra no instrumento. Em 3 dias úteis a partir do dia seguinte ao envio.</li><li><strong>Confraria:</strong> encontro em grupo, horário fixo, sem agendar, para trocar ideia.</li><li><strong>Plantão:</strong> sessão de 1 h, só para quem agendou, para tirar dúvida e pedir ajuda numa música. Terça às 20h e sexta às 10h.</li><li><strong>Análise de performance:</strong> o aluno manda uma música que já aprendeu e treinou; o professor diz o que pode melhorar. Cota mensal, não acumula.</li><li><strong>Encontro individual:</strong> 25 min, reativo, sem conteúdo preparado. O aluno traz o que quer trabalhar, principalmente repertório. Nunca chamar de "aula".</li></ul>
 <h3>Garantia</h3>
 <p>Dupla, do Bronze para cima: <strong>30 dias incondicional</strong> e <strong>um ano condicionada</strong> (assistiu a jornada Iniciante inteira, enviou todas as Atividades Propostas dela e, ao completar 12 meses, ainda não toca 10 músicas do começo ao fim: devolve). Essencial só tem os 30 dias.</p>
 </div></details>
@@ -851,7 +922,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
       <text x="515" y="48" text-anchor="middle" fill="#B4404F" font-size="12" font-weight="700">a confirmação com nome é o combustível</text>
       <text x="110" y="264" text-anchor="middle" fill="#1F1A2B" font-size="12">jornada em 5 níveis, 3D dentro</text>
       <text x="380" y="264" text-anchor="middle" fill="#1F1A2B" font-size="12">7 fontes contínuas</text>
-      <text x="650" y="264" text-anchor="middle" fill="#1F1A2B" font-size="12">devolutiva, análise, plantão, encontro</text>
+      <text x="650" y="264" text-anchor="middle" fill="#1F1A2B" font-size="12">análise, análise, plantão, encontro</text>
       <text x="380" y="304" text-anchor="middle" fill="#443468" font-size="13" font-weight="700">Sem o A, os outros dois são o que todo curso gravado já promete.</text>
     </g>
   </svg>
@@ -867,7 +938,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 <p>O método da Academy é o <strong>DMA</strong>: Direção, Motivação, Acompanhamento. Os três pilares respondem, na ordem, às três coisas que a base diz que faltam a quem tenta sozinho: não saber por onde começar, largar no meio, e ninguém ver o erro.</p>
 <p><strong>Frase-mãe (escolhida em 21/09):</strong> "Direção, Motivação e Acompanhamento: um caminho para seguir, motivos que não acabam e um professor acompanhando cada passo seu."</p>
 <p><strong>Os pilares</strong></p>
-<div class="tabela"><table><thead><tr><th></th><th>Direção</th><th>Motivação</th><th>Acompanhamento</th></tr></thead><tbody><tr><td>A falha que mata</td><td>"Fico perdida em o que fazer primeiro, por onde começar" (PQ)</td><td>"Meu ukulele está parado há meses"; "desisti no meio" (PQ)</td><td>"O problema sou eu"; meses repetindo o mesmo erro sem saber; tocar no escuro</td></tr><tr><td>O que é, para o aluno</td><td>Um caminho pronto: o que estudar hoje, o que vem depois, e quando passar adiante</td><td>Motivos que não acabam, venha de onde vier. Sete fontes, cada uma de um ângulo: <strong>progresso</strong> que você vê (nível, atividade devolvida, música que já toca); <strong>repertório</strong> que cresce (música nova todo mês, sempre tem uma que você quer tocar); <strong>encontro</strong> toda semana (Confraria, live, plantão); <strong>gente</strong> na mesma estrada (comunidade, mostrar o que tocou); <strong>desafio</strong> todo mês (meta com data e plateia); <strong>resposta</strong> com o seu nome (alguém esperando o seu vídeo); <strong>objetivo</strong> (tocar para alguém: a roda, a família, a igreja). Quem começa do zero sente na primeira música inteira; quem já toca sente na música que faltava e no desafio do mês</td><td>Um professor acompanhando cada passo seu: cada vídeo que você grava volta com a correção dele, mostrada no instrumento, sobre o que você tocou de verdade. Você nunca toca no escuro e nunca passa adiante com um erro escondido</td></tr><tr><td>O que entrega, na Academy</td><td>Jornada em 5 níveis, 152 músicas por nível, 3D dentro de cada música</td><td>Progresso visível na jornada; biblioteca com entradas mensais; Confraria toda quinta e live Ukulele na Mão toda semana; plantão; comunidade com Desafio do Mês; devolutiva e análise de performance com o seu nome; para quem começa do zero, música inteira na primeira semana</td><td>49 Atividades Propostas com devolutiva em vídeo; análise de performance das músicas que você já toca; plantão; encontro individual; tudo em 3 dias úteis</td></tr><tr><td>Frase de página</td><td>"Você nunca fica sem saber o próximo passo."</td><td>"Toda semana tem encontro. Todo mês tem desafio e música nova. Toda atividade volta com resposta, e tem gente na mesma estrada que você. Seja qual for o seu ponto de partida, sempre tem um próximo motivo para pegar o ukulele."</td><td>"Cada vídeo que você grava volta com a correção do professor, mostrada no instrumento. Você nunca passa adiante com um erro escondido."</td></tr><tr><td>Frase de VSL (falada)</td><td>"Eu digo o que você estuda primeiro, segundo e terceiro. Você não precisa decidir nada."</td><td>"Ninguém larga por falta de vontade. Larga porque acabou o motivo. Aqui o motivo não acaba: toda quinta a gente se encontra, todo mês tem desafio e música nova, cada vídeo seu volta com resposta, e tem gente tocando junto com você. Se você está começando, a primeira música inteira vem na primeira semana. Se já toca, vem a música que faltava."</td><td>"Você grava, eu assisto com você e te mostro no instrumento onde travou. É a correção de um professor particular, sobre o que você tocou de verdade, sem hora marcada. Ninguém aqui fica meses errando sem saber."</td></tr><tr><td>Prova</td><td>5 níveis, 152 músicas, 49 pontos de atividade</td><td>Confraria e live toda semana; Desafio do Mês; entradas mensais na biblioteca; comunidade ativa; semana 1 para quem começa do zero</td><td>49 devolutivas ao longo da jornada, em 3 dias úteis; trecho de devolutiva real na página</td></tr></tbody></table></div>
+<div class="tabela"><table><thead><tr><th></th><th>Direção</th><th>Motivação</th><th>Acompanhamento</th></tr></thead><tbody><tr><td>A falha que mata</td><td>"Fico perdida em o que fazer primeiro, por onde começar" (PQ)</td><td>"Meu ukulele está parado há meses"; "desisti no meio" (PQ)</td><td>"O problema sou eu"; meses repetindo o mesmo erro sem saber; tocar no escuro</td></tr><tr><td>O que é, para o aluno</td><td>Um caminho pronto: o que estudar hoje, o que vem depois, e quando passar adiante</td><td>Motivos que não acabam, venha de onde vier. Sete fontes, cada uma de um ângulo: <strong>progresso</strong> que você vê (nível, atividade devolvida, música que já toca); <strong>repertório</strong> que cresce (música nova todo mês, sempre tem uma que você quer tocar); <strong>encontro</strong> toda semana (Confraria, live, plantão); <strong>gente</strong> na mesma estrada (comunidade, mostrar o que tocou); <strong>desafio</strong> todo mês (meta com data e plateia); <strong>resposta</strong> com o seu nome (alguém esperando o seu vídeo); <strong>objetivo</strong> (tocar para alguém: a roda, a família, a igreja). Quem começa do zero sente na primeira música inteira; quem já toca sente na música que faltava e no desafio do mês</td><td>Um professor acompanhando cada passo seu: cada vídeo que você grava volta com a correção dele, mostrada no instrumento, sobre o que você tocou de verdade. Você nunca toca no escuro e nunca passa adiante com um erro escondido</td></tr><tr><td>O que entrega, na Academy</td><td>Jornada em 5 níveis, 152 músicas por nível, 3D dentro de cada música</td><td>Progresso visível na jornada; biblioteca com entradas mensais; Confraria toda quinta e live Ukulele na Mão toda semana; plantão; comunidade com Desafio do Mês; análise e análise de performance com o seu nome; para quem começa do zero, música inteira na primeira semana</td><td>49 Atividades Propostas com análise em vídeo; análise de performance das músicas que você já toca; plantão; encontro individual; tudo em 3 dias úteis</td></tr><tr><td>Frase de página</td><td>"Você nunca fica sem saber o próximo passo."</td><td>"Toda semana tem encontro. Todo mês tem desafio e música nova. Toda atividade volta com resposta, e tem gente na mesma estrada que você. Seja qual for o seu ponto de partida, sempre tem um próximo motivo para pegar o ukulele."</td><td>"Cada vídeo que você grava volta com a correção do professor, mostrada no instrumento. Você nunca passa adiante com um erro escondido."</td></tr><tr><td>Frase de VSL (falada)</td><td>"Eu digo o que você estuda primeiro, segundo e terceiro. Você não precisa decidir nada."</td><td>"Ninguém larga por falta de vontade. Larga porque acabou o motivo. Aqui o motivo não acaba: toda quinta a gente se encontra, todo mês tem desafio e música nova, cada vídeo seu volta com resposta, e tem gente tocando junto com você. Se você está começando, a primeira música inteira vem na primeira semana. Se já toca, vem a música que faltava."</td><td>"Você grava, eu assisto com você e te mostro no instrumento onde travou. É a correção de um professor particular, sobre o que você tocou de verdade, sem hora marcada. Ninguém aqui fica meses errando sem saber."</td></tr><tr><td>Prova</td><td>5 níveis, 152 músicas, 49 pontos de atividade</td><td>Confraria e live toda semana; Desafio do Mês; entradas mensais na biblioteca; comunidade ativa; semana 1 para quem começa do zero</td><td>49 análises ao longo da jornada, em 3 dias úteis; trecho de análise real na página</td></tr></tbody></table></div>
 <p><strong>Como os três se fecham num ciclo.</strong> A Direção diz o que fazer; a Motivação faz a pessoa fazer, hoje e daqui a seis meses; o Acompanhamento confirma que saiu certo, e essa confirmação com o nome dela é o combustível mais forte da Motivação. Por isso o Acompanhamento é o pilar da oferta: sem ele, os outros dois são o que todo curso gravado já promete.</p>
 <p><strong>Onde o 3D entra.</strong> Dentro da Direção, como a técnica de estudar cada música: dividir (quebrar música, acorde e batida em peças), destravar (treinar cada peça até sair sem esforço), dominar (a música flui). Aparece uma vez na página, como "o jeito que você estuda cada música"; nunca como método concorrente do DMA.</p>
 <p><strong>O que o DMA não diz:</strong> não promete virar músico, não promete prazo além da primeira semana, não promete "sem esforço", não fala de saúde. "Motivação" nunca vira discurso de ânimo ("acredite em você"): é mecanismo contínuo, de sete fontes (progresso, repertório, encontro, gente, desafio, resposta, objetivo), não incentivo. "Primeira música na primeira semana" é prova para quem começa do zero, nunca a definição do pilar: boa parte dos alunos já toca músicas antes de entrar. "Acompanhamento" nunca é dito como "alguém vê o que você toca": é "um professor acompanhando cada passo seu", com a correção mostrada no instrumento.</p>
@@ -876,7 +947,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 <ol><li><strong>Corrige o que você tocou de verdade.</strong> Você grava em casa, no seu tempo, sem o nervoso de tocar na frente de alguém. O professor vê exatamente onde travou e responde mostrando no instrumento.</li><li><strong>Sem hora marcada.</strong> Você manda quando estiver pronto. A resposta chega em até três dias úteis.</li><li><strong>O tempo de professor vai inteiro para o que só um olho humano resolve.</strong> Na aula particular, a maior parte da hora é explicação que você poderia assistir gravada, repetir e rever com material. Aqui a explicação está na jornada, e o contato humano é só correção: direto ao ponto, quando você precisa, quando você quer.</li></ol>
 <p>Para Ouro e Diamante, um argumento a mais: o encontro individual existe para o repertório. É a meia hora de mostrar a música que você está montando e sair com o próximo passo claro.</p>
 <h3>Diferenciação (o que nenhum concorrente mapeado tem no centro)</h3>
-<p>Devolutiva individual sobre o vídeo do próprio aluno, em pontos fixos da jornada, com escada de acompanhamento por cima. Concorrentes diretos são gravados sem ninguém olhando; Vivas avalia vídeo só dentro da formação; Tostes dá telefone; Marcel dá WhatsApp; Cifra Club e Gustavo não têm nada. Referência de modelo, não concorrente: Fluency (gravado + conversação em grupo ou individual, planos por frequência, venda no WhatsApp).</p>
+<p>Análise individual sobre o vídeo do próprio aluno, em pontos fixos da jornada, com escada de acompanhamento por cima. Concorrentes diretos são gravados sem ninguém olhando; Vivas avalia vídeo só dentro da formação; Tostes dá telefone; Marcel dá WhatsApp; Cifra Club e Gustavo não têm nada. Referência de modelo, não concorrente: Fluency (gravado + conversação em grupo ou individual, planos por frequência, venda no WhatsApp).</p>
 </div></details>
 <details class="sec" id="s5"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/><path d="M9 10h6M9 13h4"/></svg><span class="sec-num">5</span><span class="sec-titulo">Objeções e respostas</span><span class="estado ok">Decidido</span><span class="sec-chev" aria-hidden="true"></span></summary><div class="sec-corpo">
 
@@ -885,7 +956,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
   <div class="bar"><span class="bar-rot">não tenho dinheiro</span><span class="bar-tri"><span class="bar-fill" style="width:98.3%;background:var(--coral-forte)"></span></span><span class="bar-val">59%</span></div><div class="bar"><span class="bar-rot">não tenho tempo</span><span class="bar-tri"><span class="bar-fill" style="width:33.3%;background:var(--indigo)"></span></span><span class="bar-val">20%</span></div><div class="bar"><span class="bar-rot">duvido que eu consiga</span><span class="bar-tri"><span class="bar-fill" style="width:20.0%;background:var(--indigo)"></span></span><span class="bar-val">12%</span></div><div class="bar"><span class="bar-rot">prefiro o que é de graça</span><span class="bar-tri"><span class="bar-fill" style="width:11.7%;background:var(--neutro-medio)"></span></span><span class="bar-val">7%</span></div><div class="bar"><span class="bar-rot">não encontro professor</span><span class="bar-tri"><span class="bar-fill" style="width:6.7%;background:var(--neutro-medio)"></span></span><span class="bar-val">4%</span></div>
 </div>
 <p>Porcentagens da OBJ (n = 1.373). Respostas escritas para FAQ e para WhatsApp, na voz do Mateus. Onde a resposta muda por plano, está dito.</p>
-<div class="objacc"><details><summary><strong>Não tenho dinheiro</strong> (59%)</summary><p>Na página: ancoragem antes do preço (seção 6), à vista com desconto, 12x. Na conversa: primeiro "o que pesa mais, o valor ou o compromisso de um ano?". Se é valor, desce um degrau (Prata → Bronze → Essencial). Aceitar que boa parte da base não é alvo do Prata, e tudo bem.</p></details><details><summary><strong>Não tenho tempo</strong> (20%)</summary><p>"A jornada anda no seu ritmo. A devolutiva chega no seu horário, não no meu. Vinte minutos por dia já rendem o que você precisa me mandar." Plantão e Confraria são opcionais.</p></details><details><summary><strong>Duvido que eu consiga</strong> (12%)</summary><p>"É por isso que existe a devolutiva. Você não vai passar meses repetindo um erro sem saber. Eu vejo, aponto, você corrige. E se em 30 dias achar que não é para você, devolvo tudo."</p></details><details><summary><strong>Prefiro o que é de graça</strong> (7%)</summary><p>"De graça tem conteúdo bom, inclusive meu. O que não tem é alguém olhando o que você toca. Se vídeo gratuito resolvesse, o seu ukulele não estaria parado."</p></details><details><summary><strong>Não encontro professor na minha cidade</strong> (4%)</summary><p>"É exatamente para isso que a Academy existe."</p></details><details><summary><strong>Consigo aprender nessa idade?</strong></summary><p>"A maior parte dos meus alunos é adulta, e a devolutiva é individual: ninguém compara você com ninguém." Idade como prova (rosto de aluno), nunca como rótulo.</p></details><details><summary><strong>Por que não uma aula particular?</strong></summary><p>Versão curta do argumento central: "Numa aula particular o professor vê você tocar uma vez por semana, nervosa, e a correção acaba quando a aula acaba. Aqui eu vejo o que você gravou tranquila em casa, respondo em vídeo, e a resposta fica guardada."</p></details><details><summary><strong>25 minutos é pouco</strong> (Ouro, Diamante)</summary><p>"É meia hora só sua, sem conteúdo para eu apresentar. O tempo é inteiro para a sua dúvida e o seu repertório. Vinte e cinco minutos focados rendem mais que uma hora de aula expositiva."</p></details><details><summary><strong>O professor corrige mesmo ou é só aula gravada?</strong></summary><p>"Corrige. Você grava a atividade, eu assisto junto com você e respondo em vídeo mostrando no instrumento."</p></details><details><summary><strong>E se eu parar no meio do ano?</strong></summary><p>"Trinta dias para desistir e receber tudo. Depois disso a jornada continua sua, e a Confraria está lá toda quinta quando você voltar."</p></details><details><summary><strong>Vou ficar preso um ano?</strong></summary><p>"O plano é anual porque aprender um instrumento leva mais de um mês. Você sobe de plano quando quiser. Os 30 dias são para experimentar sem risco."</p></details><details><summary><strong>Quanto custa?</strong> (perpétuo)</summary><p>"Depende do plano. Tem plano só com a devolutiva das atividades e tem plano com encontro individual toda semana. Me conta onde você está e eu te mostro o que faz sentido." Nunca dar número fora da conversa.</p></details></div>
+<div class="objacc"><details><summary><strong>Não tenho dinheiro</strong> (59%)</summary><p>Na página: ancoragem antes do preço (seção 6), à vista com desconto, 12x. Na conversa: primeiro "o que pesa mais, o valor ou o compromisso de um ano?". Se é valor, desce um degrau (Prata → Bronze → Essencial). Aceitar que boa parte da base não é alvo do Prata, e tudo bem.</p></details><details><summary><strong>Não tenho tempo</strong> (20%)</summary><p>"A jornada anda no seu ritmo. A análise chega no seu horário, não no meu. Vinte minutos por dia já rendem o que você precisa me mandar." Plantão e Confraria são opcionais.</p></details><details><summary><strong>Duvido que eu consiga</strong> (12%)</summary><p>"É por isso que existe a análise. Você não vai passar meses repetindo um erro sem saber. Eu vejo, aponto, você corrige. E se em 30 dias achar que não é para você, devolvo tudo."</p></details><details><summary><strong>Prefiro o que é de graça</strong> (7%)</summary><p>"De graça tem conteúdo bom, inclusive meu. O que não tem é alguém olhando o que você toca. Se vídeo gratuito resolvesse, o seu ukulele não estaria parado."</p></details><details><summary><strong>Não encontro professor na minha cidade</strong> (4%)</summary><p>"É exatamente para isso que a Academy existe."</p></details><details><summary><strong>Consigo aprender nessa idade?</strong></summary><p>"A maior parte dos meus alunos é adulta, e a análise é individual: ninguém compara você com ninguém." Idade como prova (rosto de aluno), nunca como rótulo.</p></details><details><summary><strong>Por que não uma aula particular?</strong></summary><p>Versão curta do argumento central: "Numa aula particular o professor vê você tocar uma vez por semana, nervosa, e a correção acaba quando a aula acaba. Aqui eu vejo o que você gravou tranquila em casa, respondo em vídeo, e a resposta fica guardada."</p></details><details><summary><strong>25 minutos é pouco</strong> (Ouro, Diamante)</summary><p>"É meia hora só sua, sem conteúdo para eu apresentar. O tempo é inteiro para a sua dúvida e o seu repertório. Vinte e cinco minutos focados rendem mais que uma hora de aula expositiva."</p></details><details><summary><strong>O professor corrige mesmo ou é só aula gravada?</strong></summary><p>"Corrige. Você grava a atividade, eu assisto junto com você e respondo em vídeo mostrando no instrumento."</p></details><details><summary><strong>E se eu parar no meio do ano?</strong></summary><p>"Trinta dias para desistir e receber tudo. Depois disso a jornada continua sua, e a Confraria está lá toda quinta quando você voltar."</p></details><details><summary><strong>Vou ficar preso um ano?</strong></summary><p>"O plano é anual porque aprender um instrumento leva mais de um mês. Você sobe de plano quando quiser. Os 30 dias são para experimentar sem risco."</p></details><details><summary><strong>Quanto custa?</strong> (perpétuo)</summary><p>"Depende do plano. Tem plano só com a análise das atividades e tem plano com encontro individual toda semana. Me conta onde você está e eu te mostro o que faz sentido." Nunca dar número fora da conversa.</p></details></div>
 </div></details>
 <details class="sec" id="s6"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h2l2.4 11h11.2L21 8H7"/><circle cx="10" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg><span class="sec-num">6</span><span class="sec-titulo">Preço, ancoragem e venda</span><span class="estado prov">Decidido · condição de lançamento em aberto</span><span class="sec-chev" aria-hidden="true"></span></summary><div class="sec-corpo">
 
@@ -916,29 +987,29 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 <p><strong>Não é turma com data.</strong> A entrada é sempre possível; o que muda é a forma de oferecer. Escassez: só a real (a data da condição). Sem "últimas vagas", sem contador, sem "vagas limitadas".</p>
 <h3>O diagnóstico do closer (três perguntas)</h3>
 <ol><li>Você já tocou alguma coisa (ukulele ou outro instrumento) ou está começando do zero?</li><li>Quanto tempo você tem na semana?</li><li>Prefere mandar vídeo no seu ritmo, ou ter também um encontro ao vivo?</li></ol>
-<p>Com isso o closer recomenda o <strong>Prata por padrão</strong>. Quem quer encontro individual sobe para Ouro ou Diamante. Quem trava no preço ouve "o que pesa mais?", e desce para Bronze ("a mesma jornada e a devolutiva das atividades, sem o plantão e sem a análise; você sobe quando quiser pagando a diferença"). Essencial é o último recurso e a oferta de retenção.</p>
+<p>Com isso o closer recomenda o <strong>Prata por padrão</strong>. Quem quer encontro individual sobe para Ouro ou Diamante. Quem trava no preço ouve "o que pesa mais?", e desce para Bronze ("a mesma jornada e a análise das atividades, sem o plantão e sem a análise; você sobe quando quiser pagando a diferença"). Essencial é o último recurso e a oferta de retenção.</p>
 <h3>Ancoragem (sempre antes do preço, em parágrafo na voz do Mateus, não em tabela)</h3>
 <ul><li><strong>Escola de música presencial:</strong> R$ 500 a 600 por mês. O Prata custa um quarto disso.</li><li><strong>Aula particular:</strong> R$ 100 a 150 por aula, quatro por mês, R$ 400 a 600, sem material, sem gravação, sem plantão. O Ouro dá dois encontros individuais mais tudo do Prata por R$ 300.</li><li><strong>Preço por dia</strong>, uma vez, abaixo do preço: Prata R$ 5 por dia, Ouro R$ 10.</li></ul>
 <p>Exemplo de parágrafo: "Uma escola de música na sua cidade cobra entre R$ 500 e R$ 600 por mês. Uma aula particular, uns R$ 120, e o professor só vê você tocar naquela hora. Aqui você paga R$ 150 por mês e eu vejo tudo o que você gravar."</p>
 <h3>Trocas e renovação</h3>
 <p>Subir de plano a qualquer momento, pagando a diferença. Descer só na renovação. Renovação <code><span class="pend">Pendente: manual com conversa, automática ou híbrida; prós e contras na seção 11 do Formato do Produto</span></code>.</p>
 </div></details>
-<details class="sec" id="s7"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19l1-5.8L3.5 9.2l5.9-.9z"/></svg><span class="sec-num">7</span><span class="sec-titulo">Prova</span><span class="estado prov">Decidido · falta trecho de devolutiva</span><span class="sec-chev" aria-hidden="true"></span></summary><div class="sec-corpo">
+<details class="sec" id="s7"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19l1-5.8L3.5 9.2l5.9-.9z"/></svg><span class="sec-num">7</span><span class="sec-titulo">Prova</span><span class="estado prov">Decidido · falta trecho de análise</span><span class="sec-chev" aria-hidden="true"></span></summary><div class="sec-corpo">
 
 <div class="info">
   <div class="kpis">
     <div><span class="k">+6.000</span><span>alunos desde 2017</span></div>
     <div><span class="k">152</span><span>músicas na biblioteca</span></div>
-    <div><span class="k">49+</span><span>atividades com devolutiva</span></div>
+    <div><span class="k">49+</span><span>atividades com análise</span></div>
     <div><span class="k">7</span><span>provas autorizadas com nome</span></div>
   </div>
 </div>
-<p><strong>Números confirmados (21/09/2026):</strong> +6.000 alunos desde 2017 · +300 mil seguidores · 152 músicas na biblioteca, com entradas mensais · 49 Atividades Propostas com devolutiva, e novas entram conforme a jornada cresce. Podem ir para página, material e anúncio sem etiqueta.</p>
+<p><strong>Números confirmados (21/09/2026):</strong> +6.000 alunos desde 2017 · +300 mil seguidores · 152 músicas na biblioteca, com entradas mensais · 49 Atividades Propostas com análise, e novas entram conforme a jornada cresce. Podem ir para página, material e anúncio sem etiqueta.</p>
 <p><strong>Provas autorizadas para uso com nome e imagem:</strong></p>
 <ul><li>Prints de depoimento de <strong>Aline, Marcelo e Leila</strong> (já publicados na página do Destrava; arquivos em <code>academy/img/print-*.webp</code>).</li><li><strong>Colagem da turma</strong> (Mateus e alunos com ukulele; <code>academy/img/turma-collage.webp</code>).</li><li><strong>Fabiano</strong>, "o frustrado do violão": depoimento em vídeo transcrito, liberado para anúncio (roteiro 10 do lote 1) e página.</li><li><strong>Três depoimentos em vídeo</strong> já usados na página RVD4 vertical: YouTube <code>gMjxSJMxPSc</code>, <code>_Uo3NvXyH4A</code> e <code>Wey4EfhXWtc</code>.</li><li>Falas anônimas de pesquisa (seção 8) continuam valendo como texto.</li></ul>
-<p><strong>O que ainda falta:</strong> <code><span class="pend">Pendente: 2 ou 3 trechos de devolutiva real com autorização do aluno que aparece no vídeo; é a prova que mostra o "acompanhando" em vez de descrever.</span></code></p>
+<p><strong>O que ainda falta:</strong> <code><span class="pend">Pendente: 2 ou 3 trechos de análise real com autorização do aluno que aparece no vídeo; é a prova que mostra o "acompanhando" em vez de descrever.</span></code></p>
 <p><strong>Temas de valor e a prova de cada um:</strong></p>
-<div class="tabela"><table><thead><tr><th>Tema</th><th>Prova</th></tr></thead><tbody><tr><td>Alguém vê o que você toca</td><td>49 Atividades Propostas com devolutiva em vídeo, crescendo com a jornada</td></tr><tr><td>Vitória cedo</td><td>Primeira música inteira na primeira semana</td></tr><tr><td>Nunca sem próximo passo</td><td>Jornada em 5 níveis, 152 músicas por nível</td></tr><tr><td>Ao vivo, sem prender horário</td><td>Confraria fixa + plantão agendado</td></tr><tr><td>Você não fica na dúvida</td><td>"O feedback de vocês fez TODA diferença" (fala anônima de pesquisa)</td></tr></tbody></table></div>
+<div class="tabela"><table><thead><tr><th>Tema</th><th>Prova</th></tr></thead><tbody><tr><td>Alguém vê o que você toca</td><td>49 Atividades Propostas com análise em vídeo, crescendo com a jornada</td></tr><tr><td>Vitória cedo</td><td>Primeira música inteira na primeira semana</td></tr><tr><td>Nunca sem próximo passo</td><td>Jornada em 5 níveis, 152 músicas por nível</td></tr><tr><td>Ao vivo, sem prender horário</td><td>Confraria fixa + plantão agendado</td></tr><tr><td>Você não fica na dúvida</td><td>"O feedback de vocês fez TODA diferença" (fala anônima de pesquisa)</td></tr></tbody></table></div>
 </div></details>
 <details class="sec" id="s8"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h4v6H7a3 3 0 0 1-3-3V7"/><path d="M15 7h4v6h-4a3 3 0 0 1-3-3V7"/><path d="M7 13v4M15 13v4"/></svg><span class="sec-num">8</span><span class="sec-titulo">A língua deles</span><span class="estado ok">Decidido</span><span class="sec-chev" aria-hidden="true"></span></summary><div class="sec-corpo">
 <p>Frases reais da base (37.278 verbatins). Ao escolher citação, filtrar por tipo de respondente: quem comprou escreve mais e está super-representado.</p>
@@ -947,14 +1018,14 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 <h3>Como descrevem o que funcionou</h3>
 <div class="citas"><blockquote class="cita">"Pela primeira vez não desisti no meio."</blockquote><blockquote class="cita">"Uma simples nota que eu acerto e já me sinto capaz."</blockquote><blockquote class="cita">"Me senti mais capaz, tudo que eu não sentia há muito tempo."</blockquote><blockquote class="cita">"Tocar me deixa de alma lavada, esqueço de tudo ao redor."</blockquote></div>
 <p><strong>Léxico afetivo espontâneo</strong> (associação livre, usar como vocabulário): praia, alegria, paz, Havaí, tranquilidade, sol, felicidade.</p>
-<h3>Palavras para usar</h3><div class="chips bom"><span>mão da batida</span><span>mão dos acordes</span><span>dedo 1 a 4</span><span>próximo passo</span><span>devolutiva</span><span>plantão</span><span>Confraria</span><span>encontro (nunca "aula" para o individual)</span><span>"alguém olhando o que você toca"</span></div>
+<h3>Palavras para usar</h3><div class="chips bom"><span>mão da batida</span><span>mão dos acordes</span><span>dedo 1 a 4</span><span>próximo passo</span><span>análise em vídeo</span><span>análise da atividade</span><span>Minhas análises</span><span>plantão</span><span>Confraria</span><span>encontro (nunca "aula" para o individual)</span><span>"um professor acompanhando cada passo". Nunca "devolutiva" (formal) nem "intercâmbio" (não diz o que acontece)</span></div>
 <h3>Palavras e formas proibidas</h3>
 <div class="chips ruim"><span>"mão direita", "mão esquerda" (canhoto toca espelhado).</span><span>"dar conta" com coisa no sujeito ("vinte minutos dão conta").</span><span>"sem limite", "quantas vezes precisar", "de qualquer aula" (a promessa antiga de envio liberado caiu).</span><span>"velho", "idoso", "terceira idade", "na sua idade", "depois dos 40" (idade é prova, não endereço).</span><span>"é só se dedicar", "disciplina" (soa cobrança).</span><span>"aula" para o encontro individual.</span><span>Tagline aposentada "Toque todo dia, um acorde de cada vez".</span><span>"do Clube" como elogio a quem não é aluno.</span><span>Antítese "não é X, é Y" em série; pergunta retórica como transição em série; frase de dupla leitura ("toca uma pra mim"); travessão; promessa de saúde; urgência falsa; "método secreto", "revolucionário".</span><span>Chamar quem veio do violão pelo instrumento anterior.</span></div>
 <p><strong>Glossário:</strong></p>
-<div class="tabela"><table><thead><tr><th>Termo</th><th>O que é</th></tr></thead><tbody><tr><td>Academy</td><td>o produto pago; "Clube do Ukulele Academy" na copy longa</td></tr><tr><td>Jornada</td><td>a trilha gravada em 5 níveis</td></tr><tr><td>Atividade Proposta</td><td>tarefa em vídeo nos pontos cruciais da jornada, com devolutiva</td></tr><tr><td>Devolutiva</td><td>resposta do professor em vídeo, estilo react</td></tr><tr><td>Análise de performance</td><td>devolutiva sobre uma música que o aluno já toca (Prata acima)</td></tr><tr><td>Confraria do Ukulele</td><td>encontro em grupo de quinta, 19:40, sem agendar (Bronze acima)</td></tr><tr><td>Plantão</td><td>sessão de dúvidas de 1 h, só com agendamento (Prata acima)</td></tr><tr><td>Encontro individual</td><td>25 min reativos com o professor (Ouro e Diamante)</td></tr><tr><td>Ukulele na Mão</td><td>live semanal de quinta, 19h, aberta</td></tr><tr><td>DMA</td><td>Direção, Motivação, Acompanhamento: o método</td></tr><tr><td>3D</td><td>Dividir, Destravar, Dominar: a técnica de estudo dentro da Direção</td></tr></tbody></table></div>
+<div class="tabela"><table><thead><tr><th>Termo</th><th>O que é</th></tr></thead><tbody><tr><td>Academy</td><td>o produto pago; "Clube do Ukulele Academy" na copy longa</td></tr><tr><td>Jornada</td><td>a trilha gravada em 5 níveis</td></tr><tr><td>Atividade Proposta</td><td>tarefa em vídeo nos pontos cruciais da jornada, com análise</td></tr><tr><td>Análise em vídeo</td><td>resposta do professor em vídeo, estilo react, sobre o vídeo do aluno; a área do aluno é "Minhas análises"</td></tr><tr><td>Análise de performance</td><td>análise sobre uma música que o aluno já toca (Prata acima)</td></tr><tr><td>Confraria do Ukulele</td><td>encontro em grupo de quinta, 19:40, sem agendar (Bronze acima)</td></tr><tr><td>Plantão</td><td>sessão de dúvidas de 1 h, só com agendamento (Prata acima)</td></tr><tr><td>Encontro individual</td><td>25 min reativos com o professor (Ouro e Diamante)</td></tr><tr><td>Ukulele na Mão</td><td>live semanal de quinta, 19h, aberta</td></tr><tr><td>DMA</td><td>Direção, Motivação, Acompanhamento: o método</td></tr><tr><td>3D</td><td>Dividir, Destravar, Dominar: a técnica de estudo dentro da Direção</td></tr></tbody></table></div>
 </div></details>
 <details class="sec" id="s12"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span class="sec-num">12</span><span class="sec-titulo">Pendências que travam peças</span><span class="estado aberto">Em aberto</span><span class="sec-chev" aria-hidden="true"></span></summary><div class="sec-corpo">
-<ul class="check-pend"><li><span class="cx" aria-hidden="true"></span><span>Trechos de devolutiva real com autorização do aluno (trava a prova mais forte da página).</span></li><li><span class="cx" aria-hidden="true"></span><span>Renovação e ano 2: manual com conversa, automática ou híbrida (prós e contras na seção 11 do Formato do Produto).</span></li><li><span class="cx" aria-hidden="true"></span><span>Preços finais depois da planilha de custo (custo por devolutiva: ~7 min de gravação por 3 min de envio; por plantão; por encontro).</span></li><li><span class="cx" aria-hidden="true"></span><span>Condição do primeiro lançamento (opções na seção 6).</span></li><li><span class="cx" aria-hidden="true"></span><span>Vídeo de teste de 5 min para a página: se e quando fazer, e qual estrutura.</span></li><li><span class="cx" aria-hidden="true"></span><span>Apresentação marca × Academy (o que é de graça e o que é pago, sem confundir).</span></li></ul>
+<ul class="check-pend"><li><span class="cx" aria-hidden="true"></span><span>Trechos de análise real com autorização do aluno (trava a prova mais forte da página).</span></li><li><span class="cx" aria-hidden="true"></span><span>Renovação e ano 2: manual com conversa, automática ou híbrida (prós e contras na seção 11 do Formato do Produto).</span></li><li><span class="cx" aria-hidden="true"></span><span>Preços finais depois da planilha de custo (custo por análise: ~7 min de gravação por 3 min de envio; por plantão; por encontro).</span></li><li><span class="cx" aria-hidden="true"></span><span>Condição do primeiro lançamento (opções na seção 6).</span></li><li><span class="cx" aria-hidden="true"></span><span>Vídeo de teste de 5 min para a página: se e quando fazer, e qual estrutura.</span></li><li><span class="cx" aria-hidden="true"></span><span>Apresentação marca × Academy (o que é de graça e o que é pago, sem confundir).</span></li></ul>
 </div></details>
     </main>
   </div>
@@ -969,7 +1040,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
         <p class="intro">Cada degrau tem tudo do anterior e mais uma coisa. O que muda é quanto tempo de professor a pessoa tem. Preços provisórios até a planilha de custo fechar.</p>
         <div class="escada-vis" id="escada-vis">
           <div class="deg d1"><div class="deg-topo"><span class="deg-nome">Essencial</span><span class="deg-preco">12x R$ 50</span><span class="deg-vista">ou R$ 500 à vista</span></div><ul><li>Jornada em 5 níveis</li><li>152 músicas</li><li>Cursos extras</li><li>Comunidade</li></ul><span class="deg-onde">só o closer, último recurso</span></div>
-          <div class="deg d2"><div class="deg-topo"><span class="deg-nome">Bronze</span><span class="deg-preco">12x R$ 100</span><span class="deg-vista">ou R$ 1.000 à vista</span></div><ul><li class="mais">+ Confraria toda quinta</li><li class="mais">+ 49 atividades com devolutiva</li></ul><span class="deg-onde">só o closer</span></div>
+          <div class="deg d2"><div class="deg-topo"><span class="deg-nome">Bronze</span><span class="deg-preco">12x R$ 100</span><span class="deg-vista">ou R$ 1.000 à vista</span></div><ul><li class="mais">+ Confraria toda quinta</li><li class="mais">+ 49 atividades com análise</li></ul><span class="deg-onde">só o closer</span></div>
           <div class="deg d3"><div class="deg-topo"><span class="deg-nome">Prata</span><span class="deg-preco">12x R$ 150</span><span class="deg-vista">ou R$ 1.500 à vista</span></div><ul><li class="mais">+ Plantão 2x por semana</li><li class="mais">+ 1 análise de performance por mês</li></ul><span class="deg-onde">na oferta</span></div>
           <div class="deg d4"><div class="deg-topo"><span class="deg-nome">Ouro</span><span class="deg-preco">12x R$ 300</span><span class="deg-vista">ou R$ 3.000 à vista</span></div><ul><li class="mais">+ 2 análises por mês</li><li class="mais">+ 2 encontros individuais por mês</li></ul><span class="deg-onde">na oferta</span></div>
           <div class="deg d5"><div class="deg-topo"><span class="deg-nome">Diamante</span><span class="deg-preco">12x R$ 400</span><span class="deg-vista">ou R$ 4.000 à vista</span></div><ul><li class="mais">+ 4 análises por mês</li><li class="mais">+ 1 encontro individual por semana</li></ul><span class="deg-onde">na oferta</span></div>
@@ -1017,7 +1088,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <div class="plano">
             <p class="nome">Bronze</p>
             <p class="preco"><strong>12x R$ 100</strong><br>ou R$ 1.000 à vista</p>
-            <ul><li>Tudo do Essencial</li><li>Confraria do Ukulele (quinta, 19:40)</li><li>Grupo de Avisos</li><li>49 Atividades Propostas com devolutiva em vídeo</li></ul>
+            <ul><li>Tudo do Essencial</li><li>Confraria do Ukulele (quinta, 19:40)</li><li>Grupo de Avisos</li><li>49 Atividades Propostas com análise em vídeo</li></ul>
             <p class="onde">Só o closer, como descida do Prata.</p>
           </div>
           <div class="plano">
@@ -1046,7 +1117,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <tbody>
             <tr><td>Jornada, bibliotecas, extras, comunidade</td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
             <tr><td>Confraria do Ukulele e grupo de Avisos</td><td class="nao"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
-            <tr><td>49 Atividades Propostas com devolutiva em vídeo</td><td class="nao"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>49 Atividades Propostas com análise em vídeo</td><td class="nao"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
             <tr><td>Plantão agendado, 2 × 1 h por semana</td><td class="nao"></td><td class="nao"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
             <tr><td>Análises de performance por mês</td><td class="nao"></td><td class="nao"></td><td>1</td><td>2</td><td>4</td></tr>
             <tr><td>Encontro individual de 25 min</td><td class="nao"></td><td class="nao"></td><td class="nao"></td><td>2 por mês</td><td>1 por semana</td></tr>
@@ -1059,11 +1130,11 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 
         <h3>Cada componente, em uma linha</h3>
         <div class="grade">
-          <div class="cartao"><span class="rot">Bronze acima</span><h4>Atividades Propostas</h4><p>49 pontos ao longo da jornada, depois das aulas cruciais. O aluno grava tocando e recebe a devolutiva. Não é envio embaixo de toda aula, não é envio de música.</p></div>
-          <div class="cartao"><span class="rot">Bronze acima</span><h4>Devolutiva em vídeo</h4><p>Sempre em vídeo, estilo react: o professor assiste junto, trabalha as câmeras e mostra no instrumento. Em 3 dias úteis a partir do dia seguinte ao envio. Média: 3 min de envio, 7 min de gravação.</p></div>
+          <div class="cartao"><span class="rot">Bronze acima</span><h4>Atividades Propostas</h4><p>49 pontos ao longo da jornada, depois das aulas cruciais. O aluno grava tocando e recebe a análise. Não é envio embaixo de toda aula, não é envio de música.</p></div>
+          <div class="cartao"><span class="rot">Bronze acima</span><h4>Análise em vídeo</h4><p>Sempre em vídeo, estilo react: o professor assiste junto, trabalha as câmeras e mostra no instrumento. Em 3 dias úteis a partir do dia seguinte ao envio. Média: 3 min de envio, 7 min de gravação.</p></div>
           <div class="cartao"><span class="rot">Bronze acima</span><h4>Confraria do Ukulele</h4><p>Encontro em grupo toda quinta às 19:40, depois da live Ukulele na Mão. Horário fixo, sem agendar. Lugar de trocar ideia; vira aula, dúvida ou conversa conforme o dia.</p></div>
           <div class="cartao"><span class="rot">Prata acima</span><h4>Plantão agendado</h4><p>Duas sessões de 1 h por semana (terça às 20h e sexta às 10h). Só entra quem agendou; link por e-mail; até 8 por sessão; sem inscrito até 24 h antes, a sessão não acontece.</p></div>
-          <div class="cartao"><span class="rot">Prata acima</span><h4>Análise de performance</h4><p>O aluno envia uma música que já aprendeu e treinou; o professor diz o que pode melhorar. Cota mensal (1, 2 ou 4), não acumula. Mesmo formato e prazo da devolutiva.</p></div>
+          <div class="cartao"><span class="rot">Prata acima</span><h4>Análise de performance</h4><p>O aluno envia uma música que já aprendeu e treinou; o professor diz o que pode melhorar. Cota mensal (1, 2 ou 4), não acumula. Mesmo formato e prazo da análise.</p></div>
           <div class="cartao"><span class="rot">Ouro e Diamante</span><h4>Encontro individual</h4><p>25 minutos, reativo: nada preparado antes, o aluno traz o que quer trabalhar, principalmente repertório. Nunca chamar de "aula".</p></div>
         </div>
 
@@ -1101,7 +1172,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
             <h1>Aprenda ukulele com um professor <em>acompanhando cada passo seu</em></h1>
             <p class="sub">Jornada completa do zero ao intermediário, com o que <strong>nenhum curso gravado</strong> oferece:</p>
             <ul class="selos">
-              <li>Devolutiva em vídeo</li>
+              <li>Análise em vídeo</li>
               <li>Ao vivo toda semana</li>
               <li>152 músicas</li>
             </ul>
@@ -1155,6 +1226,63 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
       </div>
     </section>
 
+    <section class="analise-dobra">
+      <div class="miolo centro">
+        <h2>Um professor vendo o que você tocou de verdade</h2>
+        <p class="lead">Nas 49 atividades da jornada você grava tocando, manda pela plataforma e recebe a análise do Mateus em vídeo, mostrada no instrumento. Assim:</p>
+
+        <div class="an-grid">
+          <div class="an-passo rv">
+            <p class="an-rot">1 · Você grava e manda</p>
+            <div class="mock-envio" id="mock-envio">
+              <div class="me-cab"><span class="me-tag">Envie o seu vídeo</span><strong>Enviar a minha atividade</strong></div>
+              <ul class="me-dicas"><li>Grave com o celular na horizontal, dando para ver o instrumento e as duas mãos.</li><li>Não precisa ser perfeito. O que importa é dar para ver e ouvir você tocando.</li></ul>
+              <div class="me-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6"/><path d="M4 20h16"/></svg><span>Selecionar vídeo</span><i class="me-barra"></i></div>
+              <div class="me-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Enviado! A análise chega em até 3 dias úteis.</div>
+              <div class="me-cursor" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff" stroke="#1F1A2B" stroke-width="1.5"><path d="M5 3l14 8-6 1.5L16 20l-3 1-3-7.5L5 16z"/></svg></div>
+            </div>
+            <div class="me-zap">
+              <div class="zap-topo"><span class="zap-logo">W</span><strong>Clube do Ukulele</strong><small>agora</small></div>
+              <p>Oi Fulano, tudo bem? Sua análise da atividade <strong>Sua primeira música</strong> já está disponível na plataforma. Para assistir, é só entrar em <u>Minhas Análises</u>.</p>
+            </div>
+          </div>
+
+          <div class="an-passo rv">
+            <p class="an-rot">2 · O Mateus assiste com você e responde em vídeo</p>
+            <div class="mock-minhas" id="mock-minhas">
+              <div class="mm-cab"><strong>Minhas Análises</strong><span>Você já recebeu <b class="mm-n" data-ate="36">0</b> análises.</span></div>
+              <div class="mm-corpo">
+                <ul class="mm-lista">
+                  <li><em>#36</em>Batida Baião</li><li><em>#35</em>Exercício Martelada</li><li><em>#34</em>Exercício TOM TOM TOM</li><li><em>#33</em>Alongando pares de dedos</li><li><em>#32</em>Música com Batida Pop 1</li><li><em>#31</em>Sua primeira música</li>
+                </ul>
+                <div class="mm-card">
+                  <div class="mm-video">
+                    <img class="mm-aluno" src="img/porta-acordes.webp" alt="" width="1200" height="896" loading="lazy">
+                    <div class="mm-pip"><img src="img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy"><span>Mateus</span></div>
+                    <span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                    <div class="mm-barra"><span></span></div>
+                  </div>
+                  <div class="mm-rodape"><em>#36</em><strong>Batida Baião</strong><small>Enviado em 18/06/2026 · análise de 7 min</small></div>
+                </div>
+              </div>
+            </div>
+            <p class="an-nota">Seu vídeo grande, o professor no canto, apontando no instrumento o que ajustar. Toda análise fica guardada na sua área, para rever quando quiser.</p>
+          </div>
+        </div>
+
+        <h3 class="an-sub">Veja uma análise de verdade</h3>
+        <p class="lead">Quatro análises reais, como o aluno recebe. Abre aqui mesmo, sem sair da página.</p>
+        <div class="videos an-videos rv-g">
+          <div class="video-facade" data-v="E-DYRljfnsg" role="button" tabindex="0" aria-label="Abrir análise 1"><img src="https://i.ytimg.com/vi/E-DYRljfnsg/hqdefault.jpg" alt="Análise em vídeo de um aluno" width="480" height="360" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="video-facade" data-v="NuA-0aFg2AI" role="button" tabindex="0" aria-label="Abrir análise 2"><img src="https://i.ytimg.com/vi/NuA-0aFg2AI/hqdefault.jpg" alt="Análise em vídeo de um aluno" width="480" height="360" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="video-facade" data-v="PZ82xqW1frY" role="button" tabindex="0" aria-label="Abrir análise 3"><img src="https://i.ytimg.com/vi/PZ82xqW1frY/hqdefault.jpg" alt="Análise em vídeo de um aluno" width="480" height="360" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="video-facade" data-v="CI9br5x_3n0" role="button" tabindex="0" aria-label="Abrir análise 4"><img src="https://i.ytimg.com/vi/CI9br5x_3n0/hqdefault.jpg" alt="Análise em vídeo de um aluno" width="480" height="360" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+        </div>
+        <p class="fecho lead"><strong>É a correção de um professor particular, sobre o que você tocou de verdade, sem hora marcada.</strong> E fica guardada com você.</p>
+        <div class="fim"><button class="btn acao" type="button" data-abrir-form data-origem="analise" style="width:auto;min-width:300px">Quero que me chamem</button></div>
+      </div>
+    </section>
+
     <section class="faixa-frase">
       <div class="miolo centro">
         <p class="frase-grande">E quando a música sai inteira, <em>o resto do dia muda também.</em></p>
@@ -1171,18 +1299,18 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
             <div class="fig"><img src="img/mockup-laptop.webp" alt="A plataforma da Academy no computador e no celular" width="1200" height="896" loading="lazy"></div>
           </article>
           <article class="item inv rv">
-            <div class="txt"><p class="rot">Devolutiva em vídeo</p><h3>Um professor vendo o que você tocou</h3><p>Em 49 pontos da jornada você grava uma atividade. O professor assiste junto e responde em vídeo, mostrando no instrumento o que ajustar. Você nunca passa adiante com um erro escondido.</p><ul class="tags"><li>49 atividades</li><li>Resposta em até 3 dias úteis</li><li>Correção sobre o seu vídeo</li></ul></div>
+            <div class="txt"><p class="rot">Análise em vídeo</p><h3>49 análises ao longo da jornada</h3><p>Você grava a atividade, o Mateus assiste com você e responde em vídeo, mostrando no instrumento o que ajustar. Em até 3 dias úteis, e fica guardada na sua área.</p><ul class="tags"><li>49 atividades, e crescendo</li><li>Resposta em até 3 dias úteis</li></ul></div>
             <div class="fig">
               <div class="video-mock">
                 <img src="img/mockup-celular.webp" alt="" width="1400" height="1045" loading="lazy">
                 <div class="tela">
                   <div class="tela-frame">
                     <div class="pane aluno"><span class="rot-pane">vídeo da aluna</span></div>
-                    <div class="pane prof"><img src="img/devolutiva-mateus.webp" alt="" width="506" height="900" loading="lazy"><span class="rot-pane">Mateus</span></div>
+                    <div class="pane prof"><img src="img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy"><span class="rot-pane">Mateus</span></div>
                   </div>
-                  <button class="play" type="button" aria-label="Exemplo de devolutiva (imagem ilustrativa)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                  <button class="play" type="button" aria-label="Exemplo de análise (imagem ilustrativa)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
                   <div class="barra"><span></span></div>
-                  <span class="tempo">Devolutiva do Mateus · 7 min</span>
+                  <span class="tempo">Análise do Mateus · 7 min</span>
                 </div>
               </div>
             </div>
@@ -1210,7 +1338,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <article class="item rv">
             <div class="txt"><p class="rot">Acompanhamento individual</p><h3>Análise das suas músicas e encontro só seu</h3><p>Nos planos com mais tempo de professor, você manda as músicas que já toca para uma análise de performance e tem encontros individuais de 25 minutos para trabalhar o seu repertório. Qual plano é o seu, a gente descobre na conversa.</p><ul class="tags"><li>Análise de performance</li><li>Encontro individual</li></ul></div>
             <div class="fig"><div class="chamada-mock">
-              <div class="tile prof"><img src="img/devolutiva-mateus.webp" alt="" width="506" height="900" loading="lazy"><span>Mateus</span></div>
+              <div class="tile prof"><img src="img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy"><span>Mateus</span></div>
               <div class="tile voce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Você</span></div>
               <div class="barra-chamada"><i></i><i></i><i class="fim"></i><b>25:00</b></div>
             </div></div>
@@ -1240,7 +1368,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><strong>1 ano de acesso</strong></div>
         </div>
         <ul class="lista-resumo rv-g">
-          <li>Jornada em 5 níveis</li><li>49 atividades com devolutiva em vídeo</li><li>Confraria e live toda semana</li><li>Plantão de dúvidas 2x por semana, por agendamento</li><li>152 músicas, com entradas mensais</li><li>Comunidade com Desafio do Mês</li><li>Oficina de Canto, Dicionário de Acordes e Destrava Dedos</li><li>Análise de performance e encontro individual, conforme o plano</li>
+          <li>Jornada em 5 níveis</li><li>49 atividades com análise em vídeo</li><li>Confraria e live toda semana</li><li>Plantão de dúvidas 2x por semana, por agendamento</li><li>152 músicas, com entradas mensais</li><li>Comunidade com Desafio do Mês</li><li>Oficina de Canto, Dicionário de Acordes e Destrava Dedos</li><li>Análise de performance e encontro individual, conforme o plano</li>
         </ul>
         <div class="fim dupla"><button class="btn acao" type="button" data-abrir-form data-origem="resumo">Quero que me chamem</button><a class="btn wa" href="#" data-wa>Falar com a gente no WhatsApp</a></div>
       </div>
@@ -1273,8 +1401,8 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
         <div class="fim" style="margin-bottom:26px"><a class="btn wa" href="#" data-wa style="min-width:300px">Tirar dúvidas no WhatsApp</a></div>
         <div class="faq-lista">
           <details><summary>Nunca toquei nada. É pra mim?</summary><p>É. A maior parte dos alunos começa do zero, e a jornada começa exatamente aí: na primeira semana você toca uma música inteira, com dois acordes e uma batida, e o professor vê o seu vídeo.</p></details>
-          <details><summary>Em quanto tempo vou tocar uma música inteira?</summary><p>Na primeira semana, se você seguir a jornada. Depois disso, cada nível abre músicas novas, e a devolutiva garante que você não passa adiante com um erro escondido.</p></details>
-          <details><summary>Quanto custa?</summary><p>Depende do plano. Tem plano só com a devolutiva das atividades e o plantão, e tem plano com encontro individual toda semana. Deixa seu WhatsApp, a gente conversa cinco minutos e te mostra o que faz sentido para a sua rotina.</p></details>
+          <details><summary>Em quanto tempo vou tocar uma música inteira?</summary><p>Na primeira semana, se você seguir a jornada. Depois disso, cada nível abre músicas novas, e a análise garante que você não passa adiante com um erro escondido.</p></details>
+          <details><summary>Quanto custa?</summary><p>Depende do plano. Tem plano só com a análise das atividades e o plantão, e tem plano com encontro individual toda semana. Deixa seu WhatsApp, a gente conversa cinco minutos e te mostra o que faz sentido para a sua rotina.</p></details>
         </div>
         <div class="fim fim-faq"><button class="btn acao" type="button" data-abrir-form data-origem="faq">Quero que me chamem</button></div>
       </div>
@@ -1296,7 +1424,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
         <h1>Dá o play no vídeo e vê <em>o que acontece agora no seu WhatsApp</em></h1>
         <p class="sub">A gente já te mandou um alô. É só responder lá, pode ser um "oi", que a gente monta o seu plano com você.</p>
         <div class="ob-video" id="ob-video">
-          <img src="img/devolutiva-mateus.webp" alt="" width="506" height="900" loading="lazy">
+          <img src="img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy">
           <span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           <span class="ob-tempo">Mateus · 60 s</span>
           <span class="pend ob-pend">vídeo a gravar (roteiro abaixo)</span>
@@ -1397,7 +1525,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
       <ul class="check">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#25845A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Jornada em 5 níveis:</strong> Iniciante 0, 1 e 2, Intermediário 1 e 2</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#25845A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>152 músicas</strong> por nível, com filtro por batida, acordes e gênero, e entradas mensais</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="#25845A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>49 Atividades Propostas</strong> com devolutiva do professor em vídeo, e novas entram conforme a jornada cresce</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#25845A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>49 Atividades Propostas</strong> com análise do professor em vídeo, e novas entram conforme a jornada cresce</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#25845A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Confraria do Ukulele</strong> toda quinta, 19:40, ao vivo</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#25845A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Live Ukulele na Mão</strong> toda semana, aberta</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#25845A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Comunidade</strong> com Desafio do Mês</span></li>
@@ -1411,7 +1539,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <div class="folha">
       <h2>Os planos</h2>
       <div class="planos-pdf">
-        <div class="pp"><span class="tag">O mais escolhido</span><h3>Prata</h3><p class="valor"><strong>12x R$ 150</strong><br>ou R$ 1.500 à vista</p><ul><li>Tudo que vem junto</li><li>49 atividades com devolutiva, e crescendo</li><li>Plantão ao vivo, 2x por semana</li><li>1 música sua analisada por mês</li></ul></div>
+        <div class="pp"><span class="tag">O mais escolhido</span><h3>Prata</h3><p class="valor"><strong>12x R$ 150</strong><br>ou R$ 1.500 à vista</p><ul><li>Tudo que vem junto</li><li>49 atividades com análise, e crescendo</li><li>Plantão ao vivo, 2x por semana</li><li>1 música sua analisada por mês</li></ul></div>
         <div class="pp"><h3>Ouro</h3><p class="valor"><strong>12x R$ 300</strong><br>ou R$ 3.000 à vista</p><ul><li>Tudo do Prata</li><li>2 músicas suas analisadas por mês</li><li>2 encontros individuais de 25 min por mês</li></ul></div>
         <div class="pp"><h3>Diamante</h3><p class="valor"><strong>12x R$ 400</strong><br>ou R$ 4.000 à vista</p><ul><li>Tudo do Ouro</li><li>4 músicas suas analisadas por mês</li><li>1 encontro individual de 25 min por semana</li></ul></div>
       </div>
@@ -1428,7 +1556,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
       </div>
       <h3>Combinados que valem para todo mundo</h3>
       <ul class="check">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="#443468" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Toda devolutiva chega em até <strong>3 dias úteis</strong>, contados a partir do dia seguinte ao envio.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#443468" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Toda análise chega em até <strong>3 dias úteis</strong>, contados a partir do dia seguinte ao envio.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#443468" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><span>Plantão e encontro individual são <strong>agendados</strong>; o link chega por e-mail. O encontro se agenda de 7 dias até 48 h antes e se cancela até 24 h antes.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#443468" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/></svg><span>O plano é anual (12x ou à vista). Você <strong>sobe de plano quando quiser</strong>, pagando a diferença.</span></li>
       </ul>
@@ -1441,7 +1569,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
       <ol class="passos">
         <li><strong>Escolhe o plano</strong> e responde lá na conversa.</li>
         <li><strong>Recebe o link</strong> de pagamento, no número oficial do Clube.</li>
-        <li><strong>Entra na jornada</strong> no mesmo dia e grava a primeira atividade. A primeira devolutiva chega em até 3 dias úteis.</li>
+        <li><strong>Entra na jornada</strong> no mesmo dia e grava a primeira atividade. A primeira análise chega em até 3 dias úteis.</li>
         <li><strong>Aparece na Confraria</strong> na próxima quinta, 19:40. A gente te espera.</li>
       </ol>
       <div class="contato">
@@ -1492,7 +1620,7 @@ Pra eu te mostrar o plano certo, me conta rapidinho: você já tocou alguma cois
         <div class="tabela"><table>
           <thead><tr><th>Ponto de partida</th><th>Tempo</th><th>Prefere</th><th>Recomenda</th><th>Como apresentar</th></tr></thead>
           <tbody>
-            <tr><td>Zero ou travou</td><td>Qualquer</td><td>Vídeo + dúvida ao vivo às vezes</td><td><strong>Prata</strong></td><td>Devolutiva das 49 atividades + plantão 2x por semana + 1 música analisada por mês</td></tr>
+            <tr><td>Zero ou travou</td><td>Qualquer</td><td>Vídeo + dúvida ao vivo às vezes</td><td><strong>Prata</strong></td><td>Análise das 49 atividades + plantão 2x por semana + 1 música analisada por mês</td></tr>
             <tr><td>Zero ou travou</td><td>Qualquer</td><td>Só vídeo, sem ao vivo</td><td><strong>Prata</strong> (Bronze na manga)</td><td>Mesmo Prata; o plantão é opcional e por agendamento. Bronze só se o preço travar</td></tr>
             <tr><td>Já toca um pouco</td><td>Qualquer</td><td>Quer alguém olhando o repertório</td><td><strong>Ouro</strong></td><td>2 análises por mês + 2 encontros individuais para trabalhar as músicas dele</td></tr>
             <tr><td>Qualquer</td><td>Tem tempo e quer ritmo</td><td>Encontro ao vivo toda semana</td><td><strong>Diamante</strong></td><td>1 encontro por semana + 4 análises por mês; explicar que o encontro é reativo, sobre o que ele traz</td></tr>
@@ -1513,8 +1641,8 @@ Quer que eu te mande o link?</div>
         <h3>Etapa 4: se o preço travar, a descida</h3>
         <div class="ramos">
           <div class="cartao"><span class="rot">Primeiro, a pergunta</span><h4>"O que pesa mais: o valor ou o compromisso de um ano?"</h4><p>Se é o compromisso: reforça os 30 dias e que a jornada continua dele o ano inteiro mesmo que ele pare um mês. Se é o valor: desce um degrau.</p></div>
-          <div class="cartao"><span class="rot">Degrau 1: Bronze</span><h4>"Tem uma opção mais leve"</h4><p>"O Bronze tem a mesma jornada, a Confraria e a devolutiva das 49 atividades. Fica sem o plantão e sem a análise de música. 12x de R$ 100. E você sobe pro Prata quando quiser, pagando só a diferença."</p></div>
-          <div class="cartao"><span class="rot">Degrau 2: Essencial (último recurso)</span><h4>"Se quiser só o conteúdo"</h4><p>"Tem o Essencial: a jornada inteira, as 152 músicas e a comunidade, sem o professor olhando. 12x de R$ 50. Eu só te aviso que o que faz a diferença é a devolutiva; se der pra ficar no Bronze, fica."</p></div>
+          <div class="cartao"><span class="rot">Degrau 1: Bronze</span><h4>"Tem uma opção mais leve"</h4><p>"O Bronze tem a mesma jornada, a Confraria e a análise das 49 atividades. Fica sem o plantão e sem a análise de música. 12x de R$ 100. E você sobe pro Prata quando quiser, pagando só a diferença."</p></div>
+          <div class="cartao"><span class="rot">Degrau 2: Essencial (último recurso)</span><h4>"Se quiser só o conteúdo"</h4><p>"Tem o Essencial: a jornada inteira, as 152 músicas e a comunidade, sem o professor olhando. 12x de R$ 50. Eu só te aviso que o que faz a diferença é a análise; se der pra ficar no Bronze, fica."</p></div>
         </div>
 
         <h3>Etapa 5: fechamento e o que acontece depois</h3>
@@ -1522,7 +1650,7 @@ Quer que eu te mande o link?</div>
           <div class="bal lead"><span class="quem">Lead</span>Manda o link do Prata.</div>
           <div class="bal eq"><span class="quem">Clube</span>Aqui está: {link}. Assim que o pagamento confirmar, o acesso chega no seu e-mail em alguns minutos. Já grava a primeira atividade hoje se quiser, e aparece na Confraria quinta às 19:40. Qualquer coisa, é só chamar aqui, esse é o número oficial.</div>
           <span class="hora">depois do pagamento</span>
-          <div class="bal eq"><span class="quem">Clube</span>Confirmado, {nome}! Seu acesso já foi. Bem-vinda à Academy. A primeira devolutiva chega em até 3 dias úteis depois do seu primeiro envio.</div>
+          <div class="bal eq"><span class="quem">Clube</span>Confirmado, {nome}! Seu acesso já foi. Bem-vinda à Academy. A primeira análise chega em até 3 dias úteis depois do seu primeiro envio.</div>
         </div>
 
         <h3>Etapa 6: régua de recuperação (não fechou ou parou de responder)</h3>
@@ -1540,8 +1668,8 @@ Quer que eu te mande o link?</div>
         <p class="nota">As respostas completas estão na aba Objeções. Aqui, o que cabe numa mensagem.</p>
         <ul>
           <li><strong>"Está caro."</strong> "Entendo. Me diz: pesa mais o valor ou o ano inteiro? Dependendo, tem um caminho mais leve."</li>
-          <li><strong>"Não tenho tempo."</strong> "A jornada anda no seu ritmo e a devolutiva chega no seu horário. Vinte minutos por dia já rendem o que você precisa mandar."</li>
-          <li><strong>"Duvido que eu consiga."</strong> "É por isso que existe a devolutiva: você não vai repetir um erro por meses sem saber. E se em 30 dias achar que não é pra você, devolve tudo."</li>
+          <li><strong>"Não tenho tempo."</strong> "A jornada anda no seu ritmo e a análise chega no seu horário. Vinte minutos por dia já rendem o que você precisa mandar."</li>
+          <li><strong>"Duvido que eu consiga."</strong> "É por isso que existe a análise: você não vai repetir um erro por meses sem saber. E se em 30 dias achar que não é pra você, devolve tudo."</li>
           <li><strong>"Tem muita coisa de graça."</strong> "Tem, inclusive do Mateus. O que não tem de graça é alguém olhando o que você toca. Se vídeo gratuito resolvesse, o ukulele não estaria parado."</li>
           <li><strong>"Vou pensar."</strong> "Claro. Te mando o material com tudo organizado pra você olhar com calma. Posso?"</li>
         </ul>
@@ -1558,25 +1686,25 @@ Quer que eu te mande o link?</div>
 
       <div class="obj"><div><p class="titulo">"Não tenho dinheiro."</p><p class="pct">59% dos que não compraram</p></div><div class="col"><h5>Na página</h5><p>Ancoragem antes do preço (escola presencial R$ 500 a 600 por mês; aula particular R$ 100 a 150 por aula). No perpétuo o preço não aparece: o FAQ responde "depende do plano" e manda para o cadastro. No lançamento: à vista com desconto, 12x e a condição com data.</p></div><div class="col"><h5>No WhatsApp</h5><p>Primeiro "o que pesa mais: o valor ou o compromisso de um ano?". Se é valor, desce um degrau (Prata → Bronze → Essencial). Aceitar que boa parte da base não é alvo do Prata, e tudo bem.</p></div></div>
 
-      <div class="obj"><div><p class="titulo">"Não tenho tempo."</p><p class="pct">20%</p></div><div class="col"><h5>Na página</h5><p>"A jornada anda no seu ritmo. A devolutiva chega no seu horário, não no meu. Vinte minutos por dia já rendem o que você precisa me mandar. Plantão e Confraria são opcionais."</p></div><div class="col"><h5>No WhatsApp</h5><p>Mesma resposta, curta. Para quem tem muito pouco tempo, Prata e não Diamante: "o encontro semanal só vale se você tiver o que levar pra ele".</p></div></div>
+      <div class="obj"><div><p class="titulo">"Não tenho tempo."</p><p class="pct">20%</p></div><div class="col"><h5>Na página</h5><p>"A jornada anda no seu ritmo. A análise chega no seu horário, não no meu. Vinte minutos por dia já rendem o que você precisa me mandar. Plantão e Confraria são opcionais."</p></div><div class="col"><h5>No WhatsApp</h5><p>Mesma resposta, curta. Para quem tem muito pouco tempo, Prata e não Diamante: "o encontro semanal só vale se você tiver o que levar pra ele".</p></div></div>
 
-      <div class="obj"><div><p class="titulo">"Duvido que eu consiga."</p><p class="pct">12%</p></div><div class="col"><h5>Na página</h5><p>"É por isso que existe a devolutiva. Você não vai passar meses repetindo um erro sem saber. Eu vejo, aponto, você corrige. E se em 30 dias achar que não é para você, devolvo tudo."</p></div><div class="col"><h5>No WhatsApp</h5><p>É a hora do áudio do Mateus. Trinta segundos, com o nome da pessoa e o ponto de partida que ela contou.</p></div></div>
+      <div class="obj"><div><p class="titulo">"Duvido que eu consiga."</p><p class="pct">12%</p></div><div class="col"><h5>Na página</h5><p>"É por isso que existe a análise. Você não vai passar meses repetindo um erro sem saber. Eu vejo, aponto, você corrige. E se em 30 dias achar que não é para você, devolvo tudo."</p></div><div class="col"><h5>No WhatsApp</h5><p>É a hora do áudio do Mateus. Trinta segundos, com o nome da pessoa e o ponto de partida que ela contou.</p></div></div>
 
       <div class="obj"><div><p class="titulo">"Prefiro o que é de graça."</p><p class="pct">7%</p></div><div class="col"><h5>Na página</h5><p>"De graça tem conteúdo bom, inclusive meu. O que não tem é alguém olhando o que você toca. Se vídeo gratuito resolvesse, o seu ukulele não estaria parado."</p></div><div class="col"><h5>No WhatsApp</h5><p>Mesma frase. Não discutir o valor do conteúdo gratuito; a diferença é o Acompanhamento.</p></div></div>
 
-      <div class="obj"><div><p class="titulo">"Não encontro professor na minha cidade."</p><p class="pct">4%</p></div><div class="col"><h5>Na página</h5><p>"É exatamente para isso que a Academy existe."</p></div><div class="col"><h5>No WhatsApp</h5><p>Reforçar que a devolutiva é individual e em vídeo, e que o plantão é ao vivo de qualquer lugar.</p></div></div>
+      <div class="obj"><div><p class="titulo">"Não encontro professor na minha cidade."</p><p class="pct">4%</p></div><div class="col"><h5>Na página</h5><p>"É exatamente para isso que a Academy existe."</p></div><div class="col"><h5>No WhatsApp</h5><p>Reforçar que a análise é individual e em vídeo, e que o plantão é ao vivo de qualquer lugar.</p></div></div>
 
-      <div class="obj"><div><p class="titulo">"Consigo aprender nessa altura da vida?"</p><p class="pct">Frequente, sem número na base</p></div><div class="col"><h5>Na página</h5><p>"A maior parte dos meus alunos é adulta e começou do zero. A devolutiva é individual: ninguém compara você com ninguém." Idade entra como prova (rosto de aluno), nunca como rótulo.</p></div><div class="col"><h5>No WhatsApp</h5><p>Nunca dizer "na sua idade". Contar de um aluno que começou do zero e hoje toca; se houver autorização, mandar o vídeo dele.</p></div></div>
+      <div class="obj"><div><p class="titulo">"Consigo aprender nessa altura da vida?"</p><p class="pct">Frequente, sem número na base</p></div><div class="col"><h5>Na página</h5><p>"A maior parte dos meus alunos é adulta e começou do zero. A análise é individual: ninguém compara você com ninguém." Idade entra como prova (rosto de aluno), nunca como rótulo.</p></div><div class="col"><h5>No WhatsApp</h5><p>Nunca dizer "na sua idade". Contar de um aluno que começou do zero e hoje toca; se houver autorização, mandar o vídeo dele.</p></div></div>
 
       <div class="obj"><div><p class="titulo">"Por que não uma aula particular?"</p><p class="pct">Aparece na conversa</p></div><div class="col"><h5>Na página</h5><p>"Numa aula particular o professor vê você tocar uma vez por semana, nervosa, e a correção acaba quando a aula acaba. Aqui eu vejo o que você gravou tranquila em casa, respondo em vídeo, e a resposta fica guardada."</p></div><div class="col"><h5>No WhatsApp</h5><p>Somar o argumento do tempo: "na aula o professor gasta a hora explicando o que você poderia ver gravado; aqui o tempo dele vai inteiro pra corrigir o que você tocou".</p></div></div>
 
       <div class="obj"><div><p class="titulo">"25 minutos é pouco."</p><p class="pct">Ouro e Diamante</p></div><div class="col"><h5>Na página</h5><p>"É meia hora só sua, sem conteúdo para eu apresentar. O tempo é inteiro para a sua dúvida e o seu repertório. Vinte e cinco minutos focados rendem mais que uma hora de aula expositiva."</p></div><div class="col"><h5>No WhatsApp</h5><p>Explicar o "reativo": nada é preparado, a pessoa traz a música, sai com o próximo passo. Se quer conteúdo novo, isso está na jornada.</p></div></div>
 
-      <div class="obj"><div><p class="titulo">"O professor corrige mesmo ou é só aula gravada?"</p><p class="pct">A dúvida que define a compra</p></div><div class="col"><h5>Na página</h5><p>"Corrige. Você grava a atividade, eu assisto junto com você e respondo em vídeo mostrando no instrumento." Com um trecho de devolutiva real ao lado <span class="pend">autorização</span>.</p></div><div class="col"><h5>No WhatsApp</h5><p>Mandar um trecho de devolutiva real (com autorização) vale mais que qualquer frase.</p></div></div>
+      <div class="obj"><div><p class="titulo">"O professor corrige mesmo ou é só aula gravada?"</p><p class="pct">A dúvida que define a compra</p></div><div class="col"><h5>Na página</h5><p>"Corrige. Você grava a atividade, eu assisto junto com você e respondo em vídeo mostrando no instrumento." Com um trecho de análise real ao lado <span class="pend">autorização</span>.</p></div><div class="col"><h5>No WhatsApp</h5><p>Mandar um trecho de análise real (com autorização) vale mais que qualquer frase.</p></div></div>
 
       <div class="obj"><div><p class="titulo">"E se eu parar no meio do ano?" / "Vou ficar preso um ano?"</p><p class="pct">Aparece na conversa</p></div><div class="col"><h5>Na página</h5><p>"Trinta dias para desistir e receber tudo. Depois disso a jornada continua sua até o fim do ano, e a Confraria está lá toda quinta quando você voltar. O plano é anual porque aprender um instrumento leva mais de um mês."</p></div><div class="col"><h5>No WhatsApp</h5><p>Se o que pesa é o compromisso, não o valor: reforçar os 30 dias e que subir de plano é sempre possível. Não descer de degrau por essa objeção.</p></div></div>
 
-      <div class="obj"><div><p class="titulo">"Quanto custa?"</p><p class="pct">Perpétuo, antes do diagnóstico</p></div><div class="col"><h5>Na página</h5><p>"Depende do plano. Tem plano só com a devolutiva das atividades e o plantão, e tem plano com encontro individual toda semana. Deixa seu WhatsApp e a gente te mostra o que faz sentido."</p></div><div class="col"><h5>No WhatsApp</h5><p>"Depende do plano, e eu te mostro o certo em três perguntas. Me conta primeiro: você já tocou alguma coisa ou está começando do zero?" Nunca número antes das três perguntas.</p></div></div>
+      <div class="obj"><div><p class="titulo">"Quanto custa?"</p><p class="pct">Perpétuo, antes do diagnóstico</p></div><div class="col"><h5>Na página</h5><p>"Depende do plano. Tem plano só com a análise das atividades e o plantão, e tem plano com encontro individual toda semana. Deixa seu WhatsApp e a gente te mostra o que faz sentido."</p></div><div class="col"><h5>No WhatsApp</h5><p>"Depende do plano, e eu te mostro o certo em três perguntas. Me conta primeiro: você já tocou alguma coisa ou está começando do zero?" Nunca número antes das três perguntas.</p></div></div>
     </main>
   </div>
 </div>
@@ -1588,10 +1716,14 @@ Quer que eu te mande o link?</div>
       <div class="bloco">
         <h2>Histórico de versões do briefing</h2>
         <p class="intro">Registro de conferência: o que mudou em cada versão do documento-fonte. Vem direto do <code>.md</code>.</p>
-        <ul class="historico"><li>v1.5 (21/09/2026): números de prova confirmados; provas autorizadas listadas (prints, colagem, Fabiano, três vídeos); DMA decidido; segundo plantão na sexta às 10h; número oficial do WhatsApp preenchido; lista de bônus reais para a condição de lançamento; pendências de 9 para 6.</li><li>v1.4 (21/09/2026): Motivação redefinida como sete fontes contínuas por ângulos diferentes; semana 1 rebaixada a prova para iniciante, porque parte dos alunos já toca ao entrar.</li><li>v1.3 (21/09/2026): frase-mãe escolhida (opção 3, reforçada); Motivação vira mecanismo contínuo (semanal, mensal, por atividade, comunidade); Acompanhamento sobe de "alguém vê" para "professor acompanhando cada passo, correção mostrada no instrumento".</li><li>v1.2 (21/09/2026): DMA v2 com tabela por pilar (falha, entrega, frase de página, frase de VSL, prova), ciclo entre os três e três frases-mãe candidatas; página nasce sem vídeo, vídeo de 5 min vira teste opcional.</li><li>v1.1 (21/09/2026): 49 Atividades Propostas e primeira música na primeira semana confirmados como prova; frase-mãe do DMA v1; três opções de condição de lançamento com custo; VSL modelada no vídeo da Fluency (URL pendente).</li><li>v1 (21/09/2026): documento criado a partir do Formato do Produto fechado no mesmo dia, da base PESQUISAS e do contexto de marketing anterior (v4, 19/09). Substitui a promessa de "envio liberado" pelas Atividades Propostas com devolutiva; cinco planos; venda perpétua com closer mais lançamentos; DMA como mecanismo; três portas de entrada sem rótulo de idade nem de instrumento anterior.</li></ul>
+        <ul class="historico"><li>v1.6 (21/09/2026): "devolutiva" vira "análise em vídeo" em todo o material, alinhado à Central de Análises e à área "Minhas análises".</li><li>v1.5 (21/09/2026): números de prova confirmados; provas autorizadas listadas (prints, colagem, Fabiano, três vídeos); DMA decidido; segundo plantão na sexta às 10h; número oficial do WhatsApp preenchido; lista de bônus reais para a condição de lançamento; pendências de 9 para 6.</li><li>v1.4 (21/09/2026): Motivação redefinida como sete fontes contínuas por ângulos diferentes; semana 1 rebaixada a prova para iniciante, porque parte dos alunos já toca ao entrar.</li><li>v1.3 (21/09/2026): frase-mãe escolhida (opção 3, reforçada); Motivação vira mecanismo contínuo (semanal, mensal, por atividade, comunidade); Acompanhamento sobe de "alguém vê" para "professor acompanhando cada passo, correção mostrada no instrumento".</li><li>v1.2 (21/09/2026): DMA v2 com tabela por pilar (falha, entrega, frase de página, frase de VSL, prova), ciclo entre os três e três frases-mãe candidatas; página nasce sem vídeo, vídeo de 5 min vira teste opcional.</li><li>v1.1 (21/09/2026): 49 Atividades Propostas e primeira música na primeira semana confirmados como prova; frase-mãe do DMA v1; três opções de condição de lançamento com custo; VSL modelada no vídeo da Fluency (URL pendente).</li><li>v1 (21/09/2026): documento criado a partir do Formato do Produto fechado no mesmo dia, da base PESQUISAS e do contexto de marketing anterior (v4, 19/09). Substitui a promessa de "envio liberado" pelas Atividades Propostas com análise; cinco planos; venda perpétua com closer mais lançamentos; DMA como mecanismo; três portas de entrada sem rótulo de idade nem de instrumento anterior.</li></ul>
       </div>
     </main>
   </div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vídeo">
+  <div class="lb-caixa"><button class="lb-fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="lb-corpo"></div></div>
 </div>
 
 <footer class="rodape">Clube do Ukulele · central interna do MVP · não indexado · fonte dos textos: Briefing Master v1.4</footer>
@@ -1670,7 +1802,7 @@ Quer que eu te mande o link?</div>
     formLp.scrollIntoView({ behavior: 'smooth', block: 'center' });
     setTimeout(() => document.getElementById('nome').focus({ preventScroll: true }), 500);
   }));
-  // Reveal ao rolar, uma vez só; a demo da devolutiva toca quando entra na tela
+  // Reveal ao rolar, uma vez só; a demo da análise toca quando entra na tela
   const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ioRv = new IntersectionObserver(es => es.forEach(en => {
     if (!en.isIntersecting) return;
@@ -1691,12 +1823,21 @@ Quer que eu te mande o link?</div>
   ['escada-vis', 'fluxo-closer'].forEach(id => { const el = document.getElementById(id); if (el) ioPl.observe(el); });
   // Índice do briefing fechado no celular
   if (innerWidth < 900) { const d = document.querySelector('nav.indice details'); if (d) d.open = false; }
-  // Depoimentos: o iframe do YouTube só entra quando a pessoa clica (sem autoplay escondido)
+  // Vídeos (análises e depoimentos) abrem num popup; o iframe só existe enquanto o popup está aberto
+  const lb = document.getElementById('lightbox'), lbCorpo = lb.querySelector('.lb-corpo');
+  const abrirLb = id => { lbCorpo.innerHTML = ''; const i = document.createElement('iframe'); i.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0'; i.title = 'Vídeo'; i.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; i.allowFullscreen = true; lbCorpo.appendChild(i); lb.classList.add('aberto'); document.body.style.overflow = 'hidden'; lb.querySelector('.lb-fechar').focus(); };
+  const fecharLb = () => { lb.classList.remove('aberto'); lbCorpo.innerHTML = ''; document.body.style.overflow = ''; };
   document.querySelectorAll('.lp .video-facade').forEach(f => {
-    const abrir = () => { if (f.querySelector('iframe')) return; const i = document.createElement('iframe'); i.src = 'https://www.youtube-nocookie.com/embed/' + f.dataset.v + '?autoplay=1&rel=0'; i.title = 'Depoimento de aluno'; i.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; i.allowFullscreen = true; f.appendChild(i); };
-    f.addEventListener('click', abrir);
-    f.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); } });
+    f.addEventListener('click', () => abrirLb(f.dataset.v));
+    f.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirLb(f.dataset.v); } });
   });
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.closest('.lb-fechar')) fecharLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('aberto')) fecharLb(); });
+  // Mocks da dobra de análise: tocam quando entram na tela
+  const ioMock = new IntersectionObserver(es => es.forEach(en => { if (!en.isIntersecting) return; en.target.classList.add('on'); ioMock.unobserve(en.target);
+    en.target.querySelectorAll('.mm-n').forEach(c => { const ate = +c.dataset.ate; const t0 = performance.now(); const tick = now => { const k = Math.min(1, (now - t0) / 1400); c.textContent = Math.round(ate * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); });
+  }), { threshold: 0.35 });
+  document.querySelectorAll('#mock-envio, #mock-minhas, .lp .an-passo').forEach(el => ioMock.observe(el));
   const heroLp = document.querySelector('.lp .hero'), stickyLp = document.getElementById('sticky-lp');
   new IntersectionObserver(([en]) => stickyLp.classList.toggle('show', !en.isIntersecting)).observe(heroLp);
 </script>
