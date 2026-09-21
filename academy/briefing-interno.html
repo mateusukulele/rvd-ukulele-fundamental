@@ -24,8 +24,14 @@
   --sombra-flutua:0 12px 28px -14px rgb(45 18 78 / .45);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:120px}
-body{margin:0;background:var(--fundo);color:var(--texto);font-family:var(--fonte-corpo);font-size:17px;line-height:1.65}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--fundo);color:var(--texto);font-family:var(--fonte-corpo);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{text-wrap:balance}
+p,li{text-wrap:pretty}
+*{scrollbar-color:var(--neutro-medio) var(--superficie)}
+*::-webkit-scrollbar{height:10px;width:10px}
+*::-webkit-scrollbar-thumb{background:var(--neutro-medio);border-radius:999px;border:2px solid var(--superficie)}
+*::-webkit-scrollbar-track{background:var(--superficie)}
 ::selection{background:var(--coral);color:var(--coral-texto)}
 img{max-width:100%;height:auto}
 a{color:var(--indigo);text-decoration-thickness:2px;text-underline-offset:3px}
@@ -37,31 +43,39 @@ code{font-family:var(--fonte-mono);font-size:.92em;background:var(--superficie);
 .pend{display:inline-block;background:var(--ambar-fundo);color:var(--ambar-texto);font-weight:700;font-size:.88em;padding:2px 10px;border-radius:999px;line-height:1.5}
 
 /* ===== Topo e pílulas ===== */
-.topo{background:var(--indigo-profundo);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 10px 30px -18px rgb(45 18 78 / .9)}
-.topo .miolo{max-width:1180px;margin:0 auto;padding:12px 16px 0;display:flex;flex-direction:column;gap:10px}
-.topo .linha{display:flex;align-items:center;gap:14px}
+.topo{background:var(--indigo-profundo);color:#fff}
+.topo .miolo{max-width:1120px;margin:0 auto;padding:18px 16px 16px;display:flex;align-items:center;gap:16px}
 .topo img.logo{width:96px;height:auto;display:block;flex:none}
-.topo .titulo{font-family:var(--fonte-titulo);font-weight:400;font-size:22px;line-height:1.12;margin:0;letter-spacing:.2px}
-.topo .meta{color:var(--sobre-escuro);font-size:13px;margin:0}
+.topo .titulo{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(22px,3vw,30px);line-height:1.12;margin:0;letter-spacing:.2px;text-wrap:balance}
+.topo .meta{color:var(--sobre-escuro);font-size:13.5px;margin:4px 0 0}
 .topo .meta strong{color:var(--coral)}
-.pilulas{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.pilulas::-webkit-scrollbar{display:none}
-.pilula{flex:none;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid #5A4680;background:transparent;color:#fff;font-weight:700;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .18s,border-color .18s,transform .18s}
-.pilula:hover{background:#3A2660;border-color:#7A66A0}
+.barra-abas{position:sticky;top:0;z-index:50;background:var(--indigo-profundo);border-top:1px solid rgb(255 255 255 / .1);box-shadow:0 12px 30px -18px rgb(45 18 78 / .9)}
+.pilulas{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px}
+.pilula{min-height:44px;padding:0 16px 0 12px;border-radius:999px;border:2px solid rgb(255 255 255 / .18);background:transparent;color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:background .18s,border-color .18s}
+.pilula svg{width:20px;height:20px;flex:none}
+.pilula:hover{background:rgb(255 255 255 / .1);border-color:rgb(255 255 255 / .34)}
+.pilula:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .pilula[aria-selected="true"]{background:var(--coral);border-color:var(--coral);color:var(--coral-texto)}
-.pilula .n{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:999px;background:rgb(255 255 255 / .14);font-size:12px}
-.pilula[aria-selected="true"] .n{background:rgb(77 26 32 / .16)}
 .aba{display:none}
-.aba.ativa{display:block}
+.aba.ativa{display:block;animation:aparecer .32s cubic-bezier(.16,1,.3,1)}
+@keyframes aparecer{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.aba.ativa{animation:none}html{scroll-behavior:auto}}
+@media (max-width:520px){.topo img.logo{width:72px}.pilula{font-size:13.5px;padding:0 12px 0 10px;min-height:42px}}
 
 /* ===== Layout de leitura (briefing, planos, fluxo, objeções) ===== */
-.pagina{max-width:1180px;margin:0 auto;padding:28px 16px 80px;display:grid;grid-template-columns:1fr;gap:28px}
+.pagina{max-width:1120px;margin:0 auto;padding:28px 16px 80px;display:grid;grid-template-columns:1fr;gap:28px}
 .pagina.uma{grid-template-columns:1fr}
 nav.indice{background:var(--card);border-radius:16px;padding:20px;box-shadow:var(--sombra-card);align-self:start}
 nav.indice h2{font-family:var(--fonte-titulo);font-weight:400;font-size:18px;margin:0 0 10px;color:var(--indigo);border:0;padding:0}
 nav.indice ol{margin:0;padding-left:22px}
 nav.indice li{margin:6px 0;font-size:15px;line-height:1.4}
-nav.indice a{text-decoration:none;display:inline-block;min-height:28px}
+nav.indice a{text-decoration:none;display:inline-block;min-height:28px;padding:2px 8px;margin-left:-8px;border-radius:8px}
+nav.indice a.atual{background:var(--coral-suave);color:var(--coral-forte);font-weight:700}
+nav.indice summary{list-style:none;cursor:pointer;font-family:var(--fonte-titulo);font-size:18px;color:var(--indigo);min-height:44px;display:flex;align-items:center;justify-content:space-between}
+nav.indice summary::-webkit-details-marker{display:none}
+nav.indice summary::after{content:"+";font-size:24px;color:var(--coral-forte)}
+nav.indice details[open] summary::after{content:"–"}
+nav.indice details[open] summary{margin-bottom:8px}
 nav.indice a:hover{text-decoration:underline}
 main{min-width:0}
 .bloco{background:var(--card);border-radius:16px;padding:24px 20px;margin-bottom:24px;box-shadow:var(--sombra-card)}
@@ -167,6 +181,13 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
 .plano .onde{margin:12px 0 0;font-size:13.5px;color:var(--texto-suave)}
 .plano .selo{position:absolute;top:-12px;right:16px;background:var(--indigo);color:#fff;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
 
+table.comp th,table.comp td{text-align:center}
+table.comp th:first-child,table.comp td:first-child{text-align:left}
+table.comp .rec{background:var(--coral-suave)}
+table.comp thead th.rec{background:var(--indigo);color:#fff}
+table.comp td.sim::before{content:"";display:inline-block;width:20px;height:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2325845A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;vertical-align:middle}
+table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;background:var(--neutro-medio);border-radius:2px;vertical-align:middle}
+
 /* ===== Fluxo WhatsApp ===== */
 .chat{background:#EFE9E4;border-radius:16px;padding:18px 14px;margin:0 0 20px;display:flex;flex-direction:column;gap:10px;max-width:640px}
 .bal{max-width:88%;padding:10px 14px;border-radius:14px;font-size:15.5px;line-height:1.55;position:relative;box-shadow:0 1px 1px rgb(31 26 43 / .12);white-space:pre-line}
@@ -201,6 +222,7 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
 .lp section.suave{background:var(--superficie)}
 .lp .hero{background:var(--indigo-profundo);color:#fff;padding:32px 0 56px;position:relative;overflow:hidden}
 .lp .hero .topo-lp{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+.lp .hero .topo-lp .btn{width:auto;min-height:44px;font-size:15px;padding:0 16px}
 .lp .hero img.logo{width:104px;height:auto}
 .lp .hero .grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
 .lp .hero h1{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.12;margin:0 0 16px;letter-spacing:.2px;text-wrap:balance}
@@ -208,6 +230,8 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
 .lp .hero .sub{font-size:18px;color:var(--sobre-escuro);margin:0 0 22px;max-width:560px}
 .lp .selos{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
 .lp .selos li{background:rgb(255 255 255 / .09);border:1px solid rgb(255 255 255 / .18);color:#fff;font-size:14px;font-weight:500;padding:8px 12px;border-radius:999px}
+.lp .selos.claro{margin:0}
+.lp .selos.claro li{background:var(--superficie);border-color:var(--superficie);color:var(--texto)}
 .lp .form{background:var(--card);color:var(--texto);border-radius:18px;padding:22px 20px;box-shadow:var(--sombra-flutua);max-width:460px}
 .lp .form h3{font-family:var(--fonte-titulo);font-weight:400;font-size:24px;color:var(--indigo);margin:0 0 4px}
 .lp .form p{font-size:15px;color:var(--texto-suave);margin:0 0 14px}
@@ -225,12 +249,14 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
 .lp .miudo{font-size:13px;color:var(--texto-suave);margin:10px 0 0}
 .lp .hero .foto{display:none}
 .lp .portas{display:grid;grid-template-columns:1fr;gap:14px;margin:26px 0 0}
+.lp .fecho{margin-top:22px}
 .lp .porta{background:var(--card);border-radius:16px;padding:22px 20px;box-shadow:var(--sombra-card)}
 .lp .porta h3{color:var(--indigo)}
 .lp .porta p{font-size:16px;margin:0}
 .lp .num{font-family:var(--fonte-titulo);font-size:44px;line-height:1;color:var(--coral-forte);margin:0}
 .lp .num small{display:block;font-family:var(--fonte-corpo);font-size:15px;color:var(--texto-suave);margin-top:4px;font-weight:500}
 .lp .nums{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0 0;max-width:640px}
+.lp .nums-fonte{margin-top:14px}
 .lp .dma{display:grid;grid-template-columns:1fr;gap:16px;margin:26px 0 0}
 .lp .pilar{background:rgb(255 255 255 / .06);border:1px solid rgb(255 255 255 / .14);border-radius:16px;padding:22px 20px}
 .lp .pilar .letra{font-family:var(--fonte-titulo);font-size:54px;line-height:1;color:var(--coral);margin:0 0 6px}
@@ -276,6 +302,7 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
 .lp details[open] summary::after{content:"–"}
 .lp details p{padding:0 0 16px;margin:0;font-size:16px}
 .lp .fim{text-align:center}
+.lp .fim-faq{margin-top:26px}
 .lp .fim .btn{width:auto;min-width:280px}
 .lp footer{padding:28px 16px 40px;font-size:13.5px;color:var(--texto-suave);text-align:center}
 .lp .sticky{position:fixed;left:0;right:0;bottom:0;background:var(--card);padding:10px 16px;box-shadow:0 -10px 30px -18px rgb(31 26 43 / .6);transform:translateY(110%);transition:transform .25s;z-index:40}
@@ -358,13 +385,15 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
 @media (min-width:900px){
   .pagina{grid-template-columns:260px 1fr;gap:40px;padding-top:36px}
   .pagina.uma{grid-template-columns:1fr;max-width:960px}
-  nav.indice{position:sticky;top:124px;max-height:calc(100vh - 140px);overflow:auto}
+  nav.indice{position:sticky;top:84px;max-height:calc(100vh - 100px);overflow:auto}
+  nav.indice summary{display:none}
+  nav.indice details{display:contents}
   .bloco{padding:32px 36px}
   .topo .miolo{padding-top:14px}
   .topo .titulo{font-size:26px}
   .grade{grid-template-columns:repeat(3,1fr)}
   .grade.duas{grid-template-columns:repeat(2,1fr)}
-  .planos-tab{grid-template-columns:repeat(5,1fr)}
+  .planos-tab{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
   .ramos{grid-template-columns:repeat(3,1fr)}
   .obj{grid-template-columns:260px 1fr 1fr}
 }
@@ -384,30 +413,32 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
 
 <header class="topo">
   <div class="miolo">
-    <div class="linha">
-      <img class="logo" src="../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778">
-      <div>
-        <h1 class="titulo">Academy: central interna do MVP</h1>
-        <p class="meta"><strong>Uso interno</strong> · Mateus e Marco · atualizado em 21/09/2026 · não indexado</p>
-      </div>
-    </div>
-    <div class="pilulas" role="tablist" aria-label="Seções">
-      <button class="pilula" role="tab" data-aba="briefing" aria-selected="true"><span class="n">1</span>Briefing master</button>
-      <button class="pilula" role="tab" data-aba="planos" aria-selected="false"><span class="n">2</span>Planos</button>
-      <button class="pilula" role="tab" data-aba="pagina" aria-selected="false"><span class="n">3</span>Página de cadastro (modelo)</button>
-      <button class="pilula" role="tab" data-aba="material" aria-selected="false"><span class="n">4</span>Material do aluno</button>
-      <button class="pilula" role="tab" data-aba="whatsapp" aria-selected="false"><span class="n">5</span>Fluxo do WhatsApp</button>
-      <button class="pilula" role="tab" data-aba="objecoes" aria-selected="false"><span class="n">6</span>Objeções</button>
+    <img class="logo" src="../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778">
+    <div>
+      <h1 class="titulo">Clube do Ukulele Academy: central do MVP</h1>
+      <p class="meta"><strong>Uso interno</strong> · Mateus e Marco · versão de 21/09/2026 · não indexado</p>
     </div>
   </div>
 </header>
+<div class="barra-abas">
+  <div class="pilulas" role="tablist" aria-label="Seções">
+    <button class="pilula" role="tab" id="tab-briefing" aria-controls="aba-briefing" data-aba="briefing" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h6M9 16h6"/></svg>Briefing</button>
+    <button class="pilula" role="tab" id="tab-planos" aria-controls="aba-planos" data-aba="planos" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4v-6H4zM10 20h4V9h-4zM16 20h4V4h-4z"/></svg>Planos</button>
+    <button class="pilula" role="tab" id="tab-pagina" aria-controls="aba-pagina" data-aba="pagina" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h5"/></svg>Página modelo</button>
+    <button class="pilula" role="tab" id="tab-material" aria-controls="aba-material" data-aba="material" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h8"/></svg>Material do aluno</button>
+    <button class="pilula" role="tab" id="tab-whatsapp" aria-controls="aba-whatsapp" data-aba="whatsapp" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg>Fluxo WhatsApp</button>
+    <button class="pilula" role="tab" id="tab-objecoes" aria-controls="aba-objecoes" data-aba="objecoes" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>Objeções</button>
+  </div>
+</div>
 
 <!-- ============ 1. BRIEFING ============ -->
 <div class="aba ativa" id="aba-briefing" role="tabpanel">
   <div class="pagina">
     <nav class="indice" aria-label="Índice do briefing">
-      <h2>Índice</h2>
+      <details open><summary>Índice</summary>
+      <h2 class="sr">Índice</h2>
       <ol><li><a href="#s1">O produto</a></li><li><a href="#s2">Para quem é</a></li><li><a href="#s3">A dor</a></li><li><a href="#s4">A promessa e o mecanismo</a></li><li><a href="#s5">Objeções e respostas</a></li><li><a href="#s6">Preço, ancoragem e venda</a></li><li><a href="#s7">Prova</a></li><li><a href="#s8">A língua deles</a></li><li><a href="#s9">Voz da marca</a></li><li><a href="#s10">Metas</a></li><li><a href="#s11">O que cada peça puxa daqui</a></li><li><a href="#s12">Pendências que travam peças</a></li><li><a href="#s13">Changelog</a></li></ol>
+      </details>
     </nav>
     <main>
       <div class="bloco" style="padding-top:20px;padding-bottom:20px">
@@ -675,6 +706,22 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
           </div>
         </div>
 
+        <h3>Comparativo</h3>
+        <div class="tabela"><table class="comp">
+          <thead><tr><th>O que inclui</th><th>Essencial</th><th>Bronze</th><th class="rec">Prata</th><th>Ouro</th><th>Diamante</th></tr></thead>
+          <tbody>
+            <tr><td>Jornada, bibliotecas, extras, comunidade</td><td class="sim"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Confraria do Ukulele e grupo de Avisos</td><td class="nao"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>49 Atividades Propostas com devolutiva em vídeo</td><td class="nao"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Plantão agendado, 2 × 1 h por semana</td><td class="nao"></td><td class="nao"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Análises de performance por mês</td><td class="nao"></td><td class="nao"></td><td class="rec">1</td><td>2</td><td>4</td></tr>
+            <tr><td>Encontro individual de 25 min</td><td class="nao"></td><td class="nao"></td><td class="nao rec"></td><td>2 por mês</td><td>1 por semana</td></tr>
+            <tr><td>Garantia de 30 dias</td><td class="sim"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Garantia de 1 ano (10 músicas)</td><td class="nao"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Onde aparece</td><td>só closer</td><td>só closer</td><td class="rec">oferta</td><td>oferta</td><td>oferta</td></tr>
+          </tbody>
+        </table></div>
+
         <h3>Cada componente, em uma linha</h3>
         <div class="grade">
           <div class="cartao"><span class="rot">Bronze acima</span><h4>Atividades Propostas</h4><p>49 pontos ao longo da jornada, depois das aulas cruciais. O aluno grava tocando e recebe a devolutiva. Não é envio embaixo de toda aula, não é envio de música.</p></div>
@@ -715,7 +762,7 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
       <div class="miolo">
         <div class="topo-lp">
           <img class="logo" src="../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778">
-          <a class="btn wa" style="min-height:44px;font-size:15px;padding:0 16px" href="#" data-wa>Tirar dúvida no WhatsApp</a>
+          <a class="btn wa" href="#" data-wa>Tirar dúvida no WhatsApp</a>
         </div>
         <div class="grid">
           <div>
@@ -752,7 +799,7 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
           <div class="porta"><h3>Comecei e travei</h3><p>Comprou o ukulele, viu uns vídeos, tentou uma ou duas semanas, e ele virou enfeite. Você sabe o que é um acorde; o que ninguém te disse é por que a música não sai.</p></div>
           <div class="porta"><h3>Toco um pouco, do meu jeito</h3><p>Já tira umas músicas, mas trava sempre no mesmo lugar e não sabe o que estudar para passar disso. Falta ordem, e falta alguém olhando.</p></div>
         </div>
-        <p style="margin-top:22px"><strong>Nos três casos o problema é o mesmo: ninguém vê o que você toca.</strong> E quem aprende sozinho trava exatamente aí.</p>
+        <p class="fecho"><strong>Nos três casos o problema é o mesmo: ninguém vê o que você toca.</strong> E quem aprende sozinho trava exatamente aí.</p>
       </div>
     </section>
 
@@ -766,7 +813,7 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
           <p class="num">1 em 5<small>não sabe dizer onde trava</small></p>
           <p class="num">0<small>conseguem se corrigir sozinhos</small></p>
         </div>
-        <p class="miudo" style="margin-top:14px">Pesquisa do Clube do Ukulele com 19.224 pessoas que querem aprender.</p>
+        <p class="miudo nums-fonte">Pesquisa do Clube do Ukulele com 19.224 pessoas que querem aprender.</p>
       </div>
     </section>
 
@@ -797,7 +844,7 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
           <div class="bub prof"><span class="q">Mateus</span>Vi aqui. O acorde está limpo, isso já está resolvido. O que trava é a mão da batida: ela para na troca. Treina só ela nas cordas soltas por três dias, sem trocar acorde, e me manda de novo.</div>
           <div class="bub aluno"><span class="q">Aluna, quatro dias depois</span>Não parou mais! Segue o vídeo novo.</div>
         </div>
-        <p style="margin-top:22px">É a correção de um professor particular, sobre o que você tocou de verdade, sem hora marcada. Numa aula particular o professor vê você tocar uma vez por semana, nervosa, e a correção acaba quando a aula acaba. Aqui a explicação fica na jornada, e o tempo do professor vai inteiro para o que só um olho humano resolve.</p>
+        <p class="fecho">É a correção de um professor particular, sobre o que você tocou de verdade, sem hora marcada. Numa aula particular o professor vê você tocar uma vez por semana, nervosa, e a correção acaba quando a aula acaba. Aqui a explicação fica na jornada, e o tempo do professor vai inteiro para o que só um olho humano resolve.</p>
       </div>
     </section>
 
@@ -857,7 +904,7 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
           <div>
             <h2>Mateus Augusto</h2>
             <p>Ensino ukulele online desde 2017. Mais de 6.000 pessoas passaram pelas minhas aulas, a maioria adulta, a maioria começando do zero. O que aprendi nesses anos cabe numa frase: ninguém trava por falta de talento. Trava porque ninguém viu o que ela estava fazendo. A Academy existe para isso.</p>
-            <ul class="selos" style="margin:0"><li style="background:var(--superficie);border-color:var(--superficie);color:var(--texto)">+6.000 alunos</li><li style="background:var(--superficie);border-color:var(--superficie);color:var(--texto)">+300 mil seguidores</li><li style="background:var(--superficie);border-color:var(--superficie);color:var(--texto)">Live toda semana desde 2020</li></ul>
+            <ul class="selos claro"><li>+6.000 alunos</li><li>+300 mil seguidores</li><li>Live toda semana desde 2020</li></ul>
           </div>
         </div>
       </div>
@@ -873,7 +920,7 @@ details.sec .sec-corpo>h3:first-child{margin-top:18px}
         <details><summary>Por que não uma aula particular?</summary><p>Numa aula particular o professor vê você tocar uma vez por semana, nervosa, e a correção acaba quando a aula acaba. Aqui eu vejo o que você gravou tranquila em casa, respondo em vídeo, e a resposta fica guardada. E tem plantão toda semana por cima.</p></details>
         <details><summary>E se eu parar no meio do ano?</summary><p>Você tem 30 dias para desistir e receber tudo de volta. Depois disso a jornada continua sua até o fim do ano, e a Confraria está lá toda quinta quando você voltar.</p></details>
         <details><summary>Ainda não tenho ukulele. E agora?</summary><p>Tudo bem. Na conversa a gente te indica o que comprar sem gastar à toa, e você começa a jornada assim que ele chegar.</p></details>
-        <div class="fim" style="margin-top:26px"><button class="btn primario" type="button" data-abrir-form data-origem="faq">Quero que me chamem</button></div>
+        <div class="fim fim-faq"><button class="btn primario" type="button" data-abrir-form data-origem="faq">Quero que me chamem</button></div>
       </div>
     </section>
 
@@ -1129,7 +1176,20 @@ Quer que eu te mande o link?</div>
     document.querySelectorAll('.aba').forEach(a => a.classList.toggle('ativa', a.id === 'aba-' + nome));
     if (rolar) window.scrollTo({ top: 0 });
   }
-  abas.forEach(b => b.addEventListener('click', () => { history.replaceState(null, '', '#' + b.dataset.aba); mostrar(b.dataset.aba, true); }));
+  abas.forEach((b, idx) => {
+    b.addEventListener('click', () => { history.replaceState(null, '', '#' + b.dataset.aba); mostrar(b.dataset.aba, true); });
+    b.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const alvo = abas[(idx + (e.key === 'ArrowRight' ? 1 : abas.length - 1)) % abas.length];
+      alvo.focus(); alvo.click();
+    });
+  });
+  // Seção atual no índice
+  const linksIdx = [...document.querySelectorAll('nav.indice a')];
+  const ioIdx = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) linksIdx.forEach(a => a.classList.toggle('atual', a.getAttribute('href') === '#' + en.target.id));
+  }), { rootMargin: '-80px 0px -70% 0px' });
+  document.querySelectorAll('details.sec').forEach(d => ioIdx.observe(d));
   window.addEventListener('hashchange', () => mostrar(location.hash.slice(1) || 'briefing', false));
   // Âncora interna do briefing (#s3) abre a aba do briefing e a seção
   function abrirSecao(id) {
