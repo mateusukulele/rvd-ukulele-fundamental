@@ -24,7 +24,7 @@
   --sombra-flutua:0 12px 28px -14px rgb(45 18 78 / .45);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:110px}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{margin:0;background:var(--fundo);color:var(--texto);font-family:var(--fonte-corpo);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{text-wrap:balance}
 p,li{text-wrap:pretty}
@@ -47,23 +47,18 @@ code{font-family:var(--fonte-mono);font-size:.92em;background:var(--superficie);
 
 /* ===== Topo e pílulas ===== */
 .topo{background:var(--indigo-profundo);color:#fff}
-.topo .miolo{max-width:1120px;margin:0 auto;padding:18px 16px 16px;display:flex;align-items:center;gap:16px}
-.topo img.logo{width:96px;height:auto;display:block;flex:none}
-.topo .titulo{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(22px,3vw,30px);line-height:1.12;margin:0;letter-spacing:.2px;text-wrap:balance}
-.topo .meta{color:var(--sobre-escuro);font-size:13.5px;margin:4px 0 0}
+.topo .miolo{max-width:1120px;margin:0 auto;padding:8px 16px 6px;display:flex;align-items:center;gap:12px}
+.topo img.logo{width:44px;height:auto;display:block;flex:none}
+.topo .titulo{font-family:var(--fonte-titulo);font-weight:400;font-size:18px;line-height:1.12;margin:0;letter-spacing:.2px;text-wrap:balance}
+.topo .meta{color:var(--sobre-escuro);font-size:12px;margin:2px 0 0}
 .topo .meta strong{color:var(--coral)}
 .cabecalho{position:sticky;top:0;z-index:50;box-shadow:0 12px 30px -18px rgb(45 18 78 / .9)}
 .barra-abas{background:var(--indigo-profundo);border-top:1px solid rgb(255 255 255 / .1)}
-.topo .miolo,.topo img.logo,.topo .titulo,.topo .meta,.pilulas,.pilula{transition:padding .25s ease,width .25s ease,font-size .25s ease,min-height .25s ease,opacity .2s ease,margin .25s ease}
-.cabecalho.compacta .topo .miolo{padding:6px 16px 4px;gap:12px}
-.cabecalho.compacta .topo img.logo{width:40px}
-.cabecalho.compacta .topo .titulo{font-size:17px}
-.cabecalho.compacta .topo .meta{display:none}
-.cabecalho.compacta .pilulas{padding:6px 16px 8px;gap:6px}
-.cabecalho.compacta .pilula{min-height:34px;font-size:13px;padding:0 12px 0 9px}
-.cabecalho.compacta .pilula svg{width:16px;height:16px}
-.pilulas{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px}
-.pilula{min-height:44px;padding:0 16px 0 12px;border-radius:999px;border:2px solid rgb(255 255 255 / .18);background:transparent;color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:background .18s,border-color .18s}
+.topo{overflow:hidden;max-height:80px;transition:max-height .25s ease,opacity .2s ease}
+.cabecalho.compacta .topo{max-height:0;opacity:0}
+.cabecalho.compacta .barra-abas{border-top:0}
+.pilulas{max-width:1120px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
+.pilula{min-height:38px;padding:0 14px 0 10px;border-radius:999px;border:2px solid rgb(255 255 255 / .18);background:transparent;color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:background .18s,border-color .18s}
 .pilula svg{width:20px;height:20px;flex:none}
 .pilula:hover{background:rgb(255 255 255 / .1);border-color:rgb(255 255 255 / .34)}
 .pilula:focus-visible{outline:3px solid #fff;outline-offset:2px}
@@ -75,7 +70,7 @@ code{font-family:var(--fonte-mono);font-size:.92em;background:var(--superficie);
 @media (prefers-reduced-motion:reduce){.rv2{opacity:1;transform:none;transition:none}}
 @keyframes aparecer{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.aba.ativa{animation:none}html{scroll-behavior:auto}}
-@media (max-width:640px){.topo img.logo{width:72px}.pilulas{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;padding:10px 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(to right,#000 88%,transparent);-webkit-mask-image:linear-gradient(to right,#000 88%,transparent)}.pilulas::-webkit-scrollbar{display:none}.pilula{flex:none;scroll-snap-align:start;font-size:13.5px;padding:0 14px 0 12px;min-height:42px;white-space:nowrap}}
+@media (max-width:640px){.topo img.logo{width:40px}.pilulas{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;padding:10px 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(to right,#000 88%,transparent);-webkit-mask-image:linear-gradient(to right,#000 88%,transparent)}.pilulas::-webkit-scrollbar{display:none}.pilula{flex:none;scroll-snap-align:start;font-size:13.5px;padding:0 14px 0 12px;min-height:42px;white-space:nowrap}}
 
 /* ===== Layout de leitura (briefing, planos, fluxo, objeções) ===== */
 .pagina{max-width:1120px;margin:0 auto;padding:28px 16px 80px;display:grid;grid-template-columns:1fr;gap:28px}
@@ -550,7 +545,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 @media (min-width:900px){
   .pagina{grid-template-columns:260px 1fr;gap:40px;padding-top:36px}
   .pagina.uma{grid-template-columns:1fr;max-width:960px}
-  nav.indice{position:sticky;top:104px;max-height:calc(100vh - 120px);overflow:auto}
+  nav.indice{position:sticky;top:70px;max-height:calc(100vh - 86px);overflow:auto}
   nav.indice summary{display:none}
   nav.indice details{display:contents}
   .bloco{padding:32px 36px}
