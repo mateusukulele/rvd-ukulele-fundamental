@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Clube do Ukulele Academy: briefing master do MVP</title>
+<meta name="description" content="Documento interno do Clube do Ukulele Academy. Não indexar.">
+<link rel="icon" href="../favicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#443468;--indigo-profundo:#2D124E;--indigo-hover:#3F3060;
+  --coral:#E87A85;--coral-forte:#B4404F;--coral-suave:#FBEAEC;--coral-texto:#4D1A20;
+  --teal-suave:#E7F3F0;--teal-util:#177A6A;
+  --ambar-texto:#8A5A00;--ambar-fundo:#FBEFD0;
+  --texto:#1F1A2B;--texto-suave:#5C5A70;--fundo:#F5F4F7;--superficie:#ECEAF1;--card:#FFFFFF;
+  --neutro-medio:#8E8AA3;--sobre-escuro:#DCD6E6;
+  --fonte-titulo:Anton,"Montserrat",system-ui,sans-serif;--fonte-corpo:"Montserrat",system-ui,-apple-system,sans-serif;
+  --fonte-mono:"Iosevka","JetBrains Mono",ui-monospace,monospace;
+  --sombra-card:0 20px 44px -30px rgb(31 26 43 / .45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--fundo);color:var(--texto);font-family:var(--fonte-corpo);font-size:17px;line-height:1.65}
+img{max-width:100%;height:auto}
+a{color:var(--indigo);text-decoration-thickness:2px;text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--indigo);outline-offset:3px;border-radius:4px}
+header.topo{background:var(--indigo-profundo);color:#fff;padding:32px 16px 40px}
+header.topo .miolo{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header.topo img.logo{width:120px;height:auto;display:block}
+header.topo h1{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(30px,5vw,50px);line-height:1.12;margin:0;letter-spacing:.2px}
+header.topo .sub{color:var(--sobre-escuro);margin:0;font-size:15px}
+header.topo .sub strong{color:var(--coral);font-weight:700}
+header.topo .interno{display:inline-block;background:var(--coral);color:var(--coral-texto);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;width:max-content}
+.pagina{max-width:1120px;margin:0 auto;padding:24px 16px 80px;display:grid;grid-template-columns:1fr;gap:32px}
+nav.indice{background:var(--card);border-radius:16px;padding:20px;box-shadow:var(--sombra-card);align-self:start}
+nav.indice h2{font-family:var(--fonte-titulo);font-weight:400;font-size:18px;margin:0 0 10px;color:var(--indigo);letter-spacing:.3px}
+nav.indice ol{margin:0;padding-left:22px}
+nav.indice li{margin:6px 0;font-size:15px;line-height:1.4}
+nav.indice a{text-decoration:none;display:inline-block;min-height:28px}
+nav.indice a:hover{text-decoration:underline}
+main{min-width:0}
+section{background:var(--card);border-radius:16px;padding:24px 20px;margin-bottom:24px;box-shadow:var(--sombra-card)}
+h2{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(24px,3.4vw,32px);line-height:1.12;color:var(--indigo);margin:0 0 16px;padding-bottom:12px;border-bottom:4px solid var(--coral)}
+h3{font-family:var(--fonte-corpo);font-weight:700;font-size:19px;line-height:1.3;color:var(--indigo);margin:28px 0 10px}
+p{margin:0 0 14px;max-width:700px}
+ul,ol{margin:0 0 16px;padding-left:24px;max-width:700px}
+li{margin:6px 0}
+li p{margin:0}
+strong{font-weight:700}
+code{font-family:var(--fonte-mono);font-size:.92em;background:var(--superficie);padding:1px 6px;border-radius:5px}
+blockquote{margin:0 0 20px;padding:14px 18px;background:var(--coral-suave);border-left:5px solid var(--coral-forte);border-radius:0 12px 12px 0}
+blockquote p{margin:0 0 10px} blockquote p:last-child{margin:0}
+.pend{display:inline-block;background:var(--ambar-fundo);color:var(--ambar-texto);font-weight:700;font-size:.88em;padding:2px 10px;border-radius:999px;line-height:1.5}
+.tabela{overflow-x:auto;margin:0 0 20px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px;line-height:1.5}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--superficie)}
+th{background:var(--superficie);color:var(--indigo);font-weight:700}
+tbody tr:nth-child(even){background:var(--fundo)}
+td:first-child{font-weight:700;color:var(--indigo)}
+footer{color:var(--texto-suave);font-size:14px;text-align:center;padding:0 16px 40px}
+@media (min-width:900px){
+  .pagina{grid-template-columns:260px 1fr;gap:40px;padding-top:40px}
+  nav.indice{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow:auto}
+  section{padding:32px 36px}
+  header.topo .miolo{flex-direction:row;align-items:center;gap:32px}
+  header.topo .texto{display:flex;flex-direction:column;gap:12px}
+}
+@media print{
+  header.topo{background:#fff;color:var(--texto)}
+  nav.indice{display:none}
+  section{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<header class="topo">
+  <div class="miolo">
+    <img class="logo" src="../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778">
+    <div class="texto">
+      <span class="interno">Documento interno</span>
+      <h1>Clube do Ukulele Academy: briefing master do MVP</h1>
+      <p class="sub"><strong>Versão:</strong> v1.4 · <strong>Data:</strong> 21/09/2026 · <strong>Para:</strong> Mateus e Marco</p>
+    </div>
+  </div>
+</header>
+<div class="pagina">
+  <nav class="indice" aria-label="Índice">
+    <h2>Índice</h2>
+    <ol><li><a href="#s1">1. O produto</a></li><li><a href="#s2">2. Para quem é</a></li><li><a href="#s3">3. A dor</a></li><li><a href="#s4">4. A promessa e o mecanismo</a></li><li><a href="#s5">5. Objeções e respostas</a></li><li><a href="#s6">6. Preço, ancoragem e venda</a></li><li><a href="#s7">7. Prova</a></li><li><a href="#s8">8. A língua deles</a></li><li><a href="#s9">9. Voz da marca</a></li><li><a href="#s10">10. Metas</a></li><li><a href="#s11">11. O que cada peça puxa daqui</a></li><li><a href="#s12">12. Pendências que travam peças</a></li><li><a href="#s13">Changelog</a></li></ol>
+  </nav>
+  <main>
+<blockquote><p>O que este documento é: a base única de onde saem página de cadastro, página de oferta de lançamento, VSL, fluxo de mensagens do closer, criativos e e-mails. Quem for escrever qualquer uma dessas peças lê isto antes e não precisa perguntar de novo o que é o produto, para quem é, o que promete e o que não pode dizer.</p><p>O que ele não é: copy pronta. As frases aqui são matéria-prima e limite, não texto final.</p><p>Fontes: <code>Clube do Ukulele Academy - Formato do Produto</code> (decisões de 21/09/2026), <code>PESQUISAS - Clube do Ukulele</code> (base auditada, 37.490 respondentes, 83 pesquisas; sigla PQ), pesquisa de objeções com 1.373 leads (sigla OBJ), manual de marca (skill <code>marca-cdu</code>). Onde o número tem N, é afirmação; onde não tem, é hipótese e está marcado.</p><p><code><span class="pend">Pendente</span></code> marca lacuna real. Não inventar por cima.</p></blockquote>
+<section id="s1"><h2>1. O produto</h2>
+<p><strong>Em uma linha:</strong> escola online de ukulele para adultos, sempre aberta, em que o aluno segue uma jornada gravada e tem um professor acompanhando o que ele toca.</p>
+<p><strong>O que é, em três frases:</strong> o aluno entra numa jornada gravada do zero ao intermediário (Iniciante 0, 1, 2 e Intermediário 1, 2), com biblioteca de 152 músicas por nível e cursos extras. Ao longo da jornada, nos pontos cruciais, ele grava uma atividade tocando e recebe a devolutiva do professor em vídeo. Nos planos maiores, ganha plantão ao vivo, análise das músicas que já toca e encontro individual.</p>
+<p><strong>Prateleira:</strong> escola de música online. Concorre com a escola presencial e com o professor particular, não com "curso online de ukulele" (o curso online gravado é o que a pessoa já tentou e não resolveu).</p>
+<p><strong>Tipo:</strong> assinatura anual (12x ou à vista), cinco planos, sempre aberta.</p>
+<p><strong>Marca × produto:</strong> Clube do Ukulele é a marca guarda-chuva (Instagram, YouTube, lives Ukulele na Mão, comunidade aberta, produtos de front). Clube do Ukulele Academy, ou "a Academy", é o produto pago. "Entrar no Clube" é expressão válida. <code><span class="pend">Pendente: peça de apresentação marca × Academy para o público não confundir o grátis com o pago.</span></code></p>
+<h3>Os cinco planos</h3>
+<p>Escada inclusiva: cada plano tem tudo do anterior e mais alguma coisa. O que muda de um para outro é uma coisa só: quanto acompanhamento humano a pessoa recebe. Preços provisórios até a planilha de custo fechar.</p>
+<div class="tabela"><table><thead><tr><th></th><th>Essencial</th><th>Bronze</th><th>Prata</th><th>Ouro</th><th>Diamante</th></tr></thead><tbody><tr><td>12x / à vista</td><td>50 / 500</td><td>100 / 1.000</td><td>150 / 1.500</td><td>300 / 3.000</td><td>400 / 4.000</td></tr><tr><td>Jornada, bibliotecas, extras, comunidade</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Confraria do Ukulele (quinta 19:40)</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Atividades Propostas com devolutiva em vídeo</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Plantão agendado, 2 × 1 h por semana</td><td>não</td><td>não</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Análise de performance por mês</td><td>não</td><td>não</td><td>1</td><td>2</td><td>4</td></tr><tr><td>Encontro individual de 25 min</td><td>não</td><td>não</td><td>não</td><td>2 por mês</td><td>1 por semana</td></tr><tr><td>Onde aparece</td><td>só o closer, último recurso e retenção</td><td>só o closer</td><td>oferta, recomendado</td><td>oferta</td><td>oferta</td></tr></tbody></table></div>
+<p>O que cada componente é, em uma linha (definição completa no Formato do Produto, seção 4):</p>
+<ul><li><strong>Atividades Propostas:</strong> 49 pontos ao longo da jornada, depois das aulas cruciais. Não é envio embaixo de toda aula, não é envio de música.</li><li><strong>Devolutiva:</strong> sempre em vídeo, estilo react, o professor assiste junto e mostra no instrumento. Em 3 dias úteis a partir do dia seguinte ao envio.</li><li><strong>Confraria:</strong> encontro em grupo, horário fixo, sem agendar, para trocar ideia.</li><li><strong>Plantão:</strong> sessão de 1 h, só para quem agendou, para tirar dúvida e pedir ajuda numa música. Terça 20h e um dia útil de manhã.</li><li><strong>Análise de performance:</strong> o aluno manda uma música que já aprendeu e treinou; o professor diz o que pode melhorar. Cota mensal, não acumula.</li><li><strong>Encontro individual:</strong> 25 min, reativo, sem conteúdo preparado. O aluno traz o que quer trabalhar, principalmente repertório. Nunca chamar de "aula".</li></ul>
+<h3>Garantia</h3>
+<p>Dupla, do Bronze para cima: <strong>30 dias incondicional</strong> e <strong>um ano condicionada</strong> (assistiu a jornada Iniciante inteira, enviou todas as Atividades Propostas dela e, ao completar 12 meses, ainda não toca 10 músicas do começo ao fim: devolve). Essencial só tem os 30 dias.</p>
+</section>
+<section id="s2"><h2>2. Para quem é</h2>
+<h3>As três portas de entrada (Decidido)</h3>
+<p>A copy fala com três pessoas, e nenhuma delas é definida por idade ou por instrumento anterior:</p>
+<ol><li><strong>Quem nunca tocou nada e quer começar do zero.</strong> É a maioria: entre quem informou nível, 62,9% estão iniciando e 29,9% nunca começaram (PQ, n = 16.026). Entre quem informou tempo de prática, 42% têm até 1 mês e 36,5% ainda não tocam (n = 10.962).</li><li><strong>Quem já começou e travou.</strong> Comprou o instrumento, viu vídeo, tentou uma ou duas semanas, e o ukulele virou enfeite. Sabe o que é um acorde, não sabe por que a música não sai.</li><li><strong>Quem nunca ouviu falar de ukulele como caminho.</strong> Sempre quis tocar um instrumento e nunca se achou capaz. Descobre o ukulele na peça (quatro cordas macias, braço pequeno, cabe no colo).</li></ol>
+<p><strong>Quem veio do violão</strong> (12,4% dos leads, PQ n = 16.182) entra em qualquer uma das três portas e é atendido sem ser chamado pelo nome. A copy não fala "você que tentou violão"; fala "você que tentou sozinho e não saiu do lugar", e quem veio do violão se reconhece. Motivo: nomear o violão exclui os outros 87%.</p>
+<h3>O que a base diz de quem é (afirmações com N)</h3>
+<ul><li><strong>Seis em cada dez são mulheres</strong> (60,9%, n = 26.234).</li><li><strong>Não existe idade central.</strong> 41 a 59 é o maior bloco com 31,6%; 18 a 30 tem 21,3%; 31 a 40 tem 20,2% (n = 28.337). Persona de idade única descarta pelo menos 68% do público. Consequência para a copy: <strong>nunca rotular idade</strong> ("na sua idade", "depois dos 40", "terceira idade"). A idade entra como prova (rosto de aluno), não como endereço.</li><li><strong>Homens e mulheres chegam em idades diferentes:</strong> 41,5% dos homens têm 41 a 59; 48% das mulheres têm menos de 31. Duas portas dentro da mesma base.</li><li><strong>O objetivo é modesto:</strong> aprender o básico 39,6%, hobby e relaxar 36,4%, tocar para outros 17,9%. Domínio técnico é 12,9% (n = 9.188). A Academy não vende "virar músico"; vende tocar de verdade com alguém olhando.</li><li><strong>Por que quer tocar</strong> (n = 16.182, multi): o som do instrumento 25,5%, amor pela música 20,9%, desejo de tocar um instrumento 19,8%, parece fácil 16,5%, sonho antigo 13,9%, família e amigos 12,7%, saúde e mente 9,6%.</li><li><strong>Por onde chega:</strong> YouTube 38,2%, Instagram 30,4%, Facebook 21,9% (n = 19.343). Facebook entrega o público mais velho, Instagram o mais jovem (testado).</li></ul>
+<h3>Hipóteses (orientam teste, não sustentam promessa)</h3>
+<ul><li>Quem compra cita mais <strong>sonho antigo</strong> (22,8% contra 13,9%) e tem <strong>menos background musical</strong>.</li><li>A maior objeção não declarada parece ser <strong>não ter objetivo definido</strong> com o instrumento (28,1% da camada latente).</li><li>Quem já é aluno trava mais em <strong>coordenação e dedos</strong> e em <strong>tempo e rotina</strong> do que o lead imagina que vai travar.</li></ul>
+<h3>Anti-persona</h3>
+<p>Quem quer só uma música específica. Adolescente (engaja e não compra, consistente nos cinco anos medidos). Quem quer aula particular ao vivo toda semana com conteúdo preparado (a Academy não faz isso por desenho; o encontro é reativo).</p>
+</section>
+<section id="s3"><h2>3. A dor</h2>
+<p><strong>O problema central:</strong> quem aprende sozinho trava porque ninguém vê o que ela está fazendo de errado. Conteúdo a pessoa já tem de sobra; o que falta é correção.</p>
+<p><strong>Onde trava, com N:</strong> acordes 29,8% e batida 27,8% entre leads (n = 19.224); 23% citam os dois. Mulheres relatam mais dificuldade nos dois temas. <strong>Um quinto do público não consegue dizer onde trava</strong> (15,7% "não sei" + 5,1% "não conheço ainda"): esse quinto precisa que a peça nomeie a dor por ele.</p>
+<p><strong>O que custa:</strong> meses com o instrumento parado, recomeços, a conclusão errada ("o problema sou eu", "não levo jeito").</p>
+<p><strong>A tensão emocional:</strong> "duvido que eu consiga" (11,9%, OBJ); "consigo aprender nessa idade?"; a vergonha de tocar na frente de alguém.</p>
+<p><strong>Por que o que ela já tentou não resolveu:</strong></p>
+<ul><li><strong>YouTube e curso gravado:</strong> sem ordem e sem ninguém olhando. O erro de mão fica.</li><li><strong>Aula particular:</strong> R$ 100 a 150 por aula, presa a horário, e o professor gasta o tempo de contato explicando o que ela poderia ver gravado. A correção acaba quando a aula acaba.</li><li><strong>Escola presencial:</strong> R$ 500 a 600 por mês, deslocamento, turma no ritmo da turma.</li><li><strong>App:</strong> gamifica, não corrige mão.</li></ul>
+</section>
+<section id="s4"><h2>4. A promessa e o mecanismo</h2>
+<h3>Promessa (Decidido em 18/09, mantida)</h3>
+<blockquote><p>Aprenda ukulele com um professor acompanhando o seu progresso, vídeo a vídeo, sem sair de casa e sem hora marcada.</p></blockquote>
+<p>Vale para todos os planos do Bronze para cima. O Essencial não cumpre essa frase, e por isso nunca aparece aberto.</p>
+<h3>O mecanismo: DMA (Decidido; redação v2, em lapidação)</h3>
+<p>O método da Academy é o <strong>DMA</strong>: Direção, Motivação, Acompanhamento. Os três pilares respondem, na ordem, às três coisas que a base diz que faltam a quem tenta sozinho: não saber por onde começar, largar no meio, e ninguém ver o erro.</p>
+<p><strong>Frase-mãe (escolhida em 21/09):</strong> "Direção, Motivação e Acompanhamento: um caminho para seguir, motivos que não acabam e um professor acompanhando cada passo seu."</p>
+<p><strong>Os pilares</strong></p>
+<div class="tabela"><table><thead><tr><th></th><th>Direção</th><th>Motivação</th><th>Acompanhamento</th></tr></thead><tbody><tr><td>A falha que mata</td><td>"Fico perdida em o que fazer primeiro, por onde começar" (PQ)</td><td>"Meu ukulele está parado há meses"; "desisti no meio" (PQ)</td><td>"O problema sou eu"; meses repetindo o mesmo erro sem saber; tocar no escuro</td></tr><tr><td>O que é, para o aluno</td><td>Um caminho pronto: o que estudar hoje, o que vem depois, e quando passar adiante</td><td>Motivos que não acabam, venha de onde vier. Sete fontes, cada uma de um ângulo: <strong>progresso</strong> que você vê (nível, atividade devolvida, música que já toca); <strong>repertório</strong> que cresce (música nova todo mês, sempre tem uma que você quer tocar); <strong>encontro</strong> toda semana (Confraria, live, plantão); <strong>gente</strong> na mesma estrada (comunidade, mostrar o que tocou); <strong>desafio</strong> todo mês (meta com data e plateia); <strong>resposta</strong> com o seu nome (alguém esperando o seu vídeo); <strong>objetivo</strong> (tocar para alguém: a roda, a família, a igreja). Quem começa do zero sente na primeira música inteira; quem já toca sente na música que faltava e no desafio do mês</td><td>Um professor acompanhando cada passo seu: cada vídeo que você grava volta com a correção dele, mostrada no instrumento, sobre o que você tocou de verdade. Você nunca toca no escuro e nunca passa adiante com um erro escondido</td></tr><tr><td>O que entrega, na Academy</td><td>Jornada em 5 níveis, 152 músicas por nível, 3D dentro de cada música</td><td>Progresso visível na jornada; biblioteca com entradas mensais; Confraria toda quinta e live Ukulele na Mão toda semana; plantão; comunidade com Desafio do Mês; devolutiva e análise de performance com o seu nome; para quem começa do zero, música inteira na primeira semana</td><td>49 Atividades Propostas com devolutiva em vídeo; análise de performance das músicas que você já toca; plantão; encontro individual; tudo em 3 dias úteis</td></tr><tr><td>Frase de página</td><td>"Você nunca fica sem saber o próximo passo."</td><td>"Toda semana tem encontro. Todo mês tem desafio e música nova. Toda atividade volta com resposta, e tem gente na mesma estrada que você. Seja qual for o seu ponto de partida, sempre tem um próximo motivo para pegar o ukulele."</td><td>"Cada vídeo que você grava volta com a correção do professor, mostrada no instrumento. Você nunca passa adiante com um erro escondido."</td></tr><tr><td>Frase de VSL (falada)</td><td>"Eu digo o que você estuda primeiro, segundo e terceiro. Você não precisa decidir nada."</td><td>"Ninguém larga por falta de vontade. Larga porque acabou o motivo. Aqui o motivo não acaba: toda quinta a gente se encontra, todo mês tem desafio e música nova, cada vídeo seu volta com resposta, e tem gente tocando junto com você. Se você está começando, a primeira música inteira vem na primeira semana. Se já toca, vem a música que faltava."</td><td>"Você grava, eu assisto com você e te mostro no instrumento onde travou. É a correção de um professor particular, sobre o que você tocou de verdade, sem hora marcada. Ninguém aqui fica meses errando sem saber."</td></tr><tr><td>Prova</td><td>5 níveis, 152 músicas, 49 pontos de atividade</td><td>Confraria e live toda semana; Desafio do Mês; entradas mensais na biblioteca; comunidade ativa; semana 1 para quem começa do zero</td><td>49 devolutivas ao longo da jornada, em 3 dias úteis; trecho de devolutiva real na página</td></tr></tbody></table></div>
+<p><strong>Como os três se fecham num ciclo.</strong> A Direção diz o que fazer; a Motivação faz a pessoa fazer, hoje e daqui a seis meses; o Acompanhamento confirma que saiu certo, e essa confirmação com o nome dela é o combustível mais forte da Motivação. Por isso o Acompanhamento é o pilar da oferta: sem ele, os outros dois são o que todo curso gravado já promete.</p>
+<p><strong>Onde o 3D entra.</strong> Dentro da Direção, como a técnica de estudar cada música: dividir (quebrar música, acorde e batida em peças), destravar (treinar cada peça até sair sem esforço), dominar (a música flui). Aparece uma vez na página, como "o jeito que você estuda cada música"; nunca como método concorrente do DMA.</p>
+<p><strong>O que o DMA não diz:</strong> não promete virar músico, não promete prazo além da primeira semana, não promete "sem esforço", não fala de saúde. "Motivação" nunca vira discurso de ânimo ("acredite em você"): é mecanismo contínuo, de sete fontes (progresso, repertório, encontro, gente, desafio, resposta, objetivo), não incentivo. "Primeira música na primeira semana" é prova para quem começa do zero, nunca a definição do pilar: boa parte dos alunos já toca músicas antes de entrar. "Acompanhamento" nunca é dito como "alguém vê o que você toca": é "um professor acompanhando cada passo seu", com a correção mostrada no instrumento.</p>
+<p><code><span class="pend">Pendente: validar a frase de página de cada pilar em voz alta, na voz do Mateus.</span></code></p>
+<h3>O argumento central: por que vale mais que aula individual</h3>
+<p>Nesta ordem, porque a primeira vira título de seção:</p>
+<ol><li><strong>Corrige o que você tocou de verdade.</strong> Você grava em casa, no seu tempo, sem o nervoso de tocar na frente de alguém. O professor vê exatamente onde travou e responde mostrando no instrumento.</li><li><strong>Sem hora marcada.</strong> Você manda quando estiver pronto. A resposta chega em até três dias úteis.</li><li><strong>O tempo de professor vai inteiro para o que só um olho humano resolve.</strong> Na aula particular, a maior parte da hora é explicação que você poderia assistir gravada, repetir e rever com material. Aqui a explicação está na jornada, e o contato humano é só correção: direto ao ponto, quando você precisa, quando você quer.</li></ol>
+<p>Para Ouro e Diamante, um argumento a mais: o encontro individual existe para o repertório. É a meia hora de mostrar a música que você está montando e sair com o próximo passo claro.</p>
+<h3>Diferenciação (o que nenhum concorrente mapeado tem no centro)</h3>
+<p>Devolutiva individual sobre o vídeo do próprio aluno, em pontos fixos da jornada, com escada de acompanhamento por cima. Concorrentes diretos são gravados sem ninguém olhando; Vivas avalia vídeo só dentro da formação; Tostes dá telefone; Marcel dá WhatsApp; Cifra Club e Gustavo não têm nada. Referência de modelo, não concorrente: Fluency (gravado + conversação em grupo ou individual, planos por frequência, venda no WhatsApp).</p>
+</section>
+<section id="s5"><h2>5. Objeções e respostas</h2>
+<p>Porcentagens da OBJ (n = 1.373). Respostas escritas para FAQ e para WhatsApp, na voz do Mateus. Onde a resposta muda por plano, está dito.</p>
+<div class="tabela"><table><thead><tr><th>Objeção</th><th>Resposta base</th></tr></thead><tbody><tr><td><strong>Não tenho dinheiro</strong> (59%)</td><td>Na página: ancoragem antes do preço (seção 6), à vista com desconto, 12x. Na conversa: primeiro "o que pesa mais, o valor ou o compromisso de um ano?". Se é valor, desce um degrau (Prata → Bronze → Essencial). Aceitar que boa parte da base não é alvo do Prata, e tudo bem.</td></tr><tr><td><strong>Não tenho tempo</strong> (20%)</td><td>"A jornada anda no seu ritmo. A devolutiva chega no seu horário, não no meu. Vinte minutos por dia já rendem o que você precisa me mandar." Plantão e Confraria são opcionais.</td></tr><tr><td><strong>Duvido que eu consiga</strong> (12%)</td><td>"É por isso que existe a devolutiva. Você não vai passar meses repetindo um erro sem saber. Eu vejo, aponto, você corrige. E se em 30 dias achar que não é para você, devolvo tudo."</td></tr><tr><td><strong>Prefiro o que é de graça</strong> (7%)</td><td>"De graça tem conteúdo bom, inclusive meu. O que não tem é alguém olhando o que você toca. Se vídeo gratuito resolvesse, o seu ukulele não estaria parado."</td></tr><tr><td><strong>Não encontro professor na minha cidade</strong> (4%)</td><td>"É exatamente para isso que a Academy existe."</td></tr><tr><td><strong>Consigo aprender nessa idade?</strong></td><td>"A maior parte dos meus alunos é adulta, e a devolutiva é individual: ninguém compara você com ninguém." Idade como prova (rosto de aluno), nunca como rótulo.</td></tr><tr><td><strong>Por que não uma aula particular?</strong></td><td>Versão curta do argumento central: "Numa aula particular o professor vê você tocar uma vez por semana, nervosa, e a correção acaba quando a aula acaba. Aqui eu vejo o que você gravou tranquila em casa, respondo em vídeo, e a resposta fica guardada."</td></tr><tr><td><strong>25 minutos é pouco</strong> (Ouro, Diamante)</td><td>"É meia hora só sua, sem conteúdo para eu apresentar. O tempo é inteiro para a sua dúvida e o seu repertório. Vinte e cinco minutos focados rendem mais que uma hora de aula expositiva."</td></tr><tr><td><strong>O professor corrige mesmo ou é só aula gravada?</strong></td><td>"Corrige. Você grava a atividade, eu assisto junto com você e respondo em vídeo mostrando no instrumento."</td></tr><tr><td><strong>E se eu parar no meio do ano?</strong></td><td>"Trinta dias para desistir e receber tudo. Depois disso a jornada continua sua, e a Confraria está lá toda quinta quando você voltar."</td></tr><tr><td><strong>Vou ficar preso um ano?</strong></td><td>"O plano é anual porque aprender um instrumento leva mais de um mês. Você sobe de plano quando quiser. Os 30 dias são para experimentar sem risco."</td></tr><tr><td><strong>Quanto custa?</strong> (perpétuo)</td><td>"Depende do plano. Tem plano só com a devolutiva das atividades e tem plano com encontro individual toda semana. Me conta onde você está e eu te mostro o que faz sentido." Nunca dar número fora da conversa.</td></tr></tbody></table></div>
+</section>
+<section id="s6"><h2>6. Preço, ancoragem e venda</h2>
+<h3>Como se vende (Decidido)</h3>
+<p><strong>Sempre aberto, com closer (Marco).</strong> Três portas, todas terminando no WhatsApp:</p>
+<ol><li><strong>Perpétuo:</strong> anúncio → página de cadastro (nome, e-mail, WhatsApp) → obrigado com vídeo do Mateus → primeira mensagem → diagnóstico → plano, preço e link na conversa. Preço não aparece em anúncio nem em página.</li><li><strong>Lançamento gratuito:</strong> aulas gratuitas com oferta no final.</li><li><strong>Lançamento pago:</strong> evento low ticket com oferta no final.</li></ol>
+<p>No lançamento, o preço aparece com uma condição de data, e a oferta mostra <strong>Prata (destaque), Ouro e Diamante</strong>. A condição ainda não foi escolhida; as três opções, com o custo de cada uma:</p>
+<ul><li><strong>Bônus com data</strong> (ex.: uma análise de performance extra por mês no primeiro semestre, ou um encontro individual de boas-vindas no Prata): não corrói o preço de tabela, que ainda é provisório; o perpétuo depois não parece caro. Custo: mais tempo de professor por aluno de lançamento.</li><li><strong>Desconto com data</strong> (ex.: 12x 120 no Prata até o dia X): vende mais rápido e é o que a Fluency faz. Custo: ancora o preço baixo antes de ele estar fechado, e quem entra no perpétuo pelo closer sabe que existiu número menor.</li><li><strong>Os dois:</strong> a condição mais forte, a mais cara, e a que mais faz o perpétuo parecer caro. Reservar para quando o preço de tabela estiver fechado.</li></ul>
+<p><code><span class="pend">Pendente: escolher antes do primeiro lançamento.</span></code> Bronze e Essencial continuam exclusivos do closer. Quando fecha, a condição some e a página volta a vender só o cadastro.</p>
+<p><strong>Não é turma com data.</strong> A entrada é sempre possível; o que muda é a forma de oferecer. Escassez: só a real (a data da condição). Sem "últimas vagas", sem contador, sem "vagas limitadas".</p>
+<h3>O diagnóstico do closer (três perguntas)</h3>
+<ol><li>Você já tocou alguma coisa (ukulele ou outro instrumento) ou está começando do zero?</li><li>Quanto tempo você tem na semana?</li><li>Prefere mandar vídeo no seu ritmo, ou ter também um encontro ao vivo?</li></ol>
+<p>Com isso o closer recomenda o <strong>Prata por padrão</strong>. Quem quer encontro individual sobe para Ouro ou Diamante. Quem trava no preço ouve "o que pesa mais?", e desce para Bronze ("a mesma jornada e a devolutiva das atividades, sem o plantão e sem a análise; você sobe quando quiser pagando a diferença"). Essencial é o último recurso e a oferta de retenção.</p>
+<h3>Ancoragem (sempre antes do preço, em parágrafo na voz do Mateus, não em tabela)</h3>
+<ul><li><strong>Escola de música presencial:</strong> R$ 500 a 600 por mês. O Prata custa um quarto disso.</li><li><strong>Aula particular:</strong> R$ 100 a 150 por aula, quatro por mês, R$ 400 a 600, sem material, sem gravação, sem plantão. O Ouro dá dois encontros individuais mais tudo do Prata por R$ 300.</li><li><strong>Preço por dia</strong>, uma vez, abaixo do preço: Prata R$ 5 por dia, Ouro R$ 10.</li></ul>
+<p>Exemplo de parágrafo: "Uma escola de música na sua cidade cobra entre R$ 500 e R$ 600 por mês. Uma aula particular, uns R$ 120, e o professor só vê você tocar naquela hora. Aqui você paga R$ 150 por mês e eu vejo tudo o que você gravar."</p>
+<h3>Trocas e renovação</h3>
+<p>Subir de plano a qualquer momento, pagando a diferença. Descer só na renovação. Renovação <code><span class="pend">Pendente: manual com conversa, automática ou híbrida; prós e contras na seção 11 do Formato do Produto</span></code>.</p>
+</section>
+<section id="s7"><h2>7. Prova</h2>
+<p><strong>O que existe:</strong> +6.000 alunos desde 2017 e +300 mil seguidores <code><span class="pend">Pendente: revalidar na plataforma antes de publicar</span></code>; 152 músicas na biblioteca; falas anônimas de pesquisa (abaixo).</p>
+<p><strong>O que falta e trava a página:</strong> <code><span class="pend">Pendente: depoimentos com nome e foto, 5 a 10 alunos ativos, pedidos por WhatsApp</span></code> · <code><span class="pend">Pendente: 2 ou 3 trechos de devolutiva real, com autorização, porque mostram o "acompanhando" em vez de descrever</span></code> · <code><span class="pend">Pendente: autorização de imagem do Fabiano e dos alunos das inserções do lote 1</span></code>. Sem autorização, a citação vira "aluno do Clube".</p>
+<p><strong>Temas de valor e a prova de cada um:</strong></p>
+<div class="tabela"><table><thead><tr><th>Tema</th><th>Prova</th></tr></thead><tbody><tr><td>Alguém vê o que você toca</td><td>49 Atividades Propostas com devolutiva em vídeo ao longo da jornada</td></tr><tr><td>Vitória cedo</td><td>Primeira música inteira na primeira semana</td></tr><tr><td>Nunca sem próximo passo</td><td>Jornada em 5 níveis, 152 músicas por nível</td></tr><tr><td>Ao vivo, sem prender horário</td><td>Confraria fixa + plantão agendado + gravação</td></tr><tr><td>Você não fica na dúvida</td><td>"O feedback de vocês fez TODA diferença" (fala anônima de pesquisa)</td></tr></tbody></table></div>
+</section>
+<section id="s8"><h2>8. A língua deles</h2>
+<p>Frases reais da base (37.278 verbatins). Ao escolher citação, filtrar por tipo de respondente: quem comprou escreve mais e está super-representado.</p>
+<p><strong>Como descrevem o problema:</strong></p>
+<ul><li>"Minha maior dificuldade é a batida e o tempo da batida."</li><li>"Fico perdida em o que fazer primeiro, por onde começar. Aí não avanço, meu ukulele está parado há meses."</li><li>"Eu não tenho ritmo, não tenho swing, sou uma pessoa meio dura... me sinto travada." (60+, aluna)</li><li>"Ganhei e não queria deixar como enfeite como fiz com o último violão que comprei." (31 a 40, aluna)</li></ul>
+<p><strong>Como descrevem o que funcionou:</strong></p>
+<ul><li>"Pela primeira vez não desisti no meio."</li><li>"Uma simples nota que eu acerto e já me sinto capaz."</li><li>"Me senti mais capaz, tudo que eu não sentia há muito tempo."</li><li>"Tocar me deixa de alma lavada, esqueço de tudo ao redor."</li></ul>
+<p><strong>Léxico afetivo espontâneo</strong> (associação livre, usar como vocabulário): praia, alegria, paz, Havaí, tranquilidade, sol, felicidade.</p>
+<p><strong>Palavras para usar:</strong> mão da batida, mão dos acordes, dedo 1 a 4, próximo passo, devolutiva, plantão, Confraria, encontro (nunca "aula" para o individual), "alguém olhando o que você toca".</p>
+<p><strong>Palavras e formas proibidas:</strong></p>
+<ul><li>"mão direita", "mão esquerda" (canhoto toca espelhado).</li><li>"dar conta" com coisa no sujeito ("vinte minutos dão conta").</li><li>"sem limite", "quantas vezes precisar", "de qualquer aula" (a promessa antiga de envio liberado caiu).</li><li>"velho", "idoso", "terceira idade", "na sua idade", "depois dos 40" (idade é prova, não endereço).</li><li>"é só se dedicar", "disciplina" (soa cobrança).</li><li>"aula" para o encontro individual.</li><li>Tagline aposentada "Toque todo dia, um acorde de cada vez".</li><li>"do Clube" como elogio a quem não é aluno.</li><li>Antítese "não é X, é Y" em série; pergunta retórica como transição em série; frase de dupla leitura ("toca uma pra mim"); travessão; promessa de saúde; urgência falsa; "método secreto", "revolucionário".</li><li>Chamar quem veio do violão pelo instrumento anterior.</li></ul>
+<p><strong>Glossário:</strong></p>
+<div class="tabela"><table><thead><tr><th>Termo</th><th>O que é</th></tr></thead><tbody><tr><td>Academy</td><td>o produto pago; "Clube do Ukulele Academy" na copy longa</td></tr><tr><td>Jornada</td><td>a trilha gravada em 5 níveis</td></tr><tr><td>Atividade Proposta</td><td>tarefa em vídeo nos pontos cruciais da jornada, com devolutiva</td></tr><tr><td>Devolutiva</td><td>resposta do professor em vídeo, estilo react</td></tr><tr><td>Análise de performance</td><td>devolutiva sobre uma música que o aluno já toca (Prata acima)</td></tr><tr><td>Confraria do Ukulele</td><td>encontro em grupo de quinta, 19:40, sem agendar (Bronze acima)</td></tr><tr><td>Plantão</td><td>sessão de dúvidas de 1 h, só com agendamento (Prata acima)</td></tr><tr><td>Encontro individual</td><td>25 min reativos com o professor (Ouro e Diamante)</td></tr><tr><td>Ukulele na Mão</td><td>live semanal de quinta, 19h, aberta</td></tr><tr><td>DMA</td><td>Direção, Motivação, Acompanhamento: o método</td></tr><tr><td>3D</td><td>Dividir, Destravar, Dominar: a técnica de estudo dentro da Direção</td></tr></tbody></table></div>
+</section>
+<section id="s9"><h2>9. Voz da marca</h2>
+<p><strong>Tom:</strong> alegre, leve, próximo; mentor empático, profissional descontraído. Celebra a vitória pequena, não dramatiza. <strong>Estilo:</strong> primeira pessoa do Mateus em página, VSL e mensagem. pt-BR natural, nunca lusitano. Frase que uma pessoa diria em voz alta. <strong>Personalidade:</strong> próximo, paciente, direto, competente, sem pose. Premium muda o acabamento (menos gíria, frase limpa, zero urgência falsa), não o tom. <strong>Visual:</strong> tudo passa pela <code>marca-cdu</code> antes de sair (cores com emprego fixo, Anton + Montserrat, logo única <code>logo-clube-do-ukulele.webp</code>, mínimo 96 px).</p>
+</section>
+<section id="s10"><h2>10. Metas</h2>
+<p><strong>Meta de negócio:</strong> 12 alunos novos por mês na Academy; subir o ticket médio; fazer o aluno usar (enviar atividade); tirar a marca do lugar de "cursinho". <strong>Ação de conversão:</strong> perpétuo = cadastro (nome, e-mail, WhatsApp) e resposta no WhatsApp; lançamento = compra do plano com a condição da data. <strong>Métricas a medir desde o dia 1:</strong> cadastros por origem (<code>lead_source</code>, <code>origem_pagina</code>, UTM), taxa de resposta no WhatsApp, taxa de fechamento por plano, % de aluno com atividade enviada em 30 dias, ticket médio. <code><span class="pend">Pendente: baseline</span></code></p>
+</section>
+<section id="s11"><h2>11. O que cada peça puxa daqui</h2>
+<div class="tabela"><table><thead><tr><th>Peça</th><th>Seções que alimentam</th><th>O que ela precisa decidir sozinha</th></tr></thead><tbody><tr><td><strong>Página de cadastro (perpétua)</strong></td><td>2 (portas), 3 (dor), 4 (promessa, DMA, argumento), 5 (FAQ sem preço), 7 (prova), 8 (língua)</td><td>Ordem dos blocos; hero por porta de entrada; nunca preço</td></tr><tr><td><strong>Página de oferta (lançamento)</strong></td><td>tudo da anterior + 1 (planos Prata, Ouro, Diamante), 6 (ancoragem, condição com data), garantia</td><td>Condição do lançamento; data; qual bônus</td></tr><tr><td><strong>Vídeo de teste da página (5 min), opcional</strong></td><td>3 (dor), 4 (mecanismo e argumento na ordem), 7 (prova em vídeo: trecho de devolutiva)</td><td>A página nasce sem vídeo (a Fluency também não tem). Se o teste for feito: estrutura escolhida por pesquisa de mercado e skills, não RVD; preço nunca (é perpétuo)</td></tr><tr><td><strong>Fluxo de WhatsApp do closer</strong></td><td>6 (diagnóstico, recomendação, descida), 5 (objeções por plano), 1 (tabela de planos com preço), garantia</td><td>Primeira mensagem, cadência D+1 a D+7, quando o Mateus entra com áudio</td></tr><tr><td><strong>Criativos e anúncios</strong></td><td>2 (três portas, um hook por porta), 3 (dor com N), 8 (verbatins como hook), proibições</td><td>Um hook por peça; CTA "deixa seu WhatsApp"; sem preço fora de lançamento</td></tr><tr><td><strong>E-mails</strong> (obrigado, não respondeu, lançamento)</td><td>4, 5, 6, 8</td><td>Sequência e gatilhos</td></tr><tr><td><strong>Onboarding</strong> (depois da compra)</td><td>1 (componentes), 4 (Motivação: primeira música na primeira semana)</td><td>Primeira atividade, convite para a Confraria</td></tr></tbody></table></div>
+</section>
+<section id="s12"><h2>12. Pendências que travam peças</h2>
+<ol><li>Depoimentos com nome e foto, e trechos de devolutiva autorizados (trava página e VSL).</li><li>Reconfirmar +6.000, +300 mil, 152.</li><li>Redação final do DMA (uma frase de página e uma de VSL por pilar).</li><li>Apresentação marca × Academy.</li><li>Renovação (manual, automática, híbrida).</li><li>Dia e hora do segundo plantão.</li><li>Preços finais depois da planilha de custo (custo por devolutiva: ~7 min de gravação por 3 min de envio; por plantão; por encontro).</li><li>Primeira condição de lançamento (bônus, desconto ou os dois; opções na seção 6).</li><li>Se e quando fazer o vídeo de teste de 5 min da página; estrutura a pesquisar.</li></ol>
+</section>
+<section id="s13"><h2>Changelog</h2>
+<ul><li>v1.4 (21/09/2026): Motivação redefinida como sete fontes contínuas por ângulos diferentes; semana 1 rebaixada a prova para iniciante, porque parte dos alunos já toca ao entrar.</li><li>v1.3 (21/09/2026): frase-mãe escolhida (opção 3, reforçada); Motivação vira mecanismo contínuo (semanal, mensal, por atividade, comunidade); Acompanhamento sobe de "alguém vê" para "professor acompanhando cada passo, correção mostrada no instrumento".</li><li>v1.2 (21/09/2026): DMA v2 com tabela por pilar (falha, entrega, frase de página, frase de VSL, prova), ciclo entre os três e três frases-mãe candidatas; página nasce sem vídeo, vídeo de 5 min vira teste opcional.</li><li>v1.1 (21/09/2026): 49 Atividades Propostas e primeira música na primeira semana confirmados como prova; frase-mãe do DMA v1; três opções de condição de lançamento com custo; VSL modelada no vídeo da Fluency (URL pendente).</li><li>v1 (21/09/2026): documento criado a partir do Formato do Produto fechado no mesmo dia, da base PESQUISAS e do contexto de marketing anterior (v4, 19/09). Substitui a promessa de "envio liberado" pelas Atividades Propostas com devolutiva; cinco planos; venda perpétua com closer mais lançamentos; DMA como mecanismo; três portas de entrada sem rótulo de idade nem de instrumento anterior.</li></ul>
+</section>
+  </main>
+</div>
+<footer>Clube do Ukulele · uso interno · não indexado</footer>
+</body>
+</html>
