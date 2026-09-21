@@ -492,8 +492,6 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .an-txt h3{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(20px,2.4vw,26px);line-height:1.15;color:var(--indigo);text-transform:uppercase;letter-spacing:.3px;margin:6px 0 8px;text-align:left}
 .lp .an-txt p{font-size:16px;text-align:left;hyphens:manual;margin:0;max-width:none}
 .lp .an-mock{position:relative}
-.demo-chip{position:absolute;z-index:3;right:12px;top:-12px;display:inline-flex;align-items:center;gap:7px;background:var(--indigo-profundo);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px;box-shadow:0 8px 18px -8px rgb(0 0 0 / .5)}
-.demo-chip i{width:8px;height:8px;border-radius:999px;background:var(--coral);animation:pulsar 1.2s ease-in-out infinite}
 .lp .an-mock::before{content:"";position:absolute;inset:-6px;border-radius:20px;border:2px solid transparent;pointer-events:none;transition:border-color .4s}
 .lp .an-etapa.on .an-mock::before{animation:an-destaque 2.4s ease-out 1}
 @keyframes an-destaque{0%{border-color:transparent}25%{border-color:var(--coral)}100%{border-color:transparent}}
@@ -536,28 +534,21 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .an-etapa.on .me-barra{animation:me-barra 7s ease-in-out infinite}
 .an-etapa.on .me-ok{animation:me-ok 7s ease-in-out infinite}
 /* mock: minhas análises */
-.mock-minhas{background:var(--card);border-radius:16px;box-shadow:var(--sombra-card);overflow:hidden}
-.mm-cab{background:var(--indigo-profundo);color:#fff;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
-.mm-cab strong{font-size:17px}.mm-cab span{font-size:12px;color:var(--sobre-escuro)}.mm-n{color:var(--coral);font-weight:700}
-.mm-corpo{display:grid;grid-template-columns:1fr;gap:12px;padding:12px}
-.mm-lista{list-style:none;padding:0;margin:0;display:none;gap:4px;max-width:none}
-.mm-lista li{font-size:12px;color:var(--texto);padding:6px 8px;border-radius:8px;opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .4s}
-.mm-lista li:first-child{background:var(--fundo);font-weight:700}
-.mm-lista em{font-style:normal;color:var(--coral-forte);font-weight:700;margin-right:6px;font-size:11px}
-.mock-minhas.on .mm-lista li{opacity:1;transform:none}
-.mock-minhas.on .mm-lista li:nth-child(2){transition-delay:.1s}.mock-minhas.on .mm-lista li:nth-child(3){transition-delay:.2s}.mock-minhas.on .mm-lista li:nth-child(4){transition-delay:.3s}.mock-minhas.on .mm-lista li:nth-child(5){transition-delay:.4s}.mock-minhas.on .mm-lista li:nth-child(6){transition-delay:.5s}
-.mm-card{border:1px solid var(--superficie);border-radius:12px;overflow:hidden;opacity:0;transform:translateY(10px);transition:opacity .6s .3s,transform .6s .3s cubic-bezier(.16,1,.3,1)}
-.mock-minhas.on .mm-card{opacity:1;transform:none}
+.mock-minhas{border-radius:16px;box-shadow:var(--sombra-card);overflow:hidden}
+.mm-topo{position:absolute;left:0;right:0;top:0;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(rgb(13 10 20 / .75),transparent);color:#fff;font-size:12.5px}
+.mm-topo strong{font-size:14px}.mm-topo span{color:var(--sobre-escuro)}
+.mm-rodape{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:linear-gradient(transparent,rgb(13 10 20 / .8));color:#fff;font-size:13px;opacity:0;transform:translateY(8px);transition:opacity .6s .4s,transform .6s .4s cubic-bezier(.16,1,.3,1)}
+.mock-minhas.on .mm-rodape{opacity:1;transform:none}
+.mm-rodape small{width:100%;color:var(--sobre-escuro);font-size:11.5px}
 .mm-video{position:relative;aspect-ratio:16/9;background:#0d0a14;overflow:hidden}
+.mm-n{color:var(--coral);font-weight:700}
+.mm-rodape em{font-style:normal;background:var(--coral-forte);color:#fff;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px}
 .mm-aluno{width:100%;height:100%;object-fit:cover;display:block}
 .mm-video .play-yt{width:52px;height:52px;margin:-26px 0 0 -26px}
 .mm-video .play-yt svg{width:24px;height:24px}
-.mm-barra{position:absolute;left:4%;right:4%;bottom:8%;height:4px;border-radius:999px;background:rgb(255 255 255 / .3);overflow:hidden}
+.mm-barra{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgb(255 255 255 / .25);overflow:hidden}
 .mm-barra span{display:block;height:100%;width:0;background:var(--coral);transition:width 7s linear 1s}
 .mock-minhas.on .mm-barra span{width:62%}
-.mm-rodape{display:flex;align-items:center;gap:8px;padding:10px 12px;font-size:13px;flex-wrap:wrap}
-.mm-rodape em{font-style:normal;background:var(--coral-forte);color:#fff;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px}
-.mm-rodape small{width:100%;color:var(--texto-suave);font-size:11.5px}
 /* lightbox */
 .lightbox{position:fixed;inset:0;background:rgb(13 10 20 / .86);display:none;align-items:center;justify-content:center;padding:16px;z-index:100}
 .lightbox.aberto{display:flex;animation:aparecer .25s ease-out}
@@ -565,8 +556,8 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lb-corpo,.lb-corpo iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .lb-fechar{position:absolute;right:10px;top:10px;z-index:2;width:44px;height:44px;border-radius:999px;border:0;background:rgb(255 255 255 / .92);color:var(--indigo-profundo);display:grid;place-items:center;cursor:pointer}
 .lb-fechar svg{width:20px;height:20px}
-@media (min-width:760px){.lp .an-grid{grid-template-columns:1fr 1.15fr;align-items:start}.mm-corpo{grid-template-columns:150px 1fr}.mm-lista{display:grid}.lp .an-videos{grid-template-columns:repeat(3,1fr)}}
-@media (prefers-reduced-motion:reduce){.an-etapa.on .me-cursor,.an-etapa.on .me-barra,.an-etapa.on .me-ok{animation:none}.me-ok,.me-zap,#mock-zap{opacity:1;transform:none}.demo-chip i{animation:none}.mm-lista li,.mm-card{opacity:1;transform:none}}
+@media (min-width:760px){.lp .an-videos{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion:reduce){.an-etapa.on .me-cursor,.an-etapa.on .me-barra,.an-etapa.on .me-ok{animation:none}.me-ok,.me-zap,#mock-zap{opacity:1;transform:none}.mm-lista li,.mm-card{opacity:1;transform:none}}
 
 /* ===== LP: depoimentos em vídeo ===== */
 .lp .videos{display:grid;grid-template-columns:1fr;gap:16px;margin:28px auto 0;max-width:1000px}
@@ -1256,7 +1247,6 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <li class="an-etapa rv">
             <div class="an-txt"><span class="an-num">1</span><h3>Você grava e manda pela plataforma</h3><p>Depois da aula, a atividade pede um vídeo curto. Você grava com o celular, do jeito que dá, e clica em enviar. Sem editar nada.</p></div>
             <div class="an-mock">
-              <span class="demo-chip" aria-hidden="true"><i></i>demonstração</span>
               <div class="mock-envio" id="mock-envio">
                 <div class="me-cab"><span class="me-tag">Envie o seu vídeo</span><strong>Enviar a minha atividade</strong></div>
                 <ul class="me-dicas"><li>Grave com o celular na horizontal, dando para ver o instrumento e as duas mãos.</li><li>Não precisa ser perfeito. O que importa é dar para ver e ouvir você tocando.</li></ul>
@@ -1269,7 +1259,6 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <li class="an-etapa rv">
             <div class="an-txt"><span class="an-num">2</span><h3>O Mateus assiste o seu vídeo e responde em vídeo</h3><p>Em até 3 dias úteis chega o aviso no seu WhatsApp. O professor te diz o que tá bom e o que precisa ajustar, mostrando na prática, personalizado pra você.</p></div>
             <div class="an-mock">
-              <span class="demo-chip" aria-hidden="true"><i></i>demonstração</span>
               <div class="me-zap" id="mock-zap">
                 <div class="zap-topo"><span class="zap-logo">W</span><strong>Clube do Ukulele</strong><small>agora</small></div>
                 <p>Oi Fulano, tudo bem? Sua análise da atividade <strong>Sua primeira música</strong> já está disponível na plataforma. Para assistir, é só entrar em <u>Minhas Análises</u>.</p>
@@ -1280,21 +1269,13 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <li class="an-etapa rv">
             <div class="an-txt"><span class="an-num">3</span><h3>Fica guardado em "Minhas Análises"</h3><p>Seu vídeo grande, o Mateus no canto, apontando no instrumento. Toda análise fica na sua área, uma atrás da outra, para rever quando quiser.</p></div>
             <div class="an-mock">
-              <span class="demo-chip" aria-hidden="true"><i></i>demonstração</span>
               <div class="mock-minhas" id="mock-minhas">
-                <div class="mm-cab"><strong>Minhas Análises</strong><span>Você já recebeu <b class="mm-n" data-ate="36">0</b> análises.</span></div>
-                <div class="mm-corpo">
-                  <ul class="mm-lista">
-                    <li><em>#36</em>Batida Baião</li><li><em>#35</em>Exercício Martelada</li><li><em>#34</em>Exercício TOM TOM TOM</li><li><em>#33</em>Alongando pares de dedos</li><li><em>#32</em>Música com Batida Pop 1</li><li><em>#31</em>Sua primeira música</li>
-                  </ul>
-                  <div class="mm-card">
-                    <div class="mm-video">
-                      <img class="mm-aluno" src="img/analise-1.webp" alt="Análise real: aluno tocando em tela grande e o Mateus no canto" width="1000" height="563" loading="lazy">
-                      <span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <div class="mm-barra"><span></span></div>
-                    </div>
-                    <div class="mm-rodape"><em>#36</em><strong>Batida Baião</strong><small>Enviado em 18/06/2026 · análise de 7 min</small></div>
-                  </div>
+                <div class="mm-video">
+                  <img class="mm-aluno" src="img/analise-1.webp" alt="Análise real: aluno tocando em tela grande e o Mateus no canto" width="1000" height="563" loading="lazy">
+                  <span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                  <div class="mm-topo"><strong>Minhas Análises</strong><span><b class="mm-n" data-ate="36">0</b> análises recebidas</span></div>
+                  <div class="mm-rodape"><em>#36</em><strong>Batida Baião</strong><small>análise de 7 min · em 3 dias úteis</small></div>
+                  <div class="mm-barra"><span></span></div>
                 </div>
               </div>
             </div>
