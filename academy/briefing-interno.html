@@ -217,10 +217,14 @@ details.ver-mais summary{cursor:pointer;color:var(--indigo);font-weight:700;font
 @media (min-width:700px){.re-grid{grid-template-columns:1fr 1fr}.citas{grid-template-columns:1fr 1fr}}
 @media (min-width:1300px){.re-grid{grid-template-columns:repeat(4,1fr)}}
 
+.pilula.discreta{opacity:.7;margin-left:auto}
+.pilula.discreta[aria-selected="true"]{opacity:1}
+.historico{list-style:none;padding:0;margin:0;max-width:none;display:grid;gap:10px}
+.historico li{background:var(--fundo);border-radius:12px;padding:12px 16px;font-size:15px;text-align:left;hyphens:manual}
+
 /* ===== Planos ===== */
 .planos-tab{display:grid;grid-template-columns:1fr;gap:14px;margin:0 0 24px}
 .plano{background:var(--fundo);border-radius:16px;padding:20px 18px;position:relative;border:2px solid transparent}
-.plano.destaque{border-color:var(--indigo);background:var(--card)}
 .plano .nome{font-family:var(--fonte-titulo);font-weight:400;font-size:26px;color:var(--indigo);margin:0;line-height:1.12}
 .plano .preco{font-size:15px;color:var(--texto-suave);margin:4px 0 12px}
 .plano .preco strong{color:var(--texto);font-size:20px}
@@ -231,8 +235,7 @@ details.ver-mais summary{cursor:pointer;color:var(--indigo);font-weight:700;font
 
 table.comp th,table.comp td{text-align:center}
 table.comp th:first-child,table.comp td:first-child{text-align:left}
-table.comp .rec{background:var(--coral-suave)}
-table.comp thead th.rec{background:var(--indigo);color:#fff}
+table.comp td small{display:block;font-size:12.5px;color:var(--texto-suave);font-weight:400}
 table.comp td.sim::before{content:"";display:inline-block;width:20px;height:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2325845A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;vertical-align:middle}
 table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;background:var(--neutro-medio);border-radius:2px;vertical-align:middle}
 
@@ -649,6 +652,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <button class="pilula" role="tab" id="tab-material" aria-controls="aba-material" data-aba="material" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h8"/></svg>Material do aluno</button>
     <button class="pilula" role="tab" id="tab-whatsapp" aria-controls="aba-whatsapp" data-aba="whatsapp" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg>Fluxo WhatsApp</button>
     <button class="pilula" role="tab" id="tab-objecoes" aria-controls="aba-objecoes" data-aba="objecoes" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>Objeções</button>
+    <button class="pilula discreta" role="tab" id="tab-historico" aria-controls="aba-historico" data-aba="historico" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Histórico</button>
   </div>
 </div>
 </div>
@@ -673,7 +677,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <div><span class="re-rot">Produto</span><p>Clube do Ukulele Academy: escola online de ukulele para adultos, sempre aberta, com jornada gravada e um professor acompanhando cada passo.</p></div>
     <div><span class="re-rot">Promessa</span><p>"Aprenda ukulele com um professor acompanhando o seu progresso, vídeo a vídeo, sem sair de casa e sem hora marcada."</p></div>
     <div><span class="re-rot">Mecanismo</span><p>DMA: Direção (jornada, 3D dentro), Motivação (sete fontes contínuas) e Acompanhamento (devolutiva, análise, plantão, encontro). O A sustenta a oferta.</p></div>
-    <div><span class="re-rot">Planos</span><p>Essencial 12x50 · Bronze 12x100 · Prata 12x150 (recomendado) · Ouro 12x300 · Diamante 12x400. Provisórios. Essencial e Bronze só pelo closer.</p></div>
+    <div><span class="re-rot">Planos</span><p>Essencial 12x R$ 50 · Bronze 12x R$ 100 · Prata 12x R$ 150 · Ouro 12x R$ 300 · Diamante 12x R$ 400 (à vista = 10 parcelas). Provisórios. Essencial e Bronze só pelo closer.</p></div>
     <div><span class="re-rot">Venda</span><p>Perpétuo com closer (Marco): página vende o cadastro, preço só no WhatsApp. Lançamentos gratuitos e pagos abrem preço com condição e data.</p></div>
     <div><span class="re-rot">Garantia</span><p>30 dias incondicional + 1 ano condicionada (Iniciante completo, atividades enviadas, não toca 10 músicas). Devolutiva em 3 dias úteis.</p></div>
     <div><span class="re-rot">Público</span><p>Três portas: nunca tocou, começou e travou, sempre quis. Sem rótulo de idade nem de violão. 61% mulheres, sem idade central.</p></div>
@@ -685,13 +689,13 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 <div class="info">
   <p class="info-t">A escada dos cinco planos</p>
   <div class="escada">
-    <div class="degrau d0"><span class="dg-nome">Essencial</span><span class="dg-preco">12x 50</span><span class="dg-add">jornada + biblioteca + comunidade</span><span class="dg-onde">só closer</span></div>
-    <div class="degrau d1"><span class="dg-nome">Bronze</span><span class="dg-preco">12x 100</span><span class="dg-add">+ Confraria + 49 atividades com devolutiva</span><span class="dg-onde">só closer</span></div>
-    <div class="degrau d2 rec"><span class="dg-nome">Prata</span><span class="dg-preco">12x 150</span><span class="dg-add">+ plantão 2x/sem + 1 análise/mês</span><span class="dg-onde">recomendado</span></div>
-    <div class="degrau d3"><span class="dg-nome">Ouro</span><span class="dg-preco">12x 300</span><span class="dg-add">+ 2 análises + 2 encontros/mês</span><span class="dg-onde">oferta</span></div>
-    <div class="degrau d4"><span class="dg-nome">Diamante</span><span class="dg-preco">12x 400</span><span class="dg-add">+ 4 análises + 1 encontro/semana</span><span class="dg-onde">oferta</span></div>
+    <div class="degrau d0"><span class="dg-nome">Essencial</span><span class="dg-preco">12x R$ 50 ou R$ 500 à vista</span><span class="dg-add">jornada + biblioteca + comunidade</span><span class="dg-onde">só closer</span></div>
+    <div class="degrau d1"><span class="dg-nome">Bronze</span><span class="dg-preco">12x R$ 100 ou R$ 1.000 à vista</span><span class="dg-add">+ Confraria + 49 atividades com devolutiva</span><span class="dg-onde">só closer</span></div>
+    <div class="degrau d2"><span class="dg-nome">Prata</span><span class="dg-preco">12x R$ 150 ou R$ 1.500 à vista</span><span class="dg-add">+ plantão 2x/sem + 1 análise/mês</span><span class="dg-onde">oferta</span></div>
+    <div class="degrau d3"><span class="dg-nome">Ouro</span><span class="dg-preco">12x R$ 300 ou R$ 3.000 à vista</span><span class="dg-add">+ 2 análises + 2 encontros/mês</span><span class="dg-onde">oferta</span></div>
+    <div class="degrau d4"><span class="dg-nome">Diamante</span><span class="dg-preco">12x R$ 400 ou R$ 4.000 à vista</span><span class="dg-add">+ 4 análises + 1 encontro/semana</span><span class="dg-onde">oferta</span></div>
   </div>
-  <p class="info-n">Cada degrau tem tudo do anterior. À vista = 10 parcelas. Preços provisórios.</p>
+  <p class="info-n">Cada degrau tem tudo do anterior. Preços provisórios.</p>
 </div>
 <p><strong>Em uma linha:</strong> escola online de ukulele para adultos, sempre aberta, em que o aluno segue uma jornada gravada e tem um professor acompanhando o que ele toca.</p>
 <p><strong>O que é, em três frases:</strong> o aluno entra numa jornada gravada do zero ao intermediário (Iniciante 0, 1, 2 e Intermediário 1, 2), com biblioteca de 152 músicas por nível e cursos extras. Ao longo da jornada, nos pontos cruciais, ele grava uma atividade tocando e recebe a devolutiva do professor em vídeo. Nos planos maiores, ganha plantão ao vivo, análise das músicas que já toca e encontro individual.</p>
@@ -700,7 +704,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 <p><strong>Marca × produto:</strong> Clube do Ukulele é a marca guarda-chuva (Instagram, YouTube, lives Ukulele na Mão, comunidade aberta, produtos de front). Clube do Ukulele Academy, ou "a Academy", é o produto pago. "Entrar no Clube" é expressão válida. <code><span class="pend">Pendente: apresentação marca × Academy para o público não confundir o grátis com o pago.</span></code></p>
 <h3>Os cinco planos</h3>
 <p>Escada inclusiva: cada plano tem tudo do anterior e mais alguma coisa. O que muda de um para outro é uma coisa só: quanto acompanhamento humano a pessoa recebe. Preços provisórios até a planilha de custo fechar.</p>
-<div class="tabela"><table><thead><tr><th></th><th>Essencial</th><th>Bronze</th><th>Prata</th><th>Ouro</th><th>Diamante</th></tr></thead><tbody><tr><td>12x / à vista</td><td>50 / 500</td><td>100 / 1.000</td><td>150 / 1.500</td><td>300 / 3.000</td><td>400 / 4.000</td></tr><tr><td>Jornada, bibliotecas, extras, comunidade</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Confraria do Ukulele (quinta 19:40)</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Atividades Propostas com devolutiva em vídeo (49, crescendo com a jornada)</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Plantão agendado, 2 × 1 h por semana</td><td>não</td><td>não</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Análise de performance por mês</td><td>não</td><td>não</td><td>1</td><td>2</td><td>4</td></tr><tr><td>Encontro individual de 25 min</td><td>não</td><td>não</td><td>não</td><td>2 por mês</td><td>1 por semana</td></tr><tr><td>Onde aparece</td><td>só o closer, último recurso e retenção</td><td>só o closer</td><td>oferta, recomendado</td><td>oferta</td><td>oferta</td></tr></tbody></table></div>
+<div class="tabela"><table><thead><tr><th></th><th>Essencial</th><th>Bronze</th><th>Prata</th><th>Ouro</th><th>Diamante</th></tr></thead><tbody><tr><td>Preço</td><td>12x R$ 50 ou R$ 500 à vista</td><td>12x R$ 100 ou R$ 1.000 à vista</td><td>12x R$ 150 ou R$ 1.500 à vista</td><td>12x R$ 300 ou R$ 3.000 à vista</td><td>12x R$ 400 ou R$ 4.000 à vista</td></tr><tr><td>Jornada, bibliotecas, extras, comunidade</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Confraria do Ukulele (quinta 19:40)</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Atividades Propostas com devolutiva em vídeo (49, crescendo com a jornada)</td><td>não</td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Plantão agendado, 2 × 1 h por semana</td><td>não</td><td>não</td><td>sim</td><td>sim</td><td>sim</td></tr><tr><td>Análise de performance por mês</td><td>não</td><td>não</td><td>1</td><td>2</td><td>4</td></tr><tr><td>Encontro individual de 25 min</td><td>não</td><td>não</td><td>não</td><td>2 por mês</td><td>1 por semana</td></tr><tr><td>Onde aparece</td><td>só o closer, último recurso e retenção</td><td>só o closer</td><td>oferta</td><td>oferta</td><td>oferta</td></tr></tbody></table></div>
 <p>O que cada componente é, em uma linha (definição completa no Formato do Produto, seção 4):</p>
 <ul><li><strong>Atividades Propostas:</strong> 49 pontos ao longo da jornada, depois das aulas cruciais, e novas entram conforme a jornada cresce. Não é envio embaixo de toda aula, não é envio de música.</li><li><strong>Devolutiva:</strong> sempre em vídeo, estilo react, o professor assiste junto e mostra no instrumento. Em 3 dias úteis a partir do dia seguinte ao envio.</li><li><strong>Confraria:</strong> encontro em grupo, horário fixo, sem agendar, para trocar ideia.</li><li><strong>Plantão:</strong> sessão de 1 h, só para quem agendou, para tirar dúvida e pedir ajuda numa música. Terça às 20h e sexta às 10h.</li><li><strong>Análise de performance:</strong> o aluno manda uma música que já aprendeu e treinou; o professor diz o que pode melhorar. Cota mensal, não acumula.</li><li><strong>Encontro individual:</strong> 25 min, reativo, sem conteúdo preparado. O aluno traz o que quer trabalhar, principalmente repertório. Nunca chamar de "aula".</li></ul>
 <h3>Garantia</h3>
@@ -896,7 +900,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <main>
       <div class="bloco">
         <h2>Os cinco planos, lado a lado</h2>
-        <p class="intro">Escada inclusiva: cada plano tem tudo do anterior e mais alguma coisa. O que muda de um para outro é quanto acompanhamento humano a pessoa recebe. Preços provisórios até a planilha de custo fechar; à vista é o valor de 10 parcelas.</p>
+        <p class="intro">Escada inclusiva: cada plano tem tudo do anterior e mais alguma coisa. O que muda de um para outro é quanto acompanhamento humano a pessoa recebe. Preços provisórios até a planilha de custo fechar.</p>
         <div class="planos-tab">
           <div class="plano">
             <p class="nome">Essencial</p>
@@ -910,12 +914,11 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
             <ul><li>Tudo do Essencial</li><li>Confraria do Ukulele (quinta, 19:40)</li><li>Grupo de Avisos</li><li>49 Atividades Propostas com devolutiva em vídeo</li></ul>
             <p class="onde">Só o closer, como descida do Prata.</p>
           </div>
-          <div class="plano destaque">
-            <span class="selo">Recomendado</span>
+          <div class="plano">
             <p class="nome">Prata</p>
             <p class="preco"><strong>12x R$ 150</strong><br>ou R$ 1.500 à vista</p>
             <ul><li>Tudo do Bronze</li><li>Plantão agendado, 2 sessões de 1 h por semana</li><li>1 análise de performance por mês</li></ul>
-            <p class="onde">Na oferta, em destaque. O padrão do closer.</p>
+            <p class="onde">Na oferta.</p>
           </div>
           <div class="plano">
             <p class="nome">Ouro</p>
@@ -933,17 +936,18 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 
         <h3>Comparativo</h3>
         <div class="tabela"><table class="comp">
-          <thead><tr><th>O que inclui</th><th>Essencial</th><th>Bronze</th><th class="rec">Prata</th><th>Ouro</th><th>Diamante</th></tr></thead>
+          <thead><tr><th>O que inclui</th><th>Essencial</th><th>Bronze</th><th>Prata</th><th>Ouro</th><th>Diamante</th></tr></thead>
           <tbody>
-            <tr><td>Jornada, bibliotecas, extras, comunidade</td><td class="sim"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
-            <tr><td>Confraria do Ukulele e grupo de Avisos</td><td class="nao"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
-            <tr><td>49 Atividades Propostas com devolutiva em vídeo</td><td class="nao"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
-            <tr><td>Plantão agendado, 2 × 1 h por semana</td><td class="nao"></td><td class="nao"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
-            <tr><td>Análises de performance por mês</td><td class="nao"></td><td class="nao"></td><td class="rec">1</td><td>2</td><td>4</td></tr>
-            <tr><td>Encontro individual de 25 min</td><td class="nao"></td><td class="nao"></td><td class="nao rec"></td><td>2 por mês</td><td>1 por semana</td></tr>
-            <tr><td>Garantia de 30 dias</td><td class="sim"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
-            <tr><td>Garantia de 1 ano (10 músicas)</td><td class="nao"></td><td class="sim"></td><td class="sim rec"></td><td class="sim"></td><td class="sim"></td></tr>
-            <tr><td>Onde aparece</td><td>só closer</td><td>só closer</td><td class="rec">oferta</td><td>oferta</td><td>oferta</td></tr>
+            <tr><td>Jornada, bibliotecas, extras, comunidade</td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Confraria do Ukulele e grupo de Avisos</td><td class="nao"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>49 Atividades Propostas com devolutiva em vídeo</td><td class="nao"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Plantão agendado, 2 × 1 h por semana</td><td class="nao"></td><td class="nao"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Análises de performance por mês</td><td class="nao"></td><td class="nao"></td><td>1</td><td>2</td><td>4</td></tr>
+            <tr><td>Encontro individual de 25 min</td><td class="nao"></td><td class="nao"></td><td class="nao"></td><td>2 por mês</td><td>1 por semana</td></tr>
+            <tr><td>Garantia de 30 dias</td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Garantia de 1 ano (10 músicas)</td><td class="nao"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td><td class="sim"></td></tr>
+            <tr><td>Preço</td><td>12x R$ 50<br><small>ou R$ 500 à vista</small></td><td>12x R$ 100<br><small>ou R$ 1.000 à vista</small></td><td>12x R$ 150<br><small>ou R$ 1.500 à vista</small></td><td>12x R$ 300<br><small>ou R$ 3.000 à vista</small></td><td>12x R$ 400<br><small>ou R$ 4.000 à vista</small></td></tr>
+            <tr><td>Onde aparece</td><td>só closer</td><td>só closer</td><td>oferta</td><td>oferta</td><td>oferta</td></tr>
           </tbody>
         </table></div>
 
@@ -1229,9 +1233,9 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <div class="folha">
       <h2>Os planos</h2>
       <div class="planos-pdf">
-        <div class="pp rec"><span class="tag">O mais escolhido</span><h3>Prata</h3><p class="valor"><strong>12x R$ 150</strong> ou R$ 1.500 à vista</p><ul><li>Tudo que vem junto</li><li>49 atividades com devolutiva, e crescendo</li><li>Plantão ao vivo, 2x por semana</li><li>1 música sua analisada por mês</li></ul></div>
-        <div class="pp"><h3>Ouro</h3><p class="valor"><strong>12x R$ 300</strong> ou R$ 3.000 à vista</p><ul><li>Tudo do Prata</li><li>2 músicas suas analisadas por mês</li><li>2 encontros individuais de 25 min por mês</li></ul></div>
-        <div class="pp"><h3>Diamante</h3><p class="valor"><strong>12x R$ 400</strong> ou R$ 4.000 à vista</p><ul><li>Tudo do Ouro</li><li>4 músicas suas analisadas por mês</li><li>1 encontro individual de 25 min por semana</li></ul></div>
+        <div class="pp"><span class="tag">O mais escolhido</span><h3>Prata</h3><p class="valor"><strong>12x R$ 150</strong><br>ou R$ 1.500 à vista</p><ul><li>Tudo que vem junto</li><li>49 atividades com devolutiva, e crescendo</li><li>Plantão ao vivo, 2x por semana</li><li>1 música sua analisada por mês</li></ul></div>
+        <div class="pp"><h3>Ouro</h3><p class="valor"><strong>12x R$ 300</strong><br>ou R$ 3.000 à vista</p><ul><li>Tudo do Prata</li><li>2 músicas suas analisadas por mês</li><li>2 encontros individuais de 25 min por mês</li></ul></div>
+        <div class="pp"><h3>Diamante</h3><p class="valor"><strong>12x R$ 400</strong><br>ou R$ 4.000 à vista</p><ul><li>Tudo do Ouro</li><li>4 músicas suas analisadas por mês</li><li>1 encontro individual de 25 min por semana</li></ul></div>
       </div>
       <p style="margin-top:18px;font-size:15px">Para comparar: uma escola de música presencial cobra entre R$ 500 e R$ 600 por mês, e uma aula particular uns R$ 120, com o professor vendo você tocar só naquela hora. No Prata você paga R$ 150 por mês e o professor vê tudo o que você gravar.</p>
       <p style="font-size:14.5px;color:var(--texto-suave)">O encontro individual é reativo: você traz o que quer trabalhar, principalmente repertório, e sai com o próximo passo claro. Você pode subir de plano quando quiser, pagando só a diferença. Existe também uma opção de entrada mais simples: pergunta para a gente na conversa.</p>
@@ -1282,7 +1286,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 
         <h3>As regras que não mudam</h3>
         <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>Preço só depois das três perguntas.</strong> "Quanto custa?" antes disso recebe "depende do plano, me conta primeiro onde você está".</span></div>
-        <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>Prata é a recomendação padrão.</strong> Ouro e Diamante para quem pediu encontro ao vivo. Bronze e Essencial só aparecem na descida, nunca antes.</span></div>
+        <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>O closer parte do Prata.</strong> Ouro e Diamante para quem pediu encontro ao vivo. Bronze e Essencial só aparecem na descida, nunca antes.</span></div>
         <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>Sem urgência inventada.</strong> Nada de "últimas vagas". Fora de lançamento, o único prazo é o do lead.</span></div>
         <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>O Mateus entra com áudio</strong> quando a dúvida é técnica ("consigo com dedo curto?") ou quando a pessoa quer ouvir do professor. Nunca para negociar preço.</span></div>
         <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>Toda conversa vai para a planilha</strong> com origem, respostas do diagnóstico, plano oferecido e resultado. É de lá que sai a régua de recuperação.</span></div>
@@ -1311,7 +1315,7 @@ Pra eu te mostrar o plano certo, me conta rapidinho: você já tocou alguma cois
           <thead><tr><th>Ponto de partida</th><th>Tempo</th><th>Prefere</th><th>Recomenda</th><th>Como apresentar</th></tr></thead>
           <tbody>
             <tr><td>Zero ou travou</td><td>Qualquer</td><td>Vídeo + dúvida ao vivo às vezes</td><td><strong>Prata</strong></td><td>Devolutiva das 49 atividades + plantão 2x por semana + 1 música analisada por mês</td></tr>
-            <tr><td>Zero ou travou</td><td>Qualquer</td><td>Só vídeo, sem ao vivo</td><td><strong>Prata</strong> (Bronze fica na manga)</td><td>Mesmo Prata; o plantão é opcional e por agendamento. Bronze só se o preço travar</td></tr>
+            <tr><td>Zero ou travou</td><td>Qualquer</td><td>Só vídeo, sem ao vivo</td><td><strong>Prata</strong> (Bronze na manga)</td><td>Mesmo Prata; o plantão é opcional e por agendamento. Bronze só se o preço travar</td></tr>
             <tr><td>Já toca um pouco</td><td>Qualquer</td><td>Quer alguém olhando o repertório</td><td><strong>Ouro</strong></td><td>2 análises por mês + 2 encontros individuais para trabalhar as músicas dele</td></tr>
             <tr><td>Qualquer</td><td>Tem tempo e quer ritmo</td><td>Encontro ao vivo toda semana</td><td><strong>Diamante</strong></td><td>1 encontro por semana + 4 análises por mês; explicar que o encontro é reativo, sobre o que ele traz</td></tr>
             <tr><td>Qualquer</td><td>Pouco</td><td>Encontro ao vivo</td><td><strong>Ouro</strong></td><td>Quinzenal cabe melhor em pouco tempo; sobe para Diamante depois se quiser</td></tr>
@@ -1395,6 +1399,19 @@ Quer que eu te mande o link?</div>
       <div class="obj"><div><p class="titulo">"E se eu parar no meio do ano?" / "Vou ficar preso um ano?"</p><p class="pct">Aparece na conversa</p></div><div class="col"><h5>Na página</h5><p>"Trinta dias para desistir e receber tudo. Depois disso a jornada continua sua até o fim do ano, e a Confraria está lá toda quinta quando você voltar. O plano é anual porque aprender um instrumento leva mais de um mês."</p></div><div class="col"><h5>No WhatsApp</h5><p>Se o que pesa é o compromisso, não o valor: reforçar os 30 dias e que subir de plano é sempre possível. Não descer de degrau por essa objeção.</p></div></div>
 
       <div class="obj"><div><p class="titulo">"Quanto custa?"</p><p class="pct">Perpétuo, antes do diagnóstico</p></div><div class="col"><h5>Na página</h5><p>"Depende do plano. Tem plano só com a devolutiva das atividades e o plantão, e tem plano com encontro individual toda semana. Deixa seu WhatsApp e a gente te mostra o que faz sentido."</p></div><div class="col"><h5>No WhatsApp</h5><p>"Depende do plano, e eu te mostro o certo em três perguntas. Me conta primeiro: você já tocou alguma coisa ou está começando do zero?" Nunca número antes das três perguntas.</p></div></div>
+    </main>
+  </div>
+</div>
+
+<!-- ============ 7. HISTÓRICO ============ -->
+<div class="aba" id="aba-historico" role="tabpanel">
+  <div class="pagina uma">
+    <main>
+      <div class="bloco">
+        <h2>Histórico de versões do briefing</h2>
+        <p class="intro">Registro de conferência: o que mudou em cada versão do documento-fonte. Vem direto do <code>.md</code>.</p>
+        <ul class="historico"><li>v1.5 (21/09/2026): números de prova confirmados; provas autorizadas listadas (prints, colagem, Fabiano, três vídeos); DMA decidido; segundo plantão na sexta às 10h; número oficial do WhatsApp preenchido; lista de bônus reais para a condição de lançamento; pendências de 9 para 6.</li><li>v1.4 (21/09/2026): Motivação redefinida como sete fontes contínuas por ângulos diferentes; semana 1 rebaixada a prova para iniciante, porque parte dos alunos já toca ao entrar.</li><li>v1.3 (21/09/2026): frase-mãe escolhida (opção 3, reforçada); Motivação vira mecanismo contínuo (semanal, mensal, por atividade, comunidade); Acompanhamento sobe de "alguém vê" para "professor acompanhando cada passo, correção mostrada no instrumento".</li><li>v1.2 (21/09/2026): DMA v2 com tabela por pilar (falha, entrega, frase de página, frase de VSL, prova), ciclo entre os três e três frases-mãe candidatas; página nasce sem vídeo, vídeo de 5 min vira teste opcional.</li><li>v1.1 (21/09/2026): 49 Atividades Propostas e primeira música na primeira semana confirmados como prova; frase-mãe do DMA v1; três opções de condição de lançamento com custo; VSL modelada no vídeo da Fluency (URL pendente).</li><li>v1 (21/09/2026): documento criado a partir do Formato do Produto fechado no mesmo dia, da base PESQUISAS e do contexto de marketing anterior (v4, 19/09). Substitui a promessa de "envio liberado" pelas Atividades Propostas com devolutiva; cinco planos; venda perpétua com closer mais lançamentos; DMA como mecanismo; três portas de entrada sem rótulo de idade nem de instrumento anterior.</li></ul>
+      </div>
     </main>
   </div>
 </div>
