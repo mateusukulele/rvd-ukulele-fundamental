@@ -484,13 +484,32 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 @media (prefers-reduced-motion:reduce){.lp .ob-video .play-yt{animation:none}.lp .ob-video,.lp .hero-ob .ob-cumprimento,.lp .hero-ob h1,.lp .hero-ob .sub,.lp .hero-ob img.logo{animation:none;opacity:1;transform:none}}
 @media (min-width:760px){.lp .ob-passos{display:grid;grid-template-columns:repeat(3,1fr)}}
 
+/* ===== Dobra da análise: linha vertical ===== */
+.lp .an-linha{list-style:none;padding:0;margin:34px auto 0;max-width:980px;display:grid;gap:26px;position:relative;text-align:left}
+.lp .an-etapa{display:grid;grid-template-columns:1fr;gap:16px;align-items:center;position:relative}
+.lp .an-txt{position:relative;padding-left:56px}
+.lp .an-num{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:999px;background:var(--indigo);color:#fff;font-family:var(--fonte-titulo);font-size:20px;display:grid;place-items:center;box-shadow:0 8px 18px -8px rgb(45 18 78 / .6)}
+.lp .an-txt h3{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(20px,2.4vw,26px);line-height:1.15;color:var(--indigo);text-transform:uppercase;letter-spacing:.3px;margin:6px 0 8px;text-align:left}
+.lp .an-txt p{font-size:16px;text-align:left;hyphens:manual;margin:0;max-width:none}
+.lp .an-mock{position:relative}
+.demo-chip{position:absolute;z-index:3;right:12px;top:-12px;display:inline-flex;align-items:center;gap:7px;background:var(--indigo-profundo);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px;box-shadow:0 8px 18px -8px rgb(0 0 0 / .5)}
+.demo-chip i{width:8px;height:8px;border-radius:999px;background:var(--coral);animation:pulsar 1.2s ease-in-out infinite}
+.lp .an-mock::before{content:"";position:absolute;inset:-6px;border-radius:20px;border:2px solid transparent;pointer-events:none;transition:border-color .4s}
+.lp .an-etapa.on .an-mock::before{animation:an-destaque 2.4s ease-out 1}
+@keyframes an-destaque{0%{border-color:transparent}25%{border-color:var(--coral)}100%{border-color:transparent}}
+.lp .an-etapa:not(:last-child)::after{content:"";position:absolute;left:19px;top:52px;bottom:-30px;width:2px;background:linear-gradient(var(--indigo) 0,var(--superficie));opacity:.6}
+.me-zap .zap-ps{font-size:12px;color:#5C5A70;font-style:italic;margin-top:6px}
+#mock-zap{opacity:0;transform:translateY(12px);transition:opacity .6s .2s,transform .6s .2s cubic-bezier(.16,1,.3,1)}
+.an-etapa.on #mock-zap{opacity:1;transform:none;animation:none}
+@media (min-width:760px){.lp .an-etapa{grid-template-columns:1fr 1.1fr;gap:32px}.lp .an-etapa:nth-child(even) .an-txt{order:2}.lp .an-etapa:nth-child(even) .an-mock{order:1}.lp .an-etapa:not(:last-child)::after{display:none}}
+
 /* ===== Dobra da análise em vídeo ===== */
 .lp .analise-dobra{background:var(--fundo)}
 .lp .an-grid{display:grid;grid-template-columns:1fr;gap:22px;margin:30px auto 0;max-width:1040px;text-align:left}
 .lp .an-rot{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-forte);margin:0 0 10px;text-align:left}
 .lp .an-nota{font-size:14.5px;color:var(--texto-suave);margin:12px 0 0;text-align:left;hyphens:manual}
 .lp .an-sub{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(24px,3vw,32px);text-transform:uppercase;color:var(--indigo);text-align:center;margin:44px 0 8px;letter-spacing:.3px}
-.lp .an-videos{grid-template-columns:1fr 1fr}
+.lp .an-videos{grid-template-columns:1fr}
 /* mock: envio */
 .mock-envio{position:relative;background:var(--card);border-radius:16px;padding:18px;box-shadow:var(--sombra-card);overflow:hidden}
 .me-cab{display:flex;flex-direction:column;gap:6px;margin:0 0 10px}
@@ -510,15 +529,12 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .zap-logo{width:22px;height:22px;border-radius:999px;background:#25D366;color:#fff;font-weight:900;font-size:12px;display:grid;place-items:center}
 .zap-topo strong{font-size:12.5px}.zap-topo small{margin-left:auto;font-size:11px;color:#5C5A70}
 .me-zap p{margin:0;text-align:left;hyphens:manual;max-width:none}
-@keyframes me-cursor{0%{opacity:0;left:70%;top:20%}20%{opacity:1;left:70%;top:20%}40%{opacity:1;left:52%;top:72%}48%{transform:scale(.85)}52%{transform:scale(1)}60%{opacity:1;left:52%;top:72%}70%{opacity:0}100%{opacity:0}}
-@keyframes me-barra{0%,42%{width:0}72%{width:100%}100%{width:100%}}
-@keyframes me-ok{0%,72%{opacity:0;transform:translateY(6px)}80%,100%{opacity:1;transform:none}}
-@keyframes me-zap{0%,84%{opacity:0;transform:translateY(12px)}92%,100%{opacity:1;transform:none}}
-.an-passo.on .me-cursor{animation:me-cursor 9s ease-in-out infinite}
-.an-passo.on .me-barra{animation:me-barra 9s ease-in-out infinite}
-.an-passo.on .me-ok{animation:me-ok 9s ease-in-out infinite}
-.an-passo.on .me-zap{animation:me-zap 9s ease-in-out infinite}
-.mock-envio.on ~ .me-zap{animation:me-zap 9s ease-in-out infinite}
+@keyframes me-cursor{0%{opacity:0;left:70%;top:20%}15%{opacity:1;left:70%;top:20%}35%{opacity:1;left:52%;top:70%}42%{transform:scale(.85)}46%{transform:scale(1)}55%{opacity:1;left:52%;top:70%}65%{opacity:0}100%{opacity:0}}
+@keyframes me-barra{0%,40%{width:0}68%{width:100%}100%{width:100%}}
+@keyframes me-ok{0%,68%{opacity:0;transform:translateY(6px)}76%,100%{opacity:1;transform:none}}
+.an-etapa.on .me-cursor{animation:me-cursor 7s ease-in-out infinite}
+.an-etapa.on .me-barra{animation:me-barra 7s ease-in-out infinite}
+.an-etapa.on .me-ok{animation:me-ok 7s ease-in-out infinite}
 /* mock: minhas análises */
 .mock-minhas{background:var(--card);border-radius:16px;box-shadow:var(--sombra-card);overflow:hidden}
 .mm-cab{background:var(--indigo-profundo);color:#fff;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
@@ -533,10 +549,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .mm-card{border:1px solid var(--superficie);border-radius:12px;overflow:hidden;opacity:0;transform:translateY(10px);transition:opacity .6s .3s,transform .6s .3s cubic-bezier(.16,1,.3,1)}
 .mock-minhas.on .mm-card{opacity:1;transform:none}
 .mm-video{position:relative;aspect-ratio:16/9;background:#0d0a14;overflow:hidden}
-.mm-aluno{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
-.mm-pip{position:absolute;right:8px;top:8px;width:34%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;box-shadow:0 8px 20px -8px rgb(0 0 0 / .7);border:2px solid rgb(255 255 255 / .6)}
-.mm-pip img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
-.mm-pip span{position:absolute;left:6px;bottom:4px;font-size:10px;font-weight:700;color:#fff;background:rgb(0 0 0 / .5);padding:1px 6px;border-radius:999px}
+.mm-aluno{width:100%;height:100%;object-fit:cover;display:block}
 .mm-video .play-yt{width:52px;height:52px;margin:-26px 0 0 -26px}
 .mm-video .play-yt svg{width:24px;height:24px}
 .mm-barra{position:absolute;left:4%;right:4%;bottom:8%;height:4px;border-radius:999px;background:rgb(255 255 255 / .3);overflow:hidden}
@@ -552,8 +565,8 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lb-corpo,.lb-corpo iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .lb-fechar{position:absolute;right:10px;top:10px;z-index:2;width:44px;height:44px;border-radius:999px;border:0;background:rgb(255 255 255 / .92);color:var(--indigo-profundo);display:grid;place-items:center;cursor:pointer}
 .lb-fechar svg{width:20px;height:20px}
-@media (min-width:760px){.lp .an-grid{grid-template-columns:1fr 1.15fr;align-items:start}.mm-corpo{grid-template-columns:150px 1fr}.mm-lista{display:grid}.lp .an-videos{grid-template-columns:repeat(4,1fr)}}
-@media (prefers-reduced-motion:reduce){.an-passo.on .me-cursor,.an-passo.on .me-barra,.an-passo.on .me-ok,.an-passo.on .me-zap{animation:none}.me-ok,.me-zap{opacity:1;transform:none}.mm-lista li,.mm-card{opacity:1;transform:none}}
+@media (min-width:760px){.lp .an-grid{grid-template-columns:1fr 1.15fr;align-items:start}.mm-corpo{grid-template-columns:150px 1fr}.mm-lista{display:grid}.lp .an-videos{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion:reduce){.an-etapa.on .me-cursor,.an-etapa.on .me-barra,.an-etapa.on .me-ok{animation:none}.me-ok,.me-zap,#mock-zap{opacity:1;transform:none}.demo-chip i{animation:none}.mm-lista li,.mm-card{opacity:1;transform:none}}
 
 /* ===== LP: depoimentos em vídeo ===== */
 .lp .videos{display:grid;grid-template-columns:1fr;gap:16px;margin:28px auto 0;max-width:1000px}
@@ -1239,52 +1252,61 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
         <h2>Um professor vendo o que você tocou de verdade</h2>
         <p class="lead">Nas 49 atividades da jornada você grava tocando, manda pela plataforma e recebe a análise do Mateus em vídeo, mostrada no instrumento. Assim:</p>
 
-        <div class="an-grid">
-          <div class="an-passo rv">
-            <p class="an-rot">1 · Você grava e manda</p>
-            <div class="mock-envio" id="mock-envio">
-              <div class="me-cab"><span class="me-tag">Envie o seu vídeo</span><strong>Enviar a minha atividade</strong></div>
-              <ul class="me-dicas"><li>Grave com o celular na horizontal, dando para ver o instrumento e as duas mãos.</li><li>Não precisa ser perfeito. O que importa é dar para ver e ouvir você tocando.</li></ul>
-              <div class="me-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6"/><path d="M4 20h16"/></svg><span>Selecionar vídeo</span><i class="me-barra"></i></div>
-              <div class="me-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Enviado! A análise chega em até 3 dias úteis.</div>
-              <div class="me-cursor" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff" stroke="#1F1A2B" stroke-width="1.5"><path d="M5 3l14 8-6 1.5L16 20l-3 1-3-7.5L5 16z"/></svg></div>
+        <ol class="an-linha">
+          <li class="an-etapa rv">
+            <div class="an-txt"><span class="an-num">1</span><h3>Você grava e manda pela plataforma</h3><p>Depois da aula, a atividade pede um vídeo curto. Você grava com o celular, do jeito que dá, e clica em enviar. Sem editar nada.</p></div>
+            <div class="an-mock">
+              <span class="demo-chip" aria-hidden="true"><i></i>demonstração</span>
+              <div class="mock-envio" id="mock-envio">
+                <div class="me-cab"><span class="me-tag">Envie o seu vídeo</span><strong>Enviar a minha atividade</strong></div>
+                <ul class="me-dicas"><li>Grave com o celular na horizontal, dando para ver o instrumento e as duas mãos.</li><li>Não precisa ser perfeito. O que importa é dar para ver e ouvir você tocando.</li></ul>
+                <div class="me-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6"/><path d="M4 20h16"/></svg><span>Selecionar vídeo</span><i class="me-barra"></i></div>
+                <div class="me-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Enviado! A análise chega em até 3 dias úteis.</div>
+                <div class="me-cursor" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff" stroke="#1F1A2B" stroke-width="1.5"><path d="M5 3l14 8-6 1.5L16 20l-3 1-3-7.5L5 16z"/></svg></div>
+              </div>
             </div>
-            <div class="me-zap">
-              <div class="zap-topo"><span class="zap-logo">W</span><strong>Clube do Ukulele</strong><small>agora</small></div>
-              <p>Oi Fulano, tudo bem? Sua análise da atividade <strong>Sua primeira música</strong> já está disponível na plataforma. Para assistir, é só entrar em <u>Minhas Análises</u>.</p>
+          </li>
+          <li class="an-etapa rv">
+            <div class="an-txt"><span class="an-num">2</span><h3>O Mateus assiste o seu vídeo e responde em vídeo</h3><p>Em até 3 dias úteis chega o aviso no seu WhatsApp. O professor te diz o que tá bom e o que precisa ajustar, mostrando na prática, personalizado pra você.</p></div>
+            <div class="an-mock">
+              <span class="demo-chip" aria-hidden="true"><i></i>demonstração</span>
+              <div class="me-zap" id="mock-zap">
+                <div class="zap-topo"><span class="zap-logo">W</span><strong>Clube do Ukulele</strong><small>agora</small></div>
+                <p>Oi Fulano, tudo bem? Sua análise da atividade <strong>Sua primeira música</strong> já está disponível na plataforma. Para assistir, é só entrar em <u>Minhas Análises</u>.</p>
+                <p class="zap-ps">Contar o que achou ajuda a gente a preparar as próximas :)</p>
+              </div>
             </div>
-          </div>
-
-          <div class="an-passo rv">
-            <p class="an-rot">2 · O Mateus assiste com você e responde em vídeo</p>
-            <div class="mock-minhas" id="mock-minhas">
-              <div class="mm-cab"><strong>Minhas Análises</strong><span>Você já recebeu <b class="mm-n" data-ate="36">0</b> análises.</span></div>
-              <div class="mm-corpo">
-                <ul class="mm-lista">
-                  <li><em>#36</em>Batida Baião</li><li><em>#35</em>Exercício Martelada</li><li><em>#34</em>Exercício TOM TOM TOM</li><li><em>#33</em>Alongando pares de dedos</li><li><em>#32</em>Música com Batida Pop 1</li><li><em>#31</em>Sua primeira música</li>
-                </ul>
-                <div class="mm-card">
-                  <div class="mm-video">
-                    <img class="mm-aluno" src="img/porta-acordes.webp" alt="" width="1200" height="896" loading="lazy">
-                    <div class="mm-pip"><img src="img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy"><span>Mateus</span></div>
-                    <span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                    <div class="mm-barra"><span></span></div>
+          </li>
+          <li class="an-etapa rv">
+            <div class="an-txt"><span class="an-num">3</span><h3>Fica guardado em "Minhas Análises"</h3><p>Seu vídeo grande, o Mateus no canto, apontando no instrumento. Toda análise fica na sua área, uma atrás da outra, para rever quando quiser.</p></div>
+            <div class="an-mock">
+              <span class="demo-chip" aria-hidden="true"><i></i>demonstração</span>
+              <div class="mock-minhas" id="mock-minhas">
+                <div class="mm-cab"><strong>Minhas Análises</strong><span>Você já recebeu <b class="mm-n" data-ate="36">0</b> análises.</span></div>
+                <div class="mm-corpo">
+                  <ul class="mm-lista">
+                    <li><em>#36</em>Batida Baião</li><li><em>#35</em>Exercício Martelada</li><li><em>#34</em>Exercício TOM TOM TOM</li><li><em>#33</em>Alongando pares de dedos</li><li><em>#32</em>Música com Batida Pop 1</li><li><em>#31</em>Sua primeira música</li>
+                  </ul>
+                  <div class="mm-card">
+                    <div class="mm-video">
+                      <img class="mm-aluno" src="img/analise-1.webp" alt="Análise real: aluno tocando em tela grande e o Mateus no canto" width="1000" height="563" loading="lazy">
+                      <span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                      <div class="mm-barra"><span></span></div>
+                    </div>
+                    <div class="mm-rodape"><em>#36</em><strong>Batida Baião</strong><small>Enviado em 18/06/2026 · análise de 7 min</small></div>
                   </div>
-                  <div class="mm-rodape"><em>#36</em><strong>Batida Baião</strong><small>Enviado em 18/06/2026 · análise de 7 min</small></div>
                 </div>
               </div>
             </div>
-            <p class="an-nota">Seu vídeo grande, o professor no canto, apontando no instrumento o que ajustar. Toda análise fica guardada na sua área, para rever quando quiser.</p>
-          </div>
-        </div>
+          </li>
+        </ol>
 
         <h3 class="an-sub">Veja uma análise de verdade</h3>
-        <p class="lead">Quatro análises reais, como o aluno recebe. Abre aqui mesmo, sem sair da página.</p>
+        <p class="lead">Três análises reais, como o aluno recebe. Abre aqui mesmo, sem sair da página.</p>
         <div class="videos an-videos rv-g">
           <div class="video-facade" data-v="E-DYRljfnsg" role="button" tabindex="0" aria-label="Abrir análise 1"><img src="https://i.ytimg.com/vi/E-DYRljfnsg/hqdefault.jpg" alt="Análise em vídeo de um aluno" width="480" height="360" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
           <div class="video-facade" data-v="NuA-0aFg2AI" role="button" tabindex="0" aria-label="Abrir análise 2"><img src="https://i.ytimg.com/vi/NuA-0aFg2AI/hqdefault.jpg" alt="Análise em vídeo de um aluno" width="480" height="360" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
           <div class="video-facade" data-v="PZ82xqW1frY" role="button" tabindex="0" aria-label="Abrir análise 3"><img src="https://i.ytimg.com/vi/PZ82xqW1frY/hqdefault.jpg" alt="Análise em vídeo de um aluno" width="480" height="360" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
-          <div class="video-facade" data-v="CI9br5x_3n0" role="button" tabindex="0" aria-label="Abrir análise 4"><img src="https://i.ytimg.com/vi/CI9br5x_3n0/hqdefault.jpg" alt="Análise em vídeo de um aluno" width="480" height="360" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
         </div>
         <p class="fecho lead"><strong>É a correção de um professor particular, sobre o que você tocou de verdade, sem hora marcada.</strong> E fica guardada com você.</p>
         <div class="fim"><button class="btn acao" type="button" data-abrir-form data-origem="analise" style="width:auto;min-width:300px">Quero que me chamem</button></div>
@@ -1293,7 +1315,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 
     <section class="faixa-frase">
       <div class="miolo centro">
-        <p class="frase-grande">E quando a música sai inteira, <em>o resto do dia muda também.</em></p>
+        <p class="frase-grande">Você toca em casa, no seu tempo. O Mateus te mostra o que ajustar. <em>E a música sai.</em></p>
       </div>
     </section>
 
@@ -1846,7 +1868,7 @@ Quer que eu te mande o link?</div>
   const ioMock = new IntersectionObserver(es => es.forEach(en => { if (!en.isIntersecting) return; en.target.classList.add('on'); ioMock.unobserve(en.target);
     en.target.querySelectorAll('.mm-n').forEach(c => { const ate = +c.dataset.ate; const t0 = performance.now(); const tick = now => { const k = Math.min(1, (now - t0) / 1400); c.textContent = Math.round(ate * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); });
   }), { threshold: 0.35 });
-  document.querySelectorAll('#mock-envio, #mock-minhas, .lp .an-passo').forEach(el => ioMock.observe(el));
+  document.querySelectorAll('#mock-minhas, .lp .an-etapa').forEach(el => ioMock.observe(el));
   const heroLp = document.querySelector('.lp .hero'), stickyLp = document.getElementById('sticky-lp');
   new IntersectionObserver(([en]) => stickyLp.classList.toggle('show', !en.isIntersecting)).observe(heroLp);
 </script>
