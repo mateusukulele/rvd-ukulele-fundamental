@@ -452,6 +452,30 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .barra-chamada b{font-size:11px;color:#fff;margin-left:4px}
 @media (min-width:760px){.lp .prints{grid-template-columns:1fr 1fr}.lp .prints img:nth-child(3){grid-column:1 / -1;max-width:60%;margin:0 auto}}
 
+/* ===== Página de obrigado ===== */
+.lp .hero-ob{padding:32px 0 56px;text-align:center}
+.lp .hero-ob .miolo{max-width:760px}
+.lp .hero-ob img.logo{margin:0 auto 18px}
+.lp .ob-cumprimento{color:var(--coral);font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;margin:0 0 10px;text-align:center}
+.lp .hero-ob h1{max-width:720px;font-size:clamp(28px,3.4vw,44px);opacity:1;transform:none;animation:none}
+.lp .hero-ob .sub{max-width:560px;font-size:17px;margin-bottom:22px}
+.lp .ob-video{position:relative;max-width:680px;margin:0 auto;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0d0a14;box-shadow:var(--sombra-flutua);cursor:default}
+.lp .ob-video img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;opacity:.85}
+.lp .ob-video .play-yt{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:999px;background:var(--coral);color:var(--coral-texto);display:grid;place-items:center;box-shadow:0 12px 28px -8px rgb(0 0 0 / .6);animation:pulso 1.8s ease-in-out infinite}
+.lp .ob-video .play-yt svg{width:32px;height:32px;margin-left:4px}
+.lp .ob-tempo{position:absolute;left:14px;bottom:12px;font-size:12px;color:#fff;background:rgb(0 0 0 / .5);padding:3px 10px;border-radius:999px}
+.lp .ob-pend{position:absolute;right:14px;top:12px}
+.lp .ob-passos{max-width:820px;margin:26px auto 0}
+.lp .anti-golpe{display:flex;gap:16px;align-items:flex-start;max-width:760px;margin:0 auto;background:rgb(255 255 255 / .07);border:1px solid rgb(255 255 255 / .16);border-radius:16px;padding:22px 24px;text-align:left}
+.lp .anti-golpe svg{width:40px;height:40px;flex:none;color:var(--coral)}
+.lp .anti-golpe strong{color:#fff;display:block;margin-bottom:6px}
+.lp .anti-golpe p{margin:0;color:var(--sobre-escuro);text-align:left;hyphens:manual}
+.lp .roteiro{max-width:760px;margin:0 auto}
+.lp .roteiro p{max-width:none;text-align:left;hyphens:manual}
+.lp .roteiro em{color:var(--texto-suave)}
+.lp .obrigado section{padding:48px 0}
+@media (prefers-reduced-motion:reduce){.lp .ob-video .play-yt{animation:none}}
+
 /* ===== LP: depoimentos em vídeo ===== */
 .lp .videos{display:grid;grid-template-columns:1fr;gap:16px;margin:28px auto 0;max-width:1000px}
 .lp .video-facade{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0d0a14;cursor:pointer;box-shadow:var(--sombra-card)}
@@ -689,7 +713,8 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
   <div class="pilulas" role="tablist" aria-label="Seções">
     <button class="pilula" role="tab" id="tab-briefing" aria-controls="aba-briefing" data-aba="briefing" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h6M9 16h6"/></svg>Briefing</button>
     <button class="pilula" role="tab" id="tab-planos" aria-controls="aba-planos" data-aba="planos" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4v-6H4zM10 20h4V9h-4zM16 20h4V4h-4z"/></svg>Planos</button>
-    <button class="pilula" role="tab" id="tab-pagina" aria-controls="aba-pagina" data-aba="pagina" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h5"/></svg>Página modelo</button>
+    <button class="pilula" role="tab" id="tab-pagina" aria-controls="aba-pagina" data-aba="pagina" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h5"/></svg>Página de vendas</button>
+    <button class="pilula" role="tab" id="tab-obrigado" aria-controls="aba-obrigado" data-aba="obrigado" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Página de obrigado</button>
     <button class="pilula" role="tab" id="tab-material" aria-controls="aba-material" data-aba="material" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h8"/></svg>Material do aluno</button>
     <button class="pilula" role="tab" id="tab-whatsapp" aria-controls="aba-whatsapp" data-aba="whatsapp" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg>Fluxo WhatsApp</button>
     <button class="pilula" role="tab" id="tab-objecoes" aria-controls="aba-objecoes" data-aba="objecoes" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>Objeções</button>
@@ -1065,7 +1090,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 <!-- ============ 3. PÁGINA DE CADASTRO (MODELO) ============ -->
 <div class="aba" id="aba-pagina" role="tabpanel">
   <div class="lp">
-    <div class="faixa-modelo">Modelo em revisão, na estrutura da página de matrícula da Fluency. Formulário em modo de teste. Sem preço e sem planos: isso é trabalho do closer.</div>
+    <div class="faixa-modelo">Página de vendas (cadastro), na estrutura da página de matrícula da Fluency. Formulário em modo de teste. Sem preço e sem planos: isso é trabalho do closer.</div>
 
     <header class="hero">
       <div class="miolo">
@@ -1257,6 +1282,66 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 
     <footer>Clube do Ukulele · comotocarukulele.com · <a href="#">Política de privacidade</a> · <a href="#">Termos</a></footer>
     <div class="sticky" id="sticky-lp"><button class="btn acao" type="button" data-abrir-form data-origem="sticky">Quero que me chamem</button></div>
+  </div>
+</div>
+
+<!-- ============ 3b. PÁGINA DE OBRIGADO ============ -->
+<div class="aba" id="aba-obrigado" role="tabpanel">
+  <div class="lp obrigado">
+    <div class="faixa-modelo">Página de obrigado, na estrutura da Fluency e do rascunho do Marco. O nome vem da URL (<code>?nome=</code>); o vídeo é placeholder até a gravação.</div>
+    <header class="hero hero-ob">
+      <div class="miolo centro">
+        <img class="logo" src="../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778">
+        <p class="ob-cumprimento"><span id="ob-nome">Pronto</span>, falta só responder a mensagem.</p>
+        <h1>Dá o play no vídeo e vê <em>o que acontece agora no seu WhatsApp</em></h1>
+        <p class="sub">A gente já te mandou um alô. É só responder lá, pode ser um "oi", que a gente monta o seu plano com você.</p>
+        <div class="ob-video" id="ob-video">
+          <img src="img/devolutiva-mateus.webp" alt="" width="506" height="900" loading="lazy">
+          <span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="ob-tempo">Mateus · 60 s</span>
+          <span class="pend ob-pend">vídeo a gravar (roteiro abaixo)</span>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="miolo centro">
+        <h2>O que acontece agora</h2>
+        <ol class="passos ob-passos rv-g">
+          <li><strong>Você responde a mensagem</strong>Ela vem do número oficial do Clube, com a foto do Mateus. Qualquer resposta serve.</li>
+          <li><strong>Uma conversa de cinco minutos</strong>Três perguntas: você já tocou algo, quanto tempo tem na semana e se prefere só vídeo ou também um encontro ao vivo.</li>
+          <li><strong>Você escolhe o plano e começa</strong>Com o plano certo na mão, o link de pagamento chega na conversa e o acesso vai para o seu e-mail no mesmo dia.</li>
+        </ol>
+      </div>
+    </section>
+    <section class="suave">
+      <div class="miolo centro">
+        <h2>Não recebeu nada em 10 minutos?</h2>
+        <p class="lead">Confere se o número que você digitou está certo e chama a gente direto. É o mesmo atendimento.</p>
+        <div class="fim"><a class="btn wa" href="#" data-wa-ob style="min-width:300px">Chamar o Clube no WhatsApp</a></div>
+      </div>
+    </section>
+    <section class="escura">
+      <div class="miolo centro">
+        <div class="anti-golpe rv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div><strong>Só aceite contato do número oficial do Clube do Ukulele: (31) 98585-8286.</strong><p>Nenhuma outra conta vai te pedir pagamento. Na dúvida, não paga e pergunta aqui.</p></div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="miolo">
+        <details class="roteiro">
+          <summary>Roteiro do vídeo de obrigado (Mateus, 60 segundos)</summary>
+          <p><em>[Mateus com o ukulele, sorrindo, plano médio. Toca 2 segundos e para.]</em></p>
+          <p>Ó, parabéns. Sério. Você acabou de dar o passo que a maioria fica adiando por anos: decidir que vai aprender de verdade, com alguém acompanhando o que você toca.</p>
+          <p>Agora presta atenção, porque é rápido. Eu já te mandei uma mensagem no WhatsApp. Ela vem do número oficial do Clube, com a minha foto. É só responder lá, pode ser um "oi".</p>
+          <p>Aí a gente vai fazer três perguntas: se você já tocou alguma coisa, quanto tempo você tem na semana, e se você prefere só mandar vídeo ou ter também um encontro ao vivo. Com isso a gente te mostra qual dos planos faz sentido pra você, e o valor dele. Sem pressão: se não fizer sentido, tudo bem.</p>
+          <p>Então fica de olho no celular nos próximos minutos. E tira o ukulele da capa, porque a primeira música vem antes do que você imagina.</p>
+          <p><em>[Toca 3 segundos. Acena.]</em> Te vejo lá dentro.</p>
+        </details>
+      </div>
+    </section>
+    <footer>Clube do Ukulele · comotocarukulele.com · <a href="#">Política de privacidade</a> · <a href="#">Termos</a></footer>
   </div>
 </div>
 
@@ -1561,6 +1646,10 @@ Quer que eu te mande o link?</div>
   // ===== Página modelo: formulário em modo de teste =====
   const CONFIG = { endpoint: '', whatsapp: '553198585286', waTexto: 'Oi! Vim da página da Academy e quero saber qual plano faz sentido pra mim.' };
   document.querySelectorAll('[data-wa]').forEach(a => { a.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(CONFIG.waTexto); a.target = '_blank'; a.rel = 'noopener'; });
+  document.querySelectorAll('[data-wa-ob]').forEach(a => { a.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent('Oi! Acabei de me cadastrar na Academy e não recebi a mensagem ainda.'); a.target = '_blank'; a.rel = 'noopener'; });
+  // Página de obrigado: primeiro nome vindo da URL (?nome=)
+  const nomeUrl = new URLSearchParams(location.search).get('nome');
+  if (nomeUrl) document.getElementById('ob-nome').textContent = nomeUrl.split(' ')[0];
   document.querySelectorAll('.lp input[type=tel]').forEach(i => i.addEventListener('input', () => {
     let v = i.value.replace(/\D/g, '').slice(0, 11);
     if (v.length > 6) v = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
