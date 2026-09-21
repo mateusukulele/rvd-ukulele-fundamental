@@ -396,6 +396,29 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 }
 
 
+/* ===== LP: mockups compostos ===== */
+.lp .fig .fig-alta{max-height:420px;width:auto;margin:0 auto;object-fit:contain}
+.lp .prints{display:grid;grid-template-columns:1fr;gap:10px;padding:6px}
+.lp .prints img{width:100%;border-radius:12px;box-shadow:var(--sombra-card);background:#fff}
+.lp .capas{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch}
+.lp .capa{aspect-ratio:3/4;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:14px;text-align:center;color:#fff;box-shadow:var(--sombra-card)}
+.lp .capa svg{width:44px;height:44px;color:var(--coral)}
+.lp .capa strong{font-family:var(--fonte-titulo);font-weight:400;font-size:15px;line-height:1.15;letter-spacing:.3px;text-transform:uppercase}
+.lp .capa.c1{background:linear-gradient(160deg,#443468,#2D124E)}
+.lp .capa.c3{background:linear-gradient(160deg,#2D124E,#443468)}
+.lp .capa.c2{background:var(--superficie);padding:8px;justify-content:center}
+.lp .capa.c2 img{width:100%;height:auto;object-fit:contain}
+.lp .chamada-mock{position:relative;background:#0d0a14;border-radius:16px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;aspect-ratio:16/10}
+.lp .chamada-mock .tile{position:relative;border-radius:10px;overflow:hidden;background:#1b1330;display:grid;place-items:center}
+.lp .chamada-mock .tile img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+.lp .chamada-mock .tile span{position:absolute;left:8px;bottom:8px;font-size:11px;font-weight:700;color:#fff;background:rgb(0 0 0 / .5);padding:2px 8px;border-radius:999px}
+.lp .chamada-mock .tile.voce svg{width:48px;height:48px;color:#5C5A70}
+.lp .barra-chamada{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:8px;align-items:center;background:rgb(255 255 255 / .12);padding:6px 10px;border-radius:999px}
+.lp .barra-chamada i{width:22px;height:22px;border-radius:999px;background:rgb(255 255 255 / .25);display:block}
+.lp .barra-chamada i.fim{background:var(--coral-forte)}
+.lp .barra-chamada b{font-size:11px;color:#fff;margin-left:4px}
+@media (min-width:760px){.lp .prints{grid-template-columns:1fr 1fr}.lp .prints img:nth-child(3){grid-column:1 / -1;max-width:60%;margin:0 auto}}
+
 /* ===== LP: hero em duas colunas ===== */
 .lp .hero-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:start}
 .lp .hero-txt{max-width:480px;margin:0 auto;text-align:center}
@@ -614,7 +637,6 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <img class="logo" src="../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778">
     <div>
       <h1 class="titulo">Clube do Ukulele Academy: central do MVP</h1>
-      <p class="meta"><strong>Uso interno</strong> · Mateus e Marco · versão de 21/09/2026 · não indexado</p>
     </div>
   </div>
 </header>
@@ -641,10 +663,8 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     </nav>
     <main>
       <div class="bloco" style="padding-top:20px;padding-bottom:20px">
-        <p style="margin:0 0 12px;font-size:15px;color:var(--texto-suave);max-width:none"><strong style="color:var(--indigo)">Clube do Ukulele Academy: briefing master do MVP</strong> · <strong>Versão:</strong> v1.4 · <strong>Data:</strong> 21/09/2026 · <strong>Para:</strong> Mateus e Marco · fonte: <code>Clube do Ukulele Academy - Briefing Master MVP.md</code></p>
         <div class="controles" style="margin:0"><button type="button" data-abrir-tudo>Expandir tudo</button><button type="button" data-fechar-tudo>Recolher tudo</button></div>
       </div>
-<div class="bloco aviso-doc"><p>O que este documento é: a base única de onde saem página de cadastro, página de oferta de lançamento, VSL, fluxo de mensagens do closer, criativos e e-mails. Quem for escrever qualquer uma dessas peças lê isto antes e não precisa perguntar de novo o que é o produto, para quem é, o que promete e o que não pode dizer.</p><p>O que ele não é: copy pronta. As frases aqui são matéria-prima e limite, não texto final.</p><p>Fontes: <code>Clube do Ukulele Academy - Formato do Produto</code> (decisões de 21/09/2026), <code>PESQUISAS - Clube do Ukulele</code> (base auditada, 37.490 respondentes, 83 pesquisas; sigla PQ), pesquisa de objeções com 1.373 leads (sigla OBJ), manual de marca (skill <code>marca-cdu</code>). Onde o número tem N, é afirmação; onde não tem, é hipótese e está marcado.</p><p><code><span class="pend">Pendente</span></code> marca lacuna real. Não inventar por cima.</p></div>
 
 <section class="resumo-exec">
   <h2>Resumo executivo</h2>
@@ -1067,23 +1087,31 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           </article>
           <article class="item rv">
             <div class="txt"><p class="rot">Ao vivo, toda semana</p><h3>Encontros com o professor e com a turma</h3><p>Toda quinta tem a live Ukulele na Mão e, logo depois, a Confraria do Ukulele: encontro ao vivo para tocar junto e trocar ideia. E tem plantão de dúvidas duas vezes por semana, por agendamento.</p><ul class="tags"><li>Confraria toda quinta</li><li>Plantão 2x por semana</li><li>Sem hora marcada para o plantão</li></ul></div>
-            <div class="fig"><div class="fig-ph"><span class="pend">foto: Confraria ao vivo (tela do Zoom com alunos)</span></div></div>
+            <div class="fig"><img src="img/turma-collage.webp" alt="Mateus e alunos do Clube, cada um com o seu ukulele" width="900" height="1200" loading="lazy" class="fig-alta"></div>
           </article>
           <article class="item inv rv">
             <div class="txt"><p class="rot">Biblioteca</p><h3>152 músicas, e entram novas todo mês</h3><p>Organizadas por nível, com filtro por batida, quantidade de acordes e gênero. Sempre tem uma música que você quer tocar no seu tamanho.</p><ul class="tags"><li>152 músicas</li><li>Filtro por nível</li><li>Entradas mensais</li></ul></div>
-            <div class="fig"><div class="fig-ph"><span class="pend">print: biblioteca de músicas na Cademí</span></div></div>
+            <div class="fig"><img src="img/mockup-tablet.webp" alt="Tablet com a biblioteca de músicas ao lado do ukulele" width="1200" height="896" loading="lazy"><p class="fig-nota"><span class="pend">print real da biblioteca na tela</span></p></div>
           </article>
           <article class="item rv">
             <div class="txt"><p class="rot">Comunidade</p><h3>Gente na mesma estrada que você</h3><p>Comunidade dos alunos com o Desafio do Mês: uma meta com data e plateia, para você ter para quem mostrar o que aprendeu.</p><ul class="tags"><li>Desafio do Mês</li><li>Grupo de Avisos</li></ul></div>
-            <div class="fig"><div class="fig-ph"><span class="pend">foto: alunos tocando (autorizada)</span></div></div>
+            <div class="fig"><div class="prints"><img src="img/print-aline.webp" alt="Depoimento de aluna" width="640" height="640" loading="lazy"><img src="img/print-marcelo.webp" alt="Depoimento de aluno" width="640" height="640" loading="lazy"><img src="img/print-leila.webp" alt="Depoimento de aluna" width="640" height="640" loading="lazy"></div></div>
           </article>
           <article class="item inv rv">
             <div class="txt"><p class="rot">Bônus</p><h3>Cursos extras gravados</h3><p>Oficina de Canto com Ukulele, para cantar junto. Dicionário de Acordes. Destrava Dedos, para soltar a mão dos acordes.</p><ul class="tags"><li>Oficina de Canto</li><li>Dicionário de Acordes</li><li>Destrava Dedos</li></ul></div>
-            <div class="fig"><img src="img/mockup-tablet.webp" alt="Cursos extras no tablet" width="1200" height="896" loading="lazy"></div>
+            <div class="fig"><div class="capas">
+              <div class="capa c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg><strong>Oficina de Canto<br>com Ukulele</strong></div>
+              <div class="capa c2"><img src="img/dicionario.webp" alt="Dicionário de Acordes para Ukulele" width="922" height="647" loading="lazy"></div>
+              <div class="capa c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 11.5V4.5a1.5 1.5 0 0 1 3 0V12M14 12V6.5a1.5 1.5 0 0 1 3 0V13M17 13v-2.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.5a5 5 0 0 1-4.2-2.3L5 13.7a1.6 1.6 0 0 1 2.6-1.9L8 13"/></svg><strong>Destrava<br>Dedos</strong></div>
+            </div></div>
           </article>
           <article class="item rv">
             <div class="txt"><p class="rot">Acompanhamento individual</p><h3>Análise das suas músicas e encontro só seu</h3><p>Nos planos com mais tempo de professor, você manda as músicas que já toca para uma análise de performance e tem encontros individuais de 25 minutos para trabalhar o seu repertório. Qual plano é o seu, a gente descobre na conversa.</p><ul class="tags"><li>Análise de performance</li><li>Encontro individual</li></ul></div>
-            <div class="fig"><div class="fig-ph"><span class="pend">foto: Mateus em encontro individual (tela)</span></div></div>
+            <div class="fig"><div class="chamada-mock">
+              <div class="tile prof"><img src="img/devolutiva-mateus.webp" alt="" width="506" height="900" loading="lazy"><span>Mateus</span></div>
+              <div class="tile voce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Você</span></div>
+              <div class="barra-chamada"><i></i><i></i><i class="fim"></i><b>25:00</b></div>
+            </div></div>
           </article>
         </div>
       </div>
