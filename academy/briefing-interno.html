@@ -308,11 +308,14 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .hero img.logo{width:84px;height:auto;display:block;margin:0 auto 8px}
 .lp .hero h1{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(28px,2.6vw,36px);line-height:1.12;margin:0 auto 10px;letter-spacing:.3px;text-transform:uppercase;max-width:520px}
 .lp .hero h1 em{font-style:normal;color:var(--coral)}
-.lp .hero .sub{font-size:17px;line-height:1.45;color:var(--sobre-escuro);margin:0 auto 12px;max-width:460px;text-align:center}
+.lp .hero .sub{font-size:17px;line-height:1.45;color:var(--sobre-escuro);margin:0 auto 12px;max-width:520px;text-align:center}
 .lp .hero .sub strong{color:#fff}
 .lp .selos{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;padding:0;list-style:none;justify-content:center}
 .lp .mini{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 12px;list-style:none;padding:0;margin:0 0 12px;font-size:13.5px;color:var(--sobre-escuro)}
 .lp .mini li{display:inline-flex;align-items:center;gap:6px}
+.lp .mini.repertorio{gap:2px 10px;margin:0 auto 12px;max-width:520px;font-size:13px;opacity:.9}
+.lp .mini.repertorio li:not(:last-child)::after{content:'·';margin-left:10px;opacity:.6}
+.lp .mini.repertorio li:last-child{font-style:italic}
 .lp .mini svg{width:16px;height:16px;color:var(--coral)}
 .lp .selos li{background:rgb(255 255 255 / .14);border:1px solid rgb(255 255 255 / .12);color:#fff;font-size:13.5px;font-weight:700;padding:6px 13px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
 .lp .selos.claro{margin:0}
@@ -433,13 +436,16 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
   .lp .lista-junto{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:759px){
+  .lp .so-desk{display:none}
+  .lp .hero-txt{display:flex;flex-direction:column}
+  .lp .hero-txt .mini.repertorio{order:9;margin-top:14px}
   .lp .item .fig,.lp .item .tags,.lp .porta img{display:none}
   .lp .item{padding:20px 18px}
   .lp .porta{padding:20px 0 20px}
   .lp footer{padding-bottom:104px}
   .lp .hero{padding-top:16px}
-  .lp .hero img.logo{width:64px}
-  .lp .hero h1{font-size:25px;letter-spacing:0}
+  .lp .hero img.logo{width:56px}
+  .lp .hero h1{font-size:23px;letter-spacing:0}
   .lp .hero .sub{font-size:15.5px;max-width:400px;margin-bottom:10px}
   .lp .hero .selos li{font-size:12.5px;padding:5px 10px}
   .lp .destaque-num{margin-bottom:14px}
@@ -600,7 +606,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .hero{padding-bottom:0}
 .lp .hero .miolo{padding-bottom:0}
 @media (min-width:900px){
-  .lp .hero{padding:24px 0 0}
+  .lp .hero{padding:16px 0 0}
   .lp .hero-grid{grid-template-columns:1fr 1fr;gap:32px;align-items:center;min-height:0}
   .lp .hero-txt{margin:0 0 0 auto;padding-bottom:28px;max-width:520px}
   .lp .hero-foto{max-width:520px;width:100%;margin:0;align-self:center}
@@ -1207,14 +1213,15 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <div class="hero-txt">
             <img class="logo" src="../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778">
 
-            <h1>Aprenda ukulele<br>com um professor<br><em>acompanhando cada passo seu</em></h1>
-            <p class="sub">Jornada completa do zero ao intermediário, com o que <strong>nenhum curso gravado</strong> oferece:</p>
+            <h1>As músicas que te acompanham há anos,<br><em>tocadas por você</em></h1>
+            <p class="sub">No ukulele, do começo ao fim, com um <strong>professor acompanhando cada passo seu</strong><span class="so-desk">: em vídeo, em grupo ou num encontro só seu</span>.</p>
             <ul class="selos">
-              <li>Análise em vídeo</li>
-              <li>Ao vivo toda semana</li>
+              <li>Análise em vídeo em até 3 dias úteis</li>
+              <li>Encontro ao vivo toda semana</li>
               <li>152 músicas</li>
             </ul>
-            <p class="chamada">Cadastre-se e a gente te chama no WhatsApp para montar o seu plano:</p>
+            <ul class="mini repertorio"><li>Marisa Monte</li><li>Skank</li><li>Legião</li><li>Beatles</li><li>Nando Reis</li><li>Djavan</li><li>e mais 146</li></ul>
+            <p class="chamada">Cadastre-se e receba a condição da turma no WhatsApp<span class="so-desk">, com o plano que faz sentido para você</span>:</p>
             <form class="form" data-origem="hero">
               <label class="sr" for="nome">Nome completo</label>
               <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Nome completo" required>
@@ -1222,7 +1229,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
               <input id="email" name="email" type="email" autocomplete="email" placeholder="E-mail" required>
               <label class="sr" for="whatsapp">WhatsApp</label>
               <div class="tel"><span class="ddi">+55</span><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(11) 99999-9999" required></div>
-              <button class="btn acao" type="submit">Quero que me chamem</button>
+              <button class="btn acao" type="submit">Receber a proposta no WhatsApp</button>
               <p class="miudo">Ao continuar, você concorda com nossos <a href="#">Termos de Serviço</a> e <a href="#">Política de Privacidade</a>.</p>
             </form>
             <div class="prova-mini">
@@ -1260,7 +1267,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <div class="pilar"><img class="icone" src="img/icone-motivacao-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Motivação</h3><p>Toda semana tem encontro. Todo mês tem desafio e música nova. Toda atividade volta com resposta. Sempre tem um próximo motivo para pegar o ukulele.</p></div>
           <div class="pilar"><img class="icone" src="img/icone-acompanhamento-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Acompanhamento</h3><p>Cada vídeo que você grava volta com a correção do professor, mostrada no instrumento, sobre o que você tocou de verdade.</p></div>
         </div>
-        <div class="fim dupla"><button class="btn acao" type="button" data-abrir-form data-origem="metodo">Quero aprender ukulele</button><a class="btn wa" href="#" data-wa>Falar com a gente no WhatsApp</a></div>
+        <div class="fim dupla"><button class="btn acao" type="button" data-abrir-form data-origem="metodo">Receber a proposta no WhatsApp</button><a class="btn wa" href="#" data-wa>Falar com a gente no WhatsApp</a></div>
       </div>
     </section>
 
@@ -1332,7 +1339,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <div class="video-facade" data-v="PZ82xqW1frY" role="button" tabindex="0" aria-label="Abrir análise 3"><img src="https://i.ytimg.com/vi/PZ82xqW1frY/maxresdefault.jpg" alt="Análise em vídeo de um aluno" width="640" height="480" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
         </div>
         <p class="fecho lead"><strong>É a correção de um professor particular, sobre o que você tocou de verdade, sem hora marcada.</strong> E fica guardada com você.</p>
-        <div class="fim"><button class="btn acao" type="button" data-abrir-form data-origem="analise" style="width:auto;min-width:300px">Quero que me chamem</button></div>
+        <div class="fim"><button class="btn acao" type="button" data-abrir-form data-origem="analise" style="width:auto;min-width:300px">Receber a proposta no WhatsApp</button></div>
       </div>
     </section>
 
@@ -1417,7 +1424,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
         </ul>
         </div>
         </div>
-        <div class="fim dupla"><button class="btn acao" type="button" data-abrir-form data-origem="resumo">Quero que me chamem</button><a class="btn wa" href="#" data-wa>Falar com a gente no WhatsApp</a></div>
+        <div class="fim dupla"><button class="btn acao" type="button" data-abrir-form data-origem="resumo">Receber a proposta no WhatsApp</button><a class="btn wa" href="#" data-wa>Falar com a gente no WhatsApp</a></div>
       </div>
     </section>
 
@@ -1451,12 +1458,12 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <details><summary>Em quanto tempo vou tocar uma música inteira?</summary><p>Na primeira semana, se você seguir a jornada. Depois disso, cada nível abre músicas novas, e a análise garante que você não passa adiante com um erro escondido.</p></details>
           <details><summary>Quanto custa?</summary><p>Depende do plano. Tem plano só com a análise das atividades e o plantão, e tem plano com encontro individual toda semana. Deixa seu WhatsApp, a gente conversa cinco minutos e te mostra o que faz sentido para a sua rotina.</p></details>
         </div>
-        <div class="fim fim-faq"><button class="btn acao" type="button" data-abrir-form data-origem="faq">Quero que me chamem</button></div>
+        <div class="fim fim-faq"><button class="btn acao" type="button" data-abrir-form data-origem="faq">Receber a proposta no WhatsApp</button></div>
       </div>
     </section>
 
     <footer>Clube do Ukulele · comotocarukulele.com · <a href="#">Política de privacidade</a> · <a href="#">Termos</a></footer>
-    <div class="sticky" id="sticky-lp"><button class="btn acao" type="button" data-abrir-form data-origem="sticky">Quero que me chamem</button></div>
+    <div class="sticky" id="sticky-lp"><button class="btn acao" type="button" data-abrir-form data-origem="sticky">Receber a proposta</button></div>
   </div>
 </div>
 
