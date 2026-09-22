@@ -606,11 +606,11 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .selo-prova img{width:14px;height:auto}
 .lp .hero .miolo{padding-bottom:0}
 @media (min-width:900px){
-  .lp .hero-grid{grid-template-columns:1fr 1fr;gap:32px;align-items:center;min-height:min(calc(100dvh - 64px),860px)}
-  .lp .hero-txt{margin:0 0 0 auto;padding:24px 0 28px;max-width:620px}
-  .lp .hero-foto{max-width:520px;width:100%;margin:0;align-self:end}
+  .lp .hero-grid{grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;min-height:min(calc(100dvh - 64px),820px)}
+  .lp .hero-txt{margin:0 0 0 auto;padding:24px 0 28px;max-width:620px;align-self:center}
+  .lp .hero-foto{max-width:520px;width:100%;margin:0 auto;align-self:center;justify-self:center}
 }
-@media (min-width:1200px){.lp .hero-grid{gap:48px}.lp .hero-foto{max-width:560px}}
+@media (min-width:1200px){.lp .hero .miolo{max-width:1240px}.lp .hero-grid{gap:48px}.lp .hero-foto{max-width:640px}}
 
 /* ===== LP: blocos no modelo Fluency ===== */
 .lp .destaque-num{font-family:var(--fonte-titulo);font-size:clamp(40px,6vw,52px);line-height:1;color:var(--coral-forte);text-align:center;margin:8px auto 22px;max-width:none;text-transform:uppercase}
