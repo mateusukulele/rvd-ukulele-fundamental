@@ -308,15 +308,15 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .hero img.logo{width:84px;height:auto;display:block;margin:0 auto 8px}
 .lp .hero h1{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(24px,2.4vw,34px);line-height:1.15;margin:0 auto 10px;letter-spacing:.3px;text-transform:uppercase;max-width:620px;text-wrap:balance}
 .lp .hero h1 em{font-style:normal;color:var(--coral);display:block;font-size:.86em;line-height:1.1}
-.lp .hero .sub{font-size:17px;line-height:1.5;color:var(--sobre-escuro);margin:0 auto 12px;max-width:520px;text-align:center;text-wrap:pretty}
+.lp .hero .sub{font-size:18px;line-height:1.5;color:var(--sobre-escuro);margin:0 auto 12px;max-width:520px;text-align:center;text-wrap:pretty}
 .lp .hero .sub strong{color:#fff}
 .lp .selos{display:flex;flex-wrap:wrap;gap:6px 8px;margin:0 0 10px;padding:0;list-style:none;justify-content:center}
 .lp .mini{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 12px;list-style:none;padding:0;margin:0 0 12px;font-size:13.5px;color:var(--sobre-escuro)}
 .lp .mini li{display:inline-flex;align-items:center;gap:6px;margin:0}
-.lp .repertorio{margin:0 auto 10px;max-width:560px;font-size:13px;color:var(--sobre-escuro);text-align:center;line-height:1.4}
+.lp .repertorio{margin:0 auto 10px;max-width:560px;font-size:13px;letter-spacing:.01em;color:var(--sobre-escuro);text-align:center;line-height:1.4}
 .lp .mini.repertorio li:not(:last-child)::after{content:'·';margin-left:10px;color:var(--neutro-medio)}
 .lp .mini svg{width:16px;height:16px;color:var(--coral)}
-.lp .selos li{background:rgb(255 255 255 / .14);border:1px solid rgb(255 255 255 / .12);color:#fff;font-size:12.5px;line-height:1.4;font-weight:700;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;margin:0}
+.lp .selos li{background:rgb(255 255 255 / .14);border:1px solid rgb(255 255 255 / .12);color:#fff;font-size:13px;line-height:1.4;font-weight:700;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;margin:0}
 .lp .selos.claro{margin:0}
 .lp .selos.claro li{background:var(--superficie);border-color:var(--superficie);color:var(--texto)}
 .lp .form{background:transparent;color:var(--texto);border-radius:0;padding:0;box-shadow:none;max-width:480px;width:100%;margin:0 auto;text-align:left;position:relative;z-index:1;display:flex;flex-direction:column;gap:8px}
@@ -331,7 +331,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .tel{display:flex;gap:0;background:#F1EEF7;border-radius:12px;box-shadow:inset 0 2px 0 rgb(255 255 255 / .7),0 3px 0 rgb(0 0 0 / .18);overflow:hidden}
 .lp .tel .ddi{display:grid;place-items:center;padding:0 14px;font-weight:700;color:var(--texto);border-right:1px solid #DCD6E6}
 .lp .tel input{box-shadow:none;border-radius:0}
-.lp .form .btn{margin-top:2px;min-height:52px;font-size:16px;box-shadow:0 4px 0 #0E7A68}
+.lp .form .btn{margin-top:2px;min-height:52px;font-size:16px;box-shadow:0 4px 0 #C98A16}
 .lp .form .miudo{margin:0;text-align:center;color:var(--sobre-escuro);font-size:12.5px;line-height:1.4}
 .lp .form .miudo a,.lp footer a{display:inline-block;padding:6px 2px}
 .lp footer a{padding:10px 4px}
@@ -342,8 +342,8 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .btn:hover{transform:translateY(-1px)}
 .lp .btn.primario{background:var(--indigo);color:#fff}
 .lp .btn.primario:hover{background:var(--indigo-hover)}
-.lp .btn.acao{background:var(--teal-acao);color:var(--indigo-profundo)}
-.lp .btn.acao:hover{background:var(--teal-acao-hover)}
+.lp .btn.acao{background:#FFC043;color:#2D124E}
+.lp .btn.acao:hover{background:#FFD173}
 .lp .btn.wa{background:var(--teal-util);color:#fff;width:auto}
 .lp .miudo{font-size:13px;color:var(--texto-suave);margin:10px 0 0}
 
@@ -1215,8 +1215,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
             <ul class="selos">
               <li>1 ano de Suporte Individual</li>
               <li>Encontro ao vivo toda semana</li>
-              <li>Comunidade de Alunos</li>
-            </ul>
+                          </ul>
             <p class="repertorio">Marisa Monte, Skank, Legião, Beatles, e mais 148 músicas</p>
             <p class="chamada">Cadastre-se e receba os bônus da nova turma antes que ela saia do ar:</p>
             <form class="form" data-origem="hero">
@@ -1227,7 +1226,6 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
               <label class="sr" for="whatsapp">WhatsApp</label>
               <div class="tel"><span class="ddi">+55</span><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(11) 99999-9999" required></div>
               <button class="btn acao" type="submit">Receber a oferta</button>
-              <p class="miudo">Ao continuar, você concorda com nossos <a href="#">Termos de Serviço</a> e <a href="#">Política de Privacidade</a>.</p>
             </form>
             <div class="prova-mini">
               <div class="selo-prova" aria-hidden="true"><img src="../img/icone-ukulele.svg" alt="" width="40" height="98"></div>
