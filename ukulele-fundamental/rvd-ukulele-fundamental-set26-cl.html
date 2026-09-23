@@ -25,7 +25,6 @@
 
 
 <link rel="preload" href="/fonts/montserrat-v31-latin-800.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/montserrat-v31-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 <style>
   @font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/montserrat-v31-latin-regular.woff2) format('woff2')}
   @font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/montserrat-v31-latin-700.woff2) format('woff2')}
@@ -134,7 +133,12 @@
   .yt:hover img{transform:scale(1.03);filter:saturate(1.05)}
   .yt .play{position:absolute;inset:0;margin:auto;width:64px;height:64px;border-radius:50%;background:var(--amarelo);display:grid;place-items:center;box-shadow:0 10px 24px -6px rgba(0,0,0,.5)}
   .yt .play svg{width:26px;height:26px;margin-left:4px;color:var(--indigo-950)}
-  .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  dialog.modal-video{width:min(960px,94vw);max-width:none;padding:0;border:0;background:transparent;overflow:visible}
+  dialog.modal-video::backdrop{background:rgba(8,11,34,.86)}
+  .depo-caixa{aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.7)}
+  .depo-caixa iframe{display:block;width:100%;height:100%;border:0}
+  .modal-video .modal-x{position:static;margin:0 0 10px auto;background:rgba(255,255,255,.14);color:#fff}
+  .modal-video .modal-x:hover{background:rgba(255,255,255,.26);color:#fff}
   .depo figcaption{margin-top:14px;font-size:1rem;font-style:italic;color:var(--no-escuro);line-height:1.55}
   .depo figcaption::before{content:"“";font-family:var(--fonte-num);font-style:normal;color:var(--amarelo);font-size:2rem;line-height:0;vertical-align:-.45em;margin-right:4px}
 
@@ -256,26 +260,29 @@
 
 
   /* ---------- Formulário antes do checkout ---------- */
-  dialog.modal{width:min(30rem,92vw);max-height:92vh;overflow-y:auto;border:0;border-radius:24px;padding:0;background:var(--branco);color:var(--tinta);box-shadow:0 30px 70px -20px rgba(5,8,30,.7)}
+  dialog.modal{width:min(30rem,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow-y:auto;border:0;border-radius:24px;padding:0;background:var(--branco);color:var(--tinta);box-shadow:0 30px 70px -20px rgba(5,8,30,.7)}
   dialog.modal::backdrop{background:rgba(17,23,63,.72)}
-  .modal-bd{padding:30px 22px 24px;position:relative}
+  .modal-bd{padding:22px 18px 18px;position:relative}
   .modal-x{position:absolute;top:12px;right:12px;width:40px;height:40px;border:0;border-radius:999px;background:var(--indigo-50);color:var(--tinta-2);display:grid;place-items:center;cursor:pointer;transition:background-color .2s ease}
   .modal-x:hover{background:var(--indigo-100);color:var(--tinta)}
   .modal-x svg{width:18px;height:18px}
   .modal h3{text-align:center;font-size:1.4rem;color:var(--indigo-700);padding:0 36px}
   .modal-cupom{display:flex;align-items:center;gap:8px;width:fit-content;margin:12px auto 0;background:var(--amarelo);color:var(--indigo-950);font-weight:800;font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
   .modal-cupom svg{width:15px;height:15px;flex:none}
-  .modal .sub{text-align:center;color:var(--tinta-2);font-size:.9375rem;margin:12px 0 20px}
-  .field{margin-bottom:14px;border:0;padding:0;min-width:0}
+  .modal .sub{text-align:center;color:var(--tinta-2);font-size:.9375rem;line-height:1.45;margin:10px 0 16px}
+  .field{margin:0 0 12px;border:0;padding:0;min-width:0}
   .field label,.field legend{display:block;font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--tinta-2);margin:0 0 6px 4px;padding:0}
-  .field input[type=text],.field input[type=email],.field input[type=tel],.phone select{width:100%;min-height:50px;padding:12px 14px;border:1px solid var(--borda-clara);border-radius:12px;background:var(--indigo-50);font:inherit;font-size:1rem;color:var(--tinta);transition:border-color .2s ease,background-color .2s ease}
+  .field input[type=text],.field input[type=email],.field input[type=tel],.phone select{width:100%;min-height:48px;padding:11px 14px;border:1px solid var(--borda-clara);border-radius:12px;background:var(--indigo-50);font:inherit;font-size:1rem;color:var(--tinta);transition:border-color .2s ease,background-color .2s ease}
   .field input::placeholder{color:#6A6E88}
+  .field input[aria-invalid=true]{border-color:#B3261E;background:#FFF6F5}
   .field input:focus,.phone select:focus{outline:0;border-color:var(--indigo-500);background:var(--branco);box-shadow:0 0 0 3px var(--indigo-100)}
   .phone{display:flex;gap:8px}
-  .phone select{flex:none;width:auto;max-width:44%;font-size:.9375rem;padding:12px 8px}
-  .phone input{flex:1;min-width:0}
+  .phone select{flex:none;width:5.6rem;padding:11px 4px 11px 8px;font-size:1rem}
+  .phone input[type=tel]{flex:1;min-width:0;padding-inline:12px}
+  /* Tela de 320px: o país vai para cima e o número ganha a linha inteira. */
+  @media (max-width:359px){ .phone{flex-wrap:wrap} .phone select{width:100%} }
   .radios{display:flex;flex-wrap:wrap;gap:8px 24px;padding:4px}
-  .radios label{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:1rem;color:var(--tinta);cursor:pointer;text-transform:none;letter-spacing:0;font-weight:700;margin:0}
+  .radios label{display:inline-flex;align-items:center;gap:8px;min-height:40px;font-size:1rem;color:var(--tinta);cursor:pointer;text-transform:none;letter-spacing:0;font-weight:700;margin:0}
   .radios input{width:20px;height:20px;flex:none;margin:0;accent-color:var(--indigo-500)}
   .hint,.err{font-size:.8125rem;font-weight:700;margin:6px 0 0 4px;display:none}
   .hint{color:var(--ambar-texto)}
@@ -284,6 +291,19 @@
   .modal .cta{margin-top:6px;max-width:none}
   .modal .cta:focus-visible{outline-color:var(--indigo-500)}
   .modal .cta:disabled{opacity:.7;cursor:progress;transform:none}
+  /* Celular baixo (SE, Android pequeno): o formulário cabe sem rolar. */
+  @media (max-height:700px){
+    .modal-bd{padding:16px 16px 14px}
+    .modal h3{font-size:1.25rem}
+    .modal-cupom{margin-top:8px}
+    .modal .sub{display:none}
+    .modal form{margin-top:14px}
+    .field{margin-bottom:9px}
+    .field input[type=text],.field input[type=email],.field input[type=tel],.phone select{min-height:44px;padding-block:9px}
+    .radios label{min-height:36px}
+    .modal .cta{min-height:54px}
+    .modal .selo-seguro{margin-top:8px}
+  }
 
   /* Página fechada: o VTurb tira o display:none no pitch (displayHiddenElements). */
   .esconder{display:none}
@@ -680,6 +700,12 @@
 
 <footer class="esconder"><div class="wrap">Ukulele Fundamental · Mateus Augusto</div></footer>
 
+<!-- Popup dos depoimentos em vídeo -->
+<dialog class="modal-video" id="depo" aria-label="Depoimento em vídeo">
+  <button class="modal-x" type="button" onclick="document.getElementById('depo').close()" aria-label="Fechar vídeo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  <div class="depo-caixa" id="depo-caixa"></div>
+</dialog>
+
 <!-- Formulário antes do checkout (mesmo fluxo da rvd4v1 do Clube) -->
 <dialog class="modal" id="checkout" aria-labelledby="ckt">
   <div class="modal-bd">
@@ -688,25 +714,25 @@
     <p class="modal-cupom"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>Cupom de R$ 200 OFF já aplicado</p>
     <p class="sub">Preencha para garantir o seu acesso vitalício ao Ukulele Fundamental.</p>
     <form id="lead" novalidate>
-      <div class="field"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Ex: Mateus Augusto" required><p class="err" id="e-nome">Insira nome e sobrenome.</p></div>
-      <div class="field"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="hint" id="h-email">Corrigimos um possível erro de digitação. Confira se está certo.</p><p class="err" id="e-email">Verifique o e-mail.</p></div>
+      <div class="field"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Ex: Mateus Augusto" required><p class="err" id="e-nome" role="alert">Escreva seu nome e sobrenome.</p></div>
+      <div class="field"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="hint" id="h-email">Corrigimos um possível erro de digitação. Confira se está certo.</p><p class="err" id="e-email" role="alert">Verifique o e-mail.</p></div>
       <div class="field"><label for="wa">WhatsApp</label>
         <div class="phone">
           <select id="ddi" aria-label="Código do país">
-            <option value="55" selected>Brasil +55</option>
-            <option value="351">Portugal +351</option>
-            <option value="1">EUA/Canadá +1</option>
-            <option value="244">Angola +244</option>
-            <option value="258">Moçambique +258</option>
-            <option value="34">Espanha +34</option>
-            <option value="44">Reino Unido +44</option>
-            <option value="">Outro país</option>
+            <option value="55" selected>BR +55</option>
+            <option value="351">PT +351</option>
+            <option value="1">EUA +1</option>
+            <option value="244">AO +244</option>
+            <option value="258">MZ +258</option>
+            <option value="34">ES +34</option>
+            <option value="44">UK +44</option>
+            <option value="">Outro</option>
           </select>
           <input id="wa" name="tel" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000" required>
         </div>
-        <p class="err" id="e-wa">Número com DDD (10 ou 11 dígitos).</p>
+        <p class="err" id="e-wa" role="alert">Confira o número com DDD. Ex: (31) 99999-8888.</p>
       </div>
-      <fieldset class="field"><legend>Você já possui um ukulele?</legend><div class="radios"><label><input type="radio" name="uke" value="Sim"> Sim</label><label><input type="radio" name="uke" value="Não"> Não</label></div><p class="err" id="e-uke">Responda essa pergunta.</p></fieldset>
+      <fieldset class="field"><legend>Você já possui um ukulele?</legend><div class="radios"><label><input type="radio" name="uke" value="Sim"> Sim</label><label><input type="radio" name="uke" value="Não"> Não</label></div><p class="err" id="e-uke" role="alert">Responda essa pergunta.</p></fieldset>
       <button class="cta" type="submit" id="go">Ir para o pagamento<svg aria-hidden="true"><use href="#i-seta"/></svg></button>
       <p class="selo-seguro"><svg aria-hidden="true"><use href="#i-escudo"/></svg>Ambiente 100% seguro pela Hotmart</p>
     </form>
@@ -758,7 +784,11 @@ var VIDEO_VARIANT=null;
 })();
 
 var dlg=document.getElementById('checkout');
-function openCheckout(){ dlg.showModal ? dlg.showModal() : dlg.setAttribute('open',''); }
+function openCheckout(){
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute('open','');
+  /* Enquanto a pessoa preenche, o navegador já abre a conexão com a Hotmart. */
+  if(!document.getElementById('pc-hotmart')){ var l=document.createElement('link'); l.id='pc-hotmart'; l.rel='preconnect'; l.href='https://pay.hotmart.com'; document.head.appendChild(l); }
+}
 dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
 
 var ddi=document.getElementById('ddi'), waIn=document.getElementById('wa');
@@ -790,7 +820,22 @@ function fixEmail(val){
   for(var k=0;k<sufFix.length;k++){ if(sf===sufFix[k][0]){sf=sufFix[k][1];ch=true;break;} }
   return {v:u+'@'+dn+sf,c:ch};
 }
-function emailOk(v){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);}
+function emailOk(v){return /^[^@\s]+@[^@\s.]+(\.[^@\s.]+)*\.[a-z]{2,}$/i.test(v);}
+/* Celular BR: DDD de 11 a 99 e, com 11 dígitos, o número começa com 9. Aceita fixo
+   (10 dígitos) porque tem WhatsApp Business em fixo. Recusa número todo repetido. */
+function foneBrOk(t){
+  if(!(t.length===10||t.length===11)) return false;
+  if(!/^[1-9][1-9]/.test(t)) return false;
+  if(t.length===11 && t.charAt(2)!=='9') return false;
+  return !/^(\d)\1+$/.test(t);
+}
+/* Erro some assim que a pessoa corrige o campo */
+['nome','email','wa'].forEach(function(id){
+  document.getElementById(id).addEventListener('input',function(){
+    var e=document.getElementById('e-'+(id==='wa'?'wa':id)); if(e.classList.contains('on')){ e.classList.remove('on'); this.setAttribute('aria-invalid','false'); }
+  });
+});
+document.querySelectorAll('input[name=uke]').forEach(function(r){ r.addEventListener('change',function(){ document.getElementById('e-uke').classList.remove('on'); }); });
 var emailIn=document.getElementById('email');
 emailIn.addEventListener('blur',function(){
   var h=document.getElementById('h-email'); h.classList.remove('on');
@@ -809,12 +854,13 @@ document.getElementById('lead').addEventListener('submit',function(e){
   var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
   var uke=(document.querySelector('input[name=uke]:checked')||{}).value;
   var ok=true;
-  function mark(id,cond){document.getElementById(id).classList.toggle('on',!cond);if(!cond)ok=false;}
-  mark('e-nome', nome.split(' ').filter(Boolean).length>=2);
+  function mark(id,cond){var e=document.getElementById(id);e.classList.toggle('on',!cond);var c=e.closest('.field').querySelector('input:not([type=radio])');if(c)c.setAttribute('aria-invalid',cond?'false':'true');if(!cond)ok=false;}
+  var partes=nome.split(/\s+/).filter(Boolean);
+  mark('e-nome', partes.length>=2 && partes.every(function(p){return p.length>=2;}) && !/\d/.test(nome));
   mark('e-email', emailOk(email));
-  mark('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
+  mark('e-wa', br ? foneBrOk(tel) : (tel.length>=6 && tel.length<=15));
   mark('e-uke', !!uke);
-  if(!ok) return;
+  if(!ok){ var ruim=document.querySelector('#lead .err.on'); if(ruim){ var campo=ruim.closest('.field').querySelector('input'); if(campo) campo.focus(); } return; }
   var btn=document.getElementById('go'); btn.firstChild.nodeValue='Liberando…'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
   var SRC=vturbSrc();
@@ -867,21 +913,22 @@ window.addEventListener('pageshow',function(e){
   obs.observe(caixa,{attributes:true,attributeFilter:['style','class']});
 })();
 
-/* Depoimentos: o iframe do YouTube só carrega quando a pessoa clica. */
+/* Depoimentos: a página carrega só a miniatura. O player do YouTube abre num popup
+   no clique e é destruído ao fechar, para o áudio não continuar tocando. */
+var depoDlg=document.getElementById('depo'), depoCaixa=document.getElementById('depo-caixa');
 document.querySelectorAll('.yt').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0';
-      f.title = b.getAttribute('aria-label');
-      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-      f.allowFullscreen = true;
-      var caixa = document.createElement('div');
-      caixa.className = 'yt';
-      caixa.appendChild(f);
-      b.replaceWith(caixa);
-    });
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0&playsinline=1';
+    f.title = b.getAttribute('aria-label');
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    depoCaixa.replaceChildren(f);
+    depoDlg.showModal ? depoDlg.showModal() : depoDlg.setAttribute('open','');
   });
-</script>
+});
+depoDlg.addEventListener('close',function(){ depoCaixa.replaceChildren(); });
+depoDlg.addEventListener('click',function(e){ if(e.target===depoDlg) depoDlg.close(); });
 </script>
 <!-- Ancora so do fallback de leitura do src: o href e escrito pelo vturbSrcFallback
      no instante do clique, para o VTurb carimbar a Conversion Key nele. -->
@@ -890,7 +937,8 @@ document.querySelectorAll('.yt').forEach(function (b) {
 window.dataLayer=window.dataLayer||[];
 window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'ukulele-fundamental-set26-cl'});
 (function(){function g(){(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');}
-if(document.readyState!=='loading'){setTimeout(g,1500);}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(g,1500);},{once:true});}})();
+function depoisDaPintura(){requestAnimationFrame(function(){setTimeout(g,0);});}
+if(document.readyState!=='loading'){depoisDaPintura();}else{document.addEventListener('DOMContentLoaded',depoisDaPintura,{once:true});}})();
 </script>
 </body>
 </html>
