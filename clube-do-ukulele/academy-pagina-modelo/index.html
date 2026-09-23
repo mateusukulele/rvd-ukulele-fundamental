@@ -225,11 +225,11 @@ details.ver-mais summary{cursor:pointer;color:var(--indigo);font-weight:700;font
 .historico li{background:var(--fundo);border-radius:12px;padding:12px 16px;font-size:15px;text-align:left;hyphens:manual}
 
 /* ===== Planos: escada e fluxo ===== */
-.escada-vis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:end;margin:8px 0 10px;min-height:380px}
+.escada-vis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:end;margin:8px 0 10px;min-height:420px}
 .deg{background:linear-gradient(180deg,var(--indigo),var(--indigo-profundo));color:#fff;border-radius:16px 16px 10px 10px;padding:16px 14px 14px;display:flex;flex-direction:column;gap:8px;transform-origin:bottom;opacity:0;transform:translateY(24px) scaleY(.92);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),box-shadow .25s;position:relative;cursor:default}
 .escada-vis.on .deg{opacity:1;transform:none}
 .escada-vis.on .deg.d2{transition-delay:.12s}.escada-vis.on .deg.d3{transition-delay:.24s}.escada-vis.on .deg.d4{transition-delay:.36s}.escada-vis.on .deg.d5{transition-delay:.48s}
-.deg.d1{min-height:240px}.deg.d2{min-height:300px}.deg.d3{min-height:360px}
+.deg.d1{min-height:220px}.deg.d2{min-height:260px}.deg.d3{min-height:300px}.deg.d4{min-height:340px}.deg.d5{min-height:380px}
 .deg:hover,.deg:focus-within{box-shadow:0 24px 44px -20px rgb(45 18 78 / .7);transform:translateY(-6px)}
 .deg-topo{display:flex;flex-direction:column;gap:2px;border-bottom:1px solid rgb(255 255 255 / .18);padding-bottom:10px}
 .deg-nome{font-family:var(--fonte-titulo);font-size:24px;line-height:1.1;letter-spacing:.3px}
@@ -269,7 +269,7 @@ table.comp td small{display:block;font-size:12.5px;color:var(--texto-suave);font
 table.comp td.sim::before{content:"";display:inline-block;width:20px;height:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2325845A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;vertical-align:middle}
 table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;background:var(--neutro-medio);border-radius:2px;vertical-align:middle}
 
-@media (min-width:1150px){.planos-tab{grid-template-columns:repeat(3,1fr)}.plano{padding:18px 14px}.plano .nome{font-size:23px}.plano ul{font-size:14px}}
+@media (min-width:1150px){.planos-tab{grid-template-columns:repeat(5,1fr)}.plano{padding:18px 14px}.plano .nome{font-size:23px}.plano ul{font-size:14px}}
 
 /* ===== Fluxo WhatsApp ===== */
 .chat{background:#EFE9E4;border-radius:16px;padding:18px 14px;margin:0 0 20px;display:flex;flex-direction:column;gap:10px;max-width:640px}
@@ -798,7 +798,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 @media (min-width:700px){
   .folha{padding:48px 56px}
   .folha.capa{padding:56px}
-  .folha .tres,.folha .ritmo,.folha .gar2{grid-template-columns:repeat(3,1fr)}.folha .planos-pdf{grid-template-columns:repeat(2,1fr)}
+  .folha .tres,.folha .ritmo,.folha .planos-pdf,.folha .gar2{grid-template-columns:repeat(3,1fr)}
   .folha .gar2{grid-template-columns:1fr 1fr}
   .folha ul.check{grid-template-columns:1fr 1fr}
 }
@@ -851,10 +851,10 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
             <p class="sub">Com um <strong>professor acompanhando, corrigindo e direcionando</strong> cada passo seu.</p>
             <ul class="selos">
               <li>1 ano de Suporte Individual</li>
-              <li>Jornada do zero ao intermediário</li>
+              <li>Encontro ao vivo toda semana</li>
                           </ul>
             <p class="repertorio">Marisa Monte, Legião Urbana, Beatles, Natiruts, Djavan, Melim, Bob Marley, Tim Maia, Anavitória, Skank: são <strong>157 músicas</strong> na biblioteca.</p>
-            <p class="chamada">Cadastre-se e receba a proposta no seu WhatsApp:</p>
+            <p class="chamada">Cadastre-se e receba os bônus da nova turma antes que ela saia do ar:</p>
             <form class="form" data-origem="hero">
               <label class="sr" for="nome">Nome completo</label>
               <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Nome completo" required>
@@ -896,7 +896,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
         <p class="lead">Porque aqui você tem um caminho para seguir, motivos que não acabam e um professor acompanhando cada passo seu.</p>
         <div class="dma rv-g">
           <div class="pilar"><img class="icone" src="../../academy/img/icone-direcao-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Direção</h3><p>Você nunca fica sem saber o próximo passo. A jornada diz o que estudar hoje, o que vem depois e quando passar adiante.</p></div>
-          <div class="pilar"><img class="icone" src="../../academy/img/icone-motivacao-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Motivação</h3><p>Toda quinta tem live. Todo mês tem desafio. Sempre tem uma música da biblioteca esperando você. Toda atividade volta com um vídeo personalizado. Sempre tem um próximo motivo para pegar o ukulele.</p></div>
+          <div class="pilar"><img class="icone" src="../../academy/img/icone-motivacao-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Motivação</h3><p>Toda semana tem encontro. Todo mês tem desafio. Sempre tem uma música da biblioteca esperando você. Toda atividade volta com um vídeo personalizado. Sempre tem um próximo motivo para pegar o ukulele.</p></div>
           <div class="pilar"><img class="icone" src="../../academy/img/icone-acompanhamento-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Acompanhamento</h3><p>Cada atividade que você grava volta com a correção, em vídeo, do professor, mostrada no instrumento, sobre o que você tocou de verdade, de forma personalizada e individual.</p></div>
         </div>
         <div class="fim dupla"><button class="btn acao" type="button" data-abrir-form data-origem="metodo">Quero tocar ukulele</button><a class="btn wa" href="#" data-wa>Falar com um atendente</a></div>
@@ -1000,7 +1000,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
             </div>
           </article>
           <article class="item rv">
-            <div class="txt"><p class="rot">No plano Ouro</p><h3>Três encontros ao vivo por semana</h3><p>Toda quinta tem a live Ukulele na Mão, aberta para todo mundo. No plano Ouro, logo depois dela, vem a Confraria do Ukulele: encontro ao vivo para tocar junto e trocar ideia. E tem o plantão de dúvidas às terças e sextas, por&nbsp;agendamento, para levar a sua dúvida ou a música que travou.</p><ul class="tags"><li>Confraria toda quinta</li><li>Plantão terça e sexta</li><li>Live aberta toda quinta</li></ul></div>
+            <div class="txt"><p class="rot">Encontros e mentorias</p><h3>Acompanhamento ao vivo</h3><p>Toda quinta tem a live Ukulele na Mão e, logo depois, a Confraria do Ukulele: encontro ao vivo para tocar junto e trocar ideia. Tem plantão de dúvidas duas vezes por semana, por&nbsp;agendamento. E, nos planos com mais tempo de professor, a mentoria individual de 30 minutos, só sua, para trabalhar o seu repertório.</p><ul class="tags"><li>Confraria toda quinta</li><li>Plantão 2x por semana</li><li>Mentoria individual de 30 min</li></ul></div>
             <div class="fig"><img src="../../academy/img/turma-collage.webp" alt="Mateus e alunos do Clube, cada um com o seu ukulele" width="900" height="1200" loading="lazy" class="fig-alta"></div>
           </article>
           <article class="item inv rv">
@@ -1014,7 +1014,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
           <article class="item inv rv">
             <div class="txt"><p class="rot bonus">Bônus</p><h3>Cursos extras gravados</h3><p>Workshop de Canto com Ukulele, para cantar junto. Destrava Dedos, para soltar a mão dos acordes.</p><ul class="tags"><li>2 cursos</li><li>29 aulas</li></ul></div>
             <div class="fig"><div class="capas">
-              <div class="capa c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg><strong>Workshop de Canto<br>com Ukulele</strong></div>
+              <div class="capa c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg><strong>Oficina de Canto<br>com Ukulele</strong></div>
               <div class="capa c2"><img src="../../academy/img/dicionario.webp" alt="Dicionário de Acordes para Ukulele" width="922" height="647" loading="lazy"></div>
               <div class="capa c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 11.5V4.5a1.5 1.5 0 0 1 3 0V12M14 12V6.5a1.5 1.5 0 0 1 3 0V13M17 13v-2.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.5a5 5 0 0 1-4.2-2.3L5 13.7a1.6 1.6 0 0 1 2.6-1.9L8 13"/></svg><strong>Destrava<br>Dedos</strong></div>
             </div></div>
@@ -1026,6 +1026,14 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
           <article class="item rv">
             <div class="txt"><p class="rot bonus">Bônus</p><h3>Dicionário de Acordes</h3><p>Todo acorde com diagrama e foto da mão, para consultar na hora que a música pede um que você ainda não conhece.</p><ul class="tags"><li>Consulta rápida</li><li>Diagrama e foto da mão</li></ul></div>
             <div class="fig"><img src="../../academy/img/dicionario.webp" alt="Dicionário de Acordes para Ukulele" width="922" height="647" loading="lazy"></div>
+          </article>
+          <article class="item rv">
+            <div class="txt"><p class="rot">Conforme o plano</p><h3>Análise das músicas que você já toca</h3><p>Nos planos com mais tempo de professor, você manda uma música que já está no seu repertório e recebe a análise de performance: o que soa bem, o que ajustar e qual o próximo passo dela. Qual plano é o seu, a gente descobre na conversa.</p><ul class="tags"><li>Análise de performance</li><li>Fora das 49 atividades da jornada</li></ul></div>
+            <div class="fig"><div class="chamada-mock">
+              <div class="tile prof"><img src="../../academy/img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy"><span>Mateus</span></div>
+              <div class="tile voce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Você</span></div>
+              <div class="barra-chamada"><i></i><i></i><i class="fim"></i><b>30:00</b></div>
+            </div></div>
           </article>
         </div>
       </div>
@@ -1044,7 +1052,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><strong>1 ano de acesso</strong></div>
         </div>
         <ul class="lista-resumo rv-g">
-          <li>Jornada em 5 cursos, 209 aulas</li><li>49 atividades com análise em vídeo</li><li>Live Ukulele na Mão toda quinta</li><li>157 músicas ensinadas em vídeo</li><li>Comunidade com Desafio do Mês</li><li>Workshop de Canto, Dicionário de Acordes e Destrava Dedos</li><li>No Ouro, Confraria e plantão: 3 encontros ao vivo por semana</li>
+          <li>Jornada em 5 cursos, 209 aulas</li><li>49 atividades com análise em vídeo</li><li>Confraria e live toda semana</li><li>Plantão de dúvidas 2x por semana, por agendamento</li><li>157 músicas ensinadas em vídeo</li><li>Comunidade com Desafio do Mês</li><li>Oficina de Canto, Dicionário de Acordes e Destrava Dedos</li><li>Análise de performance e mentoria individual, conforme o plano</li>
         </ul>
         </div>
         </div>
@@ -1080,7 +1088,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
         <div class="faq-lista">
           <details><summary>Nunca toquei nada. É pra mim?</summary><p>É. A maior parte dos alunos começa do zero, e a jornada começa exatamente aí: na primeira semana você toca uma música inteira, com dois acordes e uma batida, e o professor vê o seu vídeo.</p></details>
           <details><summary>Em quanto tempo vou tocar uma música inteira?</summary><p>Na primeira semana, se você seguir a jornada. Depois disso, cada nível abre músicas da biblioteca no seu tamanho, e a análise garante que você não passa adiante com um erro escondido.</p></details>
-          <details><summary>Quanto custa?</summary><p>Depende do plano. Tem plano com a análise das atividades e tem plano que soma três encontros ao vivo em grupo por semana. Deixa seu WhatsApp, a gente conversa cinco minutos e te mostra o que faz sentido para a sua rotina.</p></details>
+          <details><summary>Quanto custa?</summary><p>Depende do plano. Tem plano só com a análise das atividades e o plantão, e tem plano com encontro individual toda semana. Deixa seu WhatsApp, a gente conversa cinco minutos e te mostra o que faz sentido para a sua rotina.</p></details>
         </div>
       </div>
     </section>
