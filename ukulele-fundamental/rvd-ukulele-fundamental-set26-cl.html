@@ -389,11 +389,16 @@
       </script>
       <script type="text/javascript">var s=document.createElement("script"); s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6ab3e816af81587ab38c5c2d/v4/player.js", s.async=!0,document.head.appendChild(s);</script>
       <script>
-      /* Pitch do fechado.mp4 em 19:45 = 1185 s. persist:true -> quem já chegou no pitch
-         encontra a página aberta quando volta. */
-      var delaySeconds=1185;
+      /* A abertura segue o pitchTime do painel do VTurb (config.pitchTime, em segundos).
+         Mudou o pitch lá, a página acompanha, sem mexer aqui. Se o painel não mandar o
+         valor, vale o último conferido: 1185 s (19:45), com aviso no console.
+         persist:true -> quem já chegou no pitch encontra a página aberta quando volta. */
       var player=document.querySelector("vturb-smartplayer");
-      player.addEventListener("player:ready",function(){ player.displayHiddenElements(delaySeconds,[".esconder"],{persist:true}); });
+      player.addEventListener("player:ready",function(){
+        var pitch=player.config&&Number(player.config.pitchTime);
+        if(!(pitch>0)){ console.warn("VTurb sem pitchTime no painel; usando 1185 s"); pitch=1185; }
+        player.displayHiddenElements(pitch,[".esconder"],{persist:true});
+      });
       </script>
     </div>
 
