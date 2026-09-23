@@ -290,7 +290,9 @@
     section{padding:88px 0}
     .hero{padding:40px 0 64px}
     .hero h1{max-width:30ch}
-    .video{margin-top:28px}
+    /* Em notebook (1366x768) o vídeo de 880px passava da dobra: a largura agora
+       respeita a altura da tela, com piso de 520px. */
+    .video{margin-top:28px;max-width:min(880px,max(520px,calc((100svh - 340px) * 1.7778)))}
     .painel{padding:64px 56px}
     .depo-grid{grid-template-columns:repeat(3,1fr);gap:26px}
     .armadilhas{grid-template-columns:1fr 1fr;gap:22px}
