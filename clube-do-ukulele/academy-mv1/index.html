@@ -890,6 +890,40 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
 @media (max-width:759px){.lp .hero .selos li{font-size:13.5px;padding:5px 11px}.lp .hero .repertorio{font-size:14.5px}}
 .lp .form-ok{margin:4px 0 0;font-size:15px;line-height:1.45;color:#fff;font-weight:700;text-align:center}
 @media (max-width:759px){.lp .item .fig.fig-mob{display:flex;justify-content:center;margin-top:4px}.lp .player-mock{max-width:300px}}
+
+/* ===== LP: notebook com a área do aluno real (fundo claro, barra roxa) ===== */
+.lp .lap{max-width:470px;margin:0 auto;filter:drop-shadow(0 26px 40px rgb(0 0 0 / .45))}
+.lp .lap-tela{position:relative;background:#16151A;border-radius:16px 16px 4px 4px;padding:14px 14px 16px;border:1px solid #3A3942}
+.lp .lap-cam{position:absolute;top:5px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#34333C}
+.lp .lap-display{aspect-ratio:16/10;background:#F5F4F7;border-radius:3px;overflow:hidden;text-align:left}
+.lp .lap-base{position:relative;height:14px;margin:0 -9%;background:linear-gradient(180deg,#D9D9DE 0%,#B9B9C0 55%,#8F8F97 100%);border-radius:2px 2px 14px 14px}
+.lp .lap-base span{position:absolute;left:50%;top:0;width:18%;height:5px;margin-left:-9%;background:#A6A6AE;border-radius:0 0 8px 8px}
+.lp .br-barra{height:16px;background:#E6E3EC;display:flex;align-items:center;gap:4px;padding:0 7px;border-bottom:1px solid #D9D3E4}
+.lp .br-barra span{width:6px;height:6px;border-radius:50%;background:#C9C3D6}
+.lp .br-barra em{font-style:normal;font-size:8px;color:#5C5A70;background:#fff;border-radius:6px;padding:1px 10px;margin-left:10px}
+.lp .ar-nav{height:22px;display:flex;align-items:center;gap:12px;padding:0 10px;background:linear-gradient(135deg,#443468,#2D2249);border-bottom:2px solid #E87A85}
+.lp .ar-nav b{font-size:8.5px;font-weight:700;color:#fff}.lp .ar-nav b:first-child{margin-left:2px}
+.lp .ar-nav i{width:10px;height:10px;border-radius:50%;background:rgb(255 255 255 / .18)}.lp .ar-nav i:first-of-type{margin-left:auto}
+.lp .ar-pag{padding:9px 10px}
+.lp .ar-linha{display:flex;gap:5px;margin:0 0 7px}
+.lp .ar-card{flex:none;display:grid;gap:2px}
+.lp .resumo-fig .ar-card img{width:100%;height:auto;border-radius:4px;display:block}
+.lp .ar-b{width:30%}.lp .ar-j{width:17.2%}.lp .ar-m{width:17.2%}
+.lp .ar-j img{aspect-ratio:1}.lp .ar-b img,.lp .ar-m img{aspect-ratio:16/9}
+.lp .ar-prog{display:block;height:2px;border-radius:2px;background:#D9D3E4;overflow:hidden}.lp .ar-prog span{display:block;height:100%;background:#7A5FB0}
+.lp .lap p.ar-tit{margin:2px 0 6px;font-size:9.5px;font-weight:700;color:#2D124E;text-align:left;line-height:1.2}
+.lp .lap p.ar-tit::before{content:"";display:block;width:52px;height:2px;border-radius:2px;background:#E87A85;margin-bottom:4px}
+
+/* ===== LP: pop-up do formulário (botões espalhados pela página) ===== */
+.lp .pop-form{border:0;padding:0;background:transparent;width:calc(100% - 32px);max-width:440px;overflow:visible}
+.lp .pop-form::backdrop{background:rgb(20 10 34 / .75)}
+.lp .pop-caixa{position:relative;background:linear-gradient(160deg,#443468,#2D124E);border-radius:20px;padding:30px 22px 24px;box-shadow:0 30px 60px -20px rgb(0 0 0 / .6)}
+.lp .pop-fechar{position:absolute;top:6px;right:6px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#fff;font-size:28px;line-height:1;cursor:pointer}
+.lp .pop-fechar:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.lp .pop-caixa h3{font-family:var(--fonte-titulo);font-weight:400;text-transform:uppercase;letter-spacing:.3px;color:#fff;font-size:28px;line-height:1.15;text-align:center;margin:0 0 6px}
+.lp .pop-caixa .pop-sub{color:var(--sobre-escuro);text-align:center;font-size:15px;line-height:1.45;margin:0 auto 18px;max-width:320px}
+.lp .pop-caixa input,.lp .pop-caixa .tel{height:50px}
+.lp .pop-caixa input:focus-visible,.lp .pop-caixa .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 </style>
 </head>
 <body class="somente-lp">
@@ -1081,7 +1115,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
       <div class="miolo centro">
         <h2>Você se cadastra e a gente monta o seu plano com:</h2>
         <div class="resumo-grid">
-        <div class="resumo-fig rv"><div class="vitrine" role="img" aria-label="A área do aluno do Clube: a jornada em 5 cursos, as suas análises, os cursos extras e a biblioteca de músicas"><div class="vt-tela"><p class="vt-topo"><span></span><span></span><span></span>Área do aluno</p><p class="vt-rot">Jornada</p><div class="vt-linha vt-jor"><img src="../../academy/img/jornada-capa-i0.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-ini1.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-ini2.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-int1.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-int2.webp" alt="" loading="lazy"></div><p class="vt-rot">Suas análises e cursos extras</p><div class="vt-linha vt-ext"><img src="../../academy/img/vitrine-minhas-analises.webp" alt="" loading="lazy"><img src="../../academy/img/capa-workshop-canto.webp" alt="" loading="lazy"><img src="../../academy/img/capa-destrava-dedos.webp" alt="" loading="lazy"></div><p class="vt-rot">Biblioteca de músicas</p><div class="vt-linha vt-bib"><img src="../../academy/img/bib-ini0.webp" alt="" loading="lazy"><img src="../../academy/img/bib-ini1.webp" alt="" loading="lazy"><img src="../../academy/img/bib-ini2.webp" alt="" loading="lazy"><img src="../../academy/img/bib-int1.webp" alt="" loading="lazy"><img src="../../academy/img/bib-int2.webp" alt="" loading="lazy"></div></div><div class="vt-base"></div></div></div>
+        <div class="resumo-fig rv"><div class="lap" role="img" aria-label="Notebook com a área do aluno do Clube aberta: banners, a Jornada de Aprendizado em 5 cursos com barra de progresso, a biblioteca de músicas e os cursos extras"><div class="lap-tela"><span class="lap-cam"></span><div class="lap-display"><div class="br-barra"><span></span><span></span><span></span><em>aluno.comotocarukulele.com</em></div><div class="ar-nav"><b>Início</b><b>Minhas Análises</b><i></i><i></i><i></i></div><div class="ar-pag"><div class="ar-linha"><div class="ar-card ar-b"><img src="../../academy/img/area-ban-comece.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:55%"></span></span></div><div class="ar-card ar-b"><img src="../../academy/img/vitrine-minhas-analises.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-b"><img src="../../academy/img/area-ban-comunidade.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div></div><p class="ar-tit">Jornada de Aprendizado</p><div class="ar-linha"><div class="ar-card ar-j"><img src="../../academy/img/jornada-capa-i0.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:62%"></span></span></div><div class="ar-card ar-j"><img src="../../academy/img/trilha-ini1.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:30%"></span></span></div><div class="ar-card ar-j"><img src="../../academy/img/trilha-ini2.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:12%"></span></span></div><div class="ar-card ar-j"><img src="../../academy/img/trilha-int1.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-j"><img src="../../academy/img/trilha-int2.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div></div><div class="ar-linha"><div class="ar-card ar-m"><img src="../../academy/img/bib-ini0.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-m"><img src="../../academy/img/bib-ini1.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-m"><img src="../../academy/img/bib-ini2.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-m"><img src="../../academy/img/bib-int1.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-m"><img src="../../academy/img/bib-int2.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div></div><p class="ar-tit">Cursos e Materiais Extras</p><div class="ar-linha"><div class="ar-card ar-b"><img src="../../academy/img/capa-workshop-canto.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-b"><img src="../../academy/img/capa-dicionario.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-b"><img src="../../academy/img/capa-destrava-dedos.webp" alt="" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div></div></div></div></div><div class="lap-base"><span></span></div></div></div>
         <div class="resumo-txt">
         <div class="resumo rv-g">
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/><path d="m9 12 2 2 4-4"/></svg><strong>Dupla garantia</strong></div>
@@ -1131,6 +1165,22 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
     </section>
 
     <footer>Clube do Ukulele · comotocarukulele.com</footer>
+    <dialog class="pop-form" id="pop-form" aria-labelledby="pop-tit">
+      <div class="pop-caixa">
+        <button class="pop-fechar" type="button" aria-label="Fechar">&times;</button>
+        <h3 id="pop-tit">Receber a oferta</h3>
+        <p class="pop-sub">Deixe seus dados e a gente te chama no WhatsApp com a oferta.</p>
+        <form class="form" data-origem="popup">
+          <label class="sr" for="pop-nome">Nome completo</label>
+          <input id="pop-nome" name="nome" type="text" autocomplete="name" placeholder="Nome completo" required>
+          <label class="sr" for="pop-email">E-mail</label>
+          <input id="pop-email" name="email" type="email" autocomplete="email" placeholder="E-mail" required>
+          <label class="sr" for="pop-whatsapp">WhatsApp</label>
+          <div class="tel"><span class="ddi">+55</span><input id="pop-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(11) 99999-9999" required></div>
+          <button class="btn acao" type="submit">Receber a oferta</button>
+        </form>
+      </div>
+    </dialog>
     <div class="sticky" id="sticky-lp"><button class="btn acao" type="button" data-abrir-form data-origem="sticky">Receber a oferta</button></div>
   </div>
 </div>
@@ -1199,8 +1249,7 @@ const $id = (s) => document.getElementById(s) || $vazio();
     else if (v.length > 2) v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
     i.value = v;
   }));
-  const formLp = $q('.lp form');
-  formLp.addEventListener('submit', e => {
+  const enviarForm = formLp => formLp.addEventListener('submit', e => {
     e.preventDefault();
     const dados = Object.fromEntries(new FormData(formLp).entries());
     dados.whatsapp = '55' + (dados.whatsapp || '').replace(/\D/g, '');
@@ -1215,11 +1264,15 @@ const $id = (s) => document.getElementById(s) || $vazio();
     new URLSearchParams(location.search).forEach((v, k) => { if (k.startsWith('utm_')) destino.searchParams.set(k, v); });
     setTimeout(() => { location.href = destino.toString(); }, 400);
   });
+  document.querySelectorAll('.lp form').forEach(enviarForm);
+  const popForm = document.getElementById('pop-form');
   document.querySelectorAll('[data-abrir-form]').forEach(b => b.addEventListener('click', () => {
-    formLp.dataset.origem = b.dataset.origem || 'botao';
-    formLp.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    setTimeout(() => $id('nome').focus({ preventScroll: true }), 500);
+    popForm.querySelector('form').dataset.origem = b.dataset.origem || 'botao';
+    popForm.showModal();
+    setTimeout(() => popForm.querySelector('input').focus(), 60);
   }));
+  popForm.querySelector('.pop-fechar').addEventListener('click', () => popForm.close());
+  popForm.addEventListener('click', e => { if (e.target === popForm) popForm.close(); });
   // Reveal ao rolar, uma vez só; a demo da análise toca quando entra na tela
   const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ioRv = new IntersectionObserver(es => es.forEach(en => {
