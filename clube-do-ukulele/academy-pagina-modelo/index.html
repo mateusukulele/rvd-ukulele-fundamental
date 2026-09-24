@@ -838,6 +838,36 @@ body.somente-lp .aba{display:block;opacity:1;transform:none}
 body.somente-lp{padding-top:0}
 body.somente-lp .lp .hero{padding-top:20px}
 body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .bub{opacity:1!important;transform:none!important}
+
+/* ===== LP: visuais reais da dobra de oferta ===== */
+.lp .item .fig.fig-livre{max-height:none}
+.lp .trilha{position:relative;width:100%;max-width:420px;aspect-ratio:420/200}
+.lp .item .fig .trilha img{position:absolute;width:19%;height:auto;max-height:none;aspect-ratio:1;border-radius:12px;border:2px solid #fff;box-shadow:0 12px 24px -12px rgb(45 18 78 / .6)}
+.lp .trilha img:nth-child(1){left:0;top:60%}.lp .trilha img:nth-child(2){left:20.25%;top:45%}.lp .trilha img:nth-child(3){left:40.5%;top:30%}.lp .trilha img:nth-child(4){left:60.75%;top:15%}.lp .trilha img:nth-child(5){left:81%;top:0}
+.lp .player-mock{width:100%;max-width:340px;background:#1A1226;border-radius:14px;padding:10px;box-shadow:0 16px 32px -18px rgb(45 18 78 / .7)}
+.lp .pm-tela{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:radial-gradient(70% 70% at 38% 45%,#5C5A70,#2D124E)}
+.lp .pm-aluno{position:absolute;inset:0;display:grid;place-items:center}
+.lp .pm-uke{width:64px;height:64px;background:var(--sobre-escuro);-webkit-mask:url(../../img/icone-ukulele.svg) center/contain no-repeat;mask:url(../../img/icone-ukulele.svg) center/contain no-repeat;transform:translateX(-22%)}
+.lp .pm-rot{font-size:11px;font-weight:700;line-height:1.3;color:#fff;background:#2D124E;padding:2px 8px;border-radius:999px}
+.lp .pm-aluno .pm-rot{position:absolute;left:8px;top:8px}
+.lp .pm-prof{position:absolute;right:8px;bottom:8px;width:30%;aspect-ratio:3/4;border-radius:8px;overflow:hidden;border:2px solid var(--coral)}
+.lp .item .fig .pm-prof img{width:100%;height:100%;max-height:none;object-fit:cover;object-position:50% 18%;border-radius:0}
+.lp .pm-prof .pm-rot{position:absolute;left:4px;bottom:4px;font-size:10px;padding:1px 6px}
+.lp .pm-play{position:absolute;left:36%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:999px;background:var(--coral);color:var(--coral-texto);display:grid;place-items:center}
+.lp .pm-play svg{width:22px;height:22px;margin-left:3px}
+.lp .pm-barra{height:4px;border-radius:999px;background:#3A3150;margin:10px 2px 8px;overflow:hidden}.lp .pm-barra span{display:block;width:38%;height:100%;background:var(--coral)}
+.lp .pm-info{margin:0 2px;color:var(--sobre-escuro);font-size:13px;line-height:1.4;text-align:left}.lp .pm-info strong{color:#fff;font-weight:700}
+.lp .bib-mock{width:100%;max-width:360px;background:var(--fundo);border-radius:14px;padding:12px;text-align:left}
+.lp .bib-topo{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 8px}.lp .bib-topo strong{font-size:14px;color:var(--indigo)}.lp .bib-topo span{font-size:12px;color:var(--texto-suave);font-weight:700}
+.lp .bib-filtros{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}.lp .bib-filtros span{font-size:11.5px;font-weight:700;color:var(--indigo);background:var(--card);border:1px solid var(--superficie);border-radius:999px;padding:3px 10px}
+.lp .bib-lista{list-style:none;margin:0;padding:0;display:grid;gap:6px;max-width:none}
+.lp .bib-lista li{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:10px;padding:6px 8px;margin:0}
+.lp .item .fig .bib-lista img{width:56px;height:auto;max-height:none;aspect-ratio:16/9;border-radius:6px;flex:none}
+.lp .bib-lista span{display:grid;min-width:0}.lp .bib-lista b{font-size:13.5px;color:var(--texto);line-height:1.25}.lp .bib-lista i{font-style:normal;font-size:12px;color:var(--texto-suave);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lp .extras-capas{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:420px}
+.lp .item .fig .extras-capas img,.lp .item .fig img.capa-larga{width:100%;height:auto;max-height:none;border-radius:12px;box-shadow:0 12px 24px -14px rgb(45 18 78 / .6)}
+.lp .item .fig img.capa-larga{max-width:380px}
+.lp .item .fig img.capa-guia{width:auto;max-width:100%;max-height:260px;border-radius:10px;box-shadow:0 14px 28px -14px rgb(45 18 78 / .65)}
 </style>
 </head>
 <body class="somente-lp">
@@ -981,22 +1011,19 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
         <div class="stack">
           <article class="item rv">
             <div class="txt"><p class="rot">1 ano de acesso</p><h3>Jornada do Clube</h3><p>Cinco cursos gravados, na ordem certa, do zero absoluto ao intermediário: Iniciante 0, 1 e 2, Intermediário 1 e 2. Cada música estudada em peças pequenas: dividir, destravar, dominar.</p><ul class="tags"><li>5 cursos, do zero absoluto ao intermediário</li><li>25 módulos</li><li>209 aulas</li><li>Primeira música na primeira semana</li></ul></div>
-            <div class="fig"><img src="../../academy/img/mockup-laptop.webp" alt="A plataforma do Clube no computador e no celular" width="1200" height="896" loading="lazy"></div>
+            <div class="fig fig-livre"><div class="trilha" role="img" aria-label="Os cinco cursos da jornada, do Iniciante 0 ao Intermediário 2"><img src="../../academy/img/trilha-ini0.webp" alt="" width="320" height="320" loading="lazy"><img src="../../academy/img/trilha-ini1.webp" alt="" width="320" height="320" loading="lazy"><img src="../../academy/img/trilha-ini2.webp" alt="" width="320" height="320" loading="lazy"><img src="../../academy/img/trilha-int1.webp" alt="" width="320" height="320" loading="lazy"><img src="../../academy/img/trilha-int2.webp" alt="" width="320" height="320" loading="lazy"></div></div>
           </article>
           <article class="item inv rv">
             <div class="txt"><p class="rot">Análise em vídeo</p><h3>49 análises ao longo da jornada</h3><p>Você grava a atividade, o Mateus assiste com você e responde em vídeo, mostrando no instrumento o que ajustar. Em até 3 dias úteis, e fica guardada na sua área.</p><ul class="tags"><li>49 atividades, e crescendo</li><li>Resposta em até 3 dias úteis</li></ul></div>
-            <div class="fig">
-              <div class="video-mock">
-                <img src="../../academy/img/mockup-celular.webp" alt="" width="1400" height="1045" loading="lazy">
-                <div class="tela">
-                  <div class="tela-frame">
-                    <div class="pane aluno"><span class="rot-pane">vídeo da aluna</span></div>
-                    <div class="pane prof"><img src="../../academy/img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy"><span class="rot-pane">Mateus</span></div>
-                  </div>
-                  <button class="play" type="button" aria-label="Exemplo de análise (imagem ilustrativa)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
-                  <div class="barra"><span></span></div>
-                  <span class="tempo">Análise do Mateus · 7 min</span>
+            <div class="fig fig-livre">
+              <div class="player-mock" role="img" aria-label="Exemplo de análise: o vídeo da aluna grande e o Mateus no canto, mostrando no instrumento (imagem ilustrativa)">
+                <div class="pm-tela">
+                  <div class="pm-aluno"><span class="pm-uke"></span><span class="pm-rot">vídeo da aluna</span></div>
+                  <div class="pm-prof"><img src="../../academy/img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy"><span class="pm-rot">Mateus</span></div>
+                  <span class="pm-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
                 </div>
+                <div class="pm-barra"><span></span></div>
+                <p class="pm-info"><strong>Análise do Mateus</strong> · 7 min</p>
               </div>
             </div>
           </article>
@@ -1006,7 +1033,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
           </article>
           <article class="item inv rv">
             <div class="txt"><p class="rot">1 ano de acesso</p><h3>Biblioteca de Músicas</h3><p>157 músicas ensinadas em vídeo, separadas por nível e com filtro por batida, quantidade de acordes e gênero. Terminou uma aula da jornada, é aqui que você aplica o que aprendeu numa música que gosta, no seu tamanho.</p><ul class="tags"><li>157 músicas em vídeo</li><li>Separadas por nível</li><li>Filtro por batida e por acordes</li></ul></div>
-            <div class="fig"><img src="../../academy/img/mockup-tablet.webp" alt="Tablet com a biblioteca de músicas ao lado do ukulele" width="1200" height="896" loading="lazy"></div>
+            <div class="fig fig-livre"><div class="bib-mock" role="img" aria-label="Lista da Biblioteca de Músicas com filtros por nível, batida, acordes e gênero"><div class="bib-topo"><strong>Biblioteca de Músicas</strong><span>157 músicas</span></div><div class="bib-filtros"><span>Nível</span><span>Batida</span><span>Acordes</span><span>Gênero</span></div><ul class="bib-lista"><li><img src="../../academy/img/bib-ini0.webp" alt="" width="192" height="108" loading="lazy"><span><b>Garota Nacional</b><i>Skank · Iniciante 0 · 2 acordes</i></span></li><li><img src="../../academy/img/bib-ini1.webp" alt="" width="192" height="108" loading="lazy"><span><b>Azul da Cor do Mar</b><i>Tim Maia · Iniciante 1 · 2 acordes</i></span></li><li><img src="../../academy/img/bib-ini2.webp" alt="" width="192" height="108" loading="lazy"><span><b>Amor I Love You</b><i>Marisa Monte · Iniciante 2 · 7 acordes</i></span></li><li><img src="../../academy/img/bib-int1.webp" alt="" width="192" height="108" loading="lazy"><span><b>Trevo</b><i>Anavitória · Intermediário 1 · 4 acordes</i></span></li></ul></div></div>
           </article>
           <article class="item rv">
             <div class="txt"><p class="rot bonus">Bônus</p><h3>Comunidade de alunos</h3><p>Comunidade dos alunos com o Desafio do Mês: uma meta com data e plateia, para você ter para quem mostrar o que aprendeu.</p><ul class="tags"><li>Desafio do Mês</li><li>Grupo de Avisos</li></ul></div>
@@ -1014,19 +1041,15 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
           </article>
           <article class="item inv rv">
             <div class="txt"><p class="rot bonus">Bônus</p><h3>Cursos extras gravados</h3><p>Workshop de Canto com Ukulele, para cantar junto. Destrava Dedos, para soltar a mão dos acordes.</p><ul class="tags"><li>2 cursos</li><li>29 aulas</li></ul></div>
-            <div class="fig"><div class="capas">
-              <div class="capa c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg><strong>Workshop de Canto<br>com Ukulele</strong></div>
-              <div class="capa c2"><img src="../../academy/img/dicionario.webp" alt="Dicionário de Acordes para Ukulele" width="922" height="647" loading="lazy"></div>
-              <div class="capa c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 11.5V4.5a1.5 1.5 0 0 1 3 0V12M14 12V6.5a1.5 1.5 0 0 1 3 0V13M17 13v-2.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.5a5 5 0 0 1-4.2-2.3L5 13.7a1.6 1.6 0 0 1 2.6-1.9L8 13"/></svg><strong>Destrava<br>Dedos</strong></div>
-            </div></div>
+            <div class="fig fig-livre"><div class="extras-capas"><img src="../../academy/img/capa-workshop-canto.webp" alt="Workshop de Canto com Ukulele" width="640" height="360" loading="lazy"><img src="../../academy/img/capa-destrava-dedos.webp" alt="Destrava Dedos: 21 exercícios de coordenação" width="640" height="360" loading="lazy"></div></div>
           </article>
           <article class="item inv rv">
             <div class="txt"><p class="rot bonus">Bônus</p><h3>Guia de Compra do 1º Ukulele</h3><p>O que olhar antes de comprar: tamanho, corda, afinação e o que não faz diferença nenhuma. Para quem ainda não tem o instrumento, ou quer trocar por um que soe melhor.</p><ul class="tags"><li>Antes da primeira aula</li><li>Sem indicação de loja</li></ul></div>
-            <div class="fig"><div class="capas"><div class="capa c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l1 4H5z"/><path d="M5 6h14v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M9 10a3 3 0 0 0 6 0"/></svg><strong>Guia de Compra<br>do 1º Ukulele</strong></div></div></div>
+            <div class="fig fig-livre"><img class="capa-guia" src="../../academy/img/capa-guia-compra.webp" alt="Capa do Guia de Compra: Meu primeiro ukulele" width="368" height="520" loading="lazy"></div></div>
           </article>
           <article class="item rv">
             <div class="txt"><p class="rot bonus">Bônus</p><h3>Dicionário de Acordes</h3><p>Todo acorde com diagrama e foto da mão, para consultar na hora que a música pede um que você ainda não conhece.</p><ul class="tags"><li>Consulta rápida</li><li>Diagrama e foto da mão</li></ul></div>
-            <div class="fig"><img src="../../academy/img/dicionario.webp" alt="Dicionário de Acordes para Ukulele" width="922" height="647" loading="lazy"></div>
+            <div class="fig fig-livre"><img class="capa-larga" src="../../academy/img/capa-dicionario.webp" alt="Dicionário de Acordes: todos os acordes num lugar só" width="640" height="360" loading="lazy"></div>
           </article>
         </div>
       </div>
