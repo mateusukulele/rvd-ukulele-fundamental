@@ -33,14 +33,17 @@ body{min-height:100vh;background:var(--indigo-profundo);color:var(--texto);font-
 .hero>*{position:relative;z-index:1}
 .logo{width:96px;height:auto;display:block;margin:0 auto clamp(8px,1.6svh,16px)}
 h1{font-family:"Anton",Impact,sans-serif;font-weight:400;color:#fff;text-transform:uppercase;text-align:center;
-   font-size:clamp(24px,min(4.2vw,5svh),48px);line-height:1.14;letter-spacing:.3px;margin:0 auto clamp(12px,2.2svh,22px);max-width:900px;text-wrap:balance;
+   font-size:clamp(24px,min(4.2vw,4.6svh),46px);line-height:1.14;letter-spacing:.3px;margin:0 auto clamp(12px,2.2svh,22px);max-width:900px;text-wrap:balance;
    text-shadow:0 2px 6px rgb(0 0 0 / .35)}
 h1 em{font-style:normal;color:var(--coral)}
-/* largura do card = a que deixa o vídeo 16:9 caber na altura que sobra: 100svh menos logo, título e chamada (~330px) */
-.card{width:min(100%,720px,calc((100svh - 330px) * 1.778 + 24px));background:#fff;border-radius:20px;padding:12px;box-shadow:0 24px 48px -28px rgb(0 0 0 / .6)}
-.player{border-radius:12px;overflow:hidden;background:var(--quase-preto)}
+/* card de largura fixa (o texto não quebra a mais); quem encolhe é o vídeo, pela altura que sobra: 100svh menos logo, título, recado, chamada e aviso (~500px), com piso de 440px */
+.card{width:min(100%,720px);background:#fff;border-radius:20px;padding:12px;box-shadow:0 24px 48px -28px rgb(0 0 0 / .6)}
+.player{width:clamp(min(100%,440px),calc((100svh - 500px) * 1.778),100%);margin:0 auto;border-radius:12px;overflow:hidden;background:var(--quase-preto)}
 .contato{padding:14px 8px 4px;text-align:center}
-.contato p{font-size:clamp(16px,1.9svh,18px);line-height:1.45;font-weight:700;margin:0 auto 12px;max-width:560px;text-wrap:pretty}
+.recado{font-size:clamp(17px,2.1svh,19px);line-height:1.4;font-weight:700;margin:0 auto 8px;max-width:600px;text-wrap:pretty}
+.contato p.chamada{font-size:clamp(16px,1.9svh,17px);line-height:1.45;font-weight:500;margin:0 auto 12px;max-width:560px;text-wrap:pretty}
+.oficial{display:flex;align-items:center;justify-content:center;gap:6px;margin:8px auto 0;font-size:14px;line-height:1.4;color:#4A4458}
+.oficial svg{width:16px;height:16px;flex:none;fill:var(--indigo)}
 .btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 26px;border-radius:999px;
    background:var(--wa);color:#fff;font-weight:700;font-size:18px;text-decoration:none;box-shadow:0 8px 18px -10px rgb(0 0 0 / .35);transition:background .2s ease,transform .2s ease}
 .btn-wa:hover{background:var(--wa-escuro);transform:translateY(-1px)}
@@ -53,8 +56,10 @@ h1 em{font-style:normal;color:var(--coral)}
   .logo{width:96px;margin-bottom:12px}
   h1{font-size:clamp(24px,7vw,30px);margin-bottom:16px}
   .card{width:100%;padding:8px;border-radius:16px}
+  .player{width:100%}
   .contato{padding:18px 8px 10px}
-  .contato p{font-size:17px;line-height:1.5;margin-bottom:16px}
+  .recado{font-size:19px;line-height:1.4;margin-bottom:12px}
+  .contato p.chamada{font-size:17px;line-height:1.5;margin-bottom:16px}
   .btn-wa{display:flex;width:100%;min-height:58px;padding:12px 16px;gap:10px;font-size:18px}
   .btn-wa svg{width:26px;height:26px}
   .so-desk{display:none}
@@ -74,11 +79,13 @@ h1 em{font-style:normal;color:var(--coral)}
     </div>
 
     <div class="contato">
-      <p>Se quiser, pode já entrar em contato com nossa equipe apertando o botão verde aqui, que vai te levar direto pro nosso WhatsApp oficial!</p>
+      <p class="recado">Opa, jajá te mandamos um alô pelo Whatsapp. Agora é só responder à mensagem para receber as informações da nova turma e garantir seu lugar com o bônus.</p>
+      <p class="chamada">Se quiser, pode já entrar em contato com nossa equipe apertando o botão verde aqui, que vai te levar direto pro nosso WhatsApp oficial!</p>
       <a class="btn-wa" id="btn-wa" href="https://wa.me/553198585286" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.45 9.45 0 0 1-4.81-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.9.99 6.7 2.78a9.4 9.4 0 0 1 2.77 6.7c0 5.22-4.25 9.46-9.48 9.46zm8.06-17.53A11.33 11.33 0 0 0 12.05.63C5.77.63.66 5.74.66 12.02c0 2 .52 3.96 1.52 5.69L.57 23.63l6.05-1.59a11.36 11.36 0 0 0 5.43 1.38h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.18-5.9-3.34-8.05z"/></svg>
         <span>Falar <span class="so-desk">com a equipe </span>no WhatsApp</span>
       </a>
+      <p class="oficial"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.9-4.9 1.4 1.4-6.3 6.3z"/></svg>Só aceite contato de números oficiais do Clube do Ukulele.</p>
     </div>
   </div>
 
