@@ -926,6 +926,23 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
 .lp .pop-caixa input:focus-visible,.lp .pop-caixa .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .lp .subtitulo-sec{margin:-2px auto 12px;max-width:600px;text-align:center;font-size:20px;line-height:1.35;font-weight:700;color:var(--coral-forte)}
 .lp .pop-caixa .pop-sub{margin-bottom:6px}.lp .pop-caixa .pop-obrig{margin:0 0 14px;text-align:center;font-size:13px;color:var(--sobre-escuro)}
+
+/* ===== LP: quem está por trás do Clube ===== */
+.lp .sobre2 h2{text-align:center}
+.lp .sb-grade{display:grid;grid-template-columns:1fr;gap:18px;margin-top:22px}
+.lp .sb-card{background:var(--card);border-radius:20px;padding:24px 22px;box-shadow:var(--sombra-card);text-align:left}
+.lp .sb-card h3{font-family:var(--fonte-titulo);font-weight:400;text-transform:uppercase;letter-spacing:.3px;color:var(--indigo);font-size:26px;line-height:1.15;margin:0 0 10px}
+.lp .sb-card p{margin:0 0 12px;font-size:16px;line-height:1.65;color:var(--texto);text-align:left;hyphens:manual;-webkit-hyphens:manual}
+.lp .sb-selo{background:linear-gradient(160deg,#443468,#2D124E);border-radius:22px;padding:26px 20px;display:grid;place-items:center;margin:0 0 18px}
+.lp .sb-selo img{width:210px;max-width:80%;height:auto;display:block}
+.lp .sb-numeros{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:none}
+.lp .sb-numeros li{margin:0;background:var(--fundo);border-radius:12px;padding:10px 6px;text-align:center;display:grid;gap:2px}
+.lp .sb-numeros strong{font-family:var(--fonte-titulo);font-weight:400;font-size:22px;color:var(--coral-forte);line-height:1.1}
+.lp .sb-numeros span{font-size:13px;color:var(--texto-suave);line-height:1.3}
+.lp .sb-foto{width:100%;max-width:260px;aspect-ratio:4/5;object-fit:cover;border-radius:14px;display:block;margin:0 auto 16px}
+.lp .sb-rot{font-size:13px!important;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-forte)!important;margin:0 0 4px!important}
+.lp .sb-assina{font-size:14px!important;color:var(--texto-suave)!important;font-weight:700;margin:0!important}
+@media (min-width:900px){.lp .sb-grade{grid-template-columns:1fr 1.25fr;align-items:stretch;max-width:1000px;margin-left:auto;margin-right:auto}.lp .sb-mateus{display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:start}.lp .sb-foto{margin:0;max-width:none}}
 </style>
 </head>
 <body class="somente-lp">
@@ -1143,12 +1160,30 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
       </div>
     </section>
 
-    <section class="suave">
+    <section class="suave sobre2">
       <div class="miolo">
-        <h2>Sobre o Clube do Ukulele</h2>
-        <p class="lead">O Clube do Ukulele ensina adultos a tocar desde 2017. Mais de 6.000 alunos passaram pelas aulas do Mateus, a maioria começando do zero, e mais de 300 mil pessoas acompanham o Clube nas redes. O Clube do Ukulele Academy é a nossa escola: a jornada completa com um professor acompanhando cada passo.</p>
-        <div class="profs rv-g">
-          <figure><img src="../../img/mateus-perfil.webp" alt="Mateus Augusto" width="1000" height="1250"><figcaption><strong>Mateus Augusto</strong><span>Fundador e professor</span></figcaption></figure>
+        <h2>Quem está por trás do Clube</h2>
+        <div class="sb-grade">
+          <article class="sb-card sb-clube rv">
+            <div class="sb-selo"><img src="../../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" loading="lazy"></div>
+            <h3>O Clube do Ukulele</h3>
+            <p>O Clube do Ukulele ensina adultos a tocar desde 2017, a maioria começando do zero. O Clube do Ukulele Academy é a nossa escola: a jornada completa, com um professor acompanhando cada passo seu.</p>
+            <ul class="sb-numeros">
+              <li><strong>2017</strong><span>ensinando ukulele</span></li>
+              <li><strong>+6.000</strong><span>alunos</span></li>
+              <li><strong>+300 mil</strong><span>seguidores</span></li>
+            </ul>
+          </article>
+          <article class="sb-card sb-mateus rv">
+            <img class="sb-foto" src="../../img/mateus-perfil.webp" alt="Mateus Augusto com o ukulele" width="1000" height="1250" loading="lazy">
+            <div class="sb-bio">
+              <p class="sb-rot">Muito prazer</p>
+              <h3>Eu sou o Mateus Augusto</h3>
+              <p>Sou músico há quase 30 anos, mas foi em 2014, usando o ukulele como refúgio durante o meu tratamento contra o câncer, que descobri o verdadeiro poder da música.</p>
+              <p>Hoje lidero uma das maiores comunidades do instrumento no Brasil e já ensinei milhares de alunos a sair do zero. Minha missão é te mostrar que a música pode ser leve, acessível e o melhor momento do seu dia.</p>
+              <p class="sb-assina">Fundador e professor do Clube</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
