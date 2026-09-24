@@ -925,7 +925,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
           <div class="porta"><img src="../../academy/img/porta-acordes.webp" alt="" width="1200" height="896" loading="lazy"><h3>Aprenderam uns acordes, mas a música não sai inteira</h3><p>Sabem o que é um acorde. O que ninguém disse é por que a batida para na troca.</p></div>
           <div class="porta"><img src="../../academy/img/porta-sofa.webp" alt="" width="1200" height="896" loading="lazy"><h3>Sempre quiseram tocar e nunca se acharam capazes</h3><p>"Não levo jeito", "já passou o meu tempo", "meus dedos são duros".</p></div>
         </div>
-        <p class="fecho lead"><strong>Então pode ficar tranquilo: você não está sozinho, e o problema nunca foi você.</strong> Quem aprende sozinho trava porque ninguém vê o que ela está fazendo.</p>
+        <p class="fecho lead"><strong>Então pode ficar tranquilo: você não está sozinho, e o problema nunca foi você.</strong> Quem aprende sozinho trava porque ninguém vê o que a pessoa está fazendo.</p>
       </div>
     </section>
 
@@ -981,7 +981,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
             <div class="an-mock">
               <div class="me-zap" id="mock-zap">
                 <div class="zap-topo"><span class="zap-logo">W</span><strong>Clube do Ukulele</strong><small>agora</small></div>
-                <p>Oi Fulano, tudo bem? Sua análise da atividade <strong>Sua primeira música</strong> já está disponível na plataforma. Para assistir, é só entrar em <u>Minhas Análises</u>.</p>
+                <p>Oi, Ana, tudo bem? Sua análise da atividade <strong>Sua primeira música</strong> já está disponível na plataforma. Para assistir, é só entrar em <u>Minhas Análises</u>.</p>
                 <p class="zap-ps">Contar o que achou ajuda a gente a preparar as próximas :)</p>
               </div>
             </div>
@@ -1088,7 +1088,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
         <h2>Invista sem medo, com a nossa dupla garantia</h2>
         <div class="garantias rv-g duas-gar">
           <div class="gar clara"><img class="selo" src="../../academy/img/selo-garantia.webp" alt="Selo de garantia" width="600" height="600" loading="lazy"><p class="dias">30 dias</p><h3>Garantia de satisfação</h3><p>Você entra, assiste, manda vídeo. Se sentir que não é para você, pede o valor de volta, por qualquer motivo.</p></div>
-          <div class="gar clara"><img class="selo" src="../../academy/img/selo-garantia.webp" alt="Selo de garantia" width="600" height="600" loading="lazy"><p class="dias">1 ano</p><h3>Garantia de evolução</h3><p>Seguiu a jornada Iniciante, enviou as atividades dela e, ao fim de um ano, ainda não toca 10 músicas do começo ao fim? Devolvemos o seu dinheiro.</p></div>
+          <div class="gar clara"><img class="selo" src="../../academy/img/selo-garantia.webp" alt="Selo de garantia" width="600" height="600" loading="lazy"><p class="dias">1 ano</p><h3>Garantia de evolução</h3><p>Seguiu os cursos Iniciante 0, 1 e 2, enviou as atividades deles e, ao fim de um ano, ainda não toca 10 músicas do começo ao fim? Devolvemos o seu dinheiro.</p></div>
         </div>
       </div>
     </section>
@@ -1191,8 +1191,8 @@ const $id = (s) => document.getElementById(s) || $vazio();
     const dados = Object.fromEntries(new FormData(formLp).entries());
     dados.whatsapp = '55' + (dados.whatsapp || '').replace(/\D/g, '');
     if (!dados.nome || dados.whatsapp.length < 12) { alert('Confere seu nome e seu WhatsApp, por favor.'); return; }
-    const btn = formLp.querySelector('[type=submit]'); btn.disabled = true; btn.textContent = 'Modo de teste: cadastro não enviado';
-    setTimeout(() => { btn.disabled = false; btn.textContent = 'Quero que me chamem'; }, 2500);
+    const btn = formLp.querySelector('[type=submit]'); const rotulo = btn.textContent; btn.disabled = true; btn.textContent = 'Modo de teste: cadastro não enviado';
+    setTimeout(() => { btn.disabled = false; btn.textContent = rotulo; }, 2500);
   });
   document.querySelectorAll('[data-abrir-form]').forEach(b => b.addEventListener('click', () => {
     formLp.dataset.origem = b.dataset.origem || 'botao';
