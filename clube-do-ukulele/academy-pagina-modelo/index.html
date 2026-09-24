@@ -861,6 +861,21 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
 .lp .item .fig img.capa-guia{width:auto;max-width:100%;max-height:260px;border-radius:10px;box-shadow:0 14px 28px -14px rgb(45 18 78 / .65)}
 .lp .quote-pilha{display:grid;gap:12px;width:100%;max-width:420px}
 .lp .quote-pilha .quote{padding:18px 18px;font-size:15.5px}
+
+.lp .item .fig.fig-turma{flex:1;align-items:center}
+.lp .item .fig.fig-turma img.fig-alta{width:100%;max-width:420px;height:auto;max-height:none;aspect-ratio:4/3;object-fit:cover;object-position:50% 38%;border-radius:14px}
+.lp .vitrine{max-width:460px;margin:0 auto}
+.lp .vt-tela{background:#140D20;border:8px solid #26222E;border-radius:16px 16px 6px 6px;padding:12px 12px 14px;overflow:hidden;text-align:left}
+.lp .vt-topo{display:flex;align-items:center;gap:5px;margin:0 0 10px;font-size:11px;font-weight:700;color:var(--sobre-escuro);letter-spacing:.3px}
+.lp .vt-topo span{width:7px;height:7px;border-radius:999px;background:#3A3150}.lp .vt-topo span:nth-child(3){margin-right:6px}
+.lp .vitrine p.vt-rot,.lp .vitrine p.vt-topo{text-align:left}
+.lp .vt-rot{margin:8px 0 6px;font-size:11.5px;font-weight:700;color:#fff}
+.lp .vt-linha{display:flex;gap:7px;overflow:hidden}
+.lp .resumo-fig .vt-linha img{flex:none;height:auto;border-radius:7px;box-shadow:none}
+.lp .resumo-fig .vt-jor img{width:22%;aspect-ratio:1}
+.lp .resumo-fig .vt-ext img{width:40%;aspect-ratio:16/9}
+.lp .resumo-fig .vt-bib img{width:28%;aspect-ratio:16/9}
+.lp .vt-base{height:12px;margin:0 -4%;background:#3A3547;border-radius:0 0 14px 14px}
 </style>
 </head>
 <body class="somente-lp">
@@ -937,7 +952,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
           <div class="video-facade" data-v="Wey4EfhXWtc" role="button" tabindex="0" aria-label="Reproduzir depoimento 3"><img src="https://i.ytimg.com/vi/Wey4EfhXWtc/sddefault.jpg" alt="Depoimento de aluno do Clube do Ukulele" width="640" height="480" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
         </div>
         <div class="quotes rv-g duas-cit">
-          <div class="quote"><p>"Nunca havia me inscrito em curso online, mas resolvi pagar pra ver, e o que tenho a dizer é que é MUITO melhor que o presencial."</p><cite>Aline De Lana Krepker, aluna há 10 meses</cite></div>
+          <div class="quote"><p>"Nunca havia me inscrito em curso online, mas resolvi pagar pra ver, e o que tenho a dizer é que é MUITO melhor que o presencial."</p><cite>Aline De Lana Krepker</cite></div>
           <div class="quote"><p>"Aprender ukulele foi o melhor presente que me dei nos últimos tempos. Consegui o que nunca tinha conseguido: tocar um instrumento."</p><cite>Leila H Nobre, aluna</cite></div>
         </div>
       </div>
@@ -1021,7 +1036,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
           </article>
           <article class="item rv">
             <div class="txt"><p class="rot">Conforme o plano</p><h3>Acompanhamento ao vivo</h3><p>Toda quinta tem a live Ukulele na Mão e, logo depois, a Confraria do Ukulele: encontro ao vivo para tocar junto e trocar ideia. Tem plantão de dúvidas duas vezes por semana, por&nbsp;agendamento.</p><ul class="tags"><li>Confraria toda quinta</li><li>Plantão 2x por semana</li></ul></div>
-            <div class="fig"><img src="../../academy/img/turma-collage.webp" alt="Mateus e alunos do Clube, cada um com o seu ukulele" width="900" height="1200" loading="lazy" class="fig-alta"></div>
+            <div class="fig fig-livre fig-turma"><img src="../../academy/img/turma-collage.webp" alt="Mateus e alunos do Clube, cada um com o seu ukulele" width="900" height="1200" loading="lazy" class="fig-alta"></div>
           </article>
           <article class="item inv rv">
             <div class="txt"><p class="rot">1 ano de acesso</p><h3>Biblioteca de Músicas</h3><p>157 músicas ensinadas em vídeo, separadas por nível e com filtro por batida, quantidade de acordes e gênero. Terminou uma aula da jornada, é aqui que você aplica o que aprendeu numa música que gosta, no seu tamanho.</p><ul class="tags"><li>157 músicas em vídeo</li><li>Separadas por nível</li><li>Filtro por batida e por acordes</li></ul></div>
@@ -1052,7 +1067,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
       <div class="miolo centro">
         <h2>Você se cadastra e a gente monta o seu plano com:</h2>
         <div class="resumo-grid">
-        <div class="resumo-fig rv"><img src="../../academy/img/mockup-laptop.webp" alt="" width="1200" height="896" loading="lazy"></div>
+        <div class="resumo-fig rv"><div class="vitrine" role="img" aria-label="A área do aluno do Clube: a jornada em 5 cursos, as suas análises, os cursos extras e a biblioteca de músicas"><div class="vt-tela"><p class="vt-topo"><span></span><span></span><span></span>Área do aluno</p><p class="vt-rot">Jornada</p><div class="vt-linha vt-jor"><img src="../../academy/img/jornada-capa-i0.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-ini1.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-ini2.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-int1.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-int2.webp" alt="" loading="lazy"></div><p class="vt-rot">Suas análises e cursos extras</p><div class="vt-linha vt-ext"><img src="../../academy/img/vitrine-minhas-analises.webp" alt="" loading="lazy"><img src="../../academy/img/capa-workshop-canto.webp" alt="" loading="lazy"><img src="../../academy/img/capa-destrava-dedos.webp" alt="" loading="lazy"></div><p class="vt-rot">Biblioteca de músicas</p><div class="vt-linha vt-bib"><img src="../../academy/img/bib-ini0.webp" alt="" loading="lazy"><img src="../../academy/img/bib-ini1.webp" alt="" loading="lazy"><img src="../../academy/img/bib-ini2.webp" alt="" loading="lazy"><img src="../../academy/img/bib-int1.webp" alt="" loading="lazy"><img src="../../academy/img/bib-int2.webp" alt="" loading="lazy"></div></div><div class="vt-base"></div></div></div>
         <div class="resumo-txt">
         <div class="resumo rv-g">
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/><path d="m9 12 2 2 4-4"/></svg><strong>Dupla garantia</strong></div>
