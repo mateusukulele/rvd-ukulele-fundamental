@@ -301,7 +301,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 
 /* ===== Página de cadastro (escopo .lp) ===== */
 .lp{font-size:17px;line-height:1.65;color:var(--texto);background:var(--fundo)}
-.lp .faixa-modelo{background:var(--ambar-fundo);color:var(--ambar-texto);font-size:12.5px;font-weight:700;text-align:center;padding:7px 16px}
+
 .lp .miolo{max-width:1120px;margin:0 auto;padding:0 16px}
 .lp h2{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(28px,4.2vw,42px);line-height:1.12;color:var(--indigo);margin:0 auto 14px;border:0;padding:0;letter-spacing:.4px;text-wrap:balance;text-transform:uppercase;text-align:center;max-width:820px}
 .lp .lead{text-align:center;margin:0 auto 8px;max-width:600px;font-size:18px;hyphens:manual;-webkit-hyphens:manual}
@@ -891,6 +891,74 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
 @media (max-width:759px){.lp .hero .selos li{font-size:13.5px;padding:5px 11px}.lp .hero .repertorio{font-size:14.5px}}
 .lp .form-ok{margin:4px 0 0;font-size:15px;line-height:1.45;color:#fff;font-weight:700;text-align:center}
 @media (max-width:759px){.lp .item .fig.fig-mob{display:flex;justify-content:center;margin-top:4px}.lp .player-mock{max-width:300px}}
+
+/* ===== LP: notebook com a área do aluno real (fundo claro, barra roxa) ===== */
+.lp .lap{max-width:470px;margin:0 auto;padding:0 5%;filter:drop-shadow(0 26px 40px rgb(0 0 0 / .45))}
+.lp .lap-tela{position:relative;background:#16151A;border-radius:16px 16px 4px 4px;padding:14px 14px 16px;border:1px solid #3A3942}
+.lp .lap-cam{position:absolute;top:5px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#34333C}
+.lp .lap-display{aspect-ratio:16/10;background:#F5F4F7;border-radius:3px;overflow:hidden;text-align:left}
+.lp .lap-base{position:relative;height:14px;margin:0 -6%;background:linear-gradient(180deg,#D9D9DE 0%,#B9B9C0 55%,#8F8F97 100%);border-radius:2px 2px 14px 14px}
+.lp .lap-base span{position:absolute;left:50%;top:0;width:18%;height:5px;margin-left:-9%;background:#A6A6AE;border-radius:0 0 8px 8px}
+.lp .br-barra{height:16px;background:#E6E3EC;display:flex;align-items:center;gap:4px;padding:0 7px;border-bottom:1px solid #D9D3E4}
+.lp .br-barra span{width:6px;height:6px;border-radius:50%;background:#C9C3D6}
+.lp .br-barra em{font-style:normal;font-size:8px;color:#5C5A70;background:#fff;border-radius:6px;padding:1px 10px;margin-left:10px}
+.lp .ar-nav{height:22px;display:flex;align-items:center;gap:12px;padding:0 10px;background:linear-gradient(135deg,#443468,#2D2249);border-bottom:2px solid #E87A85}
+.lp .ar-nav b{font-size:8.5px;font-weight:700;color:#fff}.lp .ar-nav b:first-child{margin-left:2px}
+.lp .ar-nav i{width:10px;height:10px;border-radius:50%;background:rgb(255 255 255 / .18)}.lp .ar-nav i:first-of-type{margin-left:auto}
+.lp .ar-pag{padding:9px 10px}
+.lp .ar-linha{display:flex;gap:5px;margin:0 0 7px}
+.lp .ar-card{flex:none;display:grid;gap:2px}
+.lp .resumo-fig .ar-card img{width:100%;height:auto;border-radius:4px;display:block}
+.lp .ar-b{width:30%}.lp .ar-j{width:17.2%}.lp .ar-m{width:17.2%}
+.lp .ar-j img{aspect-ratio:1}.lp .ar-b img,.lp .ar-m img{aspect-ratio:16/9}
+.lp .ar-prog{display:block;height:2px;border-radius:2px;background:#D9D3E4;overflow:hidden}.lp .ar-prog span{display:block;height:100%;background:#7A5FB0}
+.lp .lap p.ar-tit{margin:2px 0 6px;font-size:9.5px;font-weight:700;color:#2D124E;text-align:left;line-height:1.2}
+.lp .lap p.ar-tit::before{content:"";display:block;width:52px;height:2px;border-radius:2px;background:#E87A85;margin-bottom:4px}
+
+/* ===== LP: pop-up do formulário (botões espalhados pela página) ===== */
+.lp .pop-form{border:0;padding:0;background:transparent;width:calc(100% - 32px);max-width:440px;overflow:visible}
+.lp .pop-form::backdrop{background:rgb(20 10 34 / .75)}
+.lp .pop-caixa{position:relative;background:linear-gradient(160deg,#443468,#2D124E);border-radius:20px;padding:30px 22px 24px;box-shadow:0 30px 60px -20px rgb(0 0 0 / .6)}
+.lp .pop-fechar{position:absolute;top:6px;right:6px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#fff;font-size:28px;line-height:1;cursor:pointer}
+.lp .pop-fechar:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.lp .pop-caixa h3{font-family:var(--fonte-titulo);font-weight:400;text-transform:uppercase;letter-spacing:.3px;color:#fff;font-size:28px;line-height:1.15;text-align:center;margin:0 0 6px}
+.lp .pop-caixa .pop-sub{color:var(--sobre-escuro);text-align:center;font-size:15px;line-height:1.45;margin:0 auto 18px;max-width:320px}
+.lp .pop-caixa input,.lp .pop-caixa .tel{height:50px}
+.lp .pop-caixa input:focus-visible,.lp .pop-caixa .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.lp .subtitulo-sec{margin:-2px auto 12px;max-width:600px;text-align:center;font-size:20px;line-height:1.35;font-weight:700;color:var(--coral-forte)}
+.lp .pop-caixa .pop-sub{margin-bottom:6px}.lp .pop-caixa .pop-obrig{margin:0 0 14px;text-align:center;font-size:13px;color:var(--sobre-escuro)}
+
+/* ===== LP: quem está por trás do Clube ===== */
+.lp .sobre2 h2{text-align:center}
+.lp .sb-grade{display:grid;grid-template-columns:1fr;gap:18px;margin-top:22px}
+.lp .sb-card{background:var(--card);border-radius:20px;padding:24px 22px;box-shadow:var(--sombra-card);text-align:left}
+.lp .sb-card h3{font-family:var(--fonte-titulo);font-weight:400;text-transform:uppercase;letter-spacing:.3px;color:var(--indigo);font-size:26px;line-height:1.15;margin:0 0 10px}
+.lp .sb-card p{margin:0 0 12px;font-size:16px;line-height:1.65;color:var(--texto);text-align:left;hyphens:manual;-webkit-hyphens:manual}
+.lp .sb-selo{background:linear-gradient(160deg,#443468,#2D124E);border-radius:22px;padding:26px 20px;display:grid;place-items:center;margin:0 0 18px}
+.lp .sb-selo img{width:210px;max-width:80%;height:auto;display:block}
+.lp .sb-numeros{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:none}
+.lp .sb-numeros li{margin:0;background:var(--fundo);border-radius:12px;padding:10px 6px;text-align:center;display:grid;gap:2px}
+.lp .sb-numeros strong{font-family:var(--fonte-titulo);font-weight:400;font-size:22px;color:var(--coral-forte);line-height:1.1}
+.lp .sb-numeros span{font-size:13px;color:var(--texto-suave);line-height:1.3}
+.lp .sb-foto{width:100%;max-width:260px;aspect-ratio:4/5;object-fit:cover;border-radius:14px;display:block;margin:0 auto 16px}
+.lp .sb-rot{font-size:13px!important;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-forte)!important;margin:0 0 4px!important}
+.lp .sb-assina{font-size:14px!important;color:var(--texto-suave)!important;font-weight:700;margin:0!important}
+@media (min-width:900px){.lp .sb-grade{grid-template-columns:1fr 1.25fr;align-items:stretch;max-width:1000px;margin-left:auto;margin-right:auto}.lp .sb-mateus{display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:start}.lp .sb-foto{margin:0;max-width:none}}
+html:has(.pop-form[open]){overflow:hidden}
+
+/* ===== LP: rodapé inteligente (aparece onde não tem CTA, some perto dos botões) ===== */
+.lp .sticky{display:block;position:fixed;left:50%;right:auto;bottom:max(12px,env(safe-area-inset-bottom));width:min(560px,calc(100% - 24px));padding:0;background:transparent;box-shadow:none;z-index:40;transform:translate(-50%,calc(100% + 40px));opacity:0;pointer-events:none;transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity .25s ease}
+.lp .sticky.show{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+.lp .sticky-in{display:flex;align-items:center;gap:14px;padding:9px 9px 9px 18px;border-radius:18px;background:rgb(45 18 78 / .95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgb(255 255 255 / .12);box-shadow:0 18px 40px -12px rgb(20 10 34 / .65)}
+.lp .sticky-txt{display:grid;min-width:0;flex:1;text-align:left}
+.lp .sticky-txt strong{color:#fff;font-size:15px;line-height:1.25;font-weight:700}
+.lp .sticky-txt span{color:var(--sobre-escuro);font-size:13px;line-height:1.35}
+.lp .sticky .btn{flex:none;width:auto;min-width:0;min-height:48px;padding:0 22px;font-size:15.5px;margin:0}
+@media (max-width:480px){.lp .sticky-in{padding-left:14px;gap:10px}.lp .sticky-txt strong{font-size:14px}.lp .sticky-txt span{display:none}.lp .sticky .btn{padding:0 16px;font-size:15px}}
+html:has(.pop-form[open]) .lp .sticky{opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.lp .sticky{transition:opacity .2s}}
+.lp .hero h1 em{font-size:.775em}
+@media (max-width:759px){.lp .hero h1 em{font-size:.735em}}
 </style>
 </head>
 <body class="somente-lp">
@@ -905,7 +973,8 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
             <p class="sub">Com um <strong>professor acompanhando, corrigindo e direcionando</strong> cada passo seu.</p>
             <ul class="selos">
               <li>1 ano de Suporte Individual</li>
-              <li>Encontro ao vivo toda semana</li>
+              <li>Sem hora marcada</li>
+              <li>Garantia de 1 ano</li>
                           </ul>
             <p class="repertorio">Marisa Monte, Legião Urbana, Beatles, Natiruts, Djavan, Melim, Bob Marley, Tim Maia, Anavitória, Skank: são <strong>157 músicas</strong> na biblioteca.</p>
             <p class="chamada">Cadastre-se e receba a sua oferta com os bônus:</p>
@@ -916,7 +985,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
               <input id="email" name="email" type="email" autocomplete="email" placeholder="E-mail" required>
               <label class="sr" for="whatsapp">WhatsApp</label>
               <div class="tel"><span class="ddi">+55</span><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(11) 99999-9999" required></div>
-              <button class="btn acao" type="submit">Receber a oferta</button>
+              <button class="btn acao" type="submit">Ativar oferta</button>
             </form>
             <div class="prova-mini">
               <div class="selo-prova" aria-hidden="true"><img src="../../img/icone-ukulele.svg" alt="" width="40" height="98"></div>
@@ -933,20 +1002,19 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
     <section>
       <div class="miolo centro">
         <h2>Já tentou aprender a tocar e não deu certo?</h2>
-                <p class="destaque-num">6 em cada 10<br><span>pessoas que chegam aqui já:</span></p>
+                <p class="destaque-num">9 em cada 10<br><span>pessoas que chegam aqui ainda estão no começo, e muitas já:</span></p>
         <div class="portas rv-g">
-          <div class="porta"><img src="../../academy/img/porta-enfeite.webp" alt="" width="1200" height="896" loading="lazy"><h3>Compraram o ukulele e ele virou enfeite</h3><p>Viram uns vídeos, tentaram uma ou duas semanas, e ele está no canto até hoje.</p></div>
-          <div class="porta"><img src="../../academy/img/porta-acordes.webp" alt="" width="1200" height="896" loading="lazy"><h3>Aprenderam uns acordes, mas a música não sai inteira</h3><p>Sabem o que é um acorde. O que ninguém disse é por que a batida para na troca.</p></div>
-          <div class="porta"><img src="../../academy/img/porta-sofa.webp" alt="" width="1200" height="896" loading="lazy"><h3>Sempre quiseram tocar e nunca se acharam capazes</h3><p>"Não levo jeito", "já passou o meu tempo", "meus dedos são duros".</p></div>
+          <div class="porta"><img src="../../academy/img/porta-enfeite.webp" alt="" width="1200" height="896" loading="lazy"><h3>Compraram o ukulele e ele virou enfeite</h3></div>
+          <div class="porta"><img src="../../academy/img/porta-acordes.webp" alt="" width="1200" height="896" loading="lazy"><h3>Aprenderam uns acordes, mas a música não sai inteira</h3></div>
+          <div class="porta"><img src="../../academy/img/porta-sofa.webp" alt="" width="1200" height="896" loading="lazy"><h3>Sempre quiseram tocar e nunca se acharam capazes</h3></div>
         </div>
-        <p class="fecho lead"><strong>Então pode ficar tranquilo: você não está sozinho, e o problema nunca foi você.</strong> Quem aprende sozinho trava porque ninguém vê o que a pessoa está fazendo.</p>
       </div>
     </section>
 
     <section class="escura">
       <div class="miolo centro">
-        <h2>Então por que no Clube você vai aprender a tocar de verdade?</h2>
-        <p class="lead">Porque aqui você tem um caminho para seguir, motivos que não acabam e um professor acompanhando cada passo seu.</p>
+        <h2>Então por que no Clube do Ukulele você aprende a tocar de verdade?</h2>
+        <p class="lead">Porque aqui você aprende acompanhado de verdade. Desde o primeiro dia no curso.</p>
         <div class="dma rv-g">
           <div class="pilar"><img class="icone" src="../../academy/img/icone-direcao-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Direção</h3><p>Você nunca fica sem saber o próximo passo. A jornada diz o que estudar hoje, o que vem depois e quando passar adiante.</p></div>
           <div class="pilar"><img class="icone" src="../../academy/img/icone-motivacao-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Motivação</h3><p>Toda semana tem live e todo mês tem desafio. Cada atividade volta com resposta em vídeo, e sempre tem uma música da biblioteca esperando você.</p></div>
@@ -967,14 +1035,15 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
         </div>
         <div class="quotes rv-g duas-cit">
           <div class="quote"><p>"Nunca havia me inscrito em curso online, mas resolvi pagar pra ver, e o que tenho a dizer é que é MUITO melhor que o presencial."</p><cite>Aline De Lana Krepker</cite></div>
-          <div class="quote"><p>"Aprender ukulele foi o melhor presente que me dei nos últimos tempos. Consegui o que nunca tinha conseguido: tocar um instrumento."</p><cite>Leila H Nobre, aluna</cite></div>
+          <div class="quote"><p>"Aprender ukulele foi o melhor presente que me dei nos últimos tempos. Consegui o que nunca tinha conseguido: tocar um instrumento."</p><cite>Leila H Nobre</cite></div>
         </div>
       </div>
     </section>
 
     <section class="analise-dobra">
       <div class="miolo centro">
-        <h2>Um professor vendo o que você tocou</h2>
+        <h2>É aqui que o aprendizado acontece de verdade!</h2>
+        <p class="subtitulo-sec">Você envia seu vídeo e o nosso professor analisa.</p>
         <p class="lead">Nas 49 atividades da jornada você grava tocando, manda pela plataforma e recebe a análise do Mateus em vídeo, mostrada no instrumento. Assim:</p>
 
         <ol class="an-linha">
@@ -1022,7 +1091,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
 
     <section class="faixa-frase">
       <div class="miolo centro">
-        <p class="frase-grande">Você toca em casa, no seu tempo. O Mateus te mostra o que ajustar. <em>E a música sai.</em></p>
+        <p class="frase-grande">Você toca em casa, no seu tempo, com o Mateus te mostrando o que ajustar e... <em>finalmente, música.</em></p>
       </div>
     </section>
 
@@ -1069,7 +1138,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
             <div class="fig fig-livre"><img class="capa-guia" src="../../academy/img/capa-guia-compra.webp" alt="Capa do Guia de Compra: Meu primeiro ukulele" width="368" height="520" loading="lazy"></div>
           </article>
           <article class="item rv">
-            <div class="txt"><p class="rot bonus">Bônus</p><h3>Dicionário de Acordes</h3><p>Todo acorde com diagrama e foto da mão, para consultar na hora que a música pede um que você ainda não conhece.</p><ul class="tags"><li>Consulta rápida</li><li>Diagrama e foto da mão</li></ul></div>
+            <div class="txt"><p class="rot bonus">Bônus</p><h3>Dicionário de Acordes</h3><p>Todos os acordes num lugar só, em diagrama, para baixar e consultar na hora que a música pede um que você ainda não conhece. E aulas curtas para ler diagrama, cifra e acorde com barra sem se perder.</p><ul class="tags"><li>Para baixar</li><li>Diagramas e cifras</li></ul></div>
             <div class="fig fig-livre"><img class="capa-guia" src="../../academy/img/dicionario-mockup.webp" alt="Capa do Dicionário de Acordes, para ukuleles soprano, concert e tenor" width="574" height="776" loading="lazy"></div>
           </article>
         </div>
@@ -1079,9 +1148,9 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
 
     <section class="escura">
       <div class="miolo centro">
-        <h2>Você se cadastra e a gente monta o seu plano com:</h2>
+        <h2>Você entra no Clube do Ukulele Academy e ganha acesso a tudo isso:</h2>
         <div class="resumo-grid">
-        <div class="resumo-fig rv"><div class="vitrine" role="img" aria-label="A área do aluno do Clube: a jornada em 5 cursos, as suas análises, os cursos extras e a biblioteca de músicas"><div class="vt-tela"><p class="vt-topo"><span></span><span></span><span></span>Área do aluno</p><p class="vt-rot">Jornada</p><div class="vt-linha vt-jor"><img src="../../academy/img/jornada-capa-i0.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-ini1.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-ini2.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-int1.webp" alt="" loading="lazy"><img src="../../academy/img/trilha-int2.webp" alt="" loading="lazy"></div><p class="vt-rot">Suas análises e cursos extras</p><div class="vt-linha vt-ext"><img src="../../academy/img/vitrine-minhas-analises.webp" alt="" loading="lazy"><img src="../../academy/img/capa-workshop-canto.webp" alt="" loading="lazy"><img src="../../academy/img/capa-destrava-dedos.webp" alt="" loading="lazy"></div><p class="vt-rot">Biblioteca de músicas</p><div class="vt-linha vt-bib"><img src="../../academy/img/bib-ini0.webp" alt="" loading="lazy"><img src="../../academy/img/bib-ini1.webp" alt="" loading="lazy"><img src="../../academy/img/bib-ini2.webp" alt="" loading="lazy"><img src="../../academy/img/bib-int1.webp" alt="" loading="lazy"><img src="../../academy/img/bib-int2.webp" alt="" loading="lazy"></div></div><div class="vt-base"></div></div></div>
+        <div class="resumo-fig rv"><div class="lap" role="img" aria-label="Notebook com a área do aluno do Clube aberta: banners, a Jornada de Aprendizado em 5 cursos com barra de progresso, a biblioteca de músicas e os cursos extras"><div class="lap-tela"><span class="lap-cam"></span><div class="lap-display"><div class="br-barra"><span></span><span></span><span></span><em>aluno.comotocarukulele.com</em></div><div class="ar-nav"><b>Início</b><b>Minhas Análises</b><i></i><i></i><i></i></div><div class="ar-pag"><div class="ar-linha"><div class="ar-card ar-b"><img src="../../academy/img/area-ban-comece.webp" alt="" width="384" height="216" loading="lazy"><span class="ar-prog"><span style="width:55%"></span></span></div><div class="ar-card ar-b"><img src="../../academy/img/vitrine-minhas-analises.webp" alt="" width="384" height="216" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-b"><img src="../../academy/img/area-ban-comunidade.webp" alt="" width="384" height="216" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div></div><p class="ar-tit">Jornada de Aprendizado</p><div class="ar-linha"><div class="ar-card ar-j"><img src="../../academy/img/jornada-capa-i0.webp" alt="" width="320" height="320" loading="lazy"><span class="ar-prog"><span style="width:62%"></span></span></div><div class="ar-card ar-j"><img src="../../academy/img/trilha-ini1.webp" alt="" width="320" height="320" loading="lazy"><span class="ar-prog"><span style="width:30%"></span></span></div><div class="ar-card ar-j"><img src="../../academy/img/trilha-ini2.webp" alt="" width="320" height="320" loading="lazy"><span class="ar-prog"><span style="width:12%"></span></span></div><div class="ar-card ar-j"><img src="../../academy/img/trilha-int1.webp" alt="" width="320" height="320" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-j"><img src="../../academy/img/trilha-int2.webp" alt="" width="320" height="320" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div></div><div class="ar-linha"><div class="ar-card ar-m"><img src="../../academy/img/bib-ini0.webp" alt="" width="192" height="108" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-m"><img src="../../academy/img/bib-ini1.webp" alt="" width="192" height="108" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-m"><img src="../../academy/img/bib-ini2.webp" alt="" width="192" height="108" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-m"><img src="../../academy/img/bib-int1.webp" alt="" width="192" height="108" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-m"><img src="../../academy/img/bib-int2.webp" alt="" width="192" height="108" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div></div><p class="ar-tit">Cursos e Materiais Extras</p><div class="ar-linha"><div class="ar-card ar-b"><img src="../../academy/img/capa-workshop-canto.webp" alt="" width="640" height="360" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-b"><img src="../../academy/img/capa-dicionario.webp" alt="" width="640" height="360" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div><div class="ar-card ar-b"><img src="../../academy/img/capa-destrava-dedos.webp" alt="" width="640" height="360" loading="lazy"><span class="ar-prog"><span style="width:0%"></span></span></div></div></div></div></div><div class="lap-base"><span></span></div></div></div>
         <div class="resumo-txt">
         <div class="resumo rv-g">
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/><path d="m9 12 2 2 4-4"/></svg><strong>Dupla garantia</strong></div>
@@ -1107,12 +1176,30 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
       </div>
     </section>
 
-    <section class="suave">
+    <section class="suave sobre2">
       <div class="miolo">
-        <h2>Sobre o Clube do Ukulele</h2>
-        <p class="lead">O Clube do Ukulele ensina adultos a tocar desde 2017. Mais de 6.000 alunos passaram pelas aulas do Mateus, a maioria começando do zero, e mais de 300 mil pessoas acompanham o Clube nas redes. O Clube do Ukulele Academy é a nossa escola: a jornada completa com um professor acompanhando cada passo.</p>
-        <div class="profs rv-g">
-          <figure><img src="../../img/mateus-perfil.webp" alt="Mateus Augusto" width="1000" height="1250"><figcaption><strong>Mateus Augusto</strong><span>Fundador e professor</span></figcaption></figure>
+        <h2>Quem está por trás do Clube</h2>
+        <div class="sb-grade">
+          <article class="sb-card sb-clube rv">
+            <div class="sb-selo"><img src="../../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" loading="lazy"></div>
+            <h3>O Clube do Ukulele</h3>
+            <p>O Clube do Ukulele ensina adultos a tocar desde 2017, a maioria começando do zero. O Clube do Ukulele Academy é a nossa escola: a jornada completa, com um professor acompanhando cada passo seu.</p>
+            <ul class="sb-numeros">
+              <li><strong>2017</strong><span>ensinando ukulele</span></li>
+              <li><strong>+6.000</strong><span>alunos</span></li>
+              <li><strong>+300 mil</strong><span>seguidores</span></li>
+            </ul>
+          </article>
+          <article class="sb-card sb-mateus rv">
+            <img class="sb-foto" src="../../img/mateus-perfil.webp" alt="Mateus Augusto com o ukulele" width="1000" height="1250" loading="lazy">
+            <div class="sb-bio">
+              <p class="sb-rot">Muito prazer</p>
+              <h3>Eu sou o Mateus Augusto</h3>
+              <p>Sou músico há quase 30 anos, mas foi em 2014, usando o ukulele como refúgio durante o meu tratamento contra o câncer, que descobri o verdadeiro poder da música.</p>
+              <p>Hoje lidero uma das maiores comunidades do instrumento no Brasil e já ensinei milhares de alunos a sair do zero. Minha missão é te mostrar que a música pode ser leve, acessível e o melhor momento do seu dia.</p>
+              <p class="sb-assina">Fundador e professor do Clube</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1131,11 +1218,31 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
     </section>
 
     <footer>Clube do Ukulele · comotocarukulele.com</footer>
-    <div class="sticky" id="sticky-lp"><button class="btn acao" type="button" data-abrir-form data-origem="sticky">Receber a oferta</button></div>
+    <dialog class="pop-form" id="pop-form" aria-labelledby="pop-tit">
+      <div class="pop-caixa">
+        <button class="pop-fechar" type="button" aria-label="Fechar">&times;</button>
+        <h3 id="pop-tit">Garanta a sua oferta com os bônus</h3>
+        <p class="pop-sub">Preencha seus dados e receba a oferta.</p>
+        <p class="pop-obrig">*Campo obrigatório</p>
+        <form class="form" data-origem="popup">
+          <label class="sr" for="pop-nome">Nome completo</label>
+          <input id="pop-nome" name="nome" type="text" autocomplete="name" placeholder="Nome completo*" required>
+          <label class="sr" for="pop-email">E-mail</label>
+          <input id="pop-email" name="email" type="email" autocomplete="email" placeholder="E-mail*" required>
+          <label class="sr" for="pop-whatsapp">WhatsApp</label>
+          <div class="tel"><span class="ddi">+55</span><input id="pop-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="WhatsApp* (11) 99999-9999" required></div>
+          <button class="btn acao" type="submit">Ativar oferta</button>
+        </form>
+      </div>
+    </dialog>
+    <div class="sticky" id="sticky-lp" aria-hidden="true"><div class="sticky-in"><div class="sticky-txt"><strong>Bônus por tempo limitado</strong><span>Suporte individual · Garantia de 1 ano</span></div><button class="btn acao" type="button" data-abrir-form data-origem="sticky" tabindex="-1">Receber a oferta</button></div></div>
   </div>
 </div>
 
 <!-- ============ 3b. PÁGINA DE OBRIGADO ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vídeo">
+  <div class="lb-caixa"><button class="lb-fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="lb-corpo"></div></div>
+</div>
 <script>
 const $vazio = () => document.createElement('div');
 const $q = (s) => document.querySelector(s) || $vazio();
@@ -1189,7 +1296,6 @@ const $id = (s) => document.getElementById(s) || $vazio();
   // ===== Página modelo: formulário em modo de teste =====
   const CONFIG = { endpoint: '', whatsapp: '553198585286', waTexto: 'Oi! Vim da página do Clube e quero saber qual plano faz sentido pra mim.' };
   document.querySelectorAll('[data-wa]').forEach(a => { a.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(CONFIG.waTexto); a.target = '_blank'; a.rel = 'noopener'; });
-  document.querySelectorAll('[data-wa-ob]').forEach(a => { a.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent('Oi! Acabei de me cadastrar no Clube e não recebi a mensagem ainda.'); a.target = '_blank'; a.rel = 'noopener'; });
   // Página de obrigado: primeiro nome vindo da URL (?nome=)
   const nomeUrl = new URLSearchParams(location.search).get('nome');
   if (nomeUrl) $id('ob-nome').textContent = nomeUrl.split(' ')[0];
@@ -1199,8 +1305,7 @@ const $id = (s) => document.getElementById(s) || $vazio();
     else if (v.length > 2) v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
     i.value = v;
   }));
-  const formLp = $q('.lp form');
-  formLp.addEventListener('submit', e => {
+  const enviarForm = formLp => formLp.addEventListener('submit', e => {
     e.preventDefault();
     const dados = Object.fromEntries(new FormData(formLp).entries());
     dados.whatsapp = '55' + (dados.whatsapp || '').replace(/\D/g, '');
@@ -1210,18 +1315,20 @@ const $id = (s) => document.getElementById(s) || $vazio();
     const btn = formLp.querySelector('[type=submit]'); btn.disabled = true; btn.textContent = 'Enviando…';
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({event: 'lead_capture_uke', lead_name: dados.nome.trim(), lead_email: email, lead_phone: dados.whatsapp, lead_ddi: '55'});
-    setTimeout(() => {
-      btn.textContent = 'Cadastro recebido';
-      const ok = document.createElement('p'); ok.className = 'form-ok'; ok.setAttribute('role', 'status');
-      ok.textContent = 'Pronto! Em alguns minutos a gente te chama no WhatsApp, do número oficial do Clube.';
-      formLp.appendChild(ok);
-    }, 400);
+    const destino = new URL('/clube-do-ukulele/academy-mv1-obg/', location.origin);
+    destino.searchParams.set('nome', dados.nome.trim().split(' ')[0]);
+    new URLSearchParams(location.search).forEach((v, k) => { if (k.startsWith('utm_')) destino.searchParams.set(k, v); });
+    setTimeout(() => { location.href = destino.toString(); }, 400);
   });
+  document.querySelectorAll('.lp form').forEach(enviarForm);
+  const popForm = document.getElementById('pop-form');
   document.querySelectorAll('[data-abrir-form]').forEach(b => b.addEventListener('click', () => {
-    formLp.dataset.origem = b.dataset.origem || 'botao';
-    formLp.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    setTimeout(() => $id('nome').focus({ preventScroll: true }), 500);
+    popForm.querySelector('form').dataset.origem = b.dataset.origem || 'botao';
+    popForm.showModal();
+    setTimeout(() => popForm.querySelector('input').focus(), 60);
   }));
+  popForm.querySelector('.pop-fechar').addEventListener('click', () => popForm.close());
+  popForm.addEventListener('click', e => { if (e.target === popForm) popForm.close(); });
   // Reveal ao rolar, uma vez só; a demo da análise toca quando entra na tela
   const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ioRv = new IntersectionObserver(es => es.forEach(en => {
@@ -1258,12 +1365,6 @@ const $id = (s) => document.getElementById(s) || $vazio();
     en.target.querySelectorAll('.mm-n').forEach(c => { const ate = +c.dataset.ate; const t0 = performance.now(); const tick = now => { const k = Math.min(1, (now - t0) / 1400); c.textContent = Math.round(ate * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); });
   }), { threshold: 0.35 });
   document.querySelectorAll('#mock-minhas, .lp .an-etapa').forEach(el => ioMock.observe(el));
-  const heroLp = $q('.lp .hero'), stickyLp = $id('sticky-lp');
-  let heroVis = true; const ctaVis = new Set();
-  const updSticky = () => stickyLp.classList.toggle('show', !heroVis && ctaVis.size === 0);
-  new IntersectionObserver(([en]) => { heroVis = en.isIntersecting; updSticky(); }).observe(heroLp);
-  const ioCta = new IntersectionObserver(es => { es.forEach(en => en.isIntersecting ? ctaVis.add(en.target) : ctaVis.delete(en.target)); updSticky(); });
-  document.querySelectorAll('#aba-pagina .lp .btn').forEach(b => { if (!stickyLp.contains(b)) ioCta.observe(b); });
 </script>
 
 <script>
@@ -1274,7 +1375,7 @@ const $id = (s) => document.getElementById(s) || $vazio();
     const ctas = [...document.querySelectorAll('.lp .btn')].filter(b => !stickyLp2.contains(b));
     const visiveis = new Set();
     let heroVis = true;
-    const upd = () => stickyLp2.classList.toggle('show', !heroVis && visiveis.size === 0);
+    const upd = () => { const on = !heroVis && visiveis.size === 0; stickyLp2.classList.toggle('show', on); stickyLp2.setAttribute('aria-hidden', String(!on)); stickyLp2.querySelector('button').tabIndex = on ? 0 : -1; };
     new IntersectionObserver(([e]) => { heroVis = e.isIntersecting; upd(); }).observe(heroLp2);
     const ioC = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? visiveis.add(e.target) : visiveis.delete(e.target)); upd(); });
     ctas.forEach(b => ioC.observe(b));
@@ -1287,6 +1388,9 @@ window.dataLayer=window.dataLayer||[];
 window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'clube-do-ukulele-academy'});
 (function(){function g(){(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');}
 if(document.readyState!=='loading'){setTimeout(g,1500);}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(g,1500);},{once:true});}})();
+</script>
+<script>
+(function(){ var t = document.title; document.addEventListener('visibilitychange', function(){ document.title = document.hidden ? 'Volta aqui! 🙂 Aproveite a oferta' : t; }); })();
 </script>
 </body>
 </html>
