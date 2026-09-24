@@ -849,7 +849,6 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <button class="pilula" role="tab" id="tab-planos" aria-controls="aba-planos" data-aba="planos" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4v-6H4zM10 20h4V9h-4zM16 20h4V4h-4z"/></svg>Planos</button>
     <button class="pilula" role="tab" id="tab-base" aria-controls="aba-base" data-aba="base" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Ofertas da base</button>
     <button class="pilula" role="tab" id="tab-meta" aria-controls="aba-meta" data-aba="meta" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6 16v-5M11 16V8M16 16v-7M21 5l-5 4-5-3-5 4"/></svg>Meta e custos</button>
-    <button class="pilula" role="tab" id="tab-pagina" aria-controls="aba-pagina" data-aba="pagina" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h5"/></svg>Página de vendas</button>
     <button class="pilula" role="tab" id="tab-obrigado" aria-controls="aba-obrigado" data-aba="obrigado" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Página de obrigado</button>
     <button class="pilula" role="tab" id="tab-material" aria-controls="aba-material" data-aba="material" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h8"/></svg>Material do aluno</button>
     <button class="pilula" role="tab" id="tab-whatsapp" aria-controls="aba-whatsapp" data-aba="whatsapp" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg>Fluxo WhatsApp</button>
@@ -1326,266 +1325,6 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
   </div>
 </div>
 
-<!-- ============ 3. PÁGINA DE CADASTRO (MODELO) ============ -->
-<div class="aba" id="aba-pagina" role="tabpanel">
-  <div class="lp">
-    <div class="faixa-modelo">Página de vendas (cadastro), na estrutura da página de matrícula da Fluency. Formulário em modo de teste. Sem preço e sem planos: isso é trabalho do closer.</div>
-
-    <header class="hero">
-      <div class="miolo">
-        <div class="hero-grid">
-          <div class="hero-txt">
-            <h1>Toque as músicas que você ama<br><em>usando as 4 cordas mágicas do ukulele</em></h1>
-            <p class="sub">Com um <strong>professor acompanhando, corrigindo e direcionando</strong> cada passo seu.</p>
-            <ul class="selos">
-              <li>1 ano de Suporte Individual</li>
-              <li>Encontro ao vivo toda semana</li>
-                          </ul>
-            <p class="repertorio">Marisa Monte, Legião Urbana, Beatles, Natiruts, Djavan, Melim, Bob Marley, Tim Maia, Anavitória, Skank: são <strong>157 músicas</strong> na biblioteca.</p>
-            <p class="chamada">Cadastre-se e receba os bônus da nova turma antes que ela saia do ar:</p>
-            <form class="form" data-origem="hero">
-              <label class="sr" for="nome">Nome completo</label>
-              <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Nome completo" required>
-              <label class="sr" for="email">E-mail</label>
-              <input id="email" name="email" type="email" autocomplete="email" placeholder="E-mail" required>
-              <label class="sr" for="whatsapp">WhatsApp</label>
-              <div class="tel"><span class="ddi">+55</span><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(11) 99999-9999" required></div>
-              <button class="btn acao" type="submit">Receber a oferta</button>
-            </form>
-            <div class="prova-mini">
-              <div class="selo-prova" aria-hidden="true"><img src="../img/icone-ukulele.svg" alt="" width="40" height="98"></div>
-              <div><span class="estrelas" aria-label="cinco estrelas">★★★★★</span><span>+6.000 alunos desde 2017</span></div>
-            </div>
-          </div>
-          <div class="hero-foto">
-            <img src="img/mateus-hero.webp" alt="Mateus Augusto tocando ukulele" width="1024" height="751">
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <section>
-      <div class="miolo centro">
-        <h2>Já tentou aprender a tocar e não deu certo?</h2>
-        <p class="lead">Você não está sozinho, afinal,</p>
-        <p class="destaque-num">6 em cada 10<br><span>pessoas que chegam aqui já:</span></p>
-        <div class="portas rv-g">
-          <div class="porta"><img src="img/porta-enfeite.webp" alt="" width="1200" height="896" loading="lazy"><h3>Compraram o ukulele e ele virou enfeite</h3><p>Viram uns vídeos, tentaram uma ou duas semanas, e ele está no canto até hoje.</p></div>
-          <div class="porta"><img src="img/porta-acordes.webp" alt="" width="1200" height="896" loading="lazy"><h3>Aprenderam uns acordes, mas a música não sai inteira</h3><p>Sabem o que é um acorde. O que ninguém disse é por que a batida para na troca.</p></div>
-          <div class="porta"><img src="img/porta-sofa.webp" alt="" width="1200" height="896" loading="lazy"><h3>Sempre quiseram tocar e nunca se acharam capazes</h3><p>"Não levo jeito", "já passou o meu tempo", "meus dedos são duros".</p></div>
-        </div>
-        <p class="fecho lead"><strong>Então pode ficar tranquilo: você não está sozinho, e o problema nunca foi você.</strong> Quem aprende sozinho trava porque ninguém vê o que ela está fazendo.</p>
-      </div>
-    </section>
-
-    <section class="escura">
-      <div class="miolo centro">
-        <h2>Então por que no Clube você vai aprender a tocar de verdade?</h2>
-        <p class="lead">Porque aqui você tem um caminho para seguir, motivos que não acabam e um professor acompanhando cada passo seu.</p>
-        <div class="dma rv-g">
-          <div class="pilar"><img class="icone" src="img/icone-direcao-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Direção</h3><p>Você nunca fica sem saber o próximo passo. A jornada diz o que estudar hoje, o que vem depois e quando passar adiante.</p></div>
-          <div class="pilar"><img class="icone" src="img/icone-motivacao-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Motivação</h3><p>Toda semana tem encontro. Todo mês tem desafio. Sempre tem uma música da biblioteca esperando você. Toda atividade volta com um vídeo personalizado. Sempre tem um próximo motivo para pegar o ukulele.</p></div>
-          <div class="pilar"><img class="icone" src="img/icone-acompanhamento-2.webp" alt="" width="480" height="480" loading="lazy"><h3>Acompanhamento</h3><p>Cada atividade que você grava volta com a correção, em vídeo, do professor, mostrada no instrumento, sobre o que você tocou de verdade, de forma personalizada e individual.</p></div>
-        </div>
-        <div class="fim dupla"><button class="btn acao" type="button" data-abrir-form data-origem="metodo">Quero tocar ukulele</button><a class="btn wa" href="#" data-wa>Falar com um atendente</a></div>
-      </div>
-    </section>
-
-    <section class="depos">
-      <div class="miolo centro">
-        <h2>Quem já passou por aqui</h2>
-        <p class="lead">Três alunos contando, com as próprias palavras, o que mudou quando alguém passou a ver o que eles tocavam.</p>
-        <div class="videos rv-g">
-          <div class="video-facade" data-v="gMjxSJMxPSc" role="button" tabindex="0" aria-label="Reproduzir depoimento 1"><img src="https://i.ytimg.com/vi/gMjxSJMxPSc/maxresdefault.jpg" alt="Depoimento de aluno do Clube do Ukulele" width="640" height="480" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
-          <div class="video-facade" data-v="_Uo3NvXyH4A" role="button" tabindex="0" aria-label="Reproduzir depoimento 2"><img src="https://i.ytimg.com/vi/_Uo3NvXyH4A/sddefault.jpg" alt="Depoimento de aluna do Clube do Ukulele" width="640" height="480" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
-          <div class="video-facade" data-v="Wey4EfhXWtc" role="button" tabindex="0" aria-label="Reproduzir depoimento 3"><img src="https://i.ytimg.com/vi/Wey4EfhXWtc/sddefault.jpg" alt="Depoimento de aluno do Clube do Ukulele" width="640" height="480" loading="lazy"><span class="play-yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
-        </div>
-        <div class="quotes rv-g duas-cit">
-          <div class="quote"><p>"Nunca havia me inscrito em curso online, mas resolvi pagar pra ver, e o que tenho a dizer é que é MUITO melhor que o presencial."</p><cite>Aline De Lana Krepker, aluna há 10 meses</cite></div>
-          <div class="quote"><p>"Aprender ukulele foi o melhor presente que me dei nos últimos tempos. Consegui o que nunca tinha conseguido: tocar um instrumento."</p><cite>Leila H Nobre, aluna</cite></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="analise-dobra">
-      <div class="miolo centro">
-        <h2>Um professor vendo o que você tocou de verdade</h2>
-        <p class="lead">Nas 49 atividades da jornada você grava tocando, manda pela plataforma e recebe a análise do Mateus em vídeo, mostrada no instrumento. Assim:</p>
-
-        <ol class="an-linha">
-          <li class="an-etapa rv">
-            <div class="an-txt"><span class="an-num">1</span><h3>Você grava e manda pela plataforma</h3><p>Depois da aula, a atividade pede um vídeo curto. Você grava com o celular, do jeito que dá, e clica em enviar. Sem editar nada.</p></div>
-            <div class="an-mock">
-              <div class="mock-envio" id="mock-envio">
-                <div class="me-cab"><span class="me-tag">Envie o seu vídeo</span><strong>Enviar a minha atividade</strong></div>
-                <ul class="me-dicas"><li>Grave com o celular na horizontal, dando para ver o instrumento e as duas mãos.</li><li>Não precisa ser perfeito. O que importa é dar para ver e ouvir você tocando.</li></ul>
-                <div class="me-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6"/><path d="M4 20h16"/></svg><span>Selecionar vídeo</span><i class="me-barra"></i></div>
-                <div class="me-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Enviado! A análise chega em até 3 dias úteis.</div>
-                <div class="me-cursor" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff" stroke="#1F1A2B" stroke-width="1.5"><path d="M5 3l14 8-6 1.5L16 20l-3 1-3-7.5L5 16z"/></svg></div>
-              </div>
-            </div>
-          </li>
-          <li class="an-etapa rv">
-            <div class="an-txt"><span class="an-num">2</span><h3>O Mateus assiste o seu vídeo e responde em vídeo</h3><p>Em até 3 dias úteis chega o aviso no seu WhatsApp. O professor te diz o que tá bom e o que precisa ajustar, mostrando na prática, personalizado pra você.</p></div>
-            <div class="an-mock">
-              <div class="me-zap" id="mock-zap">
-                <div class="zap-topo"><span class="zap-logo">W</span><strong>Clube do Ukulele</strong><small>agora</small></div>
-                <p>Oi Fulano, tudo bem? Sua análise da atividade <strong>Sua primeira música</strong> já está disponível na plataforma. Para assistir, é só entrar em <u>Minhas Análises</u>.</p>
-                <p class="zap-ps">Contar o que achou ajuda a gente a preparar as próximas :)</p>
-              </div>
-            </div>
-          </li>
-          <li class="an-etapa rv">
-            <div class="an-txt"><span class="an-num">3</span><h3>Fica guardado em "Minhas Análises"</h3><p>Seu vídeo grande, o Mateus no canto, apontando no instrumento. Toda análise fica na sua área, uma atrás da outra, para rever quando quiser.</p></div>
-            <div class="an-mock">
-              <div class="mock-minhas" id="mock-minhas">
-                <div class="mm-video">
-                  <img class="mm-aluno" src="img/analise-sonia.webp" alt="Tela de uma análise: o vídeo do aluno tocando em tela grande e o professor no canto" width="650" height="370" loading="lazy">
-                  <div class="mm-topo"><strong>Minhas Análises</strong><span><b class="mm-n" data-ate="36">0</b> análises recebidas</span></div>
-                  <div class="mm-rodape"><em>#36</em><strong>Batida Baião</strong><small>análise de 7 min · em 3 dias úteis</small></div>
-                  <div class="mm-barra"><span></span></div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ol>
-
-        <p class="fecho lead"><strong>É a correção de um professor particular, sobre o que você tocou de verdade, sem hora marcada.</strong> E fica guardada com você.</p>
-        <div class="fim"><button class="btn acao" type="button" data-abrir-form data-origem="analise" style="width:auto;min-width:300px">Receber a proposta no WhatsApp</button></div>
-      </div>
-    </section>
-
-    <section class="faixa-frase">
-      <div class="miolo centro">
-        <p class="frase-grande">Você toca em casa, no seu tempo. O Mateus te mostra o que ajustar. <em>E a música sai.</em></p>
-      </div>
-    </section>
-
-    <section class="suave">
-      <div class="miolo">
-        <h2>A escola de ukulele do Clube está com as inscrições abertas</h2>
-        <p class="lead">Faça o seu cadastro e tenha acesso a:</p>
-        <div class="stack">
-          <article class="item rv">
-            <div class="txt"><p class="rot">1 ano de acesso</p><h3>Jornada do Clube</h3><p>Cinco cursos gravados, na ordem certa, do zero absoluto ao intermediário: Iniciante 0, 1 e 2, Intermediário 1 e 2. Cada música estudada em peças pequenas: dividir, destravar, dominar.</p><ul class="tags"><li>5 cursos, do zero absoluto ao intermediário</li><li>25 módulos</li><li>209 aulas</li><li>Primeira música na primeira semana</li></ul></div>
-            <div class="fig"><img src="img/mockup-laptop.webp" alt="A plataforma da Academy no computador e no celular" width="1200" height="896" loading="lazy"></div>
-          </article>
-          <article class="item inv rv">
-            <div class="txt"><p class="rot">Análise em vídeo</p><h3>49 análises ao longo da jornada</h3><p>Você grava a atividade, o Mateus assiste com você e responde em vídeo, mostrando no instrumento o que ajustar. Em até 3 dias úteis, e fica guardada na sua área.</p><ul class="tags"><li>49 atividades, e crescendo</li><li>Resposta em até 3 dias úteis</li></ul></div>
-            <div class="fig">
-              <div class="video-mock">
-                <img src="img/mockup-celular.webp" alt="" width="1400" height="1045" loading="lazy">
-                <div class="tela">
-                  <div class="tela-frame">
-                    <div class="pane aluno"><span class="rot-pane">vídeo da aluna</span></div>
-                    <div class="pane prof"><img src="img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy"><span class="rot-pane">Mateus</span></div>
-                  </div>
-                  <button class="play" type="button" aria-label="Exemplo de análise (imagem ilustrativa)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
-                  <div class="barra"><span></span></div>
-                  <span class="tempo">Análise do Mateus · 7 min</span>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="item rv">
-            <div class="txt"><p class="rot">Encontros e mentorias</p><h3>Acompanhamento ao vivo</h3><p>Toda quinta tem a live Ukulele na Mão e, logo depois, a Confraria do Ukulele: encontro ao vivo para tocar junto e trocar ideia. Tem plantão de dúvidas duas vezes por semana, por&nbsp;agendamento. E, nos planos com mais tempo de professor, a mentoria individual de 30 minutos, só sua, para trabalhar o seu repertório.</p><ul class="tags"><li>Confraria toda quinta</li><li>Plantão 2x por semana</li><li>Mentoria individual de 30 min</li></ul></div>
-            <div class="fig"><img src="img/turma-collage.webp" alt="Mateus e alunos do Clube, cada um com o seu ukulele" width="900" height="1200" loading="lazy" class="fig-alta"></div>
-          </article>
-          <article class="item inv rv">
-            <div class="txt"><p class="rot">1 ano de acesso</p><h3>Biblioteca de Músicas</h3><p>157 músicas ensinadas em vídeo, separadas por nível e com filtro por batida, quantidade de acordes e gênero. Terminou uma aula da jornada, é aqui que você aplica o que aprendeu numa música que gosta, no seu tamanho.</p><ul class="tags"><li>157 músicas em vídeo</li><li>Separadas por nível</li><li>Filtro por batida e por acordes</li></ul></div>
-            <div class="fig"><img src="img/mockup-tablet.webp" alt="Tablet com a biblioteca de músicas ao lado do ukulele" width="1200" height="896" loading="lazy"></div>
-          </article>
-          <article class="item rv">
-            <div class="txt"><p class="rot bonus">Bônus</p><h3>Comunidade de alunos</h3><p>Comunidade dos alunos com o Desafio do Mês: uma meta com data e plateia, para você ter para quem mostrar o que aprendeu.</p><ul class="tags"><li>Desafio do Mês</li><li>Grupo de Avisos</li></ul></div>
-            <div class="fig"><div class="quote"><p>"Já consigo tocar várias músicas, divertir meu filho e compartilhar momentos de alegria com minha família e amigos."</p><cite>Marcelo Figueiroa, aluno desde 2019</cite></div></div>
-          </article>
-          <article class="item inv rv">
-            <div class="txt"><p class="rot bonus">Bônus</p><h3>Cursos extras gravados</h3><p>Workshop de Canto com Ukulele, para cantar junto. Destrava Dedos, para soltar a mão dos acordes.</p><ul class="tags"><li>2 cursos</li><li>29 aulas</li></ul></div>
-            <div class="fig"><div class="capas">
-              <div class="capa c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg><strong>Oficina de Canto<br>com Ukulele</strong></div>
-              <div class="capa c2"><img src="img/dicionario.webp" alt="Dicionário de Acordes para Ukulele" width="922" height="647" loading="lazy"></div>
-              <div class="capa c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 11.5V4.5a1.5 1.5 0 0 1 3 0V12M14 12V6.5a1.5 1.5 0 0 1 3 0V13M17 13v-2.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.5a5 5 0 0 1-4.2-2.3L5 13.7a1.6 1.6 0 0 1 2.6-1.9L8 13"/></svg><strong>Destrava<br>Dedos</strong></div>
-            </div></div>
-          </article>
-          <article class="item inv rv">
-            <div class="txt"><p class="rot bonus">Bônus</p><h3>Guia de Compra do 1º Ukulele</h3><p>O que olhar antes de comprar: tamanho, corda, afinação e o que não faz diferença nenhuma. Para quem ainda não tem o instrumento, ou quer trocar por um que soe melhor.</p><ul class="tags"><li>Antes da primeira aula</li><li>Sem indicação de loja</li></ul></div>
-            <div class="fig"><div class="capas"><div class="capa c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l1 4H5z"/><path d="M5 6h14v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M9 10a3 3 0 0 0 6 0"/></svg><strong>Guia de Compra<br>do 1º Ukulele</strong></div></div></div>
-          </article>
-          <article class="item rv">
-            <div class="txt"><p class="rot bonus">Bônus</p><h3>Dicionário de Acordes</h3><p>Todo acorde com diagrama e foto da mão, para consultar na hora que a música pede um que você ainda não conhece.</p><ul class="tags"><li>Consulta rápida</li><li>Diagrama e foto da mão</li></ul></div>
-            <div class="fig"><img src="img/dicionario.webp" alt="Dicionário de Acordes para Ukulele" width="922" height="647" loading="lazy"></div>
-          </article>
-          <article class="item rv">
-            <div class="txt"><p class="rot">Conforme o plano</p><h3>Análise das músicas que você já toca</h3><p>Nos planos com mais tempo de professor, você manda uma música que já está no seu repertório e recebe a análise de performance: o que soa bem, o que ajustar e qual o próximo passo dela. Qual plano é o seu, a gente descobre na conversa.</p><ul class="tags"><li>Análise de performance</li><li>Fora das 49 atividades da jornada</li></ul></div>
-            <div class="fig"><div class="chamada-mock">
-              <div class="tile prof"><img src="img/analise-mateus.webp" alt="" width="506" height="900" loading="lazy"><span>Mateus</span></div>
-              <div class="tile voce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Você</span></div>
-              <div class="barra-chamada"><i></i><i></i><i class="fim"></i><b>30:00</b></div>
-            </div></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="escura">
-      <div class="miolo centro">
-        <h2>Você se cadastra e a gente monta o seu plano com:</h2>
-        <div class="resumo-grid">
-        <div class="resumo-fig rv"><img src="img/mockup-laptop.webp" alt="" width="1200" height="896" loading="lazy"></div>
-        <div class="resumo-txt">
-        <div class="resumo rv-g">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/><path d="m9 12 2 2 4-4"/></svg><strong>Dupla garantia</strong></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><strong>Resposta em 3 dias úteis</strong></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><strong>1 ano de acesso</strong></div>
-        </div>
-        <ul class="lista-resumo rv-g">
-          <li>Jornada em 5 cursos, 209 aulas</li><li>49 atividades com análise em vídeo</li><li>Confraria e live toda semana</li><li>Plantão de dúvidas 2x por semana, por agendamento</li><li>157 músicas ensinadas em vídeo</li><li>Comunidade com Desafio do Mês</li><li>Oficina de Canto, Dicionário de Acordes e Destrava Dedos</li><li>Análise de performance e mentoria individual, conforme o plano</li>
-        </ul>
-        </div>
-        </div>
-        <div class="fim dupla"><button class="btn acao" type="button" data-abrir-form data-origem="resumo">Receber a proposta no WhatsApp</button><a class="btn wa" href="#" data-wa>Falar com a gente no WhatsApp</a></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="miolo centro">
-        <h2>Invista sem medo, com a nossa dupla garantia</h2>
-        <div class="garantias rv-g duas-gar">
-          <div class="gar clara"><img class="selo" src="img/selo-garantia.webp" alt="Selo de garantia" width="600" height="600" loading="lazy"><p class="dias">30 dias</p><h3>Garantia de satisfação</h3><p>Você entra, assiste, manda vídeo. Se sentir que não é para você, pede o valor de volta, por qualquer motivo.</p></div>
-          <div class="gar clara"><img class="selo" src="img/selo-garantia.webp" alt="Selo de garantia" width="600" height="600" loading="lazy"><p class="dias">1 ano</p><h3>Garantia de evolução</h3><p>Seguiu a jornada Iniciante, enviou as atividades dela e, ao fim de um ano, ainda não toca 10 músicas do começo ao fim? Devolvemos o seu dinheiro.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="suave">
-      <div class="miolo">
-        <h2>Sobre o Clube do Ukulele</h2>
-        <p class="lead">O Clube do Ukulele ensina adultos a tocar desde 2017. Mais de 6.000 alunos passaram pelas aulas do Mateus, a maioria começando do zero, e mais de 300 mil pessoas acompanham o Clube nas redes. A Academy é a escola do Clube: a jornada completa com um professor acompanhando cada passo.</p>
-        <div class="profs rv-g">
-          <figure><img src="../img/mateus-perfil.webp" alt="Mateus Augusto" width="1000" height="1250"><figcaption><strong>Mateus Augusto</strong><span>Fundador e professor</span></figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq-lp">
-      <div class="miolo centro">
-        <h2>Ficou com alguma dúvida?</h2>
-        <p class="lead">Converse agora com a gente no WhatsApp e tire suas dúvidas sobre a Academy, os planos, valores e formas de pagamento.</p>
-        <div class="fim" style="margin-bottom:26px"><a class="btn wa" href="#" data-wa style="min-width:300px"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:22px;height:22px"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.6-.1 1.8-.8 2.1-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.3-8 8.3z"/></svg>Tirar dúvidas no WhatsApp</a></div>
-        <div class="faq-lista">
-          <details><summary>Nunca toquei nada. É pra mim?</summary><p>É. A maior parte dos alunos começa do zero, e a jornada começa exatamente aí: na primeira semana você toca uma música inteira, com dois acordes e uma batida, e o professor vê o seu vídeo.</p></details>
-          <details><summary>Em quanto tempo vou tocar uma música inteira?</summary><p>Na primeira semana, se você seguir a jornada. Depois disso, cada nível abre músicas da biblioteca no seu tamanho, e a análise garante que você não passa adiante com um erro escondido.</p></details>
-          <details><summary>Quanto custa?</summary><p>Depende do plano. Tem plano só com a análise das atividades e o plantão, e tem plano com encontro individual toda semana. Deixa seu WhatsApp, a gente conversa cinco minutos e te mostra o que faz sentido para a sua rotina.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <footer>Clube do Ukulele · comotocarukulele.com · <a href="#">Política de privacidade</a> · <a href="#">Termos</a></footer>
-    <div class="sticky" id="sticky-lp"><button class="btn acao" type="button" data-abrir-form data-origem="sticky">Receber a proposta</button></div>
-  </div>
-</div>
-
 <!-- ============ 3b. PÁGINA DE OBRIGADO ============ -->
 <div class="aba" id="aba-obrigado" role="tabpanel">
   <div class="lp obrigado">
@@ -1917,7 +1656,7 @@ Aproveitando: quer conhecer o Ouro? Além de tudo que você já tem, são três 
   addEventListener('scroll', () => { if (cabTick) return; cabTick = true; requestAnimationFrame(() => {
     if (scrollY > 140) cab.classList.add('compacta'); else if (scrollY < 30) cab.classList.remove('compacta');
     cabTick = false; }); }, { passive: true });
-  // Abas por hash: #briefing, #planos, #pagina, #material, #whatsapp, #objecoes
+  // Abas por hash: #briefing, #planos, #base, #meta, #obrigado, #material, #whatsapp, #objecoes
   const abas = [...document.querySelectorAll('.pilula')];
   function mostrar(nome, rolar) {
     if (!document.getElementById('aba-' + nome)) nome = 'briefing';
@@ -1968,7 +1707,7 @@ Aproveitando: quer conhecer o Ouro? Além de tudo que você já tem, são três 
     i.value = v;
   }));
   const formLp = document.querySelector('.lp form');
-  formLp.addEventListener('submit', e => {
+  formLp && formLp.addEventListener('submit', e => {
     e.preventDefault();
     const dados = Object.fromEntries(new FormData(formLp).entries());
     dados.whatsapp = '55' + (dados.whatsapp || '').replace(/\D/g, '');
@@ -2019,10 +1758,12 @@ Aproveitando: quer conhecer o Ouro? Além de tudo que você já tem, são três 
   document.querySelectorAll('#mock-minhas, .lp .an-etapa').forEach(el => ioMock.observe(el));
   const heroLp = document.querySelector('.lp .hero'), stickyLp = document.getElementById('sticky-lp');
   let heroVis = true; const ctaVis = new Set();
+  if (heroLp && stickyLp) {
   const updSticky = () => stickyLp.classList.toggle('show', !heroVis && ctaVis.size === 0);
   new IntersectionObserver(([en]) => { heroVis = en.isIntersecting; updSticky(); }).observe(heroLp);
   const ioCta = new IntersectionObserver(es => { es.forEach(en => en.isIntersecting ? ctaVis.add(en.target) : ctaVis.delete(en.target)); updSticky(); });
-  document.querySelectorAll('#aba-pagina .lp .btn').forEach(b => { if (!stickyLp.contains(b)) ioCta.observe(b); });
+  document.querySelectorAll('.lp .btn').forEach(b => { if (!stickyLp.contains(b)) ioCta.observe(b); });
+  }
 </script>
 </body>
 </html>
