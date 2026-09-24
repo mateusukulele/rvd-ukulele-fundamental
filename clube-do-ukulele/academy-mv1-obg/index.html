@@ -11,7 +11,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="../../academy/img/obrigado-poster.webp">
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6ab598f1053a84686a5703da/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/6ab598e98bdfba7b26949e9b/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
 <style>
 :root{
   --indigo:#443468;--indigo-profundo:#2D124E;--quase-preto:#1A0E2E;
@@ -20,42 +27,34 @@
 *{box-sizing:border-box}
 html,body{margin:0}
 body{min-height:100vh;background:var(--indigo-profundo);color:var(--texto);font-family:"Montserrat",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-.hero{position:relative;min-height:100vh;padding:28px 16px 48px;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.hero{position:relative;min-height:100svh;padding:clamp(12px,2.2svh,24px) 16px 20px;display:flex;flex-direction:column;align-items:center;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:url(../../academy/img/hero-bg-2026.webp) center top/cover no-repeat;z-index:0}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgb(26 14 46 / .55) 0%,rgb(26 14 46 / .25) 45%,rgb(26 14 46 / .6) 100%);z-index:0}
 .hero>*{position:relative;z-index:1}
-.logo{width:120px;height:auto;display:block;margin:0 auto 22px}
+.logo{width:96px;height:auto;display:block;margin:0 auto clamp(8px,1.6svh,16px)}
 h1{font-family:"Anton",Impact,sans-serif;font-weight:400;color:#fff;text-transform:uppercase;text-align:center;
-   font-size:clamp(30px,5.2vw,58px);line-height:1.14;letter-spacing:.3px;margin:0 auto 28px;max-width:980px;text-wrap:balance;
+   font-size:clamp(24px,min(4.2vw,5svh),48px);line-height:1.14;letter-spacing:.3px;margin:0 auto clamp(12px,2.2svh,22px);max-width:900px;text-wrap:balance;
    text-shadow:0 2px 6px rgb(0 0 0 / .35)}
 h1 em{font-style:normal;color:var(--coral)}
-.card{width:100%;max-width:720px;background:#fff;border-radius:22px;padding:16px;box-shadow:0 30px 60px -28px rgb(10 4 20 / .75)}
-.player{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:var(--quase-preto)}
-.player video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.play{position:absolute;inset:0;margin:0;border:0;padding:0;background:transparent;cursor:pointer;display:grid;place-items:center}
-.play img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.play span{position:relative;width:84px;height:84px;border-radius:999px;background:var(--coral);display:grid;place-items:center;
-   box-shadow:0 8px 20px -8px rgb(0 0 0 / .45);transition:transform .2s ease}
-.play:hover span,.play:focus-visible span{transform:scale(1.07)}
-.play svg{width:36px;height:36px;margin-left:5px;fill:var(--quase-preto)}
-.play:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
-.contato{padding:22px 10px 8px;text-align:center}
-.contato p{font-size:clamp(17px,2.2vw,20px);line-height:1.5;font-weight:700;margin:0 auto 20px;max-width:560px;text-wrap:pretty}
-.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:60px;padding:14px 30px;border-radius:999px;
-   background:var(--wa);color:#fff;font-weight:700;font-size:19px;text-decoration:none;box-shadow:0 8px 18px -10px rgb(0 0 0 / .35);transition:background .2s ease,transform .2s ease}
+/* largura do card = a que deixa o vídeo 16:9 caber na altura que sobra: 100svh menos logo, título e chamada (~330px) */
+.card{width:min(100%,720px,calc((100svh - 330px) * 1.778 + 24px));background:#fff;border-radius:20px;padding:12px;box-shadow:0 24px 48px -28px rgb(0 0 0 / .6)}
+.player{border-radius:12px;overflow:hidden;background:var(--quase-preto)}
+.contato{padding:14px 8px 4px;text-align:center}
+.contato p{font-size:clamp(15px,1.9svh,18px);line-height:1.45;font-weight:700;margin:0 auto 12px;max-width:560px;text-wrap:pretty}
+.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 26px;border-radius:999px;
+   background:var(--wa);color:#fff;font-weight:700;font-size:18px;text-decoration:none;box-shadow:0 8px 18px -10px rgb(0 0 0 / .35);transition:background .2s ease,transform .2s ease}
 .btn-wa:hover{background:var(--wa-escuro);transform:translateY(-1px)}
 .btn-wa:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
-.btn-wa svg{width:28px;height:28px;flex:none;fill:#fff}
-.rodape{margin-top:auto;padding-top:32px;color:#D9D2EC;font-size:13px;text-align:center}
+.btn-wa svg{width:26px;height:26px;flex:none;fill:#fff}
+.rodape{margin-top:auto;padding-top:20px;color:#D9D2EC;font-size:13px;text-align:center}
 @media (max-width:520px){
-  .hero{padding-top:22px}
-  .logo{width:100px;margin-bottom:18px}
-  .card{padding:10px;border-radius:18px}
-  .play span{width:68px;height:68px}.play svg{width:30px;height:30px}
-  .btn-wa{width:100%;padding:14px 14px;gap:10px;font-size:16px}
-  .btn-wa svg{width:24px;height:24px}
+  .logo{width:96px}
+  .card{width:100%;padding:8px;border-radius:16px}
+  .contato{padding:12px 4px 4px}
+  .btn-wa{width:100%;padding:10px 12px;gap:8px;font-size:16px;min-height:48px}
+  .btn-wa svg{width:22px;height:22px}
 }
-@media (prefers-reduced-motion:reduce){.play span,.btn-wa{transition:none}}
+@media (prefers-reduced-motion:reduce){.btn-wa{transition:none}}
 </style>
 </head>
 <body>
@@ -64,11 +63,9 @@ h1 em{font-style:normal;color:var(--coral)}
   <h1>Dê o play no vídeo e entenda como escolher o <em>seu plano</em> no Clube do Ukulele</h1>
 
   <div class="card">
-    <div class="player" id="player">
-      <button class="play" type="button" id="play" aria-label="Assistir ao vídeo do Mateus">
-        <img src="../../academy/img/obrigado-poster.webp" alt="" width="1280" height="720">
-        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-      </button>
+    <div class="player">
+      <vturb-smartplayer id="vid-6ab598f1053a84686a5703da" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+      <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/8684569c-af6a-4351-94a5-45eb00e4ba43/players/6ab598f1053a84686a5703da/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
     </div>
 
     <div class="contato">
@@ -87,19 +84,6 @@ h1 em{font-style:normal;color:var(--coral)}
 (function(){
   var msg = 'Oi! Acabei de fazer o pré-cadastro para receber informações sobre os planos do Clube do Ukulele Academy.';
   document.getElementById('btn-wa').href = 'https://wa.me/553198585286?text=' + encodeURIComponent(msg);
-  // O vídeo só é criado no clique: a página abre leve e o som começa porque foi a pessoa que apertou.
-  var botao = document.getElementById('play');
-  botao.addEventListener('click', function(){
-    var v = document.createElement('video');
-    v.src = '../../academy/video/obrigado-academy.mp4';
-    v.poster = '../../academy/img/obrigado-poster.webp';
-    v.controls = true; v.playsInline = true; v.preload = 'auto';
-    v.setAttribute('playsinline', '');
-    document.getElementById('player').replaceChild(v, botao);
-    v.play();
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({event: 'obrigado_video_play'});
-  });
 })();
 </script>
 
