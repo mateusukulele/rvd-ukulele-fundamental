@@ -1239,6 +1239,9 @@ html:has(.pop-form[open]) .lp .sticky{opacity:0;pointer-events:none}
 </div>
 
 <!-- ============ 3b. PÁGINA DE OBRIGADO ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vídeo">
+  <div class="lb-caixa"><button class="lb-fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="lb-corpo"></div></div>
+</div>
 <script>
 const $vazio = () => document.createElement('div');
 const $q = (s) => document.querySelector(s) || $vazio();
