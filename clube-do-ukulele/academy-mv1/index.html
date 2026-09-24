@@ -925,6 +925,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
 .lp .pop-caixa input,.lp .pop-caixa .tel{height:50px}
 .lp .pop-caixa input:focus-visible,.lp .pop-caixa .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .lp .subtitulo-sec{margin:-2px auto 12px;max-width:600px;text-align:center;font-size:20px;line-height:1.35;font-weight:700;color:var(--coral-forte)}
+.lp .pop-caixa .pop-sub{margin-bottom:6px}.lp .pop-caixa .pop-obrig{margin:0 0 14px;text-align:center;font-size:13px;color:var(--sobre-escuro)}
 </style>
 </head>
 <body class="somente-lp">
@@ -951,7 +952,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
               <input id="email" name="email" type="email" autocomplete="email" placeholder="E-mail" required>
               <label class="sr" for="whatsapp">WhatsApp</label>
               <div class="tel"><span class="ddi">+55</span><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(11) 99999-9999" required></div>
-              <button class="btn acao" type="submit">Receber a oferta</button>
+              <button class="btn acao" type="submit">Ativar oferta</button>
             </form>
             <div class="prova-mini">
               <div class="selo-prova" aria-hidden="true"><img src="../../img/icone-ukulele.svg" alt="" width="40" height="98"></div>
@@ -1169,16 +1170,17 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
     <dialog class="pop-form" id="pop-form" aria-labelledby="pop-tit">
       <div class="pop-caixa">
         <button class="pop-fechar" type="button" aria-label="Fechar">&times;</button>
-        <h3 id="pop-tit">Receber a oferta</h3>
-        <p class="pop-sub">Deixe seus dados e a gente te chama no WhatsApp com a oferta.</p>
+        <h3 id="pop-tit">Garanta a sua oferta com os bônus</h3>
+        <p class="pop-sub">Preencha seus dados e receba a oferta.</p>
+        <p class="pop-obrig">*Campo obrigatório</p>
         <form class="form" data-origem="popup">
           <label class="sr" for="pop-nome">Nome completo</label>
-          <input id="pop-nome" name="nome" type="text" autocomplete="name" placeholder="Nome completo" required>
+          <input id="pop-nome" name="nome" type="text" autocomplete="name" placeholder="Nome completo*" required>
           <label class="sr" for="pop-email">E-mail</label>
-          <input id="pop-email" name="email" type="email" autocomplete="email" placeholder="E-mail" required>
+          <input id="pop-email" name="email" type="email" autocomplete="email" placeholder="E-mail*" required>
           <label class="sr" for="pop-whatsapp">WhatsApp</label>
-          <div class="tel"><span class="ddi">+55</span><input id="pop-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(11) 99999-9999" required></div>
-          <button class="btn acao" type="submit">Receber a oferta</button>
+          <div class="tel"><span class="ddi">+55</span><input id="pop-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="WhatsApp* (11) 99999-9999" required></div>
+          <button class="btn acao" type="submit">Ativar oferta</button>
         </form>
       </div>
     </dialog>
