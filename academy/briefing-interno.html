@@ -848,6 +848,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <button class="pilula" role="tab" id="tab-briefing" aria-controls="aba-briefing" data-aba="briefing" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h6M9 16h6"/></svg>Briefing</button>
     <button class="pilula" role="tab" id="tab-planos" aria-controls="aba-planos" data-aba="planos" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4v-6H4zM10 20h4V9h-4zM16 20h4V4h-4z"/></svg>Planos</button>
     <button class="pilula" role="tab" id="tab-base" aria-controls="aba-base" data-aba="base" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Ofertas da base</button>
+    <button class="pilula" role="tab" id="tab-meta" aria-controls="aba-meta" data-aba="meta" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6 16v-5M11 16V8M16 16v-7M21 5l-5 4-5-3-5 4"/></svg>Meta e custos</button>
     <button class="pilula" role="tab" id="tab-pagina" aria-controls="aba-pagina" data-aba="pagina" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h5"/></svg>Página de vendas</button>
     <button class="pilula" role="tab" id="tab-obrigado" aria-controls="aba-obrigado" data-aba="obrigado" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Página de obrigado</button>
     <button class="pilula" role="tab" id="tab-material" aria-controls="aba-material" data-aba="material" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h8"/></svg>Material do aluno</button>
@@ -1271,6 +1272,60 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
   </div>
 </div>
 
+<div class="aba" id="aba-meta" role="tabpanel">
+  <div class="pagina uma">
+    <main>
+      <div class="bloco">
+        <h2>Meta e custos</h2>
+        <p class="intro">Meta do MVP: R$ 30 mil líquidos por mês, somando anúncio e base, depois de imposto, reembolso e taxa. Cobre R$ 12 mil de tráfego, R$ 10 mil de pró-labore e R$ 8 mil de custo fixo. O MVP roda na Hotmart; a troca para Asaas + Guru está em estudo.</p>
+
+        <h3>Hotmart × Asaas + Guru: quantas vendas pagam o mês</h3>
+        <div id="calc-meta" style="background:var(--card);border-radius:12px;padding:16px 18px;margin:0 0 14px;display:grid;gap:12px">
+          <label style="display:grid;gap:4px;font-size:14px;color:var(--texto-suave)">Ticket médio (à vista): <strong id="cm-tko"></strong>
+            <input id="cm-tk" type="range" min="1000" max="3000" step="50" value="2000"></label>
+          <label style="display:grid;gap:4px;font-size:14px;color:var(--texto-suave)">Vendas à vista: <strong id="cm-avo"></strong>
+            <input id="cm-av" type="range" min="0" max="100" step="5" value="25"></label>
+          <label style="display:grid;gap:4px;font-size:14px;color:var(--texto-suave)">Custo fixo do mês: <strong id="cm-cfo"></strong>
+            <input id="cm-cf" type="range" min="20000" max="45000" step="500" value="30000"></label>
+          <label style="display:grid;gap:4px;font-size:14px;color:var(--texto-suave)">Receber em
+            <select id="cm-pz" style="font:inherit;padding:8px;border-radius:8px;border:1px solid var(--superficie)"><option value="2">D+2</option><option value="15">D+15</option><option value="30">D+30</option></select></label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+            <div style="background:var(--fundo);border-radius:10px;padding:12px"><div style="font-size:14px;font-weight:700;color:var(--texto)">Hotmart</div><div id="cm-hN" style="font-size:26px;font-weight:700;color:var(--indigo)"></div><div id="cm-hL" style="font-size:13.5px;color:var(--texto-suave);line-height:1.6"></div></div>
+            <div style="background:var(--fundo);border-radius:10px;padding:12px"><div style="font-size:14px;font-weight:700;color:var(--texto)">Asaas + Guru</div><div id="cm-aN" style="font-size:26px;font-weight:700;color:var(--indigo)"></div><div id="cm-aL" style="font-size:13.5px;color:var(--texto-suave);line-height:1.6"></div></div>
+          </div>
+        </div>
+        <p class="nota">Imposto 10% e reembolso 5% sobre o que o aluno paga. Hotmart: 7,7% + R$ 2,49 por venda; os juros do parcelado ficam com ela; antecipação D+15 2,19% e D+2 3,59% (fonte secundária). Asaas: cartão 1x 2,99%, 12x 3,99%, sempre + R$ 0,49; parcelado cobrado 20% acima do à vista (como 12x 150 sobre R$ 1.500), e os juros entram no faturamento; antecipação no pior caso (1,70% ao mês): 12x custa 11,1% em D+2, 10,3% em D+15, 9,5% em D+30. Guru: R$ 300 por mês, somado ao custo fixo. Taxas da planilha <code>financeiro-plataformas-pagamento/comparativo-pagamentos.html</code>, conferidas em 24/09/2026.</p>
+        <script>
+        (function(){
+          const $=id=>document.getElementById(id), f=v=>'R$ '+Math.round(v).toLocaleString('pt-BR');
+          function calc(){
+            const tk=+$('cm-tk').value, av=+$('cm-av').value/100, cf=+$('cm-cf').value, pz=$('cm-pz').value;
+            $('cm-tko').textContent=f(tk); $('cm-avo').textContent=Math.round(av*100)+'%'; $('cm-cfo').textContent=f(cf);
+            const hAnt={2:.0359,15:.0219,30:0}[pz];
+            const hNet=(tk-tk*.077-2.49)*(1-hAnt)-tk*.15, hN=Math.ceil(cf/hNet);
+            const pa=tk*1.2, aAntP={2:.111,15:.103,30:.095}[pz], aAntV={2:.017,15:.009,30:0}[pz];
+            const aNet=av*((tk-tk*.0299-.49)*(1-aAntV)-tk*.15)+(1-av)*((pa-pa*.0399-.49)*(1-aAntP)-pa*.15);
+            const acf=cf+300, aN=Math.ceil(acf/aNet), aFat=aN*(av*tk+(1-av)*pa);
+            $('cm-hN').textContent=hN+' vendas'; $('cm-hL').innerHTML='Sobra por venda: '+f(hNet)+'<br>Faturamento: '+f(hN*tk);
+            $('cm-aN').textContent=aN+' vendas'; $('cm-aL').innerHTML='Sobra por venda: '+f(aNet)+'<br>Faturamento: '+f(aFat)+'<br>Custo com Guru: '+f(acf);
+          }
+          ['cm-tk','cm-av','cm-cf','cm-pz'].forEach(id=>$(id).addEventListener('input',calc));
+          calc();
+        })();
+        </script>
+
+        <h3>Leitura rápida</h3>
+        <ul>
+          <li>Faturar R$ 30 mil não paga R$ 30 mil de custo: depois de imposto, reembolso e taxa, cada venda de R$ 2.000 deixa uns R$ 1.480 na Hotmart (D+2). São 21 vendas, perto de R$ 42 mil faturados.</li>
+          <li>Com ticket médio de R$ 1.600 (mais Prata), são 26 vendas.</li>
+          <li>Asaas + Guru economiza umas 2 vendas por mês, porque os juros do parcelado ficam com a gente. Custa montar checkout, antecipação e cobrança; os juros também entram no faturamento e pagam imposto.</li>
+          <li>Venda da base tem ticket menor (R$ 300 a R$ 1.500, e o pró-rata ainda menos) e conta menos para a meta.</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</div>
+
 <!-- ============ 3. PÁGINA DE CADASTRO (MODELO) ============ -->
 <div class="aba" id="aba-pagina" role="tabpanel">
   <div class="lp">
@@ -1555,7 +1610,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
         <h2>O que acontece agora</h2>
         <ol class="passos ob-passos rv-g">
           <li><strong>Você responde a mensagem</strong>Ela vem do número oficial do Clube, com a foto do Mateus. Qualquer resposta serve.</li>
-          <li><strong>Uma conversa de cinco minutos</strong>Três perguntas: você já tocou algo, quanto tempo tem na semana e se prefere só vídeo ou também um encontro ao vivo.</li>
+          <li><strong>Uma conversa de cinco minutos</strong>Três perguntas: você já tocou algo, quanto tempo tem na semana e se prefere só vídeo ou também encontros ao vivo em grupo.</li>
           <li><strong>Você escolhe o plano e começa</strong>Com o plano certo na mão, o link de pagamento chega na conversa e o acesso vai para o seu e-mail no mesmo dia.</li>
         </ol>
       </div>
@@ -1582,7 +1637,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
           <p><em>[Mateus com o ukulele, sorrindo, plano médio. Toca 2 segundos e para.]</em></p>
           <p>Ó, parabéns. Sério. Você acabou de dar o passo que a maioria fica adiando por anos: decidir que vai aprender de verdade, com alguém acompanhando o que você toca.</p>
           <p>Agora presta atenção, porque é rápido. Eu já te mandei uma mensagem no WhatsApp. Ela vem do número oficial do Clube, com a minha foto. É só responder lá, pode ser um "oi".</p>
-          <p>Aí a gente vai fazer três perguntas: se você já tocou alguma coisa, quanto tempo você tem na semana, e se você prefere só mandar vídeo ou ter também um encontro ao vivo. Com isso a gente te mostra qual dos planos faz sentido pra você, e o valor dele. Sem pressão: se não fizer sentido, tudo bem.</p>
+          <p>Aí a gente vai fazer três perguntas: se você já tocou alguma coisa, quanto tempo você tem na semana, e se você prefere só mandar vídeo ou ter também encontros ao vivo em grupo. Com isso a gente te mostra qual dos planos faz sentido pra você, e o valor dele. Sem pressão: se não fizer sentido, tudo bem.</p>
           <p>Então fica de olho no celular nos próximos minutos. E tira o ukulele da capa, porque a primeira música vem antes do que você imagina.</p>
           <p><em>[Toca 3 segundos. Acena.]</em> Te vejo lá dentro.</p>
         </details>
@@ -1613,7 +1668,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <div class="folha">
       <h2>A ideia em uma frase</h2>
       <p class="frase">Você aprende ukulele com um professor acompanhando cada passo seu: você grava em casa, ele assiste junto e mostra no instrumento o que ajustar.</p>
-      <p>Quem aprende sozinho trava porque ninguém vê o que ela está fazendo de errado. Conteúdo você já tem de sobra; o que falta é correção. A Academy resolve isso com três coisas, que a gente chama de <strong>DMA</strong>:</p>
+      <p>Quem aprende sozinho trava porque ninguém vê o que ela está fazendo de errado. Conteúdo você já tem de sobra; o que falta é correção. O Clube resolve isso com três coisas, que a gente chama de <strong>DMA</strong>:</p>
       <div class="tres">
         <div><h3><span class="l">D</span>Direção</h3><p>Uma jornada em 5 cursos diz o que estudar hoje, o que vem depois e quando passar adiante. Você nunca fica sem saber o próximo passo.</p></div>
         <div><h3><span class="l">M</span>Motivação</h3><p>Toda quinta tem live. Todo mês tem desafio. Toda atividade volta com resposta. Sempre tem um próximo motivo para pegar o ukulele.</p></div>
@@ -1633,7 +1688,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
       <h3 style="margin-top:26px">O ritmo da semana e do mês</h3>
       <div class="ritmo">
         <div><strong>Toda quinta</strong>Live Ukulele na Mão às 19h, aberta. No Ouro, logo depois, vem a Confraria do Ukulele às 19:40: encontro ao vivo para tocar junto e trocar ideia.</div>
-        <div><strong>Terça e sexta</strong>Plantão agendado, no Ouro: terça às 20h e sexta às 10h. Você agenda, recebe o link por e-mail e leva a sua dúvida ou a sua música.</div>
+        <div><strong>Terça e quarta</strong>Plantão agendado, no Ouro: terça às 19h30 e quarta às 10h. Você agenda, recebe o link por e-mail e leva a sua dúvida ou a sua música.</div>
         <div><strong>Todo mês</strong>Desafio do Mês na comunidade: uma meta com data e plateia, para você ter para quem mostrar o que aprendeu.</div>
       </div>
       <span class="n">Clube do Ukulele Academy · 2</span>
@@ -1650,7 +1705,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#25845A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Workshop de Canto com Ukulele</strong></span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#25845A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Dicionário de Acordes</strong> e <strong>Destrava Dedos</strong></span></li>
       </ul>
-      <p style="margin-top:22px">O Ouro tem tudo isso e soma <strong>três encontros ao vivo por semana</strong>: a Confraria de quinta e o plantão de terça e sexta.</p>
+      <p style="margin-top:22px">O Ouro tem tudo isso e soma <strong>três encontros ao vivo por semana</strong>: a Confraria de quinta e o plantão de terça e quarta.</p>
       <span class="n">Clube do Ukulele Academy · 3</span>
     </div>
 
@@ -1658,7 +1713,7 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
       <h2>Os planos</h2>
       <div class="planos-pdf">
         <div class="pp"><span class="tag">Recomendado</span><h3>Prata</h3><p class="valor"><strong>12x R$ 150</strong><br>ou R$ 1.500 à vista</p><ul><li>Tudo que vem junto</li><li>49 atividades com análise em vídeo, e crescendo</li><li>Resposta em até 3 dias úteis</li><li>Garantia de 1 ano</li></ul></div>
-        <div class="pp"><h3>Ouro</h3><p class="valor"><strong>12x R$ 250</strong><br>ou R$ 2.500 à vista</p><ul><li>Tudo do Prata</li><li>Confraria do Ukulele toda quinta</li><li>Plantão ao vivo terça e sexta</li></ul></div>
+        <div class="pp"><h3>Ouro</h3><p class="valor"><strong>12x R$ 250</strong><br>ou R$ 2.500 à vista</p><ul><li>Tudo do Prata</li><li>Confraria do Ukulele toda quinta</li><li>Plantão ao vivo terça e quarta</li></ul></div>
       </div>
       <p style="margin-top:18px;font-size:15px">Para comparar: uma escola de música presencial cobra entre R$ 500 e R$ 600 por mês, e uma aula particular uns R$ 120, com o professor vendo você tocar só naquela hora. No Prata você paga R$ 150 por mês e o professor vê tudo o que você gravar.</p>
       <p style="font-size:14.5px;color:var(--texto-suave)">Você pode subir do Prata para o Ouro quando quiser, pagando só a diferença.</p>
@@ -1669,13 +1724,13 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
       <h2>Duas garantias</h2>
       <div class="gar2">
         <div><p class="big">30 dias</p><p><strong>Para experimentar.</strong> Você entra, assiste, manda vídeo. Não é para você? Pede o valor de volta, por qualquer motivo.</p></div>
-        <div><p class="big">1 ano</p><p><strong>Para tocar de verdade.</strong> Seguiu a jornada Iniciante, enviou as atividades dela e, ao fim de um ano, ainda não toca 10 músicas do começo ao fim? Devolvemos o seu dinheiro.</p></div>
+        <div><p class="big">1 ano</p><p><strong>Para tocar de verdade.</strong> Seguiu os cursos Iniciante 0, 1 e 2, enviou as atividades deles e, ao fim de um ano, ainda não toca 10 músicas do começo ao fim? Devolvemos o seu dinheiro.</p></div>
       </div>
       <h3>Combinados que valem para todo mundo</h3>
       <ul class="check">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#443468" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Toda análise chega em até <strong>3 dias úteis</strong>, contados a partir do dia seguinte ao envio.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#443468" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><span>No Ouro, o plantão é <strong>agendado</strong>: você escolhe o horário e o link chega por e-mail.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="#443468" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/></svg><span>O plano é anual (12x ou à vista). Você <strong>sobe de plano quando quiser</strong>, pagando a diferença.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#443468" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/></svg><span>O plano é anual (12x ou à vista) e renova sozinho no mesmo valor; a gente te avisa 15 dias antes. Você <strong>sobe de plano quando quiser</strong>, pagando só a diferença até fechar o ano.</span></li>
       </ul>
       <span class="n">Clube do Ukulele Academy · 5</span>
     </div>
@@ -1705,11 +1760,11 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
     <main>
       <div class="bloco">
         <h2>O fluxo do closer, do cadastro ao pagamento</h2>
-        <p class="intro">Script de referência para o Marco, na voz do Mateus. Preços provisórios. Cada etapa tem a mensagem pronta e o que fazer com a resposta. Regra de ouro: nenhum número antes do diagnóstico.</p>
+        <p class="intro">Script de referência para o Marco, na voz do Mateus. Preços fechados para o MVP. A abordagem e a ordem dos planos são dele; isto é ponto de partida. Cada etapa tem a mensagem pronta e o que fazer com a resposta. Regra de ouro: nenhum número antes do diagnóstico.</p>
 
         <h3>As regras que não mudam</h3>
         <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>Preço só depois das três perguntas.</strong> "Quanto custa?" antes disso recebe "depende do plano, me conta primeiro onde você está".</span></div>
-        <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>O closer parte do Prata.</strong> Ouro para quem pediu encontro ao vivo. Essencial só aparece na descida, nunca antes.</span></div>
+        <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>Essencial só aparece na descida, nunca antes.</strong> Prata e Ouro, na ordem que o Marco achar melhor para cada conversa.</span></div>
         <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>Sem urgência inventada.</strong> Nada de "últimas vagas". Fora de lançamento, o único prazo é o do lead.</span></div>
         <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>O Mateus entra com áudio</strong> quando a dúvida é técnica ("consigo com dedo curto?") ou quando a pessoa quer ouvir do professor. Nunca para negociar preço.</span></div>
         <div class="regra"><svg viewBox="0 0 24 24" fill="none" stroke="#B4404F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><strong>Toda conversa vai para a planilha</strong> com origem, respostas do diagnóstico, plano oferecido e resultado. É de lá que sai a régua de recuperação.</span></div>
@@ -1738,7 +1793,7 @@ Pra eu te mostrar o plano certo, me conta rapidinho: você já tocou alguma cois
           <thead><tr><th>Ponto de partida</th><th>Tempo</th><th>Prefere</th><th>Recomenda</th><th>Como apresentar</th></tr></thead>
           <tbody>
             <tr><td>Zero ou travou</td><td>Qualquer</td><td>Só vídeo, no próprio ritmo</td><td><strong>Prata</strong></td><td>Análise das 49 atividades em vídeo, em até 3 dias úteis; garantia de 1 ano</td></tr>
-            <tr><td>Qualquer</td><td>Tem tempo na semana</td><td>Tirar dúvida ao vivo, tocar junto</td><td><strong>Ouro</strong></td><td>Tudo do Prata + Confraria de quinta + plantão de terça e sexta: 3 encontros ao vivo por semana</td></tr>
+            <tr><td>Qualquer</td><td>Tem tempo na semana</td><td>Tirar dúvida ao vivo, tocar junto</td><td><strong>Ouro</strong></td><td>Tudo do Prata + Confraria de quinta + plantão de terça e quarta: 3 encontros ao vivo por semana</td></tr>
             <tr><td>Qualquer</td><td>Muito pouco</td><td>Encontro ao vivo</td><td><strong>Prata</strong></td><td>Encontro ao vivo só vale com tempo para levar alguma coisa; começa no Prata e sobe quando quiser, pagando a diferença</td></tr>
           </tbody>
         </table></div>
@@ -1749,7 +1804,7 @@ Pra eu te mostrar o plano certo, me conta rapidinho: você já tocou alguma cois
 Uma escola de música cobra uns R$ 500 por mês, e o professor só vê você tocar naquela hora. O Prata fica em 12x de R$ 150, ou R$ 1.500 à vista, e ele vê tudo o que você gravar o ano inteiro. Com 30 dias de garantia pra você experimentar sem risco.
 Quer que eu te mande o link?</div>
         </div>
-        <p class="nota">Ouro: mesma estrutura, acrescentando "e toda semana você tem três encontros ao vivo com o professor: a Confraria de quinta, pra tocar junto, e o plantão de terça e sexta, pra levar a sua dúvida". 12x R$ 250 ou R$ 2.500. Sempre ancorar antes do número, sempre fechar com pergunta.</p>
+        <p class="nota">Ouro: mesma estrutura, acrescentando "e toda semana você tem três encontros ao vivo com o professor: a Confraria de quinta, pra tocar junto, e o plantão de terça e quarta, pra levar a sua dúvida". 12x R$ 250 ou R$ 2.500. Sempre ancorar antes do número, sempre fechar com pergunta.</p>
 
         <h3>Etapa 4: se o preço travar, a descida</h3>
         <div class="ramos">
@@ -1762,7 +1817,7 @@ Quer que eu te mande o link?</div>
           <div class="bal lead"><span class="quem">Lead</span>Manda o link do Prata.</div>
           <div class="bal eq"><span class="quem">Clube</span>Aqui está: {link}. Assim que o pagamento confirmar, o acesso chega no seu e-mail em alguns minutos. Já grava a primeira atividade hoje se quiser, e aparece na live de quinta, às 19h. Qualquer coisa, é só chamar aqui, esse é o número oficial.</div>
           <span class="hora">depois do pagamento</span>
-          <div class="bal eq"><span class="quem">Clube</span>Confirmado, {nome}! Seu acesso já foi. Bem-vinda à Academy. A primeira análise chega em até 3 dias úteis depois do seu primeiro envio.</div>
+          <div class="bal eq"><span class="quem">Clube</span>Confirmado, {nome}! Seu acesso já foi. Bem-vinda ao Clube. A primeira análise chega em até 3 dias úteis depois do seu primeiro envio.</div>
         </div>
 
         <h3>Etapa 6: régua de recuperação (não fechou ou parou de responder)</h3>
@@ -1772,9 +1827,23 @@ Quer que eu te mande o link?</div>
             <tr><td>D+1</td><td>"Oi, {nome}. Ficou alguma dúvida do que a gente conversou? Se quiser, te mando o material com tudo organizado." (envia o Material do aluno)</td><td>Reabrir com valor, não com cobrança</td></tr>
             <tr><td>D+3</td><td>Áudio do Mateus, 30 s: responde a objeção que apareceu na conversa (tempo, valor, "será que consigo").</td><td>Voz do professor</td></tr>
             <tr><td>D+7</td><td>"Vou deixar a conversa aberta aqui. Quando fizer sentido pra você, é só responder que a gente retoma de onde parou."</td><td>Fechar sem pressão, manter a porta</td></tr>
-            <tr><td>Lançamento</td><td>Quem não fechou entra na lista do próximo lançamento e recebe a condição com data.</td><td>Segunda chance com urgência real</td></tr>
+            <tr><td>Depois da validação</td><td>Quem não fechou entra na lista do primeiro lançamento e recebe a condição com data.</td><td>Segunda chance com urgência real</td></tr>
           </tbody>
         </table></div>
+
+        <h3>Etapa 7: renovação (15 dias antes, junto com o e-mail automático)</h3>
+        <div class="chat">
+          <span class="hora">15 dias antes da renovação</span>
+          <div class="bal eq"><span class="quem">Clube</span>Oi, {nome}! Passando pra avisar que daqui a 15 dias o seu plano no Clube renova sozinho, no mesmo valor de hoje. Você não precisa fazer nada.
+Aproveitando: quer conhecer o Ouro? Além de tudo que você já tem, são três encontros ao vivo por semana com o professor. Se fizer sentido, você paga só a diferença.</div>
+        </div>
+        <p class="nota">Segundo parágrafo só para quem está no Prata. Quem ameaçar cancelar: desconto caso a caso, para não perder. <span class="pend">Conferir: quem pagou por PIX ou boleto recebe o link de pagamento junto</span></p>
+
+        <h3>Ofertas da base</h3>
+        <p class="nota">Preços, ordem dos grupos e regras na aba <strong>Ofertas da base</strong>. Mesma conversa 1 a 1, alguns contatos por dia, sem o diagnóstico longo. Abertura sugerida:</p>
+        <div class="chat">
+          <div class="bal eq"><span class="quem">Clube</span>Oi, {nome}! Aqui é do Clube do Ukulele, do Mateus. Como você já estudou com a gente no {curso}, separei uma condição só para quem já é da casa: {oferta}. Vale até {data}. Posso te contar como funciona?</div>
+        </div>
 
         <h3>Objeções rápidas, versão WhatsApp</h3>
         <p class="nota">As respostas completas estão na aba Objeções. Aqui, o que cabe numa mensagem.</p>
@@ -1796,7 +1865,7 @@ Quer que eu te mande o link?</div>
     <main>
       <p class="intro" style="padding-top:8px">Cada objeção com o peso na base (pesquisa com 1.373 leads), a resposta para a página e a resposta para o WhatsApp, na voz do Mateus. Onde muda por plano, está dito.</p>
 
-      <div class="obj"><div><p class="titulo">"Não tenho dinheiro."</p><p class="pct">59% dos que não compraram</p></div><div class="col"><h5>Na página</h5><p>Ancoragem antes do preço (escola presencial R$ 500 a 600 por mês; aula particular R$ 100 a 150 por aula). No perpétuo o preço não aparece: o FAQ responde "depende do plano" e manda para o cadastro. No lançamento: à vista com desconto, 12x e a condição com data.</p></div><div class="col"><h5>No WhatsApp</h5><p>Primeiro "o que pesa mais: o valor ou o compromisso de um ano?". Se é valor, desce para o Essencial, em último caso. Aceitar que boa parte da base não é alvo do Prata, e tudo bem.</p></div></div>
+      <div class="obj"><div><p class="titulo">"Não tenho dinheiro."</p><p class="pct">59% dos que não compraram</p></div><div class="col"><h5>Na página</h5><p>Ancoragem antes do preço (escola presencial R$ 500 a 600 por mês; aula particular R$ 100 a 150 por aula). O preço não aparece na página: o FAQ manda para o cadastro, e o valor sai só na conversa, à vista ou em 12x.</p></div><div class="col"><h5>No WhatsApp</h5><p>Primeiro "o que pesa mais: o valor ou o compromisso de um ano?". Se é valor, desce para o Essencial, em último caso. Aceitar que boa parte da base não é alvo do Prata, e tudo bem.</p></div></div>
 
       <div class="obj"><div><p class="titulo">"Não tenho tempo."</p><p class="pct">20%</p></div><div class="col"><h5>Na página</h5><p>"A jornada anda no seu ritmo. A análise chega no seu horário, não no meu. Vinte minutos por dia já rendem o que você precisa me mandar. No Ouro, Confraria e plantão são opcionais."</p></div><div class="col"><h5>No WhatsApp</h5><p>Mesma resposta, curta. Para quem tem muito pouco tempo, Prata e não Ouro: "encontro ao vivo só vale se você tiver o que levar pra ele".</p></div></div>
 
@@ -1804,7 +1873,7 @@ Quer que eu te mande o link?</div>
 
       <div class="obj"><div><p class="titulo">"Prefiro o que é de graça."</p><p class="pct">7%</p></div><div class="col"><h5>Na página</h5><p>"De graça tem conteúdo bom, inclusive meu. O que não tem é alguém olhando o que você toca. Se vídeo gratuito resolvesse, o seu ukulele não estaria parado."</p></div><div class="col"><h5>No WhatsApp</h5><p>Mesma frase. Não discutir o valor do conteúdo gratuito; a diferença é o Acompanhamento.</p></div></div>
 
-      <div class="obj"><div><p class="titulo">"Não encontro professor na minha cidade."</p><p class="pct">4%</p></div><div class="col"><h5>Na página</h5><p>"É exatamente para isso que a Academy existe."</p></div><div class="col"><h5>No WhatsApp</h5><p>Reforçar que a análise é individual e em vídeo, e que, no Ouro, os encontros são ao vivo de qualquer lugar.</p></div></div>
+      <div class="obj"><div><p class="titulo">"Não encontro professor na minha cidade."</p><p class="pct">4%</p></div><div class="col"><h5>Na página</h5><p>"É exatamente para isso que o Clube existe."</p></div><div class="col"><h5>No WhatsApp</h5><p>Reforçar que a análise é individual e em vídeo, e que, no Ouro, os encontros são ao vivo de qualquer lugar.</p></div></div>
 
       <div class="obj"><div><p class="titulo">"Consigo aprender nessa altura da vida?"</p><p class="pct">Frequente, sem número na base</p></div><div class="col"><h5>Na página</h5><p>"A maior parte dos meus alunos é adulta e começou do zero. A análise é individual: ninguém compara você com ninguém." Idade entra como prova (rosto de aluno), nunca como rótulo.</p></div><div class="col"><h5>No WhatsApp</h5><p>Nunca dizer "na sua idade". Contar de um aluno que começou do zero e hoje toca; se houver autorização, mandar o vídeo dele.</p></div></div>
 
@@ -1814,7 +1883,7 @@ Quer que eu te mande o link?</div>
 
       <div class="obj"><div><p class="titulo">"E se eu parar no meio do ano?" / "Vou ficar preso um ano?"</p><p class="pct">Aparece na conversa</p></div><div class="col"><h5>Na página</h5><p>"Trinta dias para desistir e receber tudo. Depois disso a jornada continua sua até o fim do ano, e a live está lá toda quinta quando você voltar. O plano é anual porque aprender um instrumento leva mais de um mês."</p></div><div class="col"><h5>No WhatsApp</h5><p>Se o que pesa é o compromisso, não o valor: reforçar os 30 dias e que subir de plano é sempre possível. Não descer de degrau por essa objeção.</p></div></div>
 
-      <div class="obj"><div><p class="titulo">"Quanto custa?"</p><p class="pct">Perpétuo, antes do diagnóstico</p></div><div class="col"><h5>Na página</h5><p>"Depende do plano. Tem plano com a análise das atividades e tem plano que soma três encontros ao vivo em grupo por semana. Deixa seu WhatsApp e a gente te mostra o que faz sentido."</p></div><div class="col"><h5>No WhatsApp</h5><p>"Depende do plano, e eu te mostro o certo em três perguntas. Me conta primeiro: você já tocou alguma coisa ou está começando do zero?" Nunca número antes das três perguntas.</p></div></div>
+      <div class="obj"><div><p class="titulo">"Quanto custa?"</p><p class="pct">Anúncio, antes da conversa</p></div><div class="col"><h5>Na página</h5><p>Sem falar de planos: "Depende do que você precisa. Deixa seu WhatsApp e, em cinco minutos de conversa, a gente te mostra o que faz sentido para a sua rotina."</p></div><div class="col"><h5>No WhatsApp</h5><p>"Depende do plano, e eu te mostro o certo em três perguntas. Me conta primeiro: você já tocou alguma coisa ou está começando do zero?" Nunca número antes das três perguntas.</p></div></div>
     </main>
   </div>
 </div>
@@ -1836,7 +1905,7 @@ Quer que eu te mande o link?</div>
   <div class="lb-caixa"><button class="lb-fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="lb-corpo"></div></div>
 </div>
 
-<footer class="rodape">Clube do Ukulele · central interna do MVP · não indexado · fonte dos textos: Briefing Master v1.4</footer>
+<footer class="rodape">Clube do Ukulele · central interna do MVP · não indexado · fonte dos textos: Briefing Master v1.9</footer>
 
 <script>
   // Cabeçalho encolhe depois de 60px de rolagem
