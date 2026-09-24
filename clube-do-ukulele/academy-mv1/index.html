@@ -330,7 +330,9 @@ table.comp td.nao::before{content:"";display:inline-block;width:14px;height:3px;
 .lp .form{background:transparent;color:var(--texto);border-radius:0;padding:0;box-shadow:none;max-width:480px;width:100%;margin:0 auto;text-align:left;position:relative;z-index:1;display:flex;flex-direction:column;gap:8px}
 .lp .form h3{text-align:center}
 .lp .form p{text-align:center}
-.lp .chamada{font-size:16px;line-height:1.4;color:#fff;margin:0 auto 10px;text-align:center;max-width:480px}
+.lp .chamada{font-size:min(16px,3.6vw);line-height:1.4;color:#fff;margin:0 auto 10px;text-align:center;max-width:none;white-space:nowrap}
+.lp .hero .logo-escudo{display:block;width:120px;height:auto;margin:0 auto 12px}
+@media (max-width:759px){.lp .hero .logo-escudo{width:104px;margin-bottom:8px}}
 
 .lp .form h3{font-family:var(--fonte-titulo);font-weight:400;font-size:24px;color:var(--indigo);margin:0 0 4px}
 .lp .form p{font-size:15px;color:var(--texto-suave);margin:0 0 14px}
@@ -887,7 +889,7 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
 /* ===== LP: hero mais legível (24/09) ===== */
 .lp .hero .selos li{font-size:14px;line-height:1.3;padding:6px 13px}
 .lp .hero .repertorio{font-size:15px;line-height:1.5}
-@media (max-width:759px){.lp .hero .selos li{font-size:13.5px;padding:5px 11px}.lp .hero .repertorio{font-size:14.5px}}
+@media (max-width:759px){.lp .hero .selos{flex-wrap:nowrap;gap:6px}.lp .hero .selos li{font-size:min(13px,3.25vw);padding:5px 8px;white-space:nowrap}.lp .hero .repertorio{font-size:14.5px}}
 .lp .form-ok{margin:4px 0 0;font-size:15px;line-height:1.45;color:#fff;font-weight:700;text-align:center}
 @media (max-width:759px){.lp .item .fig.fig-mob{display:flex;justify-content:center;margin-top:4px}.lp .player-mock{max-width:300px}}
 
@@ -968,12 +970,12 @@ html:has(.pop-form[open]) .lp .sticky{opacity:0;pointer-events:none}
       <div class="miolo">
         <div class="hero-grid">
           <div class="hero-txt">
+            <img class="logo-escudo" src="../../img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" fetchpriority="high">
             <h1>Toque as músicas que você ama<br><em>usando as 4 cordas mágicas do ukulele</em></h1>
             <p class="sub">Com um <strong>professor acompanhando, corrigindo e direcionando</strong> cada passo seu.</p>
             <ul class="selos">
               <li>1 ano de Suporte Individual</li>
               <li>Sem hora marcada</li>
-              <li>Garantia de 1 ano</li>
                           </ul>
             <p class="repertorio">Marisa Monte, Legião Urbana, Beatles, Natiruts, Djavan, Melim, Bob Marley, Tim Maia, Anavitória, Skank: são <strong>157 músicas</strong> na biblioteca.</p>
             <p class="chamada">Cadastre-se e receba a sua oferta com os bônus:</p>
