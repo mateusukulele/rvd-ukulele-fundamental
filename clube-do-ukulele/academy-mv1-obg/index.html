@@ -42,7 +42,12 @@ h1 em{font-style:normal;color:var(--coral)}
 .contato{padding:14px 8px 4px;text-align:center}
 .agora{font-family:"Anton",Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.4px;color:var(--indigo);font-size:20px;line-height:1.2;margin:2px 0 12px}
 .resumo{padding:18px 8px 0;text-align:center}
-.resumo-txt{margin:0;font-size:16px;line-height:1.6;color:var(--texto);background:#F4F1EA;border-radius:14px;padding:14px 16px;text-align:left}
+/* passos: numeral grande em Anton coral forte, fio fino entre eles, sem caixa */
+.passos{list-style:none;margin:0;padding:0;counter-reset:passo;text-align:left}
+.passos li{counter-increment:passo;display:grid;grid-template-columns:34px 1fr;column-gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid #E6E1EE;font-size:15.5px;line-height:1.5;color:var(--texto)}
+.passos li:first-child{border-top:0;padding-top:2px}
+.passos li::before{content:counter(passo);font-family:"Anton",Impact,sans-serif;font-size:30px;line-height:1;color:#B4404F;text-align:center}
+.passos strong{color:var(--indigo-profundo)}
 .contato p.chamada{font-size:clamp(16px,1.9svh,17px);line-height:1.45;font-weight:500;margin:0 auto 12px;max-width:560px;text-wrap:pretty}
 .oficial{display:flex;align-items:center;justify-content:center;gap:6px;margin:8px auto 0;font-size:14px;line-height:1.4;color:#4A4458}
 .oficial svg{width:16px;height:16px;flex:none;fill:var(--indigo)}
@@ -61,7 +66,8 @@ h1 em{font-style:normal;color:var(--coral)}
   .card .resumo{grid-column:2;grid-row:1;padding:0;text-align:left}
   .card .contato{grid-column:1 / -1;grid-row:2}
   .agora{margin-top:0}
-  .resumo-txt{font-size:clamp(15px,1.9svh,16.5px)}
+  .passos li{font-size:clamp(14px,1.75svh,15.5px);padding:8px 0}
+  .passos li::before{font-size:clamp(24px,3.2svh,30px)}
 }
 @media (max-width:520px){
   .hero{padding:16px 14px 24px}
@@ -71,7 +77,7 @@ h1 em{font-style:normal;color:var(--coral)}
   .player{width:100%}
   .contato{padding:18px 8px 10px}
   .agora{font-size:22px}
-  .resumo-txt{font-size:16.5px}
+  .passos li{font-size:16px;padding:9px 0}
   .contato p.chamada{font-size:17px;line-height:1.5;margin-bottom:16px}
   .btn-wa{display:flex;width:100%;min-height:58px;padding:12px 16px;gap:10px;font-size:18px}
   .btn-wa svg{width:26px;height:26px}
@@ -93,7 +99,11 @@ h1 em{font-style:normal;color:var(--coral)}
 
     <div class="resumo">
       <h2 class="agora">O que acontece agora</h2>
-      <p class="resumo-txt">Em breve, alguém da nossa equipe vai te chamar no WhatsApp, pelo número oficial do Clube. Quando a mensagem chegar, é só responder: é uma conversa rápida, pra gente entender se você já tocou alguma coisa, quanto tempo tem na semana e como prefere aprender, e garantir o seu lugar na nova turma com o bônus.</p>
+      <ol class="passos">
+        <li><span><strong>Em breve a nossa equipe te chama no WhatsApp</strong>, pelo número oficial do Clube. Se quiser acelerar, chama a gente no botão abaixo.</span></li>
+        <li><span><strong>Uma conversa rápida:</strong> se você já tocou alguma coisa, quanto tempo tem na semana e como prefere aprender.</span></li>
+        <li><span><strong>Você recebe o plano que encaixa na sua rotina</strong> e garante o seu lugar na nova turma com o bônus.</span></li>
+      </ol>
     </div>
 
     <div class="contato">
