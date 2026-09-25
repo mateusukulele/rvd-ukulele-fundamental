@@ -890,6 +890,27 @@ body.somente-lp .lp .rv,body.somente-lp .lp .rv-g>*,body.somente-lp .lp .demo .b
 .lp .hero .selos li{font-size:14px;line-height:1.3;padding:6px 13px}
 .lp .hero .repertorio{font-size:15px;line-height:1.5}
 @media (max-width:759px){.lp .hero .selos{flex-wrap:nowrap;gap:6px}.lp .hero .selos li{font-size:min(13px,3.25vw);padding:5px 8px;white-space:nowrap}.lp .hero .repertorio{font-size:14.5px}}
+/* Hero: ritmo vertical. Grupos: marca+título / promessa+selos / cadastro / prova. Respiro maior entre grupos que dentro deles. */
+.lp .hero .logo-escudo{margin-bottom:16px}
+.lp .hero h1{margin-bottom:16px}
+.lp .hero .sub{margin-bottom:18px}
+.lp .hero .selos{margin-bottom:26px}
+.lp .chamada{margin-bottom:12px}
+.lp .hero .form{gap:10px}
+.lp .prova-mini{margin-top:22px}
+@media (min-width:760px){.lp .hero .repertorio{margin-bottom:24px}}
+@media (max-width:759px){
+  /* celular: o texto ocupa a primeira tela e a foto só desponta no pé dela */
+  .lp .hero{padding-top:22px}
+  .lp .hero-grid{min-height:0;align-content:start;gap:8px}
+  .lp .hero-txt{min-height:calc(100svh - 44px);justify-content:center;padding-bottom:24px}
+  .lp .hero .logo-escudo{margin-bottom:14px}
+  .lp .hero h1{margin-bottom:14px}
+  .lp .hero .sub{margin-bottom:16px}
+  .lp .hero .selos{margin-bottom:24px}
+  .lp .hero-txt .prova-mini{margin-top:22px}
+  .lp .hero-txt .repertorio{margin-top:18px}
+}
 .lp .form-ok{margin:4px 0 0;font-size:15px;line-height:1.45;color:#fff;font-weight:700;text-align:center}
 @media (max-width:759px){.lp .item .fig.fig-mob{display:flex;justify-content:center;margin-top:4px}.lp .player-mock{max-width:300px}}
 
