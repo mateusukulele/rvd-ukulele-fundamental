@@ -987,6 +987,10 @@ html:has(.pop-form[open]) .lp .sticky{opacity:0;pointer-events:none}
 .lp .gv-ico{flex:none;width:34px;height:34px;border-radius:9px;background:var(--coral-suave);position:relative}
 .lp .gv-ico::after{content:"";position:absolute;left:13px;top:10px;border-left:10px solid var(--coral-forte);border-top:7px solid transparent;border-bottom:7px solid transparent}
 .lp .gv-ico.gv-ao-vivo{background:#E7E2F1}.lp .gv-ico.gv-ao-vivo::after{border-left-color:var(--indigo)}
+
+.lp .vagas-nota{margin:6px auto 14px;max-width:560px;text-align:center;font-size:15px;line-height:1.45;font-weight:700;color:var(--coral-forte)}
+.lp .vagas-nota.vagas-escura{color:var(--coral);font-size:14px;margin:14px auto 0}
+.lp .pop-caixa .pop-vagas{margin:-2px 0 6px;text-align:center;font-size:13.5px;font-weight:700;color:var(--coral)}
 </style>
 </head>
 <body class="somente-lp">
@@ -1126,6 +1130,7 @@ html:has(.pop-form[open]) .lp .sticky{opacity:0;pointer-events:none}
     <section class="suave">
       <div class="miolo">
         <h2>A escola de ukulele do Clube está com as inscrições abertas</h2>
+        <p class="vagas-nota">As vagas são limitadas: cada vídeo que chega é analisado por um professor.</p>
         <p class="lead">Faça o seu cadastro e tenha acesso a:</p>
         <div class="stack">
           <article class="item rv">
@@ -1194,6 +1199,7 @@ html:has(.pop-form[open]) .lp .sticky{opacity:0;pointer-events:none}
         </div>
         </div>
         <div class="fim dupla"><button class="btn acao" type="button" data-abrir-form data-origem="resumo">Receber a oferta</button><a class="btn wa" href="#" data-wa>Falar com a gente no WhatsApp</a></div>
+        <p class="vagas-nota vagas-escura">Vagas limitadas: só abrimos novas quando conseguimos manter a análise em até 3 dias úteis.</p>
       </div>
     </section>
 
@@ -1254,6 +1260,7 @@ html:has(.pop-form[open]) .lp .sticky{opacity:0;pointer-events:none}
         <button class="pop-fechar" type="button" aria-label="Fechar">&times;</button>
         <h3 id="pop-tit">Garanta a sua oferta com os bônus</h3>
         <p class="pop-sub">Preencha seus dados e receba a oferta.</p>
+        <p class="pop-vagas">Vagas limitadas pelo tempo de professor.</p>
         <p class="pop-obrig">*Campo obrigatório</p>
         <form class="form" data-origem="popup">
           <label class="sr" for="pop-nome">Nome completo</label>
@@ -1266,7 +1273,7 @@ html:has(.pop-form[open]) .lp .sticky{opacity:0;pointer-events:none}
         </form>
       </div>
     </dialog>
-    <div class="sticky" id="sticky-lp" aria-hidden="true"><div class="sticky-in"><div class="sticky-txt"><strong>Bônus por tempo limitado</strong><span>Suporte individual · Garantia de 1 ano</span></div><button class="btn acao" type="button" data-abrir-form data-origem="sticky" tabindex="-1">Receber a oferta</button></div></div>
+    <div class="sticky" id="sticky-lp" aria-hidden="true"><div class="sticky-in"><div class="sticky-txt"><strong>Vagas limitadas</strong><span>Suporte individual · Garantia de 1 ano</span></div><button class="btn acao" type="button" data-abrir-form data-origem="sticky" tabindex="-1">Receber a oferta</button></div></div>
   </div>
 </div>
 
