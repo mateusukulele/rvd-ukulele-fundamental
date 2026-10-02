@@ -304,9 +304,33 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
   .preco{margin-left:20px;margin-right:20px}
 }
 @media print{body{background:#fff}.mock,.note,section,.sw,.papel{break-inside:avoid}.toc{display:none}}
+
+/* ===== Abas: Clube do Ukulele, Clube do Violão, Pesquisa de marca ===== */
+html{scroll-padding-top:64px}
+.abas-marca{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 10px 24px -22px rgba(31,26,43,.6)}
+.abas-marca .abas-trilho{max-width:1040px;margin:0 auto;padding:0 16px;display:flex;gap:4px;overflow-x:auto}
+.abas-marca button{flex:none;font:700 14px/1 'Montserrat',sans-serif;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;padding:18px 14px 15px;min-height:44px;cursor:pointer;white-space:nowrap}
+.abas-marca button:hover{color:var(--ink)}
+.abas-marca button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--cor-aba)}
+.abas-marca button[data-aba="ukulele"]{--cor-aba:#443468}
+.abas-marca button[data-aba="violao"]{--cor-aba:#1D5468}
+.abas-marca button[data-aba="pesquisa"]{--cor-aba:var(--coral)}
+.painel-aba iframe{display:block;width:100%;border:0;height:80vh}
+@media (max-width:480px){.abas-marca .longo{display:none}.abas-marca button{padding:16px 12px 13px}}
+@media print{.abas-marca{display:none}}
 </style>
 </head>
 <body>
+
+<nav class="abas-marca" aria-label="Manuais da marca">
+  <div class="abas-trilho" role="tablist">
+    <button type="button" role="tab" data-aba="ukulele" aria-selected="true" aria-controls="painel-ukulele"><span class="longo">Clube do </span>Ukulele</button>
+    <button type="button" role="tab" data-aba="violao" aria-selected="false" aria-controls="painel-violao"><span class="longo">Clube do </span>Violão</button>
+    <button type="button" role="tab" data-aba="pesquisa" aria-selected="false" aria-controls="painel-pesquisa">Pesquisa<span class="longo"> de marca</span></button>
+  </div>
+</nav>
+
+<div id="painel-ukulele" class="painel-aba" role="tabpanel">
 
 <div class="cover">
   <img src="img/logo-clube-do-ukulele.webp" alt="Logo do Clube do Ukulele: escudo com asas, sobre fundo índigo">
@@ -848,5 +872,61 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
   </footer>
 
 </div>
+
+</div><!-- /painel-ukulele -->
+
+<div id="painel-violao" class="painel-aba" role="tabpanel" hidden>
+  <iframe title="Manual de Identidade Visual do Clube do Violão" data-src="manual-visual-clube-do-violao-2026.html"></iframe>
+</div>
+<div id="painel-pesquisa" class="painel-aba" role="tabpanel" hidden>
+  <iframe title="Pesquisa de marca dos Clubes" data-src="marca-dos-clubes.html"></iframe>
+</div>
+
+<script>
+(function () {
+  var botoes = document.querySelectorAll('.abas-marca button');
+  var ABAS = ['ukulele', 'violao', 'pesquisa'];
+
+  function ajustar(f) {
+    // altura do conteúdo, não da janela: scrollHeight do documento nunca encolhe abaixo do iframe
+    try { f.style.height = Math.ceil(f.contentDocument.body.getBoundingClientRect().height) + 'px'; } catch (e) {}
+  }
+  function carregar(painel) {
+    var f = painel.querySelector('iframe');
+    if (!f || f.src) return;
+    f.addEventListener('load', function () {
+      ajustar(f);
+      try { new ResizeObserver(function () { ajustar(f); }).observe(f.contentDocument.body); } catch (e) {}
+    });
+    f.src = f.dataset.src;
+  }
+  function mostrar(aba) {
+    ABAS.forEach(function (id) {
+      var painel = document.getElementById('painel-' + id);
+      painel.hidden = id !== aba;
+      if (id === aba) carregar(painel);
+    });
+    botoes.forEach(function (b) { b.setAttribute('aria-selected', b.dataset.aba === aba ? 'true' : 'false'); });
+  }
+  function pelaHash() {
+    var h = decodeURIComponent(location.hash.slice(1));
+    if (h === 'violao' || h === 'pesquisa') { mostrar(h); return; }
+    mostrar('ukulele');
+    var alvo = h && document.getElementById(h);
+    if (alvo) alvo.scrollIntoView();
+  }
+  botoes.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var aba = b.dataset.aba;
+      if (aba === 'ukulele') history.replaceState(null, '', location.pathname);
+      else history.replaceState(null, '', '#' + aba);
+      mostrar(aba);
+      window.scrollTo(0, 0);
+    });
+  });
+  window.addEventListener('hashchange', pelaHash);
+  pelaHash();
+})();
+</script>
 </body>
 </html>

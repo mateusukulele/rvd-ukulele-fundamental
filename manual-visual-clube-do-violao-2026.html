@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Identidade Visual 2026 · Clube do Violão</title>
+<meta name="description" content="Manual de identidade visual do Clube do Violão: logo, paleta petróleo com contraste medido e o que muda em relação ao Clube do Ukulele.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* marca */
+  --indigo:#443468;          /* âncora de interface */
+  --indigo-deep:#2D124E;     /* roxo da logo, fim do degradê, fundos escuros */
+  --indigo-suave:#EAE6F2;
+  --coral:#E87A85;           /* assinatura: preenchimento e fundo escuro */
+  --coral-forte:#B4404F;     /* a mesma assinatura, versão texto em fundo claro */
+  --coral-suave:#FBEAEC;
+  --coral-texto:#4D1A20;
+  --laranja:#CD3701;         /* laranja da logo = selo de oferta */
+  --acao:#12A18A;            /* teal vivo = decisão de compra */
+  --acao-texto:#2D124E;
+  /* apoio */
+  --teal:#177A6A;            /* utilitário: download, biblioteca, acesso */
+  --teal-suave:#E7F3F0;
+  --teal-texto:#146054;
+  --verde:#25845A;           /* estado: concluído */
+  --verde-suave:#E4F1EA;
+  --verde-texto:#1F6B4A;
+  --ambar-suave:#F5F0E4;
+  --ambar-texto:#8A5A00;
+  --vinho:#7A1F3D;           /* dificuldade avançada, e nada mais */
+  --erro:#B83A2E; --erro-suave:#FBE9E6;   /* só falha de sistema */
+  /* neutros */
+  --ink:#1F1A2B; --muted:#5C5A70; --page:#F5F4F7; --surface:#ECEAF1;
+  --card:#FFFFFF; --line:#E1DEE8; --line-forte:#C9C4D6;
+  --muted-2:#8E8AA3;         /* neutro médio: ícone, borda, desabilitado. Nunca texto */
+  --sobre-escuro:#DCD6E6;
+  /* estados */
+  --indigo-hover:#3F3060; --acao-hover:#25A993; --teal-hover:#157062;
+  --verde-hover:#227953; --coral-forte-hover:#A63B49;
+  --desab-fundo:#E1DEE8; --desab-texto:#5C5A70;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--page);color:var(--ink);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px 96px}
+img{max-width:100%;display:block}
+
+/* ===== capa ===== */
+.cover{background:var(--indigo-deep);color:#fff;padding:72px 24px 64px;text-align:center}
+.cover img{width:190px;margin:0 auto 26px}
+.cover .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--coral)}
+.cover h1{font-family:'Anton';font-size:clamp(38px,7vw,66px);text-transform:uppercase;line-height:1.12;letter-spacing:.01em;margin:12px 0 0}
+.cover .sub{color:var(--sobre-escuro);margin-top:14px;font-size:17px}
+.cover .rule{width:76px;height:4px;background:var(--coral);border-radius:4px;margin:28px auto 0}
+
+/* ===== índice ===== */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 26px;margin:-38px 0 0;position:relative;box-shadow:0 20px 40px -30px rgba(31,26,43,.5)}
+.toc h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:'Montserrat';font-weight:700;border:0;padding:0;margin:0 0 12px}
+.toc ol{list-style:none;counter-reset:t;columns:2;column-gap:34px}
+.toc li{counter-increment:t;margin-bottom:7px;font-size:14px;break-inside:avoid}
+.toc li::before{content:counter(t) " · ";color:var(--coral-forte);font-weight:700}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a:hover{color:var(--coral-forte);text-decoration:underline;text-underline-offset:3px}
+
+/* ===== seções ===== */
+section{margin-top:64px;scroll-margin-top:20px}
+h2{font-family:'Anton';font-size:clamp(26px,4vw,32px);text-transform:uppercase;color:var(--indigo);padding-bottom:12px;border-bottom:2px solid var(--coral);margin-bottom:22px;letter-spacing:.01em}
+h3{font-weight:800;font-size:17px;color:var(--indigo-deep);margin:28px 0 10px}
+p{margin-bottom:14px;max-width:700px}
+.lead{font-size:17.5px}
+.tag{color:var(--coral-forte);font-weight:700}
+ul.bul{list-style:none;margin:0 0 16px}
+ul.bul li{position:relative;padding-left:22px;margin-bottom:9px;max-width:700px}
+ul.bul li::before{content:"";position:absolute;left:2px;top:10px;width:7px;height:7px;border-radius:50%;background:var(--coral)}
+.note{background:var(--surface);border:1px solid var(--line-forte);border-radius:12px;padding:17px 20px;margin:18px 0;max-width:700px}
+.note p{margin:0}
+.note.alerta{background:var(--coral-suave);border-color:#EFCBD1}
+.cap{font-size:13px;color:var(--muted);margin:10px 2px 30px;max-width:700px}
+code{font-family:'JetBrains Mono';font-size:.88em;background:var(--surface);padding:2px 6px;border-radius:5px}
+
+/* ===== logo ===== */
+.logo-uses{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+.logo-use{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.logo-use .demo{height:210px;display:flex;align-items:center;justify-content:center;padding:26px}
+.demo.escuro{background:var(--indigo-deep)}
+.demo.claro{background:var(--page)}
+.demo.claro .selo{background:var(--indigo-deep);border-radius:22px;padding:20px;display:flex}
+.logo-use .demo img{max-height:150px;width:auto}
+.logo-use .lbl{padding:13px 16px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+.logo-use .lbl b{color:var(--ink);display:block;font-size:14px;margin-bottom:2px}
+.lockup{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:34px;display:flex;justify-content:center}
+.lockup img{width:100%;max-width:420px;height:auto}
+.versoes-logo{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.versoes-logo figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.versoes-logo .box{height:110px;display:flex;align-items:center;justify-content:center;padding:18px;background:var(--card)}
+.versoes-logo .box.escuro{background:var(--indigo-deep)}
+.versoes-logo img{max-width:100%;max-height:74px;width:auto}
+.versoes-logo figcaption{padding:11px 14px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+.versoes-logo figcaption b{display:block;color:var(--ink);font-size:13.5px;margin-bottom:2px}
+.errado{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.errado figure{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.errado .box{height:104px;display:flex;align-items:center;justify-content:center;background:var(--surface);overflow:hidden}
+.errado .box img{max-height:76px;width:auto}
+.errado .e1 img{transform:scaleX(1.5)}
+.errado .e2 img{transform:rotate(-14deg)}
+.errado .e3{background:#7B5EA7}
+.errado .e4 img{filter:drop-shadow(0 6px 4px rgba(0,0,0,.55))}
+.errado figcaption{font-size:12px;color:var(--coral-forte);font-weight:700;padding:9px 12px;border-top:1px solid var(--line)}
+
+/* ===== paleta ===== */
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:14px;margin:22px 0}
+.sw{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column}
+.sw .chip{height:88px;display:flex;align-items:flex-end;padding:9px 11px;font-size:12px;font-weight:700;font-family:'JetBrains Mono'}
+.sw .meta{padding:11px 13px;flex:1;display:flex;flex-direction:column}
+.sw .nm{font-size:13.5px;font-weight:700}
+.sw .hx{font-family:'JetBrains Mono';font-size:12px;color:var(--muted);margin-top:2px}
+.sw .use{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.4}
+.sw .ratio{font-family:'JetBrains Mono';font-size:11px;margin-top:8px;color:var(--verde-texto);font-weight:700}
+.grupo{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted);margin:26px 0 10px}
+
+/* ===== papéis da cor ===== */
+.papeis{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0}
+.papel{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--card)}
+.papel .top{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.papel .dot{width:15px;height:15px;border-radius:50%;flex:none}
+.papel h3{margin:0;font-size:15.5px}
+.papel p{margin:0;font-size:13.5px;color:var(--muted)}
+
+/* ===== tabela ===== */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+th{text-align:left;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:13px 16px;border-bottom:1px solid var(--line-forte);white-space:nowrap}
+td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.mono{font-family:'JetBrains Mono';font-size:12.5px}
+.ok{color:var(--verde-texto);font-weight:700}
+.par{display:inline-flex;align-items:center;gap:8px}
+.par i{width:18px;height:18px;border-radius:4px;display:inline-block;border:1px solid rgba(31,26,43,.14)}
+
+/* ===== botões ===== */
+.btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:20px 0;padding:26px;background:var(--surface);border-radius:16px}
+.btn{border:none;border-radius:10px;font-family:'Montserrat';font-weight:700;font-size:14px;padding:13px 22px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:filter .15s,transform .05s;min-height:44px}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
+.b-primario{background:var(--indigo);color:#fff}
+.b-primario:hover{background:var(--indigo-hover)}
+.b-secundario{background:transparent;border:2px solid var(--indigo);color:var(--indigo);padding:11px 20px}
+.b-secundario:hover{background:var(--indigo-suave)}
+.b-terciario{background:transparent;color:var(--coral-forte);text-decoration:underline;text-underline-offset:4px;padding-left:6px;padding-right:6px}
+.b-terciario:hover{color:var(--coral-forte-hover)}
+.b-util{background:var(--teal);color:#fff}
+.b-util:hover{background:var(--teal-hover)}
+.b-feito{background:var(--verde);color:#fff}
+.b-feito:hover{background:var(--verde-hover)}
+.b-venda{background:var(--acao);color:var(--acao-texto)}
+.b-venda:hover{background:var(--acao-hover)}
+.btn[disabled]{background:var(--desab-fundo);color:var(--desab-texto);cursor:not-allowed;border:none}
+.btn[disabled]:hover{background:var(--desab-fundo)}
+.btn-defs{display:flex;flex-direction:column;gap:11px;margin-top:6px}
+.btn-def{display:flex;gap:14px;align-items:baseline;max-width:720px;flex-wrap:wrap}
+.btn-def .n{font-weight:800;color:var(--indigo);white-space:nowrap;min-width:160px}
+.btn-def .d{font-size:13.5px;flex:1;min-width:240px}
+
+/* ===== tipografia ===== */
+.spec{border:1px solid var(--line);border-radius:14px;padding:22px;margin:14px 0;background:var(--card)}
+.spec .role{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:12px}
+.spec .role b{color:var(--indigo-deep);font-weight:800}
+.s-anton{font-family:'Anton';font-size:clamp(28px,5vw,40px);text-transform:uppercase;line-height:1.12}
+.s-mont{font-size:20px}
+.s-mono{font-family:'JetBrains Mono';font-size:16px;background:var(--surface);padding:16px;border-radius:9px;white-space:pre;overflow-x:auto;line-height:1.9}
+.s-mono b{color:var(--coral-forte)}
+.escala{display:flex;flex-wrap:wrap;gap:22px;align-items:baseline;margin-top:6px}
+.escala span{font-family:'JetBrains Mono';font-size:12px;color:var(--muted)}
+
+/* ===== camadas ===== */
+.layers{display:flex;margin:18px 0;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.layer{flex:1;padding:28px 16px;text-align:center;font-size:13px;font-weight:600}
+.layer span{font-family:'JetBrains Mono';font-size:11px;font-weight:400;display:block;margin-top:4px;color:var(--muted)}
+.l1{background:var(--page)}.l2{background:var(--surface)}.l3{background:var(--card)}
+
+.tira-batida{display:flex;gap:2px;flex-wrap:wrap;padding:14px 6px;background:var(--page);border-radius:12px;justify-content:center}
+.tira-batida .bt{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:38px}
+.tira-batida .bt b{font-family:'JetBrains Mono';font-size:11px;color:var(--muted);font-weight:400}
+
+/* ===== notação de batida ===== */
+.gestos{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));align-items:end;gap:10px;margin:16px 0;padding:22px 18px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+.gestos.escuro{background:var(--indigo-deep);border-color:var(--indigo)}
+.gesto{display:flex;flex-direction:column;align-items:center;gap:10px}
+.gesto svg{display:block}
+.gesto figcaption{font-size:11px;color:var(--muted);text-align:center;line-height:1.3}
+.gestos.escuro figcaption{color:var(--sobre-escuro)}
+.forcas{display:flex;gap:26px;align-items:flex-end;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin:16px 0}
+.forcas .cx{display:flex;align-items:flex-end;height:64px}
+
+/* ===== mockups ===== */
+.mock{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:18px 0;box-shadow:0 20px 44px -30px rgba(31,26,43,.55);background:var(--card)}
+.bar{background:var(--surface);padding:10px 16px;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--line)}
+.bar i{width:11px;height:11px;border-radius:50%;background:var(--line-forte)}
+.bar .url{margin-left:12px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono'}
+
+/* aula real */
+.aula{background:var(--page);padding:20px}
+.aula-head{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));border-radius:18px;padding:22px 24px;color:#fff}
+.aula-head .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--coral)}
+.aula-head h4{font-family:'Montserrat';font-weight:800;font-size:clamp(19px,4.6vw,26px);line-height:1.25;margin-top:5px}
+.aula-card{background:var(--card);border:1px solid var(--surface);border-radius:18px;padding:20px;margin-top:16px;box-shadow:0 2px 10px -6px rgba(31,26,43,.3)}
+.aula-video{aspect-ratio:16/9;border-radius:12px;background:var(--indigo-deep);display:flex;align-items:center;justify-content:center}
+.aula-video .play{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid var(--sobre-escuro);display:flex;align-items:center;justify-content:center}
+.aula-video .play::after{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px}
+.secao-h{background:var(--coral-suave);border-left:4px solid var(--coral);border-radius:0 8px 8px 0;padding:9px 14px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--coral-texto);display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.secao-h::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--coral-forte);flex:none}
+.indice{list-style:none}
+.indice li{display:flex;gap:12px;padding:9px 10px;border-radius:8px;font-size:14px}
+.indice li:nth-child(odd){background:var(--page)}
+.indice .t{font-family:'JetBrains Mono';font-size:13px;color:var(--coral-forte);font-weight:700;font-variant-numeric:tabular-nums}
+.biblio{list-style:none}
+.biblio li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px;border-left:3px solid var(--coral);border-radius:0 8px 8px 0;background:var(--page);margin-bottom:8px}
+.biblio .artista{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.biblio .musica{font-weight:700;font-size:14.5px;color:var(--indigo)}
+.biblio .chev{color:var(--coral-forte);font-weight:700}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:5px}
+.chip-min{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.c-basica{background:var(--verde-suave);color:var(--verde-texto)}
+.c-media{background:var(--ambar-suave);color:var(--ambar-texto)}
+.c-nivel{background:var(--indigo-suave);color:var(--indigo)}
+.c-avancada{background:var(--vinho);color:#fff}
+.dots{display:inline-flex;gap:3px;margin-left:6px;vertical-align:middle}
+.dots i{width:6px;height:6px;border-radius:50%;border:1.5px solid currentColor;display:block}
+.dots i.on{background:currentColor}
+.material{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.download{display:flex;align-items:center;gap:11px;background:var(--teal);color:#fff;border-radius:12px;padding:13px 15px;text-decoration:none;font-weight:700;font-size:14px;min-height:44px}
+.download .ic{width:26px;height:26px;border-radius:7px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex:none;font-size:13px}
+
+/* área de membros */
+.mem-top{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line);gap:14px;flex-wrap:wrap}
+.m-logo{display:flex;align-items:center;gap:10px;font-family:'Anton';text-transform:uppercase;color:var(--indigo);font-size:17px;letter-spacing:.02em}
+.m-logo img{width:34px}
+.mem-links{display:flex;gap:16px;font-size:13px;color:var(--muted);align-items:center}
+.mem-av{width:34px;height:34px;border-radius:50%;background:var(--coral);color:var(--coral-texto);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.mem-body{padding:24px 22px;background:var(--page)}
+.vitrine-h{display:flex;align-items:baseline;justify-content:space-between;margin:22px 0 12px;gap:12px;flex-wrap:wrap}
+.vitrine-h h4{font-family:'Anton';text-transform:uppercase;color:var(--indigo);font-size:19px;letter-spacing:.01em}
+.vitrine-h a{font-size:12.5px;color:var(--coral-forte);font-weight:700;text-decoration:none}
+.trilha{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mod{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.mod .capa{height:74px;background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));display:flex;align-items:flex-end;padding:11px 12px;color:var(--sobre-escuro);font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.mod .txt{padding:10px 12px}
+.mod h5{font-size:12.5px;line-height:1.35;margin-bottom:8px}
+.prog{height:6px;background:var(--surface);border-radius:5px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--verde)}
+.prog-card{background:var(--indigo-deep);border-radius:14px;padding:20px 22px;color:#fff}
+.prog-card .t{font-family:'Anton';text-transform:uppercase;font-size:18px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.prog-card .pct{color:var(--coral);font-family:'JetBrains Mono';font-size:14px}
+.prog-card .sub{font-size:12.5px;color:var(--sobre-escuro);margin:4px 0 14px}
+.prog-card .bar{height:9px;background:rgba(255,255,255,.2);border-radius:6px;overflow:hidden}
+.prog-card .bar i{display:block;height:100%;width:42%;background:var(--coral);border-radius:6px}
+
+/* venda */
+.venda-hero{background:var(--indigo-deep);padding:48px 34px;text-align:center;color:#fff}
+.venda-hero .badge{display:inline-block;background:var(--laranja);color:#fff;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 15px;border-radius:20px;margin-bottom:18px}
+.venda-hero h4{font-family:'Anton';text-transform:uppercase;font-size:clamp(25px,4.4vw,40px);line-height:1.12;margin-bottom:14px}
+.venda-hero h4 .hl{color:var(--coral)}
+.venda-hero p{color:var(--sobre-escuro);max-width:520px;margin:0 auto 26px;font-size:15px}
+.metodo{background:var(--page);padding:32px 34px}
+.metodo .mt{text-align:center;font-family:'Anton';text-transform:uppercase;color:var(--indigo);font-size:21px;margin-bottom:22px}
+.metodo .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.m-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center}
+.m-card .num{width:42px;height:42px;border-radius:50%;background:var(--indigo-suave);color:var(--indigo);font-family:'Anton';font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 11px}
+.m-card.destaque .num{background:var(--coral);color:var(--coral-texto)}
+.m-card h5{color:var(--indigo-deep);font-size:15px;margin-bottom:5px}
+.m-card p{font-size:12.5px;color:var(--muted);margin:0}
+.preco{background:var(--indigo-deep);margin:0 34px 34px;border:1px solid var(--indigo);border-radius:18px;padding:28px;text-align:center;color:#fff}
+.preco .de{color:var(--laranja);text-decoration:line-through;text-decoration-color:var(--laranja);font-size:14.5px;font-weight:700}
+.preco .now{font-family:'Anton';font-size:44px;color:#fff;line-height:1;margin:4px 0}
+.preco .now small{font-size:17px;color:var(--sobre-escuro);font-family:'Montserrat'}
+.preco .avista{font-size:13.5px;color:var(--sobre-escuro);margin-bottom:16px}
+.preco .gar{font-size:12.5px;color:var(--teal-texto);background:var(--teal-suave);display:inline-block;padding:7px 14px;border-radius:20px;margin-top:14px;font-weight:600}
+
+/* plano */
+.plano{counter-reset:p;list-style:none}
+.plano li{counter-increment:p;position:relative;padding-left:44px;margin-bottom:16px;max-width:720px}
+.plano li::before{content:counter(p);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:8px;background:var(--indigo-suave);color:var(--indigo);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.plano b{color:var(--indigo-deep)}
+.plano .st{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:5px;margin-left:6px;white-space:nowrap}
+.st-feito{background:var(--verde-suave);color:var(--verde-texto)}
+.st-falta{background:var(--ambar-suave);color:var(--ambar-texto)}
+.st-espera{background:var(--indigo-suave);color:var(--indigo)}
+
+footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
+
+@media (max-width:760px){
+  .toc ol{columns:1}
+  .logo-uses,.papeis,.trilha,.metodo .grid{grid-template-columns:1fr}
+  .versoes-logo{grid-template-columns:1fr 1fr}
+  .errado{grid-template-columns:repeat(2,1fr)}
+  .gestos{grid-template-columns:repeat(4,1fr);row-gap:20px}
+  .forcas{gap:18px;justify-content:center}
+  .venda-hero,.metodo{padding-left:20px;padding-right:20px}
+  .preco{margin-left:20px;margin-right:20px}
+}
+@media print{body{background:#fff}.mock,.note,section,.sw,.papel{break-inside:avoid}.toc{display:none}}
+
+/* ===== Clube do Violão =====
+   Este arquivo usa o CSS do manual do Ukulele. Os tokens --indigo* fazem o papel de
+   "estrutura do Clube", e aqui recebem o petróleo. Tudo o mais é da casa. */
+:root{
+  --indigo:#1D5468; --indigo-deep:#092735; --indigo-suave:#E2EDF0;
+  --acao-texto:#092735; --sobre-escuro:#D3E3E8; --indigo-hover:#184859;
+}
+/* SVG não tem tamanho próprio como o webp do Ukulele: dentro do selo, a largura vem daqui */
+.demo.claro .selo img{width:180px;height:auto;max-height:none}
+.degrade{height:120px;border-radius:16px;background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));display:flex;align-items:flex-end;padding:16px 18px;margin:18px 0 10px}
+.degrade span{color:var(--sobre-escuro);font-weight:700;font-size:13px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <img src="img/logo-violao/logo-clube-do-violao.svg" alt="Logo do Clube do Violão: escudo com asas, sobre fundo petróleo">
+  <div class="eyebrow">Clube do Violão</div>
+  <h1>Manual de<br>Identidade Visual</h1>
+  <div class="sub">Edição 2026 · Petróleo, coral, teal e laranja</div>
+  <div class="rule"></div>
+</div>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <h2>Neste manual</h2>
+    <ol>
+      <li><a href="#essencia">O que é do Clube do Violão</a></li>
+      <li><a href="#logo">A logo</a></li>
+      <li><a href="#paleta">A paleta</a></li>
+      <li><a href="#papeis">Os quatro papéis da cor</a></li>
+      <li><a href="#contraste">Contraste: a régua</a></li>
+      <li><a href="#botoes">Botões</a></li>
+      <li><a href="#camadas">Fundos e degradê</a></li>
+      <li><a href="#venda">Página de venda</a></li>
+      <li><a href="#casa">O que vem igual do ukulele</a></li>
+      <li><a href="#resumo">Em resumo</a></li>
+    </ol>
+  </nav>
+
+  <section id="essencia">
+    <h2>1 · O que é do Clube do Violão</h2>
+    <p class="lead">O Clube do Violão é irmão do Clube do Ukulele: mesma escola, mesmo jeito de ensinar, mesma tipografia e os mesmos botões. O que muda é o instrumento e a cor que domina a tela.</p>
+    <p>No Ukulele, a estrutura é <span class="tag">índigo</span>. No Violão, é <span class="tag">petróleo</span>, um verde-azulado profundo que puxa para o azul. O <span class="tag">coral</span> continua igual nos dois Clubes, porque é a assinatura da casa: é por ele que o aluno percebe que os Clubes vêm do mesmo lugar. O teal de compra, o teal de download, o laranja de oferta e o verde de conclusão têm o mesmo emprego em qualquer Clube.</p>
+    <p>Este manual traz só o que é diferente. Tipografia, componentes de aula, notação de batida, área de membros e dificuldade seguem o manual do Ukulele, na aba ao lado.</p>
+  </section>
+
+  <section id="logo">
+    <h2>2 · A logo</h2>
+    <p>O escudo com asas é o mesmo do Clube do Ukulele: mesmas asas laranja, mesmo "CLUBE DO", mesmos raios. Mudam a palavra <strong>VIOLÃO</strong>, desenhada no traço do lettering original, o instrumento no rodapé do escudo, que é um violão de bojo largo com boca e cavalete vazados, e a cor do contorno, que passa a ser <strong>petróleo profundo</strong>.</p>
+
+    <div class="logo-uses">
+      <div class="logo-use">
+        <div class="demo escuro"><img src="img/logo-violao/logo-clube-do-violao.svg" alt="Logo aplicada sobre fundo petróleo profundo"></div>
+        <div class="lbl"><b>Sobre fundo escuro</b>Aplicação direta. O painel branco e as asas laranja saltam do petróleo.</div>
+      </div>
+      <div class="logo-use">
+        <div class="demo claro"><span class="selo"><img src="img/logo-violao/logo-clube-do-violao.svg" alt="Logo dentro de um selo petróleo, para uso sobre fundo claro"></span></div>
+        <div class="lbl"><b>Sobre fundo claro</b>Dentro de um selo petróleo com cantos de 22px, como no Ukulele.</div>
+      </div>
+    </div>
+
+    <h3>As duas formas: o escudo e a horizontal</h3>
+    <p>O <strong>escudo</strong> é a assinatura principal, na proporção 1,53:1. A <strong>horizontal</strong> põe o violão com raios ao lado do nome e serve para os lugares baixos e compridos: rodapé de cifra e de material impresso, cabeçalho de documento, assinatura.</p>
+    <div class="lockup"><img src="img/logo-violao/logo-clube-do-violao.svg" alt="A logo do Clube do Violão, escudo com asas, em vetor"></div>
+    <div class="lockup" style="margin-top:14px"><img src="img/logo-violao/logo-horizontal-violao.svg" alt="A logo horizontal do Clube do Violão: o violão com raios ao lado do nome"></div>
+
+    <h3>As versões de cor</h3>
+    <div class="versoes-logo">
+      <figure><div class="box"><img src="img/logo-violao/logo-horizontal-violao.svg" alt="Horizontal nas cores da marca"></div><figcaption><b>Cores da marca</b>Fundo claro. Nome e violão em petróleo profundo, raios em laranja.</figcaption></figure>
+      <figure><div class="box escuro"><img src="img/logo-violao/logo-horizontal-violao-negativa.svg" alt="Horizontal negativa sobre petróleo"></div><figcaption><b>Negativa</b>Fundo escuro. Nome e violão em branco, raios em laranja.</figcaption></figure>
+      <figure><div class="box"><img src="img/logo-violao/logo-horizontal-violao-petroleo.svg" alt="Horizontal em uma cor, petróleo"></div><figcaption><b>Uma cor</b>Gráfica de uma cor, carimbo, bordado.</figcaption></figure>
+      <figure><div class="box"><img src="img/logo-violao/logo-horizontal-violao-preta.svg" alt="Horizontal em preto"></div><figcaption><b>Preta</b>Impressão em preto e branco.</figcaption></figure>
+      <figure><div class="box escuro"><img src="img/logo-violao/logo-clube-do-violao-branca.svg" alt="Escudo todo branco sobre petróleo"></div><figcaption><b>Escudo branco</b>Fundo escuro ou foto, em uma cor só.</figcaption></figure>
+      <figure><div class="box"><img src="img/logo-violao/logo-clube-do-violao-preta.svg" alt="Escudo em preto"></div><figcaption><b>Escudo preto</b>Impressão em preto e branco.</figcaption></figure>
+    </div>
+    <p class="cap">Arquivos em <code>img/logo-violao/</code>, cada versão em SVG e em PNG transparente de 2000px. O <code>LEIA.md</code> de lá diz como a logo foi montada.</p>
+
+    <h3>Lado a lado com o Ukulele</h3>
+    <div class="versoes-logo">
+      <figure><div class="box"><img src="img/logo/logo-clube-do-ukulele.svg" alt="Escudo do Clube do Ukulele"></div><figcaption><b>Clube do Ukulele</b>Índigo, ukulele no escudo.</figcaption></figure>
+      <figure><div class="box"><img src="img/logo-violao/logo-clube-do-violao.svg" alt="Escudo do Clube do Violão"></div><figcaption><b>Clube do Violão</b>Petróleo, violão no escudo.</figcaption></figure>
+    </div>
+
+    <h3>Regras de proteção</h3>
+    <ul class="bul">
+      <li>As mesmas do Ukulele: espaço livre em volta igual à altura do escudo, nada de esticar, girar, recolorir ou pôr sombra.</li>
+      <li>Tamanho mínimo do escudo: 2,5 cm em impresso e 96px de largura em tela, para a palavra VIOLÃO continuar legível. Abaixo de uns 160px, a boca e o cavalete do violão somem e fica só a silhueta. Isso é esperado.</li>
+      <li>Tamanho mínimo da horizontal: 3 cm em impresso e 120px em tela.</li>
+      <li>Versão de uma cor, preta ou branca é só a do pacote em <code>img/logo-violao/</code>, nunca improvisada com filtro.</li>
+      <li>Nunca usar o escudo do Ukulele com a cor do Violão, nem o contrário.</li>
+    </ul>
+  </section>
+
+  <section id="paleta">
+    <h2>3 · A paleta</h2>
+    <p>Só a família da estrutura troca. As cores abaixo substituem o índigo do Ukulele, papel por papel. Cada amostra traz o contraste medido no par em que ela é usada.</p>
+
+    <div class="grupo">Estrutura do Clube do Violão</div>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#1D5468;color:#fff">#1D5468</div><div class="meta"><div class="nm">Petróleo</div><div class="hx">--estrutura</div><div class="use">Âncora da interface: títulos, botão primário, ícones, links de navegação. Faz o papel do índigo #443468.</div><div class="ratio">7,60:1 no fundo claro</div></div></div>
+      <div class="sw"><div class="chip" style="background:#092735;color:#fff">#092735</div><div class="meta"><div class="nm">Petróleo profundo</div><div class="hx">--estrutura-profunda</div><div class="use">O contorno da logo. Fundos escuros, fim do degradê, cabeçalho de aula. Faz o papel do índigo profundo #2D124E.</div><div class="ratio">15,52:1 com texto branco</div></div></div>
+      <div class="sw"><div class="chip" style="background:#4F8BA3;color:#fff">#4F8BA3</div><div class="meta"><div class="nm">Petróleo claro</div><div class="hx">--estrutura-clara</div><div class="use">Só o contorno interno do escudo. Não é cor de texto nem de fundo.</div><div class="ratio">uso decorativo</div></div></div>
+      <div class="sw"><div class="chip" style="background:#E2EDF0;color:#1D5468">#E2EDF0</div><div class="meta"><div class="nm">Petróleo suave</div><div class="hx">--estrutura-suave</div><div class="use">Tinta de fundo para destaque leve, com texto petróleo por cima. Faz o papel do índigo suave.</div><div class="ratio">6,99:1 com o petróleo</div></div></div>
+      <div class="sw"><div class="chip" style="background:#D3E3E8;color:#092735">#D3E3E8</div><div class="meta"><div class="nm">Sobre escuro</div><div class="hx">--sobre-escuro</div><div class="use">Texto secundário em fundo petróleo. Substitui a opacidade, que derruba o contraste sem avisar.</div><div class="ratio">11,77:1 sobre petróleo profundo</div></div></div>
+    </div>
+
+    <div class="grupo">Da casa: iguais em todos os Clubes</div>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#E87A85;color:#4D1A20">#E87A85</div><div class="meta"><div class="nm">Coral</div><div class="hx">--coral</div><div class="use">A assinatura da casa. Preenchimento, barras e texto sobre fundo escuro. Nunca texto em fundo claro.</div><div class="ratio">5,58:1 sobre petróleo profundo</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B4404F;color:#fff">#B4404F</div><div class="meta"><div class="nm">Coral forte</div><div class="hx">--coral-forte</div><div class="use">O mesmo coral, versão legível em fundo claro.</div><div class="ratio">5,55:1 no branco</div></div></div>
+      <div class="sw"><div class="chip" style="background:#12A18A;color:#092735">#12A18A</div><div class="meta"><div class="nm">Teal de ação</div><div class="hx">--acao</div><div class="use">O botão que leva à compra. No Violão, o texto dele é petróleo profundo.</div><div class="ratio">4,80:1 com texto petróleo profundo</div></div></div>
+      <div class="sw"><div class="chip" style="background:#177A6A;color:#fff">#177A6A</div><div class="meta"><div class="nm">Teal</div><div class="hx">--teal</div><div class="use">Download, material, biblioteca.</div><div class="ratio">5,21:1 com texto branco</div></div></div>
+      <div class="sw"><div class="chip" style="background:#CD3701;color:#fff">#CD3701</div><div class="meta"><div class="nm">Laranja</div><div class="hx">--laranja</div><div class="use">As asas da logo, selo de oferta, preço antigo. Não vira botão.</div><div class="ratio">5,07:1 com texto branco</div></div></div>
+      <div class="sw"><div class="chip" style="background:#25845A;color:#fff">#25845A</div><div class="meta"><div class="nm">Verde</div><div class="hx">--verde</div><div class="use">Só conclusão e confirmação.</div><div class="ratio">4,64:1 com texto branco</div></div></div>
+    </div>
+    <p class="cap">Erro, âmbar, vinho e os neutros (fundo <code>#F5F4F7</code>, texto <code>#1F1A2B</code>, superfície, card, linhas) são os do manual do Ukulele, sem mudança.</p>
+    <div class="note"><p><strong>Por que petróleo azulado, e não um verde-petróleo mais verde:</strong> o teal de compra fica a 177° na roda de cores. O petróleo do Violão fica a 232°, longe o bastante para o botão de compra continuar sendo a única coisa verde-azulada viva na tela. Um petróleo mais verde ficaria a 4° do teal, e o aluno deixaria de saber onde se compra.</p></div>
+  </section>
+
+  <section id="papeis">
+    <h2>4 · Os quatro papéis da cor</h2>
+    <p>Os papéis são os mesmos do Ukulele. Muda só quem ocupa o papel de marca.</p>
+    <div class="papeis">
+      <div class="papel">
+        <div class="top"><span class="dot" style="background:var(--indigo)"></span><span class="dot" style="background:var(--coral)"></span><h3>Marca</h3></div>
+        <p>Petróleo e coral. O petróleo diz que é o Clube do Violão; o coral diz que é da mesma casa do Ukulele.</p>
+      </div>
+      <div class="papel">
+        <div class="top"><span class="dot" style="background:var(--acao)"></span><h3>Decisão</h3></div>
+        <p>Teal de ação. O botão que compra, igual em todos os Clubes.</p>
+      </div>
+      <div class="papel">
+        <div class="top"><span class="dot" style="background:var(--teal)"></span><span class="dot" style="background:var(--laranja)"></span><h3>Utilitário e oferta</h3></div>
+        <p>Teal escuro para baixar e acessar, laranja para anunciar a oferta.</p>
+      </div>
+      <div class="papel">
+        <div class="top"><span class="dot" style="background:var(--verde)"></span><span class="dot" style="background:var(--ambar-texto)"></span><span class="dot" style="background:var(--erro)"></span><h3>Estado</h3></div>
+        <p>Verde, âmbar e o vermelho de erro. Falam do que está acontecendo, nunca da marca.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contraste">
+    <h2>5 · Contraste: a régua</h2>
+    <p>Os pares que mudam no Clube do Violão, todos medidos e aprovados no WCAG AA. Os pares que não aparecem aqui são os mesmos do Ukulele.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Onde</th><th>Par</th><th>Contraste</th><th>AA</th></tr></thead>
+        <tbody>
+          <tr><td>Título e link</td><td class="mono"><span class="par"><i style="background:#1D5468"></i>#1D5468 / <i style="background:#F5F4F7"></i>#F5F4F7</span></td><td class="mono">7,60:1</td><td class="ok">passa</td></tr>
+          <tr><td>Botão primário</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#1D5468"></i>#1D5468</span></td><td class="mono">8,33:1</td><td class="ok">passa</td></tr>
+          <tr><td>Coral sobre fundo escuro</td><td class="mono"><span class="par"><i style="background:#E87A85"></i>#E87A85 / <i style="background:#092735"></i>#092735</span></td><td class="mono">5,58:1</td><td class="ok">passa</td></tr>
+          <tr><td>Botão de compra</td><td class="mono"><span class="par"><i style="background:#092735"></i>#092735 / <i style="background:#12A18A"></i>#12A18A</span></td><td class="mono">4,80:1</td><td class="ok">passa</td></tr>
+          <tr><td>Texto branco no fundo escuro</td><td class="mono"><span class="par"><i style="background:#FFFFFF;border-color:#C9C4D6"></i>#FFFFFF / <i style="background:#092735"></i>#092735</span></td><td class="mono">15,52:1</td><td class="ok">passa</td></tr>
+          <tr><td>Texto secundário no escuro</td><td class="mono"><span class="par"><i style="background:#D3E3E8"></i>#D3E3E8 / <i style="background:#092735"></i>#092735</span></td><td class="mono">11,77:1</td><td class="ok">passa</td></tr>
+          <tr><td>Destaque leve</td><td class="mono"><span class="par"><i style="background:#1D5468"></i>#1D5468 / <i style="background:#E2EDF0"></i>#E2EDF0</span></td><td class="mono">6,99:1</td><td class="ok">passa</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note alerta"><p><strong>O coral não vira texto sobre o petróleo médio.</strong> Sobre <code>#1D5468</code> ele fica em 3,00:1 e reprova. Coral como texto só sobre o petróleo profundo <code>#092735</code>. Sobre o petróleo médio, coral só como preenchimento (barra, bolinha).</p></div>
+  </section>
+
+  <section id="botoes">
+    <h2>6 · Botões</h2>
+    <p>Os mesmos seis tipos do Ukulele. Primário e secundário passam a ser petróleo; os outros quatro não mudam.</p>
+    <div class="btns">
+      <button class="btn b-primario">Próxima aula ›</button>
+      <button class="btn b-secundario">Aula anterior</button>
+      <button class="btn b-terciario">Pular introdução</button>
+      <button class="btn b-util"><span aria-hidden="true">↓</span> Baixar cifra</button>
+      <button class="btn b-feito"><span aria-hidden="true">✓</span> Marcar como assistida</button>
+      <button class="btn b-venda">Quero entrar no Clube</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Botão</th><th>Base</th><th>Hover</th><th>Contraste no hover</th></tr></thead>
+        <tbody>
+          <tr><td>Primário</td><td class="mono"><span class="par"><i style="background:#1D5468"></i>#1D5468</span></td><td class="mono"><span class="par"><i style="background:#184859"></i>#184859</span></td><td class="mono">9,95:1</td></tr>
+          <tr><td>Decisão de compra</td><td class="mono"><span class="par"><i style="background:#12A18A"></i>#12A18A</span></td><td class="mono"><span class="par"><i style="background:#25A993"></i>#25A993</span></td><td class="mono">5,30:1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="bul">
+      <li><strong>Texto do botão de compra:</strong> petróleo profundo <code>#092735</code>, nunca branco. Como no Ukulele, ele clareia no hover em vez de escurecer.</li>
+      <li><strong>Foco por teclado:</strong> anel petróleo <code>#1D5468</code> de 3px com 3px de afastamento.</li>
+      <li>Utilitário, estado, terciário e desabilitado: iguais ao Ukulele, com os mesmos hex.</li>
+    </ul>
+  </section>
+
+  <section id="camadas">
+    <h2>7 · Fundos e degradê</h2>
+    <p>As três camadas claras são as mesmas do Ukulele: fundo <code>#F5F4F7</code>, superfície <code>#ECEAF1</code> e card branco. Os fundos escuros trocam o índigo pelo petróleo.</p>
+    <div class="layers">
+      <div class="layer l1">Fundo da página<span>#F5F4F7</span></div>
+      <div class="layer l2">Superfície<span>#ECEAF1</span></div>
+      <div class="layer l3">Card<span>#FFFFFF</span></div>
+    </div>
+    <div class="degrade"><span>Degradê de cabeçalho: #1D5468 para #092735</span></div>
+    <p class="cap">O degradê vai do petróleo para o petróleo profundo, no mesmo ângulo de 135° do Ukulele. Texto em cima dele é branco ou o sobre-escuro <code>#D3E3E8</code>.</p>
+  </section>
+
+  <section id="venda">
+    <h2>8 · Página de venda</h2>
+    <p>A mesma construção do Ukulele: o botão de compra em teal de ação sobre o bloco escuro, o coral marcando a promessa no título e o laranja só no selo e no preço antigo.</p>
+    <div class="mock">
+      <div class="bar"><i></i><i></i><i></i><span class="url">cursos.comotocarukulele.com</span></div>
+      <div class="venda-hero">
+        <span class="badge">Oferta de lançamento</span>
+        <h4>Do zero aos <span class="hl">4 acordes mágicos no violão</span>, sem pestana</h4>
+        <p>Aulas gravadas, curtas e com material de apoio, no mesmo método do Clube do Ukulele.</p>
+        <button class="btn b-venda" style="font-size:16px;padding:15px 32px">Quero começar</button>
+      </div>
+    </div>
+    <p class="cap">Texto de exemplo. A promessa final, o preço e a garantia saem do escopo do curso e da página de venda real.</p>
+  </section>
+
+  <section id="casa">
+    <h2>9 · O que vem igual do Ukulele</h2>
+    <p>Estes capítulos do manual do Ukulele valem para o Clube do Violão sem mudança. Onde o exemplo mostra índigo, leia petróleo.</p>
+    <ul class="bul">
+      <li><a href="manual-visual-clube-do-ukulele-2026.html#tipografia" target="_top">Tipografia</a>: Anton nos títulos, Montserrat no corpo, Iosevka ou JetBrains Mono nos acordes, entrelinha mínima de 1.12 no Anton com acento.</li>
+      <li><a href="manual-visual-clube-do-ukulele-2026.html#aula" target="_top">Componentes de aula</a>.</li>
+      <li><a href="manual-visual-clube-do-ukulele-2026.html#notacao" target="_top">Notação de batida</a>.</li>
+      <li><a href="manual-visual-clube-do-ukulele-2026.html#membros" target="_top">Área de membros</a>.</li>
+      <li><a href="manual-visual-clube-do-ukulele-2026.html#dificuldade" target="_top">Dificuldade e nível</a>: âmbar e vinho continuam sendo só das tags de dificuldade.</li>
+    </ul>
+    <div class="note"><p><strong>Texto para aluno:</strong> as regras são as mesmas. "Mão da batida" e "mão dos acordes", nunca direita ou esquerda; dedos por número, de 1 a 4; cifra nunca em caixa alta.</p></div>
+  </section>
+
+  <section id="resumo">
+    <h2>10 · Em resumo</h2>
+    <ul class="bul">
+      <li>Mesmo escudo, mesmas asas, mesmo lettering. Mudam a palavra, o instrumento e a cor.</li>
+      <li>Petróleo <code>#1D5468</code> no lugar do índigo <code>#443468</code>, petróleo profundo <code>#092735</code> no lugar do índigo profundo <code>#2D124E</code>.</li>
+      <li>Coral, teal, laranja, verde, erro, âmbar, vinho e neutros: iguais ao Ukulele.</li>
+      <li>Texto do botão de compra em petróleo profundo. Coral como texto só sobre o petróleo profundo.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Clube do Violão · Manual de Identidade Visual · Edição 2026<br>
+    Petróleo #1D5468 · Petróleo profundo #092735 · Coral #E87A85 · Teal de ação #12A18A · Laranja #CD3701
+  </footer>
+
+</div>
+
+<script>
+/* Dentro da aba do manual (iframe), os links do índice rolam a página de fora. */
+if (window.frameElement) {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var alvo = document.querySelector(a.getAttribute('href'));
+    if (!alvo) return;
+    e.preventDefault();
+    var topo = alvo.getBoundingClientRect().top + window.frameElement.getBoundingClientRect().top + window.parent.scrollY - 70;
+    window.parent.scrollTo({ top: topo, behavior: 'smooth' });
+  });
+}
+</script>
+</body>
+</html>
