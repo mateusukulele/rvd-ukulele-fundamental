@@ -367,7 +367,7 @@ const lum = h => { const [r,g,b] = rgb(h).map(lin); return .2126*r + .7152*g + .
 const cr = (a,b) => { const [x,y] = [lum(a),lum(b)].sort((p,q)=>q-p); return (x+.05)/(y+.05); };
 const CLUBES = [
   {nome:'Clube do Ukulele', st:'no ar', prof:'#2D124E', medio:'#443468', claro:'#7B56A3', logo:'img/logo/logo-clube-do-ukulele.svg', curso:'Ukulele Fundamental'},
-  {nome:'Clube do Violão', st:'em criação', prof:'#092735', medio:'#1D5468', claro:'#4F8BA3', logo:'img/logo-violao/logo-clube-do-violao.svg', curso:'Violão Fundamental'},
+  {nome:'Clube do Violão', st:'em criação', prof:'#092735', medio:'#1D5468', claro:'#4F8BA3', logo:'img/logo-violao/logo-clube-do-violao.svg?v=2', curso:'Violão Fundamental'},
   {nome:'Clube da Guitarra', st:'vaga reservada', prof:'#1C1B20', medio:'#3A3940', claro:'#8C8A94', logo:null, curso:'Guitarra Fundamental'},
   {nome:'Clube do Baixo', st:'vaga reservada, a mais apertada', prof:'#0F1A44', medio:'#2B3A78', claro:'#5B6EC2', logo:null, curso:'Baixo Fundamental'},
 ];
