@@ -212,7 +212,6 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 .numero-grande{font-family:var(--fonte-titulo);font-size:clamp(56px,10vw,96px);line-height:1;color:var(--indigo);display:block}
 
 /* Oferta */
-#oferta{scroll-margin-top:calc(var(--topo-h) + 8px)}
 .oferta-grade{display:grid;gap:32px;align-items:start}
 @media (min-width:960px){.oferta-grade{grid-template-columns:1fr 1fr;gap:56px}}
 .lote-texto p{font-size:17px}
@@ -990,6 +989,22 @@ document.getElementById('lead').addEventListener('submit',function(e){
   setTimeout(function(){location.href=url;},400);
 });
 
+
+/* Links que levam à oferta: param no bloco do preço (preço, contagem e botão à vista),
+   descontando a faixa fixa do topo. Sem JS, o href="#oferta" continua funcionando. */
+(function(){
+  var precos=document.querySelector('#oferta .precos'), topo=document.querySelector('.topo');
+  if(!precos) return;
+  document.querySelectorAll('a[href="#oferta"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var y=precos.getBoundingClientRect().top+window.scrollY-(topo?topo.offsetHeight:0)-20;
+      var reduz=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({top:y,behavior:reduz?'auto':'smooth'});
+      if(history.replaceState) history.replaceState(null,'','#oferta');
+    });
+  });
+})();
 /* Barra fixa inteligente: aparece quando o botão do topo sai da tela.
    Antes do preço, leva até a condição; depois do cartão de preço, abre o pagamento.
    Some enquanto o botão do cartão ou o do fechamento estão à vista. */
