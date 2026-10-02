@@ -95,6 +95,13 @@ code{font-family:'JetBrains Mono';font-size:.88em;background:var(--surface);padd
 .logo-use .lbl b{color:var(--ink);display:block;font-size:14px;margin-bottom:2px}
 .lockup{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:34px;display:flex;justify-content:center}
 .lockup img{width:100%;max-width:420px;height:auto}
+.versoes-logo{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.versoes-logo figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.versoes-logo .box{height:110px;display:flex;align-items:center;justify-content:center;padding:18px;background:var(--card)}
+.versoes-logo .box.escuro{background:var(--indigo-deep)}
+.versoes-logo img{max-width:100%;max-height:74px;width:auto}
+.versoes-logo figcaption{padding:11px 14px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+.versoes-logo figcaption b{display:block;color:var(--ink);font-size:13.5px;margin-bottom:2px}
 .errado{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
 .errado figure{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
 .errado .box{height:104px;display:flex;align-items:center;justify-content:center;background:var(--surface);overflow:hidden}
@@ -289,6 +296,7 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
 @media (max-width:760px){
   .toc ol{columns:1}
   .logo-uses,.papeis,.trilha,.metodo .grid{grid-template-columns:1fr}
+  .versoes-logo{grid-template-columns:1fr 1fr}
   .errado{grid-template-columns:repeat(2,1fr)}
   .gestos{grid-template-columns:repeat(4,1fr);row-gap:20px}
   .forcas{gap:18px;justify-content:center}
@@ -353,10 +361,21 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
       </div>
     </div>
 
-    <h3>Só existe uma arte</h3>
-    <p>A logo é uma só, na proporção 1,53:1 (mais larga do que alta). Não existe versão horizontal com o texto ao lado do escudo, nem versão empilhada. Espaço mais largo pede <code>padding</code> no CSS, nunca um arquivo com o canvas maior.</p>
-    <div class="lockup"><img src="img/logo-clube-do-ukulele.webp" alt="A logo do Clube do Ukulele, arte única, escudo com asas"></div>
-    <p class="cap">Arquivo no repositório: <code>img/logo-clube-do-ukulele.webp</code>, 1190x778 com fundo transparente, recortado no limite exato da arte. As versões antigas com canvas inflado estão em <code>img/_logos-antigas/</code> e não devem ser usadas: o <code>LEIA.md</code> de lá explica o defeito de cada uma.</p>
+    <h3>As duas formas: o escudo e a horizontal</h3>
+    <p>A logo tem duas formas, desenhadas em vetor a partir do mesmo arquivo mestre: as letras, o ukulele e os raios são exatamente os do escudo. O <strong>escudo com asas</strong> é a assinatura principal, na proporção 1,53:1. A <strong>horizontal</strong> põe o ukulele com raios ao lado do nome, na proporção 3:1, e existe para os lugares baixos e compridos, onde o escudo ficaria pequeno demais para ler: rodapé de cifra e de material impresso, cabeçalho de documento, assinatura.</p>
+    <div class="lockup"><img src="img/logo/logo-clube-do-ukulele.svg" alt="A logo do Clube do Ukulele, escudo com asas, em vetor"></div>
+    <div class="lockup" style="margin-top:14px"><img src="img/logo/logo-horizontal.svg" alt="A logo horizontal do Clube do Ukulele: o ukulele com raios ao lado do nome"></div>
+
+    <h3>As versões de cor</h3>
+    <div class="versoes-logo">
+      <figure><div class="box"><img src="img/logo/logo-horizontal.svg" alt="Horizontal nas cores da marca"></div><figcaption><b>Cores da marca</b>Fundo claro. Nome e ukulele em índigo profundo, raios em laranja.</figcaption></figure>
+      <figure><div class="box escuro"><img src="img/logo/logo-horizontal-negativa.svg" alt="Horizontal negativa sobre índigo"></div><figcaption><b>Negativa</b>Fundo escuro. Nome e ukulele em branco, raios em laranja.</figcaption></figure>
+      <figure><div class="box"><img src="img/logo/logo-horizontal-indigo.svg" alt="Horizontal em uma cor, índigo"></div><figcaption><b>Uma cor</b>Gráfica de uma cor, carimbo, bordado.</figcaption></figure>
+      <figure><div class="box"><img src="img/logo/logo-horizontal-preta.svg" alt="Horizontal em preto"></div><figcaption><b>Preta</b>Impressão em preto e branco. É a que a cifra usa quando a pessoa imprime sem cor.</figcaption></figure>
+      <figure><div class="box escuro"><img src="img/logo/logo-clube-do-ukulele-branca.svg" alt="Escudo todo branco sobre índigo"></div><figcaption><b>Escudo branco</b>Fundo escuro ou foto, em uma cor só.</figcaption></figure>
+      <figure><div class="box"><img src="img/logo/logo-clube-do-ukulele-preta.svg" alt="Escudo em preto"></div><figcaption><b>Escudo preto</b>Impressão em preto e branco.</figcaption></figure>
+    </div>
+    <p class="cap">Arquivos em <code>img/logo/</code>, cada versão em SVG (impressão, bordado, qualquer tamanho) e em PNG transparente de 2000px (Canva, slides, e-mail). O <code>img/logo-clube-do-ukulele.webp</code> continua valendo para as páginas que já o usam. As versões antigas com canvas inflado estão em <code>img/_logos-antigas/</code> e não devem ser usadas: o <code>LEIA.md</code> de lá explica o defeito de cada uma.</p>
 
     <h3>O que não fazer</h3>
     <div class="errado">
@@ -369,11 +388,13 @@ footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);text-al
     <h3>Regras de proteção</h3>
     <ul class="bul">
       <li>Espaço livre em volta equivalente à altura do escudo. Nada entra nessa área.</li>
-      <li>Não trocar as cores internas, não recolorir as asas, não inverter para versão monocromática improvisada.</li>
-      <li>Tamanho mínimo: a palavra UKULELE precisa continuar legível, cerca de 2,5 cm em impresso e 96px de largura em tela.</li>
+      <li>Não trocar as cores internas, não recolorir as asas. Versão de uma cor, preta ou branca é só a do pacote em <code>img/logo/</code>, nunca improvisada com filtro.</li>
+      <li>Tamanho mínimo do escudo: a palavra UKULELE precisa continuar legível, cerca de 2,5 cm em impresso e 96px de largura em tela.</li>
+      <li>Tamanho mínimo da horizontal: 3 cm em impresso e 120px de largura em tela, para o "CLUBE DO" continuar legível.</li>
+      <li>Nunca montar uma horizontal nova (asas ao lado do nome, escudo com texto ao lado): a única horizontal é a do ukulele.</li>
       <li>Sobre foto, sempre dentro do selo índigo. Logo solta sobre imagem some.</li>
     </ul>
-    <div class="note"><p><strong>Pendência de arquivo:</strong> hoje a logo existe em PNG e WebP. Vale produzir o SVG em três versões (colorida, uma cor só e selo montado) para uso em impresso grande e bordado.</p></div>
+    <div class="note"><p><strong>Desde 02/10/2026</strong> a logo existe em vetor. As formas saíram do arquivo mestre por vetorização, sem redesenho à mão, então qualquer versão do pacote é a mesma logo em outro tamanho ou outra cor.</p></div>
   </section>
 
   <section id="paleta">
