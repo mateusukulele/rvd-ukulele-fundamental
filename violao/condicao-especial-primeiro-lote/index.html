@@ -269,7 +269,6 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 .fixo .p{font-size:13px;line-height:1.3;color:var(--sobre-escuro);white-space:nowrap}
 .fixo .p b{display:block;font-size:18px;color:#fff}
 .fixo .btn{flex:1;min-height:50px;font-size:16px;padding:0 14px}
-@media (min-width:900px){.fixo{left:auto;right:20px;bottom:20px;border-radius:18px;width:420px}}
 
 /* Encerrada */
 .msg-encerrada{display:none}
@@ -377,14 +376,54 @@ br.q{display:none}
 .hero-foto.violao>img{height:100%;bottom:9%}
 .marca-vf.no-palco{bottom:-6px}
 @media (max-width:959px){.hero-foto.violao{margin-bottom:28px}}
+
+/* Barra fixa: largura inteira, conteúdo alinhado à coluna da página */
+.fixo{left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:block}
+.fixo-in{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.fixo .p{flex:none}
+.fixo-tempo{display:none;color:var(--sobre-escuro);font-size:14px;white-space:nowrap}
+.fixo-tempo b{color:#fff;font-variant-numeric:tabular-nums;font-weight:800}
+.fixo .btn{flex:1}
+@media (min-width:700px){
+  .fixo{padding:12px 24px}
+  .fixo-in{gap:28px}
+  .fixo .p{display:flex;align-items:baseline;gap:10px;font-size:15px}
+  .fixo .p b{display:inline;font-size:22px}
+  .fixo-tempo{display:inline-flex;align-items:baseline;gap:8px;margin-left:auto}
+  .fixo .btn{flex:none;min-width:260px;padding:0 28px}
+}
+
+/* Datas de liberação no caminho */
+.libera{display:inline-flex;align-items:center;gap:6px;margin:6px 0 2px;padding:3px 10px 3px 8px;border-radius:999px;background:var(--estrutura-suave);color:var(--indigo);font-size:13px;font-weight:800;letter-spacing:.2px}
+.libera svg{width:14px;height:14px;flex:none}
+.trilha h3{margin-top:4px}
+.trilha .prep .n{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.trilha .prep .n svg{width:20px;height:20px}
+.trilha .prep .libera{background:var(--coral-suave);color:var(--coral-texto)}
+
+/* Título nas colunas laterais do desktop: um pouco menor, para a quebra escolhida caber */
+@media (min-width:960px){.lado h2{font-size:clamp(32px,3.2vw,42px)}}
+
+/* Revisão final: borda esquerda única, oferta acompanhando o cartão, contagem alinhada ao cartão */
+.hero-grade{max-width:1120px}
+.nw{white-space:nowrap}
+@media (min-width:960px){.oferta-grade>:first-child{position:sticky;top:calc(var(--topo-h) + 32px);align-self:start}}
+.cartao .relogio-oferta{justify-content:flex-start}
+
+.periodo{max-width:none}
+.garantia .selo-svg{width:96px;height:auto}
+@media (min-width:700px){.garantia .selo-svg{width:120px}}
+
+@media (min-width:960px){.oferta-grade h2,.analise h2{font-size:clamp(32px,3.2vw,42px)}}
+.fim h2{max-width:none}
 </style>
 </head>
 <body class="sem-js">
 <!--
 THESIS: a pagina prova com o proprio violao que quem ja tocou ukulele sai na frente; recusa o hero generico de curso com foto e lista de modulos.
-OWN-WORLD: indigo profundo em campos inteiros, coral como marca de assinatura, diagramas de acorde desenhados no proprio codigo, Anton nos titulos, Montserrat no texto, teal so no botao de compra, laranja so no selo e no preco cortado.
-STORY: a pessoa reconhece que ja e de casa, ve o desenho do C do ukulele virar G no violao, entende o primeiro dia, o acompanhamento e o presente, e so entao ve o preco do primeiro lote.
-FIRST VIEWPORT: faixa fixa com "So pra quem ja e de casa!" e a contagem; titulo em tres andares sobre indigo profundo; botao claro que leva para a ponte; foto do Mateus com violao a direita (placeholder).
+OWN-WORLD: paleta petroleo do manual do Clube do Violao (#1D5468 e #092735) em campos inteiros, coral como assinatura e texto so sobre o petroleo profundo, diagramas de acorde desenhados no proprio codigo, Anton nos titulos, Montserrat no texto, teal so no botao de compra, laranja so no selo e no preco cortado.
+STORY: a pessoa reconhece que ja e de casa, ve que varios desenhos de acorde do ukulele sao os mesmos nas cordas finas do violao, entende o primeiro dia, o acompanhamento e o presente, e so entao ve o preco do primeiro lote.
+FIRST VIEWPORT: faixa fixa com "So pra quem ja e de casa!" e a contagem; titulo em tres andares sobre indigo profundo; botao claro que leva para a ponte; violao real recortado sobre o anel coral a direita, com a marca Violao Fundamental.
 FORM: estrutura propria derivada do conteudo, sem rolagem de conceito (o Mateus delegou a estrutura).
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
 -->
@@ -471,17 +510,18 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section>
     <div class="miolo lado">
       <div class="medida rv">
-        <h2>Do primeiro acorde<br class="q"> aos 4 acordes mágicos</h2>
-        <p class="lead">Um módulo novo por semana a partir de 28/10. Cada um termina com música completa, e cada acorde novo entra numa música que você vai querer tocar.</p>
+        <h2>Do primeiro acorde<br class="q"> aos <span class="nw">4 acordes mágicos</span></h2>
+        <p class="lead">Um módulo novo toda quarta, a partir de 28/10. Cada um termina com música completa, e o que já abriu continua lá para você rever quando quiser.</p>
         <p class="sem-pestana"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>O curso inteiro é sem pestana.</p>
       </div>
       <ol class="trilha">
-        <li class="rv"><span class="n">1</span><div><h3>Sua primeira música</h3><p>Com um acorde só, para a mão da batida pegar o ritmo.</p></div></li>
-        <li class="rv"><span class="n">2</span><div><h3>Acordes de dois dedos</h3><p>Pares de acordes simplificados, montados com até dois dedos.</p></div></li>
-        <li class="rv"><span class="n">3</span><div><h3>Acordes de três dedos</h3><p>Os acordes ganham um dedo a mais, e entram músicas novas.</p></div></li>
-        <li class="rv"><span class="n">4</span><div><h3>Os acordes completos</h3><p>Do jeito que estão escritos nas cifras das músicas.</p></div></li>
-        <li class="rv"><span class="n">5</span><div><h3>Músicas de três acordes</h3><p>Três acordes por música, que é como muita música popular é escrita.</p></div></li>
-        <li class="rv"><span class="n">6</span><div><h3>Os 4 acordes mágicos e centenas de músicas</h3><p>G, D, Em e C, o capotraste e as mesmas músicas em outros tons.</p></div></li>
+        <li class="rv prep"><span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="libera">Até 20/10, antes de a turma começar</span><h3>Preparação</h3><p>Qual violão comprar, os acessórios e a afinação, para chegar ao primeiro dia com tudo pronto.</p></div></li>
+        <li class="rv"><span class="n">1</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 28/10 (com o encontro inaugural)</span><h3>Sua primeira música</h3><p>Com um acorde só, para a mão da batida pegar o ritmo.</p></div></li>
+        <li class="rv"><span class="n">2</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 04/11</span><h3>Acordes de dois dedos</h3><p>Pares de acordes simplificados, montados com até dois dedos.</p></div></li>
+        <li class="rv"><span class="n">3</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 11/11</span><h3>Acordes de três dedos</h3><p>Os acordes ganham um dedo a mais, e entram músicas novas.</p></div></li>
+        <li class="rv"><span class="n">4</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 18/11</span><h3>Os acordes completos</h3><p>Do jeito que estão escritos nas cifras das músicas.</p></div></li>
+        <li class="rv"><span class="n">5</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 25/11</span><h3>Músicas de três acordes</h3><p>Três acordes por música, que é como muita música popular é escrita.</p></div></li>
+        <li class="rv"><span class="n">6</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 02/12</span><h3>Os 4 acordes mágicos e centenas de músicas</h3><p>G, D, Em e C, o capotraste e as mesmas músicas em outros tons.</p></div></li>
       </ol>
     </div>
   </section>
@@ -518,7 +558,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="quente">
     <div class="miolo">
       <div class="medida rv">
-        <h2>E de presente,<br class="q"> <span class="marca">12 meses de Clube do Ukulele</span></h2>
+        <h2>E de presente,<br class="q"> <span class="marca">12 meses de Clube&nbsp;do&nbsp;Ukulele</span></h2>
         <p class="lead">Para você seguir tocando ukulele enquanto aprende violão.</p>
       </div>
       <div class="presente">
@@ -554,7 +594,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="suave">
     <div class="miolo lado">
       <div class="medida rv">
-        <h2>O que acontece<br class="q"> depois que você entra</h2>
+        <h2>O que acontece<br class="q"> <span class="nw">depois que você entra</span></h2>
       </div>
       <ol class="agenda">
         <li class="rv"><span class="data">Na hora</span><p>Acesso à plataforma, as boas-vindas e o calendário completo.</p></li>
@@ -581,7 +621,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="escura" id="oferta">
     <div class="miolo oferta-grade">
       <div class="lote-texto medida rv">
-        <h2>Primeiro lote,<br class="q"> só para quem já é de casa</h2>
+        <h2>Primeiro lote,<br class="q"> só para quem <span class="nw">já é de casa</span></h2>
         <p class="lead">No dia 22/10 as inscrições para o curso de violão abrem para todo mundo, por 12x de R$ 99 ou R$ 957,25 à vista.</p>
         <p>Quem já tocou com a gente entra no primeiro lote especial, com um preço que não vai aparecer na live. A condição vale até 27/10, às 23h59, porque no dia 28 a turma começa com o encontro inaugural.</p>
       </div>
@@ -619,7 +659,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section>
     <div class="miolo">
       <div class="garantia rv">
-        <img src="../../academy/img/selo-garantia.webp" alt="Selo de garantia de 30 dias" width="600" height="600" loading="lazy" decoding="async">
+        <svg class="selo-svg" viewBox="0 0 120 132" role="img" aria-label="Selo de garantia de 30 dias"><path d="M60 4 108 22v38c0 32-21 55-48 68C33 115 12 92 12 60V22Z" fill="#092735"/><path d="M60 15 98 29v31c0 26-16 45-38 56C38 105 22 86 22 60V29Z" fill="#1D5468"/><path d="M40 66l14 14 28-30" fill="none" stroke="#E87A85" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div>
           <h2>30 dias para decidir com calma</h2>
           <p>Entre, assista às primeiras aulas, vá ao encontro inaugural e toque a sua primeira música. Se em 30 dias você achar que não era o que esperava, pede o reembolso e recebe o valor inteiro de volta.</p>
@@ -663,8 +703,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </footer>
 
 <div class="fixo cta-compra" id="fixo" aria-hidden="true">
-  <span class="p">Primeiro lote<b>12x R$ 69</b></span>
-  <button class="btn btn-compra" type="button" data-abre-checkout tabindex="-1">Quero entrar</button>
+  <div class="fixo-in">
+    <span class="p">Primeiro lote<b>12x R$ 69</b></span>
+    <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
+    <button class="btn btn-compra" type="button" data-abre-checkout tabindex="-1">Quero o primeiro lote</button>
+  </div>
 </div>
 
 <dialog class="modal" id="checkout" aria-labelledby="ckt">
@@ -785,9 +828,9 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
   var reduz=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function mostra(i){
     if(i===atual)return; atual=i; var a=ACORDES[i];
-    chips.forEach(function(c){c.setAttribute('aria-pressed',c.dataset.i==i?'true':'false');});
     palco.classList.add('trocando');
     setTimeout(function(){
+      chips.forEach(function(c){c.setAttribute('aria-pressed',c.dataset.i==i?'true':'false');});
       nu.textContent=a.u; nv.textContent=a.v;
       leg.innerHTML='<strong>O desenho do '+a.u+' no ukulele é o do '+a.v+' no violão</strong>, nas quatro cordas mais finas. As cordas graves entram depois, no acorde completo.';
       palco.classList.remove('trocando');

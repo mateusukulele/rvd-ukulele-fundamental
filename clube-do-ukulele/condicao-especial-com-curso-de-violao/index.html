@@ -272,7 +272,6 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 .fixo .p{font-size:13px;line-height:1.3;color:var(--sobre-escuro);white-space:nowrap}
 .fixo .p b{display:block;font-size:18px;color:#fff}
 .fixo .btn{flex:1;min-height:50px;font-size:16px;padding:0 14px}
-@media (min-width:900px){.fixo{left:auto;right:20px;bottom:20px;border-radius:18px;width:420px}}
 
 /* Encerrada */
 .msg-encerrada{display:none}
@@ -397,6 +396,44 @@ br.q{display:none}
   .hero-texto{justify-content:center;padding:24px 0 64px}
   .hero-foto{align-self:end;margin-bottom:-1px}
 }
+
+/* Barra fixa: largura inteira, conteúdo alinhado à coluna da página */
+.fixo{left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:block}
+.fixo-in{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.fixo .p{flex:none}
+.fixo-tempo{display:none;color:var(--sobre-escuro);font-size:14px;white-space:nowrap}
+.fixo-tempo b{color:#fff;font-variant-numeric:tabular-nums;font-weight:800}
+.fixo .btn{flex:1}
+@media (min-width:700px){
+  .fixo{padding:12px 24px}
+  .fixo-in{gap:28px}
+  .fixo .p{display:flex;align-items:baseline;gap:10px;font-size:15px}
+  .fixo .p b{display:inline;font-size:22px}
+  .fixo-tempo{display:inline-flex;align-items:baseline;gap:8px;margin-left:auto}
+  .fixo .btn{flex:none;min-width:260px;padding:0 28px}
+}
+
+/* Título nas colunas laterais do desktop: um pouco menor, para a quebra escolhida caber */
+@media (min-width:960px){.lado h2{font-size:clamp(32px,3.2vw,42px)}}
+
+/* Revisão final: borda esquerda única, oferta acompanhando o cartão, contagem alinhada ao cartão */
+.hero-grade{max-width:1120px}
+.nw{white-space:nowrap}
+@media (min-width:960px){.oferta-grade>:first-child{position:sticky;top:calc(var(--topo-h) + 32px);align-self:start}}
+.cartao .relogio-oferta{justify-content:flex-start}
+
+.semana{grid-template-columns:repeat(7,minmax(0,1fr))}
+@media (max-width:899px){.semana{grid-template-columns:1fr}}
+.dia-sem .ev-leve{font-size:13.5px;padding:8px 10px}
+/* Foto da B: esmaece as duas laterais, sem quina dura */
+.hero-foto>img{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 10%,#000 86%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 10%,#000 86%,transparent 100%)}
+@media (min-width:960px){.hero-foto{max-width:560px}}
+
+@media (min-width:960px){.oferta-grade h2,.analise h2{font-size:clamp(32px,3.2vw,42px)}}
+.fim h2{max-width:none}
+
+/* A foto passa um pouco da coluna para a direita, para a cabeça subir até a altura do título */
+@media (min-width:960px){.hero-foto{width:122%;max-width:560px;justify-self:start}}
 </style>
 </head>
 <body class="sem-js">
@@ -460,7 +497,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="escura">
     <div class="miolo analise analise-topo">
       <div class="medida rv">
-        <h2>Mais de 50 atividades,<br class="q"> cada uma com uma análise em vídeo</h2>
+        <h2>Mais de 50 atividades,<br class="q"> cada uma com uma <span class="nw">análise em vídeo</span></h2>
         <p class="lead">Nos pontos que mais importam da jornada, você grava um vídeo tocando e manda pela plataforma. Em até 3 dias úteis volta um vídeo personalizado, mostrando no ukulele o que está bom e o que precisa ajustar.</p>
         <p>Assim, um erro na mão da batida ou na mão dos acordes aparece cedo, antes de virar costume.</p>
       </div>
@@ -540,7 +577,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="escura" id="oferta">
     <div class="miolo oferta-grade">
       <div class="lote-texto medida rv">
-        <h2>Um ano de Clube,<br class="q"> com o curso de violão de presente</h2>
+        <h2>Um ano de Clube,<br class="q"> com o curso de <span class="nw">violão de presente</span></h2>
         <p class="lead">O plano Ouro do Clube sai por 12x de R$ 150 ou R$ 1.500 por ano.</p>
         <p>Para quem já é de casa, até 27/10, fica 12x de R$ 99 ou R$ 957,25 à vista. É o mesmo valor que o público vai pagar só pelo curso de violão na live do dia 22, e aqui ele vem de presente.</p>
       </div>
@@ -622,8 +659,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </footer>
 
 <div class="fixo cta-compra" id="fixo" aria-hidden="true">
-  <span class="p">Plano Ouro<b>12x R$ 99</b></span>
-  <button class="btn btn-compra" type="button" data-abre-checkout tabindex="-1">Quero voltar</button>
+  <div class="fixo-in">
+    <span class="p">Plano Ouro<b>12x R$ 99</b></span>
+    <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
+    <button class="btn btn-compra" type="button" data-abre-checkout tabindex="-1">Quero voltar para o Clube</button>
+  </div>
 </div>
 
 <dialog class="modal" id="checkout" aria-labelledby="ckt">
@@ -744,9 +784,9 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
   var reduz=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function mostra(i){
     if(i===atual)return; atual=i; var a=ACORDES[i];
-    chips.forEach(function(c){c.setAttribute('aria-pressed',c.dataset.i==i?'true':'false');});
     palco.classList.add('trocando');
     setTimeout(function(){
+      chips.forEach(function(c){c.setAttribute('aria-pressed',c.dataset.i==i?'true':'false');});
       nu.textContent=a.u; nv.textContent=a.v;
       leg.innerHTML='<strong>O desenho do '+a.u+' no ukulele é o do '+a.v+' no violão</strong>, nas quatro cordas mais finas. As cordas graves entram depois, no acorde completo.';
       palco.classList.remove('trocando');
