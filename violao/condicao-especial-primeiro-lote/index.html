@@ -362,6 +362,21 @@ h1,h2,h3{text-wrap:pretty}
 .marca-vf.no-palco{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:var(--indigo-profundo);padding:10px 18px 10px 12px;border-radius:16px;box-shadow:0 18px 30px -16px rgb(0 0 0 / .7),inset 0 0 0 1px rgb(255 255 255 / .1);white-space:nowrap}
 .cartao .marca-vf{background:var(--indigo-profundo);padding:9px 16px 9px 11px;border-radius:14px;margin:4px 0 16px}
 .cartao .marca-vf b{font-size:24px}.cartao .marca-vf img{width:32px}
+
+/* Quebra de título escolhida pelo sentido da frase: só vale no desktop; no celular a linha corre natural */
+br.q{display:none}
+@media (min-width:960px){br.q{display:inline}}
+/* Topo: foto centrada na altura do bloco de texto, disco inteiro à vista */
+@media (min-width:960px){
+  .hero-grade{align-items:center;padding-bottom:56px}
+  .hero-texto{padding-bottom:0}
+  .hero-foto{align-self:center}
+}
+
+.hero-foto.violao::before{bottom:2%}
+.hero-foto.violao>img{height:100%;bottom:9%}
+.marca-vf.no-palco{bottom:-6px}
+@media (max-width:959px){.hero-foto.violao{margin-bottom:28px}}
 </style>
 </head>
 <body class="sem-js">
@@ -389,7 +404,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <h1>
           <span class="h1-a">Você já tocou ukulele com a gente.</span>
           <span class="h1-b">Agora é a vez do&nbsp;violão,</span>
-          <span class="h1-c">sem pestana e com a primeira música no mesmo dia em que você começa.</span>
+          <span class="h1-c">sem pestana e com a primeira música<br class="q"> no mesmo dia em que você começa.</span>
         </h1>
       <p class="sub">No curso inédito de violão do Mateus, você vai do zero aos 4 acordes mágicos com <strong>10 encontros ao vivo</strong> e <strong>análise em vídeo das suas atividades</strong>. O acesso ao curso de violão é vitalício, e de presente você ganha <strong>12 meses de Clube do Ukulele</strong>, com 157 músicas para continuar tocando.</p>
       <div class="acoes">
@@ -408,7 +423,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section id="ponte">
     <div class="miolo">
       <div class="medida rv">
-        <h2>Muitos desenhos de acorde do violão <span class="marca">você já conhece do ukulele</span></h2>
+        <h2>Muitos desenhos de acorde do violão<br class="q"> <span class="marca">você já conhece do ukulele</span></h2>
         <p class="lead">Nas quatro cordas mais finas do violão, vários acordes têm exatamente o desenho de um acorde do ukulele, só que com outro nome. Escolha um acorde e veja.</p>
       </div>
       <div class="ponte-grade">
@@ -442,7 +457,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="suave">
     <div class="miolo">
       <div class="medida rv">
-        <h2>No primeiro dia você já toca uma música inteira</h2>
+        <h2>No primeiro dia você já toca<br class="q"> uma música inteira</h2>
         <p class="lead">As aulas são curtas, e a ordem foi pensada para você ouvir o violão soar logo. Postura e detalhes vêm depois, quando a primeira música já saiu.</p>
       </div>
       <div class="dia">
@@ -456,7 +471,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section>
     <div class="miolo lado">
       <div class="medida rv">
-        <h2>Do primeiro acorde aos 4 acordes mágicos</h2>
+        <h2>Do primeiro acorde<br class="q"> aos 4 acordes mágicos</h2>
         <p class="lead">Um módulo novo por semana a partir de 28/10. Cada um termina com música completa, e cada acorde novo entra numa música que você vai querer tocar.</p>
         <p class="sem-pestana"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>O curso inteiro é sem pestana.</p>
       </div>
@@ -474,7 +489,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="escura" id="encontros">
     <div class="miolo">
       <div class="medida rv">
-        <h2>10 encontros ao vivo, de outubro a janeiro</h2>
+        <h2>10 encontros ao vivo,<br class="q"> de outubro a janeiro</h2>
         <p class="lead">Toda quarta, às 19h30, a partir do encontro inaugural em 28/10. São encontros de acompanhamento, para tirar suas dúvidas e trazer coisas novas para a turma, como uma música ensinada ao vivo. Todos ficam gravados, e as gravações são suas para sempre.</p>
       </div>
       <div class="periodo rv" id="periodo">
@@ -503,7 +518,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="quente">
     <div class="miolo">
       <div class="medida rv">
-        <h2>E de presente, <span class="marca">12 meses de Clube do Ukulele</span></h2>
+        <h2>E de presente,<br class="q"> <span class="marca">12 meses de Clube do Ukulele</span></h2>
         <p class="lead">Para você seguir tocando ukulele enquanto aprende violão.</p>
       </div>
       <div class="presente">
@@ -539,7 +554,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="suave">
     <div class="miolo lado">
       <div class="medida rv">
-        <h2>O que acontece depois que você entra</h2>
+        <h2>O que acontece<br class="q"> depois que você entra</h2>
       </div>
       <ol class="agenda">
         <li class="rv"><span class="data">Na hora</span><p>Acesso à plataforma, as boas-vindas e o calendário completo.</p></li>
@@ -557,7 +572,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <img class="rv" src="../../academy/img/turma-collage.webp" alt="O Mateus no centro, cercado por fotos de alunos tocando ukulele em casa" width="900" height="1200" loading="lazy" decoding="async">
       <div class="medida rv">
         <span class="numero-grande">+6.000</span>
-        <h2>alunos aprenderam ukulele com a gente desde 2017</h2>
+        <h2>alunos aprenderam ukulele<br class="q"> com a gente desde 2017</h2>
         <p class="lead">Você é uma dessas pessoas. O jeito de ensinar que te fez tocar ukulele é o mesmo do curso de violão: aulas curtas, música desde o começo e alguém do seu lado, olhando o que você está fazendo e te guiando.</p>
       </div>
     </div>
@@ -566,7 +581,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="escura" id="oferta">
     <div class="miolo oferta-grade">
       <div class="lote-texto medida rv">
-        <h2>Primeiro lote, só para quem já é de casa</h2>
+        <h2>Primeiro lote,<br class="q"> só para quem já é de casa</h2>
         <p class="lead">No dia 22/10 as inscrições para o curso de violão abrem para todo mundo, por 12x de R$ 99 ou R$ 957,25 à vista.</p>
         <p>Quem já tocou com a gente entra no primeiro lote especial, com um preço que não vai aparecer na live. A condição vale até 27/10, às 23h59, porque no dia 28 a turma começa com o encontro inaugural.</p>
       </div>
@@ -615,7 +630,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   <section class="suave">
     <div class="miolo lado">
-      <h2 class="rv">Perguntas de quem já é de casa</h2>
+      <h2 class="rv">Perguntas de<br class="q"> quem já é de casa</h2>
       <div class="faq">
         <details><summary>Ainda não tenho violão. Posso entrar?</summary><p>Pode. O módulo de preparação, que entra na plataforma até 20/10, mostra qual violão comprar, quais acessórios valem a pena e como afinar. Assim você compra com calma antes do encontro inaugural, em 28/10.</p></details>
         <details><summary>Nunca toquei violão. O curso é para mim?</summary><p>É. O curso começa do zero, e quem já tocou ukulele ainda sai na frente, porque a mão dos acordes já conhece os desenhos.</p></details>
@@ -632,7 +647,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   <section class="escura fim">
     <div class="miolo rv">
-      <h2>Te vejo no encontro inaugural, dia 28/10</h2>
+      <h2>Te vejo no encontro inaugural,<br class="q"> dia 28/10</h2>
       <p>Até lá, você já recebe o acesso, a preparação e o calendário. E no primeiro dia de aula, a primeira música.</p>
       <div class="acoes cta-compra">
         <button class="btn btn-compra" type="button" data-abre-checkout data-final>Quero o primeiro lote</button>

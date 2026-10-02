@@ -375,6 +375,28 @@ h1,h2,h3{text-wrap:pretty}
 .quente .marca{box-shadow:none;color:var(--coral-forte)}
 .h1-c{max-width:none}
 @media (min-width:960px){.h1-c{max-width:none}}
+
+/* Quebra de título escolhida pelo sentido da frase: só vale no desktop; no celular a linha corre natural */
+br.q{display:none}
+@media (min-width:960px){br.q{display:inline}}
+/* Topo: foto centrada na altura do bloco de texto, disco inteiro à vista */
+@media (min-width:960px){
+  .hero-grade{align-items:center;padding-bottom:56px}
+  .hero-texto{padding-bottom:0}
+  .hero-foto{align-self:center}
+}
+
+.hero-foto.violao::before{bottom:2%}
+.hero-foto.violao>img{height:100%;bottom:9%}
+.marca-vf.no-palco{bottom:-6px}
+@media (max-width:959px){.hero-foto.violao{margin-bottom:28px}}
+
+/* Página B: a foto é de pessoa cortada na cintura, então ela fica apoiada na borda de baixo; o texto centra na altura dela */
+@media (min-width:960px){
+  .hero-grade{padding-bottom:0;align-items:stretch}
+  .hero-texto{justify-content:center;padding:24px 0 64px}
+  .hero-foto{align-self:end;margin-bottom:-1px}
+}
 </style>
 </head>
 <body class="sem-js">
@@ -400,8 +422,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <img class="escudo" src="../../img/logo/logo-clube-do-ukulele.svg" alt="Clube do Ukulele" width="150" height="98">
       <p class="selo-oferta">Só pra quem já é de casa!</p>
       <h1>
-          <span class="h1-b">Volte a tocar ukulele com a gente,</span>
-          <span class="h1-c">numa condição especial para quem já é de casa.</span>
+          <span class="h1-b">Volte a tocar ukulele<br class="q"> com a gente,</span>
+          <span class="h1-c">numa condição especial<br class="q"> para quem já é de casa.</span>
         </h1>
       <p class="sub">Durante um ano, você tem <strong>3 encontros ao vivo por semana</strong> com a gente no ukulele e <strong>mais de 50 atividades</strong> para enviar em vídeo, cada uma com uma análise personalizada. De presente, você ainda ganha acesso vitalício ao <strong>curso inédito de violão do Mateus</strong>, com 10 encontros ao vivo só de violão, para sair tocando suas primeiras músicas sem precisar de pestana!</p>
       <div class="acoes">
@@ -419,7 +441,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section id="semana">
     <div class="miolo">
       <div class="medida rv">
-        <h2>3 encontros ao vivo por semana, <span class="marca">com a gente do seu lado</span></h2>
+        <h2>3 encontros ao vivo por semana,<br class="q"> <span class="marca">com a gente do seu lado</span></h2>
         <p class="lead">Na terça e na quinta tem plantão de dúvidas: você confirma presença, conta onde travou e a gente resolve ao vivo, com o ukulele na mão. Na quinta à noite tem a Confraria, para tocar junto e conversar. E durante 3 meses, as quartas são do violão.</p>
       </div>
       <div class="semana rv" role="list" aria-label="A sua semana no Clube">
@@ -438,7 +460,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="escura">
     <div class="miolo analise analise-topo">
       <div class="medida rv">
-        <h2>Mais de 50 atividades, cada uma com uma análise em vídeo</h2>
+        <h2>Mais de 50 atividades,<br class="q"> cada uma com uma análise em vídeo</h2>
         <p class="lead">Nos pontos que mais importam da jornada, você grava um vídeo tocando e manda pela plataforma. Em até 3 dias úteis volta um vídeo personalizado, mostrando no ukulele o que está bom e o que precisa ajustar.</p>
         <p>Assim, um erro na mão da batida ou na mão dos acordes aparece cedo, antes de virar costume.</p>
       </div>
@@ -452,7 +474,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section>
     <div class="miolo">
       <div class="medida rv">
-        <h2>O caminho inteiro, para retomar de onde você quiser</h2>
+        <h2>O caminho inteiro,<br class="q"> para retomar de onde você quiser</h2>
         <p class="lead">A jornada do Clube tem 5 cursos e 209 aulas, do zero ao intermediário, e a biblioteca tem 157 músicas separadas por nível. Você escolhe por onde recomeçar, e nos plantões a gente te ajuda a achar o ponto certo.</p>
       </div>
       <div class="vitrine rv">
@@ -468,7 +490,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="quente" id="ponte">
     <div class="miolo">
       <div class="medida rv">
-        <h2>De presente, o curso inédito de violão do Mateus</h2>
+        <h2>De presente,<br class="q"> o curso inédito de violão do Mateus</h2>
         <p class="lead">Completo, do jeito que vai ser vendido na live do dia 22, com acesso vitalício. E quem toca ukulele começa com vantagem: nas quatro cordas mais finas do violão, vários acordes têm o desenho de um acorde do ukulele, só com outro nome.</p>
       </div>
       <div class="ponte-grade">
@@ -509,7 +531,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <img class="rv" src="../../academy/img/turma-collage.webp" alt="O Mateus no centro, cercado por fotos de alunos tocando ukulele em casa" width="900" height="1200" loading="lazy" decoding="async">
       <div class="medida rv">
         <span class="numero-grande">+6.000</span>
-        <h2>alunos aprenderam ukulele com a gente desde 2017</h2>
+        <h2>alunos aprenderam ukulele<br class="q"> com a gente desde 2017</h2>
         <p class="lead">Você já fez parte dessa turma. E voltar fica mais leve quando tem alguém do seu lado toda semana, olhando o que você está fazendo e te guiando.</p>
       </div>
     </div>
@@ -518,7 +540,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="escura" id="oferta">
     <div class="miolo oferta-grade">
       <div class="lote-texto medida rv">
-        <h2>Um ano de Clube, com o curso de violão de presente</h2>
+        <h2>Um ano de Clube,<br class="q"> com o curso de violão de presente</h2>
         <p class="lead">O plano Ouro do Clube sai por 12x de R$ 150 ou R$ 1.500 por ano.</p>
         <p>Para quem já é de casa, até 27/10, fica 12x de R$ 99 ou R$ 957,25 à vista. É o mesmo valor que o público vai pagar só pelo curso de violão na live do dia 22, e aqui ele vem de presente.</p>
       </div>
@@ -566,7 +588,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   <section class="suave">
     <div class="miolo lado">
-      <h2 class="rv">Perguntas de quem já é de casa</h2>
+      <h2 class="rv">Perguntas de<br class="q"> quem já é de casa</h2>
       <div class="faq">
         <details><summary>A assinatura renova sozinha?</summary><p>Renova, para você não perder o acesso sem querer. Antes da cobrança a gente te avisa, e a renovação mantém o mesmo valor com desconto desta condição de casa. Se não quiser renovar, é só falar com a nossa equipe no WhatsApp antes da data, sem multa e sem burocracia.</p></details>
         <details><summary>E se eu não gostar?</summary><p>Você tem 30 dias de garantia. Se nesse prazo achar que não é para você, pede o reembolso e recebe o valor inteiro de volta.</p></details>
