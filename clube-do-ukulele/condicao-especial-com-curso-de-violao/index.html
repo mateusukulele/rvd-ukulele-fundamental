@@ -482,6 +482,10 @@ br.q{display:none}
 
 /* Celular: "Volte a tocar ukulele" cabe numa linha, "com a gente," na seguinte */
 @media (max-width:959px){.h1-b{font-size:clamp(34px,9.6vw,46px)}}
+
+/* Botões e links de ação nunca quebram em duas linhas; se faltar espaço, o link desce */
+.btn,.link-claro{white-space:nowrap}
+.acoes{flex-wrap:wrap;row-gap:10px}
 </style>
 </head>
 <body class="sem-js">
@@ -510,9 +514,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <span class="h1-b">Volte a tocar ukulele<br class="q"> <span class="nw">com a gente,</span></span>
           <span class="h1-c">numa condição especial<br class="q"> <span class="nw">para quem já é de casa.</span></span>
         </h1>
-      <p class="sub">Durante um ano, você tem <strong>3 encontros ao vivo por semana</strong> com a gente no ukulele e <strong>mais de 50 atividades</strong> para enviar em vídeo, cada uma com uma análise personalizada. De presente, você ainda ganha acesso vitalício ao <strong>curso inédito de violão do Mateus</strong>, com 10 encontros ao vivo só de violão, para sair tocando suas primeiras músicas <span class="nw">sem precisar de pestana!</span></p>
+      <p class="sub">Durante um ano, você tem <strong>3 encontros ao vivo por semana</strong> com a gente no ukulele e <strong>mais de 50 atividades</strong> para enviar em vídeo, cada uma com uma análise personalizada. De presente, você ainda ganha acesso vitalício ao <strong>curso inédito de violão do Mateus</strong>, com 10 encontros ao vivo só de violão, para sair tocando suas primeiras músicas sem precisar&nbsp;de&nbsp;pestana!</p>
       <div class="acoes">
-          <a class="btn btn-compra" href="#oferta">Quero voltar para o Clube</a>
+          <a class="btn btn-compra" href="#oferta">Quero a condição de casa</a>
           <a class="link-claro" href="#semana">Antes, veja como fica a sua semana</a>
       </div>
     </div>
@@ -617,7 +621,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <div class="medida rv">
         <span class="numero-grande">+6.000</span>
         <h2>alunos aprenderam ukulele<br class="q"> com a gente desde 2017</h2>
-        <p class="lead">Você já fez parte dessa turma. E voltar fica mais leve quando tem alguém do seu lado toda semana, olhando o que você está fazendo e te guiando.</p>
+        <p class="lead">Você já tocou com essa turma. E tocar fica mais leve quando tem alguém do seu lado toda semana, olhando o que você está fazendo e te guiando.</p>
       </div>
     </div>
   </section>
@@ -650,10 +654,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
               <div><b data-relogio="m">--</b><span>min</span></div>
               <div><b data-relogio="s">--</b><span>seg</span></div>
             </div>
-            <button class="btn btn-compra btn-bloco" type="button" data-abre-checkout>Quero voltar para o Clube</button>
+            <button class="btn btn-compra btn-bloco" type="button" data-abre-checkout>Quero a condição de casa</button>
             <p class="miudo">Garantia de 30 dias. Pagamento seguro pela Hotmart.</p>
           </div>
-          <p class="msg-encerrada miudo">Esta condição terminou em 27/10. Fale com a gente no <a href="https://wa.me/553198585286">WhatsApp</a> para saber como voltar agora.</p>
+          <p class="msg-encerrada miudo">Esta condição terminou em 27/10. Fale com a gente no <a href="https://wa.me/553198585286">WhatsApp</a> para saber como entrar agora.</p>
         </div>
       </div>
     </div>
@@ -665,7 +669,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <img src="../../academy/img/selo-garantia.webp" alt="Selo de garantia de 30 dias" width="600" height="600" loading="lazy" decoding="async">
         <div>
           <h2>30 dias para decidir com calma</h2>
-          <p>Volte, vá aos plantões, mande a primeira atividade e comece o violão. Se em 30 dias você achar que não era o que esperava, pede o reembolso e recebe o valor inteiro de volta.</p>
+          <p>Entre, vá aos plantões, mande a primeira atividade e comece o violão. Se em 30 dias você achar que não era o que esperava, pede o reembolso e recebe o valor inteiro de volta.</p>
         </div>
       </div>
     </div>
@@ -678,7 +682,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <details><summary>A assinatura renova sozinha?</summary><p>Renova, para você não perder o acesso sem querer. Antes da cobrança a gente te avisa, e a renovação mantém o mesmo valor com desconto desta condição de casa. Se não quiser renovar, é só falar com a nossa equipe no WhatsApp antes da data, sem multa e sem burocracia.</p></details>
         <details><summary>E se eu não gostar?</summary><p>Você tem 30 dias de garantia. Se nesse prazo achar que não é para você, pede o reembolso e recebe o valor inteiro de volta.</p></details>
         <details><summary>Já fui aluno e mandava atividades. O que muda agora?</summary><p>As análises continuam, agora com mais de 50 atividades ao longo da jornada. O que chega junto são os encontros ao vivo: dois plantões de dúvidas por semana e a Confraria toda quinta.</p></details>
-        <details><summary>Fiquei muito tempo sem tocar. Consigo retomar?</summary><p>Consegue. Você escolhe por onde recomeçar na jornada, e nos plantões a gente te ajuda a achar o ponto certo para voltar.</p></details>
+        <details><summary>Fiquei muito tempo sem tocar. Consigo retomar?</summary><p>Consegue. Você escolhe por onde recomeçar na jornada, e nos plantões a gente te ajuda a achar o ponto certo para recomeçar.</p></details>
         <details><summary>Como funciona o plantão?</summary><p>É ao vivo, pelo Google Meet, na terça às 19h30 e na quinta às 10h. A agenda da semana abre no domingo às 10h, você confirma presença com a sua dúvida e é chamado na ordem de confirmação. A gravação fica para quem participou.</p></details>
         <details><summary>Preciso ter violão para aproveitar o presente?</summary><p>Só para o curso de violão. O módulo de preparação, que entra na plataforma até 20/10, mostra qual violão comprar. O acesso ao curso é vitalício, e os 10 encontros ao vivo acontecem de 28/10 a 27/01, com as gravações guardadas para sempre.</p></details>
         <details><summary>Já assino o Clube hoje. Como fica?</summary><p>Fale com a nossa equipe pelo WhatsApp: a gente olha o seu plano atual e explica como fica a troca para essa condição.</p></details>
@@ -690,12 +694,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   <section class="escura fim">
     <div class="miolo rv">
-      <h2>A gente te espera de volta</h2>
+      <h2>Te vejo no próximo plantão</h2>
       <p>Seu acesso sai na hora: a jornada, a biblioteca e a agenda dos plantões da semana. E a preparação do curso de violão sai até 20/10.</p>
       <div class="acoes cta-compra">
-        <button class="btn btn-compra" type="button" data-abre-checkout data-final>Quero voltar para o Clube</button>
+        <button class="btn btn-compra" type="button" data-abre-checkout data-final>Quero a condição de casa</button>
       </div>
-      <p><a class="link-wa" href="https://wa.me/553198585286?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20condi%C3%A7%C3%A3o%20do%20Clube.">Tenho uma dúvida antes de voltar</a></p>
+      <p><a class="link-wa" href="https://wa.me/553198585286?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20condi%C3%A7%C3%A3o%20do%20Clube.">Tenho uma dúvida antes de entrar</a></p>
     </div>
   </section>
 </main>
@@ -712,14 +716,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <span class="p fase-b">Plano Ouro<b>12x R$ 99</b></span>
     <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
     <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição de casa</a>
-    <button class="btn btn-compra fase-b" type="button" data-abre-checkout tabindex="-1">Quero voltar para o Clube</button>
+    <button class="btn btn-compra fase-b" type="button" data-abre-checkout tabindex="-1">Quero a condição de casa</button>
   </div>
 </div>
 
 <dialog class="modal" id="checkout" aria-labelledby="ckt">
   <div class="modal-bd">
     <button class="modal-x" type="button" data-fecha aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-    <h3 id="ckt">Falta pouco para voltar ao Clube</h3>
+    <h3 id="ckt">Falta pouco para garantir a condição de casa</h3>
     <p class="sub">Preencha para ir ao pagamento. Na Hotmart, seus dados já vão estar preenchidos.</p>
     <form id="lead" novalidate>
       <div class="campo"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Seu nome e sobrenome" required><p class="erro" id="e-nome">Escreva nome e sobrenome.</p></div>
