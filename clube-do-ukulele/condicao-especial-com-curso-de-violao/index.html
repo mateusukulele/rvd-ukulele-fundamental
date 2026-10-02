@@ -432,8 +432,8 @@ br.q{display:none}
 @media (min-width:960px){.oferta-grade h2,.analise h2{font-size:clamp(32px,3.2vw,42px)}}
 .fim h2{max-width:none}
 
-/* A foto passa um pouco da coluna para a direita, para a cabeça subir até a altura do título */
-@media (min-width:960px){.hero-foto{width:122%;max-width:560px;justify-self:start}}
+/* Foto centrada na própria coluna, apoiada na borda de baixo */
+@media (min-width:960px){.hero-foto{width:100%;max-width:500px;justify-self:center}}
 
 /* Barra fixa: duas fases. Antes do preço mostra o prazo e leva à oferta; depois mostra o preço e abre o pagamento */
 .fixo .fase-b{display:none}
@@ -441,6 +441,17 @@ br.q{display:none}
 .fixo.fase-preco .fase-b{display:inline-flex}
 .fixo .p.fase-b{flex-direction:column}
 @media (min-width:700px){.fixo .p.fase-b{flex-direction:row}}
+
+/* Semana no desktop: dia com encontro ganha largura, dia vazio fica estreito; horário em cima, nome embaixo */
+@media (min-width:900px){
+  .semana{grid-template-columns:minmax(0,.55fr) minmax(0,1.25fr) minmax(0,1.25fr) minmax(0,1.25fr) minmax(0,.55fr) minmax(0,.55fr) minmax(0,1fr);gap:10px}
+  .dia-sem{min-height:200px;padding:14px 10px;min-width:0}
+  .dia-sem .dn{text-align:center}
+  .dia-sem.vazio{background:rgb(255 255 255 / .45)}
+  .dia-sem .ev{font-size:14.5px;padding:10px 11px;overflow-wrap:anywhere}
+  .dia-sem .ev b{display:block;margin:0 0 2px;font-size:16px}
+  .dia-sem .ev-leve{font-size:13px}
+}
 </style>
 </head>
 <body class="sem-js">
@@ -466,8 +477,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <img class="escudo" src="../../img/logo/logo-clube-do-ukulele.svg" alt="Clube do Ukulele" width="150" height="98">
       <p class="selo-oferta">Só pra quem já é de casa!</p>
       <h1>
-          <span class="h1-b">Volte a tocar ukulele<br class="q"> com a gente,</span>
-          <span class="h1-c">numa condição especial<br class="q"> para quem já é de casa.</span>
+          <span class="h1-b">Volte a tocar ukulele<br class="q"> <span class="nw">com a gente,</span></span>
+          <span class="h1-c">numa condição especial<br class="q"> <span class="nw">para quem já é de casa.</span></span>
         </h1>
       <p class="sub">Durante um ano, você tem <strong>3 encontros ao vivo por semana</strong> com a gente no ukulele e <strong>mais de 50 atividades</strong> para enviar em vídeo, cada uma com uma análise personalizada. De presente, você ainda ganha acesso vitalício ao <strong>curso inédito de violão do Mateus</strong>, com 10 encontros ao vivo só de violão, para sair tocando suas primeiras músicas sem precisar de pestana!</p>
       <div class="acoes">
@@ -485,7 +496,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section id="semana">
     <div class="miolo">
       <div class="medida rv">
-        <h2>3 encontros ao vivo por semana,<br class="q"> <span class="marca">com a gente do seu lado</span></h2>
+        <h2>3 encontros ao vivo <span class="nw">por semana,</span><br class="q"> <span class="marca">com a gente <span class="nw">do seu lado</span></span></h2>
         <p class="lead">Na terça e na quinta tem plantão de dúvidas: você confirma presença, conta onde travou e a gente resolve ao vivo, com o ukulele na mão. Na quinta à noite tem a Confraria, para tocar junto e conversar. E durante 3 meses, as quartas são do violão.</p>
       </div>
       <div class="semana rv" role="list" aria-label="A sua semana no Clube">
