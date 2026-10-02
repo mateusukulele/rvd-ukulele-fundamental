@@ -416,6 +416,19 @@ br.q{display:none}
 
 @media (min-width:960px){.oferta-grade h2,.analise h2{font-size:clamp(32px,3.2vw,42px)}}
 .fim h2{max-width:none}
+
+/* Barra fixa: duas fases. Antes do preço mostra o prazo e leva à oferta; depois mostra o preço e abre o pagamento */
+.fixo .fase-b{display:none}
+.fixo.fase-preco .fase-a{display:none}
+.fixo.fase-preco .fase-b{display:inline-flex}
+.fixo .p.fase-b{flex-direction:column}
+@media (min-width:700px){.fixo .p.fase-b{flex-direction:row}}
+
+/* Botão de compra da página do violão: laranja vivo com texto petróleo profundo (7,3:1).
+   O teal do manual some sobre o petróleo; este laranja é mais claro e mais amarelo que o laranja do selo (#CD3701). */
+:root{--compra:#FF9A1F;--compra-hover:#FFB04D}
+.btn-compra{background:var(--compra);color:var(--indigo-profundo);box-shadow:0 18px 36px -16px rgb(255 154 31 / .75)}
+.btn-compra:hover{background:var(--compra-hover)}
 </style>
 </head>
 <body class="sem-js">
@@ -511,16 +524,16 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <div class="miolo lado">
       <div class="medida rv">
         <h2>Do primeiro acorde<br class="q"> aos <span class="nw">4 acordes mágicos</span></h2>
-        <p class="lead">Um módulo novo toda quarta, a partir de 28/10. Cada um termina com música completa, e o que já abriu continua lá para você rever quando quiser.</p>
+        <p class="lead">Desde o primeiro dia, acorde, batida e troca entram juntos, dentro da música que você está tocando. Um módulo novo abre toda quarta a partir de 28/10, e o que já abriu continua lá para você rever quando quiser.</p>
         <p class="sem-pestana"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>O curso inteiro é sem pestana.</p>
       </div>
       <ol class="trilha">
         <li class="rv prep"><span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="libera">Até 20/10, antes de a turma começar</span><h3>Preparação</h3><p>Qual violão comprar, os acessórios e a afinação, para chegar ao primeiro dia com tudo pronto.</p></div></li>
-        <li class="rv"><span class="n">1</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 28/10 (com o encontro inaugural)</span><h3>Sua primeira música</h3><p>Com um acorde só, para a mão da batida pegar o ritmo.</p></div></li>
-        <li class="rv"><span class="n">2</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 04/11</span><h3>Acordes de dois dedos</h3><p>Pares de acordes simplificados, montados com até dois dedos.</p></div></li>
-        <li class="rv"><span class="n">3</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 11/11</span><h3>Acordes de três dedos</h3><p>Os acordes ganham um dedo a mais, e entram músicas novas.</p></div></li>
-        <li class="rv"><span class="n">4</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 18/11</span><h3>Os acordes completos</h3><p>Do jeito que estão escritos nas cifras das músicas.</p></div></li>
-        <li class="rv"><span class="n">5</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 25/11</span><h3>Músicas de três acordes</h3><p>Três acordes por música, que é como muita música popular é escrita.</p></div></li>
+        <li class="rv"><span class="n">1</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 28/10 (com o encontro inaugural)</span><h3>Sua primeira música inteira</h3><p>Com um acorde só, para a mão da batida pegar o ritmo enquanto você já está tocando.</p></div></li>
+        <li class="rv"><span class="n">2</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 04/11</span><h3>Músicas com acordes de dois dedos</h3><p>Você troca entre dois acordes simples dentro da própria música, e a troca fica natural de tanto tocar.</p></div></li>
+        <li class="rv"><span class="n">3</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 11/11</span><h3>Músicas com acordes de três dedos</h3><p>A cada música entra um acorde com um dedo a mais, e a batida vai ganhando movimento.</p></div></li>
+        <li class="rv"><span class="n">4</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 18/11</span><h3>As músicas do jeito que estão nas cifras</h3><p>Você passa a tocar os acordes completos, iguais aos que aparecem nas cifras da internet.</p></div></li>
+        <li class="rv"><span class="n">5</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 25/11</span><h3>Músicas de três acordes</h3><p>Três acordes na mesma música, que é como muita música popular foi escrita.</p></div></li>
         <li class="rv"><span class="n">6</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 02/12</span><h3>Os 4 acordes mágicos e centenas de músicas</h3><p>G, D, Em e C, o capotraste e as mesmas músicas em outros tons.</p></div></li>
       </ol>
     </div>
@@ -704,9 +717,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <div class="fixo cta-compra" id="fixo" aria-hidden="true">
   <div class="fixo-in">
-    <span class="p">Primeiro lote<b>12x R$ 69</b></span>
+    <span class="p fase-a">Condição de casa<b data-relogio="curto">--</b></span>
+    <span class="p fase-b">Primeiro lote<b>12x R$ 69</b></span>
     <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
-    <button class="btn btn-compra" type="button" data-abre-checkout tabindex="-1">Quero o primeiro lote</button>
+    <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição de casa</a>
+    <button class="btn btn-compra fase-b" type="button" data-abre-checkout tabindex="-1">Quero o primeiro lote</button>
   </div>
 </div>
 
@@ -926,17 +941,28 @@ document.getElementById('lead').addEventListener('submit',function(e){
   setTimeout(function(){location.href=url;},400);
 });
 
-/* CTA fixo: aparece depois que a pessoa passou do botão do cartão de preço, some no fechamento */
+/* Barra fixa inteligente: aparece quando o botão do topo sai da tela.
+   Antes do preço, leva até a condição; depois do cartão de preço, abre o pagamento.
+   Some enquanto o botão do cartão ou o do fechamento estão à vista. */
 (function(){
-  var bar=document.getElementById('fixo'), alvo=document.querySelector('.cartao [data-abre-checkout]'), fim=document.querySelector('[data-final]');
-  var btn=bar.querySelector('button'), t=false;
-  function upd(){ t=false;
-    var passou=alvo.getBoundingClientRect().bottom<0;
-    var noFim=fim&&fim.getBoundingClientRect().top<window.innerHeight;
-    var on=passou&&!noFim&&!document.body.classList.contains('encerrada');
-    if(on!==bar.classList.contains('mostra')){bar.classList.toggle('mostra',on);bar.setAttribute('aria-hidden',on?'false':'true');btn.tabIndex=on?0:-1;document.documentElement.style.setProperty('--sticky-h',on?'76px':'0px');}
+  var bar=document.getElementById('fixo'), topo=document.querySelector('.hero .btn-compra'),
+      oferta=document.getElementById('oferta'), alvo=document.querySelector('.cartao [data-abre-checkout]'),
+      fim=document.querySelector('[data-final]');
+  var acoes=bar.querySelectorAll('a,button');
+  function visivel(el){ if(!el) return false; var r=el.getBoundingClientRect(); return r.bottom>0&&r.top<innerHeight; }
+  function upd(){
+    var passouTopo=topo.getBoundingClientRect().bottom<0;
+    var on=passouTopo&&!visivel(alvo)&&!visivel(fim)&&!document.body.classList.contains('encerrada');
+    bar.classList.toggle('fase-preco',oferta.getBoundingClientRect().top<innerHeight*.5);
+    if(on!==bar.classList.contains('mostra')){
+      bar.classList.toggle('mostra',on); bar.setAttribute('aria-hidden',on?'false':'true');
+      acoes.forEach(function(a){a.tabIndex=on?0:-1;});
+      document.documentElement.style.setProperty('--sticky-h',on?'76px':'0px');
+    }
   }
-  addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(upd);}},{passive:true}); upd();
+  /* upd é barato (cinco medições), então roda direto na rolagem */
+  addEventListener('scroll',upd,{passive:true});
+  addEventListener('resize',upd); upd();
 })();
 </script>
 

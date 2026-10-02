@@ -434,6 +434,13 @@ br.q{display:none}
 
 /* A foto passa um pouco da coluna para a direita, para a cabeça subir até a altura do título */
 @media (min-width:960px){.hero-foto{width:122%;max-width:560px;justify-self:start}}
+
+/* Barra fixa: duas fases. Antes do preço mostra o prazo e leva à oferta; depois mostra o preço e abre o pagamento */
+.fixo .fase-b{display:none}
+.fixo.fase-preco .fase-a{display:none}
+.fixo.fase-preco .fase-b{display:inline-flex}
+.fixo .p.fase-b{flex-direction:column}
+@media (min-width:700px){.fixo .p.fase-b{flex-direction:row}}
 </style>
 </head>
 <body class="sem-js">
@@ -660,9 +667,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <div class="fixo cta-compra" id="fixo" aria-hidden="true">
   <div class="fixo-in">
-    <span class="p">Plano Ouro<b>12x R$ 99</b></span>
+    <span class="p fase-a">Condição de casa<b data-relogio="curto">--</b></span>
+    <span class="p fase-b">Plano Ouro<b>12x R$ 99</b></span>
     <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
-    <button class="btn btn-compra" type="button" data-abre-checkout tabindex="-1">Quero voltar para o Clube</button>
+    <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição de casa</a>
+    <button class="btn btn-compra fase-b" type="button" data-abre-checkout tabindex="-1">Quero voltar para o Clube</button>
   </div>
 </div>
 
@@ -882,17 +891,28 @@ document.getElementById('lead').addEventListener('submit',function(e){
   setTimeout(function(){location.href=url;},400);
 });
 
-/* CTA fixo: aparece depois que a pessoa passou do botão do cartão de preço, some no fechamento */
+/* Barra fixa inteligente: aparece quando o botão do topo sai da tela.
+   Antes do preço, leva até a condição; depois do cartão de preço, abre o pagamento.
+   Some enquanto o botão do cartão ou o do fechamento estão à vista. */
 (function(){
-  var bar=document.getElementById('fixo'), alvo=document.querySelector('.cartao [data-abre-checkout]'), fim=document.querySelector('[data-final]');
-  var btn=bar.querySelector('button'), t=false;
-  function upd(){ t=false;
-    var passou=alvo.getBoundingClientRect().bottom<0;
-    var noFim=fim&&fim.getBoundingClientRect().top<window.innerHeight;
-    var on=passou&&!noFim&&!document.body.classList.contains('encerrada');
-    if(on!==bar.classList.contains('mostra')){bar.classList.toggle('mostra',on);bar.setAttribute('aria-hidden',on?'false':'true');btn.tabIndex=on?0:-1;document.documentElement.style.setProperty('--sticky-h',on?'76px':'0px');}
+  var bar=document.getElementById('fixo'), topo=document.querySelector('.hero .btn-compra'),
+      oferta=document.getElementById('oferta'), alvo=document.querySelector('.cartao [data-abre-checkout]'),
+      fim=document.querySelector('[data-final]');
+  var acoes=bar.querySelectorAll('a,button');
+  function visivel(el){ if(!el) return false; var r=el.getBoundingClientRect(); return r.bottom>0&&r.top<innerHeight; }
+  function upd(){
+    var passouTopo=topo.getBoundingClientRect().bottom<0;
+    var on=passouTopo&&!visivel(alvo)&&!visivel(fim)&&!document.body.classList.contains('encerrada');
+    bar.classList.toggle('fase-preco',oferta.getBoundingClientRect().top<innerHeight*.5);
+    if(on!==bar.classList.contains('mostra')){
+      bar.classList.toggle('mostra',on); bar.setAttribute('aria-hidden',on?'false':'true');
+      acoes.forEach(function(a){a.tabIndex=on?0:-1;});
+      document.documentElement.style.setProperty('--sticky-h',on?'76px':'0px');
+    }
   }
-  addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(upd);}},{passive:true}); upd();
+  /* upd é barato (cinco medições), então roda direto na rolagem */
+  addEventListener('scroll',upd,{passive:true});
+  addEventListener('resize',upd); upd();
 })();
 </script>
 
