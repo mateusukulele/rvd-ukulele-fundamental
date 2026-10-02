@@ -93,7 +93,7 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 /* Foto num palco: disco índigo com aro coral, a pessoa de pé sobre a borda de baixo */
 .hero-foto{position:relative;width:min(84vw,400px);aspect-ratio:4/5;margin-top:26px}
 .hero-foto::before{content:"";position:absolute;left:4%;right:4%;bottom:-8%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 35%,var(--indigo) 0%,#3A2A5C 60%,var(--indigo-profundo) 100%);box-shadow:inset 0 0 0 2px rgb(232 122 133 / .55),0 0 0 14px rgb(232 122 133 / .07)}
-.hero-foto img{position:absolute;inset:auto 0 0 0;width:100%;height:auto;filter:drop-shadow(0 26px 30px rgb(0 0 0 / .35))}
+.hero-foto>img{position:absolute;inset:auto 0 0 0;width:100%;height:auto;filter:drop-shadow(0 26px 30px rgb(0 0 0 / .35))}
 .ph{position:absolute;left:10%;right:10%;bottom:0;top:12%;display:grid;place-items:center;text-align:center;border:2px dashed rgb(220 214 230 / .6);border-bottom:0;border-radius:200px 200px 0 0;padding:24px;color:var(--sobre-escuro);font-size:14px;line-height:1.5}
 .ph b{display:block;color:#fff;font-size:15px;margin-bottom:6px}
 .ph code{font-size:12px;color:#fff;background:rgb(255 255 255 / .1);padding:2px 6px;border-radius:5px;word-break:break-all}
@@ -319,7 +319,7 @@ dialog.modal[open]{animation:sobe .4s var(--ease)}
 
 /* Página B: foto real, semana, vitrine */
 /* A foto original termina num corte reto à direita: o degradê some com a quina */
-.hero-foto img{-webkit-mask-image:linear-gradient(to left,transparent 0,#000 14%);mask-image:linear-gradient(to left,transparent 0,#000 14%)}
+.hero-foto>img{-webkit-mask-image:linear-gradient(to left,transparent 0,#000 14%);mask-image:linear-gradient(to left,transparent 0,#000 14%)}
 .semana{display:grid;gap:8px;margin-top:36px}
 .dia-sem{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;background:var(--card);border-radius:16px;padding:10px 12px;min-height:56px;box-shadow:0 10px 28px -24px rgb(31 26 43 / .6)}
 .dia-sem .dn{font-weight:800;color:var(--indigo);font-size:15px;text-transform:uppercase;letter-spacing:.8px}
@@ -365,6 +365,16 @@ dialog.modal[open]{animation:sobe .4s var(--ease)}
   .hero .sub{font-size:16.5px;line-height:1.6;margin-top:14px}
   .acoes{margin-top:20px;gap:6px}
 }
+
+/* Títulos: quebra natural, sem dividir em linhas iguais; a promessa leva a cor coral do manual */
+h1,h2,h3{text-wrap:pretty}
+.medida{max-width:880px}
+.medida>p,.medida .lead{max-width:680px}
+.marca{box-shadow:none;color:var(--coral-forte)}
+.escura .marca{box-shadow:none;color:var(--coral)}
+.quente .marca{box-shadow:none;color:var(--coral-forte)}
+.h1-c{max-width:none}
+@media (min-width:960px){.h1-c{max-width:none}}
 </style>
 </head>
 <body class="sem-js">
@@ -459,7 +469,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <div class="miolo">
       <div class="medida rv">
         <h2>De presente, o curso inédito de violão do Mateus</h2>
-        <p class="lead">Completo, do jeito que vai ser vendido na live do dia 22, com acesso vitalício. E quem toca ukulele começa com vantagem: o desenho de cada acorde do ukulele serve nas quatro cordas mais finas do violão, só que com outro nome.</p>
+        <p class="lead">Completo, do jeito que vai ser vendido na live do dia 22, com acesso vitalício. E quem toca ukulele começa com vantagem: nas quatro cordas mais finas do violão, vários acordes têm o desenho de um acorde do ukulele, só com outro nome.</p>
       </div>
       <div class="ponte-grade">
         <div class="rv">
@@ -468,13 +478,17 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
             <button class="chip" type="button" data-i="1" aria-pressed="false">Am</button>
             <button class="chip" type="button" data-i="2" aria-pressed="false">F</button>
             <button class="chip" type="button" data-i="3" aria-pressed="false">G</button>
+            <button class="chip" type="button" data-i="4" aria-pressed="false">Dm</button>
+            <button class="chip" type="button" data-i="5" aria-pressed="false">D</button>
+            <button class="chip" type="button" data-i="6" aria-pressed="false">A</button>
+            <button class="chip" type="button" data-i="7" aria-pressed="false">G7</button>
           </div>
           <div class="palco" id="palco" aria-live="polite">
             <div class="diag ukulele"><span class="inst">Ukulele</span><span class="nome" data-nome="uke">C</span><svg id="svg-uke" viewBox="0 0 120 170" aria-hidden="true"></svg></div>
             <div class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             <div class="diag violao"><span class="inst">Violão</span><span class="nome" data-nome="vio">G</span><svg id="svg-vio" viewBox="0 0 160 170" aria-hidden="true"></svg></div>
           </div>
-          <p class="legenda-ponte" id="legenda-ponte"><strong>O C do ukulele vira G no violão.</strong> As duas cordas mais grossas ficam de fora.</p>
+          <p class="legenda-ponte" id="legenda-ponte"><strong>O desenho do C no ukulele é o do G no violão</strong>, nas quatro cordas mais finas. No acorde completo, as cordas graves entram depois.</p>
         </div>
         <div class="bonus rv">
           <h3>O que vem no curso de violão</h3>
@@ -661,11 +675,17 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
 
 /* Ponte de acordes: o desenho do ukulele nas 4 cordas mais finas do violão */
 (function(){
+  /* Casas nas cordas G C E A do ukulele. No violão o mesmo desenho cai nas cordas
+     D G B E, que é exatamente a parte de cima do acorde completo de violão. */
   var ACORDES=[
     {u:'C',v:'G',casas:[0,0,0,3]},
     {u:'Am',v:'Em',casas:[2,0,0,0]},
     {u:'F',v:'C',casas:[2,0,1,0]},
-    {u:'G',v:'D',casas:[0,2,3,2]}
+    {u:'G',v:'D',casas:[0,2,3,2]},
+    {u:'Dm',v:'Am',casas:[2,2,1,0]},
+    {u:'D',v:'A',casas:[2,2,2,0]},
+    {u:'A',v:'E',casas:[2,1,0,0]},
+    {u:'G7',v:'D7',casas:[0,2,1,2]}
   ];
   var NS='http://www.w3.org/2000/svg';
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
@@ -706,7 +726,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
     palco.classList.add('trocando');
     setTimeout(function(){
       nu.textContent=a.u; nv.textContent=a.v;
-      leg.innerHTML='<strong>O '+a.u+' do ukulele vira '+a.v+' no violão.</strong> As duas cordas mais grossas ficam de fora.';
+      leg.innerHTML='<strong>O desenho do '+a.u+' no ukulele é o do '+a.v+' no violão</strong>, nas quatro cordas mais finas. No acorde completo, as cordas graves entram depois.';
       palco.classList.remove('trocando');
       pu(a.casas); pv(a.casas);
     },reduz?0:180);
@@ -716,7 +736,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
   /* Gira sozinho enquanto ninguém mexe, só quando a ponte está na tela */
   if(!reduz && 'IntersectionObserver' in window){
     var io=new IntersectionObserver(function(e){
-      if(e[0].isIntersecting && auto===null && atual!==-2){auto=setInterval(function(){mostra((atual+1)%4);},2600);}
+      if(e[0].isIntersecting && auto===null && atual!==-2){auto=setInterval(function(){mostra((atual+1)%ACORDES.length);},2600);}
       else if(!e[0].isIntersecting && auto){clearInterval(auto);auto=null;}
     },{threshold:.5});
     io.observe(palco);

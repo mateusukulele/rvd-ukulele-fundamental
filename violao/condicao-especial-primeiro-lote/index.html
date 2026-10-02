@@ -10,19 +10,19 @@
 <meta property="og:title" content="Só pra quem já é de casa: o curso de violão do Mateus">
 <meta property="og:description" content="Primeiro lote especial até 27/10 para quem já tocou ukulele com a gente.">
 <meta property="og:image" content="https://cursos.comotocarukulele.com/academy/img/og-ukulele.webp">
-<meta name="theme-color" content="#2D124E">
+<meta name="theme-color" content="#092735">
 <link rel="icon" type="image/svg+xml" href="../../img/favicon-mini-ukulele.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --indigo:#443468;--indigo-profundo:#2D124E;--indigo-hover:#3F3060;
+  --indigo:#1D5468;--indigo-profundo:#092735;--indigo-hover:#174556;--estrutura-suave:#E2EDF0;
   --coral:#E87A85;--coral-forte:#B4404F;--coral-suave:#FBEAEC;--coral-texto:#4D1A20;
   --teal-acao:#12A18A;--teal-acao-hover:#25A993;
   --laranja:#CD3701;--verde:#25845A;
   --texto:#1F1A2B;--texto-suave:#5C5A70;--fundo:#F5F4F7;--superficie:#ECEAF1;--card:#FFFFFF;
-  --neutro-medio:#8E8AA3;--sobre-escuro:#DCD6E6;
+  --neutro-medio:#8E8AA3;--sobre-escuro:#D3E3E8;
   --fonte-titulo:Anton,"Montserrat",system-ui,sans-serif;
   --fonte-corpo:"Montserrat",system-ui,-apple-system,sans-serif;
   --sombra-card:0 20px 44px -30px rgb(31 26 43 / .45);
@@ -92,11 +92,8 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 .link-claro:hover{text-decoration-color:var(--coral)}
 /* Foto num palco: disco índigo com aro coral, a pessoa de pé sobre a borda de baixo */
 .hero-foto{position:relative;width:min(84vw,400px);aspect-ratio:4/5;margin-top:26px}
-.hero-foto::before{content:"";position:absolute;left:4%;right:4%;bottom:-8%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 35%,var(--indigo) 0%,#3A2A5C 60%,var(--indigo-profundo) 100%);box-shadow:inset 0 0 0 2px rgb(232 122 133 / .55),0 0 0 14px rgb(232 122 133 / .07)}
-.hero-foto img{position:absolute;inset:auto 0 0 0;width:100%;height:auto;filter:drop-shadow(0 26px 30px rgb(0 0 0 / .35))}
-.ph{position:absolute;left:10%;right:10%;bottom:0;top:12%;display:grid;place-items:center;text-align:center;border:2px dashed rgb(220 214 230 / .6);border-bottom:0;border-radius:200px 200px 0 0;padding:24px;color:var(--sobre-escuro);font-size:14px;line-height:1.5}
-.ph b{display:block;color:#fff;font-size:15px;margin-bottom:6px}
-.ph code{font-size:12px;color:#fff;background:rgb(255 255 255 / .1);padding:2px 6px;border-radius:5px;word-break:break-all}
+.hero-foto::before{content:"";position:absolute;left:4%;right:4%;bottom:-8%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 35%,var(--indigo) 0%,#123B4C 60%,var(--indigo-profundo) 100%);box-shadow:inset 0 0 0 2px rgb(232 122 133 / .55),0 0 0 14px rgb(232 122 133 / .07)}
+.hero-foto>img{position:absolute;inset:auto 0 0 0;width:100%;height:auto;filter:drop-shadow(0 26px 30px rgb(0 0 0 / .35))}
 /* Entrada do hero: um momento só, em cascata */
 .hero-texto>*{animation:entra .8s var(--ease) both}
 .hero-texto>*:nth-child(2){animation-delay:.08s}.hero-texto>*:nth-child(3){animation-delay:.16s}.hero-texto>*:nth-child(4){animation-delay:.26s}.hero-texto>*:nth-child(5){animation-delay:.34s}
@@ -304,12 +301,12 @@ dialog.modal[open]{animation:sobe .4s var(--ease)}
 .campo{margin-bottom:14px}
 .campo label,.campo .rotulo{display:block;font-weight:700;font-size:15px;margin-bottom:6px;color:var(--texto)}
 .campo input[type=text],.campo input[type=email],.campo input[type=tel],.campo select{width:100%;min-height:50px;border:2px solid #D3CFDD;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:var(--texto);background:#fff}
-.campo input:focus,.campo select:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgb(68 52 104 / .18)}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgb(29 84 104 / .2)}
 .campo input::placeholder{color:#77748A}
 .fone{display:grid;grid-template-columns:118px 1fr;gap:8px}
 .radios{display:flex;gap:10px}
 .radios label{flex:1;display:flex;align-items:center;gap:10px;min-height:50px;border:2px solid #D3CFDD;border-radius:12px;padding:0 14px;font-weight:600;cursor:pointer;margin:0}
-.radios label:has(input:checked){border-color:var(--indigo);background:#F1EEF7}
+.radios label:has(input:checked){border-color:var(--indigo);background:var(--estrutura-suave)}
 .radios input{width:20px;height:20px;accent-color:var(--indigo);margin:0}
 .erro{display:none;color:#B83A2E;font-size:14px;margin:6px 0 0;font-weight:600}
 .erro.on,.dica.on{display:block}
@@ -340,6 +337,31 @@ dialog.modal[open]{animation:sobe .4s var(--ease)}
   .hero .sub{font-size:16.5px;line-height:1.6;margin-top:14px}
   .acoes{margin-top:20px;gap:6px}
 }
+
+/* Títulos: quebra natural, sem dividir em linhas iguais; a promessa leva a cor coral do manual */
+h1,h2,h3{text-wrap:pretty}
+.medida{max-width:880px}
+.medida>p,.medida .lead{max-width:680px}
+.marca{box-shadow:none;color:var(--coral-forte)}
+.escura .marca{box-shadow:none;color:var(--coral)}
+.quente .marca{box-shadow:none;color:var(--coral-forte)}
+.h1-c{max-width:none}
+@media (min-width:960px){.h1-c{max-width:none}}
+
+/* Página do violão: paleta petróleo do manual do Clube do Violão. O coral só vira texto sobre o petróleo profundo */
+.hero{background:radial-gradient(60% 55% at 88% 18%,rgb(29 84 104 / .85),transparent 72%),radial-gradient(90% 60% at 50% 100%,rgb(232 122 133 / .12),transparent 70%),var(--indigo-profundo)}
+.escura{background:radial-gradient(55% 45% at 100% 0%,rgb(29 84 104 / .7),transparent 72%),var(--indigo-profundo)}
+.passo.vitoria{background:var(--indigo-profundo)}
+.hero-foto.violao::before{background:radial-gradient(circle at 50% 35%,#1D5468 0%,#123B4C 60%,var(--indigo-profundo) 100%)}
+.hero-foto.violao>img{position:absolute;left:50%;right:auto;bottom:0;width:auto;height:112%;transform:translateX(-50%);filter:drop-shadow(0 30px 34px rgb(0 0 0 / .45))}
+/* Marca do curso: ícone do violão com raios + nome em Anton */
+.marca-vf{display:inline-flex;align-items:center;gap:10px;color:#fff;line-height:1}
+.marca-vf img{width:40px;height:auto;flex:none}
+.marca-vf b{display:block;font-family:var(--fonte-titulo);font-weight:400;font-size:30px;letter-spacing:.6px;text-transform:uppercase;line-height:1.12}
+.marca-vf small{display:block;font-weight:800;font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--coral);margin-top:3px}
+.marca-vf.no-palco{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:var(--indigo-profundo);padding:10px 18px 10px 12px;border-radius:16px;box-shadow:0 18px 30px -16px rgb(0 0 0 / .7),inset 0 0 0 1px rgb(255 255 255 / .1);white-space:nowrap}
+.cartao .marca-vf{background:var(--indigo-profundo);padding:9px 16px 9px 11px;border-radius:14px;margin:4px 0 16px}
+.cartao .marca-vf b{font-size:24px}.cartao .marca-vf img{width:32px}
 </style>
 </head>
 <body class="sem-js">
@@ -366,7 +388,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <p class="selo-oferta">Só pra quem já é de casa!</p>
       <h1>
           <span class="h1-a">Você já tocou ukulele com a gente.</span>
-          <span class="h1-b">Agora é a vez do violão,</span>
+          <span class="h1-b">Agora é a vez do&nbsp;violão,</span>
           <span class="h1-c">sem pestana e com a primeira música no mesmo dia em que você começa.</span>
         </h1>
       <p class="sub">No curso inédito de violão do Mateus, você vai do zero aos 4 acordes mágicos com <strong>10 encontros ao vivo</strong> e <strong>análise em vídeo das suas atividades</strong>. O acesso ao curso de violão é vitalício, e de presente você ganha <strong>12 meses de Clube do Ukulele</strong>, com 157 músicas para continuar tocando.</p>
@@ -375,9 +397,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <a class="link-claro" href="#ponte">Antes, veja o que você já sabe</a>
       </div>
     </div>
-    <div class="hero-foto">
-      <!-- TROCAR o .ph por: <img src="img/mateus-violao-hero.webp" alt="Mateus sorrindo com um violão nos braços" width="1000" height="1250" fetchpriority="high"> (prompt 1 do PROMPTS-GEMINI-PAGINAS.md, fundo removido) -->
-        <div class="ph" role="img" aria-label="Espaço da foto do Mateus com violão"><div><b>FOTO: Mateus com violão</b>Prompt 1 do arquivo de prompts.<br><code>img/mateus-violao-hero.webp</code></div></div>
+    <div class="hero-foto violao">
+      <img src="img/violao-hero.webp" alt="Um violão de cordas de náilon encostado na parede" width="477" height="1100" fetchpriority="high">
+      <div class="marca-vf no-palco"><img src="img/marca-violao-icone.svg" alt="" width="40" height="49"><span><b>Violão</b><small>Fundamental</small></span></div>
     </div>
   </div>
 </header>
@@ -386,8 +408,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section id="ponte">
     <div class="miolo">
       <div class="medida rv">
-        <h2>Os acordes que você aprendeu no ukulele <span class="marca">já funcionam no violão</span></h2>
-        <p class="lead">O desenho de cada acorde do ukulele serve nas quatro cordas mais finas do violão, só que ele ganha outro nome. Escolha um acorde e veja.</p>
+        <h2>Muitos desenhos de acorde do violão <span class="marca">você já conhece do ukulele</span></h2>
+        <p class="lead">Nas quatro cordas mais finas do violão, vários acordes têm exatamente o desenho de um acorde do ukulele. Só muda o nome. Escolha um e veja.</p>
       </div>
       <div class="ponte-grade">
         <div class="rv">
@@ -396,18 +418,22 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
             <button class="chip" type="button" data-i="1" aria-pressed="false">Am</button>
             <button class="chip" type="button" data-i="2" aria-pressed="false">F</button>
             <button class="chip" type="button" data-i="3" aria-pressed="false">G</button>
+            <button class="chip" type="button" data-i="4" aria-pressed="false">Dm</button>
+            <button class="chip" type="button" data-i="5" aria-pressed="false">D</button>
+            <button class="chip" type="button" data-i="6" aria-pressed="false">A</button>
+            <button class="chip" type="button" data-i="7" aria-pressed="false">G7</button>
           </div>
           <div class="palco" id="palco" aria-live="polite">
             <div class="diag ukulele"><span class="inst">Ukulele</span><span class="nome" data-nome="uke">C</span><svg id="svg-uke" viewBox="0 0 120 170" aria-hidden="true"></svg></div>
             <div class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             <div class="diag violao"><span class="inst">Violão</span><span class="nome" data-nome="vio">G</span><svg id="svg-vio" viewBox="0 0 160 170" aria-hidden="true"></svg></div>
           </div>
-          <p class="legenda-ponte" id="legenda-ponte"><strong>O C do ukulele vira G no violão.</strong> As duas cordas mais grossas ficam de fora.</p>
+          <p class="legenda-ponte" id="legenda-ponte"><strong>O desenho do C no ukulele é o do G no violão</strong>, nas quatro cordas mais finas. No acorde completo, as cordas graves entram depois.</p>
         </div>
         <div class="medida rv">
-          <h3>Os 4 acordes mágicos do ukulele viram os 4 acordes mágicos do violão</h3>
-          <p>C, Am, F e G no ukulele são G, Em, C e D no violão. Por isso quem já tocou ukulele começa o violão com vantagem: a mão dos acordes já conhece os desenhos.</p>
-          <p>No curso, o módulo bônus “Do Ukulele ao Violão” mostra essa passagem acorde por acorde, e as aulas levam você até os acordes completos, com todas as cordas.</p>
+          <h3>Você começa o violão com vantagem</h3>
+          <p>O curso é para quem começa do zero, mas quem tocou ukulele já tem esses desenhos na memória dos dedos. O D, o A, o Am e o E do violão, por exemplo, têm nas cordas finas o mesmo desenho do G, do D, do Dm e do A do ukulele.</p>
+          <p>O módulo bônus “Do Ukulele ao Violão” mostra essa passagem acorde por acorde, e as aulas levam você até os acordes completos, com as cordas graves.</p>
         </div>
       </div>
     </div>
@@ -546,6 +572,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       </div>
       <div class="cartao rv">
         <span class="etiqueta">Primeiro lote</span>
+        <div class="marca-vf"><img src="img/marca-violao-icone.svg" alt="" width="32" height="40"><span><b>Violão</b><small>Fundamental</small></span></div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Curso inédito de violão do Mateus, com acesso vitalício</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>10 encontros ao vivo às quartas, gravados</span></li>
@@ -617,7 +644,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <footer class="rodape-pg">
   <img src="../../img/logo/logo-horizontal-negativa.svg" alt="Clube do Ukulele" width="160" height="53" loading="lazy">
-  <p>Clube do Ukulele · comotocarukulele.com</p>
+  <p>Violão Fundamental, um curso do Clube do Ukulele · comotocarukulele.com</p>
 </footer>
 
 <div class="fixo cta-compra" id="fixo" aria-hidden="true">
@@ -696,18 +723,24 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
 
 /* Ponte de acordes: o desenho do ukulele nas 4 cordas mais finas do violão */
 (function(){
+  /* Casas nas cordas G C E A do ukulele. No violão o mesmo desenho cai nas cordas
+     D G B E, que é exatamente a parte de cima do acorde completo de violão. */
   var ACORDES=[
     {u:'C',v:'G',casas:[0,0,0,3]},
     {u:'Am',v:'Em',casas:[2,0,0,0]},
     {u:'F',v:'C',casas:[2,0,1,0]},
-    {u:'G',v:'D',casas:[0,2,3,2]}
+    {u:'G',v:'D',casas:[0,2,3,2]},
+    {u:'Dm',v:'Am',casas:[2,2,1,0]},
+    {u:'D',v:'A',casas:[2,2,2,0]},
+    {u:'A',v:'E',casas:[2,1,0,0]},
+    {u:'G7',v:'D7',casas:[0,2,1,2]}
   ];
   var NS='http://www.w3.org/2000/svg';
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
   /* Grade: cordas verticais, casas horizontais. x0 = primeira corda, passo = distância entre cordas. */
   function grade(svg,cordas,x0,passo){
     var y0=26,alt=132,casas=4,larg=passo*(cordas-1);
-    svg.appendChild(el('rect',{x:x0,y:y0-5,width:larg,height:5,rx:1.5,fill:'#443468'}));
+    svg.appendChild(el('rect',{x:x0,y:y0-5,width:larg,height:5,rx:1.5,fill:'#1D5468'}));
     for(var c=1;c<=casas;c++){svg.appendChild(el('line',{x1:x0,x2:x0+larg,y1:y0+c*alt/casas,y2:y0+c*alt/casas,stroke:'#C9C4D6','stroke-width':1.5}));}
     for(var i=0;i<cordas;i++){svg.appendChild(el('line',{x1:x0+i*passo,x2:x0+i*passo,y1:y0,y2:y0+alt,stroke:'#8E8AA3','stroke-width':i<cordas/2?2:1.6}));}
     return {y0:y0,alt:alt,casas:casas};
@@ -722,7 +755,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
       while(grupo.firstChild)grupo.removeChild(grupo.firstChild);
       casas.forEach(function(f,i){
         var x=x0+i*28;
-        if(f===0){var o=el('circle',{cx:x,cy:14,r:5.5,fill:'none',stroke:'#443468','stroke-width':2,'class':'ponto fora'});grupo.appendChild(o);}
+        if(f===0){var o=el('circle',{cx:x,cy:14,r:5.5,fill:'none',stroke:'#1D5468','stroke-width':2,'class':'ponto fora'});grupo.appendChild(o);}
         else{var c=el('circle',{cx:x,cy:g.y0+(f-.5)*g.alt/g.casas,r:10,fill:cor,'class':'ponto fora'});grupo.appendChild(c);}
       });
       var lista=grupo.querySelectorAll('.ponto');
@@ -730,7 +763,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
       lista.forEach(function(p,j){setTimeout(function(){p.classList.remove('fora');},30+j*70);});
     };
   }
-  var pu=pontos(su,gu,18,'#443468'), pv=pontos(sv,gv,10+2*28,'#B4404F');
+  var pu=pontos(su,gu,18,'#1D5468'), pv=pontos(sv,gv,10+2*28,'#B4404F');
   var palco=document.getElementById('palco'), leg=document.getElementById('legenda-ponte');
   var nu=palco.querySelector('[data-nome="uke"]'), nv=palco.querySelector('[data-nome="vio"]');
   var chips=document.querySelectorAll('.chip'), atual=-1, auto=null;
@@ -741,7 +774,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
     palco.classList.add('trocando');
     setTimeout(function(){
       nu.textContent=a.u; nv.textContent=a.v;
-      leg.innerHTML='<strong>O '+a.u+' do ukulele vira '+a.v+' no violão.</strong> As duas cordas mais grossas ficam de fora.';
+      leg.innerHTML='<strong>O desenho do '+a.u+' no ukulele é o do '+a.v+' no violão</strong>, nas quatro cordas mais finas. No acorde completo, as cordas graves entram depois.';
       palco.classList.remove('trocando');
       pu(a.casas); pv(a.casas);
     },reduz?0:180);
@@ -751,7 +784,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
   /* Gira sozinho enquanto ninguém mexe, só quando a ponte está na tela */
   if(!reduz && 'IntersectionObserver' in window){
     var io=new IntersectionObserver(function(e){
-      if(e[0].isIntersecting && auto===null && atual!==-2){auto=setInterval(function(){mostra((atual+1)%4);},2600);}
+      if(e[0].isIntersecting && auto===null && atual!==-2){auto=setInterval(function(){mostra((atual+1)%ACORDES.length);},2600);}
       else if(!e[0].isIntersecting && auto){clearInterval(auto);auto=null;}
     },{threshold:.5});
     io.observe(palco);
