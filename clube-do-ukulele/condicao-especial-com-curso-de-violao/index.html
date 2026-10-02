@@ -488,7 +488,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
             <div class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
             <div class="diag violao"><span class="inst">Violão</span><span class="nome" data-nome="vio">G</span><svg id="svg-vio" viewBox="0 0 160 170" aria-hidden="true"></svg></div>
           </div>
-          <p class="legenda-ponte" id="legenda-ponte"><strong>O desenho do C no ukulele é o do G no violão</strong>, nas quatro cordas mais finas. No acorde completo, as cordas graves entram depois.</p>
+          <p class="legenda-ponte" id="legenda-ponte"><strong>O desenho do C no ukulele é o do G no violão</strong>, nas quatro cordas mais finas. As cordas graves entram depois, no acorde completo.</p>
         </div>
         <div class="bonus rv">
           <h3>O que vem no curso de violão</h3>
@@ -726,7 +726,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
     palco.classList.add('trocando');
     setTimeout(function(){
       nu.textContent=a.u; nv.textContent=a.v;
-      leg.innerHTML='<strong>O desenho do '+a.u+' no ukulele é o do '+a.v+' no violão</strong>, nas quatro cordas mais finas. No acorde completo, as cordas graves entram depois.';
+      leg.innerHTML='<strong>O desenho do '+a.u+' no ukulele é o do '+a.v+' no violão</strong>, nas quatro cordas mais finas. As cordas graves entram depois, no acorde completo.';
       palco.classList.remove('trocando');
       pu(a.casas); pv(a.casas);
     },reduz?0:180);
