@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clube do Ukulele: condição especial para quem já é de casa</title>
+<meta name="description" content="Volte a tocar ukulele com a gente: um ano de Clube com 3 encontros ao vivo por semana, análises em vídeo e o curso inédito de violão do Mateus de presente.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Só pra quem já é de casa: volte a tocar ukulele com a gente">
+<meta property="og:description" content="Um ano de Clube com o curso de violão do Mateus de presente. Até 27/10.">
+<meta property="og:image" content="https://cursos.comotocarukulele.com/academy/img/og-ukulele.webp">
+<meta name="theme-color" content="#2D124E">
+<link rel="icon" type="image/svg+xml" href="../../img/favicon-mini-ukulele.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#443468;--indigo-profundo:#2D124E;--indigo-hover:#3F3060;
+  --coral:#E87A85;--coral-forte:#B4404F;--coral-suave:#FBEAEC;--coral-texto:#4D1A20;
+  --teal-acao:#12A18A;--teal-acao-hover:#25A993;
+  --laranja:#CD3701;--verde:#25845A;
+  --texto:#1F1A2B;--texto-suave:#5C5A70;--fundo:#F5F4F7;--superficie:#ECEAF1;--card:#FFFFFF;
+  --neutro-medio:#8E8AA3;--sobre-escuro:#DCD6E6;
+  --fonte-titulo:Anton,"Montserrat",system-ui,sans-serif;
+  --fonte-corpo:"Montserrat",system-ui,-apple-system,sans-serif;
+  --sombra-card:0 20px 44px -30px rgb(31 26 43 / .45);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --topo-h:46px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topo-h) + 12px)}
+body{margin:0;background:var(--fundo);color:var(--texto);font-family:var(--fonte-corpo);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;padding-top:var(--topo-h)}
+h1,h2,h3{text-wrap:balance;margin:0}
+p,li{text-wrap:pretty}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--indigo);text-decoration-thickness:2px;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:3px;border-radius:6px}
+.escura :focus-visible{outline-color:#fff}
+::selection{background:var(--coral);color:var(--coral-texto)}
+*{scrollbar-color:var(--neutro-medio) var(--superficie)}
+button{font:inherit;cursor:pointer}
+strong{font-weight:700}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.miolo{max-width:1120px;margin:0 auto;padding:0 20px}
+.medida{max-width:680px}
+section{padding:clamp(56px,9vw,104px) 0}
+.escura{background:var(--indigo-profundo);color:#fff}
+.escura p{color:var(--sobre-escuro)}
+.suave{background:var(--superficie)}
+h2{font-family:var(--fonte-titulo);font-weight:400;font-size:clamp(31px,5.6vw,50px);line-height:1.2;color:var(--indigo);letter-spacing:.2px}
+.escura h2{color:#fff}
+h3{font-size:19px;line-height:1.35;font-weight:800;color:var(--indigo)}
+.escura h3{color:#fff}
+.lead{font-size:clamp(17px,2.1vw,19px);margin:18px 0 0}
+.marca{box-shadow:inset 0 -.32em 0 var(--coral-suave)}
+.escura .marca{box-shadow:inset 0 -.3em 0 rgb(232 122 133 / .38)}
+
+/* Topo fixo com a contagem */
+.topo{position:fixed;inset:0 0 auto 0;z-index:60;height:var(--topo-h);background:var(--indigo-profundo);color:#fff;border-bottom:1px solid rgb(255 255 255 / .12)}
+.topo .miolo{height:100%;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px}
+.selo-casa{background:#fff;color:var(--indigo-profundo);font-weight:800;padding:3px 11px;border-radius:999px;white-space:nowrap;font-size:13.5px}
+.relogio{display:flex;align-items:baseline;gap:6px;color:var(--sobre-escuro);white-space:nowrap}
+.relogio b{color:#fff;font-variant-numeric:tabular-nums;font-weight:700;letter-spacing:.3px}
+@media (max-width:420px){.relogio .rot{display:none}.topo .miolo{gap:8px}}
+
+/* Hero */
+.hero{background:var(--indigo-profundo);color:#fff;padding:22px 0 0;overflow:hidden;position:relative}
+.hero::before{content:"";position:absolute;inset:auto -10% -30% 40%;height:70%;background:radial-gradient(closest-side,rgb(232 122 133 / .22),transparent);pointer-events:none}
+.hero .logo{width:132px;height:auto}
+.hero-grade{display:grid;gap:28px;padding:28px 0 0;position:relative}
+.hero h1{font-weight:400;display:flex;flex-direction:column;gap:10px}
+.h1-a{font-family:var(--fonte-corpo);font-weight:700;font-size:clamp(17px,2.2vw,20px);color:var(--sobre-escuro);line-height:1.4}
+.h1-b{font-family:var(--fonte-titulo);font-size:clamp(46px,10vw,92px);line-height:1.04;letter-spacing:.3px}
+.h1-c{font-family:var(--fonte-titulo);font-size:clamp(25px,4.4vw,38px);line-height:1.3;color:var(--coral);max-width:20ch}
+.hero .sub{color:var(--sobre-escuro);font-size:clamp(16.5px,2vw,18.5px);margin:20px 0 0;max-width:560px}
+.hero .sub strong{color:#fff}
+.acoes{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:14px;border:0;font-weight:800;font-size:17px;text-decoration:none;transition:transform .2s var(--ease),background .2s,box-shadow .2s}
+.btn:active{transform:scale(.98)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-claro{background:#fff;color:var(--indigo-profundo);box-shadow:0 14px 30px -16px rgb(0 0 0 / .6)}
+.btn-claro:hover{background:var(--sobre-escuro)}
+.btn-compra{background:var(--teal-acao);color:var(--indigo-profundo);box-shadow:0 16px 32px -18px rgb(18 161 138 / .9)}
+.btn-compra:hover{background:var(--teal-acao-hover)}
+.btn-bloco{width:100%}
+.hero .nota{font-size:14px;color:var(--sobre-escuro);margin:0}
+.hero-foto{position:relative;align-self:end;margin:0 auto;width:min(100%,460px)}
+.ph{display:grid;place-items:center;text-align:center;border:2px dashed rgb(220 214 230 / .55);border-radius:22px 22px 0 0;aspect-ratio:4/5;padding:24px;color:var(--sobre-escuro);font-size:14px;line-height:1.5;background:linear-gradient(160deg,rgb(68 52 104 / .9),rgb(45 18 78 / .4))}
+.ph b{display:block;color:#fff;font-size:15px;margin-bottom:6px}
+.ph code{font-size:12.5px;color:#fff;background:rgb(255 255 255 / .1);padding:2px 6px;border-radius:5px}
+@media (min-width:900px){
+  .hero{padding-top:26px}
+  .hero-grade{grid-template-columns:1.15fr .85fr;align-items:end;gap:40px;padding-top:36px}
+  .hero-texto{padding-bottom:72px}
+}
+
+/* Ponte de acordes */
+.ponte-grade{display:grid;gap:36px;margin-top:36px}
+@media (min-width:900px){.ponte-grade{grid-template-columns:1fr 1.1fr;align-items:center;gap:56px}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{min-height:44px;min-width:64px;padding:0 16px;border-radius:999px;border:2px solid var(--superficie);background:var(--card);color:var(--indigo);font-weight:800;font-size:16px;transition:background .2s,border-color .2s,color .2s}
+.chip:hover{border-color:var(--neutro-medio)}
+.chip[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.palco{background:var(--card);border-radius:24px;box-shadow:var(--sombra-card);padding:24px 18px 22px;display:grid;grid-template-columns:1fr auto 1.25fr;align-items:start;gap:10px}
+.diag{text-align:center}
+.diag .inst{font-size:13px;font-weight:700;color:var(--texto-suave);text-transform:uppercase;letter-spacing:1.2px}
+.diag .nome{font-family:var(--fonte-titulo);font-size:40px;line-height:1.1;color:var(--indigo);margin:2px 0 6px;display:block;transition:opacity .25s,transform .35s var(--ease)}
+.diag.violao .nome{color:var(--coral-forte)}
+.diag svg{width:100%;height:auto;max-width:190px;margin:0 auto;display:block;overflow:visible}
+.seta{color:var(--neutro-medio);align-self:center;padding-top:40px}
+.seta svg{width:28px;height:28px}
+.ponto{transform-box:fill-box;transform-origin:center;transition:transform .45s var(--ease),opacity .3s}
+.ponto.fora{transform:scale(0);opacity:0}
+.trocando .nome{opacity:0;transform:translateY(6px)}
+.legenda-ponte{margin:16px 2px 0;font-size:15px;color:var(--texto-suave)}
+.legenda-ponte strong{color:var(--texto)}
+
+/* Primeiro dia */
+.dia{display:grid;gap:14px;margin-top:34px;counter-reset:passo}
+@media (min-width:820px){.dia{grid-template-columns:repeat(3,1fr);gap:18px}}
+.passo{position:relative;background:var(--card);border-radius:20px;padding:22px 22px 24px;box-shadow:var(--sombra-card)}
+.passo .quando{font-size:13px;font-weight:800;color:var(--coral-forte);letter-spacing:.6px;text-transform:uppercase}
+.passo h3{margin:6px 0 8px}
+.passo p{margin:0;font-size:16px;color:var(--texto-suave)}
+.passo.vitoria{background:var(--indigo);}
+.passo.vitoria .quando{color:var(--coral)}
+.passo.vitoria h3{color:#fff}
+.passo.vitoria p{color:var(--sobre-escuro)}
+
+/* Caminho */
+.trilha{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:0;max-width:760px}
+.trilha li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;position:relative;padding-bottom:22px}
+.trilha li::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--superficie)}
+.trilha li:last-child::before{display:none}
+.trilha .n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:2px solid var(--superficie);font-weight:800;color:var(--indigo);font-size:16px}
+.trilha li:last-child .n{background:var(--coral);border-color:var(--coral);color:var(--coral-texto)}
+.trilha h3{font-size:18px;margin-top:9px}
+.trilha p{margin:4px 0 0;font-size:16px;color:var(--texto-suave)}
+.sem-pestana{display:inline-flex;align-items:center;gap:10px;margin-top:10px;background:var(--coral-suave);color:var(--coral-texto);font-weight:700;padding:10px 16px;border-radius:12px;font-size:16px}
+
+/* Encontros */
+.periodo{margin-top:34px;max-width:860px}
+.meses{display:grid;grid-template-columns:.35fr 1fr 1fr 1fr;gap:4px}
+.mes{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--sobre-escuro);padding-bottom:8px}
+.barra{position:relative;height:16px;border-radius:999px;background:rgb(255 255 255 / .1);overflow:hidden}
+.barra .cheia{position:absolute;inset:0;background:var(--coral);transform-origin:left;transform:scaleX(0);transition:transform 1.6s var(--ease)}
+.barra .pausa{position:absolute;top:0;bottom:0;left:68%;width:8%;background:repeating-linear-gradient(135deg,var(--indigo-profundo) 0 5px,rgb(255 255 255 / .25) 5px 8px)}
+.on .barra .cheia{transform:scaleX(1)}
+.marcos{display:flex;justify-content:space-between;margin-top:10px;font-size:14px;color:var(--sobre-escuro);gap:8px}
+.marcos b{color:#fff;display:block;font-size:16px}
+.marcos .meio{text-align:center}
+.marcos .fim{text-align:right}
+.fatos{display:grid;gap:14px;margin-top:40px}
+@media (min-width:820px){.fatos{grid-template-columns:repeat(3,1fr);gap:18px}}
+.fato{border:1px solid rgb(255 255 255 / .16);border-radius:18px;padding:20px}
+.fato .num{font-family:var(--fonte-titulo);font-size:40px;line-height:1.1;color:var(--coral);display:block}
+.fato p{margin:6px 0 0;font-size:16px}
+.analise{display:grid;gap:24px;margin-top:56px;align-items:center}
+@media (min-width:900px){.analise{grid-template-columns:1.05fr 1fr;gap:48px}}
+.analise figure{margin:0}
+.analise img{border-radius:18px;box-shadow:0 24px 50px -28px rgb(0 0 0 / .8)}
+.analise figcaption{font-size:14px;color:var(--sobre-escuro);margin-top:10px}
+
+/* Presente e bônus */
+.presente{display:grid;gap:30px;margin-top:34px}
+@media (min-width:900px){.presente{grid-template-columns:1fr 1fr;gap:48px;align-items:start}}
+.caixa-presente{background:var(--card);border-radius:24px;box-shadow:var(--sombra-card);padding:28px 24px;position:relative;overflow:hidden}
+.caixa-presente::before{content:"";position:absolute;inset:0 0 auto 0;height:8px;background:var(--coral)}
+.caixa-presente h3{font-size:22px}
+.caixa-presente ul,.bonus ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.caixa-presente li,.bonus li{display:grid;grid-template-columns:24px 1fr;gap:12px;font-size:16px}
+.caixa-presente li svg,.bonus li svg{width:22px;height:22px;color:var(--coral-forte);margin-top:2px}
+.caixa-presente .rodape{margin:18px 0 0;font-size:15px;color:var(--texto-suave);border-top:1px solid var(--superficie);padding-top:14px}
+.capas{display:flex;gap:10px;margin-top:20px}
+.capas img{width:calc((100% - 30px)/4);border-radius:10px;aspect-ratio:1;object-fit:cover}
+.bonus h3{font-size:22px}
+.bonus li b{display:block;color:var(--indigo)}
+.bonus li span{color:var(--texto-suave)}
+
+/* Calendário de entrada */
+.agenda{list-style:none;margin:34px 0 0;padding:0;max-width:760px}
+.agenda li{display:grid;grid-template-columns:112px 1fr;gap:18px;padding:16px 0;border-top:1px solid #DAD6E2}
+.agenda li:last-child{border-bottom:1px solid #DAD6E2}
+.agenda .data{font-weight:800;color:var(--indigo);font-size:16px;line-height:1.4}
+.agenda p{margin:0;font-size:16px}
+.agenda .destaque .data{color:var(--coral-forte)}
+
+/* Prova */
+.prova{display:grid;gap:30px;align-items:center}
+@media (min-width:900px){.prova{grid-template-columns:.9fr 1.1fr;gap:56px}}
+.prova img{border-radius:22px;box-shadow:var(--sombra-card);max-height:640px;width:auto;margin:0 auto}
+.numero-grande{font-family:var(--fonte-titulo);font-size:clamp(56px,10vw,96px);line-height:1;color:var(--indigo);display:block}
+
+/* Oferta */
+#oferta{scroll-margin-top:calc(var(--topo-h) + 8px)}
+.oferta-grade{display:grid;gap:32px;align-items:start}
+@media (min-width:960px){.oferta-grade{grid-template-columns:1fr 1fr;gap:56px}}
+.lote-texto p{font-size:17px}
+.cartao{background:var(--card);color:var(--texto);border-radius:26px;padding:30px 24px 26px;box-shadow:0 30px 70px -30px rgb(0 0 0 / .7);position:relative}
+.cartao .etiqueta{position:absolute;top:-15px;left:24px;background:var(--laranja);color:#fff;font-weight:800;font-size:14px;padding:6px 14px;border-radius:999px;letter-spacing:.4px}
+.cartao ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:11px}
+.cartao li{display:grid;grid-template-columns:22px 1fr;gap:11px;font-size:16px;line-height:1.5}
+.cartao li svg{width:20px;height:20px;color:var(--indigo);margin-top:2px}
+.cartao li.presente-li{background:var(--superficie);border-radius:12px;padding:10px 12px;margin-top:4px;grid-template-columns:22px 1fr}
+.precos{border-top:1px solid var(--superficie);margin-top:20px;padding-top:18px}
+.escura .cartao p{color:var(--texto-suave)}
+.escura .cartao .por{color:var(--indigo)}
+.escura .cartao .avista b{color:var(--texto)}
+.de{font-size:15px;color:var(--texto-suave);margin:0}
+.de s{color:var(--laranja);text-decoration-thickness:2px;font-weight:700}
+.por{font-family:var(--fonte-titulo);font-size:clamp(46px,9vw,62px);line-height:1.08;color:var(--indigo);margin:4px 0 0}
+.por small{font-family:var(--fonte-corpo);font-weight:800;font-size:18px;vertical-align:.9em;margin-right:4px}
+.avista{margin:2px 0 18px;font-size:16px;color:var(--texto-suave)}
+.avista b{color:var(--texto)}
+.miudo{font-size:14px;color:var(--texto-suave);margin:12px 0 0;text-align:center}
+.relogio-oferta{display:flex;justify-content:center;gap:8px;margin:0 0 16px}
+.relogio-oferta div{background:var(--superficie);border-radius:10px;padding:6px 0;width:62px;text-align:center}
+.relogio-oferta b{display:block;font-size:22px;font-variant-numeric:tabular-nums;color:var(--indigo);line-height:1.2}
+.relogio-oferta span{font-size:12px;color:var(--texto-suave)}
+
+/* Garantia */
+.garantia{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:center;max-width:760px}
+.garantia img{width:96px}
+@media (min-width:700px){.garantia{grid-template-columns:130px 1fr;gap:30px}.garantia img{width:130px}}
+.garantia h2{font-size:clamp(28px,4.6vw,40px)}
+.garantia p{margin:10px 0 0}
+
+/* FAQ */
+.faq{max-width:780px;margin-top:28px}
+.faq details{background:var(--card);border-radius:16px;margin-bottom:10px;box-shadow:0 10px 30px -26px rgb(31 26 43 / .5)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 54px 18px 20px;font-weight:700;color:var(--indigo);position:relative;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:22px;top:50%;width:10px;height:10px;border-right:2.5px solid var(--coral-forte);border-bottom:2.5px solid var(--coral-forte);transform:translateY(-70%) rotate(45deg);transition:transform .25s var(--ease)}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq details p{margin:0;padding:0 20px 20px;font-size:16px}
+
+/* Fechamento */
+.fim{text-align:center}
+.fim h2{max-width:22ch;margin:0 auto}
+.fim p{max-width:560px;margin:16px auto 0}
+.fim .acoes{justify-content:center}
+.link-wa{color:#fff;font-weight:700}
+.rodape-pg{background:var(--indigo-profundo);border-top:1px solid rgb(255 255 255 / .1);padding:28px 0 calc(28px + var(--sticky-h,0px));text-align:center;color:var(--sobre-escuro);font-size:14px}
+.rodape-pg img{width:150px;margin:0 auto 10px}
+
+/* CTA fixo no celular */
+.fixo{position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--card);box-shadow:0 -14px 30px -18px rgb(31 26 43 / .45);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;transform:translateY(calc(100% + 32px));visibility:hidden;transition:visibility 0s .35s,transform .35s var(--ease)}
+.fixo.mostra{transform:none;visibility:visible;transition:transform .35s var(--ease)}
+.fixo .p{font-size:13px;line-height:1.3;color:var(--texto-suave);white-space:nowrap}
+.fixo .p b{display:block;font-size:18px;color:var(--indigo)}
+.fixo .btn{flex:1;min-height:50px;font-size:16px;padding:0 14px}
+@media (min-width:900px){.fixo{left:auto;right:20px;bottom:20px;border-radius:18px;width:420px}}
+
+/* Encerrada */
+.msg-encerrada{display:none}
+.encerrada .cta-compra{display:none}
+.encerrada .msg-encerrada{display:block}
+
+/* Revelação */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.on{opacity:1;transform:none}
+.sem-js .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .barra .cheia{transform:scaleX(1);transition:none}
+  .ponto,.diag .nome,.fixo,.btn{transition:none}
+}
+
+/* Popup */
+dialog.modal{border:0;padding:0;border-radius:22px;width:min(460px,calc(100% - 28px));max-height:calc(100dvh - 28px);color:var(--texto);background:var(--card);box-shadow:0 40px 90px -30px rgb(0 0 0 / .7)}
+dialog.modal::backdrop{background:rgb(31 26 43 / .62);backdrop-filter:blur(3px)}
+dialog.modal[open]{animation:sobe .4s var(--ease)}
+@keyframes sobe{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+.modal-bd{padding:28px 22px 22px;position:relative}
+.modal-x{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:transparent;color:var(--texto-suave);border-radius:12px;display:grid;place-items:center}
+.modal-x:hover{background:var(--superficie)}
+.modal-x svg{width:22px;height:22px}
+.modal h3{font-family:var(--fonte-titulo);font-weight:400;font-size:28px;line-height:1.2;padding-right:40px}
+.modal .sub{font-size:15px;color:var(--texto-suave);margin:8px 0 18px}
+.campo{margin-bottom:14px}
+.campo label,.campo .rotulo{display:block;font-weight:700;font-size:15px;margin-bottom:6px;color:var(--texto)}
+.campo input[type=text],.campo input[type=email],.campo input[type=tel],.campo select{width:100%;min-height:50px;border:2px solid #D3CFDD;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:var(--texto);background:#fff}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgb(68 52 104 / .18)}
+.campo input::placeholder{color:#77748A}
+.fone{display:grid;grid-template-columns:118px 1fr;gap:8px}
+.radios{display:flex;gap:10px}
+.radios label{flex:1;display:flex;align-items:center;gap:10px;min-height:50px;border:2px solid #D3CFDD;border-radius:12px;padding:0 14px;font-weight:600;cursor:pointer;margin:0}
+.radios label:has(input:checked){border-color:var(--indigo);background:#F1EEF7}
+.radios input{width:20px;height:20px;accent-color:var(--indigo);margin:0}
+.erro{display:none;color:#B83A2E;font-size:14px;margin:6px 0 0;font-weight:600}
+.erro.on,.dica.on{display:block}
+.dica{display:none;color:var(--texto-suave);font-size:14px;margin:6px 0 0}
+.seguro{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:var(--texto-suave);margin:12px 0 0}
+.seguro svg{width:16px;height:16px}
+
+/* Página B: foto real, semana, vitrine */
+.foto-real img{width:100%;height:auto;filter:drop-shadow(0 30px 40px rgb(0 0 0 / .35))}
+.h1-volta{font-size:clamp(42px,8.6vw,82px)}
+.semana{display:grid;gap:8px;margin-top:36px}
+.dia-sem{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;background:var(--card);border-radius:16px;padding:10px 12px;min-height:56px;box-shadow:0 10px 28px -24px rgb(31 26 43 / .6)}
+.dia-sem .dn{font-weight:800;color:var(--indigo);font-size:15px;text-transform:uppercase;letter-spacing:.8px}
+.dia-sem.vazio{background:transparent;box-shadow:none;min-height:36px;padding:4px 12px}
+.dia-sem.vazio .dn{color:var(--neutro-medio)}
+.dia-sem .ev{grid-column:2;display:block;background:var(--indigo);color:#fff;border-radius:12px;padding:9px 12px;font-weight:600;font-size:15.5px;line-height:1.35;opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease);transition-delay:calc(var(--i) * 140ms + 150ms)}
+.dia-sem .ev + .ev{margin-top:6px}
+.dia-sem .ev b{margin-right:8px}
+.dia-sem .ev small{display:block;font-size:13px;font-weight:500;color:var(--coral-texto)}
+.dia-sem .ev-violao{background:var(--coral);color:var(--coral-texto)}
+.dia-sem .ev-leve{background:var(--superficie);color:var(--texto-suave);font-weight:500}
+.semana.on .ev,.sem-js .semana .ev{opacity:1;transform:none}
+@media (min-width:900px){
+  .semana{grid-template-columns:repeat(7,1fr);gap:10px}
+  .dia-sem,.dia-sem.vazio{grid-template-columns:1fr;align-content:start;min-height:220px;padding:14px 12px;background:var(--card);box-shadow:0 10px 28px -24px rgb(31 26 43 / .6)}
+  .dia-sem.vazio{background:rgb(255 255 255 / .5)}
+  .dia-sem .ev{grid-column:1}
+}
+.nota-semana{margin:18px 0 0;font-size:15px;color:var(--texto-suave)}
+.analise-topo{margin-top:0}
+.vitrine{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:32px;max-width:860px}
+.vitrine img{border-radius:14px;aspect-ratio:1;object-fit:cover;box-shadow:var(--sombra-card)}
+@media (prefers-reduced-motion:reduce){.dia-sem .ev{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body class="sem-js">
+<!--
+THESIS: a pagina mostra a semana de quem volta para o Clube, com os encontros ao vivo marcados, em vez de uma lista de beneficios do plano.
+OWN-WORLD: o mesmo da pagina do violao: indigo profundo em campos inteiros, coral como assinatura, diagramas de acorde desenhados no codigo, Anton e Montserrat, teal so na compra, laranja so no selo e no preco cortado.
+STORY: a pessoa que parou de tocar se reconhece como de casa, ve a semana com 3 encontros ao vivo, entende as analises e a jornada, descobre o curso de violao de presente e so entao ve o preco.
+FIRST VIEWPORT: faixa fixa com "So pra quem ja e de casa!" e a contagem; titulo em dois andares sobre indigo profundo; botao claro que leva para a semana; foto real do Mateus com ukulele a direita.
+FORM: estrutura propria derivada do conteudo, sem rolagem de conceito (o Mateus delegou a estrutura).
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+
+<div class="topo" role="region" aria-label="Prazo da condição">
+  <div class="miolo">
+    <span class="selo-casa">Só pra quem já é de casa!</span>
+    <span class="relogio cta-compra" aria-live="off"><span class="rot">Termina em</span> <b data-relogio="curto">--</b></span>
+    <span class="relogio msg-encerrada">Condição encerrada em 27/10</span>
+  </div>
+</div>
+
+<header class="hero escura">
+  <div class="miolo">
+    <img class="logo" src="../../img/logo/logo-horizontal-branca.svg" alt="Clube do Ukulele" width="132" height="44">
+    <div class="hero-grade">
+      <div class="hero-texto">
+        <h1>
+          <span class="h1-b h1-volta">Volte a tocar ukulele com a gente,</span>
+          <span class="h1-c">numa condição especial para quem já é de casa.</span>
+        </h1>
+        <p class="sub">Durante um ano, você tem <strong>3 encontros ao vivo por semana</strong> com a gente no ukulele e <strong>mais de 50 atividades</strong> para enviar em vídeo, cada uma com uma análise personalizada. De presente, você ainda ganha acesso vitalício ao <strong>curso inédito de violão do Mateus</strong>, com 10 encontros ao vivo só de violão, para sair tocando suas primeiras músicas sem precisar de pestana!</p>
+        <div class="acoes">
+          <a class="btn btn-claro" href="#semana">Veja a sua semana <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+        </div>
+      </div>
+      <div class="hero-foto foto-real">
+        <img src="../../img/mateus-perfil.webp" alt="Mateus sorrindo com o ukulele nos braços" width="1000" height="1250" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="semana">
+    <div class="miolo">
+      <div class="medida rv">
+        <h2>3 encontros ao vivo por semana, <span class="marca">com a gente do seu lado</span></h2>
+        <p class="lead">Na terça e na quinta tem plantão de dúvidas: você confirma presença, conta onde travou e a gente resolve ao vivo, com o ukulele na mão. Na quinta à noite tem a Confraria, para tocar junto e conversar. E durante 3 meses, as quartas são do violão.</p>
+      </div>
+      <div class="semana rv" role="list" aria-label="A sua semana no Clube">
+        <div class="dia-sem vazio" role="listitem"><span class="dn">Seg</span></div>
+        <div class="dia-sem" role="listitem"><span class="dn">Ter</span><span class="ev" style="--i:0"><b>19h30</b>Plantão de dúvidas</span></div>
+        <div class="dia-sem" role="listitem"><span class="dn">Qua</span><span class="ev ev-violao" style="--i:3"><b>19h30</b>Encontro de violão<small>de 28/10 a 27/01</small></span></div>
+        <div class="dia-sem" role="listitem"><span class="dn">Qui</span><span class="ev" style="--i:1"><b>10h</b>Plantão de dúvidas</span><span class="ev" style="--i:2"><b>19h40</b>Confraria</span></div>
+        <div class="dia-sem vazio" role="listitem"><span class="dn">Sex</span></div>
+        <div class="dia-sem vazio" role="listitem"><span class="dn">Sáb</span></div>
+        <div class="dia-sem vazio" role="listitem"><span class="dn">Dom</span><span class="ev ev-leve" style="--i:4">Agenda dos plantões abre às 10h</span></div>
+      </div>
+      <p class="nota-semana rv">Os plantões ficam gravados para quem participou. Você vai quando der, e a semana seguinte tem de novo.</p>
+    </div>
+  </section>
+
+  <section class="escura">
+    <div class="miolo analise analise-topo">
+      <div class="medida rv">
+        <h2>Mais de 50 atividades, cada uma com uma análise em vídeo</h2>
+        <p class="lead">Nos pontos que mais importam da jornada, você grava um vídeo tocando e manda pela plataforma. Em até 3 dias úteis volta um vídeo personalizado, mostrando no ukulele o que está bom e o que precisa ajustar.</p>
+        <p>Assim, um erro na mão da batida ou na mão dos acordes aparece cedo, antes de virar costume.</p>
+      </div>
+      <figure class="rv">
+        <img src="../../academy/img/analise-frame-aluna.webp" alt="Uma análise real: a aluna tocando e o Mateus no canto da tela, respondendo em vídeo" width="960" height="540" loading="lazy" decoding="async">
+        <figcaption>Uma análise de verdade, do jeito que o vídeo chega para você na plataforma.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="miolo">
+      <div class="medida rv">
+        <h2>O caminho inteiro, para retomar de onde você quiser</h2>
+        <p class="lead">A jornada do Clube tem 5 cursos e 209 aulas, do zero ao intermediário, e a biblioteca tem 157 músicas separadas por nível. Você escolhe por onde recomeçar, e nos plantões a gente te ajuda a achar o ponto certo.</p>
+      </div>
+      <div class="vitrine rv">
+        <img src="../../academy/img/bib-ini0.webp" alt="Músicas do nível Iniciante 0" width="320" height="320" loading="lazy" decoding="async">
+        <img src="../../academy/img/bib-ini1.webp" alt="Músicas do nível Iniciante 1" width="320" height="320" loading="lazy" decoding="async">
+        <img src="../../academy/img/bib-ini2.webp" alt="Músicas do nível Iniciante 2" width="320" height="320" loading="lazy" decoding="async">
+        <img src="../../academy/img/bib-int1.webp" alt="Músicas do nível Intermediário 1" width="320" height="320" loading="lazy" decoding="async">
+        <img src="../../academy/img/bib-int2.webp" alt="Músicas do nível Intermediário 2" width="320" height="320" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <section class="suave" id="ponte">
+    <div class="miolo">
+      <div class="medida rv">
+        <h2>De presente, o curso inédito de violão do Mateus</h2>
+        <p class="lead">Completo, do jeito que vai ser vendido na live do dia 22, com acesso vitalício. E quem toca ukulele começa com vantagem: o desenho de cada acorde do ukulele serve nas quatro cordas mais finas do violão, só que com outro nome.</p>
+      </div>
+      <div class="ponte-grade">
+        <div class="rv">
+          <div class="chips" role="group" aria-label="Escolha um acorde do ukulele">
+            <button class="chip" type="button" data-i="0" aria-pressed="true">C</button>
+            <button class="chip" type="button" data-i="1" aria-pressed="false">Am</button>
+            <button class="chip" type="button" data-i="2" aria-pressed="false">F</button>
+            <button class="chip" type="button" data-i="3" aria-pressed="false">G</button>
+          </div>
+          <div class="palco" id="palco" aria-live="polite">
+            <div class="diag ukulele"><span class="inst">Ukulele</span><span class="nome" data-nome="uke">C</span><svg id="svg-uke" viewBox="0 0 120 170" aria-hidden="true"></svg></div>
+            <div class="seta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            <div class="diag violao"><span class="inst">Violão</span><span class="nome" data-nome="vio">G</span><svg id="svg-vio" viewBox="0 0 160 170" aria-hidden="true"></svg></div>
+          </div>
+          <p class="legenda-ponte" id="legenda-ponte"><strong>O C do ukulele vira G no violão.</strong> As duas cordas mais grossas ficam de fora.</p>
+        </div>
+        <div class="bonus rv">
+          <h3>O que vem no curso de violão</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Acesso vitalício ao curso</b><span>Do zero aos 4 acordes mágicos do violão (G, D, Em e C), sem pestana, com a primeira música no mesmo dia em que você começa.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>10 encontros ao vivo só de violão</b><span>Às quartas, 19h30, de 28/10 a 27/01. Todos gravados, e as gravações são suas para sempre.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Análise em vídeo das atividades de violão</b><span>Durante 1 ano a partir da compra.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Módulo bônus e Guia de Bolso “Do Ukulele ao Violão”</b><span>A passagem dos desenhos do ukulele para o violão, acorde por acorde.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Dicionário de Acordes para Violão e Treinador de Batidas</b><span>Para consultar acorde novo e treinar as batidas do curso.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="miolo prova">
+      <img class="rv" src="../../academy/img/turma-collage.webp" alt="O Mateus no centro, cercado por fotos de alunos tocando ukulele em casa" width="900" height="1200" loading="lazy" decoding="async">
+      <div class="medida rv">
+        <span class="numero-grande">+6.000</span>
+        <h2>alunos aprenderam ukulele com a gente desde 2017</h2>
+        <p class="lead">Você já fez parte dessa turma. E voltar fica mais leve quando tem alguém do seu lado toda semana, olhando o que você está fazendo e te guiando.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="escura" id="oferta">
+    <div class="miolo oferta-grade">
+      <div class="lote-texto medida rv">
+        <h2>Um ano de Clube, com o curso de violão de presente</h2>
+        <p class="lead">O plano Ouro do Clube sai por 12x de R$ 150 ou R$ 1.500 por ano.</p>
+        <p>Para quem já é de casa, até 27/10, fica 12x de R$ 99 ou R$ 957,25 à vista. É o mesmo valor que o público vai pagar só pelo curso de violão na live do dia 22, e aqui ele vem de presente.</p>
+      </div>
+      <div class="cartao rv">
+        <span class="etiqueta">Condição de casa</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>1 ano de Clube do Ukulele no plano Ouro</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>2 plantões de dúvidas por semana e a Confraria toda quinta</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Mais de 50 atividades com análise em vídeo personalizada</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Jornada com 5 cursos e 209 aulas, e 157 músicas na biblioteca</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Workshops temáticos ao vivo e a comunidade do Clube</span></li>
+          <li class="presente-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1Zm0 0c2-4 6-4 6-1s-6 1-6 1Z"/></svg><span><b>De presente:</b> o curso inédito de violão do Mateus, com acesso vitalício, 10 encontros ao vivo e 1 ano de análises</span></li>
+        </ul>
+        <div class="precos">
+          <p class="de">Plano Ouro: <s>12x de R$ 150</s></p>
+          <p class="por"><small>12x</small>R$ 99</p>
+          <p class="avista">ou <b>R$ 957,25 à vista</b> por ano. A assinatura renova sozinha pelo mesmo valor, e a gente avisa antes da cobrança.</p>
+          <div class="cta-compra">
+            <div class="relogio-oferta" aria-label="Tempo até o fim da condição">
+              <div><b data-relogio="d">--</b><span>dias</span></div>
+              <div><b data-relogio="h">--</b><span>horas</span></div>
+              <div><b data-relogio="m">--</b><span>min</span></div>
+              <div><b data-relogio="s">--</b><span>seg</span></div>
+            </div>
+            <button class="btn btn-compra btn-bloco" type="button" data-abre-checkout>Quero voltar para o Clube</button>
+            <p class="miudo">Garantia de 30 dias. Pagamento seguro pela Hotmart.</p>
+          </div>
+          <p class="msg-encerrada miudo">Esta condição terminou em 27/10. Fale com a gente no <a href="https://wa.me/553198585286">WhatsApp</a> para saber como voltar agora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="miolo">
+      <div class="garantia rv">
+        <img src="../../academy/img/selo-garantia.webp" alt="Selo de garantia de 30 dias" width="600" height="600" loading="lazy" decoding="async">
+        <div>
+          <h2>30 dias para decidir com calma</h2>
+          <p>Volte, vá aos plantões, mande a primeira atividade e comece o violão. Se em 30 dias você achar que não era o que esperava, pede o reembolso e recebe o valor inteiro de volta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="suave">
+    <div class="miolo">
+      <h2 class="rv">Perguntas de quem já é de casa</h2>
+      <div class="faq">
+        <details><summary>A assinatura renova sozinha?</summary><p>Renova, para você não perder o acesso sem querer. Antes da cobrança a gente te avisa, e a renovação mantém o mesmo valor com desconto desta condição de casa. Se não quiser renovar, é só falar com a nossa equipe no WhatsApp antes da data, sem multa e sem burocracia.</p></details>
+        <details><summary>E se eu não gostar?</summary><p>Você tem 30 dias de garantia. Se nesse prazo achar que não é para você, pede o reembolso e recebe o valor inteiro de volta.</p></details>
+        <details><summary>Já fui aluno e mandava atividades. O que muda agora?</summary><p>As análises continuam, agora com mais de 50 atividades ao longo da jornada. O que chega junto são os encontros ao vivo: dois plantões de dúvidas por semana e a Confraria toda quinta.</p></details>
+        <details><summary>Fiquei muito tempo sem tocar. Consigo retomar?</summary><p>Consegue. Você escolhe por onde recomeçar na jornada, e nos plantões a gente te ajuda a achar o ponto certo para voltar.</p></details>
+        <details><summary>Como funciona o plantão?</summary><p>É ao vivo, pelo Google Meet, na terça às 19h30 e na quinta às 10h. A agenda da semana abre no domingo às 10h, você confirma presença com a sua dúvida e é chamado na ordem de confirmação. A gravação fica para quem participou.</p></details>
+        <details><summary>Preciso ter violão para aproveitar o presente?</summary><p>Só para o curso de violão. O módulo de preparação, que entra na plataforma até 20/10, mostra qual violão comprar. O acesso ao curso é vitalício, e os 10 encontros ao vivo acontecem de 28/10 a 27/01, com as gravações guardadas para sempre.</p></details>
+        <details><summary>Já assino o Clube hoje. Como fica?</summary><p>Fale com a nossa equipe pelo WhatsApp: a gente olha o seu plano atual e explica como fica a troca para essa condição.</p></details>
+        <details><summary>Como funciona o pagamento?</summary><p>É uma assinatura anual: 12x de R$ 99 no cartão ou R$ 957,25 à vista, pela Hotmart, em ambiente seguro.</p></details>
+        <details><summary>Até quando vale essa condição?</summary><p>Até 27/10, às 23h59 (horário de Brasília).</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="escura fim">
+    <div class="miolo rv">
+      <h2>A gente te espera de volta</h2>
+      <p>Seu acesso sai na hora: a jornada, a biblioteca e a agenda dos plantões da semana. E a preparação do curso de violão sai até 20/10.</p>
+      <div class="acoes cta-compra">
+        <button class="btn btn-compra" type="button" data-abre-checkout data-final>Quero voltar para o Clube</button>
+      </div>
+      <p><a class="link-wa" href="https://wa.me/553198585286?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20condi%C3%A7%C3%A3o%20do%20Clube.">Tenho uma dúvida antes de voltar</a></p>
+    </div>
+  </section>
+</main>
+
+
+<footer class="rodape-pg">
+  <img src="../../img/logo/logo-horizontal-branca.svg" alt="Clube do Ukulele" width="150" height="50" loading="lazy">
+  <p>Clube do Ukulele · comotocarukulele.com</p>
+</footer>
+
+<div class="fixo cta-compra" id="fixo" aria-hidden="true">
+  <span class="p">Plano Ouro<b>12x R$ 99</b></span>
+  <button class="btn btn-compra" type="button" data-abre-checkout tabindex="-1">Quero voltar</button>
+</div>
+
+<dialog class="modal" id="checkout" aria-labelledby="ckt">
+  <div class="modal-bd">
+    <button class="modal-x" type="button" data-fecha aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <h3 id="ckt">Falta pouco para voltar ao Clube</h3>
+    <p class="sub">Preencha para ir ao pagamento. Na Hotmart, seus dados já vão estar preenchidos.</p>
+    <form id="lead" novalidate>
+      <div class="campo"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Seu nome e sobrenome" required><p class="erro" id="e-nome">Escreva nome e sobrenome.</p></div>
+      <div class="campo"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="dica" id="h-email">Corrigimos um possível erro de digitação. Confira se está certo.</p><p class="erro" id="e-email">Confira o e-mail.</p></div>
+      <div class="campo"><label for="wa">WhatsApp</label>
+        <div class="fone">
+          <select id="ddi" aria-label="Código do país">
+            <option value="55" selected>Brasil +55</option>
+            <option value="351">Portugal +351</option>
+            <option value="1">EUA/Canadá +1</option>
+            <option value="244">Angola +244</option>
+            <option value="258">Moçambique +258</option>
+            <option value="34">Espanha +34</option>
+            <option value="44">Reino Unido +44</option>
+            <option value="">Outro país</option>
+          </select>
+          <input id="wa" name="tel" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000" required>
+        </div>
+        <p class="erro" id="e-wa">Número com DDD (10 ou 11 dígitos).</p>
+      </div>
+      <div class="campo"><span class="rotulo" id="r-violao">Você já tem violão?</span><div class="radios" role="radiogroup" aria-labelledby="r-violao"><label><input type="radio" name="violao" value="Sim"> Sim</label><label><input type="radio" name="violao" value="Não"> Não</label></div><p class="erro" id="e-violao">Responda essa pergunta.</p></div>
+      <button class="btn btn-compra btn-bloco" type="submit" id="go">Ir para o pagamento</button>
+      <p class="seguro"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>Ambiente seguro da Hotmart</p>
+    </form>
+  </div>
+</dialog>
+
+<script>
+document.body.classList.remove('sem-js');
+/* TROCAR pelo link do produto na Hotmart. Enquanto tiver PLACEHOLDER, o formulário
+   registra o lead no GTM e não sai da página. */
+var HOTMART_URL='https://pay.hotmart.com/PLACEHOLDER_CLUBE_OURO_DE_CASA?checkoutMode=10';
+var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
+
+/* Contagem regressiva */
+(function(){
+  var curto=document.querySelectorAll('[data-relogio="curto"]'), partes={};
+  ['d','h','m','s'].forEach(function(k){partes[k]=document.querySelectorAll('[data-relogio="'+k+'"]');});
+  function dois(n){return n<10?'0'+n:''+n;}
+  function tique(){
+    var falta=PRAZO-Date.now();
+    if(falta<=0){document.body.classList.add('encerrada');return false;}
+    var s=Math.floor(falta/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),ss=s%60;
+    var txt=d>0?d+'d '+dois(h)+'h '+dois(m)+'m':dois(h)+'h '+dois(m)+'m '+dois(ss)+'s';
+    curto.forEach(function(el){el.textContent=txt;});
+    var v={d:dois(d),h:dois(h),m:dois(m),s:dois(ss)};
+    for(var k in partes){partes[k].forEach(function(el){el.textContent=v[k];});}
+    return true;
+  }
+  if(tique()){var t=setInterval(function(){if(!tique())clearInterval(t);},1000);}
+})();
+
+/* Revelação ao rolar */
+(function(){
+  /* Checagem na rolagem, sem IntersectionObserver: funciona em qualquer navegador
+     e nunca deixa conteúdo escondido se a pessoa pular direto para uma âncora. */
+  var pend=[].slice.call(document.querySelectorAll('.rv, #periodo')), t=false;
+  function checa(){ t=false; var lim=innerHeight*.92;
+    pend=pend.filter(function(e){ if(e.getBoundingClientRect().top<lim){e.classList.add('on');return false;} return true; });
+    if(!pend.length){removeEventListener('scroll',rola);removeEventListener('resize',rola);}
+  }
+  function rola(){ if(!t){t=true;requestAnimationFrame(checa);} }
+  addEventListener('scroll',rola,{passive:true}); addEventListener('resize',rola); checa();
+})();
+
+/* Ponte de acordes: o desenho do ukulele nas 4 cordas mais finas do violão */
+(function(){
+  var ACORDES=[
+    {u:'C',v:'G',casas:[0,0,0,3]},
+    {u:'Am',v:'Em',casas:[2,0,0,0]},
+    {u:'F',v:'C',casas:[2,0,1,0]},
+    {u:'G',v:'D',casas:[0,2,3,2]}
+  ];
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  /* Grade: cordas verticais, casas horizontais. x0 = primeira corda, passo = distância entre cordas. */
+  function grade(svg,cordas,x0,passo){
+    var y0=26,alt=132,casas=4,larg=passo*(cordas-1);
+    svg.appendChild(el('rect',{x:x0,y:y0-5,width:larg,height:5,rx:1.5,fill:'#443468'}));
+    for(var c=1;c<=casas;c++){svg.appendChild(el('line',{x1:x0,x2:x0+larg,y1:y0+c*alt/casas,y2:y0+c*alt/casas,stroke:'#C9C4D6','stroke-width':1.5}));}
+    for(var i=0;i<cordas;i++){svg.appendChild(el('line',{x1:x0+i*passo,x2:x0+i*passo,y1:y0,y2:y0+alt,stroke:'#8E8AA3','stroke-width':i<cordas/2?2:1.6}));}
+    return {y0:y0,alt:alt,casas:casas};
+  }
+  var su=document.getElementById('svg-uke'), sv=document.getElementById('svg-vio');
+  var gu=grade(su,4,18,28), gv=grade(sv,6,10,28);
+  /* Cordas soltas que não tocam no violão: as duas mais grossas */
+  [0,1].forEach(function(i){var x=10+i*28;sv.appendChild(el('path',{d:'M'+(x-4.5)+' 9.5l9 9M'+(x+4.5)+' 9.5l-9 9',stroke:'#5C5A70','stroke-width':2.2,'stroke-linecap':'round'}));});
+  function pontos(svg,g,x0,cor,corTexto){
+    var grupo=el('g',{});svg.appendChild(grupo);
+    return function(casas){
+      while(grupo.firstChild)grupo.removeChild(grupo.firstChild);
+      casas.forEach(function(f,i){
+        var x=x0+i*28;
+        if(f===0){var o=el('circle',{cx:x,cy:14,r:5.5,fill:'none',stroke:'#443468','stroke-width':2,'class':'ponto fora'});grupo.appendChild(o);}
+        else{var c=el('circle',{cx:x,cy:g.y0+(f-.5)*g.alt/g.casas,r:10,fill:cor,'class':'ponto fora'});grupo.appendChild(c);}
+      });
+      var lista=grupo.querySelectorAll('.ponto');
+      grupo.getBoundingClientRect(); /* força o estado inicial antes da transição */
+      lista.forEach(function(p,j){setTimeout(function(){p.classList.remove('fora');},30+j*70);});
+    };
+  }
+  var pu=pontos(su,gu,18,'#443468'), pv=pontos(sv,gv,10+2*28,'#B4404F');
+  var palco=document.getElementById('palco'), leg=document.getElementById('legenda-ponte');
+  var nu=palco.querySelector('[data-nome="uke"]'), nv=palco.querySelector('[data-nome="vio"]');
+  var chips=document.querySelectorAll('.chip'), atual=-1, auto=null;
+  var reduz=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function mostra(i){
+    if(i===atual)return; atual=i; var a=ACORDES[i];
+    chips.forEach(function(c){c.setAttribute('aria-pressed',c.dataset.i==i?'true':'false');});
+    palco.classList.add('trocando');
+    setTimeout(function(){
+      nu.textContent=a.u; nv.textContent=a.v;
+      leg.innerHTML='<strong>O '+a.u+' do ukulele vira '+a.v+' no violão.</strong> As duas cordas mais grossas ficam de fora.';
+      palco.classList.remove('trocando');
+      pu(a.casas); pv(a.casas);
+    },reduz?0:180);
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){if(auto){clearInterval(auto);auto=null;}mostra(+c.dataset.i);});});
+  mostra(0);
+  /* Gira sozinho enquanto ninguém mexe, só quando a ponte está na tela */
+  if(!reduz && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(e){
+      if(e[0].isIntersecting && auto===null && atual!==-2){auto=setInterval(function(){mostra((atual+1)%4);},2600);}
+      else if(!e[0].isIntersecting && auto){clearInterval(auto);auto=null;}
+    },{threshold:.5});
+    io.observe(palco);
+    chips.forEach(function(c){c.addEventListener('click',function(){io.disconnect();});});
+  }
+})();
+
+/* Popup de checkout */
+var dlg=document.getElementById('checkout');
+function abreCheckout(){ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); }
+document.querySelectorAll('[data-abre-checkout]').forEach(function(b){b.addEventListener('click',abreCheckout);});
+dlg.querySelector('[data-fecha]').addEventListener('click',function(){dlg.close();});
+dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+
+var ddi=document.getElementById('ddi'), waIn=document.getElementById('wa');
+function mascara(){
+  var v=waIn.value.replace(/\D/g,'');
+  if(ddi.value==='55'){
+    v=v.slice(0,11);
+    if(v.length>10) v=v.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3');
+    else if(v.length>6) v=v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3');
+    else if(v.length>2) v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+    waIn.value=v;
+  } else { waIn.value=v.slice(0,15); }
+}
+waIn.addEventListener('input',mascara);
+ddi.addEventListener('change',function(){ waIn.value=''; waIn.placeholder= ddi.value==='55' ? '(00) 00000-0000' : 'Número com DDD'; });
+
+/* Correção automática de e-mail (evita login errado no checkout preenchido) */
+var provFix={gmial:'gmail',gamil:'gmail',gmal:'gmail',gmaill:'gmail',gemail:'gmail',gnail:'gmail',hotmial:'hotmail',hotmai:'hotmail',hotmal:'hotmail',hormail:'hotmail',hotmaill:'hotmail',htomail:'hotmail',oulook:'outlook',outlok:'outlook',outloo:'outlook',outllok:'outlook',yaho:'yahoo',yahooo:'yahoo',yhoo:'yahoo',icoud:'icloud',iclod:'icloud'};
+var sufFix=[['.comm','.com'],['.cm','.com'],['.cmo','.com'],['.xom','.com'],['.con','.com'],['.coom','.com'],['.cm.br','.com.br'],['.con.br','.com.br'],['.com.brr','.com.br'],['.com.b','.com.br']];
+function fixEmail(val){
+  val=val.toLowerCase().trim(); if(val.indexOf('@')<0) return {v:val,c:false};
+  var p=val.split('@'),u=p[0],d=p[1],ch=false; if(!d) return {v:val,c:false};
+  var i=d.indexOf('.'); if(i<0) return {v:val,c:false};
+  var dn=d.slice(0,i),sf=d.slice(i);
+  if(provFix[dn]){dn=provFix[dn];ch=true;}
+  for(var k=0;k<sufFix.length;k++){ if(sf===sufFix[k][0]){sf=sufFix[k][1];ch=true;break;} }
+  return {v:u+'@'+dn+sf,c:ch};
+}
+function emailOk(v){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);}
+var emailIn=document.getElementById('email');
+emailIn.addEventListener('blur',function(){
+  var h=document.getElementById('h-email'); h.classList.remove('on');
+  if(!emailIn.value.trim()) return;
+  var r=fixEmail(emailIn.value);
+  if(r.c){ emailIn.value=r.v; h.classList.add('on'); setTimeout(function(){h.classList.remove('on');},6000); }
+});
+function cookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
+
+document.getElementById('lead').addEventListener('submit',function(e){
+  e.preventDefault();
+  var nome=document.getElementById('nome').value.trim();
+  var r=fixEmail(emailIn.value); if(r.c) emailIn.value=r.v;
+  var email=emailIn.value.trim();
+  var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
+  var violao=(document.querySelector('input[name=violao]:checked')||{}).value;
+  var ok=true;
+  function marca(id,cond){document.getElementById(id).classList.toggle('on',!cond);if(!cond)ok=false;}
+  marca('e-nome', nome.split(' ').filter(Boolean).length>=2);
+  marca('e-email', emailOk(email));
+  marca('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
+  marca('e-violao', !!violao);
+  if(!ok) return;
+  var btn=document.getElementById('go'); btn.textContent='Abrindo o pagamento…'; btn.disabled=true;
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'lead_capture_uke',lead_name:nome,lead_email:email,lead_phone:(ddi.value||'')+tel,lead_ddi:ddi.value||'other',lead_has_violao:violao});
+  if(HOTMART_URL.indexOf('PLACEHOLDER')>-1){ btn.textContent='Link de pagamento em breve'; console.warn('HOTMART_URL ainda é placeholder; lead enviado ao dataLayer.'); return; }
+  var url;
+  try{
+    url=new URL(HOTMART_URL);
+    url.searchParams.set('name',nome); url.searchParams.set('email',email);
+    url.searchParams.set('phonenumber',tel);
+    if(ddi.value) url.searchParams.set('phoneac',ddi.value);
+    var qp=new URLSearchParams(location.search), utms=[];
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
+    if(utms.length) url.searchParams.set('sck',utms.join('|'));
+    var uid=cookie('user_id'); if(uid) url.searchParams.set('xcod',uid);
+    url=url.toString();
+  }catch(_){ url=HOTMART_URL; }
+  setTimeout(function(){location.href=url;},400);
+});
+
+/* CTA fixo: aparece depois que a pessoa passou do botão do cartão de preço, some no fechamento */
+(function(){
+  var bar=document.getElementById('fixo'), alvo=document.querySelector('.cartao [data-abre-checkout]'), fim=document.querySelector('[data-final]');
+  var btn=bar.querySelector('button'), t=false;
+  function upd(){ t=false;
+    var passou=alvo.getBoundingClientRect().bottom<0;
+    var noFim=fim&&fim.getBoundingClientRect().top<window.innerHeight;
+    var on=passou&&!noFim&&!document.body.classList.contains('encerrada');
+    if(on!==bar.classList.contains('mostra')){bar.classList.toggle('mostra',on);bar.setAttribute('aria-hidden',on?'false':'true');btn.tabIndex=on?0:-1;document.documentElement.style.setProperty('--sticky-h',on?'76px':'0px');}
+  }
+  addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(upd);}},{passive:true}); upd();
+})();
+</script>
+
+<noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'clube-ouro-com-violao-de-casa'});
+(function(){function g(){(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');}
+if(document.readyState!=='loading'){setTimeout(g,1500);}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(g,1500);},{once:true});}})();
+</script>
+</body>
+</html>
