@@ -440,6 +440,34 @@ br.q{display:none}
 
 .btn,.link-claro{white-space:nowrap}
 .acoes{flex-wrap:wrap;row-gap:10px}
+
+/* Código do país primeiro: mesmo cortado, o que importa (+55) aparece; a lista aberta mostra o nome inteiro */
+.fone{grid-template-columns:96px 1fr}
+.fone select{padding:0 30px 0 12px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+
+/* Barra fixa sem estouro: no celular a fase A é só o botão (o prazo já está na faixa do topo);
+   a contagem dentro da barra só aparece quando sobra espaço de verdade */
+@media (max-width:699px){
+  .fixo .p.fase-a{display:none}
+  .fixo .btn{font-size:15px;padding:0 12px;min-height:50px}
+  .fixo .p.fase-b{font-size:12px}
+  .fixo .p.fase-b b{font-size:17px}
+}
+.fixo .btn{min-width:0}
+.fixo-tempo{display:none}
+@media (min-width:1000px){.fixo-tempo{display:inline-flex}.fixo .btn{min-width:260px}}
+@media (min-width:700px) and (max-width:999px){.fixo-in{justify-content:space-between}.fixo .btn{flex:none}}
+
+/* Telas bem estreitas (320 a 359px): faixa do topo curta, cartão e botões mais justos */
+.rt-c{display:none}
+.oferta-grade{grid-template-columns:minmax(0,1fr)}
+@media (min-width:960px){.oferta-grade{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:359px){
+  .rt-l{display:none}.rt-c{display:inline}
+  .cartao{padding:28px 18px 22px}
+  .btn{font-size:15px;padding:0 14px}
+  .fixo .p.fase-b{display:none}
+}
 </style>
 </head>
 <body class="sem-js">
@@ -454,7 +482,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <div class="topo" role="region" aria-label="Prazo da condição">
   <div class="miolo">
-    <span class="relogio cta-compra"><span class="ponto-vivo" aria-hidden="true"></span>Condição de casa termina em <b data-relogio="curto">--</b></span>
+    <span class="relogio cta-compra"><span class="ponto-vivo" aria-hidden="true"></span><span class="rt-l">Condição de casa termina em</span><span class="rt-c">Termina em</span> <b data-relogio="curto">--</b></span>
     <span class="relogio msg-encerrada">Esta condição terminou em 27/10</span>
   </div>
 </div>
@@ -747,16 +775,16 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <div class="campo"><label for="wa">WhatsApp</label>
         <div class="fone">
           <select id="ddi" aria-label="Código do país">
-            <option value="55" selected>Brasil +55</option>
-            <option value="351">Portugal +351</option>
-            <option value="1">EUA/Canadá +1</option>
-            <option value="244">Angola +244</option>
-            <option value="258">Moçambique +258</option>
-            <option value="34">Espanha +34</option>
-            <option value="44">Reino Unido +44</option>
+            <option value="55" selected>+55 Brasil</option>
+            <option value="351">+351 Portugal</option>
+            <option value="1">+1 EUA e Canadá</option>
+            <option value="244">+244 Angola</option>
+            <option value="258">+258 Moçambique</option>
+            <option value="34">+34 Espanha</option>
+            <option value="44">+44 Reino Unido</option>
             <option value="">Outro país</option>
           </select>
-          <input id="wa" name="tel" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000" required>
+          <input id="wa" name="tel" type="tel" autocomplete="tel" inputmode="numeric" placeholder="DDD + número" required>
         </div>
         <p class="erro" id="e-wa">Número com DDD (10 ou 11 dígitos).</p>
       </div>
@@ -895,7 +923,17 @@ function mascara(){
   } else { waIn.value=v.slice(0,15); }
 }
 waIn.addEventListener('input',mascara);
-ddi.addEventListener('change',function(){ waIn.value=''; waIn.placeholder= ddi.value==='55' ? '(00) 00000-0000' : 'Número com DDD'; });
+ddi.addEventListener('change',function(){ waIn.value=''; waIn.placeholder= ddi.value==='55' ? 'DDD + número' : 'Número com DDD'; });
+/* Lista de países: fechada mostra só o código (+55), aberta mostra o nome do país */
+(function(){
+  var ops=[].slice.call(ddi.options);
+  ops.forEach(function(o){ o.dataset.nome=o.text; o.dataset.curto=o.value ? '+'+o.value : 'Outro'; });
+  function curto(){ ops.forEach(function(o){ o.text = o.selected ? o.dataset.curto : o.dataset.nome; }); }
+  function longo(){ ops.forEach(function(o){ o.text=o.dataset.nome; }); }
+  ddi.addEventListener('focus',longo); ddi.addEventListener('mousedown',longo);
+  ddi.addEventListener('change',curto); ddi.addEventListener('blur',curto);
+  curto();
+})();
 
 /* Correção automática de e-mail (evita login errado no checkout preenchido) */
 var provFix={gmial:'gmail',gamil:'gmail',gmal:'gmail',gmaill:'gmail',gemail:'gmail',gnail:'gmail',hotmial:'hotmail',hotmai:'hotmail',hotmal:'hotmail',hormail:'hotmail',hotmaill:'hotmail',htomail:'hotmail',oulook:'outlook',outlok:'outlook',outloo:'outlook',outllok:'outlook',yaho:'yahoo',yahooo:'yahoo',yhoo:'yahoo',icoud:'icloud',iclod:'icloud'};
