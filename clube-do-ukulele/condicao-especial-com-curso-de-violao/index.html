@@ -452,6 +452,36 @@ br.q{display:none}
   .dia-sem .ev b{display:block;margin:0 0 2px;font-size:16px}
   .dia-sem .ev-leve{font-size:13px}
 }
+
+/* Topo da B, refeito: o Mateus dentro do círculo, cabeça saindo por cima, corpo recortado
+   pela curva de baixo. O bloco fica centrado na altura do texto, sem depender da borda da seção. */
+.hero-foto.disco-foto{position:relative;width:min(80vw,380px);aspect-ratio:1/1.3;margin:26px auto 0;max-width:none}
+.hero-foto.disco-foto::before{left:0;right:0;bottom:0;top:auto;aspect-ratio:1}
+/* Duas camadas de máscara: em cima, a foto aparece (com as laterais esmaecidas, para a borda reta
+   da foto original não aparecer); embaixo, o círculo recorta o corpo. 61,5% e 76,92% saem da
+   proporção 1:1,3 do bloco (o círculo ocupa a largura toda, colado na base). */
+.disco-foto .recorte{position:absolute;inset:0;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),radial-gradient(closest-side,#000 calc(100% - 1px),transparent 100%);
+  -webkit-mask-size:100% 61.5%,100% 76.92%;-webkit-mask-position:top,bottom;-webkit-mask-repeat:no-repeat;
+  mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),radial-gradient(closest-side,#000 calc(100% - 1px),transparent 100%);
+  mask-size:100% 61.5%,100% 76.92%;mask-position:top,bottom;mask-repeat:no-repeat}
+.disco-foto .recorte img{position:absolute;left:0;bottom:0;width:100%;height:auto;filter:none}
+@media (min-width:960px){
+  .hero-grade{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;padding-bottom:56px;gap:48px}
+  .hero-texto{padding:0}
+  .hero-foto.disco-foto{align-self:center;justify-self:center;width:100%;max-width:420px;margin:0}
+}
+/* Escala do título pensada para notebook: o botão do topo precisa caber na primeira tela */
+@media (min-width:960px){
+  .h1-b{font-size:clamp(46px,4.4vw,64px)}
+  .h1-c{font-size:clamp(24px,2.1vw,30px)}
+  .hero .sub{font-size:17px;max-width:540px}
+  .escudo{width:124px}
+  .hero-grade{padding-top:32px}
+}
+
+/* Celular: "Volte a tocar ukulele" cabe numa linha, "com a gente," na seguinte */
+@media (max-width:959px){.h1-b{font-size:clamp(34px,9.6vw,46px)}}
 </style>
 </head>
 <body class="sem-js">
@@ -480,14 +510,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <span class="h1-b">Volte a tocar ukulele<br class="q"> <span class="nw">com a gente,</span></span>
           <span class="h1-c">numa condição especial<br class="q"> <span class="nw">para quem já é de casa.</span></span>
         </h1>
-      <p class="sub">Durante um ano, você tem <strong>3 encontros ao vivo por semana</strong> com a gente no ukulele e <strong>mais de 50 atividades</strong> para enviar em vídeo, cada uma com uma análise personalizada. De presente, você ainda ganha acesso vitalício ao <strong>curso inédito de violão do Mateus</strong>, com 10 encontros ao vivo só de violão, para sair tocando suas primeiras músicas sem precisar de pestana!</p>
+      <p class="sub">Durante um ano, você tem <strong>3 encontros ao vivo por semana</strong> com a gente no ukulele e <strong>mais de 50 atividades</strong> para enviar em vídeo, cada uma com uma análise personalizada. De presente, você ainda ganha acesso vitalício ao <strong>curso inédito de violão do Mateus</strong>, com 10 encontros ao vivo só de violão, para sair tocando suas primeiras músicas <span class="nw">sem precisar de pestana!</span></p>
       <div class="acoes">
           <a class="btn btn-compra" href="#oferta">Quero voltar para o Clube</a>
           <a class="link-claro" href="#semana">Antes, veja como fica a sua semana</a>
       </div>
     </div>
-    <div class="hero-foto">
-      <img src="../../img/mateus-perfil.webp" alt="Mateus sorrindo com o ukulele nos braços" width="1000" height="1250" fetchpriority="high">
+    <div class="hero-foto disco-foto">
+      <div class="recorte"><img src="../../img/mateus-perfil.webp" alt="Mateus sorrindo com o ukulele nos braços" width="1000" height="1250" fetchpriority="high"></div>
     </div>
   </div>
 </header>
