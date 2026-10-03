@@ -142,6 +142,8 @@ body{
 .sw:checked:hover{background:var(--roxo-hover)}
 .sw:checked::after{transform:translateX(14px)}
 .sw:focus-visible{outline:2px solid var(--roxo);outline-offset:2px}
+/* linha sem interruptor mantem o alinhamento das outras */
+.sw-vazio{width:34px}
 
 .mini{
   width:64px;font-family:inherit;font-size:.75rem;font-weight:600;color:var(--tinta);
@@ -206,21 +208,17 @@ select.mini{width:auto;max-width:132px;text-align:left;cursor:pointer;padding-ri
 /* o min() impede que a coluna de 430px estoure uma tela mais estreita que isso */
 .metades{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(430px,100%),1fr));gap:var(--s3) var(--s5)}
 .rolagem{overflow-x:auto;-webkit-overflow-scrolling:touch}
-table{border-collapse:collapse;width:100%;min-width:410px;font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:100%;min-width:340px;font-variant-numeric:tabular-nums}
 th,td{padding:4px var(--s2);text-align:right;font-size:.75rem}
 thead th{
   font-size:.625rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;
   color:var(--tinta-2);border-bottom:2px solid var(--borda-forte);
 }
-thead tr.faixa th{border-bottom:0;padding-bottom:2px}
-thead tr.faixa th.g1{color:var(--teal-txt)}
-thead tr.faixa th.g2{color:var(--coral-forte)}
 th:first-child,td:first-child{text-align:left;font-weight:700}
 tbody tr + tr{border-top:1px solid var(--borda)}
 tbody tr.ativa{background:var(--painel)}
 tbody tr.ativa td{font-weight:700}
 td.sobra{color:var(--teal-txt);font-weight:700}
-td.divisa{border-left:1px solid var(--borda)}
 .margem{color:var(--tinta-2);font-size:.625rem;font-weight:600}
 
 /* ============ notas ============ */
@@ -241,11 +239,6 @@ td.divisa{border-left:1px solid var(--borda)}
 .chamada{
   background:var(--teal-suave);border:1px solid #C9E3DC;border-radius:var(--raio);
   padding:var(--s3);font-size:.75rem;color:var(--teal-txt);line-height:1.55;margin-bottom:var(--s3);
-}
-
-.rodape{
-  background:linear-gradient(135deg,#443468,#2D124E);border-top:2px solid var(--coral);
-  color:rgba(255,255,255,.92);text-align:center;padding:var(--s2);font-size:.6875rem;
 }
 
 /* ============ tres colunas: cabe numa tela de notebook ============ */
@@ -294,7 +287,19 @@ td.divisa{border-left:1px solid var(--borda)}
     <div class="cartao-cab"><h2>Seu produto</h2></div>
     <div class="cartao-corpo">
       <div class="campo">
-        <label class="rotulo" for="preco">Preço da oferta</label>
+        <span class="rotulo" id="lbl-modo">Calcular a partir do</span>
+        <div class="modos" role="radiogroup" aria-labelledby="lbl-modo">
+          <button type="button" class="modo" role="radio" aria-checked="true" data-modo="direto">
+            <strong>Preço à vista</strong><small>dá a parcela</small>
+          </button>
+          <button type="button" class="modo" role="radio" aria-checked="false" data-modo="inverso">
+            <strong>Valor da parcela</strong><small>dá o preço à vista</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label class="rotulo" for="preco" id="lbl-preco">Preço à vista</label>
         <div class="preco-box">
           <span class="rs">R$</span>
           <input id="preco" type="text" inputmode="decimal" value="197,00" autocomplete="off">
@@ -304,18 +309,6 @@ td.divisa{border-left:1px solid var(--borda)}
       <div class="campo">
         <span class="rotulo" id="lbl-parcelas">Parcelas do cliente</span>
         <div class="parcelas" id="parcelas" role="group" aria-labelledby="lbl-parcelas"></div>
-      </div>
-
-      <div class="campo">
-        <span class="rotulo" id="lbl-modo">Quem paga o juro</span>
-        <div class="modos" role="radiogroup" aria-labelledby="lbl-modo">
-          <button type="button" class="modo" role="radio" aria-checked="true" data-modo="cliente">
-            <strong>O cliente</strong><small>parcela maior</small>
-          </button>
-          <button type="button" class="modo" role="radio" aria-checked="false" data-modo="produtor">
-            <strong>Você</strong><small>sai da margem</small>
-          </button>
-        </div>
       </div>
     </div>
   </section>
@@ -331,23 +324,25 @@ td.divisa{border-left:1px solid var(--borda)}
       <input type="checkbox" class="sw" id="on-hotmart" checked>
       <label class="custo-nome" for="on-hotmart">Taxa da Hotmart</label>
       <div class="custo-campos">
-        <input class="mini" id="tx-com" type="number" step="0.01" min="0" max="30" value="9.9" aria-label="Comissão em porcentagem">
+        <input class="mini" id="tx-com" type="number" step="0.01" min="0" max="30" value="7.7" aria-label="Comissão em porcentagem">
         <span class="sufixo">%</span>
         <span class="sufixo">+</span>
         <input class="mini" id="tx-fixa" type="number" step="0.01" min="0" value="1.00" aria-label="Valor fixo por venda em reais">
-        <button type="button" class="atalho" id="btn-minha-taxa" aria-label="Usar a taxa real da conta, 7,7 por cento">7,7%</button>
+        <button type="button" class="atalho" id="btn-minha-taxa" aria-label="Usar a taxa pública de 9,9%">9,9%</button>
       </div>
       <span class="custo-valor" id="v-hotmart"></span>
     </div>
 
     <div class="custo" data-on="true" id="c-parc">
-      <input type="checkbox" class="sw" id="on-parc" checked>
-      <label class="custo-nome" for="on-parc">Juro de parcelamento</label>
+      <span class="sw-vazio" aria-hidden="true"></span>
+      <label class="custo-nome" for="tx-parc">Juro de parcelamento
+        <small>sempre pago pelo cliente</small>
+      </label>
       <div class="custo-campos">
         <input class="mini" id="tx-parc" type="number" step="0.01" min="0" max="15" value="3.49" aria-label="Juro de parcelamento em porcentagem ao mês">
         <span class="sufixo">% a.m.</span>
       </div>
-      <span class="custo-valor" id="v-parc"></span>
+      <span class="custo-valor">do cliente</span>
     </div>
 
     <div class="custo" data-on="false" id="c-antec">
@@ -374,8 +369,8 @@ td.divisa{border-left:1px solid var(--borda)}
       <span class="custo-valor" id="v-player"></span>
     </div>
 
-    <div class="custo" data-on="true" id="c-imp">
-      <input type="checkbox" class="sw" id="on-imp" checked>
+    <div class="custo" data-on="false" id="c-imp">
+      <input type="checkbox" class="sw" id="on-imp">
       <label class="custo-nome" for="on-imp">Imposto</label>
       <div class="custo-campos">
         <input class="mini" id="tx-imp" type="number" step="0.01" min="0" max="40" value="6.1" aria-label="Alíquota de imposto em porcentagem">
@@ -408,7 +403,7 @@ td.divisa{border-left:1px solid var(--borda)}
   <aside class="col-resultado">
     <div class="resultado">
       <div class="res-cliente">
-        <div class="res-rot">O cliente paga</div>
+        <div class="res-rot" id="r-cliente-rot">O cliente paga</div>
         <div class="valor" id="r-cliente"></div>
         <div class="obs" id="r-cliente-obs"></div>
       </div>
@@ -427,22 +422,16 @@ td.divisa{border-left:1px solid var(--borda)}
   <section class="cartao larga">
     <div class="cartao-cab">
       <h2>Todas as parcelas, lado a lado</h2>
-      <p>Mesmos custos ligados acima, de 1x a 12x. A linha destacada é a parcela selecionada.</p>
+      <p>Mesmos custos ligados acima, de 1x a 12x. A linha destacada é a parcela selecionada. No cálculo pela parcela, cada linha mostra o preço à vista que chega na parcela digitada.</p>
     </div>
     <div class="cartao-corpo">
       <div class="metades">
         <div class="rolagem">
           <table>
             <thead>
-              <tr class="faixa">
-                <th></th>
-                <th class="g1" colspan="2" scope="colgroup">Cliente paga o juro</th>
-                <th class="g2" colspan="2" scope="colgroup">Você paga o juro</th>
-              </tr>
               <tr>
                 <th scope="col">Parcelas</th>
-                <th scope="col">Parcela</th>
-                <th scope="col">Sobra</th>
+                <th scope="col">Preço à vista</th>
                 <th scope="col">Parcela</th>
                 <th scope="col">Sobra</th>
               </tr>
@@ -453,15 +442,9 @@ td.divisa{border-left:1px solid var(--borda)}
         <div class="rolagem">
           <table>
             <thead>
-              <tr class="faixa">
-                <th></th>
-                <th class="g1" colspan="2" scope="colgroup">Cliente paga o juro</th>
-                <th class="g2" colspan="2" scope="colgroup">Você paga o juro</th>
-              </tr>
               <tr>
                 <th scope="col">Parcelas</th>
-                <th scope="col">Parcela</th>
-                <th scope="col">Sobra</th>
+                <th scope="col">Preço à vista</th>
                 <th scope="col">Parcela</th>
                 <th scope="col">Sobra</th>
               </tr>
@@ -478,12 +461,13 @@ td.divisa{border-left:1px solid var(--borda)}
     <summary>Como a conta é feita, e de onde vêm as taxas</summary>
     <div class="notas-corpo">
       <div class="chamada">
-        A comissão da Hotmart incide sobre o <strong>preço do produto</strong>, não sobre o total com juros. Por isso, quando o cliente paga o juro, você recebe exatamente o mesmo em 1x e em 12x.
+        A comissão da Hotmart incide sobre o <strong>preço do produto</strong>, não sobre o total com juros. Como o juro fica com o cliente, você recebe exatamente o mesmo em 1x e em 12x.
       </div>
       <p><strong>Comissão:</strong> a tabela pública começa em 9,9% + R$ 1,00 e cai conforme o faturamento anual. A conta do Clube do Ukulele está em 7,7%, conferido com uma venda real: um produto de R$ 197,00 rende R$ 180,84, porque a Hotmart corta os centavos para baixo, então 7,7% de R$ 197,00 vira R$ 15,16 e não R$ 15,17.</p>
       <p><strong>Juro de parcelamento:</strong> 3,49% ao mês em juros compostos sobre o preço do produto, no formato da tabela Price. Em 1x não há cobrança, e o limite é 12x. A quantidade de parcelas que aparece no checkout depende do valor do produto.</p>
+      <p><strong>Cálculo pela parcela:</strong> você digita a parcela que quer mostrar na página, e a calculadora acha o maior preço à vista, em centavos, cuja parcela na tabela Price não passa desse valor. Como a parcela é arredondada, às vezes ela sai um ou dois centavos abaixo do que você digitou.</p>
       <p><strong>Antecipação:</strong> D30 é o padrão e sai de graça. D14 custa 2,19%, D2 custa 3,59% e a antecipação flexível avulsa custa 4,79%, sempre sobre o valor antecipado. Nos prazos curtos, 10% do saldo fica retido por 30 dias para cobrir estornos. Como a Hotmart aplica a taxa proporcional ao prazo real de cada parcela, o número aqui é a estimativa do caso cheio.</p>
-      <p><strong>Imposto:</strong> a base padrão é o preço do produto, que é a receita bruta no Simples Nacional. Se o seu contador apura sobre o valor repassado pela Hotmart, troque a base no seletor. A alíquota fica editável porque ela sobe conforme o faturamento dos últimos 12 meses.</p>
+      <p><strong>Imposto:</strong> vem desligado. A base padrão é o preço do produto, que é a receita bruta no Simples Nacional. Se o seu contador apura sobre o valor repassado pela Hotmart, troque a base no seletor. A alíquota fica editável porque ela sobe conforme o faturamento dos últimos 12 meses.</p>
       <p><strong>Tráfego pago:</strong> o investimento é dividido pelas vendas geradas, e o custo por venda é descontado como qualquer outro custo. Serve para responder se o anúncio se paga naquele preço e naquele parcelamento.</p>
       <p><strong>O que ficou de fora:</strong> a taxa de saque. A Hotmart só diz que ela cobre encargos bancários e varia com o valor sacado, sem publicar tabela, então qualquer número aqui seria chute.</p>
       <p>Fontes: <a href="https://help.hotmart.com/pt-br/article/208298448/quais-sao-as-taxas-cobradas-pela-hotmart-" target="_blank" rel="noopener">taxas cobradas pela Hotmart</a>, <a href="https://help.hotmart.com/pt-br/article/216440337/quais-tipos-e-formas-de-pagamento-eu-posso-escolher-para-meu-produto-" target="_blank" rel="noopener">formas de pagamento e parcelamento</a> e <a href="https://help.hotmart.com/pt-br/article/4409154605837/como-funciona-o-prazo-de-recebimento-e-antecipacao-de-vendas-feitas-por-cartao-de-credito-" target="_blank" rel="noopener">prazo de recebimento e antecipação</a>. Verificado em agosto de 2026.</p>
@@ -493,28 +477,26 @@ td.divisa{border-left:1px solid var(--borda)}
 </main>
 </div>
 
-<footer class="rodape">Feito com carinho pelo Clube do Ukulele</footer>
-
 <script>
 (function(){
   'use strict';
 
   var MAX_PARCELAS = 12;
-  var TAXA_PADRAO = 9.9;
-  var MINHA_TAXA  = 7.7;
+  var TAXA_PUBLICA = 9.9;
+  var MINHA_TAXA   = 7.7;
 
   var el = {};
   ['preco','parcelas','tx-com','tx-fixa','tx-parc','prazo','tx-imp','base-imp','invest','vendas',
-   'on-hotmart','on-parc','on-antec','on-player','on-imp','on-cac',
-   'c-hotmart','c-parc','c-antec','c-player','c-imp','c-cac',
-   'v-hotmart','v-parc','v-antec','v-player','v-imp','v-cac',
-   'r-cliente','r-cliente-obs','r-sobra','r-sobra-obs','extrato','corpo-a','corpo-b',
+   'on-hotmart','on-antec','on-player','on-imp','on-cac',
+   'c-hotmart','c-antec','c-player','c-imp','c-cac',
+   'v-hotmart','v-antec','v-player','v-imp','v-cac',
+   'lbl-preco','r-cliente-rot','r-cliente','r-cliente-obs','r-sobra','r-sobra-obs','extrato','corpo-a','corpo-b',
    'nota-cac','btn-minha-taxa'].forEach(function(id){
     el[id] = document.getElementById(id);
   });
 
   var n = 12;
-  var modo = 'cliente';
+  var modo = 'direto'; // direto: preco -> parcela; inverso: parcela -> preco
 
   /* ---------- formatacao ---------- */
   function brl(v){ return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); }
@@ -541,16 +523,27 @@ td.divisa{border-left:1px solid var(--borda)}
     return arred(preco * i / (1 - Math.pow(1 + i, -n)));
   }
 
+  /* Caminho inverso: o maior preco, em centavos, cuja parcela nao passa do alvo.
+     Parte do valor presente e acerta centavo a centavo por causa do arredondamento. */
+  function precoPelaParcela(alvo, n, iMes){
+    alvo = arred(alvo);
+    if (alvo <= 0) return 0;
+    var i = iMes / 100;
+    var p = arred((n <= 1 || i <= 0) ? alvo * n : alvo * (1 - Math.pow(1 + i, -n)) / i);
+    while (p > 0 && parcelaPrice(p, n, iMes) > alvo) p = arred(p - 0.01);
+    while (parcelaPrice(arred(p + 0.01), n, iMes) <= alvo) p = arred(p + 0.01);
+    return p;
+  }
+
   /* ---------- leitura dos controles ---------- */
   function taxas(){
     var vendas = Math.max(1, Math.round(campo(el.vendas, 1)));
     return {
       hotmartOn: el['on-hotmart'].checked,
-      com:  campo(el['tx-com'], TAXA_PADRAO),
+      com:  campo(el['tx-com'], MINHA_TAXA),
       fixa: campo(el['tx-fixa'], 1),
 
-      parcOn: el['on-parc'].checked,
-      parc:   campo(el['tx-parc'], 3.49),
+      parc: campo(el['tx-parc'], 3.49),
 
       antecOn: el['on-antec'].checked,
       antec:   parseFloat(el.prazo.value) || 0,
@@ -568,23 +561,16 @@ td.divisa{border-left:1px solid var(--borda)}
   }
 
   /* ---------- nucleo ---------- */
-  function calcular(preco, n, modo, t){
-    var jm = t.parcOn ? t.parc : 0;
-    var parcelaComJuro = parcelaPrice(preco, n, jm);
-    var totalComJuro   = arred(parcelaComJuro * n);
-    var acrescimo      = arred(totalComJuro - preco);
+  function calcular(preco, n, t){
+    var parcelaCliente = parcelaPrice(preco, n, t.parc);
+    var totalCliente   = arred(parcelaCliente * n);
+    var acrescimo      = arred(totalCliente - preco);
 
     var comissao = t.hotmartOn ? corta(preco * t.com / 100) : 0;
     var fixa     = t.hotmartOn ? t.fixa : 0;
     var player   = t.playerOn ? 2.49 : 0;
-    var juro     = (modo === 'produtor') ? acrescimo : 0;
 
-    var parcelaCliente = (modo === 'produtor') ? arred(preco / n) : parcelaComJuro;
-    // sem repasse o cliente paga o preco cheio; a Hotmart acerta a sobra de
-    // centavos na primeira parcela, entao o total exibido e o proprio preco.
-    var totalCliente   = (modo === 'produtor') ? preco : totalComJuro;
-
-    var aposHotmart = arred(preco - comissao - fixa - player - juro);
+    var aposHotmart = arred(preco - comissao - fixa - player);
     var antecipacao = t.antecOn ? corta(aposHotmart * t.antec / 100) : 0;
 
     var baseImposto = 0, imposto = 0;
@@ -598,7 +584,7 @@ td.divisa{border-left:1px solid var(--borda)}
 
     return {
       parcelaCliente:parcelaCliente, totalCliente:totalCliente, acrescimo:acrescimo,
-      comissao:comissao, fixa:fixa, player:player, juro:juro,
+      comissao:comissao, fixa:fixa, player:player,
       antecipacao:antecipacao, imposto:imposto, baseImposto:baseImposto, cac:cac,
       sobra:sobra, margem: preco > 0 ? (sobra / preco) * 100 : 0
     };
@@ -625,19 +611,33 @@ td.divisa{border-left:1px solid var(--borda)}
     el['v-' + id].textContent = ligado ? (valor > 0 ? '− ' + brl(valor) : brl(0)) : 'off';
   }
 
+  function precoDe(entrada, k, t){
+    return modo === 'inverso' ? precoPelaParcela(entrada, k, t.parc) : entrada;
+  }
+
   function render(){
-    var preco = num(el.preco.value);
+    var entrada = num(el.preco.value);
     var t = taxas();
-    var r = calcular(preco, n, modo, t);
+    var preco = precoDe(entrada, n, t);
+    var r = calcular(preco, n, t);
 
     /* topo do resultado */
-    el['r-cliente'].textContent = (n === 1)
-      ? brl(r.totalCliente)
-      : n + 'x de ' + brl(r.parcelaCliente);
-    el['r-cliente-obs'].textContent = (n === 1)
-      ? 'À vista, sem juro'
-      : 'Total de ' + brl(r.totalCliente) +
-        (modo === 'cliente' && r.acrescimo > 0 ? ', com ' + brl(r.acrescimo) + ' de juro' : ', sem acréscimo');
+    var juroTxt = r.acrescimo > 0 ? ', com ' + brl(r.acrescimo) + ' de juro' : ', sem acréscimo';
+    if (modo === 'inverso'){
+      el['r-cliente-rot'].textContent = 'Preço à vista para cadastrar';
+      el['r-cliente'].textContent = brl(preco);
+      el['r-cliente-obs'].textContent = (n === 1)
+        ? 'À vista, sem juro'
+        : n + 'x de ' + brl(r.parcelaCliente) + ', total de ' + brl(r.totalCliente) + juroTxt;
+    } else {
+      el['r-cliente-rot'].textContent = 'O cliente paga';
+      el['r-cliente'].textContent = (n === 1)
+        ? brl(r.totalCliente)
+        : n + 'x de ' + brl(r.parcelaCliente);
+      el['r-cliente-obs'].textContent = (n === 1)
+        ? 'À vista, sem juro'
+        : 'Total de ' + brl(r.totalCliente) + juroTxt;
+    }
 
     el['r-sobra'].textContent = brl(r.sobra);
     var obs = pct1(r.margem) + ' do preço';
@@ -647,7 +647,6 @@ td.divisa{border-left:1px solid var(--borda)}
     /* extrato */
     var h = linha('Preço do produto', preco, '');
     if (r.comissao > 0 || r.fixa > 0) h += linha('Hotmart, ' + pct2(t.com) + ' + fixo', r.comissao + r.fixa, 'saida');
-    if (r.juro > 0)        h += linha('Juro de ' + n + 'x a ' + pct2(t.parc) + ' a.m.', r.juro, 'saida');
     if (r.player > 0)      h += linha('Player de vídeo', r.player, 'saida');
     if (r.antecipacao > 0) h += linha('Antecipação ' + el.prazo.options[el.prazo.selectedIndex].text, r.antecipacao, 'saida');
     if (r.imposto > 0)     h += linha('Imposto de ' + pct2(t.imp), r.imposto, 'saida');
@@ -657,27 +656,22 @@ td.divisa{border-left:1px solid var(--borda)}
 
     /* etiquetas de cada custo */
     marcarCusto('hotmart', t.hotmartOn, r.comissao + r.fixa);
-    marcarCusto('parc', t.parcOn, r.juro);
     marcarCusto('antec', t.antecOn, r.antecipacao);
     marcarCusto('player', t.playerOn, r.player);
     marcarCusto('imp', t.impOn, r.imposto);
     marcarCusto('cac', t.cacOn, r.cac);
     el['nota-cac'].textContent = t.cacOn ? brl(t.cac) + ' por venda' : 'investimento dividido pelas vendas';
 
-    /* o juro so pesa na margem quando voce assume */
-    if (t.parcOn && modo === 'cliente') el['v-parc'].textContent = 'do cliente';
-
     /* tabela em duas metades, para caber na altura de um notebook */
     var meio = MAX_PARCELAS / 2, linhas = ['',''];
     for (var k = 1; k <= MAX_PARCELAS; k++){
-      var a = calcular(preco, k, 'cliente', t);
-      var b = calcular(preco, k, 'produtor', t);
+      var pk = precoDe(entrada, k, t);
+      var a = calcular(pk, k, t);
       linhas[k <= meio ? 0 : 1] += '<tr' + (k === n ? ' class="ativa"' : '') + '>' +
         '<th scope="row">' + k + 'x</th>' +
+        '<td>' + brl(pk) + '</td>' +
         '<td>' + brl(a.parcelaCliente) + '</td>' +
-        '<td class="sobra">' + brl(a.sobra) + '</td>' +
-        '<td class="divisa">' + brl(b.parcelaCliente) + '</td>' +
-        '<td class="sobra">' + brl(b.sobra) + ' <span class="margem">' + pct1(b.margem) + '</span></td>' +
+        '<td class="sobra">' + brl(a.sobra) + ' <span class="margem">' + pct1(a.margem) + '</span></td>' +
       '</tr>';
     }
     el['corpo-a'].innerHTML = linhas[0];
@@ -697,7 +691,13 @@ td.divisa{border-left:1px solid var(--borda)}
 
   document.querySelectorAll('.modo').forEach(function(b){
     b.addEventListener('click', function(){
+      if (this.dataset.modo === modo) return;
+      var t = taxas();
+      var preco = precoDe(num(el.preco.value), n, t);
+      var novo = this.dataset.modo === 'inverso' ? calcular(preco, n, t).parcelaCliente : preco;
       modo = this.dataset.modo;
+      el.preco.value = novo.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+      el['lbl-preco'].textContent = modo === 'inverso' ? 'Parcela que você quer' : 'Preço à vista';
       document.querySelectorAll('.modo').forEach(function(x){
         x.setAttribute('aria-checked', x === b);
       });
@@ -706,7 +706,7 @@ td.divisa{border-left:1px solid var(--borda)}
   });
 
   ['tx-com','tx-fixa','tx-parc','prazo','tx-imp','base-imp','invest','vendas',
-   'on-hotmart','on-parc','on-antec','on-player','on-imp','on-cac'].forEach(function(id){
+   'on-hotmart','on-antec','on-player','on-imp','on-cac'].forEach(function(id){
     el[id].addEventListener('input', render);
     el[id].addEventListener('change', render);
   });
@@ -719,7 +719,7 @@ td.divisa{border-left:1px solid var(--borda)}
   });
 
   el['btn-minha-taxa'].addEventListener('click', function(){
-    var alvo = parseFloat(el['tx-com'].value) === MINHA_TAXA ? TAXA_PADRAO : MINHA_TAXA;
+    var alvo = parseFloat(el['tx-com'].value) === MINHA_TAXA ? TAXA_PUBLICA : MINHA_TAXA;
     el['tx-com'].value = alvo;
     this.textContent = alvo === MINHA_TAXA ? '9,9%' : '7,7%';
     this.setAttribute('aria-label', 'Usar a taxa de ' + this.textContent);
