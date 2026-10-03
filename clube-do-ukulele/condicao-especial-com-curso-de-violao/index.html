@@ -539,6 +539,33 @@ br.q{display:none}
   .btn{font-size:15px;padding:0 14px}
   .fixo .p.fase-b{display:none}
 }
+
+/* Popup: faixa da oferta no topo, foco sem anel no fechar ao abrir, opções Sim/Não desenhadas */
+dialog.modal{overflow:auto}
+.modal-topo{background:radial-gradient(70% 120% at 100% 0%,rgb(255 255 255 / .08),transparent 60%),var(--indigo-profundo);color:#fff;padding:18px 64px 18px 22px;display:flex;flex-direction:column;gap:10px;border-radius:22px 22px 0 0}
+.modal-topo .marca-vf b{font-size:24px}.modal-topo .marca-vf img{width:30px}.modal-topo .marca-vf small{font-size:10px}
+.modal-logo{width:140px;height:auto;display:block}
+.modal-oferta{margin:0;font-size:14px;font-weight:700;color:var(--sobre-escuro);display:flex;align-items:center;gap:8px}
+.modal-oferta::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);flex:none}
+.modal-x{top:12px;right:12px;color:#fff;background:rgb(255 255 255 / .08);border-radius:50%}
+.modal-x:hover{background:rgb(255 255 255 / .18)}
+.modal-x:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.modal-bd{padding:22px 22px 20px}
+.modal-bd:focus{outline:none}
+.modal h3{padding-right:0;font-size:clamp(26px,6vw,30px)}
+.modal .sub{margin:6px 0 18px}
+.radios input{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:2px solid #B9B4C7;border-radius:50%;display:grid;place-items:center;margin:0;flex:none;background:#fff;transition:border-color .15s}
+.radios input::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--indigo);transform:scale(0);transition:transform .15s var(--ease)}
+.radios input:checked{border-color:var(--indigo)}
+.radios input:checked::before{transform:scale(1)}
+.radios label{transition:border-color .15s,background .15s}
+.radios label:hover{border-color:var(--neutro-medio)}
+.radios label:has(input:focus-visible){outline:3px solid var(--indigo);outline-offset:2px}
+
+.modal-topo{padding:18px 22px}
+.modal-topo>:first-child{margin-right:52px}
+.modal-oferta{align-items:flex-start}
+.modal-oferta::before{margin-top:6px}
 </style>
 </head>
 <body class="sem-js">
@@ -815,10 +842,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </div>
 
 <dialog class="modal" id="checkout" aria-labelledby="ckt">
-  <div class="modal-bd">
+  <div class="modal-topo">
+    <img class="modal-logo" src="../../img/logo/logo-horizontal-negativa.svg" alt="Clube do Ukulele" width="140" height="47">
+    <p class="modal-oferta">Plano Ouro por 1 ano, com o curso de violão de presente</p>
     <button class="modal-x" type="button" data-fecha aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-    <h3 id="ckt">Falta pouco para garantir a condição de casa</h3>
-    <p class="sub">Preencha para ir ao pagamento. Na Hotmart, seus dados já vão estar preenchidos.</p>
+  </div>
+  <div class="modal-bd" tabindex="-1" autofocus>
+    <h3 id="ckt">Entre no Clube com a condição de casa</h3>
+    <p class="sub">Preencha seus dados para ir ao pagamento. Na Hotmart, eles já chegam preenchidos.</p>
     <form id="lead" novalidate>
       <div class="campo"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Seu nome e sobrenome" required><p class="erro" id="e-nome">Escreva nome e sobrenome.</p></div>
       <div class="campo"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="dica" id="h-email">Corrigimos um possível erro de digitação. Confira se está certo.</p><p class="erro" id="e-email">Confira o e-mail.</p></div>
