@@ -849,7 +849,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   </div>
   <div class="modal-bd" tabindex="-1" autofocus>
     <h3 id="ckt">Entre no Clube com a condição de casa</h3>
-    <p class="sub">Preencha seus dados para ir ao pagamento. Na Hotmart, eles já chegam preenchidos.</p>
+    <p class="sub">Preencha abaixo para iniciar sua inscrição e aproveitar a condição especial!</p>
     <form id="lead" novalidate>
       <div class="campo"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Seu nome e sobrenome" required><p class="erro" id="e-nome">Escreva nome e sobrenome.</p></div>
       <div class="campo"><label for="email">Melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="seu@email.com" required><p class="dica" id="h-email">Corrigimos um possível erro de digitação. Confira se está certo.</p><p class="erro" id="e-email">Confira o e-mail.</p></div>
@@ -1004,7 +1004,7 @@ function mascara(){
   } else { waIn.value=v.slice(0,15); }
 }
 waIn.addEventListener('input',mascara);
-ddi.addEventListener('change',function(){ waIn.value=''; waIn.placeholder= ddi.value==='55' ? 'DDD + número' : 'Número com DDD'; });
+ddi.addEventListener('change',function(){ waIn.value=''; waIn.placeholder= ddi.value==='55' ? 'DDD + número' : ddi.value ? 'Número com DDD' : 'Código do país + número'; });
 /* Lista de países: fechada mostra só o código (+55), aberta mostra o nome do país */
 (function(){
   var ops=[].slice.call(ddi.options);
@@ -1060,8 +1060,8 @@ document.getElementById('lead').addEventListener('submit',function(e){
   try{
     url=new URL(HOTMART_URL);
     url.searchParams.set('name',nome); url.searchParams.set('email',email);
-    url.searchParams.set('phonenumber',tel);
-    if(ddi.value) url.searchParams.set('phoneac',ddi.value);
+    // Na Hotmart, phoneac é o DDD. Mandando DDI + número inteiro em phonenumber, ela separa país, DDD e número sozinha.
+    url.searchParams.set('phonenumber',(ddi.value||'')+tel);
     var qp=new URLSearchParams(location.search), utms=[];
     ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
     if(utms.length) url.searchParams.set('sck',utms.join('|'));
