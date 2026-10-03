@@ -118,7 +118,7 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 /* Ponte de acordes */
 .ponte-grade{display:grid;gap:36px;margin-top:36px}
 @media (min-width:900px){.ponte-grade{grid-template-columns:1fr 1.1fr;align-items:center;gap:56px}}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px}
 .chip{min-height:44px;min-width:64px;padding:0 16px;border-radius:999px;border:2px solid var(--superficie);background:var(--card);color:var(--indigo);font-weight:800;font-size:16px;transition:background .2s,border-color .2s,color .2s}
 .chip:hover{border-color:var(--neutro-medio)}
 .chip[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff}
@@ -161,7 +161,7 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 
 /* Encontros */
 .periodo{margin-top:34px;max-width:860px}
-.meses{display:grid;grid-template-columns:.35fr 1fr 1fr 1fr;gap:4px}
+.meses{display:grid;grid-template-columns:.35fr 1fr 1fr 1fr;gap:10px}
 .mes{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--sobre-escuro);padding-bottom:8px}
 .barra{position:relative;height:16px;border-radius:999px;background:rgb(255 255 255 / .1);overflow:hidden}
 .barra .cheia{position:absolute;inset:0;background:var(--coral);transform-origin:left;transform:scaleX(0);transition:transform 1.6s var(--ease)}
@@ -325,6 +325,7 @@ dialog.modal[open]{animation:sobe .4s var(--ease)}
 @media (min-width:900px){.vitrine{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;max-width:none}}
 .garantia{background:var(--card);border-radius:24px;box-shadow:var(--sombra-card);padding:26px 22px;margin:0 auto;max-width:880px}
 @media (min-width:700px){.garantia{padding:36px 40px}}
+@media (max-width:699px){.garantia{grid-template-columns:1fr;gap:14px}}
 
 /* Celular: o botão do topo tem que caber na primeira tela */
 @media (max-width:959px){
@@ -338,6 +339,8 @@ dialog.modal[open]{animation:sobe .4s var(--ease)}
 
 /* Títulos: quebra natural, sem dividir em linhas iguais; a promessa leva a cor coral do manual */
 h1,h2,h3{text-wrap:pretty}
+/* Celular de 320px: título curto em duas linhas iguais, sem uma palavra sozinha embaixo */
+@media (max-width:359px){h2,h3{text-wrap:balance}}
 .medida{max-width:880px}
 .medida>p,.medida .lead{max-width:680px}
 .marca{box-shadow:none;color:var(--coral-forte)}
@@ -407,7 +410,8 @@ br.q{display:none}
 .hero-grade{max-width:1120px}
 .nw{white-space:nowrap}
 @media (min-width:960px){.oferta-grade>:first-child{position:sticky;top:calc(var(--topo-h) + 32px);align-self:start}}
-.cartao .relogio-oferta{justify-content:flex-start}
+.cartao .relogio-oferta{display:grid;grid-template-columns:repeat(4,1fr)}
+.cartao .relogio-oferta div{width:auto}
 
 .periodo{max-width:none}
 .garantia .selo-svg{width:96px;height:auto}
@@ -588,7 +592,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section>
     <div class="miolo lado">
       <div class="medida rv">
-        <h2>Do zero<br class="q"> aos <span class="nw">4 acordes mágicos</span> no violão!</h2>
+        <h2>Do zero<br class="q"> aos <span class="nw">4 acordes mágicos</span> <span class="nw">no violão!</span></h2>
         <p class="lead">Desde o primeiro dia, acorde e batida entram juntos, dentro da música de verdade. Essa será a nossa primeira conquista, e a que vai abrir as portas para um novo instrumento: o violão. A partir de 28/10, os módulos são lançados semana a semana, toda quarta-feira. E claro, o módulo aberto já fica disponível para você assistir e reassistir quantas vezes quiser!</p>
         <p class="sem-pestana"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>O curso inteiro é sem pestana!</p>
       </div>
@@ -739,7 +743,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <div class="garantia rv">
         <svg class="selo-svg" viewBox="0 0 120 132" role="img" aria-label="Selo de garantia de 30 dias"><path d="M60 4 108 22v38c0 32-21 55-48 68C33 115 12 92 12 60V22Z" fill="#092735"/><path d="M60 15 98 29v31c0 26-16 45-38 56C38 105 22 86 22 60V29Z" fill="#1D5468"/><path d="M40 66l14 14 28-30" fill="none" stroke="#E87A85" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div>
-          <h2>30 dias para decidir com calma</h2>
+          <h2>30 dias para decidir <span class="nw">com calma</span></h2>
           <p>Entre, assista às primeiras aulas, vá ao encontro inaugural e toque a sua primeira música. Se em 30 dias você achar que não era o que esperava, pede o reembolso e recebe o valor inteiro de volta.</p>
         </div>
       </div>
@@ -748,7 +752,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   <section class="suave">
     <div class="miolo lado">
-      <h2 class="rv">Perguntas de<br class="q"> quem já é de casa</h2>
+      <h2 class="rv">Perguntas de<br class="q"> quem <span class="nw">já é de casa</span></h2>
       <div class="faq">
         <details><summary>Ainda não tenho violão. Posso entrar?</summary><p>Pode. O módulo de preparação, que entra na plataforma até 20/10, mostra qual violão comprar, quais acessórios valem a pena e como afinar. Assim você compra com calma antes do encontro inaugural, em 28/10.</p></details>
         <details><summary>Nunca toquei violão. O curso é para mim?</summary><p>É. O curso começa do zero, e quem já tocou ukulele ainda sai na frente, porque a mão dos acordes já conhece os desenhos.</p></details>
@@ -777,7 +781,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <footer class="rodape-pg">
   <img src="../../img/logo/logo-horizontal-negativa.svg" alt="Clube do Ukulele" width="160" height="53" loading="lazy">
-  <p>Violão Fundamental, um curso do Clube do Ukulele · comotocarukulele.com</p>
+  <p>Violão Fundamental, um curso do Clube do Ukulele<br>comotocarukulele.com</p>
 </footer>
 
 <div class="fixo cta-compra" id="fixo" aria-hidden="true">
@@ -859,7 +863,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
     pend=pend.filter(function(e){ if(e.getBoundingClientRect().top<lim){e.classList.add('on');return false;} return true; });
     if(!pend.length){removeEventListener('scroll',rola);removeEventListener('resize',rola);}
   }
-  function rola(){ if(!t){t=true;requestAnimationFrame(checa);} }
+  function rola(){ if(!t){t=true;setTimeout(checa,50);} }
   addEventListener('scroll',rola,{passive:true}); addEventListener('resize',rola); checa();
 })();
 
