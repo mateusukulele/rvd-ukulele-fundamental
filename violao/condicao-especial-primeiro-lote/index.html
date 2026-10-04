@@ -161,15 +161,22 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 
 /* Encontros */
 .periodo{margin-top:34px;max-width:860px}
-.meses{display:grid;grid-template-columns:.35fr 1fr 1fr 1fr;gap:10px}
-.mes{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--sobre-escuro);padding-bottom:8px}
+/* Escala real: 28/10 = 0%, 27/01 = 100% (91 dias). 1/11 = 4,4%, 1/12 = 37,4%, 1/1 = 71,4%.
+   Pausa de 20/12 a 02/01 = 58% a 72,5%, centro 65,3%. */
+.meses{position:relative;height:26px}
+.mes{position:absolute;top:0;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--sobre-escuro);line-height:18px}
+.m-nov{left:4.4%}.m-dez{left:37.4%}.m-jan{left:71.4%}
+.barra .tique{position:absolute;top:0;bottom:0;width:2px;background:rgb(9 39 53 / .45);z-index:1}
 .barra{position:relative;height:16px;border-radius:999px;background:rgb(255 255 255 / .1);overflow:hidden}
 .barra .cheia{position:absolute;inset:0;background:var(--coral);transform-origin:left;transform:scaleX(0);transition:transform 1.6s var(--ease)}
-.barra .pausa{position:absolute;top:0;bottom:0;left:68%;width:8%;background:repeating-linear-gradient(135deg,var(--indigo-profundo) 0 5px,rgb(255 255 255 / .25) 5px 8px)}
+.barra .pausa{position:absolute;top:0;bottom:0;left:58%;width:14.5%;z-index:2;background:repeating-linear-gradient(135deg,var(--indigo-profundo) 0 5px,rgb(255 255 255 / .25) 5px 8px)}
 .on .barra .cheia{transform:scaleX(1)}
-.marcos{display:flex;justify-content:space-between;margin-top:10px;font-size:14px;color:var(--sobre-escuro);gap:8px}
+.marcos{position:relative;display:flex;justify-content:space-between;margin-top:10px;font-size:14px;color:var(--sobre-escuro);gap:8px}
 .marcos b{color:#fff;display:block;font-size:16px}
-.marcos .meio{text-align:center}
+.marcos .meio{position:absolute;top:0;left:65.3%;transform:translateX(-50%)}
+.marcos .meio b{color:var(--coral)}
+.marcos small{display:block;font-size:14px;white-space:nowrap}
+@media (max-width:559px){.marcos small{display:none}}
 .marcos .fim{text-align:right}
 .fatos{display:grid;gap:14px;margin-top:40px}
 @media (min-width:820px){.fatos{grid-template-columns:repeat(3,1fr);gap:18px}}
@@ -615,9 +622,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <p class="lead">Toda quarta, às 19h30, a partir do encontro inaugural em 28/10. São encontros de acompanhamento, para tirar suas dúvidas e trazer coisas novas para a turma, como uma música ensinada ao vivo. Todos ficam gravados, e as gravações são suas para sempre.</p>
       </div>
       <div class="periodo rv" id="periodo">
-        <div class="meses" aria-hidden="true"><span class="mes">Out</span><span class="mes">Nov</span><span class="mes">Dez</span><span class="mes">Jan</span></div>
-        <div class="barra" role="img" aria-label="Período dos encontros: de 28 de outubro a 27 de janeiro, com pausa no Natal e no Ano-Novo"><span class="cheia"></span><span class="pausa"></span></div>
-        <div class="marcos"><span><b>28/10</b>encontro inaugural</span><span class="meio"><b>Pausa</b>Natal e Ano-Novo</span><span class="fim"><b>27/01</b>último encontro</span></div>
+        <div class="meses" aria-hidden="true"><span class="mes m-nov">Nov</span><span class="mes m-dez">Dez</span><span class="mes m-jan">Jan</span></div>
+        <div class="barra" role="img" aria-label="Período dos encontros: de 28 de outubro a 27 de janeiro, com pausa no Natal e no Ano-Novo"><span class="cheia"></span><i class="tique m-nov"></i><i class="tique m-dez"></i><i class="tique m-jan"></i><span class="pausa"></span></div>
+        <div class="marcos"><span><b>28/10</b><small>encontro inaugural</small></span><span class="meio"><b>Pausa</b><small>Natal e Ano-Novo</small></span><span class="fim"><b>27/01</b><small>último encontro</small></span></div>
       </div>
       <div class="fatos">
         <div class="fato rv"><span class="num">Quarta 19h30</span><p>O mesmo dia e horário toda semana (com pausa no Natal e no Ano-Novo), para virar parte da sua rotina.</p></div>
