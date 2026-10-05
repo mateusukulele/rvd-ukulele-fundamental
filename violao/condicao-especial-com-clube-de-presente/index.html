@@ -27,7 +27,7 @@
   --fonte-corpo:"Montserrat",system-ui,-apple-system,sans-serif;
   --sombra-card:0 20px 44px -30px rgb(31 26 43 / .45);
   --ease:cubic-bezier(.16,1,.3,1);
-  --topo-h:40px;
+  --topo-h:54px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topo-h) + 12px)}
@@ -66,6 +66,14 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 .relogio{display:flex;align-items:baseline;gap:8px;color:var(--sobre-escuro);white-space:nowrap}
 .relogio b{color:#fff;font-variant-numeric:tabular-nums;font-weight:800;letter-spacing:.3px}
 .relogio .ponto-vivo{width:8px;height:8px;border-radius:50%;background:var(--laranja);align-self:center;box-shadow:0 0 0 0 rgb(205 55 1 / .6);animation:pulsa 2s infinite}
+/* Contagem do topo em blocos: dias, horas, minutos e segundos */
+.topo .relogio{align-items:center;gap:12px}
+.topo .rt-l,.topo .rt-c{font-weight:600}
+.cronometro{display:flex;gap:5px}
+.cronometro>span{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:42px;height:40px;padding:0 4px;background:var(--indigo);border-radius:8px;box-shadow:inset 0 0 0 1px rgb(255 255 255 / .1)}
+.cronometro b{font-size:17px;line-height:1}
+.cronometro i{font-style:normal;font-size:10px;line-height:1;margin-top:4px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--sobre-escuro)}
+@media (max-width:599px){.topo .rt-l{display:none}.topo .rt-c{display:inline}.topo .relogio{gap:9px}.cronometro{gap:4px}.cronometro>span{min-width:37px}}
 @keyframes pulsa{70%{box-shadow:0 0 0 8px rgb(205 55 1 / 0)}100%{box-shadow:0 0 0 0 rgb(205 55 1 / 0)}}
 
 /* Hero: seção 13 do manual (título com a promessa em coral, teal sobre índigo, laranja no selo) */
@@ -519,7 +527,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <div class="topo" role="region" aria-label="Prazo da condição">
   <div class="miolo">
-    <span class="relogio cta-compra"><span class="ponto-vivo" aria-hidden="true"></span><span class="rt-l">Condição de casa termina em</span><span class="rt-c">Termina em</span> <b data-relogio="curto">--</b></span>
+    <span class="relogio cta-compra"><span class="ponto-vivo" aria-hidden="true"></span><span class="rt-l">Condição especial termina em</span><span class="rt-c">Condição especial</span><span class="cronometro"><span><b data-relogio="d">--</b><i>dias</i></span><span><b data-relogio="h">--</b><i>horas</i></span><span><b data-relogio="m">--</b><i>min</i></span><span><b data-relogio="s">--</b><i>seg</i></span></span></span>
     <span class="relogio msg-encerrada">Esta condição terminou em 27/10</span>
   </div>
 </div>
@@ -794,7 +802,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <div class="fixo cta-compra" id="fixo" aria-hidden="true">
   <div class="fixo-in">
-    <span class="p fase-a">Condição de casa<b data-relogio="curto">--</b></span>
+    <span class="p fase-a">Condição especial<b data-relogio="curto">--</b></span>
     <span class="p fase-b">Condição de casa<b>12x R$ 99</b></span>
     <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
     <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição de casa</a>
