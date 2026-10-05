@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clube do Ukulele: condição especial para quem já é de casa</title>
-<meta name="description" content="Volte a tocar ukulele com a gente: um ano de Clube com 3 encontros ao vivo por semana, análises em vídeo e o curso inédito de violão do Mateus de presente.">
+<title>Curso de violão do Mateus com 1 ano de Clube de presente</title>
+<meta name="description" content="Condição especial do curso inédito de violão do Mateus para quem já tocou ukulele com a gente: sem pestana, 10 encontros ao vivo e 12 meses de Clube do Ukulele de presente.">
 <meta name="robots" content="noindex,nofollow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Só pra quem já é de casa: volte a tocar ukulele com a gente">
-<meta property="og:description" content="Um ano de Clube com o curso de violão do Mateus de presente. Até 27/10.">
+<meta property="og:title" content="Só pra quem já é de casa: o curso de violão do Mateus, com 1 ano de Clube de presente">
+<meta property="og:description" content="Até 27/10, para quem já tocou ukulele com a gente: o curso de violão e 1 ano de Clube com plantões e análises.">
 <meta property="og:image" content="https://cursos.comotocarukulele.com/academy/img/og-ukulele.webp">
-<meta name="theme-color" content="#2D124E">
+<meta name="theme-color" content="#092735">
 <link rel="icon" type="image/svg+xml" href="../../img/favicon-mini-ukulele.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --indigo:#443468;--indigo-profundo:#2D124E;--indigo-hover:#3F3060;
+  --indigo:#1D5468;--indigo-profundo:#092735;--indigo-hover:#174556;--estrutura-suave:#E2EDF0;
   --coral:#E87A85;--coral-forte:#B4404F;--coral-suave:#FBEAEC;--coral-texto:#4D1A20;
   --teal-acao:#12A18A;--teal-acao-hover:#25A993;
   --laranja:#CD3701;--verde:#25845A;
   --texto:#1F1A2B;--texto-suave:#5C5A70;--fundo:#F5F4F7;--superficie:#ECEAF1;--card:#FFFFFF;
-  --neutro-medio:#8E8AA3;--sobre-escuro:#DCD6E6;
+  --neutro-medio:#8E8AA3;--sobre-escuro:#D3E3E8;
   --fonte-titulo:Anton,"Montserrat",system-ui,sans-serif;
   --fonte-corpo:"Montserrat",system-ui,-apple-system,sans-serif;
   --sombra-card:0 20px 44px -30px rgb(31 26 43 / .45);
@@ -92,11 +92,8 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 .link-claro:hover{text-decoration-color:var(--coral)}
 /* Foto num palco: disco índigo com aro coral, a pessoa de pé sobre a borda de baixo */
 .hero-foto{position:relative;width:min(84vw,400px);aspect-ratio:4/5;margin-top:26px}
-.hero-foto::before{content:"";position:absolute;left:4%;right:4%;bottom:-8%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 35%,var(--indigo) 0%,#3A2A5C 60%,var(--indigo-profundo) 100%);box-shadow:inset 0 0 0 2px rgb(232 122 133 / .55),0 0 0 14px rgb(232 122 133 / .07)}
+.hero-foto::before{content:"";position:absolute;left:4%;right:4%;bottom:-8%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 35%,var(--indigo) 0%,#123B4C 60%,var(--indigo-profundo) 100%);box-shadow:inset 0 0 0 2px rgb(232 122 133 / .55),0 0 0 14px rgb(232 122 133 / .07)}
 .hero-foto>img{position:absolute;inset:auto 0 0 0;width:100%;height:auto;filter:drop-shadow(0 26px 30px rgb(0 0 0 / .35))}
-.ph{position:absolute;left:10%;right:10%;bottom:0;top:12%;display:grid;place-items:center;text-align:center;border:2px dashed rgb(220 214 230 / .6);border-bottom:0;border-radius:200px 200px 0 0;padding:24px;color:var(--sobre-escuro);font-size:14px;line-height:1.5}
-.ph b{display:block;color:#fff;font-size:15px;margin-bottom:6px}
-.ph code{font-size:12px;color:#fff;background:rgb(255 255 255 / .1);padding:2px 6px;border-radius:5px;word-break:break-all}
 /* Entrada do hero: um momento só, em cascata */
 .hero-texto>*{animation:entra .8s var(--ease) both}
 .hero-texto>*:nth-child(2){animation-delay:.08s}.hero-texto>*:nth-child(3){animation-delay:.16s}.hero-texto>*:nth-child(4){animation-delay:.26s}.hero-texto>*:nth-child(5){animation-delay:.34s}
@@ -164,15 +161,22 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 
 /* Encontros */
 .periodo{margin-top:34px;max-width:860px}
-.meses{display:grid;grid-template-columns:.35fr 1fr 1fr 1fr;gap:10px}
-.mes{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--sobre-escuro);padding-bottom:8px}
+/* Escala real: 28/10 = 0%, 27/01 = 100% (91 dias). 1/11 = 4,4%, 1/12 = 37,4%, 1/1 = 71,4%.
+   Pausa de 20/12 a 02/01 = 58% a 72,5%, centro 65,3%. */
+.meses{position:relative;height:26px}
+.mes{position:absolute;top:0;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--sobre-escuro);line-height:18px}
+.m-nov{left:4.4%}.m-dez{left:37.4%}.m-jan{left:71.4%}
+.barra .tique{position:absolute;top:0;bottom:0;width:2px;background:rgb(9 39 53 / .45);z-index:1}
 .barra{position:relative;height:16px;border-radius:999px;background:rgb(255 255 255 / .1);overflow:hidden}
 .barra .cheia{position:absolute;inset:0;background:var(--coral);transform-origin:left;transform:scaleX(0);transition:transform 1.6s var(--ease)}
-.barra .pausa{position:absolute;top:0;bottom:0;left:68%;width:8%;background:repeating-linear-gradient(135deg,var(--indigo-profundo) 0 5px,rgb(255 255 255 / .25) 5px 8px)}
+.barra .pausa{position:absolute;top:0;bottom:0;left:58%;width:14.5%;z-index:2;background:repeating-linear-gradient(135deg,var(--indigo-profundo) 0 5px,rgb(255 255 255 / .25) 5px 8px)}
 .on .barra .cheia{transform:scaleX(1)}
-.marcos{display:flex;justify-content:space-between;margin-top:10px;font-size:14px;color:var(--sobre-escuro);gap:8px}
+.marcos{position:relative;display:flex;justify-content:space-between;margin-top:10px;font-size:14px;color:var(--sobre-escuro);gap:8px}
 .marcos b{color:#fff;display:block;font-size:16px}
-.marcos .meio{text-align:center}
+.marcos .meio{position:absolute;top:0;left:65.3%;transform:translateX(-50%)}
+.marcos .meio b{color:var(--coral)}
+.marcos small{display:block;font-size:14px;white-space:nowrap}
+@media (max-width:559px){.marcos small{display:none}}
 .marcos .fim{text-align:right}
 .fatos{display:grid;gap:14px;margin-top:40px}
 @media (min-width:820px){.fatos{grid-template-columns:repeat(3,1fr);gap:18px}}
@@ -302,43 +306,18 @@ dialog.modal[open]{animation:sobe .4s var(--ease)}
 .campo{margin-bottom:14px}
 .campo label,.campo .rotulo{display:block;font-weight:700;font-size:15px;margin-bottom:6px;color:var(--texto)}
 .campo input[type=text],.campo input[type=email],.campo input[type=tel],.campo select{width:100%;min-height:50px;border:2px solid #D3CFDD;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:var(--texto);background:#fff}
-.campo input:focus,.campo select:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgb(68 52 104 / .18)}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgb(29 84 104 / .2)}
 .campo input::placeholder{color:#77748A}
 .fone{display:grid;grid-template-columns:118px 1fr;gap:8px}
 .radios{display:flex;gap:10px}
 .radios label{flex:1;display:flex;align-items:center;gap:10px;min-height:50px;border:2px solid #D3CFDD;border-radius:12px;padding:0 14px;font-weight:600;cursor:pointer;margin:0}
-.radios label:has(input:checked){border-color:var(--indigo);background:#F1EEF7}
+.radios label:has(input:checked){border-color:var(--indigo);background:var(--estrutura-suave)}
 .radios input{width:20px;height:20px;accent-color:var(--indigo);margin:0}
 .erro{display:none;color:#B83A2E;font-size:14px;margin:6px 0 0;font-weight:600}
 .erro.on,.dica.on{display:block}
 .dica{display:none;color:var(--texto-suave);font-size:14px;margin:6px 0 0}
 .seguro{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:var(--texto-suave);margin:12px 0 0}
 .seguro svg{width:16px;height:16px}
-
-/* Página B: foto real, semana, vitrine */
-/* A foto original termina num corte reto à direita: o degradê some com a quina */
-.hero-foto>img{-webkit-mask-image:linear-gradient(to left,transparent 0,#000 14%);mask-image:linear-gradient(to left,transparent 0,#000 14%)}
-.semana{display:grid;gap:8px;margin-top:36px}
-.dia-sem{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;background:var(--card);border-radius:16px;padding:10px 12px;min-height:56px;box-shadow:0 10px 28px -24px rgb(31 26 43 / .6)}
-.dia-sem .dn{font-weight:800;color:var(--indigo);font-size:15px;text-transform:uppercase;letter-spacing:.8px}
-.dia-sem.vazio{background:transparent;box-shadow:none;min-height:36px;padding:4px 12px}
-.dia-sem.vazio .dn{color:var(--neutro-medio)}
-.dia-sem .ev{grid-column:2;display:block;background:var(--indigo);color:#fff;border-radius:12px;padding:9px 12px;font-weight:600;font-size:15.5px;line-height:1.35;opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease);transition-delay:calc(var(--i) * 140ms + 150ms)}
-.dia-sem .ev + .ev{margin-top:6px}
-.dia-sem .ev b{margin-right:8px}
-.dia-sem .ev small{display:block;font-size:13px;font-weight:500;color:var(--coral-texto)}
-.dia-sem .ev-violao{background:var(--coral);color:var(--coral-texto)}
-.dia-sem .ev-leve{background:var(--superficie);color:var(--texto-suave);font-weight:500}
-.semana.on .ev,.sem-js .semana .ev{opacity:1;transform:none}
-@media (min-width:900px){
-  .semana{grid-template-columns:repeat(7,1fr);gap:10px}
-  .dia-sem,.dia-sem.vazio{grid-template-columns:1fr;align-content:start;min-height:220px;padding:14px 12px;background:var(--card);box-shadow:0 10px 28px -24px rgb(31 26 43 / .6)}
-  .dia-sem.vazio{background:rgb(255 255 255 / .5)}
-  .dia-sem .ev{grid-column:1}
-}
-.nota-semana{margin:18px 0 0;font-size:15px;color:var(--texto-suave)}
-.analise-topo{margin-top:0}
-@media (prefers-reduced-motion:reduce){.dia-sem .ev{opacity:1;transform:none;transition:none}}
 
 /* Polish: duas colunas no desktop, banners da biblioteca no formato certo, garantia em card */
 @media (min-width:960px){
@@ -377,6 +356,21 @@ h1,h2,h3{text-wrap:pretty}
 .h1-c{max-width:none}
 @media (min-width:960px){.h1-c{max-width:none}}
 
+/* Página do violão: paleta petróleo do manual do Clube do Violão. O coral só vira texto sobre o petróleo profundo */
+.hero{background:radial-gradient(60% 55% at 88% 18%,rgb(29 84 104 / .85),transparent 72%),radial-gradient(90% 60% at 50% 100%,rgb(232 122 133 / .12),transparent 70%),var(--indigo-profundo)}
+.escura{background:radial-gradient(55% 45% at 100% 0%,rgb(29 84 104 / .7),transparent 72%),var(--indigo-profundo)}
+.passo.vitoria{background:var(--indigo-profundo)}
+.hero-foto.violao::before{background:radial-gradient(circle at 50% 35%,#1D5468 0%,#123B4C 60%,var(--indigo-profundo) 100%)}
+.hero-foto.violao>img{position:absolute;left:50%;right:auto;bottom:0;width:auto;height:112%;transform:translateX(-50%);filter:drop-shadow(0 30px 34px rgb(0 0 0 / .45))}
+/* Marca do curso: ícone do violão com raios + nome em Anton */
+.marca-vf{display:inline-flex;align-items:center;gap:10px;color:#fff;line-height:1}
+.marca-vf img{width:40px;height:auto;flex:none}
+.marca-vf b{display:block;font-family:var(--fonte-titulo);font-weight:400;font-size:30px;letter-spacing:.6px;text-transform:uppercase;line-height:1.12}
+.marca-vf small{display:block;font-weight:800;font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--coral);margin-top:3px}
+.marca-vf.no-palco{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:var(--indigo-profundo);padding:10px 18px 10px 12px;border-radius:16px;box-shadow:0 18px 30px -16px rgb(0 0 0 / .7),inset 0 0 0 1px rgb(255 255 255 / .1);white-space:nowrap}
+.cartao .marca-vf{background:var(--indigo-profundo);padding:9px 16px 9px 11px;border-radius:14px;margin:4px 0 16px}
+.cartao .marca-vf b{font-size:24px}.cartao .marca-vf img{width:32px}
+
 /* Quebra de título escolhida pelo sentido da frase: só vale no desktop; no celular a linha corre natural */
 br.q{display:none}
 @media (min-width:960px){br.q{display:inline}}
@@ -391,13 +385,6 @@ br.q{display:none}
 .hero-foto.violao>img{height:100%;bottom:9%}
 .marca-vf.no-palco{bottom:-6px}
 @media (max-width:959px){.hero-foto.violao{margin-bottom:28px}}
-
-/* Página B: a foto é de pessoa cortada na cintura, então ela fica apoiada na borda de baixo; o texto centra na altura dela */
-@media (min-width:960px){
-  .hero-grade{padding-bottom:0;align-items:stretch}
-  .hero-texto{justify-content:center;padding:24px 0 64px}
-  .hero-foto{align-self:end;margin-bottom:-1px}
-}
 
 /* Barra fixa: largura inteira, conteúdo alinhado à coluna da página */
 .fixo{left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:block}
@@ -415,6 +402,14 @@ br.q{display:none}
   .fixo .btn{flex:none;min-width:260px;padding:0 28px}
 }
 
+/* Datas de liberação no caminho */
+.libera{display:inline-flex;align-items:center;gap:6px;margin:6px 0 2px;padding:3px 10px 3px 8px;border-radius:999px;background:var(--estrutura-suave);color:var(--indigo);font-size:13px;font-weight:800;letter-spacing:.2px}
+.libera svg{width:14px;height:14px;flex:none}
+.trilha h3{margin-top:4px}
+.trilha .prep .n{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.trilha .prep .n svg{width:20px;height:20px}
+.trilha .prep .libera{background:var(--coral-suave);color:var(--coral-texto)}
+
 /* Título nas colunas laterais do desktop: um pouco menor, para a quebra escolhida caber */
 @media (min-width:960px){.lado h2{font-size:clamp(32px,3.2vw,42px)}}
 
@@ -425,18 +420,12 @@ br.q{display:none}
 .cartao .relogio-oferta{display:grid;grid-template-columns:repeat(4,1fr)}
 .cartao .relogio-oferta div{width:auto}
 
-.semana{grid-template-columns:repeat(7,minmax(0,1fr))}
-@media (max-width:899px){.semana{grid-template-columns:1fr}}
-.dia-sem .ev-leve{font-size:13.5px;padding:8px 10px}
-/* Foto da B: esmaece as duas laterais, sem quina dura */
-.hero-foto>img{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 10%,#000 86%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 10%,#000 86%,transparent 100%)}
-@media (min-width:960px){.hero-foto{max-width:560px}}
+.periodo{max-width:none}
+.garantia .selo-svg{width:96px;height:auto}
+@media (min-width:700px){.garantia .selo-svg{width:120px}}
 
 @media (min-width:960px){.oferta-grade h2,.analise h2{font-size:clamp(32px,3.2vw,42px)}}
 .fim h2{max-width:none}
-
-/* Foto centrada na própria coluna, apoiada na borda de baixo */
-@media (min-width:960px){.hero-foto{width:100%;max-width:500px;justify-self:center}}
 
 /* Barra fixa: duas fases. Antes do preço mostra o prazo e leva à oferta; depois mostra o preço e abre o pagamento */
 .fixo .fase-b{display:none}
@@ -445,76 +434,22 @@ br.q{display:none}
 .fixo .p.fase-b{flex-direction:column}
 @media (min-width:700px){.fixo .p.fase-b{flex-direction:row}}
 
-/* Semana no desktop: dia com encontro ganha largura, dia vazio fica estreito; horário em cima, nome embaixo */
-@media (min-width:900px){
-  .semana{grid-template-columns:minmax(0,.55fr) minmax(0,1.25fr) minmax(0,1.25fr) minmax(0,1.25fr) minmax(0,.55fr) minmax(0,.55fr) minmax(0,1fr);gap:10px}
-  .dia-sem{min-height:200px;padding:14px 10px;min-width:0}
-  .dia-sem .dn{text-align:center}
-  .dia-sem.vazio{background:rgb(255 255 255 / .45)}
-  .dia-sem .ev{font-size:14.5px;padding:10px 11px;overflow-wrap:anywhere}
-  .dia-sem .ev b{display:block;margin:0 0 2px;font-size:16px}
-  .dia-sem .ev-leve{font-size:13px}
-}
+/* Botão de compra da página do violão: laranja vivo com texto petróleo profundo (7,3:1).
+   O teal do manual some sobre o petróleo; este laranja é mais claro e mais amarelo que o laranja do selo (#CD3701). */
+:root{--compra:#FF9A1F;--compra-hover:#FFB04D}
+.btn-compra{background:var(--compra);color:var(--indigo-profundo);box-shadow:0 18px 36px -16px rgb(255 154 31 / .75)}
+.btn-compra:hover{background:var(--compra-hover)}
 
-/* Topo da B, refeito: o Mateus dentro do círculo, cabeça saindo por cima, corpo recortado
-   pela curva de baixo. O bloco fica centrado na altura do texto, sem depender da borda da seção. */
-.hero-foto.disco-foto{position:relative;width:min(80vw,380px);aspect-ratio:1/1.3;margin:26px auto 0;max-width:none}
-.hero-foto.disco-foto::before{left:0;right:0;bottom:0;top:auto;aspect-ratio:1}
-/* Duas camadas de máscara: em cima, a foto aparece (com as laterais esmaecidas, para a borda reta
-   da foto original não aparecer); embaixo, o círculo recorta o corpo. 61,5% e 76,92% saem da
-   proporção 1:1,3 do bloco (o círculo ocupa a largura toda, colado na base). */
-.disco-foto .recorte{position:absolute;inset:0;
-  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),radial-gradient(closest-side,#000 calc(100% - 1px),transparent 100%);
-  -webkit-mask-size:100% 61.5%,100% 76.92%;-webkit-mask-position:top,bottom;-webkit-mask-repeat:no-repeat;
-  mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),radial-gradient(closest-side,#000 calc(100% - 1px),transparent 100%);
-  mask-size:100% 61.5%,100% 76.92%;mask-position:top,bottom;mask-repeat:no-repeat}
-.disco-foto .recorte img{position:absolute;left:0;bottom:0;width:100%;height:auto;filter:none}
-@media (min-width:960px){
-  .hero-grade{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;padding-bottom:56px;gap:48px}
-  .hero-texto{padding:0}
-  .hero-foto.disco-foto{align-self:center;justify-self:center;width:100%;max-width:420px;margin:0}
-}
-/* Escala do título pensada para notebook: o botão do topo precisa caber na primeira tela */
+/* Escala do título pensada para notebook, igual à página do Clube */
 @media (min-width:960px){
   .h1-b{font-size:clamp(46px,4.4vw,64px)}
   .h1-c{font-size:clamp(24px,2.1vw,30px)}
   .hero .sub{font-size:17px;max-width:540px}
   .escudo{width:124px}
-  .hero-grade{padding-top:32px}
 }
 
-/* Celular: "Volte a tocar ukulele" cabe numa linha, "com a gente," na seguinte */
-@media (max-width:959px){.h1-b{font-size:clamp(34px,9.6vw,46px)}}
-
-/* Botões e links de ação nunca quebram em duas linhas; se faltar espaço, o link desce */
 .btn,.link-claro{white-space:nowrap}
 .acoes{flex-wrap:wrap;row-gap:10px}
-
-/* Mosaico do Clube: o que a mv1 já mostra, em blocos de conteúdo real */
-.mosaico{display:grid;gap:16px;margin-top:34px}
-@media (min-width:860px){.mosaico{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.bloco-jornada{grid-column:1/-1}}
-.bloco{background:var(--card);border-radius:22px;box-shadow:var(--sombra-card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.bloco h3{font-size:20px}
-.bloco p{margin:0;font-size:16px;color:var(--texto-suave)}
-.bloco-jornada{display:grid;gap:20px}
-@media (min-width:860px){.bloco-jornada{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;padding:28px}}
-.bloco-txt{display:flex;flex-direction:column;gap:10px}
-.tags{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.tags li{background:var(--superficie);color:var(--indigo);font-weight:800;font-size:13px;padding:5px 12px;border-radius:999px}
-.capas-jornada{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.capas-jornada li{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
-.capas-jornada img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;box-shadow:0 12px 24px -16px rgb(31 26 43 / .6)}
-.capas-jornada span{font-size:12px;font-weight:700;color:var(--texto-suave);text-align:center;line-height:1.25}
-@media (max-width:520px){.capas-jornada{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:14px}}
-.bloco-img{width:100%;border-radius:14px;margin-top:6px;aspect-ratio:16/9;object-fit:cover}
-.lista-mock{list-style:none;margin:6px 0 0;padding:10px;display:grid;gap:6px;background:var(--fundo);border-radius:14px}
-.lista-mock li{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:10px;padding:6px 8px;min-width:0}
-.lista-mock img{width:64px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;flex:none}
-.lista-mock span{display:grid;min-width:0}
-.lista-mock b{font-size:14px;color:var(--texto);line-height:1.3}
-.lista-mock i{font-style:normal;font-size:12.5px;color:var(--texto-suave);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.extras{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:6px}
-.extras img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px}
 
 /* Código do país primeiro: mesmo cortado, o que importa (+55) aparece; a lista aberta mostra o nome inteiro */
 .fone{grid-template-columns:96px 1fr}
@@ -574,10 +509,10 @@ dialog.modal{overflow:auto}
 </head>
 <body class="sem-js">
 <!--
-THESIS: a pagina mostra a semana de quem volta para o Clube, com os encontros ao vivo marcados, em vez de uma lista de beneficios do plano.
-OWN-WORLD: o mesmo da pagina do violao: indigo profundo em campos inteiros, coral como assinatura, diagramas de acorde desenhados no codigo, Anton e Montserrat, teal so na compra, laranja so no selo e no preco cortado.
-STORY: a pessoa que parou de tocar se reconhece como de casa, ve a semana com 3 encontros ao vivo, entende as analises e a jornada, descobre o curso de violao de presente e so entao ve o preco.
-FIRST VIEWPORT: faixa fixa com "So pra quem ja e de casa!" e a contagem; titulo em dois andares sobre indigo profundo; botao claro que leva para a semana; foto real do Mateus com ukulele a direita.
+THESIS: a pagina prova com o proprio violao que quem ja tocou ukulele sai na frente; recusa o hero generico de curso com foto e lista de modulos.
+OWN-WORLD: paleta petroleo do manual do Clube do Violao (#1D5468 e #092735) em campos inteiros, coral como assinatura e texto so sobre o petroleo profundo, diagramas de acorde desenhados no proprio codigo, Anton nos titulos, Montserrat no texto, teal so no botao de compra, laranja so no selo e no preco cortado.
+STORY: a pessoa reconhece que ja e de casa, ve que varios desenhos de acorde do ukulele sao os mesmos nas cordas finas do violao, entende o primeiro dia, o acompanhamento e o presente, e so entao ve o preco do primeiro lote.
+FIRST VIEWPORT: faixa fixa com "So pra quem ja e de casa!" e a contagem; titulo em tres andares sobre indigo profundo; botao claro que leva para a ponte; violao real recortado sobre o anel coral a direita, com a marca Violao Fundamental.
 FORM: estrutura propria derivada do conteudo, sem rolagem de conceito (o Mateus delegou a estrutura).
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
 -->
@@ -595,117 +530,29 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <img class="escudo" src="../../img/logo/logo-clube-do-ukulele.svg" alt="Clube do Ukulele" width="150" height="98">
       <p class="selo-oferta">Só pra quem já é de casa!</p>
       <h1>
-          <span class="h1-b">Volte a tocar ukulele<br class="q"> <span class="nw">com a gente,</span></span>
-          <span class="h1-c">numa condição especial<br class="q"> <span class="nw">para quem já é de casa.</span></span>
+          <span class="h1-a">Você já tocou ukulele com a gente.</span>
+          <span class="h1-b">Agora é a vez do&nbsp;violão,</span>
+          <span class="h1-c">sem pestana e com a primeira música<br class="q"> no mesmo dia em que você começa.</span>
         </h1>
-      <p class="sub">Durante um ano, você tem <strong>3 encontros ao vivo por semana</strong> com a gente no ukulele e <strong>mais de 50 atividades</strong> para enviar em vídeo, cada uma com uma análise personalizada. De presente, você ainda ganha acesso vitalício ao <strong>curso inédito de violão do Mateus</strong>, com 10 encontros ao vivo só de violão, para sair tocando suas primeiras músicas sem precisar&nbsp;de&nbsp;pestana!</p>
+      <p class="sub">No curso inédito de violão do Mateus, você vai do zero aos 4 acordes mágicos com <strong>10 encontros ao vivo</strong> e <strong>análise em vídeo das suas atividades</strong>. O acesso ao curso de violão é vitalício, e de presente você ganha <strong>1 ano de Clube do Ukulele no plano Ouro</strong>, com plantão ao vivo duas vezes por semana e análise em vídeo das suas atividades de ukulele.</p>
       <div class="acoes">
           <a class="btn btn-compra" href="#oferta">Quero a condição de casa</a>
-          <a class="link-claro" href="#semana">Antes, veja como fica a sua semana</a>
+          <a class="link-claro" href="#ponte">Antes, veja o que você já sabe</a>
       </div>
     </div>
-    <div class="hero-foto disco-foto">
-      <div class="recorte"><img src="../../img/mateus-perfil.webp" alt="Mateus sorrindo com o ukulele nos braços" width="1000" height="1250" fetchpriority="high"></div>
+    <div class="hero-foto violao">
+      <img src="img/violao-hero.webp" alt="Um violão de cordas de náilon encostado na parede" width="477" height="1100" fetchpriority="high">
+      <div class="marca-vf no-palco"><img src="img/marca-violao-icone.svg" alt="" width="40" height="49"><span><b>Violão</b><small>Fundamental</small></span></div>
     </div>
   </div>
 </header>
 
 <main>
-  <section id="semana">
+  <section id="ponte">
     <div class="miolo">
       <div class="medida rv">
-        <h2>3 encontros ao vivo <span class="nw">por semana,</span><br class="q"> <span class="marca">com a gente <span class="nw">do seu lado</span></span></h2>
-        <p class="lead">Na terça e na quinta tem plantão de dúvidas: você confirma presença, conta onde travou e a gente resolve ao vivo, com o ukulele na mão. Na quinta à noite tem a Confraria, para tocar junto e conversar. E durante 3 meses, as quartas são do violão.</p>
-      </div>
-      <div class="semana rv" role="list" aria-label="A sua semana no Clube">
-        <div class="dia-sem vazio" role="listitem"><span class="dn">Seg</span></div>
-        <div class="dia-sem" role="listitem"><span class="dn">Ter</span><span class="ev" style="--i:0"><b>19h30</b>Plantão de dúvidas</span></div>
-        <div class="dia-sem" role="listitem"><span class="dn">Qua</span><span class="ev ev-violao" style="--i:3"><b>19h30</b>Encontro de violão<small>de 28/10 a 27/01</small></span></div>
-        <div class="dia-sem" role="listitem"><span class="dn">Qui</span><span class="ev" style="--i:1"><b>10h</b>Plantão de dúvidas</span><span class="ev" style="--i:2"><b>19h40</b>Confraria</span></div>
-        <div class="dia-sem vazio" role="listitem"><span class="dn">Sex</span></div>
-        <div class="dia-sem vazio" role="listitem"><span class="dn">Sáb</span></div>
-        <div class="dia-sem vazio" role="listitem"><span class="dn">Dom</span><span class="ev ev-leve" style="--i:4">Agenda dos plantões abre às 10h</span></div>
-      </div>
-      <p class="nota-semana rv">Os plantões ficam gravados para quem participou. Você vai quando der, e a semana seguinte tem de novo.</p>
-    </div>
-  </section>
-
-  <section class="escura">
-    <div class="miolo analise analise-topo">
-      <div class="medida rv">
-        <h2>Mais de 50 atividades,<br class="q"> cada uma com uma <span class="nw">análise em vídeo</span></h2>
-        <p class="lead">Nos pontos que mais importam da jornada, você grava um vídeo tocando e manda pela plataforma. Em até 3 dias úteis volta um vídeo personalizado, mostrando no ukulele o que está bom e o que precisa ajustar.</p>
-        <p>Assim, um erro na mão da batida ou na mão dos acordes aparece cedo, antes de virar costume.</p>
-      </div>
-      <figure class="rv">
-        <img src="../../academy/img/analise-frame-aluna.webp" alt="Uma análise real: a aluna tocando e o Mateus no canto da tela, respondendo em vídeo" width="960" height="540" loading="lazy" decoding="async">
-        <figcaption>Uma análise de verdade, do jeito que o vídeo chega para você na plataforma.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section>
-    <div class="miolo">
-      <div class="medida rv">
-        <h2>O caminho inteiro,<br class="q"> para retomar de onde você quiser</h2>
-        <p class="lead">A jornada do Clube tem 5 cursos e 209 aulas, do zero ao intermediário, e a biblioteca tem 157 músicas separadas por nível. Você escolhe por onde recomeçar, e nos plantões a gente te ajuda a achar o ponto certo.</p>
-      </div>
-      <div class="mosaico">
-        <article class="bloco bloco-jornada rv">
-          <div class="bloco-txt">
-            <h3>Jornada do Clube</h3>
-            <p>Cinco cursos gravados, na ordem certa, do Iniciante 0 ao Intermediário 2. Cada música estudada em partes pequenas, no seu ritmo.</p>
-            <ul class="tags"><li>5 cursos</li><li>25 módulos</li><li>209 aulas</li></ul>
-          </div>
-          <ol class="capas-jornada" aria-label="Os cinco cursos da jornada">
-            <li><img src="../../academy/img/jornada-capa-i0.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><span>Iniciante 0</span></li>
-            <li><img src="../../academy/img/trilha-ini1.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><span>Iniciante 1</span></li>
-            <li><img src="../../academy/img/trilha-ini2.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><span>Iniciante 2</span></li>
-            <li><img src="../../academy/img/trilha-int1.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><span>Intermediário 1</span></li>
-            <li><img src="../../academy/img/trilha-int2.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><span>Intermediário 2</span></li>
-          </ol>
-        </article>
-        <article class="bloco rv">
-          <h3>Nivelamento e rotina</h3>
-          <p>Você responde um questionário rápido e recebe por qual curso recomeçar e uma rotina de estudo para a sua semana.</p>
-          <img class="bloco-img" src="../../academy/img/capa-nivelamento-rotina.webp" alt="Nivelamento e Rotina, na área do aluno do Clube" width="640" height="360" loading="lazy" decoding="async">
-        </article>
-        <article class="bloco rv">
-          <h3>Biblioteca de Músicas</h3>
-          <p>157 músicas ensinadas em vídeo, separadas por nível, com filtro por batida, quantidade de acordes e gênero.</p>
-          <ul class="lista-mock" aria-label="Exemplos da Biblioteca de Músicas">
-            <li><img src="../../academy/img/bib-ini0.webp" alt="" width="192" height="108" loading="lazy"><span><b>Garota Nacional</b><i>Skank · Iniciante 0 · 2 acordes</i></span></li>
-            <li><img src="../../academy/img/bib-ini1.webp" alt="" width="192" height="108" loading="lazy"><span><b>Azul da Cor do Mar</b><i>Tim Maia · Iniciante 1 · 2 acordes</i></span></li>
-            <li><img src="../../academy/img/bib-ini2.webp" alt="" width="192" height="108" loading="lazy"><span><b>Amor I Love You</b><i>Marisa Monte · Iniciante 2 · 7 acordes</i></span></li>
-            <li><img src="../../academy/img/bib-int1.webp" alt="" width="192" height="108" loading="lazy"><span><b>Trevo</b><i>Anavitória · Intermediário 1 · 4 acordes</i></span></li>
-          </ul>
-        </article>
-        <article class="bloco rv">
-          <h3>Gravações das lives</h3>
-          <p>A live Ukulele na Mão, de quinta, sai do YouTube em 7 dias. No Clube, as gravações ficam guardadas para você assistir quando quiser.</p>
-          <ul class="lista-mock" aria-label="Gravações das lives guardadas no Clube">
-            <li><img src="../../academy/img/live-thumb-13.webp" alt="" width="224" height="126" loading="lazy"><span><b>#13 Batida mais cheia</b><i>com o rasgueado</i></span></li>
-            <li><img src="../../academy/img/live-thumb-12.webp" alt="" width="224" height="126" loading="lazy"><span><b>#12 Som havaiano</b><i>com uma batida só</i></span></li>
-            <li><img src="../../academy/img/live-thumb-10.webp" alt="" width="224" height="126" loading="lazy"><span><b>#10 7 erros fatais</b><i>de quem aprende sozinho</i></span></li>
-          </ul>
-        </article>
-        <article class="bloco rv">
-          <h3>Cursos extras e Dicionário de Acordes</h3>
-          <p>Workshop de Canto com Ukulele, para cantar junto, e Destrava Dedos, para soltar a mão dos acordes. E o Dicionário de Acordes para baixar e consultar.</p>
-          <div class="extras">
-            <img src="../../academy/img/capa-workshop-canto.webp" alt="Workshop de Canto com Ukulele" width="640" height="360" loading="lazy" decoding="async">
-            <img src="../../academy/img/capa-destrava-dedos.webp" alt="Destrava Dedos: 21 exercícios de coordenação" width="640" height="360" loading="lazy" decoding="async">
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="quente" id="ponte">
-    <div class="miolo">
-      <div class="medida rv">
-        <h2>De presente,<br class="q"> o curso inédito de violão do Mateus</h2>
-        <p class="lead">Completo, do jeito que vai ser vendido na live do dia 22, com acesso vitalício. E quem toca ukulele começa com vantagem: nas quatro cordas mais finas do violão, vários acordes têm o desenho de um acorde do ukulele, só com outro nome.</p>
+        <h2>Muitos desenhos de acorde do violão<br class="q"> <span class="marca">você já conhece do ukulele</span></h2>
+        <p class="lead">Nas quatro cordas mais finas do violão, vários acordes têm exatamente o desenho de um acorde do ukulele, só que com outro nome. Escolha um acorde e veja.</p>
       </div>
       <div class="ponte-grade">
         <div class="rv">
@@ -726,17 +573,127 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           </div>
           <p class="legenda-ponte" id="legenda-ponte"><strong>O desenho do C no ukulele é o do G no violão</strong>, nas quatro cordas mais finas. As cordas graves entram depois, no acorde completo.</p>
         </div>
-        <div class="bonus rv">
-          <h3>O que vem no curso de violão</h3>
+        <div class="medida rv">
+          <h3>Você começa o violão com vantagem</h3>
+          <p>O curso é para quem começa do zero, mas quem tocou ukulele já tem esses desenhos na memória dos dedos. O D, o A, o Am e o E do violão, por exemplo, têm nas cordas finas o mesmo desenho do G, do D, do Dm e do A do ukulele.</p>
+          <p>O módulo bônus “Do Ukulele ao Violão” mostra essa passagem acorde por acorde, e as aulas levam você até os acordes completos, com as cordas graves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="suave">
+    <div class="miolo">
+      <div class="medida rv">
+        <h2>No primeiro dia você já toca<br class="q"> uma música inteira</h2>
+        <p class="lead">As aulas são curtas, e a ordem foi pensada para você ouvir o violão soar logo. Postura e detalhes vêm depois, quando a primeira música já saiu.</p>
+      </div>
+      <div class="dia">
+        <div class="passo rv"><span class="quando">Aula 1</span><h3>Uma introdução rápida</h3><p>Como o curso funciona e o que você vai tocar até o fim.</p></div>
+        <div class="passo rv"><span class="quando">Aula 2</span><h3>A afinação pelo aplicativo</h3><p>O violão afinado em poucos minutos, com o celular do lado.</p></div>
+        <div class="passo vitoria rv"><span class="quando">Aula 3</span><h3>Sua primeira música</h3><p>Uma música inteira com um acorde só, no mesmo dia em que você começa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="miolo lado">
+      <div class="medida rv">
+        <h2>Do zero<br class="q"> aos <span class="nw">4 acordes mágicos</span> <span class="nw">no violão!</span></h2>
+        <p class="lead">Desde o primeiro dia, acorde e batida entram juntos, dentro da música de verdade. Essa será a nossa primeira conquista, e a que vai abrir as portas para um novo instrumento: o violão. A partir de 28/10, os módulos são lançados semana a semana, toda quarta-feira. E claro, o módulo aberto já fica disponível para você assistir e reassistir quantas vezes quiser!</p>
+        <p class="sem-pestana"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>O curso inteiro é sem pestana!</p>
+      </div>
+      <ol class="trilha">
+        <li class="rv prep"><span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="libera">Até 20/10, antes de a turma começar</span><h3>Preparação</h3><p>Qual violão comprar, a anatomia do instrumento e a afinação, para chegar ao primeiro dia com tudo preparado.</p></div></li>
+        <li class="rv"><span class="n">1</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 28/10 (com o encontro inaugural)</span><h3>Sua primeira música inteira, super rápido!</h3><p>Com um acorde só e uma batida simples, para a mão da batida pegar o ritmo enquanto você já está tocando e se familiarizando com o violão.</p></div></li>
+        <li class="rv"><span class="n">2</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 04/11</span><h3>Músicas de 2 acordes, com acordes de dois dedos</h3><p>Você vai praticar a troca entre dois acordes simples dentro da própria música, aprendendo batidas novas, e a troca fica natural de tanto tocar.</p></div></li>
+        <li class="rv"><span class="n">3</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 11/11</span><h3>Músicas de 2 acordes, com acordes de três dedos</h3><p>A cada música entra um acorde com um dedo a mais, e a batida vai ganhando movimento.</p></div></li>
+        <li class="rv"><span class="n">4</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 18/11</span><h3>Mais músicas com pares de acordes variados!</h3><p>Você passa a tocar os acordes mais completos, iguais aos que aparecem nas cifras na vida real, e vai dominando as batidas coringas.</p></div></li>
+        <li class="rv"><span class="n">5</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 25/11</span><h3>Músicas de três acordes</h3><p>Três acordes na mesma música, que é como muita música popular foi escrita. Aqui você já vai ser capaz de tocar dezenas de músicas, com batidas coringas para tocar vários estilos diferentes.</p></div></li>
+        <li class="rv"><span class="n">6</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 02/12</span><h3>Os 4 acordes mágicos e centenas de músicas</h3><p>Vamos aprender os 4 acordes mágicos, que abrem as portas para centenas de músicas populares de todos os estilos. Aqui você conquista um repertório de respeito e fica preparado para continuar tocando e curtindo cada vez mais o seu violão.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="escura" id="encontros">
+    <div class="miolo">
+      <div class="medida rv">
+        <h2>10 encontros ao vivo,<br class="q"> de outubro a janeiro</h2>
+        <p class="lead">Toda quarta, às 19h30, a partir do encontro inaugural em 28/10. São encontros de acompanhamento, para tirar suas dúvidas e trazer coisas novas para a turma, como uma música ensinada ao vivo. Todos ficam gravados, e as gravações são suas para sempre.</p>
+      </div>
+      <div class="periodo rv" id="periodo">
+        <div class="meses" aria-hidden="true"><span class="mes m-nov">Nov</span><span class="mes m-dez">Dez</span><span class="mes m-jan">Jan</span></div>
+        <div class="barra" role="img" aria-label="Período dos encontros: de 28 de outubro a 27 de janeiro, com pausa no Natal e no Ano-Novo"><span class="cheia"></span><i class="tique m-nov"></i><i class="tique m-dez"></i><i class="tique m-jan"></i><span class="pausa"></span></div>
+        <div class="marcos"><span><b>28/10</b><small>encontro inaugural</small></span><span class="meio"><b>Pausa</b><small>Natal e Ano-Novo</small></span><span class="fim"><b>27/01</b><small>último encontro</small></span></div>
+      </div>
+      <div class="fatos">
+        <div class="fato rv"><span class="num">Quarta 19h30</span><p>O mesmo dia e horário toda semana (com pausa no Natal e no Ano-Novo), para virar parte da sua rotina.</p></div>
+        <div class="fato rv"><span class="num">1 ano</span><p>Para mandar as atividades de violão em vídeo e receber a análise de cada uma.</p></div>
+        <div class="fato rv"><span class="num">Para sempre</span><p>O acesso ao curso de violão e às gravações dos encontros.</p></div>
+      </div>
+      <div class="analise">
+        <div class="medida rv">
+          <h3>Cada atividade volta com um vídeo personalizado</h3>
+          <p>Você grava um vídeo tocando e manda pela plataforma. A gente assiste e responde em vídeo, mostrando no instrumento o que está bom e o que precisa ajustar.</p>
+        </div>
+        <figure class="rv">
+          <img src="../../academy/img/analise-frame-aluna.webp" alt="Uma análise real: a aluna tocando e o Mateus no canto da tela, respondendo em vídeo" width="960" height="540" loading="lazy" decoding="async">
+          <figcaption>Uma análise de verdade, feita no ukulele. No violão funciona do mesmo jeito.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="quente">
+    <div class="miolo">
+      <div class="medida rv">
+        <h2>E de presente, 1 ano de Clube do Ukulele<br class="q"> <span class="marca">com a gente do seu&nbsp;lado</span></h2>
+        <p class="lead">Enquanto aprende violão, você segue no ukulele com acompanhamento de perto: plantão ao vivo duas vezes por semana para levar a sua dúvida, e cada atividade que você grava volta com um vídeo personalizado, mostrando no instrumento o que está bom e o que precisa ajustar.</p>
+      </div>
+      <div class="presente">
+        <div class="caixa-presente rv">
+          <h3>O que vem no Clube</h3>
           <ul>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Acesso vitalício ao curso</b><span>Do zero aos 4 acordes mágicos do violão, sem pestana, com a primeira música no mesmo dia em que você começa.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>10 encontros ao vivo só de violão</b><span>Às quartas, 19h30, de 28/10 a 27/01. Todos gravados, e as gravações são suas para sempre.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Análise em vídeo das atividades de violão</b><span>Durante 1 ano a partir da compra.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Módulo bônus e Guia de Bolso “Do Ukulele ao Violão”</b><span>A passagem dos desenhos do ukulele para o violão, acorde por acorde.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Dicionário de Acordes para Violão e Treinador de Batidas</b><span>Para consultar acorde novo e treinar as batidas do curso.</span></div></li>
+            <li><span>2 plantões de dúvidas ao vivo por semana, na terça às 19h30 e na quinta às 10h</span></li>
+            <li><span>Mais de 50 atividades de ukulele, cada uma com análise em vídeo personalizada</span></li>
+            <li><span>A jornada completa, com 5 cursos e 209 aulas, do zero ao intermediário</span></li>
+            <li><span>A biblioteca com 157 músicas separadas por nível</span></li>
+            <li><span>A Confraria toda quinta e as gravações das lives</span></li>
+          </ul>
+          <div class="capas">
+            <img src="../../academy/img/bib-ini0.webp" alt="" width="192" height="108" loading="lazy" decoding="async">
+            <img src="../../academy/img/bib-ini1.webp" alt="" width="192" height="108" loading="lazy" decoding="async">
+            <img src="../../academy/img/bib-ini2.webp" alt="" width="192" height="108" loading="lazy" decoding="async">
+            <img src="../../academy/img/bib-int1.webp" alt="" width="192" height="108" loading="lazy" decoding="async">
+          </div>
+          <p class="rodape">É o plano Ouro, o mais completo do Clube, que custa R$ 1.500 por ano. Aqui ele vem de presente por 12 meses. Quando terminarem, não tem cobrança: a nossa equipe entra em contato para você decidir se quer continuar.</p>
+        </div>
+        <div class="bonus rv">
+          <h3>E dentro do curso de violão</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Módulo bônus e Guia de Bolso “Do Ukulele ao Violão”</b><span>A passagem dos desenhos do ukulele para o violão, em vídeo e num guia para deixar do lado do instrumento.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Dicionário de Acordes para Violão</b><span>Em PDF, para consultar quando aparecer um acorde novo na cifra.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Treinador de Batidas</b><span>Uma área para treinar as batidas que você aprende no curso.</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Módulo de preparação</b><span>Qual violão comprar, quais acessórios valem a pena e como afinar. Entra na plataforma até 20/10.</span></div></li>
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="suave">
+    <div class="miolo lado">
+      <div class="medida rv">
+        <h2>O que acontece<br class="q"> <span class="nw">depois que você entra</span></h2>
+      </div>
+      <ol class="agenda">
+        <li class="rv"><span class="data">Na hora</span><p>Acesso à plataforma e ao Clube do Ukulele, com a agenda dos plantões da semana, as boas-vindas e o calendário completo.</p></li>
+        <li class="rv"><span class="data">Até 20/10</span><p>Entra na plataforma o módulo de preparação: qual violão comprar, acessórios e afinação.</p></li>
+        <li class="rv"><span class="data">22/10, 19h</span><p>Live de lançamento no canal do ukulele, aberta para todo mundo.</p></li>
+        <li class="rv destaque"><span class="data">28/10, 19h30</span><p>Encontro inaugural ao vivo e o módulo 1, com a sua primeira música.</p></li>
+        <li class="rv"><span class="data">Toda quarta</span><p>Encontro ao vivo às 19h30 até 27/01, e um módulo novo por semana até completar os 6.</p></li>
+        <li class="rv"><span class="data">Por 1 ano</span><p>Envio das atividades de violão, cada uma com a sua análise em vídeo.</p></li>
+      </ol>
     </div>
   </section>
 
@@ -746,7 +703,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <div class="medida rv">
         <span class="numero-grande">+6.000</span>
         <h2>alunos aprenderam ukulele<br class="q"> com a gente desde 2017</h2>
-        <p class="lead">Você já tocou com essa turma. E tocar fica mais leve quando tem alguém do seu lado toda semana, olhando o que você está fazendo e te guiando.</p>
+        <p class="lead">Você é uma dessas pessoas. O jeito de ensinar que te fez tocar ukulele é o mesmo do curso de violão: aulas curtas, música desde o começo e alguém do seu lado, olhando o que você está fazendo e te guiando.</p>
       </div>
     </div>
   </section>
@@ -754,24 +711,25 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="escura" id="oferta">
     <div class="miolo oferta-grade">
       <div class="lote-texto medida rv">
-        <h2>Um ano de Clube,<br class="q"> com o curso de <span class="nw">violão de presente</span></h2>
-        <p class="lead">O plano Ouro do Clube sai por 12x de R$ 150 ou R$ 1.500 por ano.</p>
-        <p>Para quem já é de casa, até 27/10, fica 12x de R$ 99 ou R$ 957,28 à vista. É o mesmo valor que o público vai pagar só pelo curso de violão na live do dia 22, e aqui ele vem de presente.</p>
+        <h2>Condição de casa,<br class="q"> só para quem <span class="nw">já é de casa</span></h2>
+        <p class="lead">No dia 22/10 as inscrições para o curso de violão abrem para todo mundo, por 12x de R$ 99 ou R$ 957,28 à vista.</p>
+        <p>Quem já tocou com a gente paga o mesmo valor e leva junto 1 ano de Clube do Ukulele no plano Ouro, que custa R$ 1.500 por ano. A condição vale até 27/10, às 23h59, porque no dia 28 a turma começa com o encontro inaugural.</p>
       </div>
       <div class="cartao rv">
         <span class="etiqueta">Condição de casa</span>
+        <div class="marca-vf"><img src="img/marca-violao-icone.svg" alt="" width="32" height="40"><span><b>Violão</b><small>Fundamental</small></span></div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>1 ano de Clube do Ukulele no plano Ouro</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>2 plantões de dúvidas por semana e a Confraria toda quinta</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Mais de 50 atividades com análise em vídeo personalizada</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Jornada com 5 cursos e 209 aulas, e 157 músicas na biblioteca</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Workshops temáticos ao vivo e a comunidade do Clube</span></li>
-          <li class="presente-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1Zm0 0c2-4 6-4 6-1s-6 1-6 1Z"/></svg><span><b>De presente:</b> o curso inédito de violão do Mateus, com acesso vitalício, 10 encontros ao vivo e 1 ano de análises</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Curso inédito de violão do Mateus, com acesso vitalício</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>10 encontros ao vivo às quartas, gravados</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Análise em vídeo das suas atividades de violão por 1 ano</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Módulo bônus e Guia de Bolso “Do Ukulele ao Violão”</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Dicionário de Acordes para Violão e Treinador de Batidas</span></li>
+          <li class="presente-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1Zm0 0c2-4 6-4 6-1s-6 1-6 1Z"/></svg><span><b>De presente:</b> 1 ano de Clube do Ukulele no plano Ouro, com 2 plantões por semana e análise em vídeo das atividades de ukulele</span></li>
         </ul>
         <div class="precos">
-          <p class="de">Plano Ouro: <s>12x de R$ 150</s></p>
+          <p class="de">Só o plano Ouro: <s>12x de R$ 150</s></p>
           <p class="por"><small>12x</small>R$ 99</p>
-          <p class="avista">ou <b>R$ 957,28 à vista</b> por ano. A assinatura renova sozinha pelo mesmo valor, e a gente avisa antes da cobrança.</p>
+          <p class="avista">ou <b>R$ 957,28 à vista</b>. É uma compra só, parcelada no cartão, sem assinatura: o Clube de presente termina sem cobrança.</p>
           <div class="cta-compra">
             <div class="relogio-oferta" aria-label="Tempo até o fim da condição">
               <div><b data-relogio="d">--</b><span>dias</span></div>
@@ -791,10 +749,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section>
     <div class="miolo">
       <div class="garantia rv">
-        <img src="../../academy/img/selo-garantia.webp" alt="Selo de garantia de 30 dias" width="600" height="600" loading="lazy" decoding="async">
+        <svg class="selo-svg" viewBox="0 0 120 132" role="img" aria-label="Selo de garantia de 30 dias"><path d="M60 4 108 22v38c0 32-21 55-48 68C33 115 12 92 12 60V22Z" fill="#092735"/><path d="M60 15 98 29v31c0 26-16 45-38 56C38 105 22 86 22 60V29Z" fill="#1D5468"/><path d="M40 66l14 14 28-30" fill="none" stroke="#E87A85" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div>
           <h2>30 dias para decidir <span class="nw">com calma</span></h2>
-          <p>Entre, vá aos plantões, mande a primeira atividade e comece o violão. Se em 30 dias você achar que não era o que esperava, pede o reembolso e recebe o valor inteiro de volta.</p>
+          <p>Entre, assista às primeiras aulas, vá ao encontro inaugural e toque a sua primeira música. Se em 30 dias você achar que não era o que esperava, pede o reembolso e recebe o valor inteiro de volta.</p>
         </div>
       </div>
     </div>
@@ -804,41 +762,40 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <div class="miolo lado">
       <h2 class="rv">Perguntas de<br class="q"> quem <span class="nw">já é de casa</span></h2>
       <div class="faq">
-        <details><summary>A assinatura renova sozinha?</summary><p>Renova, para você não perder o acesso sem querer. Antes da cobrança a gente te avisa, e a renovação mantém o mesmo valor com desconto desta condição de casa. Se não quiser renovar, é só falar com a nossa equipe no WhatsApp antes da data, sem multa e sem burocracia.</p></details>
-        <details><summary>E se eu não gostar?</summary><p>Você tem 30 dias de garantia. Se nesse prazo achar que não é para você, pede o reembolso e recebe o valor inteiro de volta.</p></details>
-        <details><summary>Já fui aluno e mandava atividades. O que muda agora?</summary><p>As análises continuam, agora com mais de 50 atividades ao longo da jornada. O que chega junto são os encontros ao vivo: dois plantões de dúvidas por semana e a Confraria toda quinta.</p></details>
-        <details><summary>Fiquei muito tempo sem tocar. Consigo retomar?</summary><p>Consegue. Você escolhe por onde recomeçar na jornada, e nos plantões a gente te ajuda a achar o ponto certo para recomeçar.</p></details>
+        <details><summary>Ainda não tenho violão. Posso entrar?</summary><p>Pode. O módulo de preparação, que entra na plataforma até 20/10, mostra qual violão comprar, quais acessórios valem a pena e como afinar. Assim você compra com calma antes do encontro inaugural, em 28/10.</p></details>
+        <details><summary>Nunca toquei violão. O curso é para mim?</summary><p>É. O curso começa do zero, e quem já tocou ukulele ainda sai na frente, porque a mão dos acordes já conhece os desenhos.</p></details>
+        <details><summary>Vou precisar fazer pestana?</summary><p>Não. O curso inteiro é sem pestana. Você chega aos 4 acordes mágicos e a centenas de músicas sem ela.</p></details>
+        <details><summary>E se eu não puder ir a um encontro?</summary><p>Todos os encontros ficam gravados, e as gravações são suas para sempre. Você assiste quando puder.</p></details>
+        <details><summary>Por quanto tempo tenho acesso?</summary><p>Ao curso de violão e às gravações dos encontros, para sempre. O envio de atividades com análise vale por 1 ano a partir da compra, e os 12 meses de Clube do Ukulele de presente também contam a partir da compra.</p></details>
+        <details><summary>Os 12 meses de Clube viram cobrança depois?</summary><p>Não. Quando terminarem, o acesso ao Clube acaba sem cobrança nenhuma, e a nossa equipe entra em contato para oferecer a assinatura, se você quiser continuar.</p></details>
         <details><summary>Como funciona o plantão?</summary><p>É ao vivo, pelo Google Meet, na terça às 19h30 e na quinta às 10h. A agenda da semana abre no domingo às 10h, você confirma presença com a sua dúvida e é chamado na ordem de confirmação. A gravação fica para quem participou.</p></details>
-        <details><summary>Preciso ter violão para aproveitar o presente?</summary><p>Só para o curso de violão. O módulo de preparação, que entra na plataforma até 20/10, mostra qual violão comprar. O acesso ao curso é vitalício, e os 10 encontros ao vivo acontecem de 28/10 a 27/01, com as gravações guardadas para sempre.</p></details>
-        <details><summary>Já assino o Clube hoje. Como fica?</summary><p>Fale com a nossa equipe pelo WhatsApp: a gente olha o seu plano atual e explica como fica a troca para essa condição.</p></details>
-        <details><summary>Como funciona o pagamento?</summary><p>É uma assinatura anual: 12x de R$ 99 no cartão ou R$ 957,28 à vista, pela Hotmart, em ambiente seguro.</p></details>
-        <details><summary>Até quando vale essa condição?</summary><p>Até 27/10, às 23h59 (horário de Brasília).</p></details>
+        <details><summary>Como funciona o pagamento?</summary><p>É uma compra só, sem assinatura: 12x de R$ 99 no cartão ou R$ 957,28 à vista. O pagamento é feito na Hotmart, em ambiente seguro.</p></details>
+        <details><summary>Até quando vale essa condição?</summary><p>Até 27/10, às 23h59 (horário de Brasília). No dia 28 começa a turma, com o encontro inaugural às 19h30.</p></details>
       </div>
     </div>
   </section>
 
   <section class="escura fim">
     <div class="miolo rv">
-      <h2>Te vejo no próximo plantão</h2>
-      <p>Seu acesso sai na hora: a jornada, a biblioteca e a agenda dos plantões da semana. E a preparação do curso de violão sai até 20/10.</p>
+      <h2>Te vejo no encontro inaugural,<br class="q"> dia 28/10</h2>
+      <p>Até lá, você já recebe o acesso, a preparação e o calendário. E no primeiro dia de aula, a primeira música.</p>
       <div class="acoes cta-compra">
         <button class="btn btn-compra" type="button" data-abre-checkout data-final>Quero a condição de casa</button>
       </div>
-      <p><a class="link-wa" href="https://wa.me/553198585286?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20condi%C3%A7%C3%A3o%20do%20Clube.">Tenho uma dúvida antes de entrar</a></p>
+      <p><a class="link-wa" href="https://wa.me/553198585286?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20curso%20de%20viol%C3%A3o.">Tenho uma dúvida antes de entrar</a></p>
     </div>
   </section>
 </main>
 
-
 <footer class="rodape-pg">
   <img src="../../img/logo/logo-horizontal-negativa.svg" alt="Clube do Ukulele" width="160" height="53" loading="lazy">
-  <p>Clube do Ukulele · comotocarukulele.com</p>
+  <p>Violão Fundamental, um curso do Clube do Ukulele<br>comotocarukulele.com</p>
 </footer>
 
 <div class="fixo cta-compra" id="fixo" aria-hidden="true">
   <div class="fixo-in">
     <span class="p fase-a">Condição de casa<b data-relogio="curto">--</b></span>
-    <span class="p fase-b">Plano Ouro<b>12x R$ 99</b></span>
+    <span class="p fase-b">Condição de casa<b>12x R$ 99</b></span>
     <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
     <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição de casa</a>
     <button class="btn btn-compra fase-b" type="button" data-abre-checkout tabindex="-1">Quero a condição de casa</button>
@@ -847,12 +804,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <dialog class="modal" id="checkout" aria-labelledby="ckt">
   <div class="modal-topo">
-    <img class="modal-logo" src="../../img/logo/logo-horizontal-negativa.svg" alt="Clube do Ukulele" width="140" height="47">
-    <p class="modal-oferta">Plano Ouro por 1 ano, com o curso de violão de presente</p>
+    <div class="marca-vf"><img src="img/marca-violao-icone.svg" alt="" width="34" height="42"><span><b>Violão</b><small>Fundamental</small></span></div>
+    <p class="modal-oferta">Turma inaugural, <span class="nw">começa em 28/10</span></p>
     <button class="modal-x" type="button" data-fecha aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
   </div>
   <div class="modal-bd" tabindex="-1" autofocus>
-    <h3 id="ckt">Entre no Clube com a condição de casa</h3>
+    <h3 id="ckt">Entre para a turma inaugural</h3>
     <p class="sub">Preencha abaixo para iniciar sua inscrição e aproveitar a condição especial!</p>
     <form id="lead" novalidate>
       <div class="campo"><label for="nome">Nome completo</label><input id="nome" name="name" type="text" autocomplete="name" placeholder="Seu nome e sobrenome" required><p class="erro" id="e-nome">Escreva nome e sobrenome.</p></div>
@@ -882,9 +839,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <script>
 document.body.classList.remove('sem-js');
-/* Link da Hotmart: Clube do Ukulele Academy 2.0, oferta 57ykzmxa (12x de R$ 99,00 ou R$ 957,28 por ano, assinatura), sem cupom, com boleto e Pix escondidos (hideBillet, hidePix). Se tiver PLACEHOLDER, o formulário
+/* Link da Hotmart: oferta 8f5g2lmu (12x de R$ 99,00 ou R$ 957,28, compra única), sem cupom, com boleto e Pix escondidos (hideBillet, hidePix). Se tiver PLACEHOLDER, o formulário
    registra o lead no GTM e não sai da página. */
-var HOTMART_URL='https://pay.hotmart.com/J107797354O?off=57ykzmxa&checkoutMode=10&hideBillet=1&hidePix=1';
+var HOTMART_URL='https://pay.hotmart.com/K107874741G?off=8f5g2lmu&checkoutMode=10&hideBillet=1&hidePix=1';
 var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
 
 /* Contagem regressiva */
@@ -937,7 +894,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
   /* Grade: cordas verticais, casas horizontais. x0 = primeira corda, passo = distância entre cordas. */
   function grade(svg,cordas,x0,passo){
     var y0=26,alt=132,casas=4,larg=passo*(cordas-1);
-    svg.appendChild(el('rect',{x:x0,y:y0-5,width:larg,height:5,rx:1.5,fill:'#443468'}));
+    svg.appendChild(el('rect',{x:x0,y:y0-5,width:larg,height:5,rx:1.5,fill:'#1D5468'}));
     for(var c=1;c<=casas;c++){svg.appendChild(el('line',{x1:x0,x2:x0+larg,y1:y0+c*alt/casas,y2:y0+c*alt/casas,stroke:'#C9C4D6','stroke-width':1.5}));}
     for(var i=0;i<cordas;i++){svg.appendChild(el('line',{x1:x0+i*passo,x2:x0+i*passo,y1:y0,y2:y0+alt,stroke:'#8E8AA3','stroke-width':i<cordas/2?2:1.6}));}
     return {y0:y0,alt:alt,casas:casas};
@@ -952,7 +909,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
       while(grupo.firstChild)grupo.removeChild(grupo.firstChild);
       casas.forEach(function(f,i){
         var x=x0+i*28;
-        if(f===0){var o=el('circle',{cx:x,cy:14,r:5.5,fill:'none',stroke:'#443468','stroke-width':2,'class':'ponto fora'});grupo.appendChild(o);}
+        if(f===0){var o=el('circle',{cx:x,cy:14,r:5.5,fill:'none',stroke:'#1D5468','stroke-width':2,'class':'ponto fora'});grupo.appendChild(o);}
         else{var c=el('circle',{cx:x,cy:g.y0+(f-.5)*g.alt/g.casas,r:10,fill:cor,'class':'ponto fora'});grupo.appendChild(c);}
       });
       var lista=grupo.querySelectorAll('.ponto');
@@ -960,7 +917,7 @@ var PRAZO=new Date('2026-10-27T23:59:59-03:00').getTime();
       lista.forEach(function(p,j){setTimeout(function(){p.classList.remove('fora');},30+j*70);});
     };
   }
-  var pu=pontos(su,gu,18,'#443468'), pv=pontos(sv,gv,10+2*28,'#B4404F');
+  var pu=pontos(su,gu,18,'#1D5468'), pv=pontos(sv,gv,10+2*28,'#B4404F');
   var palco=document.getElementById('palco'), leg=document.getElementById('legenda-ponte');
   var nu=palco.querySelector('[data-nome="uke"]'), nv=palco.querySelector('[data-nome="vio"]');
   var chips=document.querySelectorAll('.chip'), atual=-1, auto=null;
@@ -1119,7 +1076,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
 <noscript><iframe src="https://serversidegtm.comotocarukulele.com/ns.html?id=GTM-PDH6QGB2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 window.dataLayer=window.dataLayer||[];
-window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'clube-ouro-com-violao-de-casa'});
+window.dataLayer.push({event:'sales_page_view',page_type:'sales',page_name:'violao-primeiro-lote-de-casa'});
 (function(){function g(){(function(w,d,s,l,i){w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://serversidegtm.comotocarukulele.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PDH6QGB2');}
 if(document.readyState!=='loading'){setTimeout(g,1500);}else{document.addEventListener('DOMContentLoaded',function(){setTimeout(g,1500);},{once:true});}})();
 </script>
