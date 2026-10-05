@@ -74,6 +74,7 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 .cronometro b{font-size:17px;line-height:1}
 .cronometro i{font-style:normal;font-size:10px;line-height:1;margin-top:4px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--sobre-escuro)}
 @media (max-width:599px){.topo .rt-l{display:none}.topo .rt-c{display:inline}.topo .relogio{gap:9px}.cronometro{gap:4px}.cronometro>span{min-width:37px}}
+@media (max-width:359px){.cronometro>span:last-child{display:none}}
 @keyframes pulsa{70%{box-shadow:0 0 0 8px rgb(205 55 1 / 0)}100%{box-shadow:0 0 0 0 rgb(205 55 1 / 0)}}
 
 /* Hero: seção 13 do manual (título com a promessa em coral, teal sobre índigo, laranja no selo) */
@@ -474,6 +475,8 @@ br.q{display:none}
 .fixo .btn{min-width:0}
 .fixo-tempo{display:none}
 @media (min-width:1000px){.fixo-tempo{display:inline-flex}.fixo .btn{min-width:260px}}
+/* Antes do preço, a contagem já está no rótulo da esquerda: não repetir à direita */
+.fixo:not(.fase-preco) .fixo-tempo{display:none}
 @media (min-width:700px) and (max-width:999px){.fixo-in{justify-content:space-between}.fixo .btn{flex:none}}
 
 /* Telas bem estreitas (320 a 359px): faixa do topo curta, cartão e botões mais justos */
@@ -542,7 +545,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <span class="h1-b">Agora é a vez do&nbsp;violão,</span>
           <span class="h1-c">sem pestana e com a primeira música<br class="q"> no mesmo dia em que você começa.</span>
         </h1>
-      <p class="sub">No curso inédito de violão do Mateus, você vai do zero aos 4 acordes mágicos com <strong>10 encontros ao vivo</strong> e <strong>análise em vídeo das suas atividades</strong>. O acesso ao curso de violão é vitalício, e de presente você ganha <strong>1 ano de Clube do Ukulele no plano Ouro</strong>, com plantão ao vivo duas vezes por semana e análise em vídeo das suas atividades de ukulele.</p>
+      <p class="sub">No curso inédito de violão do Mateus, você vai do zero aos 4 acordes mágicos com <strong>10 encontros ao vivo</strong> e <strong>análise em vídeo das suas atividades</strong>. O acesso ao curso de violão é vitalício, e de presente você ganha <strong>o Plano Anual do Clube do Ukulele Academy</strong>, com plantão ao vivo duas vezes por semana e análise em vídeo das suas atividades de ukulele.</p>
       <div class="acoes">
           <a class="btn btn-compra" href="#oferta">Quero a condição de casa</a>
           <a class="link-claro" href="#ponte">Antes, veja o que você já sabe</a>
@@ -662,11 +665,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <div class="caixa-presente rv">
           <h3>O que vem no Clube</h3>
           <ul>
-            <li><span>2 plantões de dúvidas ao vivo por semana, na terça às 19h30 e na quinta às 10h</span></li>
-            <li><span>Mais de 50 atividades de ukulele, cada uma com análise em vídeo personalizada</span></li>
-            <li><span>A jornada completa, com 5 cursos e 209 aulas, do zero ao intermediário</span></li>
-            <li><span>A biblioteca com 157 músicas separadas por nível</span></li>
-            <li><span>A Confraria toda quinta e as gravações das lives</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>2 plantões de dúvidas ao vivo por semana, na terça às 19h30 e na quinta às 10h</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Mais de 50 atividades de ukulele, cada uma com análise em vídeo personalizada</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A jornada completa, com 5 cursos e 209 aulas, do zero ao intermediário</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A biblioteca com 157 músicas separadas por nível</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A Confraria toda quinta e as gravações das lives</span></li>
           </ul>
           <div class="capas">
             <img src="../../academy/img/bib-ini0.webp" alt="" width="192" height="108" loading="lazy" decoding="async">
@@ -721,7 +724,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <div class="lote-texto medida rv">
         <h2>Condição de casa,<br class="q"> só para quem <span class="nw">já é de casa</span></h2>
         <p class="lead">No dia 22/10 as inscrições para o curso de violão abrem para todo mundo, por 12x de R$ 99 ou R$ 957,28 à vista.</p>
-        <p>Quem já tocou com a gente paga o mesmo valor e leva junto 1 ano de Clube do Ukulele no plano Ouro, que custa R$ 1.500 por ano. A condição vale até 27/10, às 23h59, porque no dia 28 a turma começa com o encontro inaugural.</p>
+        <p>Quem já tocou com a gente paga o mesmo valor e leva junto o Plano Anual do Clube do Ukulele Academy, que custa R$ 1.500 por ano. A condição vale até 27/10, às 23h59, porque no dia 28 a turma começa com o encontro inaugural.</p>
       </div>
       <div class="cartao rv">
         <span class="etiqueta">Condição de casa</span>
@@ -732,7 +735,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Análise em vídeo das suas atividades de violão por 1 ano</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Módulo bônus e Guia de Bolso “Do Ukulele ao Violão”</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Dicionário de Acordes para Violão e Treinador de Batidas</span></li>
-          <li class="presente-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1Zm0 0c2-4 6-4 6-1s-6 1-6 1Z"/></svg><span><b>De presente:</b> 1 ano de Clube do Ukulele no plano Ouro, com 2 plantões por semana e análise em vídeo das atividades de ukulele</span></li>
+          <li class="presente-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1Zm0 0c2-4 6-4 6-1s-6 1-6 1Z"/></svg><span><b>De presente:</b> o Plano Anual do Clube do Ukulele Academy, com 2 plantões por semana e análise em vídeo das atividades de ukulele</span></li>
         </ul>
         <div class="precos">
           <p class="de">Só o plano Ouro: <s>12x de R$ 150</s></p>
@@ -805,7 +808,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <span class="p fase-a">Condição especial<b data-relogio="curto">--</b></span>
     <span class="p fase-b">Condição de casa<b>12x R$ 99</b></span>
     <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
-    <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição de casa</a>
+    <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição especial</a>
     <button class="btn btn-compra fase-b" type="button" data-abre-checkout tabindex="-1">Quero a condição de casa</button>
   </div>
 </div>

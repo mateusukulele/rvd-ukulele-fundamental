@@ -74,6 +74,7 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 .cronometro b{font-size:17px;line-height:1}
 .cronometro i{font-style:normal;font-size:10px;line-height:1;margin-top:4px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--sobre-escuro)}
 @media (max-width:599px){.topo .rt-l{display:none}.topo .rt-c{display:inline}.topo .relogio{gap:9px}.cronometro{gap:4px}.cronometro>span{min-width:37px}}
+@media (max-width:359px){.cronometro>span:last-child{display:none}}
 @keyframes pulsa{70%{box-shadow:0 0 0 8px rgb(205 55 1 / 0)}100%{box-shadow:0 0 0 0 rgb(205 55 1 / 0)}}
 
 /* Hero: seção 13 do manual (título com a promessa em coral, teal sobre índigo, laranja no selo) */
@@ -539,6 +540,8 @@ br.q{display:none}
 .fixo .btn{min-width:0}
 .fixo-tempo{display:none}
 @media (min-width:1000px){.fixo-tempo{display:inline-flex}.fixo .btn{min-width:260px}}
+/* Antes do preço, a contagem já está no rótulo da esquerda: não repetir à direita */
+.fixo:not(.fase-preco) .fixo-tempo{display:none}
 @media (min-width:700px) and (max-width:999px){.fixo-in{justify-content:space-between}.fixo .btn{flex:none}}
 
 /* Telas bem estreitas (320 a 359px): faixa do topo curta, cartão e botões mais justos */
@@ -578,6 +581,26 @@ dialog.modal{overflow:auto}
 .modal-topo>:first-child{margin-right:52px}
 .modal-oferta{align-items:flex-start}
 .modal-oferta::before{margin-top:6px}
+
+/* Bloco do violão: o mundo do Violão Fundamental (paleta petróleo do Clube do Violão) dentro da página do Clube */
+.vf{--indigo:#1D5468;--indigo-profundo:#092735;--indigo-hover:#174556;--estrutura-suave:#E2EDF0;--sobre-escuro:#D3E3E8}
+.vf.escura{background:radial-gradient(55% 45% at 100% 0%,rgb(29 84 104 / .7),transparent 72%),var(--indigo-profundo);color:var(--sobre-escuro)}
+.vf-grade{display:grid;gap:30px;align-items:center}
+@media (min-width:900px){.vf-grade{grid-template-columns:1.3fr .7fr;gap:52px}}
+.vf .selo-oferta{display:flex;width:fit-content;margin:0 0 4px}
+.marca-vf{display:flex;width:fit-content;align-items:center;gap:12px;color:#fff;line-height:1;margin:0 0 20px}
+.marca-vf img{width:46px;height:auto;flex:none}
+.marca-vf b{display:block;font-family:var(--fonte-titulo);font-weight:400;font-size:38px;letter-spacing:.6px;text-transform:uppercase;line-height:1.12}
+.marca-vf small{display:block;font-weight:800;font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--coral);margin-top:3px}
+.vf-foto{margin:0;position:relative;height:300px;border-radius:24px;overflow:hidden;background:radial-gradient(circle at 50% 35%,#1D5468 0%,#123B4C 60%,#092735 100%);box-shadow:inset 0 0 0 1px rgb(255 255 255 / .1)}
+.vf-foto img{position:absolute;left:50%;bottom:-6%;height:112%;width:auto;transform:translateX(-50%);filter:drop-shadow(0 30px 34px rgb(0 0 0 / .45))}
+@media (min-width:900px){.vf-foto{height:460px}}
+.vf .fato p{color:var(--sobre-escuro)}
+.libera{display:inline-flex;align-items:center;gap:6px;margin:6px 0 2px;padding:3px 10px 3px 8px;border-radius:999px;background:var(--estrutura-suave);color:var(--indigo);font-size:13px;font-weight:800;letter-spacing:.2px}
+.libera svg{width:14px;height:14px;flex:none}
+.trilha .prep .n{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.trilha .prep .n svg{width:20px;height:20px}
+.trilha .prep .libera{background:var(--coral-suave);color:var(--coral-texto)}
 </style>
 </head>
 <body class="sem-js">
@@ -709,12 +732,30 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     </div>
   </section>
 
-  <section class="quente" id="ponte">
+  <section class="vf escura" id="violao">
+    <div class="miolo">
+      <div class="vf-grade">
+        <div class="rv">
+          <div class="marca-vf"><img src="../../violao/condicao-especial-primeiro-lote/img/marca-violao-icone.svg" alt="" width="46" height="56"><span><b>Violão</b><small>Fundamental</small></span></div>
+          <p class="selo-oferta">Vem de presente com o Clube</p>
+          <h2>O curso inédito de violão do Mateus<br class="q"> vem junto, completo</h2>
+          <p class="lead">Na live do dia 22, o Violão Fundamental vai ser vendido por R$&nbsp;957,28. Quem entra no Clube com esta condição especial recebe o curso inteiro, com o mesmo suporte da turma inaugural.</p>
+        </div>
+        <figure class="vf-foto rv"><img src="../../violao/condicao-especial-primeiro-lote/img/violao-hero.webp" alt="Um violão de cordas de náilon encostado na parede" width="477" height="1100" loading="lazy" decoding="async"></figure>
+      </div>
+      <div class="fatos">
+        <div class="fato rv"><span class="num">Para sempre</span><p>As aulas gravadas do curso ficam com você, para assistir e reassistir quando quiser.</p></div>
+        <div class="fato rv"><span class="num">3 meses</span><p>De plantões ao vivo em grupo, só de violão: 10 quartas-feiras às 19h30, de 28/10 a 27/01, todos gravados.</p></div>
+        <div class="fato rv"><span class="num">1 ano</span><p>De suporte individual: você grava as atividades propostas no curso e recebe uma análise em vídeo de cada uma.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vf quente" id="ponte">
     <div class="miolo">
       <div class="medida rv">
-        <h2>De presente,<br class="q"> o curso inédito de violão do Mateus</h2>
-        <p class="lead">Completo, do jeito que vai ser vendido na live do dia 22. As aulas gravadas ficam com você para sempre, e junto vêm 3 meses de plantões ao vivo em grupo e 1 ano de suporte individual: cada atividade do curso que você mandar em vídeo volta com uma análise feita para você.</p>
-        <p>E quem toca ukulele começa com vantagem: nas quatro cordas mais finas do violão, vários acordes têm o desenho de um acorde do ukulele, só com outro nome.</p>
+        <h2>Muitos desenhos de acorde do violão<br class="q"> <span class="marca">você já conhece do ukulele</span></h2>
+        <p class="lead">Quem toca ukulele começa o violão com vantagem: nas quatro cordas mais finas, vários acordes têm o desenho de um acorde do ukulele, só com outro nome.</p>
       </div>
       <div class="ponte-grade">
         <div class="rv">
@@ -736,16 +777,33 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <p class="legenda-ponte" id="legenda-ponte"><strong>O desenho do C no ukulele é o do G no violão</strong>, nas quatro cordas mais finas. As cordas graves entram depois, no acorde completo.</p>
         </div>
         <div class="bonus rv">
-          <h3>O que vem no curso de violão</h3>
+          <h3>E ainda vem no curso</h3>
           <ul>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Aulas gravadas com acesso vitalício</b><span>Do zero aos 4 acordes mágicos do violão, sem pestana, com a primeira música no mesmo dia em que você começa.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>3 meses de plantões ao vivo em grupo</b><span>São 10 plantões só de violão, às quartas, 19h30, de 28/10 a 27/01. Todos gravados, e as gravações são suas para sempre.</span></div></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>1 ano de suporte individual</b><span>Você grava as atividades propostas no curso e recebe uma análise em vídeo de cada uma, durante 1 ano a partir da compra.</span></div></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Módulo bônus e Guia de Bolso “Do Ukulele ao Violão”</b><span>A passagem dos desenhos do ukulele para o violão, acorde por acorde.</span></div></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Dicionário de Acordes para Violão e Treinador de Batidas</b><span>Para consultar acorde novo e treinar as batidas do curso.</span></div></li>
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="vf">
+    <div class="miolo">
+      <div class="medida rv">
+        <h2>Do zero<br class="q"> aos <span class="nw">4 acordes mágicos</span> <span class="nw">no violão!</span></h2>
+        <p class="lead">Desde o primeiro dia, acorde e batida entram juntos, dentro da música de verdade. Essa será a nossa primeira conquista, e a que vai abrir as portas para um novo instrumento: o violão. A partir de 28/10, os módulos são lançados semana a semana, toda quarta-feira. E claro, o módulo aberto já fica disponível para você assistir e reassistir quantas vezes quiser!</p>
+        <p class="sem-pestana"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>O curso inteiro é sem pestana!</p>
+      
+      </div>
+      <ol class="trilha">
+        <li class="rv prep"><span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="libera">Até 20/10, antes de a turma começar</span><h3>Preparação</h3><p>Qual violão comprar, a anatomia do instrumento e a afinação, para chegar ao primeiro dia com tudo preparado.</p></div></li>
+        <li class="rv"><span class="n">1</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 28/10 (com o encontro inaugural)</span><h3>Sua primeira música inteira, super rápido!</h3><p>Com um acorde só e uma batida simples, para a mão da batida pegar o ritmo enquanto você já está tocando e se familiarizando com o violão.</p></div></li>
+        <li class="rv"><span class="n">2</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 04/11</span><h3>Músicas de 2 acordes, com acordes de dois dedos</h3><p>Você vai praticar a troca entre dois acordes simples dentro da própria música, aprendendo batidas novas, e a troca fica natural de tanto tocar.</p></div></li>
+        <li class="rv"><span class="n">3</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 11/11</span><h3>Músicas de 2 acordes, com acordes de três dedos</h3><p>A cada música entra um acorde com um dedo a mais, e a batida vai ganhando movimento.</p></div></li>
+        <li class="rv"><span class="n">4</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 18/11</span><h3>Mais músicas com pares de acordes variados!</h3><p>Você passa a tocar os acordes mais completos, iguais aos que aparecem nas cifras na vida real, e vai dominando as batidas coringas.</p></div></li>
+        <li class="rv"><span class="n">5</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 25/11</span><h3>Músicas de três acordes</h3><p>Três acordes na mesma música, que é como muita música popular foi escrita. Aqui você já vai ser capaz de tocar dezenas de músicas, com batidas coringas para tocar vários estilos diferentes.</p></div></li>
+        <li class="rv"><span class="n">6</span><div><span class="libera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Abre em 02/12</span><h3>Os 4 acordes mágicos e centenas de músicas</h3><p>Vamos aprender os 4 acordes mágicos, que abrem as portas para centenas de músicas populares de todos os estilos. Aqui você conquista um repertório de respeito e fica preparado para continuar tocando e curtindo cada vez mais o seu violão.</p></div></li>
+      </ol>
     </div>
   </section>
 
@@ -813,7 +871,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <div class="miolo lado">
       <h2 class="rv">Perguntas de<br class="q"> quem <span class="nw">já é de casa</span></h2>
       <div class="faq">
-        <details><summary>A assinatura renova sozinha?</summary><p>Renova, para você não perder o acesso sem querer. Antes da cobrança a gente te avisa, e a renovação mantém o mesmo valor com desconto desta condição de casa. Se não quiser renovar, é só falar com a nossa equipe no WhatsApp antes da data, sem multa e sem burocracia.</p></details>
+        <details><summary>A assinatura renova sozinha?</summary><p>Renova, para você não perder o acesso sem querer. Antes da cobrança a gente te avisa, e a renovação mantém o mesmo valor com desconto desta condição especial. Se não quiser renovar, é só falar com a nossa equipe no WhatsApp antes da data, sem multa e sem burocracia.</p></details>
         <details><summary>E se eu não gostar?</summary><p>Você tem 30 dias de garantia. Se nesse prazo achar que não é para você, pede o reembolso e recebe o valor inteiro de volta.</p></details>
         <details><summary>Já fui aluno e mandava atividades. O que muda agora?</summary><p>As análises continuam, agora com mais de 50 atividades ao longo da jornada. O que chega junto são os encontros ao vivo: dois plantões de dúvidas por semana e a Confraria toda quinta.</p></details>
         <details><summary>Fiquei muito tempo sem tocar. Consigo retomar?</summary><p>Consegue. Você escolhe por onde recomeçar na jornada, e nos plantões a gente te ajuda a achar o ponto certo para recomeçar.</p></details>
@@ -849,7 +907,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <span class="p fase-a">Condição especial<b data-relogio="curto">--</b></span>
     <span class="p fase-b">Plano Anual<b>12x R$ 99</b></span>
     <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
-    <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição de casa</a>
+    <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição especial</a>
     <button class="btn btn-compra fase-b" type="button" data-abre-checkout tabindex="-1">Quero a condição de casa</button>
   </div>
 </div>

@@ -74,6 +74,7 @@ h3{font-size:clamp(19px,1.8vw,21px);line-height:1.35;font-weight:800;color:var(-
 .cronometro b{font-size:17px;line-height:1}
 .cronometro i{font-style:normal;font-size:10px;line-height:1;margin-top:4px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--sobre-escuro)}
 @media (max-width:599px){.topo .rt-l{display:none}.topo .rt-c{display:inline}.topo .relogio{gap:9px}.cronometro{gap:4px}.cronometro>span{min-width:37px}}
+@media (max-width:359px){.cronometro>span:last-child{display:none}}
 @keyframes pulsa{70%{box-shadow:0 0 0 8px rgb(205 55 1 / 0)}100%{box-shadow:0 0 0 0 rgb(205 55 1 / 0)}}
 
 /* Hero: seção 13 do manual (título com a promessa em coral, teal sobre índigo, laranja no selo) */
@@ -474,6 +475,8 @@ br.q{display:none}
 .fixo .btn{min-width:0}
 .fixo-tempo{display:none}
 @media (min-width:1000px){.fixo-tempo{display:inline-flex}.fixo .btn{min-width:260px}}
+/* Antes do preço, a contagem já está no rótulo da esquerda: não repetir à direita */
+.fixo:not(.fase-preco) .fixo-tempo{display:none}
 @media (min-width:700px) and (max-width:999px){.fixo-in{justify-content:space-between}.fixo .btn{flex:none}}
 
 /* Telas bem estreitas (320 a 359px): faixa do topo curta, cartão e botões mais justos */
@@ -804,7 +807,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <span class="p fase-a">Condição especial<b data-relogio="curto">--</b></span>
     <span class="p fase-b">Primeiro lote<b>12x R$ 69</b></span>
     <span class="fixo-tempo">Termina em <b data-relogio="curto">--</b></span>
-    <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição de casa</a>
+    <a class="btn btn-compra fase-a" href="#oferta" tabindex="-1">Ver a condição especial</a>
     <button class="btn btn-compra fase-b" type="button" data-abre-checkout tabindex="-1">Quero o primeiro lote</button>
   </div>
 </div>
