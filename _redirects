@@ -12,9 +12,10 @@
 # vivem nas Redirect Rules do Cloudflare ("RVD - Redirect de páginas fechadas" e
 # "abertas"), que rodam antes do Pages. Não duplicar aqui.
 
-# Pré-matrícula do Grupo VIP, separada em duas ofertas em 27/08/2026:
-#   /ukulele-fundamental/... = a página original do Ukulele Fundamental
-#   /clube-do-ukulele/...    = a oferta do Clube do Ukulele, abertura 03/09
-# O apelido s10k-marco aponta para a original em vez de duplicar o arquivo:
-# uma cópia a mais seria mais um lugar para esquecer de atualizar.
-/ukulele-fundamental/ev-semana-grupo-vip/prematricula-inscricao-s10k-marco  /ukulele-fundamental/ev-semana-grupo-vip/prematricula-inscricao  302
+# Semana 10k e Grupo VIP: eventos encerrados, as páginas mostravam preços que
+# não valem mais. Desde 10/10/2026 tudo nessas três pastas, inclusive a página
+# de obrigado e o antigo apelido s10k-marco, leva para a VSL do Fundamental.
+# Os arquivos continuam no repo; para reabrir uma pasta, apagar a linha dela.
+/s10k/*                                    /ukulele-fundamental/rvd-ukulele-fundamental-set26-op  302
+/clube-do-ukulele/ev-semana-grupo-vip/*    /ukulele-fundamental/rvd-ukulele-fundamental-set26-op  302
+/ukulele-fundamental/ev-semana-grupo-vip/* /ukulele-fundamental/rvd-ukulele-fundamental-set26-op  302
