@@ -17,6 +17,7 @@
     --laranja: #CD3701;
     --texto: #1F1A2B;
     --texto-suave: #5C5A70;
+    --texto-escuro-sec: #DCD6E6;
     --fundo: #F5F4F7;
     --cartao: #FFFFFF;
   }
@@ -29,14 +30,15 @@
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.65;
-    padding: 32px 16px 48px;
+    padding-bottom: 96px; /* espaço da barra fixa de compra */
   }
 
-  .wrap { max-width: 520px; margin: 0 auto; }
-  .logo { display: block; width: 150px; height: auto; margin: 0 auto 24px; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 0 16px; }
+  [hidden] { display: none !important; }
 
-  .cartao { background: var(--cartao); border-radius: 16px; padding: 28px 22px; }
-
+  /* ---------- topo escuro ---------- */
+  .topo { background: var(--indigo-profundo); color: #FFFFFF; padding: 24px 0 88px; }
+  .logo { display: block; width: 130px; height: auto; margin-bottom: 28px; }
   .selo {
     display: inline-block;
     background: var(--laranja);
@@ -48,42 +50,68 @@
     border-radius: 999px;
     margin-bottom: 14px;
   }
-
   h1 {
     font-family: "Anton", "Montserrat", sans-serif;
     font-weight: 400;
-    color: var(--indigo);
-    font-size: clamp(30px, 8vw, 40px);
+    font-size: clamp(36px, 10vw, 52px);
     line-height: 1.12;
-    margin-bottom: 14px;
+    letter-spacing: 0.01em;
   }
+  .professor { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+  .professor img {
+    width: 52px; height: 52px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--texto-escuro-sec);
+    flex: 0 0 auto;
+  }
+  .professor p { color: var(--texto-escuro-sec); font-size: 15px; line-height: 1.45; }
+  .professor strong { color: #FFFFFF; display: block; }
 
-  .preco { margin: 18px 0 6px; }
-  .preco s { color: var(--laranja); font-weight: 500; }
-  .preco strong {
-    display: block;
+  /* ---------- cartão do preço, sobe por cima do topo ---------- */
+  .oferta {
+    background: var(--cartao);
+    border-radius: 18px;
+    padding: 24px 20px;
+    margin-top: -64px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(45, 18, 78, 0.12);
+  }
+  .de { color: var(--texto-suave); font-size: 15px; }
+  .de s { color: var(--laranja); font-weight: 700; }
+  .preco {
     font-family: "Anton", "Montserrat", sans-serif;
     font-weight: 400;
     color: var(--indigo);
-    font-size: 44px;
+    font-size: 56px;
     line-height: 1.12;
   }
-  .parcela { color: var(--texto-suave); font-size: 15px; }
+  .parcela { color: var(--texto-suave); font-size: 15px; margin-top: 2px; }
 
-  .prazo {
-    margin: 20px 0;
-    padding: 12px 16px;
-    border-radius: 12px;
-    background: var(--fundo);
-    font-weight: 700;
+  .relogio { margin: 22px 0; padding: 16px; border-radius: 14px; background: var(--fundo); text-align: center; }
+  .relogio .rotulo { font-weight: 700; font-size: 15px; color: var(--indigo); }
+  .caixas { display: flex; justify-content: center; gap: 8px; margin: 10px 0 8px; }
+  .caixa {
+    min-width: 70px;
+    background: var(--indigo-profundo);
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 8px 6px 6px;
   }
-  .prazo span { display: block; font-weight: 500; color: var(--texto-suave); font-size: 15px; }
+  .caixa b {
+    display: block;
+    font-family: "Anton", "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.12;
+    font-variant-numeric: tabular-nums;
+  }
+  .caixa span { display: block; color: var(--texto-escuro-sec); font-size: 13px; line-height: 1.4; }
+  .relogio .ate { color: var(--texto-suave); font-size: 14px; }
 
   .botao {
     display: block;
     width: 100%;
-    min-height: 52px;
-    padding: 14px 20px;
+    min-height: 54px;
+    padding: 15px 20px;
     border-radius: 12px;
     background: var(--teal-acao);
     color: var(--indigo-profundo);
@@ -96,71 +124,166 @@
   }
   .botao:hover { background: var(--teal-acao-hover); }
   .botao:active { transform: scale(0.98); }
-  .botao:focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; }
+  .botao:focus-visible, a:focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; }
+  .seguro { text-align: center; color: var(--texto-suave); font-size: 14px; margin-top: 10px; }
 
-  .garantia { margin-top: 14px; color: var(--texto-suave); font-size: 15px; text-align: center; }
-  .aviso-normal { margin: 20px 0; }
-  [hidden] { display: none !important; }
+  /* ---------- o que vem ---------- */
+  .bloco { background: var(--cartao); border-radius: 18px; padding: 22px 20px; margin-top: 14px; }
+  h2 { color: var(--indigo); font-size: 18px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
+  ul.itens { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  ul.itens li { display: flex; gap: 12px; align-items: flex-start; }
+  ul.itens svg { flex: 0 0 22px; width: 22px; height: 22px; margin-top: 2px; }
+  ul.itens small { display: block; color: var(--texto-suave); font-size: 14px; line-height: 1.45; }
+  ul.itens a { color: var(--indigo); font-weight: 700; }
+
+  .garantia { display: flex; gap: 14px; align-items: center; }
+  .garantia .dias {
+    flex: 0 0 64px; height: 64px; border-radius: 50%;
+    background: var(--indigo); color: #FFFFFF;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: "Anton", "Montserrat", sans-serif; font-size: 24px; line-height: 1;
+  }
+  .garantia-titulo { margin-bottom: 4px; }
+  .garantia .dias span { font-family: "Montserrat", sans-serif; font-size: 13px; font-weight: 700; margin-top: 2px; }
+
+  /* ---------- barra fixa de compra ---------- */
+  .barra {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+    background: var(--cartao);
+    box-shadow: 0 -6px 20px rgba(45, 18, 78, 0.12);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  }
+  .barra .wrap { display: flex; align-items: center; gap: 14px; padding: 0; }
+  .barra .valor { flex: 0 0 auto; line-height: 1.25; }
+  .barra .valor b { display: block; font-family: "Anton", "Montserrat", sans-serif; font-weight: 400; font-size: 26px; color: var(--indigo); }
+  .barra .valor span { font-size: 13px; color: var(--texto-suave); }
+  .barra .botao { min-height: 50px; padding: 12px 14px; font-size: 16px; }
+
+  .rodape { text-align: center; color: var(--texto-suave); font-size: 14px; padding: 24px 0 8px; }
 </style>
 </head>
 <body>
+
+<header class="topo">
+  <div class="wrap">
+    <img class="logo" src="/img/logo/logo-horizontal-branca.svg" alt="Clube do Ukulele" width="130" height="43">
+    <span class="selo" id="selo">Condição especial</span>
+    <h1 id="titulo">Ukulele Fundamental</h1>
+    <div class="professor">
+      <img src="foto-mateus-bio.webp" alt="Professor Mateus Augusto" width="52" height="52">
+      <p id="professor-texto"><strong>Liberada pelo professor Mateus Augusto</strong>para você começar a tocar ukulele do zero.</p>
+    </div>
+  </div>
+</header>
+
 <main class="wrap">
-  <img class="logo" src="/img/logo/logo-horizontal.svg" alt="Clube do Ukulele" width="150" height="50">
 
   <!-- condição dentro do prazo -->
-  <section class="cartao" id="valida" hidden>
-    <span class="selo">Condição especial</span>
-    <h1>Ukulele Fundamental por R$ 297</h1>
-    <p>O professor Mateus liberou esta condição para você entrar no curso.</p>
-    <p class="preco"><s>De R$ 397</s><strong>R$ 297</strong></p>
-    <p class="parcela">à vista, ou 12x de R$ 30,71 no cartão</p>
-    <p class="prazo">Vale até <b id="ate-texto"></b>, às 23h59.<span id="faltam"></span></p>
-    <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=UKE-VITALICIO-RV02&hideBillet=1&hidePix=1">Quero o curso por R$ 297</a>
-    <p class="garantia">Garantia de 14 dias: se não gostar, você pede o dinheiro de volta.</p>
-  </section>
+  <div id="valida" hidden>
+    <section class="oferta" aria-labelledby="titulo">
+      <p class="de">De <s>R$ 397</s> por</p>
+      <p class="preco">R$ 297</p>
+      <p class="parcela">à vista, ou 12x de R$ 30,71 no cartão</p>
+
+      <div class="relogio" role="timer" aria-live="off">
+        <p class="rotulo">Esta condição termina em</p>
+        <div class="caixas">
+          <div class="caixa"><b id="h">00</b><span>horas</span></div>
+          <div class="caixa"><b id="m">00</b><span>min</span></div>
+          <div class="caixa"><b id="s">00</b><span>seg</span></div>
+        </div>
+        <p class="ate">Vale até <span id="ate-texto"></span>, às 23h59 (horário de Brasília)</p>
+      </div>
+
+      <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=UKE-VITALICIO-RV02&hideBillet=1&hidePix=1">Quero o curso por R$ 297</a>
+      <p class="seguro">Pagamento seguro pela Hotmart</p>
+    </section>
+  </div>
 
   <!-- prazo encerrado, ou link sem prazo -->
-  <section class="cartao" id="encerrada" hidden>
-    <h1>Esta condição terminou</h1>
-    <p id="encerrada-texto">O prazo da condição de R$ 297 já acabou.</p>
-    <p class="preco"><strong>R$ 397</strong></p>
-    <p class="parcela">à vista, ou 12x de R$ 41,06 no cartão</p>
-    <p class="aviso-normal">O Ukulele Fundamental continua disponível pelo valor normal.</p>
-    <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=CUPOM-200-VITALICIO&hideBillet=1&hidePix=1">Quero o curso por R$ 397</a>
-    <p class="garantia">Garantia de 14 dias: se não gostar, você pede o dinheiro de volta.</p>
+  <div id="encerrada" hidden>
+    <section class="oferta">
+      <p class="de" id="encerrada-texto">O prazo da condição de R$ 297 já acabou.</p>
+      <p class="preco">R$ 397</p>
+      <p class="parcela">à vista, ou 12x de R$ 41,06 no cartão</p>
+      <p class="relogio">O Ukulele Fundamental continua disponível pelo valor normal.</p>
+      <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=CUPOM-200-VITALICIO&hideBillet=1&hidePix=1">Quero o curso por R$ 397</a>
+      <p class="seguro">Pagamento seguro pela Hotmart</p>
+    </section>
+  </div>
+
+  <section class="bloco">
+    <h2>O que você recebe</h2>
+    <ul class="itens">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><b>Curso Ukulele Fundamental</b><small>Acesso para sempre. Começa do zero, com aulas curtas para praticar uns 20 minutos por dia.</small></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><b>Biblioteca de Músicas</b><small>1 ano de acesso. <a href="/area-clube-do-ukulele/biblioteca-de-musicas-uke-fundamental" target="_blank" rel="noopener">Ver as músicas</a></small></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><b>Comunidade de Alunos</b><small>1 ano de acesso.</small></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><b>Workshop de Canto com Ukulele</b><small>1 ano de acesso.</small></div></li>
+    </ul>
   </section>
+
+  <section class="bloco garantia">
+    <div class="dias" aria-hidden="true">14<span>dias</span></div>
+    <div>
+      <h2 class="garantia-titulo">Garantia de 14 dias</h2>
+      <p>Se você entrar e não gostar, pede o dinheiro de volta dentro desse prazo.</p>
+    </div>
+  </section>
+
+  <p class="rodape">Clube do Ukulele, a escola do professor Mateus Augusto</p>
 </main>
+
+<div class="barra" id="barra" hidden>
+  <div class="wrap">
+    <div class="valor"><b id="barra-preco">R$ 297</b><span id="barra-sub">até 14/10</span></div>
+    <a class="botao" id="barra-botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=UKE-VITALICIO-RV02&hideBillet=1&hidePix=1">Quero o curso</a>
+  </div>
+</div>
 
 <script>
 /* O link leva o último dia válido em ?c= (dias desde 01/01/1970, no calendário de Brasília),
    gerado pela planilha. A condição vale até as 23h59 desse dia, horário de Brasília. */
 var DIA = 86400000, BRASILIA = 3 * 3600000, MAX_DIAS_A_FRENTE = 3;
+var LINK_397 = "https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=CUPOM-200-VITALICIO&hideBillet=1&hidePix=1";
 
 function ddmm(diaIndice) {
   var d = new Date(diaIndice * DIA);
   return ("0" + d.getUTCDate()).slice(-2) + "/" + ("0" + (d.getUTCMonth() + 1)).slice(-2);
 }
+function dois(n) { return ("0" + n).slice(-2); }
 
 var c = parseInt(new URLSearchParams(location.search).get("c"), 10);
 var hojeBrasilia = Math.floor((Date.now() - BRASILIA) / DIA);
 var valido = Number.isInteger(c) && c >= hojeBrasilia && c <= hojeBrasilia + MAX_DIAS_A_FRENTE;
 var fim = (c + 1) * DIA + BRASILIA; // meia-noite em Brasília depois do último dia
 
+document.getElementById("barra").hidden = false;
+
 if (valido) {
   document.getElementById("valida").hidden = false;
   document.getElementById("ate-texto").textContent = ddmm(c);
-  var faltam = document.getElementById("faltam");
+  document.getElementById("barra-sub").textContent = "vale até " + ddmm(c);
   (function atualizar() {
     var resta = fim - Date.now();
     if (resta <= 0) { location.reload(); return; }
-    var h = Math.floor(resta / 3600000), m = Math.floor((resta % 3600000) / 60000);
-    faltam.textContent = "Faltam " + h + "h " + ("0" + m).slice(-2) + "min";
-    setTimeout(atualizar, 30000);
+    document.getElementById("h").textContent = dois(Math.floor(resta / 3600000));
+    document.getElementById("m").textContent = dois(Math.floor((resta % 3600000) / 60000));
+    document.getElementById("s").textContent = dois(Math.floor((resta % 60000) / 1000));
+    setTimeout(atualizar, 1000);
   })();
 } else {
   document.getElementById("encerrada").hidden = false;
+  document.getElementById("selo").hidden = true;
+  document.getElementById("professor-texto").innerHTML = "<strong>Professor Mateus Augusto</strong>Curso para começar a tocar ukulele do zero.";
+  document.getElementById("barra-preco").textContent = "R$ 397";
+  document.getElementById("barra-sub").textContent = "ou 12x de R$ 41,06";
+  document.getElementById("barra-botao").href = LINK_397;
   if (Number.isInteger(c) && c < hojeBrasilia) {
-    document.getElementById("encerrada-texto").textContent = "O prazo da condição de R$ 297 terminou em " + ddmm(c) + ".";
+    document.getElementById("encerrada-texto").textContent = "A condição de R$ 297 terminou em " + ddmm(c) + ".";
   }
 }
 </script>
