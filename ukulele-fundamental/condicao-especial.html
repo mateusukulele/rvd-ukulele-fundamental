@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Condição especial: Ukulele Fundamental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --indigo: #443468;
+    --indigo-profundo: #2D124E;
+    --teal-acao: #12A18A;
+    --teal-acao-hover: #25A993;
+    --laranja: #CD3701;
+    --texto: #1F1A2B;
+    --texto-suave: #5C5A70;
+    --fundo: #F5F4F7;
+    --cartao: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    padding: 32px 16px 48px;
+  }
+
+  .wrap { max-width: 520px; margin: 0 auto; }
+  .logo { display: block; width: 150px; height: auto; margin: 0 auto 24px; }
+
+  .cartao { background: var(--cartao); border-radius: 16px; padding: 28px 22px; }
+
+  .selo {
+    display: inline-block;
+    background: var(--laranja);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: "Anton", "Montserrat", sans-serif;
+    font-weight: 400;
+    color: var(--indigo);
+    font-size: clamp(30px, 8vw, 40px);
+    line-height: 1.12;
+    margin-bottom: 14px;
+  }
+
+  .preco { margin: 18px 0 6px; }
+  .preco s { color: var(--laranja); font-weight: 500; }
+  .preco strong {
+    display: block;
+    font-family: "Anton", "Montserrat", sans-serif;
+    font-weight: 400;
+    color: var(--indigo);
+    font-size: 44px;
+    line-height: 1.12;
+  }
+  .parcela { color: var(--texto-suave); font-size: 15px; }
+
+  .prazo {
+    margin: 20px 0;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--fundo);
+    font-weight: 700;
+  }
+  .prazo span { display: block; font-weight: 500; color: var(--texto-suave); font-size: 15px; }
+
+  .botao {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: var(--teal-acao);
+    color: var(--indigo-profundo);
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .botao:hover { background: var(--teal-acao-hover); }
+  .botao:active { transform: scale(0.98); }
+  .botao:focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; }
+
+  .garantia { margin-top: 14px; color: var(--texto-suave); font-size: 15px; text-align: center; }
+  .aviso-normal { margin: 20px 0; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <img class="logo" src="/img/logo/logo-horizontal.svg" alt="Clube do Ukulele" width="150" height="50">
+
+  <!-- condição dentro do prazo -->
+  <section class="cartao" id="valida" hidden>
+    <span class="selo">Condição especial</span>
+    <h1>Ukulele Fundamental por R$ 297</h1>
+    <p>O professor Mateus liberou esta condição para você entrar no curso.</p>
+    <p class="preco"><s>De R$ 397</s><strong>R$ 297</strong></p>
+    <p class="parcela">à vista, ou 12x de R$ 30,71 no cartão</p>
+    <p class="prazo">Vale até <b id="ate-texto"></b>, às 23h59.<span id="faltam"></span></p>
+    <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=UKE-VITALICIO-RV02&hideBillet=1&hidePix=1">Quero o curso por R$ 297</a>
+    <p class="garantia">Garantia de 14 dias: se não gostar, você pede o dinheiro de volta.</p>
+  </section>
+
+  <!-- prazo encerrado, ou link sem prazo -->
+  <section class="cartao" id="encerrada" hidden>
+    <h1>Esta condição terminou</h1>
+    <p id="encerrada-texto">O prazo da condição de R$ 297 já acabou.</p>
+    <p class="preco"><strong>R$ 397</strong></p>
+    <p class="parcela">à vista, ou 12x de R$ 41,06 no cartão</p>
+    <p class="aviso-normal">O Ukulele Fundamental continua disponível pelo valor normal.</p>
+    <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=CUPOM-200-VITALICIO&hideBillet=1&hidePix=1">Quero o curso por R$ 397</a>
+    <p class="garantia">Garantia de 14 dias: se não gostar, você pede o dinheiro de volta.</p>
+  </section>
+</main>
+
+<script>
+/* O link leva o último dia válido em ?c= (dias desde 01/01/1970, no calendário de Brasília),
+   gerado pela planilha. A condição vale até as 23h59 desse dia, horário de Brasília. */
+var DIA = 86400000, BRASILIA = 3 * 3600000, MAX_DIAS_A_FRENTE = 3;
+
+function ddmm(diaIndice) {
+  var d = new Date(diaIndice * DIA);
+  return ("0" + d.getUTCDate()).slice(-2) + "/" + ("0" + (d.getUTCMonth() + 1)).slice(-2);
+}
+
+var c = parseInt(new URLSearchParams(location.search).get("c"), 10);
+var hojeBrasilia = Math.floor((Date.now() - BRASILIA) / DIA);
+var valido = Number.isInteger(c) && c >= hojeBrasilia && c <= hojeBrasilia + MAX_DIAS_A_FRENTE;
+var fim = (c + 1) * DIA + BRASILIA; // meia-noite em Brasília depois do último dia
+
+if (valido) {
+  document.getElementById("valida").hidden = false;
+  document.getElementById("ate-texto").textContent = ddmm(c);
+  var faltam = document.getElementById("faltam");
+  (function atualizar() {
+    var resta = fim - Date.now();
+    if (resta <= 0) { location.reload(); return; }
+    var h = Math.floor(resta / 3600000), m = Math.floor((resta % 3600000) / 60000);
+    faltam.textContent = "Faltam " + h + "h " + ("0" + m).slice(-2) + "min";
+    setTimeout(atualizar, 30000);
+  })();
+} else {
+  document.getElementById("encerrada").hidden = false;
+  if (Number.isInteger(c) && c < hojeBrasilia) {
+    document.getElementById("encerrada-texto").textContent = "O prazo da condição de R$ 297 terminou em " + ddmm(c) + ".";
+  }
+}
+</script>
+</body>
+</html>
