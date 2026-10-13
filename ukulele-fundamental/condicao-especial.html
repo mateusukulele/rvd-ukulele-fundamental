@@ -39,7 +39,7 @@
 
   .pagina { max-width: 480px; margin: 0 auto; }
 
-  /* ---------- topo escuro com o professor ---------- */
+  /* ---------- topo: o nome da pessoa é o destaque ---------- */
   .topo {
     position: relative;
     overflow: hidden;
@@ -47,9 +47,10 @@
     color: #FFFFFF;
     padding: var(--ar) 16px calc(var(--ar) + 44px);
   }
-  .linha-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; position: relative; z-index: 1; }
-  .logo { display: block; width: 120px; height: auto; }
+  .logo { display: block; width: 120px; height: auto; position: relative; z-index: 1; }
+  .texto { position: relative; z-index: 1; max-width: 60%; margin-top: calc(var(--ar) * 1.4); }
   .selo {
+    display: inline-block;
     background: var(--laranja);
     color: #FFFFFF;
     font-weight: 700;
@@ -59,37 +60,43 @@
     border-radius: 999px;
     white-space: nowrap;
   }
-  .texto { position: relative; z-index: 1; max-width: 62%; }
   h1 {
     font-family: "Anton", "Montserrat", sans-serif;
     font-weight: 400;
     font-size: clamp(32px, 9.4vw, 42px);
     line-height: 1.12;
     letter-spacing: 0.01em;
-    margin-top: var(--ar);
+    margin-top: calc(var(--ar) * 0.6);
   }
-  .sub { color: var(--texto-escuro-sec); font-size: 14px; line-height: 1.35; margin-top: calc(var(--ar) * 0.6); }
-  .sub strong { color: #FFFFFF; }
-  .sub .extra { display: none; }
+  /* com nome: o nome fica grande; o tamanho final é ajustado no script para caber na largura */
+  .com-nome h1 { font-size: 64px; line-height: 1.12; white-space: nowrap; }
+  .sub { color: var(--texto-escuro-sec); font-size: 15px; line-height: 1.4; margin-top: calc(var(--ar) * 0.4); }
+  .sub b { color: #FFFFFF; font-weight: 700; }
+  .sub .extra { display: none; } /* no celular o prazo já está no relógio logo abaixo */
   .foto {
     position: absolute;
     right: -6px;
     bottom: 0;
-    height: calc(100% - 46px);
+    height: calc(100% - 40px);
     width: auto;
     pointer-events: none;
   }
 
-  /* ---------- coluna da compra ---------- */
-  .compra { position: relative; z-index: 2; padding: 0 16px 12px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .com-nome h1 { animation: entra 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .com-nome .sub { animation: entra 0.6s 0.12s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    @keyframes entra { from { opacity: 0; transform: translateY(10px); } }
+  }
 
-  .oferta {
+  /* ---------- cartão da compra ---------- */
+  .compra { position: relative; z-index: 2; padding: 0 16px 12px; }
+  .cartao {
     background: var(--cartao);
     border-radius: 18px;
-    padding: var(--ar) 18px;
     margin-top: -44px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
   }
+  .oferta { padding: var(--ar) 18px; }
   .de { color: var(--texto-suave); font-size: 15px; }
   .preco-linha { display: flex; align-items: baseline; gap: 12px; }
   .preco {
@@ -152,20 +159,22 @@
   .botao:focus-visible, a:focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; }
   .seguro { text-align: center; color: var(--texto-suave); font-size: 13px; margin-top: 6px; }
 
-  /* ---------- o que vem ---------- */
-  .inclui {
-    background: var(--cartao);
-    border-radius: 18px;
-    padding: var(--ar) 16px;
-    margin-top: 10px;
+  /* ---------- o que vem junto, em etiquetas ---------- */
+  .inclui { border-top: 1px solid var(--linha); padding: calc(var(--ar) * 0.9) 18px var(--ar); }
+  .inclui h2 { color: var(--indigo); font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+  /* no celular as etiquetas se explicam sozinhas; o título fica só para leitor de tela */
+  @media (max-width: 899px) { .inclui h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }
+  ul.etiquetas { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+  ul.etiquetas li {
+    background: var(--fundo);
+    color: var(--texto);
+    font-size: clamp(12px, 3.5vw, 13px);
+    font-weight: 500;
+    line-height: 1.35;
+    padding: 5px 10px;
+    border-radius: 999px;
   }
-  h2 { color: var(--indigo); font-size: 15px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
-  ul.itens { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  ul.itens li { display: flex; gap: 8px; align-items: center; font-size: clamp(13px, 3.7vw, 14px); line-height: 1.35; }
-  ul.itens svg { flex: 0 0 18px; width: 18px; height: 18px; }
-  ul.itens b { flex: 1 1 auto; min-width: 0; }
-  ul.itens small { flex: 0 0 auto; color: var(--texto-suave); font-size: 13px; }
-  ul.itens a { color: var(--indigo); }
+  ul.etiquetas a { color: var(--indigo); font-weight: 700; }
 
   /* ---------- computador: duas colunas, tudo numa tela ---------- */
   @media (min-width: 900px) {
@@ -190,13 +199,12 @@
       display: flex;
       flex-direction: column;
     }
-    .linha-topo { justify-content: flex-start; gap: 20px; }
     .logo { width: 160px; }
+    .texto { max-width: none; margin-top: 6vh; }
     .selo { font-size: 15px; padding: 5px 14px; }
-    h1 { font-size: clamp(44px, 5vw, 64px); margin-top: 4vh; }
-    .texto { max-width: none; }
-    .sub { font-size: 18px; line-height: 1.5; margin-top: 14px; max-width: 480px; }
-    .sub strong { display: inline; }
+    h1 { font-size: clamp(44px, 5vw, 64px); margin-top: 14px; }
+    .com-nome h1 { font-size: 128px; line-height: 1.12; }
+    .sub { font-size: 20px; margin-top: 10px; }
     .sub .extra { display: inline; }
     .foto {
       position: static;
@@ -210,13 +218,9 @@
       margin-top: 3vh;
     }
 
-    .compra {
-      align-self: center;
-      padding: 0;
-      border-radius: 22px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-    }
-    .oferta { margin-top: 0; padding: 28px 30px 22px; border-radius: 22px 22px 0 0; box-shadow: none; }
+    .compra { align-self: center; padding: 0; }
+    .cartao { margin-top: 0; border-radius: 22px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35); }
+    .oferta { padding: 28px 30px 22px; }
     .preco { font-size: 72px; }
     .antes { font-size: 22px; }
     .parcela { font-size: 16px; }
@@ -226,76 +230,75 @@
     .caixa b { font-size: 28px; }
     .caixa span { font-size: 11px; }
     .botao { min-height: 60px; font-size: 18px; padding: 17px 20px; }
-    .inclui { margin-top: 0; padding: 20px 30px 26px; border-radius: 0 0 22px 22px; border-top: 1px solid var(--linha); }
-    h2 { font-size: 16px; margin-bottom: 12px; }
-    ul.itens { gap: 9px; }
-    ul.itens li { font-size: 15px; }
-    ul.itens small { font-size: 14px; }
+    .inclui { padding: 20px 30px 26px; }
+    ul.etiquetas { gap: 8px; }
+    ul.etiquetas li { font-size: 14px; padding: 6px 12px; }
   }
 </style>
 </head>
 <body>
 <div class="pagina">
 
-  <header class="topo">
-    <div class="linha-topo">
-      <img class="logo" src="/img/logo/logo-horizontal-negativa.svg" alt="Clube do Ukulele" width="120" height="40">
-      <span class="selo" id="selo">Condição especial</span>
-    </div>
+  <header class="topo" id="topo">
+    <img class="logo" src="/img/logo/logo-horizontal-negativa.svg" alt="Clube do Ukulele" width="120" height="40">
     <div class="texto">
+      <span class="selo" id="selo">Condição especial</span>
       <h1 id="titulo">Ukulele Fundamental</h1>
-      <p class="sub" id="sub"><strong id="sub-frase">Separamos esta condição para você.</strong><span class="extra" id="sub-extra"></span></p>
+      <p class="sub" id="sub"></p>
     </div>
     <img class="foto" src="/img/mateus-perfil.webp" alt="Professor Mateus Augusto tocando ukulele" width="1000" height="1250">
   </header>
 
   <main class="compra">
+    <div class="cartao">
 
-    <!-- condição dentro do prazo -->
-    <section class="oferta" id="valida" aria-labelledby="titulo" hidden>
-      <p class="preco-linha"><span class="preco">R$ 297</span><s class="antes" aria-label="antes R$ 397">R$ 397</s></p>
-      <p class="parcela">à vista, ou 12x de R$ 30,71 no cartão</p>
+      <!-- condição dentro do prazo -->
+      <section class="oferta" id="valida" aria-labelledby="titulo" hidden>
+        <p class="preco-linha"><span class="preco">R$ 297</span><s class="antes" aria-label="antes R$ 397">R$ 397</s></p>
+        <p class="parcela">à vista, ou 12x de R$ 30,71 no cartão</p>
 
-      <div class="relogio" role="timer" aria-live="off">
-        <p class="rotulo">Termina em<span>até <span id="ate-texto"></span>, 23h59</span></p>
-        <div class="caixas">
-          <div class="caixa"><b id="h">00</b><span>horas</span></div>
-          <div class="caixa"><b id="m">00</b><span>min</span></div>
-          <div class="caixa"><b id="s">00</b><span>seg</span></div>
+        <div class="relogio" role="timer" aria-live="off">
+          <p class="rotulo">Termina em<span>até <span id="ate-texto"></span>, 23h59</span></p>
+          <div class="caixas">
+            <div class="caixa"><b id="h">00</b><span>horas</span></div>
+            <div class="caixa"><b id="m">00</b><span>min</span></div>
+            <div class="caixa"><b id="s">00</b><span>seg</span></div>
+          </div>
         </div>
-      </div>
 
-      <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=UKE-VITALICIO-RV02&hideBillet=1&hidePix=1">Quero o curso por R$ 297</a>
-      <p class="seguro">Pagamento seguro pela Hotmart</p>
-    </section>
+        <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=UKE-VITALICIO-RV02&hideBillet=1&hidePix=1">Quero o curso por R$ 297</a>
+        <p class="seguro">Pagamento seguro pela Hotmart</p>
+      </section>
 
-    <!-- prazo encerrado, ou link sem prazo -->
-    <section class="oferta" id="encerrada" hidden>
-      <p class="de" id="encerrada-texto">O prazo da condição de R$ 297 já acabou.</p>
-      <p class="preco">R$ 397</p>
-      <p class="parcela">à vista, ou 12x de R$ 41,06 no cartão</p>
-      <p class="aviso-encerrada">O Ukulele Fundamental continua disponível pelo valor normal.</p>
-      <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=CUPOM-200-VITALICIO&hideBillet=1&hidePix=1">Quero o curso por R$ 397</a>
-      <p class="seguro">Pagamento seguro pela Hotmart</p>
-    </section>
+      <!-- prazo encerrado, ou link sem prazo -->
+      <section class="oferta" id="encerrada" hidden>
+        <p class="de" id="encerrada-texto">O prazo da condição de R$ 297 já acabou.</p>
+        <p class="preco">R$ 397</p>
+        <p class="parcela">à vista, ou 12x de R$ 41,06 no cartão</p>
+        <p class="aviso-encerrada">O Ukulele Fundamental continua disponível pelo valor normal.</p>
+        <a class="botao" href="https://pay.hotmart.com/F106563581S?off=8kjirum2&checkoutMode=10&offDiscount=CUPOM-200-VITALICIO&hideBillet=1&hidePix=1">Quero o curso por R$ 397</a>
+        <p class="seguro">Pagamento seguro pela Hotmart</p>
+      </section>
 
-    <section class="inclui">
-      <h2>O que você recebe</h2>
-      <ul class="itens">
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Curso Ukulele Fundamental</b><small>vitalício</small></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b><a href="/area-clube-do-ukulele/biblioteca-de-musicas-uke-fundamental" target="_blank" rel="noopener">Biblioteca com 88 músicas</a></b><small>1 ano</small></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Comunidade de Alunos</b><small>1 ano</small></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Workshop de Canto com Ukulele</b><small>1 ano</small></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Garantia de devolução</b><small>14 dias</small></li>
-      </ul>
-    </section>
+      <section class="inclui">
+        <h2>Junto com o curso</h2>
+        <ul class="etiquetas">
+          <li>Acesso vitalício</li>
+          <li><a href="/area-clube-do-ukulele/biblioteca-de-musicas-uke-fundamental" target="_blank" rel="noopener">88 músicas</a> por 1 ano</li>
+          <li>Comunidade por 1 ano</li>
+          <li>Garantia de 14 dias</li>
+          <li>Workshop de Canto por 1 ano</li>
+        </ul>
+      </section>
 
+    </div>
   </main>
 </div>
 
 <script>
 /* O link leva o último dia válido em ?c= (dias desde 01/01/1970, no calendário de Brasília),
-   gerado pela planilha. A condição vale até as 23h59 desse dia, horário de Brasília. */
+   gerado pela planilha. A condição vale até as 23h59 desse dia, horário de Brasília.
+   ?n= traz o primeiro nome da pessoa. */
 var DIA = 86400000, BRASILIA = 3 * 3600000, MAX_DIAS_A_FRENTE = 3;
 
 function ddmm(diaIndice) {
@@ -306,20 +309,42 @@ function dois(n) { return ("0" + n).slice(-2); }
 
 var params = new URLSearchParams(location.search);
 var c = parseInt(params.get("c"), 10);
-
-/* ?n= traz o primeiro nome. Só aceita letras (com acento), hífen e apóstrofo;
-   qualquer outra coisa, ou nada, deixa a frase sem nome. */
-var nome = (params.get("n") || "").trim().split(/\s+/)[0];
-nome = /^[A-Za-zÀ-ÖØ-öø-ÿ'-]{2,20}$/.test(nome) ? nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase() : "";
 var hojeBrasilia = Math.floor((Date.now() - BRASILIA) / DIA);
 var valido = Number.isInteger(c) && c >= hojeBrasilia && c <= hojeBrasilia + MAX_DIAS_A_FRENTE;
 var fim = (c + 1) * DIA + BRASILIA; // meia-noite em Brasília depois do último dia
 
+/* Só aceita letras (com acento), hífen e apóstrofo; qualquer outra coisa, ou nada, deixa a página sem nome. */
+var nome = (params.get("n") || "").trim().split(/\s+/)[0];
+nome = /^[A-Za-zÀ-ÖØ-öø-ÿ'-]{2,20}$/.test(nome) ? nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase() : "";
+
+var titulo = document.getElementById("titulo");
+var sub = document.getElementById("sub");
+
+/* Diminui o nome até ele caber na largura da coluna, sem quebrar linha. */
+function ajustarNome() {
+  titulo.style.fontSize = "";
+  var tamanho = parseFloat(getComputedStyle(titulo).fontSize);
+  var limite = titulo.parentNode.clientWidth;
+  while (titulo.scrollWidth > limite && tamanho > 32) {
+    tamanho -= 2;
+    titulo.style.fontSize = tamanho + "px";
+  }
+}
+
 if (valido) {
   document.getElementById("valida").hidden = false;
   document.getElementById("ate-texto").textContent = ddmm(c);
-  if (nome) document.getElementById("sub-frase").textContent = nome + ", separamos esta condição para você.";
-  document.getElementById("sub-extra").textContent = " Ela vale até " + ddmm(c) + ", às 23h59.";
+  if (nome) {
+    document.getElementById("topo").classList.add("com-nome");
+    document.getElementById("selo").textContent = "Condição especial para";
+    titulo.textContent = nome;
+    sub.innerHTML = "<b>Ukulele Fundamental</b> com R$ 100 de desconto<span class=\"extra\">, só até\u00a0" + ddmm(c) + "</span>.";
+    ajustarNome();
+    if (document.fonts) document.fonts.ready.then(ajustarNome);
+    addEventListener("resize", ajustarNome);
+  } else {
+    sub.innerHTML = "Com R$ 100 de desconto<span class=\"extra\">, só até\u00a0" + ddmm(c) + "</span>.";
+  }
   (function atualizar() {
     var resta = fim - Date.now();
     if (resta <= 0) { location.reload(); return; }
@@ -331,7 +356,7 @@ if (valido) {
 } else {
   document.getElementById("encerrada").hidden = false;
   document.getElementById("selo").hidden = true;
-  document.getElementById("sub-frase").textContent = "O curso para começar a tocar ukulele do zero.";
+  sub.textContent = "O curso para começar a tocar ukulele do zero.";
   if (Number.isInteger(c) && c < hojeBrasilia) {
     document.getElementById("encerrada-texto").textContent = "A condição de R$ 297 terminou em " + ddmm(c) + ".";
   }
