@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/img/mateus-perfil.webp">
 <style>
   :root {
     --indigo: #443468;
@@ -20,6 +21,7 @@
     --texto-escuro-sec: #DCD6E6;
     --fundo: #F5F4F7;
     --cartao: #FFFFFF;
+    --linha: #E4E1EA;
     /* espaço que encolhe em tela baixa, para a página caber inteira sem rolar */
     --ar: clamp(6px, 1.6vh, 18px);
   }
@@ -37,14 +39,16 @@
 
   .pagina { max-width: 480px; margin: 0 auto; }
 
-  /* ---------- topo escuro ---------- */
+  /* ---------- topo escuro com o professor ---------- */
   .topo {
+    position: relative;
+    overflow: hidden;
     background: var(--indigo-profundo);
     color: #FFFFFF;
-    padding: var(--ar) 16px calc(var(--ar) + 40px);
+    padding: var(--ar) 16px calc(var(--ar) + 44px);
   }
-  .linha-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .logo { display: block; width: 104px; height: auto; }
+  .linha-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; position: relative; z-index: 1; }
+  .logo { display: block; width: 120px; height: auto; }
   .selo {
     background: var(--laranja);
     color: #FFFFFF;
@@ -55,46 +59,48 @@
     border-radius: 999px;
     white-space: nowrap;
   }
+  .texto { position: relative; z-index: 1; max-width: 62%; }
   h1 {
     font-family: "Anton", "Montserrat", sans-serif;
     font-weight: 400;
-    font-size: clamp(30px, 8.6vw, 40px);
+    font-size: clamp(32px, 9.4vw, 42px);
     line-height: 1.12;
     letter-spacing: 0.01em;
     margin-top: var(--ar);
   }
-  .professor { display: flex; align-items: center; gap: 10px; margin-top: calc(var(--ar) * 0.7); }
-  .professor img {
-    width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
-    border: 2px solid var(--texto-escuro-sec);
-    flex: 0 0 auto;
+  .sub { color: var(--texto-escuro-sec); font-size: 14px; line-height: 1.35; margin-top: calc(var(--ar) * 0.6); }
+  .sub strong { color: #FFFFFF; }
+  .sub .extra { display: none; }
+  .foto {
+    position: absolute;
+    right: -6px;
+    bottom: 0;
+    height: calc(100% - 46px);
+    width: auto;
+    pointer-events: none;
   }
-  .professor p { color: var(--texto-escuro-sec); font-size: 14px; line-height: 1.35; }
-  .professor strong { color: #FFFFFF; display: block; }
-  .professor .extra { display: none; }
 
   /* ---------- coluna da compra ---------- */
-  .compra { padding: 0 16px 12px; }
+  .compra { position: relative; z-index: 2; padding: 0 16px 12px; }
 
   .oferta {
     background: var(--cartao);
     border-radius: 18px;
     padding: var(--ar) 18px;
-    margin-top: -40px;
-    position: relative;
+    margin-top: -44px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
   }
   .de { color: var(--texto-suave); font-size: 15px; }
   .preco-linha { display: flex; align-items: baseline; gap: 12px; }
-  .antes { color: var(--laranja); font-weight: 700; font-size: 18px; }
   .preco {
+    display: block;
     font-family: "Anton", "Montserrat", sans-serif;
     font-weight: 400;
     color: var(--indigo);
     font-size: clamp(44px, 12vw, 56px);
     line-height: 1.1;
-    display: block;
   }
+  .antes { color: var(--laranja); font-weight: 700; font-size: 18px; }
   .parcela { color: var(--texto-suave); font-size: 15px; }
 
   .relogio {
@@ -146,7 +152,7 @@
   .botao:focus-visible, a:focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; }
   .seguro { text-align: center; color: var(--texto-suave); font-size: 13px; margin-top: 6px; }
 
-  /* ---------- o que vem + garantia ---------- */
+  /* ---------- o que vem ---------- */
   .inclui {
     background: var(--cartao);
     border-radius: 18px;
@@ -161,31 +167,70 @@
   ul.itens small { flex: 0 0 auto; color: var(--texto-suave); font-size: 13px; }
   ul.itens a { color: var(--indigo); }
 
-
-  /* ---------- computador: duas colunas numa tela só ---------- */
-  @media (min-width: 860px) {
-    body { background: var(--indigo-profundo); }
-    .pagina {
-      max-width: 1000px;
+  /* ---------- computador: duas colunas, tudo numa tela ---------- */
+  @media (min-width: 900px) {
+    body {
+      background: radial-gradient(ellipse at 15% 100%, #443468 0%, var(--indigo-profundo) 62%);
+      background-color: var(--indigo-profundo);
       min-height: 100vh;
-      padding: 32px 32px;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 56px;
-      align-items: center;
     }
-    .topo { padding: 0; background: none; }
-    .logo { width: 140px; }
+    .pagina {
+      max-width: 1160px;
+      min-height: 100vh;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 440px;
+      gap: 64px;
+    }
+    .topo {
+      overflow: visible;
+      background: none;
+      padding: 40px 0 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
     .linha-topo { justify-content: flex-start; gap: 20px; }
-    .selo { font-size: 14px; padding: 4px 12px; }
-    h1 { font-size: 64px; margin-top: 28px; }
-    .professor { margin-top: 24px; gap: 14px; }
-    .professor img { width: 56px; height: 56px; }
-    .professor p { font-size: 16px; }
-    .professor .extra { display: inline; }
-    .compra { padding: 0; }
-    .oferta { margin-top: 0; padding: 24px 22px; }
-    .inclui { padding: 18px 22px; margin-top: 12px; }
+    .logo { width: 160px; }
+    .selo { font-size: 15px; padding: 5px 14px; }
+    h1 { font-size: clamp(44px, 5vw, 64px); margin-top: 4vh; }
+    .texto { max-width: none; }
+    .sub { font-size: 18px; line-height: 1.5; margin-top: 14px; max-width: 480px; }
+    .sub strong { display: inline; }
+    .sub .extra { display: inline; }
+    .foto {
+      position: static;
+      flex: 1 1 0;
+      min-height: 0;
+      height: auto;
+      width: 100%;
+      max-width: 520px;
+      object-fit: contain;
+      object-position: left bottom;
+      margin-top: 3vh;
+    }
+
+    .compra {
+      align-self: center;
+      padding: 0;
+      border-radius: 22px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+    .oferta { margin-top: 0; padding: 28px 30px 22px; border-radius: 22px 22px 0 0; box-shadow: none; }
+    .preco { font-size: 72px; }
+    .antes { font-size: 22px; }
+    .parcela { font-size: 16px; }
+    .relogio { padding: 12px 14px; margin: 18px 0; }
+    .relogio .rotulo { font-size: 15px; }
+    .caixa { width: 58px; padding: 6px 0 4px; }
+    .caixa b { font-size: 28px; }
+    .caixa span { font-size: 11px; }
+    .botao { min-height: 60px; font-size: 18px; padding: 17px 20px; }
+    .inclui { margin-top: 0; padding: 20px 30px 26px; border-radius: 0 0 22px 22px; border-top: 1px solid var(--linha); }
+    h2 { font-size: 16px; margin-bottom: 12px; }
+    ul.itens { gap: 9px; }
+    ul.itens li { font-size: 15px; }
+    ul.itens small { font-size: 14px; }
   }
 </style>
 </head>
@@ -194,14 +239,14 @@
 
   <header class="topo">
     <div class="linha-topo">
-      <img class="logo" src="/img/logo/logo-horizontal-branca.svg" alt="Clube do Ukulele" width="104" height="35">
+      <img class="logo" src="/img/logo/logo-horizontal-negativa.svg" alt="Clube do Ukulele" width="120" height="40">
       <span class="selo" id="selo">Condição especial</span>
     </div>
-    <h1 id="titulo">Ukulele Fundamental</h1>
-    <div class="professor">
-      <img src="foto-mateus-bio.webp" alt="Professor Mateus Augusto" width="40" height="40">
-      <p id="professor-texto"><strong>Liberada pelo professor Mateus Augusto</strong><span class="extra">para você começar a tocar ukulele do zero.</span></p>
+    <div class="texto">
+      <h1 id="titulo">Ukulele Fundamental</h1>
+      <p class="sub" id="sub"><strong id="sub-frase">Separamos esta condição para você.</strong><span class="extra" id="sub-extra"></span></p>
     </div>
+    <img class="foto" src="/img/mateus-perfil.webp" alt="Professor Mateus Augusto tocando ukulele" width="1000" height="1250">
   </header>
 
   <main class="compra">
@@ -238,7 +283,7 @@
       <h2>O que você recebe</h2>
       <ul class="itens">
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Curso Ukulele Fundamental</b><small>vitalício</small></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b><a href="/area-clube-do-ukulele/biblioteca-de-musicas-uke-fundamental" target="_blank" rel="noopener">Biblioteca de Músicas</a></b><small>1 ano</small></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b><a href="/area-clube-do-ukulele/biblioteca-de-musicas-uke-fundamental" target="_blank" rel="noopener">Biblioteca com 89 músicas</a></b><small>1 ano</small></li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Comunidade de Alunos</b><small>1 ano</small></li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Workshop de Canto com Ukulele</b><small>1 ano</small></li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#443468"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Garantia de devolução</b><small>14 dias</small></li>
@@ -259,7 +304,13 @@ function ddmm(diaIndice) {
 }
 function dois(n) { return ("0" + n).slice(-2); }
 
-var c = parseInt(new URLSearchParams(location.search).get("c"), 10);
+var params = new URLSearchParams(location.search);
+var c = parseInt(params.get("c"), 10);
+
+/* ?n= traz o primeiro nome. Só aceita letras (com acento), hífen e apóstrofo;
+   qualquer outra coisa, ou nada, deixa a frase sem nome. */
+var nome = (params.get("n") || "").trim().split(/\s+/)[0];
+nome = /^[A-Za-zÀ-ÖØ-öø-ÿ'-]{2,20}$/.test(nome) ? nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase() : "";
 var hojeBrasilia = Math.floor((Date.now() - BRASILIA) / DIA);
 var valido = Number.isInteger(c) && c >= hojeBrasilia && c <= hojeBrasilia + MAX_DIAS_A_FRENTE;
 var fim = (c + 1) * DIA + BRASILIA; // meia-noite em Brasília depois do último dia
@@ -267,6 +318,8 @@ var fim = (c + 1) * DIA + BRASILIA; // meia-noite em Brasília depois do último
 if (valido) {
   document.getElementById("valida").hidden = false;
   document.getElementById("ate-texto").textContent = ddmm(c);
+  if (nome) document.getElementById("sub-frase").textContent = nome + ", separamos esta condição para você.";
+  document.getElementById("sub-extra").textContent = " Ela vale até " + ddmm(c) + ", às 23h59.";
   (function atualizar() {
     var resta = fim - Date.now();
     if (resta <= 0) { location.reload(); return; }
@@ -278,7 +331,7 @@ if (valido) {
 } else {
   document.getElementById("encerrada").hidden = false;
   document.getElementById("selo").hidden = true;
-  document.getElementById("professor-texto").innerHTML = "<strong>Professor Mateus Augusto</strong><span class=\"extra\">Curso para começar a tocar ukulele do zero.</span>";
+  document.getElementById("sub-frase").textContent = "O curso para começar a tocar ukulele do zero.";
   if (Number.isInteger(c) && c < hojeBrasilia) {
     document.getElementById("encerrada-texto").textContent = "A condição de R$ 297 terminou em " + ddmm(c) + ".";
   }
