@@ -846,7 +846,12 @@ emailIn.addEventListener('blur',function(){
 
 function cookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
 
-document.getElementById('lead').addEventListener('submit',function(e){
+/* O GTM escuta o submit deste formulário e conta o lead no primeiro envio,
+   mesmo errado, e ignora o envio certo que vem depois. Por isso este ouvinte
+   fica no document, em fase de captura: roda antes do GTM e, com campo
+   errado, não deixa o evento chegar ao formulário (stopPropagation). */
+document.addEventListener('submit',function(e){
+  if(!e.target||e.target.id!=='lead') return;
   e.preventDefault();
   var nome=document.getElementById('nome').value.trim();
   var r=fixEmail(emailIn.value); if(r.c) emailIn.value=r.v;
@@ -860,7 +865,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
   mark('e-email', emailOk(email));
   mark('e-wa', br ? foneBrOk(tel) : (tel.length>=6 && tel.length<=15));
   mark('e-uke', !!uke);
-  if(!ok){ var ruim=document.querySelector('#lead .err.on'); if(ruim){ var campo=ruim.closest('.field').querySelector('input'); if(campo) campo.focus(); } return; }
+  if(!ok){ e.stopPropagation(); var ruim=document.querySelector('#lead .err.on'); if(ruim){ var campo=ruim.closest('.field').querySelector('input'); if(campo) campo.focus(); } return; }
   var btn=document.getElementById('go'); btn.firstChild.nodeValue='Liberando…'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
   var SRC=vturbSrc();
@@ -887,7 +892,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
     url=url.toString();
   }catch(_){ url=HOTMART_URL; }
   setTimeout(function(){location.href=url;},400);
-});
+},true);
 
 /* Voltar do checkout pelo botão do navegador restaura a página do cache com o
    botão travado em "Liberando…". Destrava ao voltar. */
