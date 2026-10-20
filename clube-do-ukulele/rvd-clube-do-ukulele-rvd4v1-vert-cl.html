@@ -1290,9 +1290,8 @@ document.addEventListener('submit',function(e){
   try{
     url=new URL(HOTMART_URL);
     url.searchParams.set('name',nome); url.searchParams.set('email',email);
-    /* Na Hotmart, phoneac é o DDD, não o código do país: mandando 55 ali o telefone chegava vazio. */
-    if(br){ url.searchParams.set('phoneac',tel.slice(0,2)); url.searchParams.set('phonenumber',tel.slice(2)); }
-    else url.searchParams.set('phonenumber',tel);
+    // Na Hotmart, phoneac é o DDD. Mandando DDI + número inteiro em phonenumber, ela separa país, DDD e número sozinha.
+    url.searchParams.set('phonenumber',(ddi.value||'')+tel);
     var qp=new URLSearchParams(location.search), utms=[];
     ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var val=qp.get(k);if(val){url.searchParams.set(k,val);utms.push(val);}});
     /* Carimba a variante de vídeo no sck. É o que faz a venda na Hotmart
