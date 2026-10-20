@@ -153,7 +153,7 @@ a,button,summary,input,select,[role=button]{touch-action:manipulation}
 /* Montserrat 900 em caixa normal, como a -op. 7vw = 26px em 375, a promessa
    fecha em 4 linhas. No celular o texto nao disputa mais a dobra com o video
    (ele vem abaixo, em largura cheia), entao a fonte pode ser a de leitura. */
-.hero h1{font-size:clamp(1.6rem,7.6vw,3rem);font-weight:900;line-height:1.14;max-width:13.5em;margin-inline:auto;text-wrap:balance}
+.hero h1{font-size:clamp(1.35rem,6vw,3rem);font-weight:900;line-height:1.14;max-width:13.5em;margin-inline:auto;text-wrap:balance}
 .hero h1 span{color:var(--coral)}
 /* 20em = medida da subpromessa. Presa ao proprio font-size, entao acompanha o
    clamp e o bloco quebra igual em qualquer largura de tela acima de ~352px.
@@ -542,6 +542,16 @@ body.unlocked .gate{animation:gateIn .6s ease both}
      botao + gap + padding, sem o texto, que ficou acima). */
   body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100vh - 1.5rem));max-height:none}
   body.locked .vframe{height:min(calc((100vw - 2rem) * 16 / 9),calc(100svh - 1.5rem))}
+  /* Altura do video no celular, igual nas duas paginas, travada ou liberada.
+     Meta: o video inteiro na tela (--v-top e o topo dele, medido pelo script da
+     dobra, mais .75rem de folga embaixo). Piso: o video nunca fica mais estreito
+     que --v-min da largura cheia, porque em celular pequeno video miudo fica ruim
+     de ver. Quando o piso vence, o fim do video passa da dobra, mas o convite de
+     som (de 42% a 74% da altura) ainda cabe em 360x640. Sem o script, --v-top
+     vale 0 e so o piso e a largura limitam. */
+  .hero{--v-min:.85}
+  .vframe{height:max(calc((100vw - 2rem) * 16 / 9 * var(--v-min)),min(calc(100svh - var(--fold-reserve)),calc((100vw - 2rem) * 16 / 9),calc(100svh - var(--v-top,0px) - .75rem)))}
+  body.locked .vframe{height:max(calc((100vw - 2rem) * 16 / 9 * var(--v-min)),min(calc((100vw - 2rem) * 16 / 9),calc(100svh - 1.5rem),calc(100svh - var(--v-top,0px) - .75rem)))}
   /* Respiro so entre promessa, subpromessa e faixa (alem do gap do .hero-top);
      do convite para o video nada muda. */
   .hero-sub{margin-top:.2rem}
@@ -618,12 +628,8 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 <header class="hero">
   <div class="container">
     <div class="hero-top">
-      <h1>Toque <span>suas músicas favoritas</span> no Ukulele, com 20 minutinhos por dia</h1>
-      <p class="hero-sub">Conheça o hobby que ajuda a aliviar o estresse e já virou refúgio de +&nbsp;de&nbsp;300.000 brasileiros</p>
-      <p class="hero-strip"><span>Nessa aula você vai conhecer os 3 passos simples que te levam a aprender qualquer música</span></p>
-      <!-- Convite para o vídeo. No desktop a seta aponta para o vídeo ao lado;
-           no celular a seta some e fica só a frase. -->
-      <p class="hero-nudge">Assista a aula abaixo e veja a lógica por trás do Método 3D<svg viewBox="0 0 44 14" fill="none" aria-hidden="true"><path d="M1 7h35M30 1.5 36.5 7 30 12.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+      <h1>Aprenda a tocar o instrumento que <span>ajuda a aliviar o estresse</span> e já virou o refúgio de milhares de brasileiros</h1>
+      <p class="hero-sub">Dá o play: eu te mostro os 3 passos, com 20 minutos por dia, e alunos que se achavam sem jeito para música tocando as músicas que gostam.</p>
     </div>
 
     <div class="video">
@@ -740,6 +746,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
        entra. Liberada, a reserva e so o que fica ABAIXO do video: gap + botao +
        padding de baixo. O texto ficou acima e fora da conta, entao o video
        encolhe ate video + botao caberem juntos na tela. */
+    hero.style.setProperty('--v-top',Math.round(vf.getBoundingClientRect().top+window.scrollY)+'px');
     if(document.body.classList.contains('locked')){
       hero.style.removeProperty('--fold-reserve'); ultimo=null; return;
     }
@@ -827,7 +834,8 @@ body.unlocked .gate{animation:gateIn .6s ease both}
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Guia de Compra do Primeiro Ukulele</b>, com vídeo detalhado: tamanhos, o que olhar e quanto vale a pena investir. Ainda em dúvida, a gente te indica o modelo no WhatsApp.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Dúvida embaixo de cada aula</b>: você pergunta ali mesmo, na aula em que travou, e a nossa equipe responde no mesmo lugar.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>A comunidade do Clube</b>, onde os professores passam todo dia. Você grava um vídeo tocando, posta, e recebe por escrito o que ajustar. Tem coisa que só se entende vendo.</p></li>
-      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Encontros quinzenais ao vivo com os professores</b>, numa sala fechada que só quem é do Clube entra. A gente traz assunto novo e responde o que aparecer, e a gravação fica guardada lá dentro.</p></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>A Confraria do Ukulele</b>, toda quinta às 19h30: um encontro ao vivo para tirar dúvidas e bater papo com os outros alunos.</p></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Nivelamento</b>, para saber por qual curso começar e como organizar o estudo.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Aulas ao vivo extras, gravadas e guardadas</b>: uma nova toda semana, com o material junto, para quando bater vontade de fazer algo diferente da trilha.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Suporte de gente de verdade no WhatsApp</b>, para qualquer problema de acesso, senha ou plataforma.</p></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><p><b>Assiste onde quiser</b>, no celular, computador, tablet ou televisão, no horário que der.</p></li>
@@ -838,7 +846,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 <!-- 4 etapas da jornada -->
 <section class="section surface-cream cv">
   <div class="container">
-    <div class="sec-head"><span class="eyebrow">Sua jornada, etapa por etapa</span><h2 class="h2">Em 4 etapas simples, você sai do zero</h2><p class="lead">O Clube não é um monte de aula solta pra você se virar sozinho lá dentro. É um caminho, com quatro etapas, e em cada uma você sabe exatamente onde está e qual é o próximo passo.</p></div>
+    <div class="sec-head"><span class="eyebrow">Sua jornada, etapa por etapa</span><h2 class="h2">Em 4 etapas simples, você sai do zero</h2><p class="lead">No Clube, as aulas seguem um caminho de quatro etapas, e em cada uma você sabe exatamente onde está e qual é o próximo passo.</p></div>
     <div class="grid g-4">
       <div class="step"><img src="/img/1c.webp" alt="Etapa 1 da jornada do Clube do Ukulele" width="128" height="128" loading="lazy" decoding="async"><span class="n">Etapa 1</span><h3>Sua Primeira Música</h3><p>Você aprende a afinar, a segurar e a tirar som limpo. Na primeira semana já toca uma música inteira, com acordes de um dedo só.</p></div>
       <div class="step"><img src="/img/2c.webp" alt="Etapa 2 da jornada do Clube do Ukulele" width="128" height="128" loading="lazy" decoding="async"><span class="n">Etapa 2</span><h3>Destravando a Coordenação</h3><p>É onde quase todo mundo empaca sozinho: o acorde sai, a batida sai, os dois juntos não saem. Você treina a troca até ficar automática e a batida no Movimento Perpétuo, e aí junta as duas.</p></div>
@@ -851,14 +859,14 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 <!-- Suporte -->
 <section class="section surface-white hairline cv">
   <div class="container">
-    <div class="sec-head"><span class="eyebrow">O dia que decide tudo</span><h2 class="h2">Vai chegar um dia em que <span>não vai sair</span></h2><p class="lead">O acorde não sai, a batida trava, e você não faz ideia do que está fazendo de errado. Todo aluno tem esse dia. A diferença está no que acontece nele.</p></div>
+    <div class="sec-head"><span class="eyebrow">Ficou com dúvida? Empacou numa música?</span><h2 class="h2">Você tem <span>a quem perguntar</span></h2><p class="lead">Uma corda sai abafada e você não sabe por quê. A troca de acorde atrasa e você para no meio da música. Todo aluno passa por isso, e quem estuda sozinho repete o mesmo erro sem perceber, porque não tem a quem perguntar. No Clube, você pergunta e a nossa equipe responde.</p></div>
     <div class="grid g-2x2">
-      <div class="card method"><div class="ic">❓</div><div><h3>Você pergunta na própria aula</h3><p>Embaixo de cada aula tem um espaço para a sua dúvida, e a resposta vem ali mesmo, na aula em que você travou.</p></div></div>
-      <div class="card method"><div class="ic c2">🎥</div><div><h3>Nosso time na comunidade</h3><p>Grava um vídeo tocando e posta na comunidade. A equipe assiste e te responde por escrito o que ajustar.</p></div></div>
-      <div class="card method"><div class="ic c3">🤝</div><div><h3>E a turma responde junto</h3><p>Gente que travou nesse mesmo ponto seis meses atrás e passou. Daqui a pouco é você respondendo quem está começando agora.</p></div></div>
-      <div class="card method"><div class="ic">📅</div><div><h3>E de quinze em quinze dias, ao vivo</h3><p>Encontro com os professores numa sala fechada só do Clube: assunto novo, espaço para a sua dúvida e a gravação guardada lá dentro.</p></div></div>
+      <div class="card method"><div class="ic">❓</div><div><h3>Embaixo da própria aula</h3><p>Travou numa aula? Escreve a dúvida no espaço que fica embaixo dela, e a nossa equipe responde pessoalmente, ali mesmo. Antes de perguntar, vale olhar o que já está escrito: muitas vezes alguém travou no mesmo ponto e a resposta já está lá.</p></div></div>
+      <div class="card method"><div class="ic c2">🎥</div><div><h3>Na comunidade, com um vídeo seu</h3><p>Tem dúvida que não dá para explicar escrevendo. Grava um vídeo tocando, com o celular apoiado na mesa, e posta na comunidade do Clube. Os professores passam lá todo dia, assistem e te escrevem o que ajustar, como a posição de um dedo ou o momento da troca. Os outros alunos também comentam e contam como passaram daquele ponto.</p></div></div>
+      <div class="card method"><div class="ic">📅</div><div><h3>Toda quinta, às 19h30, ao vivo</h3><p>Na Confraria do Ukulele você leva a dúvida, pergunta na hora e ainda escuta as perguntas dos outros alunos, que muitas vezes são a sua também.</p></div></div>
+      <div class="card method"><div class="ic c3">💬</div><div><h3>Quem já está dentro</h3><p>"Uma equipe que dá todo o apoio à gente. A gente vai lá, tira as nossas dúvidas, e as pessoas dão dicas valiosas."</p></div></div>
     </div>
-    <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero aprender com suporte!</button></div>
+    <div class="cta-center"><button class="btn" onclick="openCheckout()">Quero ter a quem perguntar</button></div>
   </div>
 </section>
 
@@ -919,14 +927,15 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 <section class="section surface-dark cv">
   <div class="container">
     <img class="marca" src="/img/logo-clube-do-ukulele.webp" alt="Clube do Ukulele" width="1190" height="778" loading="lazy" decoding="async">
-    <div class="sec-head"><span class="eyebrow">A oferta completa</span><h2 class="h2">Tudo isso você leva junto</h2><p class="lead">Uma aula particular por semana numa escola de música custa por volta de R$ 600 por mês, R$ 7.200 no ano. É um caminho que funciona e vale o que cobra. O plano anual do Clube, o ano inteiro, custa o mesmo que uma única mensalidade dessas, e você ainda tem tudo organizado na ordem certa, com a turma e os professores junto.</p></div>
+    <div class="sec-head"><span class="eyebrow">A oferta completa</span><h2 class="h2">Um ano de acesso a tudo isso</h2><p class="lead">Uma aula particular por semana numa escola de música custa por volta de R$ 600 por mês, R$ 7.200 no ano. É um caminho que funciona e vale o que cobra. O plano anual do Clube, o ano inteiro, custa o mesmo que uma única mensalidade dessas, e você ainda tem tudo organizado na ordem certa, com a turma e os professores junto.</p></div>
     <div class="offer">
       <ul>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Clube do Ukulele por 1 ano</b> (a jornada completa em 4 etapas, do zero ao intermediário)</span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>A jornada completa em 4 etapas</b>, do zero ao intermediário</span></span></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Biblioteca com mais de 150 músicas</b> (aula, "toque comigo" e PDF), com música nova todo mês</span></span></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Guia de Compra do Primeiro Ukulele</b>, com vídeo, para quem ainda não tem instrumento</span></span></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Comunidade, suporte embaixo de cada aula e aulas ao vivo extras toda semana</b></span></span></li>
-        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Encontros quinzenais ao vivo com os professores</b>, em sala fechada só do Clube</span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Confraria do Ukulele</b>, encontro ao vivo toda quinta às 19h30</span></span></li>
+        <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Nivelamento</b>, para saber por qual curso começar e como organizar o estudo</span></span></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 01. 5 Atividades em Vídeo pra você enviar</b> (o professor responde cada uma em vídeo)</span></span></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 02. Dicionário de Acordes do Ukulele</b></span></span></li>
         <li><span class="it"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Bônus 03. Destrava Dedos</b> (exercícios de coordenação)</span></span></li>
@@ -981,7 +990,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
       <details><summary>Nunca toquei nenhum instrumento. O Clube é para mim?</summary><div class="a">Sim! O ponto de partida do Clube é o zero absoluto. Você aprende passo a passo, sem precisar de nenhuma base musical anterior, e a primeira música costuma sair já na primeira semana.</div></details>
       <details><summary>Já sei o básico, mas ainda travo. Vai me ajudar?</summary><div class="a">Com certeza, e esse é o perfil mais comum aqui dentro. Boa parte dos alunos chega tocando algumas músicas, presa na mesma batida e sem saber qual é o próximo passo. A jornada em 4 etapas te dá o caminho e mostra as bases que ficaram para trás.</div></details>
       <details><summary>Como funcionam as 5 atividades em vídeo?</summary><div class="a">São 5 envios, em 5 aulas escolhidas a dedo, justamente as que mais travam quem está começando. Você grava com o celular, envia por dentro da plataforma e o professor grava um vídeo em cima do seu, mostrando o que ajustar e como evoluir. É o mais perto que dá de ter um professor sentado do seu lado.</div></details>
-      <details><summary>E se eu travar numa dúvida no meio do caminho?</summary><div class="a">Você tem três caminhos: perguntar embaixo da própria aula em que travou, postar um vídeo na comunidade do Clube para a equipe assistir e te responder, ou levar a dúvida para o encontro quinzenal ao vivo com os professores. Para problema de acesso ou senha, tem um WhatsApp nosso com gente de verdade do outro lado.</div></details>
+      <details><summary>E se eu travar numa dúvida no meio do caminho?</summary><div class="a">Você tem três caminhos: perguntar embaixo da própria aula em que travou, postar um vídeo na comunidade do Clube para a equipe assistir e te responder, ou levar a dúvida para a Confraria do Ukulele, o encontro ao vivo de toda quinta às 19h30. Para problema de acesso ou senha, tem um WhatsApp nosso com gente de verdade do outro lado.</div></details>
       <details><summary>Eu não tenho coordenação ou ritmo. Mesmo assim consigo?</summary><div class="a">Sim. O Método 3D (Dividir, Destravar, Dominar) existe exatamente por isso: em vez de tentar fazer tudo ao mesmo tempo, você isola cada camada, treina até ela rodar sozinha e só então junta. A coordenação aparece como consequência.</div></details>
       <details><summary>Preciso saber teoria musical?</summary><div class="a">Não! Você aprende direto na prática, dentro de músicas reais. A teoria entra só na hora em que ela faz diferença no que você está tocando.</div></details>
       <details><summary>Ainda não tenho ukulele. Consigo começar?</summary><div class="a">Consegue, e esse é o melhor momento para entrar. Dentro do Clube tem o Guia de Compra do Primeiro Ukulele, com vídeo detalhado: os tamanhos, o que olhar e quanto vale a pena investir. Se ainda ficar dúvida, você chama a gente no WhatsApp que a gente te indica o modelo e o link. Quando a caixa chegar na sua casa, o curso já está te esperando.</div></details>
@@ -1062,7 +1071,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 </dialog>
 
 <script>
-var HOTMART_URL='https://pay.hotmart.com/I107367779O?off=wcng1o16&checkoutMode=10&hideBillet=1&hidePix=1';
+var HOTMART_URL='https://pay.hotmart.com/E108042371Q?off=exslmzms&checkoutMode=10&offDiscount=ESPECIAL200-LIMITADO&hideBillet=1&hidePix=1';
 /* ===== Leitura da Conversion Key (parametro src) =====
    O VTurb injeta o src sozinho em <a href> e em action de formulario, escutando
    mouseover/pointerdown/touchstart na janela. Esta pagina nao se encaixa em
@@ -1136,7 +1145,22 @@ function fixEmail(val){
   for(var k=0;k<sufFix.length;k++){ if(sf===sufFix[k][0]){sf=sufFix[k][1];ch=true;break;} }
   return {v:u+'@'+dn+sf,c:ch};
 }
-function emailOk(v){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);}
+function emailOk(v){return /^[^@\s]+@[^@\s.]+(\.[^@\s.]+)*\.[a-z]{2,}$/i.test(v);}
+/* Celular BR: DDD de 11 a 99 e, com 11 dígitos, o número começa com 9. Aceita fixo
+   (10 dígitos) porque tem WhatsApp Business em fixo. Recusa número todo repetido. */
+function foneBrOk(t){
+  if(!(t.length===10||t.length===11)) return false;
+  if(!/^[1-9][1-9]/.test(t)) return false;
+  if(t.length===11 && t.charAt(2)!=='9') return false;
+  return !/^(\d)\1+$/.test(t);
+}
+/* Erro some assim que a pessoa corrige o campo */
+['nome','email','wa'].forEach(function(id){
+  document.getElementById(id).addEventListener('input',function(){
+    var e=document.getElementById('e-'+(id==='wa'?'wa':id)); if(e.classList.contains('on')){ e.classList.remove('on'); this.setAttribute('aria-invalid','false'); }
+  });
+});
+document.querySelectorAll('input[name=uke]').forEach(function(r){ r.addEventListener('change',function(){ document.getElementById('e-uke').classList.remove('on'); }); });
 var emailIn=document.getElementById('email');
 emailIn.addEventListener('blur',function(){
   var h=document.getElementById('h-email'); h.classList.remove('on');
@@ -1147,7 +1171,12 @@ emailIn.addEventListener('blur',function(){
 
 function cookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
 
-document.getElementById('lead').addEventListener('submit',function(e){
+/* Este ouvinte fica no document, em fase de captura, como na set26 (16/10/2026):
+   roda antes de qualquer ouvinte de submit do GTM e, com campo errado, não deixa
+   o evento chegar ao formulário (stopPropagation). O lead só vai para o GTM pelo
+   lead_capture_clube, empurrado depois da validação. */
+document.addEventListener('submit',function(e){
+  if(!e.target||e.target.id!=='lead') return;
   e.preventDefault();
   var nome=document.getElementById('nome').value.trim();
   var r=fixEmail(emailIn.value); if(r.c) emailIn.value=r.v;
@@ -1155,12 +1184,13 @@ document.getElementById('lead').addEventListener('submit',function(e){
   var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
   var uke=(document.querySelector('input[name=uke]:checked')||{}).value;
   var ok=true;
-  function mark(id,cond){document.getElementById(id).classList.toggle('on',!cond);if(!cond)ok=false;}
-  mark('e-nome', nome.split(' ').filter(Boolean).length>=2);
+  function mark(id,cond){var e=document.getElementById(id);e.classList.toggle('on',!cond);var c=e.closest('.field').querySelector('input:not([type=radio])');if(c)c.setAttribute('aria-invalid',cond?'false':'true');if(!cond)ok=false;}
+  var partes=nome.split(/\s+/).filter(Boolean);
+  mark('e-nome', partes.length>=2 && partes.every(function(p){return p.length>=2;}) && !/\d/.test(nome));
   mark('e-email', emailOk(email));
-  mark('e-wa', br ? (tel.length===10||tel.length===11) : tel.length>=6);
+  mark('e-wa', br ? foneBrOk(tel) : (tel.length>=6 && tel.length<=15));
   mark('e-uke', !!uke);
-  if(!ok) return;
+  if(!ok){ e.stopPropagation(); var ruim=document.querySelector('#lead .err.on'); if(ruim){ var campo=ruim.closest('.field').querySelector('input'); if(campo) campo.focus(); } return; }
   var btn=document.getElementById('go'); btn.textContent='Liberando…'; btn.disabled=true;
   window.dataLayer=window.dataLayer||[];
   var SRC=vturbSrc();
@@ -1187,7 +1217,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
     url=url.toString();
   }catch(_){ url=HOTMART_URL; }
   setTimeout(function(){location.href=url;},400);
-});
+},true);
 
 /* Lightbox depoimentos (pop-up, sem sair da página) */
 var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lb-img');
@@ -1221,14 +1251,14 @@ document.querySelectorAll('.vid').forEach(function(el){
 </script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Course","name":"Clube do Ukulele","description":"Escola de ukulele online com jornada de aprendizado em 4 etapas, do zero ao intermediário, usando o Método 3D. Inclui biblioteca com mais de 150 músicas com aula e play along, guia de compra do primeiro ukulele, comunidade com professores, encontros quinzenais ao vivo, aulas ao vivo extras toda semana, 5 envios de vídeo com resposta do professor, dicionário de acordes, Destrava Dedos e workshop de canto.","inLanguage":"pt-BR","provider":{"@type":"Person","name":"Mateus Augusto","url":"https://cursos.comotocarukulele.com/"},"offers":{"@type":"Offer","price":"397.00","priceCurrency":"BRL","category":"Paid","availability":"https://schema.org/InStock","url":"https://cursos.comotocarukulele.com/clube-do-ukulele/rvd-clube-do-ukulele-rvd4v1-vert-op"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT20M"}}
+{"@context":"https://schema.org","@type":"Course","name":"Clube do Ukulele","description":"Escola de ukulele online com jornada de aprendizado em 4 etapas, do zero ao intermediário, usando o Método 3D. Inclui biblioteca com mais de 150 músicas com aula e play along, guia de compra do primeiro ukulele, comunidade com professores, a Confraria do Ukulele (encontro ao vivo toda quinta), aulas ao vivo extras toda semana, 5 envios de vídeo com resposta do professor, dicionário de acordes, Destrava Dedos e workshop de canto.","inLanguage":"pt-BR","provider":{"@type":"Person","name":"Mateus Augusto","url":"https://cursos.comotocarukulele.com/"},"offers":{"@type":"Offer","price":"397.00","priceCurrency":"BRL","category":"Paid","availability":"https://schema.org/InStock","url":"https://cursos.comotocarukulele.com/clube-do-ukulele/rvd-clube-do-ukulele-rvd4v1-vert-op"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT20M"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Nunca toquei nenhum instrumento. O Clube é para mim?","acceptedAnswer":{"@type":"Answer","text":"Sim! O ponto de partida do Clube é o zero absoluto. Você aprende passo a passo, sem precisar de nenhuma base musical anterior, e a primeira música costuma sair já na primeira semana."}},
 {"@type":"Question","name":"Já sei o básico, mas ainda travo. Vai me ajudar?","acceptedAnswer":{"@type":"Answer","text":"Com certeza, e esse é o perfil mais comum aqui dentro. A jornada em 4 etapas te dá o caminho e mostra as bases que ficaram para trás."}},
 {"@type":"Question","name":"Como funcionam as 5 atividades em vídeo?","acceptedAnswer":{"@type":"Answer","text":"São 5 envios, em 5 aulas escolhidas a dedo. Você grava com o celular, envia por dentro da plataforma e o professor grava um vídeo em cima do seu, mostrando o que ajustar e como evoluir."}},
-{"@type":"Question","name":"E se eu travar numa dúvida no meio do caminho?","acceptedAnswer":{"@type":"Answer","text":"Você pergunta embaixo da própria aula, posta um vídeo na comunidade para a equipe assistir e responder, ou leva a dúvida para o encontro quinzenal ao vivo com os professores. Para problema de acesso, tem suporte no WhatsApp."}},
+{"@type":"Question","name":"E se eu travar numa dúvida no meio do caminho?","acceptedAnswer":{"@type":"Answer","text":"Você pergunta embaixo da própria aula, posta um vídeo na comunidade para a equipe assistir e responder, ou leva a dúvida para a Confraria do Ukulele, o encontro ao vivo de toda quinta às 19h30. Para problema de acesso, tem suporte no WhatsApp."}},
 {"@type":"Question","name":"Eu não tenho coordenação ou ritmo. Mesmo assim consigo?","acceptedAnswer":{"@type":"Answer","text":"Sim. O Método 3D foi feito para quem sente os dedos duros ou travados: você isola cada camada, treina até ela rodar sozinha e só então junta."}},
 {"@type":"Question","name":"Preciso saber teoria musical?","acceptedAnswer":{"@type":"Answer","text":"Não! Você aprende direto na prática, dentro de músicas reais."}},
 {"@type":"Question","name":"Ainda não tenho ukulele. Consigo começar?","acceptedAnswer":{"@type":"Answer","text":"Consegue, e esse é o melhor momento para entrar. Dentro do Clube tem o Guia de Compra do Primeiro Ukulele, com vídeo detalhado: os tamanhos, o que olhar e quanto vale a pena investir. Se ainda ficar dúvida, a gente te indica o modelo pelo WhatsApp."}},
