@@ -4,311 +4,153 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#2D124E">
+<meta name="theme-color" content="#F4EFFA">
 <link rel="icon" type="image/svg+xml" href="/ukulele-fundamental/favicon-condicao.svg">
 <link rel="apple-touch-icon" href="/ukulele-fundamental/favicon-condicao-180.png">
 <title>Condição especial: Clube do Ukulele</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="/img/mateus-perfil.webp">
+<!-- Mesmo visual da página de vendas do Clube (rvd-clube-do-ukulele-rvd4v1-vert-cl.html):
+     tokens, fontes do próprio domínio, caixa escura da oferta e botão verde. -->
+<link rel="preload" href="/fonts/montserrat-v31-latin-900.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  :root {
-    --indigo: #443468;
-    --indigo-profundo: #2D124E;
-    --teal-acao: #12A18A;
-    --teal-acao-hover: #25A993;
-    --laranja: #CD3701;
-    --texto: #1F1A2B;
-    --texto-suave: #5C5A70;
-    --texto-escuro-sec: #DCD6E6;
-    --fundo: #F5F4F7;
-    --cartao: #FFFFFF;
-    --linha: #E4E1EA;
-    /* espaço que encolhe em tela baixa, para a página caber inteira sem rolar */
-    --ar: clamp(6px, 1.6vh, 18px);
-  }
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/montserrat-v31-latin-700.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/montserrat-v31-latin-800.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:900;font-display:swap;src:url('/fonts/montserrat-v31-latin-900.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/poppins-v24-latin-regular.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/poppins-v24-latin-600.woff2') format('woff2')}
+:root{
+  --ink:#2A1854;--purple:#423066;--coral:#EA546C;--coral-deep:#C9364F;
+  --cream:#FBF7F2;--text:#463F58;--muted:#6E687F;--line:#ECE6F2;
+  --cta:#0A8050;--cta-deep:#086B43;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'Poppins',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--purple);outline-offset:2px;border-radius:6px}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  [hidden] { display: none !important; }
+.container{width:100%;max-width:560px;margin-inline:auto;padding-inline:16px}
 
-  body {
-    background: var(--fundo);
-    color: var(--texto);
-    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-  }
+/* ---------- topo: o nome da pessoa é o destaque ---------- */
+.hero{background:linear-gradient(180deg,#F4EFFA 0%,#FBF7F2 100%);border-bottom:1px solid var(--line);border-radius:0 0 34px 34px;text-align:center;padding:clamp(.9rem,2.4vh,1.6rem) 0 clamp(2.6rem,6vh,3.4rem)}
+.logo{display:block;width:132px;height:auto;margin:0 auto clamp(.7rem,2vh,1.2rem)}
+.selo{display:inline-block;background:var(--coral-deep);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;line-height:1.4;padding:.3em .8em;border-radius:7px}
+h1{font-family:'Montserrat',system-ui,sans-serif;font-weight:900;color:var(--ink);font-size:clamp(2rem,9vw,2.8rem);line-height:1.14;margin-top:.45rem;text-wrap:balance}
+h1 span{color:var(--coral)}
+/* com nome: o nome fica grande; o tamanho final é ajustado no script para caber na largura */
+.com-nome h1{font-size:64px;white-space:nowrap}
+.sub{color:var(--ink);font-weight:600;font-size:clamp(1.02rem,3.6vw,1.2rem);line-height:1.4;margin-top:.35rem;text-wrap:pretty}
+.sub b{color:var(--coral-deep)}
+@media (prefers-reduced-motion:no-preference){
+  .com-nome h1{animation:entra .6s cubic-bezier(.2,.7,.2,1) both}
+  .com-nome .sub{animation:entra .6s .12s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes entra{from{opacity:0;transform:translateY(10px)}}
+}
 
-  .pagina { max-width: 480px; margin: 0 auto; }
+/* ---------- caixa escura da oferta, igual à da página de vendas ---------- */
+.offer{position:relative;margin-top:-2rem;background:var(--ink);color:#E7E1F2;border-radius:24px;padding:clamp(1.1rem,4vw,1.8rem);box-shadow:0 24px 50px -30px rgba(42,24,84,.8)}
+.coupon-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:rgba(15,169,104,.14);border:1px solid rgba(15,169,104,.4);border-radius:12px;padding:.7rem 1rem;margin-bottom:1rem;font-weight:600;color:#8FE3BE;font-size:.9rem;line-height:1.35}
+.coupon-row .v{font-family:'Montserrat',sans-serif;font-weight:900;color:#28C98A;white-space:nowrap;flex-shrink:0}
+.final-price{text-align:center;margin-bottom:1rem}
+.final-price .was{color:#C4BAD6;font-size:clamp(.95rem,2.6vw,1.05rem);line-height:1.45}
+.final-price .was s{color:#F6A9B4;font-weight:600}
+.final-price .now{font-family:'Montserrat',sans-serif;font-weight:900;color:#fff;font-size:clamp(2rem,9vw,2.6rem);line-height:1.08;margin-top:.3rem}
+.final-price .now span{color:var(--coral);display:block;font-size:clamp(1rem,3.6vw,1.15rem);font-weight:800;margin-top:.3rem;text-wrap:balance}
+.fim{text-align:center;color:#F6A9B4;font-weight:600;font-size:.95rem;margin-bottom:1rem}
 
-  /* ---------- topo: o nome da pessoa é o destaque ---------- */
-  .topo {
-    position: relative;
-    overflow: hidden;
-    background: var(--indigo-profundo);
-    color: #FFFFFF;
-    padding: var(--ar) 16px calc(var(--ar) + 44px);
-  }
-  .logo { display: block; width: 120px; height: auto; position: relative; z-index: 1; }
-  .texto { position: relative; z-index: 1; max-width: 60%; margin-top: calc(var(--ar) * 1.4); }
-  .selo {
-    display: inline-block;
-    background: var(--laranja);
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 13px;
-    line-height: 1.4;
-    padding: 3px 10px;
-    border-radius: 999px;
-    white-space: nowrap;
-  }
-  h1 {
-    font-family: "Anton", "Montserrat", sans-serif;
-    font-weight: 400;
-    font-size: clamp(32px, 9.4vw, 42px);
-    line-height: 1.12;
-    letter-spacing: 0.01em;
-    margin-top: calc(var(--ar) * 0.6);
-  }
-  /* com nome: o nome fica grande; o tamanho final é ajustado no script para caber na largura */
-  .com-nome h1 { font-size: 64px; line-height: 1.12; white-space: nowrap; }
-  .sub { color: var(--texto-escuro-sec); font-size: 15px; line-height: 1.4; margin-top: calc(var(--ar) * 0.4); }
-  .sub b { color: #FFFFFF; font-weight: 700; }
-  .sub .extra { display: none; } /* no celular o prazo já está no relógio logo abaixo */
-  .foto {
-    position: absolute;
-    right: -6px;
-    bottom: 0;
-    height: calc(100% - 40px);
-    width: auto;
-    pointer-events: none;
-  }
+.relogio{display:flex;align-items:center;justify-content:space-between;gap:.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:.6rem .8rem;margin-bottom:1.1rem}
+.relogio .rotulo{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;line-height:1.3;color:#fff}
+.relogio .rotulo>span{display:block;font-family:'Poppins',sans-serif;font-weight:400;font-size:.82rem;color:#C4BAD6}
+.caixas{display:flex;gap:6px;flex:0 0 auto}
+.caixa{width:50px;background:rgba(255,255,255,.1);border-radius:10px;padding:4px 0 3px;text-align:center}
+.caixa b{display:block;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.3rem;line-height:1.15;color:#fff;font-variant-numeric:tabular-nums}
+.caixa span{display:block;font-size:10px;line-height:1.2;color:#C4BAD6}
 
-  @media (prefers-reduced-motion: no-preference) {
-    .com-nome h1 { animation: entra 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-    .com-nome .sub { animation: entra 0.6s 0.12s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-    @keyframes entra { from { opacity: 0; transform: translateY(10px); } }
-  }
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;background:var(--cta);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(15px,4.2vw,17px);text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;text-align:center;text-decoration:none;border-radius:14px;padding:1rem 1.25rem;box-shadow:0 4px 0 #055A37,0 12px 22px -10px rgba(0,0,0,.45);transition:background-color .2s,transform .12s,box-shadow .12s}
+.btn:hover{background:var(--cta-deep);transform:translateY(-1px);box-shadow:0 5px 0 #055A37,0 14px 24px -10px rgba(0,0,0,.5)}
+/* afunda no toque; animation:none porque o pulso também usa transform e venceria */
+.btn:active{animation:none;transform:translateY(3px);box-shadow:0 1px 0 #055A37,0 6px 12px -8px rgba(0,0,0,.4)}
+.btn:focus-visible{outline-color:#fff}
+@media (prefers-reduced-motion:no-preference){
+  .btn--pulse{animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+}
+.note{display:flex;align-items:flex-start;justify-content:center;gap:.4rem;font-size:13px;font-weight:600;line-height:1.45;color:#C4BAD6;margin-top:.7rem}
+.note+.note{margin-top:.35rem}
+.note svg{width:.85rem;height:.85rem;flex-shrink:0;margin-top:2px;color:#7BE0B4}
 
-  /* ---------- cartão da compra ---------- */
-  .compra { position: relative; z-index: 2; padding: 0 16px 12px; }
-  .cartao {
-    background: var(--cartao);
-    border-radius: 18px;
-    margin-top: -44px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
-  }
-  .oferta { padding: var(--ar) 18px; }
-  .de { color: var(--texto-suave); font-size: 15px; }
-  .preco-linha { display: flex; align-items: baseline; gap: 12px; }
-  .preco {
-    display: block;
-    font-family: "Anton", "Montserrat", sans-serif;
-    font-weight: 400;
-    color: var(--indigo);
-    font-size: clamp(44px, 12vw, 56px);
-    line-height: 1.1;
-  }
-  .antes { color: var(--laranja); font-weight: 700; font-size: 18px; }
-  .corte {
-    align-self: center;
-    background: var(--laranja);
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.3;
-    padding: 3px 8px;
-    border-radius: 999px;
-  }
-  .parcela { color: var(--texto-suave); font-size: 15px; }
+.inclui{border-top:1px solid rgba(255,255,255,.16);margin-top:1.2rem;padding-top:1rem}
+.inclui h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#F6A9B4;margin-bottom:.35rem}
+.inclui li{display:flex;gap:.6rem;align-items:flex-start;padding:.3rem 0;font-size:.92rem;line-height:1.45}
+.inclui li svg{width:20px;height:20px;color:var(--coral);flex-shrink:0}
+.inclui b{color:#fff;font-weight:600}
+.inclui a{color:#fff}
 
-  .relogio {
-    display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    margin: calc(var(--ar) * 0.8) 0;
-    padding: 8px 10px;
-    border-radius: 12px;
-    background: var(--fundo);
-  }
-  .relogio .rotulo { font-weight: 700; font-size: 14px; line-height: 1.3; color: var(--indigo); }
-  .relogio .rotulo > span { display: block; font-weight: 500; color: var(--texto-suave); }
-  .caixas { display: flex; gap: 6px; flex: 0 0 auto; }
-  .caixa {
-    width: 46px;
-    background: var(--indigo-profundo);
-    color: #FFFFFF;
-    border-radius: 8px;
-    padding: 4px 0 3px;
-    text-align: center;
-  }
-  .caixa b {
-    display: block;
-    font-family: "Anton", "Montserrat", sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.15;
-    font-variant-numeric: tabular-nums;
-  }
-  .caixa span { display: block; color: var(--texto-escuro-sec); font-size: 10px; line-height: 1.2; }
-  .aviso-encerrada { margin: 4px 0 calc(var(--ar) * 0.8); font-size: 14px; color: var(--texto-suave); }
-
-  .botao {
-    display: block;
-    width: 100%;
-    min-height: 52px;
-    padding: 14px 20px;
-    border-radius: 12px;
-    background: var(--teal-acao);
-    color: var(--indigo-profundo);
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 1.4;
-    text-align: center;
-    text-decoration: none;
-    transition: background 0.15s, transform 0.1s;
-  }
-  .botao:hover { background: var(--teal-acao-hover); }
-  .botao:active { transform: scale(0.98); }
-  .botao:focus-visible, a:focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; }
-  .seguro { text-align: center; color: var(--texto-suave); font-size: 13px; margin-top: 6px; }
-
-  /* ---------- o que vem junto, em etiquetas ---------- */
-  .inclui { border-top: 1px solid var(--linha); padding: calc(var(--ar) * 0.9) 18px var(--ar); }
-  .inclui h2 { color: var(--indigo); font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
-  /* no celular as etiquetas se explicam sozinhas; o título fica só para leitor de tela */
-  @media (max-width: 899px) { .inclui h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }
-  ul.etiquetas { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
-  ul.etiquetas li {
-    background: var(--fundo);
-    color: var(--texto);
-    font-size: clamp(12px, 3.5vw, 13px);
-    font-weight: 500;
-    line-height: 1.35;
-    padding: 5px 10px;
-    border-radius: 999px;
-  }
-  ul.etiquetas a { color: var(--indigo); font-weight: 700; }
-
-  /* ---------- computador: duas colunas, tudo numa tela ---------- */
-  @media (min-width: 900px) {
-    body {
-      background: radial-gradient(ellipse at 15% 100%, #443468 0%, var(--indigo-profundo) 62%);
-      background-color: var(--indigo-profundo);
-      min-height: 100vh;
-    }
-    .pagina {
-      max-width: 1160px;
-      min-height: 100vh;
-      padding: 0 48px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 440px;
-      gap: 64px;
-    }
-    .topo {
-      overflow: visible;
-      background: none;
-      padding: 40px 0 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .logo { width: 160px; }
-    .texto { max-width: none; margin-top: 6vh; }
-    .selo { font-size: 15px; padding: 5px 14px; }
-    h1 { font-size: clamp(44px, 5vw, 64px); margin-top: 14px; }
-    .com-nome h1 { font-size: 128px; line-height: 1.12; }
-    .sub { font-size: 20px; margin-top: 10px; }
-    .sub .extra { display: inline; }
-    .foto {
-      position: static;
-      flex: 1 1 0;
-      min-height: 0;
-      height: auto;
-      width: 100%;
-      max-width: 520px;
-      object-fit: contain;
-      object-position: left bottom;
-      margin-top: 3vh;
-    }
-
-    .compra { align-self: center; padding: 0; }
-    .cartao { margin-top: 0; border-radius: 22px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35); }
-    .oferta { padding: 28px 30px 22px; }
-    .preco { font-size: 72px; }
-    .antes { font-size: 22px; }
-    .corte { font-size: 16px; padding: 4px 10px; }
-    .parcela { font-size: 16px; }
-    .relogio { padding: 12px 14px; margin: 18px 0; }
-    .relogio .rotulo { font-size: 15px; }
-    .caixa { width: 58px; padding: 6px 0 4px; }
-    .caixa b { font-size: 28px; }
-    .caixa span { font-size: 11px; }
-    .botao { min-height: 60px; font-size: 18px; padding: 17px 20px; }
-    .inclui { padding: 20px 30px 26px; }
-    ul.etiquetas { gap: 8px; }
-    ul.etiquetas li { font-size: 14px; padding: 6px 12px; }
-  }
+.rodape{text-align:center;color:var(--muted);font-size:13px;padding:1.4rem 16px 2rem}
 </style>
 </head>
 <body>
-<div class="pagina">
 
-  <header class="topo" id="topo">
-    <img class="logo" src="/img/logo/logo-horizontal-negativa.svg" alt="Clube do Ukulele" width="120" height="40">
-    <div class="texto">
-      <span class="selo" id="selo">Condição especial</span>
-      <h1 id="titulo">Clube do Ukulele</h1>
-      <p class="sub" id="sub"></p>
-    </div>
-    <img class="foto" src="/img/mateus-perfil.webp" alt="Professor Mateus Augusto tocando ukulele" width="1000" height="1250">
-  </header>
+<header class="hero" id="topo">
+  <div class="container">
+    <img class="logo" src="/img/logo/logo-horizontal.svg" alt="Clube do Ukulele" width="132" height="44">
+    <span class="selo" id="selo">Condição especial</span>
+    <h1 id="titulo">Clube do <span>Ukulele</span></h1>
+    <p class="sub" id="sub"></p>
+  </div>
+</header>
 
-  <main class="compra">
-    <div class="cartao">
+<main class="container">
+  <div class="offer">
 
-      <!-- condição dentro do prazo -->
-      <section class="oferta" id="valida" aria-labelledby="titulo" hidden>
-        <p class="preco-linha"><span class="preco">R$ 297</span><s class="antes" aria-label="antes R$ 597">R$ 597</s><span class="corte">-50%</span></p>
-        <p class="parcela">por ano, à vista ou 12x de R$ 30,72 no cartão</p>
-
-        <div class="relogio" role="timer" aria-live="off">
-          <p class="rotulo">Termina em<span>até <span id="ate-texto"></span>, 23h59</span></p>
-          <div class="caixas">
-            <div class="caixa"><b id="h">00</b><span>horas</span></div>
-            <div class="caixa"><b id="m">00</b><span>min</span></div>
-            <div class="caixa"><b id="s">00</b><span>seg</span></div>
-          </div>
+    <!-- condição dentro do prazo -->
+    <section id="valida" aria-labelledby="titulo" hidden>
+      <div class="coupon-row"><span>Condição liberada pelo professor Mateus</span><span class="v">− R$ 300</span></div>
+      <div class="final-price">
+        <p class="was">Plano anual. De <s>R$ 597,00</s> por ano, com a condição sai por:</p>
+        <p class="now">12x de R$ 30,72 <span>ou R$ 297 à vista, por 1 ano de Clube</span></p>
+      </div>
+      <div class="relogio" role="timer" aria-live="off">
+        <p class="rotulo">Termina em<span>até <span id="ate-texto"></span>, 23h59</span></p>
+        <div class="caixas">
+          <div class="caixa"><b id="h">00</b><span>horas</span></div>
+          <div class="caixa"><b id="m">00</b><span>min</span></div>
+          <div class="caixa"><b id="s">00</b><span>seg</span></div>
         </div>
+      </div>
+      <a class="btn btn--pulse" href="https://pay.hotmart.com/E108042371Q?off=exslmzms&checkoutMode=10&offDiscount=DESCONTO-SECRETO-LIMITADO50&hideBillet=1&hidePix=1">Quero o Clube por R$ 297</a>
+    </section>
 
-        <a class="botao" href="https://pay.hotmart.com/E108042371Q?off=exslmzms&checkoutMode=10&offDiscount=DESCONTO-SECRETO-LIMITADO50&hideBillet=1&hidePix=1">Quero o Clube por R$ 297</a>
-        <p class="seguro">Pagamento seguro pela Hotmart</p>
-      </section>
+    <!-- prazo encerrado, ou link sem prazo -->
+    <section id="encerrada" hidden>
+      <p class="fim" id="encerrada-texto">O prazo da condição de R$ 297 já acabou.</p>
+      <div class="coupon-row"><span>Cupom de desconto, já aplicado</span><span class="v">− R$ 200</span></div>
+      <div class="final-price">
+        <p class="was">Plano anual. De <s>R$ 597,00</s> por ano, com o desconto sai por:</p>
+        <p class="now">12x de R$ 41,06 <span>ou R$ 397 à vista, por 1 ano de Clube</span></p>
+      </div>
+      <a class="btn" href="https://pay.hotmart.com/E108042371Q?off=exslmzms&checkoutMode=10&offDiscount=ESPECIAL200-LIMITADO&hideBillet=1&hidePix=1">Quero o Clube por R$ 397</a>
+    </section>
 
-      <!-- prazo encerrado, ou link sem prazo -->
-      <section class="oferta" id="encerrada" hidden>
-        <p class="de" id="encerrada-texto">O prazo da condição de R$ 297 já acabou.</p>
-        <p class="preco">R$ 397</p>
-        <p class="parcela">por ano, à vista ou 12x de R$ 41,06 no cartão</p>
-        <p class="aviso-encerrada">Você ainda pode entrar no Clube do Ukulele com o cupom de R$ 200.</p>
-        <a class="botao" href="https://pay.hotmart.com/E108042371Q?off=exslmzms&checkoutMode=10&offDiscount=ESPECIAL200-LIMITADO&hideBillet=1&hidePix=1">Quero o Clube por R$ 397</a>
-        <p class="seguro">Pagamento seguro pela Hotmart</p>
-      </section>
+    <p class="note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mesmo valor na renovação, enquanto você seguir no Clube</p>
+    <p class="note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 30 dias de garantia, com 100% do valor de volta</p>
 
-      <section class="inclui">
-        <h2>O que vem no Clube</h2>
-        <ul class="etiquetas">
-          <li>Jornada em 4 etapas</li>
-          <li><a href="/clube-do-ukulele/musicas" target="_blank" rel="noopener">+140 músicas</a> com aula</li>
-          <li>Confraria toda quinta, 19h30</li>
-          <li>5 atividades com resposta em vídeo</li>
-          <li>Garantia de 30 dias</li>
-          <li>Mesmo valor na renovação</li>
-        </ul>
-      </section>
+    <section class="inclui">
+      <h2>O que vem no Clube</h2>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>A jornada completa em 4 etapas</b>, do zero ao intermediário</span></li>
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b><a href="/clube-do-ukulele/musicas" target="_blank" rel="noopener">Mais de 140 músicas</a></b> com aula, "toque comigo" e cifra em PDF</span></li>
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Confraria do Ukulele</b>, encontro ao vivo toda quinta às 19h30</span></li>
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>5 atividades em vídeo</b> para você enviar, e o professor responde cada uma em vídeo</span></li>
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span><b>Comunidade e suporte</b> embaixo de cada aula</span></li>
+      </ul>
+    </section>
 
-    </div>
-  </main>
-</div>
+  </div>
+</main>
+
+<p class="rodape">Clube do Ukulele, a escola do professor Mateus Augusto</p>
 
 <script>
 /* O link leva o último dia válido em ?c= (dias desde 01/01/1970, no calendário de Brasília),
@@ -339,7 +181,7 @@ var sub = document.getElementById("sub");
 function ajustarNome() {
   titulo.style.fontSize = "";
   var tamanho = parseFloat(getComputedStyle(titulo).fontSize);
-  var limite = titulo.parentNode.clientWidth;
+  var limite = titulo.clientWidth; // o h1 ocupa a largura útil da coluna, já sem o recuo lateral
   while (titulo.scrollWidth > limite && tamanho > 32) {
     tamanho -= 2;
     titulo.style.fontSize = tamanho + "px";
@@ -353,12 +195,12 @@ if (valido) {
     document.getElementById("topo").classList.add("com-nome");
     document.getElementById("selo").textContent = "Condição especial para";
     titulo.textContent = nome;
-    sub.innerHTML = "<b>Clube do Ukulele</b> com 50% de desconto<span class=\"extra\">, só até\u00a0" + ddmm(c) + "</span>.";
+    sub.innerHTML = "O <b>Clube do Ukulele</b> com 50% de desconto, só até " + ddmm(c) + ".";
     ajustarNome();
     if (document.fonts) document.fonts.ready.then(ajustarNome);
     addEventListener("resize", ajustarNome);
   } else {
-    sub.innerHTML = "Com 50% de desconto<span class=\"extra\">, só até\u00a0" + ddmm(c) + "</span>.";
+    sub.innerHTML = "Com 50% de desconto, só até " + ddmm(c) + ".";
   }
   (function atualizar() {
     var resta = fim - Date.now();
