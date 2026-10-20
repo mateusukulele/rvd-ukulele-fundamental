@@ -54,6 +54,9 @@ h1{font-family:'Montserrat',system-ui,sans-serif;font-weight:900;color:var(--ink
 .de s{text-decoration-thickness:2px}
 .agora{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.1rem,9.6vw,2.6rem);line-height:1.08;margin-top:.15rem}
 .vista{color:var(--lilas);font-size:.95rem;margin-top:.2rem}
+.vitalicio{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:.5rem .8rem;margin-top:.7rem;font-size:.9rem;line-height:1.4;text-wrap:balance}
+.vitalicio{color:var(--lilas)}
+.vitalicio b{color:#fff;font-weight:600}
 .fim{color:var(--lilas);font-size:.95rem;margin-bottom:.6rem}
 
 .relogio{display:flex;align-items:center;justify-content:space-between;gap:.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:.55rem .75rem;margin:clamp(.8rem,2.2vh,1.1rem) 0;text-align:left}
@@ -119,6 +122,7 @@ h1{font-family:'Montserrat',system-ui,sans-serif;font-weight:900;color:var(--ink
       <p class="de">Plano anual de <s>R$ 597</s> por</p>
       <p class="agora">12x de R$ 30,72</p>
       <p class="vista">ou R$ 297 à vista, por 1 ano de Clube</p>
+      <p class="vitalicio"><b>Desconto vitalício:</b> R$ 297 também nos próximos anos</p>
       <div class="relogio" role="timer" aria-live="off">
         <p class="rotulo">Termina em<span>até <span id="ate-texto"></span>, 23h59</span></p>
         <div class="caixas">
@@ -136,10 +140,11 @@ h1{font-family:'Montserrat',system-ui,sans-serif;font-weight:900;color:var(--ink
       <p class="de">Plano anual de <s>R$ 597</s> por</p>
       <p class="agora">12x de R$ 41,06</p>
       <p class="vista">ou R$ 397 à vista, por 1 ano de Clube</p>
+      <p class="vitalicio"><b>Desconto vitalício:</b> R$ 397 também nos próximos anos</p>
       <a class="btn" href="https://pay.hotmart.com/E108042371Q?off=exslmzms&checkoutMode=10&offDiscount=ESPECIAL200-LIMITADO&hideBillet=1&hidePix=1">Quero o Clube por R$ 397</a>
     </section>
 
-    <p class="garantia"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>30 dias de garantia, e o mesmo valor na renovação</span></p>
+    <p class="garantia"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>30 dias de garantia, com 100% do valor de volta</span></p>
   </main>
 
   <section class="lista">
@@ -197,7 +202,7 @@ if (valido) {
     document.getElementById("topo").classList.add("com-nome");
     document.getElementById("selo").textContent = "Condição especial para";
     titulo.textContent = nome;
-    sub.textContent = "O Clube do Ukulele com 50% de desconto.";
+    sub.textContent = "O Clube do Ukulele com 50% de desconto vitalício.";
     ajustarNome();
     if (document.fonts) document.fonts.ready.then(ajustarNome);
     addEventListener("resize", ajustarNome);
