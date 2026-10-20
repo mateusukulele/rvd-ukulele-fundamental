@@ -1112,7 +1112,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
 </main>
 
 <!-- Sticky CTA -->
-<div class="sticky" id="sticky" aria-hidden="true">
+<div class="sticky" id="sticky" aria-hidden="true" inert>
   <div class="sticky-in">
     <div class="sticky-tx"><strong>Clube do Ukulele</strong><span>Plano anual: 12x R$ 41 · cupom de R$ 200 já aplicado</span></div>
     <button class="btn" onclick="openCheckout()">Quero entrar para o Clube</button>
@@ -1332,7 +1332,7 @@ document.querySelectorAll('.vid').forEach(function(el){
     var past=window.scrollY>hero.offsetHeight-80;
     var fin=last&&last.offsetParent!==null&&last.getBoundingClientRect().top<window.innerHeight-40;
     var on=past&&!fin;
-    if(on!==bar.classList.contains('show')){bar.classList.toggle('show',on);document.body.classList.toggle('sticky-on',on);bar.setAttribute('aria-hidden',on?'false':'true');}
+    if(on!==bar.classList.contains('show')){bar.classList.toggle('show',on);document.body.classList.toggle('sticky-on',on);bar.setAttribute('aria-hidden',on?'false':'true');bar.inert=!on;}
   }
   addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(upd);}},{passive:true}); upd();
 })();
