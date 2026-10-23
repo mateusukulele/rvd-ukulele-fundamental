@@ -1142,7 +1142,7 @@ body.unlocked .gate{animation:gateIn .6s ease both}
         </div>
         <p class="err" id="e-wa">Número com DDD (10 ou 11 dígitos).</p>
       </div>
-      <div class="field"><label>Você já possui um ukulele?</label><div class="radios"><label><input type="radio" name="uke" value="Sim"> Sim</label><label><input type="radio" name="uke" value="Não"> Não</label></div><p class="err" id="e-uke">Responda essa pergunta.</p></div>
+      <div class="field"><label>Você já possui um ukulele?</label><div class="radios"><label><input type="radio" name="has_ukulele" value="Sim"> Sim</label><label><input type="radio" name="has_ukulele" value="Não"> Não</label></div><p class="err" id="e-uke">Responda essa pergunta.</p></div>
       <button class="btn btn--block" type="submit" id="go">Ir para o pagamento</button>
       <p class="secure"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Ambiente 100% seguro pela Hotmart</p>
     </form>
@@ -1241,7 +1241,7 @@ document.getElementById('lead').addEventListener('submit',function(e){
   var r=fixEmail(emailIn.value); if(r.c) emailIn.value=r.v;
   var email=emailIn.value.trim();
   var tel=waIn.value.replace(/\D/g,''), br=ddi.value==='55';
-  var uke=(document.querySelector('input[name=uke]:checked')||{}).value;
+  var uke=(document.querySelector('input[name=has_ukulele]:checked')||{}).value;
   var ok=true;
   function mark(id,cond){document.getElementById(id).classList.toggle('on',!cond);if(!cond)ok=false;}
   mark('e-nome', nome.split(' ').filter(Boolean).length>=2);
