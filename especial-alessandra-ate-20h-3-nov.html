@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Redirecionando...</title>
+<script>
+// Link exclusivo da Alessandra: até 03/11/2026 20h (Brasília, -03:00) vai para a oferta 70zstmtv,
+// depois para a 52mbhrmb. As duas só com cartão. Usa o relógio do aparelho, como o condicao-especial.
+var LIMITE = Date.parse("2026-11-03T20:00:00-03:00");
+var SEM_PIX_BOLETO = "&hideBillet=1&hidePix=1&hidePixAutomatic=1";
+var ANTES = "https://pay.hotmart.com/J107797354O?off=70zstmtv" + SEM_PIX_BOLETO;
+var DEPOIS = "https://pay.hotmart.com/J107797354O?off=52mbhrmb" + SEM_PIX_BOLETO;
+location.replace(Date.now() < LIMITE ? ANTES : DEPOIS);
+</script>
+</head>
+<body>
+<noscript><p><a href="https://pay.hotmart.com/J107797354O?off=52mbhrmb&hideBillet=1&hidePix=1&hidePixAutomatic=1">Ir para o pagamento</a></p></noscript>
+</body>
+</html>
